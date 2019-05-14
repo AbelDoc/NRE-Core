@@ -12,7 +12,7 @@ OBJDIR = obj/
 BIN = bin/
 SRC = src
 OBJ = $(OBJDIR)NRE_Main.o 
-OUT = NRE-Util
+OUT = NRE-Utility
 
 all : childs out
 

@@ -9,5 +9,7 @@
 
     #pragma once
 
+    #include "../Utility/Array/NRE_Array.hpp"
+
     #include "../Utility/Observer/NRE_Observer.hpp"
     #include "../Utility/Observable/NRE_Observable.hpp"

@@ -26,7 +26,7 @@
         namespace Utility {
 
             /**
-             * @pure Observable
+             * @class Observable
              * @brief Describe an observable object, coupled with observer
              */
             class Observable {
@@ -147,7 +147,7 @@
                         /**
                          * Copy assignment of o into this
                          * @param o the observable to copy into this
-                         * @return      the reference of himself
+                         * @return  the reference of himself
                          */
                         inline Observable& operator =(Observable const& o) {
                             changed = o.changed;
@@ -157,7 +157,7 @@
                         /**
                          * Move assignment of o into this, leaving o empty
                          * @param o the observable to move into this
-                         * @return      the reference of himself
+                         * @return  the reference of himself
                          */
                         inline Observable& operator =(Observable && o) {
                             changed = std::move(o.changed);
