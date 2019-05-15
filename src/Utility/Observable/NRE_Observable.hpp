@@ -44,14 +44,14 @@
                     //## Copy-Constructor ##//
                         /**
                          * Copy o into this
-                         * @param o the observable to copy the content
+                         * @param o the observable to copy
                          */
                         inline Observable(Observable const& o) : changed(o.changed), observers(o.observers) {
                         }
 
                     //## Move-Constructor ##//
                         /**
-                         * Move o into this, leaving o empty
+                         * Move o into this
                          * @param o the observable to move
                          */
                         inline Observable(Observable && o) : changed(std::move(o.changed)), observers(std::move(o.observers)) {
@@ -65,7 +65,6 @@
 
                     //## Getter ##//
                         /**
-                         * Changed getter
                          * @return the changed state
                          */
                         inline bool const& isChanged() const {
@@ -94,7 +93,6 @@
                             observers.clear();
                         }
                         /**
-                         * Count all observers
                          * @return the number of observer
                          */
                         inline std::size_t countObservers() const {
@@ -115,29 +113,25 @@
 
                     //## Access Operator ##//
                         /**
-                         * Begin iterator
-                         * @return an iterator on the observers
+                         * @return an iterator on the first element
                          */
                         inline std::vector<Observer*>::iterator begin() {
                             return observers.begin();
                         }
                         /**
-                         * Begin iterator
-                         * @return a const iterator on the observers
+                         * @return a const iterator on the first element
                          */
                         inline std::vector<Observer*>::const_iterator begin() const {
                             return observers.begin();
                         }
                         /**
-                         * End iterator
-                         * @return an iterator on the observers
+                         * @return an iterator on the end of the container
                          */
                         inline std::vector<Observer*>::iterator end() {
                             return observers.end();
                         }
                         /**
-                         * End iterator
-                         * @return a const iterator on the observers
+                         * @return a const iterator on the end of the container
                          */
                         inline std::vector<Observer*>::const_iterator end() const {
                             return observers.end();
@@ -145,25 +139,17 @@
 
                     //## Assignment Operator ##//
                         /**
-                         * Copy assignment of o into this
+                         * Copy o into this
                          * @param o the observable to copy into this
                          * @return  the reference of himself
                          */
-                        inline Observable& operator =(Observable const& o) {
-                            changed = o.changed;
-                            observers = o.observers;
-                            return *this;
-                        }
+                        inline Observable& operator =(Observable const& o) = default;
                         /**
-                         * Move assignment of o into this, leaving o empty
+                         * Move o into this
                          * @param o the observable to move into this
                          * @return  the reference of himself
                          */
-                        inline Observable& operator =(Observable && o) {
-                            changed = std::move(o.changed);
-                            observers = std::move(o.observers);
-                            return *this;
-                        }
+                        inline Observable& operator =(Observable && o) = default;
 
                 protected: // Methods
                     /**

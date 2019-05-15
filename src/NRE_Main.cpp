@@ -10,41 +10,42 @@
     #include <string>
     #include <iostream>
     #include <chrono>
-    #include <array>
+    #include <vector>
 
     #include "Header/NRE_Utility.hpp"
 
     int main(int, char**) {
+        std::cout << std::is_pod<int*>::value << std::endl;
         std::size_t sumSTD = 0, sumNRE = 0;
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        std::size_t firstLoopSize  = 10'000;
-        std::size_t secondLoopSize = 1'000'000;
-        std::size_t constexpr containerSize  = 10'000;
+        std::size_t firstLoopSize  = 100;
+        std::size_t secondLoopSize = 100'000;
+        std::size_t constexpr containerSize  = 100'000;
 
-        std::cout << "Benchmark : NRE::Utility::Array vs std::array" << std::endl;
-        std::cout << "Stress test [Default Constructor and Fill + Iterator use] : x" << firstLoopSize << std::endl;
+        std::cout << "Benchmark : NRE::Utility::Vector vs std::vector" << std::endl;
+        std::cout << "Stress test [Default Constructor + Insert at beginning + Iterator use] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
 
 
-        std::cout << "Current target : std::array" << std::endl;
-        std::cout << "Size of target : " << sizeof(std::array<std::size_t, containerSize>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(std::array<std::size_t, containerSize>::iterator) << std::endl;
+        std::cout << "Current target : std::vector" << std::endl;
+        std::cout << "Size of target : " << sizeof(std::vector<std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(std::vector<std::size_t>::iterator) << std::endl;
 
         std::size_t res = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            std::size_t cpt = 0;
-            std::array<std::size_t, containerSize> arr;
-            for (auto it = arr.begin(); it != arr.end(); it++) {
-                *(it) = cpt++;
+            std::vector<std::size_t> vec;
+            for (std::size_t j = 0; j < containerSize; j++) {
+                vec.push_back(j);
             }
-            for (auto it = arr.rbegin(); it != arr.rend(); it++) {
+            for (auto it = vec.rbegin(); it != vec.rend(); it++) {
                 res += *(it);
             }
+            vec.clear();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumSTD += diff;
@@ -56,27 +57,27 @@
             }
         }
 
-        std::cout << "Result : " << res << std::endl;
+        std::cout << "Result : " << res / firstLoopSize << std::endl;
 
         std::cout << "\tAverage : " << sumSTD / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstSTD << " ns" << std::endl;
         std::cout << "\tBest    : " << bestSTD  << " ns" << std::endl;
 
-        std::cout << "Current target : NRE::Utility::Array" << std::endl;
-        std::cout << "Size of target : " << sizeof(NRE::Utility::Array<std::size_t, containerSize>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(NRE::Utility::Array<std::size_t, containerSize>::Iterator) << std::endl;
+        std::cout << "Current target : NRE::Utility::Vector" << std::endl;
+        std::cout << "Size of target : " << sizeof(NRE::Utility::Vector<std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(NRE::Utility::Vector<std::size_t>::Iterator) << std::endl;
 
         res = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            std::size_t cpt = 0;
-            NRE::Utility::Array<std::size_t, containerSize> arr ;
-            for (auto it = arr.begin(); it != arr.end(); it++) {
-                *(it) = cpt++;
+            NRE::Utility::Vector<std::size_t> vec;
+            for (std::size_t j = 0; j < containerSize; j++) {
+                vec.pushBack(j);
             }
-            for (auto it = arr.rbegin(); it != arr.rend(); it++) {
+            for (auto it = vec.rbegin(); it != vec.rend(); it++) {
                 res += *(it);
             }
+            vec.clear();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE += diff;
@@ -88,7 +89,7 @@
             }
         }
 
-        std::cout << "Result : " << res << std::endl;
+        std::cout << "Result : " << res / firstLoopSize << std::endl;
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;
