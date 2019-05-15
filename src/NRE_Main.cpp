@@ -37,10 +37,13 @@
         std::size_t res = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
+            std::size_t cpt = 0;
             std::array<std::size_t, containerSize> arr;
-            arr.fill(1);
-            for (std::size_t& it : arr) {
-                res += it;
+            for (auto it = arr.begin(); it != arr.end(); it++) {
+                *(it) = cpt++;
+            }
+            for (auto it = arr.rbegin(); it != arr.rend(); it++) {
+                res += *(it);
             }
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
@@ -66,10 +69,13 @@
         res = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
+            std::size_t cpt = 0;
             NRE::Utility::Array<std::size_t, containerSize> arr ;
-            arr.fill(1);
-            for (std::size_t& it : arr) {
-                res += it;
+            for (auto it = arr.begin(); it != arr.end(); it++) {
+                *(it) = cpt++;
+            }
+            for (auto it = arr.rbegin(); it != arr.rend(); it++) {
+                res += *(it);
             }
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());

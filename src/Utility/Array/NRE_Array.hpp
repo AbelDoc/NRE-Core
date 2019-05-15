@@ -36,9 +36,9 @@
                     /**< Shortcut to hide ConstIterator implementation */
                     typedef const T*    ConstIterator;
                     /**< Shortcut to hide ReverseIterator implementation */
-                    typedef T*          ReverseIterator;
+                    typedef std::reverse_iterator<T*>          ReverseIterator;
                     /**< Shortcut to hide ConstReverseIterator implementation */
-                    typedef const T*    ConstReverseIterator;
+                    typedef std::reverse_iterator<const T*>    ConstReverseIterator;
 
                 private :   // Fields
                     T data[Size];   /**< The internal array */
@@ -141,50 +141,50 @@
                         /**
                          * @return an iterator on the first element
                          */
-                        inline T* begin() {
+                        inline Iterator begin() {
                             return data;
                         }
                         /**
                          * @return an iterator on the first element
                          */
-                        inline const T* begin() const {
+                        inline ConstIterator begin() const {
                             return data;
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
-                        inline T* end() {
+                        inline Iterator end() {
                             return data + Size;
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
-                        inline const T* end() const {
+                        inline ConstIterator end() const {
                             return data + Size;
                         }
                         /**
                          * @return an iterator on the first element
                          */
-                        inline Iterator rbegin() {
-                            return data + Size - 1;
+                        inline ReverseIterator rbegin() {
+                            return ReverseIterator(data + Size);
                         }
                         /**
                          * @return an iterator on the first element
                          */
-                        inline ConstIterator rbegin() const {
-                            return data + Size - 1;
+                        inline ConstReverseIterator rbegin() const {
+                            return ConstReverseIterator(data + Size);
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
                         inline ReverseIterator rend() {
-                            return data - 1;
+                            return ReverseIterator(data - 1);
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
                         inline ConstReverseIterator rend() const {
-                            return data - 1;
+                            return ConstReverseIterator(data - 1);
                         }
 
                     //## Methods ##//
