@@ -55,7 +55,7 @@
                          * Construct a vector filled with count copy of value
                          * @param count the number of copy to perform, will be the vector capacity and length
                          * @param value the value to fill the vector with
-                         * @pre value is not in the vector
+                         * @pre value don't reference a vector item
                          */
                         Vector(std::size_t count, T const& value);
                         /**
@@ -74,7 +74,7 @@
                         /**
                          * Construct a vector from an initializer list
                          * @param  init the list to fill the vector with
-                         * @pre list do not contain some element from the vector
+                         * @pre list don't contain vector reference
                          */
                         Vector(std::initializer_list<T> init);
 
@@ -191,7 +191,7 @@
                          * Assign the vector with count copy of value, starting from the beginning
                          * @param count the number of copy
                          * @param value the copy to fill the vector with
-                         * @pre value is not in the vector
+                         * @pre value don't reference a vector item
                          */
                         void assign(std::size_t count, T const& value);
                         /**
@@ -230,7 +230,7 @@
                          * @param  start the position to insert the value
                          * @param  value the value to insert
                          * @return       the iterator on the inserted value
-                         * @pre value is not in the vector
+                         * @pre value don't reference a vector item
                          */
                         Iterator insert(ConstIterator start, T const& value);
                         /**
@@ -239,7 +239,7 @@
                          * @param  count the number of copy
                          * @param  value the value to insert
                          * @return       the iterator on the first inserted value
-                         * @pre value is not in the vector
+                         * @pre value don't reference a vector item
                          */
                         Iterator insert(ConstIterator start, std::size_t count, T const& value);
                         /**
@@ -257,7 +257,7 @@
                          * @param  start the position to insert values
                          * @param  init  the list to fill the vector with
                          * @return       the iterator on the first inserted value
-                         * @pre list do not contain some element from the vector
+                         * @pre list don't contain vector reference
                          */
                         Iterator insert(ConstIterator start, std::initializer_list<T> list);
                         /**
@@ -284,7 +284,7 @@
                         /**
                          * Insert a copy of value at the end of the vector
                          * @param value the value to insert
-                         * @pre value is not in the vector
+                         * @pre value don't reference a vector item
                          */
                         void pushBack(T const& value);
                         /**
@@ -489,7 +489,7 @@
                      */
                     template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                     void copy(Vector const& vec) {
-                        std::memcpy(data, vec.data, length * sizeof(T));
+                        std::memcpy(data, vec.data, vec.length * sizeof(T));
                     }
 
                 private :    // Static

@@ -165,6 +165,9 @@
              template <class T>
              inline void Vector<T>::assign(std::size_t count, T const& value) {
                  clear();
+                 if (capacity < count) {
+                     reserveWithGrowFactor(count);
+                 }
                  for (std::size_t i = 0; i < count; i++) {
                      data[i] = *(new(&data[i]) T (value));
                  }
@@ -174,6 +177,10 @@
              template <class InputIterator>
              inline void Vector<T>::assign(InputIterator begin, InputIterator end) {
                  clear();
+                 std::size_t size = std::distance(begin, end);
+                 if (capacity < size) {
+                     reserveWithGrowFactor(size);
+                 }
                  std::size_t current = 0;
                  for ( ; begin != end; begin++) {
                      data[current] = *(new(&data[current]) T (*(begin)));
