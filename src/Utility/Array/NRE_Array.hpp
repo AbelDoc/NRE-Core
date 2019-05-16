@@ -55,26 +55,21 @@
                          * @param args the pack of value to set in the array
                          */
                         template <class ... Args>
-                        Array(Args && ... args) : data{static_cast <T> (std::forward<Args>(args))...} {
-                        }
+                        Array(Args && ... args);
 
                     //## Copy Constructor ##//
                         /**
                          * Copy arr into this
                          * @param arr the array to copy
                          */
-                        Array(Array const& arr) {
-                            copy(arr);
-                        }
+                        Array(Array const& arr);
 
                     //## Move Constructor ##//
                         /**
                          * Move arr into this
                          * @param arr the array to move
                          */
-                        Array(Array && arr) {
-                            move(arr);
-                        }
+                        Array(Array && arr);
 
                     //## Deconstructor ##//
                         /**
@@ -88,146 +83,95 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& get(std::size_t index) {
-                            if (index >= Size) {
-                                throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
-                            }
-                            return data[index];
-                        }
+                        T& get(std::size_t index);
                         /**
                          * Access a particular element with bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& get(std::size_t index) const {
-                            if (index >= Size) {
-                                throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
-                            }
-                            return data[index];
-                        }
+                        T const& get(std::size_t index) const;
                         /**
                          * @return the internal data array
                          */
-                        T* getData() {
-                            return data;
-                        }
+                        T* getData();
                         /**
                          * @return the internal data array
                          */
-                        const T* getData() const {
-                            return data;
-                        }
+                        const T* getData() const;
                         /**
                          * @return the first element
                          */
-                        T& getFront() {
-                            return data[0];
-                        }
+                        T& getFront();
                         /**
                          * @return the first element
                          */
-                        T const& getFront() const {
-                            return data[0];
-                        }
+                        T const& getFront() const;
                         /**
                          * @return the last element
                          */
-                        T& getLast() {
-                            return data[Size - 1];
-                        }
+                        T& getLast();
                         /**
                          * @return the last element
                          */
-                        T const& getLast() const {
-                            return data[Size - 1];
-                        }
+                        T const& getLast() const;
                         /**
                          * @return if the array is empty
                          */
-                        constexpr bool isEmpty() const {
-                            return Size == 0;
-                        }
+                        constexpr bool isEmpty() const;
                         /**
                          * @return the array size
                          */
-                        constexpr std::size_t getSize() const {
-                            return Size;
-                        }
+                        constexpr std::size_t getSize() const;
                         /**
                          * @return the maximum array size
                          */
-                        constexpr std::size_t getMaxSize() const {
-                            return Size;
-                        }
+                        constexpr std::size_t getMaxSize() const;
 
                     //## Iterator Access ##//
                         /**
                          * @return an iterator on the first element
                          */
-                        Iterator begin() {
-                            return data;
-                        }
+                        Iterator begin();
                         /**
                          * @return a const iterator on the first element
                          */
-                        ConstIterator begin() const {
-                            return data;
-                        }
+                        ConstIterator begin() const;
                         /**
                          * @return an iterator on the end of the container
                          */
-                        Iterator end() {
-                            return data + Size;
-                        }
+                        Iterator end();
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        ConstIterator end() const {
-                            return data + Size;
-                        }
+                        ConstIterator end() const;
                         /**
                          * @return a reverse iterator on the first element
                          */
-                        ReverseIterator rbegin() {
-                            return ReverseIterator(data + Size);
-                        }
+                        ReverseIterator rbegin();
                         /**
                          * @return a const reverse iterator on the first element
                          */
-                        ConstReverseIterator rbegin() const {
-                            return ConstReverseIterator(data + Size);
-                        }
+                        ConstReverseIterator rbegin() const;
                         /**
                          * @return a reverse iterator on the end of the container
                          */
-                        ReverseIterator rend() {
-                            return ReverseIterator(data);
-                        }
+                        ReverseIterator rend();
                         /**
                          * @return a const reverse iterator on the end of the container
                          */
-                        ConstReverseIterator rend() const {
-                            return ConstReverseIterator(data);
-                        }
+                        ConstReverseIterator rend() const;
 
                     //## Methods ##//
                         /**
                          * Fill the array with the same value
                          * @param value the value to fill the array with
                          */
-                        void fill(T const& value) {
-                            for (std::size_t i = 0; i < Size; i++) {
-                                data[i] = value;
-                            }
-                        }
+                        void fill(T const& value);
                         /**
                          * Swap this data with arr data
                          * @param arr the container to swap with
                          */
-                        void swap(Array& arr) noexcept {
-                            using namespace std;
-                            swap(data, arr.data);
-                        }
+                        void swap(Array& arr) noexcept;
 
                     //## Access Operator ##//
                         /**
@@ -235,17 +179,13 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& operator[](std::size_t index) {
-                            return data[index];
-                        }
+                        T& operator[](std::size_t index);
                         /**
                          * Access a particular element without bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& operator[](std::size_t index) const {
-                            return data[index];
-                        }
+                        T const& operator[](std::size_t index) const;
 
                     //## Assignment Operator ##//
                         /**
@@ -253,19 +193,13 @@
                          * @param arr the observable to copy into this
                          * @return    the reference of himself
                          */
-                        Array& operator =(Array const& arr) {
-                            copy(arr);
-                            return *this;
-                        }
+                        Array& operator =(Array const& arr);
                         /**
                          * Move assignment of o into this, leaving o empty
                          * @param arr the observable to move into this
                          * @return    the reference of himself
                          */
-                        Array& operator =(Array && arr) {
-                            move(arr);
-                            return *this;
-                        }
+                        Array& operator =(Array && arr);
 
                     //## Comparison Operator ##//
                         /**
@@ -297,9 +231,8 @@
                          * @param arr the other array
                          * @return the test result
                          */
-                        bool operator !=(Array const& arr) const {
-                            return !(*this == arr);
-                        }
+                        bool operator !=(Array const& arr) const;
+
                 private :   // Methods
                     /**
                      * Copy the array content
@@ -341,3 +274,5 @@
 
         }
     }
+
+    #include "NRE_Array.tpp"
