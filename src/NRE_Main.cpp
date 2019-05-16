@@ -39,7 +39,7 @@
             auto start = std::chrono::steady_clock::now();
             std::vector<std::size_t> vec;
             for (std::size_t j = 0; j < containerSize; j++) {
-                vec.push_back(j);
+                vec.emplace_back(j);
             }
             std::vector<std::size_t> copy(vec);
             for (auto it = copy.rbegin(); it != copy.rend(); it++) {
@@ -71,7 +71,7 @@
             auto start = std::chrono::steady_clock::now();
             NRE::Utility::Vector<std::size_t> vec;
             for (std::size_t j = 0; j < containerSize; j++) {
-                vec.pushBack(j);
+                vec.emplaceBack(j);
             }
             NRE::Utility::Vector<std::size_t> copy(vec);
             for (auto it = copy.rbegin(); it != copy.rend(); it++) {

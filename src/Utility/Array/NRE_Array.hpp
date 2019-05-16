@@ -64,7 +64,7 @@
                          * @param arr the array to copy
                          */
                         Array(Array const& arr) {
-                            copy(arr)
+                            copy(arr);
                         }
 
                     //## Move Constructor ##//
