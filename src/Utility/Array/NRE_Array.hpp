@@ -275,40 +275,22 @@
                          * @param arr the observable to copy into this
                          * @return    the reference of himself
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         inline Array& operator =(Array const& arr) {
                             for (std::size_t index = 0; index < Size; index++){
                                 data[index] = arr[index];
                             }
-                        }
-                        /**
-                         * Copy assignment of o into this
-                         * @param arr the observable to copy into this
-                         * @return    the reference of himself
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline Array& operator =(Array const& arr) {
-                            std::memcpy(data, arr.data, Size * sizeof(T));
+                            return *this;
                         }
                         /**
                          * Move assignment of o into this, leaving o empty
                          * @param arr the observable to move into this
                          * @return    the reference of himself
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         inline Array& operator =(Array && arr) {
                             for (std::size_t index = 0; index < Size; index++){
                                 data[index] = std::move(arr[index]);
                             }
-                        }
-                        /**
-                         * Move assignment of o into this, leaving o empty
-                         * @param arr the observable to move into this
-                         * @return    the reference of himself
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline Array& operator =(Array && arr) {
-                            std::memcpy(data, arr.data, Size * sizeof(T));
+                            return *this;
                         }
 
                     //## Comparison Operator ##//

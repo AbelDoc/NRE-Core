@@ -82,7 +82,7 @@
                         inline Vector(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
                             std::size_t current = 0;
                             for (auto it = init.begin(); it != init.end(); it++) {
-                                data[current] = std::move(*it);
+                                data[current] = *(new(&data[current]) T (std::move(*it)));
                                 current++;
                             }
                         }
@@ -92,21 +92,13 @@
                          * Copy vec into this
                          * @param  vec the vector to copy
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         inline Vector(Vector const& vec) : length(vec.length), capacity(vec.capacity), data(static_cast <T*> (::operator new (capacity * sizeof(T)))) {
                             std::size_t current = 0;
+                            std::cout << "copy" << std::endl;
                             for (T const& it : vec) {
-                                data[current] = it;
+                                data[current] = *(new(&data[current]) T (it));
                                 current++;
                             }
-                        }
-                        /**
-                         * Copy vec into this
-                         * @param  vec the vector to copy
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline Vector(Vector const& vec) : length(vec.length), capacity(vec.capacity), data(static_cast <T*> (::operator new (capacity * sizeof(T)))) {
-                            std::memcpy(data, vec.data, length * sizeof(T));
                         }
 
                     //## Move Constructor ##//
@@ -125,9 +117,10 @@
                          * Vector Deconstructor
                          */
                         inline ~Vector() {
-                            if (length > 0) {
-                                delete[] data;
+                            for (std::size_t index = 0; index < length; index++) {
+                                data[index].~T();
                             }
+                            ::operator delete(data);
                         }
 
                     //## Getter ##//
@@ -273,7 +266,7 @@
                         inline void assign(std::size_t count, T const& value) {
                             clear();
                             for (std::size_t i = 0; i < count; i++) {
-                                data[i] = value;
+                                data[i] = *(new(&data[i]) T (value));
                             }
                         }
                         /**
@@ -286,7 +279,7 @@
                             clear();
                             std::size_t current = 0;
                             for ( ; begin != end; begin++) {
-                                data[current] = *(begin);
+                                data[current] = *(new(&data[current]) T (*(begin)));
                                 current++;
                             }
                             length = current;
@@ -331,7 +324,7 @@
                             }
                             shift(index, 1);
                             length++;
-                            data[index] = value;
+                            data[index] = *(new(&data[length]) T (value));
                             return Iterator(data + index);
                         }
                         /**
@@ -348,7 +341,7 @@
                             }
                             shift(index, count);
                             for (std::size_t it = index; it != index + count; it++) {
-                                data[it] = value;
+                                data[it] = *(new(&data[it]) T (value));
                             }
                             length += count;
                             return Iterator(data + index);
@@ -369,7 +362,7 @@
                             }
                             shift(index, count);
                             for ( ; begin != end; begin++) {
-                                data[index] = *begin;
+                                data[index] = *(new(&data[index]) T (*begin));
                                 index++;
                             }
                             length += count;
@@ -389,7 +382,7 @@
                             }
                             shift(index, count);
                             for (auto it = list.begin(); it != list.end(); it++) {
-                                data[index] = std::move(*it);
+                                data[index] = *(new(&data[index]) T (std::move(*it)));
                                 index++;
                             }
                             length += count;
@@ -408,7 +401,7 @@
                                 reallocate();
                             }
                             shift(index, 1);
-                            data[index] = T(std::forward<Args>(args)...);
+                            data[index] = *(new(&data[index]) T (std::forward<Args>(args)...));
                             return Iterator(data + index);
                         }
                         /**
@@ -445,7 +438,7 @@
                             if (capacity < length + 1) {
                                 reallocate();
                             }
-                            *(end()) = value;
+                            data[length] = *(new(&data[length]) T (value));
                             length++;
                         }
                         /**
@@ -456,7 +449,7 @@
                             if (capacity < length + 1) {
                                 reallocate();
                             }
-                            *(end()) = value;
+                            data[length] = *(new(&data[length]) T (value));
                             length++;
                         }
                         /**
@@ -468,7 +461,7 @@
                             if (capacity < length + 1) {
                                 reallocate();
                             }
-                            *(end()) = T(std::forward<Args>(args)...);
+                            data[length] = *(new(&data[length]) T (std::forward<Args>(args)...));
                             length++;
                         }
                         /**
@@ -501,10 +494,10 @@
                         inline void resize(std::size_t count, T const& value) {
                             if (capacity < count) {
                                 reallocate(count);
-                                Iterator end(end() + count);
-                                for (auto it = end(); it != end; it++) {
-                                    *it = value;
+                                for (std::size_t index = length; index != count; index++) {
+                                    data[index] = *(new(&data[index]) T (value));
                                 }
+                                length = count;
                             }
                         }
                         /**
@@ -542,7 +535,6 @@
                          * @param vec the vector to copy into this
                          * @return    the reference of himself
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         inline Vector& operator =(Vector const& vec) {
                             if (vec.data != data) {
                                 clear();
@@ -552,28 +544,11 @@
 
                                 std::size_t current = 0;
                                 for (T const& it : vec) {
-                                    data[current] = it;
+                                    data[current] = *(new(&data[current]) T (it));
                                     current++;
                                 }
-                                return *this;
                             }
-                        }
-                        /**
-                         * Copy vec into this
-                         * @param vec the vector to copy into this
-                         * @return    the reference of himself
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline Vector& operator =(Vector const& vec) {
-                            if (vec.data != data) {
-                                clear();
-                                length = vec.length;
-                                capacity = vec.capacity;
-                                data = static_cast <T*> (::operator new(capacity * sizeof(T)));
-
-                                std::memcpy(data, vec.data, length * sizeof(T));
-                                return *this;
-                            }
+                            return *this;
                         }
                         /**
                          * Move vec into this
@@ -591,6 +566,7 @@
                                 vec.capacity = 0;
                                 vec.data = nullptr;
                             }
+                            return *this;
                         }
 
                     //## Comparison Operator ##//
@@ -647,7 +623,7 @@
                         T* newData = static_cast <T*> (::operator new(capacity * sizeof(T)));
 
                         for (std::size_t current = 0; current < length; current++) {
-                            newData[current] = std::move(data[current]);
+                            newData[current] = *(new(&newData[current]) T (std::move(data[current])));
                         }
                         ::operator delete(data);
                         data = newData;
@@ -684,7 +660,7 @@
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     inline void shift(std::size_t start, std::size_t count) {
                         for (std::size_t index = length + count - 1; index != start + count - 1; index--) {
-                            data[index] = std::move(data[index - count]);
+                            data[index] = *(new(&data[index]) T (std::move(data[index - count])));
                         }
                     }
                     /**
@@ -703,8 +679,8 @@
                      */
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     inline void shiftBack(std::size_t start, std::size_t count) {
-                        for (std::size_t it = start; it < start + count; it++) {
-                            data[it] = std::move(data[it + count]);
+                        for (std::size_t index = start; index < start + count; index++) {
+                            data[index] = *(new(&data[index]) T (std::move(data[index + count])));
                         }
                     }
                     /**
