@@ -30,7 +30,7 @@
              */
             template <class T>
             class BasicString {
-                static_assert(std::is_scalar<T>::value); // Only work with POD types but restreign to scalar type
+                static_assert(std::is_scalar<T>::value, "You can't use BasicString with non-scalar types"); // Only work with POD types but restreign to scalar type
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;
