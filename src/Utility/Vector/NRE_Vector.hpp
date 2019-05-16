@@ -26,7 +26,7 @@
 
             /**
              * @class Vector
-             * @brief A dynamic array, garantee to be in contiguous memory
+             * @brief A dynamic array, guarantee to be in contiguous memory
              */
             template <class T>
             class Vector {
@@ -56,6 +56,7 @@
                          * Construct a vector filled with count copy of value
                          * @param count the number of copy to perform, will be the vector capacity and length
                          * @param value the value to fill the vector with
+                         * @pre value is not in the vector
                          */
                         Vector(std::size_t count, T const& value) : length(count), capacity(count), data(static_cast <T*> (::operator new (count * sizeof(T)))) {
                             assign(count, value);
@@ -70,6 +71,7 @@
                          * Construct a vector filled with element between 2 iterators
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
+                         * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
                         Vector(InputIterator begin, InputIterator end) : length(std::distance(begin, end)), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
@@ -78,6 +80,7 @@
                         /**
                          * Construct a vector from an initializer list
                          * @param  init the list to fill the vector with
+                         * @pre list do not contain some element from the vector
                          */
                         Vector(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
                             std::size_t current = 0;
@@ -257,6 +260,7 @@
                          * Assign the vector with count copy of value, starting from the beginning
                          * @param count the number of copy
                          * @param value the copy to fill the vector with
+                         * @pre value is not in the vector
                          */
                         void assign(std::size_t count, T const& value) {
                             clear();
@@ -268,6 +272,7 @@
                          * Assign the vector with element between 2 iterators
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
+                         * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
                         void assign(InputIterator begin, InputIterator end) {
@@ -311,6 +316,7 @@
                          * @param  start the position to insert the value
                          * @param  value the value to insert
                          * @return       the iterator on the inserted value
+                         * @pre value is not in the vector
                          */
                         Iterator insert(ConstIterator start, T const& value) {
                             std::size_t index = start - ConstIterator(data);
@@ -319,7 +325,7 @@
                             }
                             shift(index, 1);
                             length++;
-                            data[index] = *(new(&data[length]) T (value));
+                            data[index] = *(new(&data[index]) T (value));
                             return Iterator(data + index);
                         }
                         /**
@@ -328,6 +334,7 @@
                          * @param  count the number of copy
                          * @param  value the value to insert
                          * @return       the iterator on the first inserted value
+                         * @pre value is not in the vector
                          */
                         Iterator insert(ConstIterator start, std::size_t count, T const& value) {
                             std::size_t index = start - ConstIterator(data);
@@ -347,6 +354,7 @@
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
                          * @return       the iterator on the first inserted value
+                         * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
                         Iterator insert(ConstIterator start, InputIterator begin, InputIterator end) {
@@ -368,6 +376,7 @@
                          * @param  start the position to insert values
                          * @param  init  the list to fill the vector with
                          * @return       the iterator on the first inserted value
+                         * @pre list do not contain some element from the vector
                          */
                         Iterator insert(ConstIterator start, std::initializer_list<T> list) {
                             std::size_t count = list.size();
@@ -428,6 +437,7 @@
                         /**
                          * Insert a copy of value at the end of the vector
                          * @param value the value to insert
+                         * @pre value is not in the vector
                          */
                         void pushBack(T const& value) {
                             if (capacity < length + 1) {
@@ -602,8 +612,8 @@
                      * Reallocate and grow the storage capacity
                      */
                     void reallocate() {
-                        reallocate((capacity > 1) ? (capacity * GROW_FACTOR)
-                                                  : (BASE_ALLOCATION_SIZE));
+                        reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
+                                                   : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
                     }
                     /**
                      * Rellocate the data to the given size
@@ -638,10 +648,10 @@
                      * @param size the new minimum capacity
                      */
                     void reserveWithGrowFactor(std::size_t size) {
-                        std::size_t newSize = (capacity > 1) ? (capacity * GROW_FACTOR)
-                                                             : (BASE_ALLOCATION_SIZE);
+                        std::size_t newSize = (capacity == 1) ? (BASE_ALLOCATION_SIZE)
+                                                              : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
                         while (newSize < size) {
-                            newSize = capacity * GROW_FACTOR;
+                            newSize = static_cast <std::size_t> (static_cast <float> (newSize) * GROW_FACTOR);
                         }
                         reallocate(newSize);
                     }
@@ -707,7 +717,7 @@
                     }
 
                 private :    // Static
-                    static constexpr std::size_t GROW_FACTOR = 2;
+                    static constexpr float GROW_FACTOR = 1.5;
                     static constexpr std::size_t BASE_ALLOCATION_SIZE = 8;
             };
         }

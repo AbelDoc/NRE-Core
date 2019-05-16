@@ -19,9 +19,9 @@
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        std::size_t firstLoopSize  = 100;
-        std::size_t secondLoopSize = 100'000;
-        std::size_t constexpr containerSize  = 100'000;
+        std::size_t firstLoopSize  = 50;
+        std::size_t secondLoopSize = 10'000'000;
+        std::size_t constexpr containerSize  = 10'000'000;
 
         std::cout << "Benchmark : NRE::Utility::Vector vs std::vector" << std::endl;
         std::cout << "Stress test [Default Constructor + Push Back + Copy + Iterator use] : x" << firstLoopSize << std::endl;
@@ -34,17 +34,18 @@
         std::cout << "Size of target : " << sizeof(std::vector<std::size_t>) << std::endl;
         std::cout << "Size of target iterator : " << sizeof(std::vector<std::size_t>::iterator) << std::endl;
 
-        std::size_t res = 0;
+        std::size_t res = 0, capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
             std::vector<std::size_t> vec;
             for (std::size_t j = 0; j < containerSize; j++) {
-                vec.emplace_back(j);
+                vec.push_back(j);
             }
             std::vector<std::size_t> copy(vec);
             for (auto it = copy.rbegin(); it != copy.rend(); it++) {
                 res += *(it);
             }
+            capacity = vec.capacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumSTD += diff;
@@ -56,7 +57,8 @@
             }
         }
 
-        std::cout << "Result : " << res / firstLoopSize << std::endl;
+        std::cout << "Result : " << res << std::endl;
+        std::cout << "Final used memory : " << capacity * sizeof(std::size_t) + firstLoopSize * sizeof(std::vector<std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumSTD / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstSTD << " ns" << std::endl;
@@ -67,16 +69,18 @@
         std::cout << "Size of target iterator : " << sizeof(NRE::Utility::Vector<std::size_t>::Iterator) << std::endl;
 
         res = 0;
+        capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
             NRE::Utility::Vector<std::size_t> vec;
             for (std::size_t j = 0; j < containerSize; j++) {
-                vec.emplaceBack(j);
+                vec.pushBack(j);
             }
             NRE::Utility::Vector<std::size_t> copy(vec);
             for (auto it = copy.rbegin(); it != copy.rend(); it++) {
                 res += *(it);
             }
+            capacity = vec.getCapacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE += diff;
@@ -88,7 +92,8 @@
             }
         }
 
-        std::cout << "Result : " << res / firstLoopSize << std::endl;
+        std::cout << "Result : " << res << std::endl;
+        std::cout << "Final used memory : " << capacity * sizeof(std::size_t) + firstLoopSize * sizeof(std::vector<std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;
