@@ -50,23 +50,19 @@
                         /**
                          * Construct an empty vector
                          */
-                        Vector() : length(0), capacity(1), data(static_cast <T*> (::operator new (sizeof(T)))) {
-                        }
+                        Vector();
                         /**
                          * Construct a vector filled with count copy of value
                          * @param count the number of copy to perform, will be the vector capacity and length
                          * @param value the value to fill the vector with
                          * @pre value is not in the vector
                          */
-                        Vector(std::size_t count, T const& value) : length(count), capacity(count), data(static_cast <T*> (::operator new (count * sizeof(T)))) {
-                            assign(count, value);
-                        }
+                        Vector(std::size_t count, T const& value);
                         /**
                          * Construct a vector filled with count default value
                          * @paramcount the number of default element, will be the vector capacity and length
                          */
-                        Vector(std::size_t count) : length(count), capacity(count), data(new T[count]()) {
-                        }
+                        Vector(std::size_t count);
                         /**
                          * Construct a vector filled with element between 2 iterators
                          * @param  begin the begin iterator
@@ -74,52 +70,33 @@
                          * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
-                        Vector(InputIterator begin, InputIterator end) : length(std::distance(begin, end)), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
-                            assign(begin, end);
-                        }
+                        Vector(InputIterator begin, InputIterator end);
                         /**
                          * Construct a vector from an initializer list
                          * @param  init the list to fill the vector with
                          * @pre list do not contain some element from the vector
                          */
-                        Vector(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
-                            std::size_t current = 0;
-                            for (auto it = init.begin(); it != init.end(); it++) {
-                                data[current] = *(new(&data[current]) T (std::move(*it)));
-                                current++;
-                            }
-                        }
+                        Vector(std::initializer_list<T> init);
 
                     //## Copy Constructor ##//
                         /**
                          * Copy vec into this
                          * @param  vec the vector to copy
                          */
-                        Vector(Vector const& vec) : length(vec.length), capacity(vec.capacity), data(static_cast <T*> (::operator new (capacity * sizeof(T)))) {
-                            copy(vec);
-                        }
+                        Vector(Vector const& vec);
 
                     //## Move Constructor ##//
                         /**
                          * Move vec into this
                          * @param  vec the vector to copy
                          */
-                        Vector(Vector && vec) : length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
-                            vec.length = 0;
-                            vec.capacity = 0;
-                            vec.data = nullptr;
-                        }
+                        Vector(Vector && vec);
 
                     //## Deconstructor ##//
                         /**
                          * Vector Deconstructor
                          */
-                        ~Vector() {
-                            for (std::size_t index = 0; index < length; index++) {
-                                data[index].~T();
-                            }
-                            ::operator delete(data);
-                        }
+                        ~Vector();
 
                     //## Getter ##//
                         /**
@@ -127,133 +104,87 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& get(std::size_t index) {
-                            if (index >= length) {
-                                throw std::out_of_range("Accessing NRE::Utility::Vector element : " + std::to_string(index) + " while vector length is " + std::to_string(length) + ".");
-                            }
-                            return data[index];
-                        }
+                        T& get(std::size_t index);
                         /**
                          * Access a particular element with bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& get(std::size_t index) const {
-                            if (index >= length) {
-                                throw std::out_of_range("Accessing NRE::Utility::Vector element : " + std::to_string(index) + " while vector length is " + std::to_string(length) + ".");
-                            }
-                            return data[index];
-                        }
+                        T const& get(std::size_t index) const;
                         /**
                          * @return the internal data array
                          */
-                        T* getData() {
-                            return data;
-                        }
+                        T* getData();
                         /**
                          * @return the internal data array
                          */
-                        const T* getData() const {
-                            return data;
-                        }
+                        const T* getData() const;
                         /**
                          * @return the first element
                          */
-                        T& getFront() {
-                            return data[0];
-                        }
+                        T& getFront();
                         /**
                          * @return the first element
                          */
-                        T const& getFront() const {
-                            return data[0];
-                        }
+                        T const& getFront() const;
                         /**
                          * @return the last element
                          */
-                        T& getLast() {
-                            return data[length - 1];
-                        }
+                        T& getLast();
                         /**
                          * @return the last element
                          */
-                        T const& getLast() const {
-                            return data[length - 1];
-                        }
+                        T const& getLast() const;
                         /**
                          * @return the vector effective size
                          */
-                        std::size_t getSize() const {
-                            return length;
-                        }
+                        std::size_t getSize() const;
                         /**
                          * @return the maximum array size
                          */
-                        constexpr std::size_t getMaxSize() const {
-                            return std::numeric_limits<std::size_t>::max();
-                        }
+                        constexpr std::size_t getMaxSize() const;
                         /**
                          * @return the vector capacity
                          */
-                        std::size_t getCapacity() const {
-                            return capacity;
-                        }
+                        std::size_t getCapacity() const;
                         /**
                          * @return if the array is empty
                          */
-                        constexpr bool isEmpty() const {
-                            return length == 0;
-                        }
+                        constexpr bool isEmpty() const;
 
                     //## Iterator Access ##//
                         /**
                          * @return an iterator on the first element
                          */
-                        Iterator begin() {
-                            return data;
-                        }
+                        Iterator begin();
                         /**
                          * @return a const iterator on the first element
                          */
-                        ConstIterator begin() const {
-                            return data;
-                        }
+                        ConstIterator begin() const;
                         /**
                          * @return an iterator on the end of the container
                          */
-                        Iterator end() {
-                            return data + length;
-                        }
+                        Iterator end();
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        ConstIterator end() const {
-                            return data + length;
-                        }
+                        ConstIterator end() const;
                         /**
                          * @return a reverse iterator on the first element
                          */
-                        ReverseIterator rbegin() {
-                            return ReverseIterator(data + length);
-                        }
+                        ReverseIterator rbegin();
                         /**
                          * @return a const reverse iterator on the first element
                          */
-                        ConstReverseIterator rbegin() const {
-                            return ConstReverseIterator(data + length);
-                        }
+                        ConstReverseIterator rbegin() const;
                         /**
                          * @return a reverse iterator on the end of the container
                          */
-                        ReverseIterator rend() {
-                            return ReverseIterator(data);
-                        }
+                        ReverseIterator rend();
                         /**
                          * @return a const reverse iterator on the end of the container
                          */
-                        ConstReverseIterator rend() const {
-                            return ConstReverseIterator(data);
-                        }
+                        ConstReverseIterator rend() const;
 
                     //## Methods ##//
                         /**
@@ -262,12 +193,7 @@
                          * @param value the copy to fill the vector with
                          * @pre value is not in the vector
                          */
-                        void assign(std::size_t count, T const& value) {
-                            clear();
-                            for (std::size_t i = 0; i < count; i++) {
-                                data[i] = *(new(&data[i]) T (value));
-                            }
-                        }
+                        void assign(std::size_t count, T const& value);
                         /**
                          * Assign the vector with element between 2 iterators
                          * @param  begin the begin iterator
@@ -275,25 +201,13 @@
                          * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
-                        void assign(InputIterator begin, InputIterator end) {
-                            clear();
-                            std::size_t current = 0;
-                            for ( ; begin != end; begin++) {
-                                data[current] = *(new(&data[current]) T (*(begin)));
-                                current++;
-                            }
-                            length = current;
-                        }
+                        void assign(InputIterator begin, InputIterator end);
                         /**
                          * Set the vector capacity to a minimum of size, reallocating memory if needed
                          * @param size the new capacity
                          * @warning size value is not checked against getMaxSize()
                          */
-                        void reserve(std::size_t size) {
-                            if (capacity < size) {
-                                reallocate(size);
-                            }
-                        }
+                        void reserve(std::size_t size);
                         /**
                          * Clear all object in the vector, not actually releasing memory
                          */
@@ -318,16 +232,7 @@
                          * @return       the iterator on the inserted value
                          * @pre value is not in the vector
                          */
-                        Iterator insert(ConstIterator start, T const& value) {
-                            std::size_t index = start - ConstIterator(data);
-                            if (capacity < length + 1) {
-                                reallocate();
-                            }
-                            shift(index, 1);
-                            length++;
-                            data[index] = *(new(&data[index]) T (value));
-                            return Iterator(data + index);
-                        }
+                        Iterator insert(ConstIterator start, T const& value);
                         /**
                          * Insert count copy of value at the specified position
                          * @param  start the position to insert values
@@ -336,18 +241,7 @@
                          * @return       the iterator on the first inserted value
                          * @pre value is not in the vector
                          */
-                        Iterator insert(ConstIterator start, std::size_t count, T const& value) {
-                            std::size_t index = start - ConstIterator(data);
-                            if (capacity < length + count) {
-                                reserveWithGrowFactor(length + count);
-                            }
-                            shift(index, count);
-                            for (std::size_t it = index; it != index + count; it++) {
-                                data[it] = *(new(&data[it]) T (value));
-                            }
-                            length += count;
-                            return Iterator(data + index);
-                        }
+                        Iterator insert(ConstIterator start, std::size_t count, T const& value);
                         /**
                          * Insert a copy of element between begin and end at the specified position
                          * @param  start the position to insert values
@@ -357,20 +251,7 @@
                          * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
-                        Iterator insert(ConstIterator start, InputIterator begin, InputIterator end) {
-                            std::size_t count = std::distance(begin, end);
-                            std::size_t index = start - ConstIterator(data);
-                            if (capacity < length + count) {
-                                reserveWithGrowFactor(length + count);
-                            }
-                            shift(index, count);
-                            for ( ; begin != end; begin++) {
-                                data[index] = *(new(&data[index]) T (*begin));
-                                index++;
-                            }
-                            length += count;
-                            return Iterator(data + index);
-                        }
+                        Iterator insert(ConstIterator start, InputIterator begin, InputIterator end);
                         /**
                          * Insert a list of value at the specified position
                          * @param  start the position to insert values
@@ -378,20 +259,7 @@
                          * @return       the iterator on the first inserted value
                          * @pre list do not contain some element from the vector
                          */
-                        Iterator insert(ConstIterator start, std::initializer_list<T> list) {
-                            std::size_t count = list.size();
-                                std::size_t index = start - ConstIterator(data);
-                            if (capacity < length + count) {
-                                reserveWithGrowFactor(length + count);
-                            }
-                            shift(index, count);
-                            for (auto it = list.begin(); it != list.end(); it++) {
-                                data[index] = *(new(&data[index]) T (std::move(*it)));
-                                index++;
-                            }
-                            length += count;
-                            return Iterator(data + index);
-                        }
+                        Iterator insert(ConstIterator start, std::initializer_list<T> list);
                         /**
                          * Emplace an element at the specified position
                          * @param  start the position to insert the value
@@ -399,76 +267,37 @@
                          * @return       the iterator on the inserted value
                          */
                         template <class ... Args>
-                        Iterator emplace(ConstIterator start, Args && ... args) {
-                            std::size_t index = start - ConstIterator(data);
-                            if (capacity < length + 1) {
-                                reallocate();
-                            }
-                            shift(index, 1);
-                            data[index] = *(new(&data[index]) T (std::forward<Args>(args)...));
-                            return Iterator(data + index);
-                        }
+                        Iterator emplace(ConstIterator start, Args && ... args);
                         /**
                          * Erase an element in the vector
                          * @param  pos  the position to erase
                          * @return       an iterator on the next valid element
                          */
-                        Iterator erase(ConstIterator pos) {
-                            (*pos).~T();
-                            shiftBack(pos - ConstIterator(data), 1);
-                            length--;
-                            return Iterator(pos++);
-                        }
+                        Iterator erase(ConstIterator pos);
                         /**
                          * Erase a set of element from the vector
                          * @param  begin the start position for erasing
                          * @param  end   the end position for erasing
                          * @return       an iterator on the next valid element
                          */
-                        Iterator erase(ConstIterator begin, ConstIterator end) {
-                            std::size_t count = std::distance(begin, end);
-                            for (auto it = begin; it != end; it++) {
-                                (*it).~T();
-                            }
-                            shiftBack(begin - ConstIterator(data), count);
-                            length -= count;
-                            return Iterator(end);
-                        }
+                        Iterator erase(ConstIterator begin, ConstIterator end);
                         /**
                          * Insert a copy of value at the end of the vector
                          * @param value the value to insert
                          * @pre value is not in the vector
                          */
-                        void pushBack(T const& value) {
-                            if (capacity < length + 1) {
-                                reallocate();
-                            }
-                            data[length] = *(new(&data[length]) T (value));
-                            length++;
-                        }
+                        void pushBack(T const& value);
                         /**
                          * Emplace a value at the end of the vector
                          * @param value the value to insert
                          */
-                        void pushBack(T && value) {
-                            if (capacity < length + 1) {
-                                reallocate();
-                            }
-                            data[length] = *(new(&data[length]) T (value));
-                            length++;
-                        }
+                        void pushBack(T && value);
                         /**
                          * Emplace a value at the end of the vector
                          * @param args the arguments for the value construction
                          */
                         template <class ... Args>
-                        void emplaceBack(Args && ... args) {
-                            if (capacity < length + 1) {
-                                reallocate();
-                            }
-                            data[length] = *(new(&data[length]) T (std::forward<Args>(args)...));
-                            length++;
-                        }
+                        void emplaceBack(Args && ... args);
                         /**
                          * Pop the last element in the vector
                          */
@@ -488,33 +317,18 @@
                          * Resize the container up the given size, insert value if needed
                          * @param count the new capacity
                          */
-                        void resize(std::size_t count) {
-                            resize(count, T());
-                        }
+                        void resize(std::size_t count);
                         /**
                          * Resize the container up the given size, insert value if needed
                          * @param count the new capacity
                          * @param value the value used when inserting
                          */
-                        void resize(std::size_t count, T const& value) {
-                            if (capacity < count) {
-                                reallocate(count);
-                                for (std::size_t index = length; index != count; index++) {
-                                    data[index] = *(new(&data[index]) T (value));
-                                }
-                                length = count;
-                            }
-                        }
+                        void resize(std::size_t count, T const& value);
                         /**
                          * Swap the vector with an other vector
                          * @param vec the other vector
                          */
-                        void swap(Vector& vec) {
-                            using namespace std;
-                            swap(length, vec.length);
-                            swap(capacity, vec.capacity);
-                            swap(data, vec.data);
-                        }
+                        void swap(Vector& vec);
 
                     //## Access Operator ##//
                         /**
@@ -522,17 +336,13 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& operator[](std::size_t index) {
-                            return data[index];
-                        }
+                        T& operator[](std::size_t index);
                         /**
                          * Access a particular element without bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& operator[](std::size_t index) const {
-                            return data[index];
-                        }
+                        T const& operator[](std::size_t index) const;
 
                     //## Assignment Operator ##//
                         /**
@@ -540,35 +350,13 @@
                          * @param vec the vector to copy into this
                          * @return    the reference of himself
                          */
-                        Vector& operator =(Vector const& vec) {
-                            if (vec.data != data) {
-                                clear();
-                                length = vec.length;
-                                capacity = vec.capacity;
-                                data = static_cast <T*> (::operator new(capacity * sizeof(T)));
-
-                                copy(vec);
-                            }
-                            return *this;
-                        }
+                        Vector& operator =(Vector const& vec);
                         /**
                          * Move vec into this
                          * @param vec the vector to move into this
                          * @return    the reference of himself
                          */
-                        Vector& operator =(Vector && vec) {
-                            if (vec.data != data) {
-                                clear();
-                                length = vec.length;
-                                capacity = vec.capacity;
-                                data = std::move(vec.data);
-
-                                vec.length = 0;
-                                vec.capacity = 0;
-                                vec.data = nullptr;
-                            }
-                            return *this;
-                        }
+                        Vector& operator =(Vector && vec);
 
                     //## Comparison Operator ##//
                         /**
@@ -603,18 +391,13 @@
                          * @param vec the other vector
                          * @return the test result
                          */
-                        bool operator !=(Vector const& vec) const {
-                            return !(*this == vec);
-                        }
+                        bool operator !=(Vector const& vec) const;
 
                 private :   // Methods
                     /**
                      * Reallocate and grow the storage capacity
                      */
-                    void reallocate() {
-                        reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
-                                                   : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
-                    }
+                    void reallocate();
                     /**
                      * Rellocate the data to the given size
                      * @param newSize the new capacity
@@ -647,14 +430,7 @@
                      * Reallocate the vector with the neareast grow factor value
                      * @param size the new minimum capacity
                      */
-                    void reserveWithGrowFactor(std::size_t size) {
-                        std::size_t newSize = (capacity == 1) ? (BASE_ALLOCATION_SIZE)
-                                                              : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
-                        while (newSize < size) {
-                            newSize = static_cast <std::size_t> (static_cast <float> (newSize) * GROW_FACTOR);
-                        }
-                        reallocate(newSize);
-                    }
+                    void reserveWithGrowFactor(std::size_t size);
                     /**
                      * Shift all element in the vector, don't do reallocation
                      * @param start the start position for shifting
@@ -722,3 +498,5 @@
             };
         }
     }
+
+    #include "NRE_Vector.tpp"

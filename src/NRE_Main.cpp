@@ -20,8 +20,8 @@
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
         std::size_t firstLoopSize  = 50;
-        std::size_t secondLoopSize = 10'000'000;
-        std::size_t constexpr containerSize  = 10'000'000;
+        std::size_t secondLoopSize = 1'000'000;
+        std::size_t constexpr containerSize  = 1'000'000;
 
         std::cout << "Benchmark : NRE::Utility::Vector vs std::vector" << std::endl;
         std::cout << "Stress test [Default Constructor + Push Back + Copy + Iterator use] : x" << firstLoopSize << std::endl;
