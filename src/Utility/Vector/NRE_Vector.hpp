@@ -602,7 +602,8 @@
                      * Reallocate and grow the storage capacity
                      */
                     void reallocate() {
-                        reallocate(static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
+                        reallocate((capacity > 1) ? (capacity * GROW_FACTOR)
+                                                  : (BASE_ALLOCATION_SIZE));
                     }
                     /**
                      * Rellocate the data to the given size
@@ -637,9 +638,10 @@
                      * @param size the new minimum capacity
                      */
                     void reserveWithGrowFactor(std::size_t size) {
-                        std::size_t newSize = static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR);
+                        std::size_t newSize = (capacity > 1) ? (capacity * GROW_FACTOR)
+                                                             : (BASE_ALLOCATION_SIZE);
                         while (newSize < size) {
-                            newSize = static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR);
+                            newSize = capacity * GROW_FACTOR;
                         }
                         reallocate(newSize);
                     }
@@ -705,7 +707,8 @@
                     }
 
                 private :    // Static
-                    static constexpr float GROW_FACTOR = 2;
+                    static constexpr std::size_t GROW_FACTOR = 2;
+                    static constexpr std::size_t BASE_ALLOCATION_SIZE = 8;
             };
         }
     }
