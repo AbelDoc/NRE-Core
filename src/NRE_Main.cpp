@@ -24,7 +24,7 @@
         std::size_t constexpr containerSize  = 100'000;
 
         std::cout << "Benchmark : NRE::Utility::Vector vs std::vector" << std::endl;
-        std::cout << "Stress test [Default Constructor + Insert at beginning + Iterator use] : x" << firstLoopSize << std::endl;
+        std::cout << "Stress test [Default Constructor + Push Back + Copy + Iterator use] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
@@ -41,10 +41,10 @@
             for (std::size_t j = 0; j < containerSize; j++) {
                 vec.push_back(j);
             }
-            for (auto it = vec.rbegin(); it != vec.rend(); it++) {
+            std::vector<std::size_t> copy(vec);
+            for (auto it = copy.rbegin(); it != copy.rend(); it++) {
                 res += *(it);
             }
-            vec.clear();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumSTD += diff;
@@ -73,10 +73,10 @@
             for (std::size_t j = 0; j < containerSize; j++) {
                 vec.pushBack(j);
             }
-            for (auto it = vec.rbegin(); it != vec.rend(); it++) {
+            NRE::Utility::Vector<std::size_t> copy(vec);
+            for (auto it = copy.rbegin(); it != copy.rend(); it++) {
                 res += *(it);
             }
-            vec.clear();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE += diff;

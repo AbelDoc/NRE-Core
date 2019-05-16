@@ -93,12 +93,7 @@
                          * @param  vec the vector to copy
                          */
                         Vector(Vector const& vec) : length(vec.length), capacity(vec.capacity), data(static_cast <T*> (::operator new (capacity * sizeof(T)))) {
-                            std::size_t current = 0;
-                            std::cout << "copy" << std::endl;
-                            for (T const& it : vec) {
-                                data[current] = *(new(&data[current]) T (it));
-                                current++;
-                            }
+                            copy(vec);
                         }
 
                     //## Move Constructor ##//
@@ -542,11 +537,7 @@
                                 capacity = vec.capacity;
                                 data = static_cast <T*> (::operator new(capacity * sizeof(T)));
 
-                                std::size_t current = 0;
-                                for (T const& it : vec) {
-                                    data[current] = *(new(&data[current]) T (it));
-                                    current++;
-                                }
+                                copy(vec);
                             }
                             return *this;
                         }
@@ -691,6 +682,26 @@
                     template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                     void shiftBack(std::size_t start, std::size_t count) {
                         std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
+                    }
+                    /**
+                     * Copy the vector content
+                     * @param vec the vector to copy
+                     */
+                    template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                    void copy(Vector const& vec) {
+                        std::size_t current = 0;
+                        for (T const& it : vec) {
+                            data[current] = *(new(&data[current]) T (it));
+                            current++;
+                        }
+                    }
+                    /**
+                     * Copy the vector content
+                     * @param vec the vector to copy
+                     */
+                    template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                    void copy(Vector const& vec) {
+                        std::memcpy(data, vec.data, length * sizeof(T));
                     }
 
                 private :    // Static

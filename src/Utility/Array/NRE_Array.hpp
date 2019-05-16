@@ -63,19 +63,8 @@
                          * Copy arr into this
                          * @param arr the array to copy
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         Array(Array const& arr) {
-                            for (std::size_t index = 0; index < Size; index++) {
-                                data[index] = arr[index];
-                            }
-                        }
-                        /**
-                         * Copy arr into this
-                         * @param arr the array to copy
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        Array(Array const& arr) {
-                            std::memcpy(data, arr.data, Size * sizeof(T));
+                            copy(arr)
                         }
 
                     //## Move Constructor ##//
@@ -83,19 +72,8 @@
                          * Move arr into this
                          * @param arr the array to move
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         Array(Array && arr) {
-                            for (std::size_t index = 0; index < Size; index++) {
-                                data[index] = std::move(arr[index]);
-                            }
-                        }
-                        /**
-                         * Move arr into this
-                         * @param arr the array to move
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        Array(Array && arr) {
-                            std::memcpy(data, arr.data, Size * sizeof(T));
+                            move(arr);
                         }
 
                     //## Deconstructor ##//
@@ -276,9 +254,7 @@
                          * @return    the reference of himself
                          */
                         Array& operator =(Array const& arr) {
-                            for (std::size_t index = 0; index < Size; index++){
-                                data[index] = arr[index];
-                            }
+                            copy(arr);
                             return *this;
                         }
                         /**
@@ -287,9 +263,7 @@
                          * @return    the reference of himself
                          */
                         Array& operator =(Array && arr) {
-                            for (std::size_t index = 0; index < Size; index++){
-                                data[index] = std::move(arr[index]);
-                            }
+                            move(arr);
                             return *this;
                         }
 
@@ -326,6 +300,43 @@
                         bool operator !=(Array const& arr) const {
                             return !(*this == arr);
                         }
+                private :   // Methods
+                    /**
+                     * Copy the array content
+                     * @param arr the array to copy
+                     */
+                    template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                    void copy(Array const& arr) {
+                        for (std::size_t index = 0; index < Size; index++) {
+                            data[index] = arr[index];
+                        }
+                    }
+                    /**
+                     * Copy the array content
+                     * @param arr the array to copy
+                     */
+                    template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                    void copy(Array const& arr) {
+                        std::memcpy(data, arr.data, Size * sizeof(T));
+                    }
+                    /**
+                     * Move the array content
+                     * @param arr the array to move
+                     */
+                    template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                    void move(Array && arr) {
+                        for (std::size_t index = 0; index < Size; index++) {
+                            data[index] = std::move(arr[index]);
+                        }
+                    }
+                    /**
+                     * Move the array content
+                     * @param arr the array to move
+                     */
+                    template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                    void move(Array && arr) {
+                        std::memcpy(data, arr.data, Size * sizeof(T));
+                    }
             };
 
         }
