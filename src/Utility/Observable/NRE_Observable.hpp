@@ -46,16 +46,14 @@
                          * Copy o into this
                          * @param o the observable to copy
                          */
-                        Observable(Observable const& o) : changed(o.changed), observers(o.observers) {
-                        }
+                        Observable(Observable const& o) = default;
 
                     //## Move-Constructor ##//
                         /**
                          * Move o into this
                          * @param o the observable to move
                          */
-                        Observable(Observable && o) : changed(std::move(o.changed)), observers(std::move(o.observers)) {
-                        }
+                        Observable(Observable && o) = default;
 
                     //## Deconstructor ##//
                         /**
@@ -67,75 +65,50 @@
                         /**
                          * @return the changed state
                          */
-                        bool const& isChanged() const {
-                            return changed;
-                        }
+                        bool isChanged() const;
 
                     //## Methods ##//
                         /**
                          * Add an observer
                          * @param o the observer to add
                          */
-                        void addObserver(Observer* o) {
-                            observers.push_back(o);
-                        }
+                        void add(Observer* o);
                         /**
                          * Remove an observer
                          * @param o the observer to add
                          */
-                        void removeObserver(Observer* o) {
-                            observers.erase(std::remove(observers.begin(), observers.end(), o), observers.end());
-                        }
+                        void remove(Observer* o);
                         /**
-                         * Remoev all observers
+                         * Remove all observers
                          */
-                        void removeObservers() {
-                            observers.clear();
-                        }
+                        void clear();
                         /**
                          * @return the number of observer
                          */
-                        std::size_t countObservers() const {
-                            return observers.size();
-                        }
+                        std::size_t getCount() const;
                         /**
                          * Notify all observer if changes happened
                          * @param arg the notification argument
                          */
-                        void notifyObservers(void* arg = 0) {
-                            if (isChanged()) {
-                                setChanged(false);
-                                for (Observer* o : observers) {
-                                    o->update(this, arg);
-                                }
-                            }
-                        }
+                        void notifyAll(void* arg = 0);
 
                     //## Access Operator ##//
                         /**
                          * @return an iterator on the first element
                          */
-                        std::vector<Observer*>::iterator begin() {
-                            return observers.begin();
-                        }
+                        std::vector<Observer*>::iterator begin();
                         /**
                          * @return a const iterator on the first element
                          */
-                        std::vector<Observer*>::const_iterator begin() const {
-                            return observers.begin();
-                        }
+                        std::vector<Observer*>::const_iterator begin() const;
                         /**
                          * @return an iterator on the end of the container
                          */
-                        std::vector<Observer*>::iterator end() {
-                            return observers.end();
-                        }
+                        std::vector<Observer*>::iterator end();
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        std::vector<Observer*>::const_iterator end() const {
-                            return observers.end();
-                        }
+                        std::vector<Observer*>::const_iterator end() const;
 
                     //## Assignment Operator ##//
                         /**
@@ -156,9 +129,9 @@
                      * Changed setter
                      * @param state the new changed state
                      */
-                    void setChanged(bool state) {
-                        changed = state;
-                    }
+                    void setChanged(bool state);
             };
         }
     }
+
+    #include "NRE_Observable.tpp"
