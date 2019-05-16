@@ -46,7 +46,7 @@
                          * Copy o into this
                          * @param o the observable to copy
                          */
-                        inline Observable(Observable const& o) : changed(o.changed), observers(o.observers) {
+                        Observable(Observable const& o) : changed(o.changed), observers(o.observers) {
                         }
 
                     //## Move-Constructor ##//
@@ -54,7 +54,7 @@
                          * Move o into this
                          * @param o the observable to move
                          */
-                        inline Observable(Observable && o) : changed(std::move(o.changed)), observers(std::move(o.observers)) {
+                        Observable(Observable && o) : changed(std::move(o.changed)), observers(std::move(o.observers)) {
                         }
 
                     //## Deconstructor ##//
@@ -67,7 +67,7 @@
                         /**
                          * @return the changed state
                          */
-                        inline bool const& isChanged() const {
+                        bool const& isChanged() const {
                             return changed;
                         }
 
@@ -76,33 +76,33 @@
                          * Add an observer
                          * @param o the observer to add
                          */
-                        inline void addObserver(Observer* o) {
+                        void addObserver(Observer* o) {
                             observers.push_back(o);
                         }
                         /**
                          * Remove an observer
                          * @param o the observer to add
                          */
-                        inline void removeObserver(Observer* o) {
+                        void removeObserver(Observer* o) {
                             observers.erase(std::remove(observers.begin(), observers.end(), o), observers.end());
                         }
                         /**
                          * Remoev all observers
                          */
-                        inline void removeObservers() {
+                        void removeObservers() {
                             observers.clear();
                         }
                         /**
                          * @return the number of observer
                          */
-                        inline std::size_t countObservers() const {
+                        std::size_t countObservers() const {
                             return observers.size();
                         }
                         /**
                          * Notify all observer if changes happened
                          * @param arg the notification argument
                          */
-                        inline void notifyObservers(void* arg = 0) {
+                        void notifyObservers(void* arg = 0) {
                             if (isChanged()) {
                                 setChanged(false);
                                 for (Observer* o : observers) {
@@ -115,25 +115,25 @@
                         /**
                          * @return an iterator on the first element
                          */
-                        inline std::vector<Observer*>::iterator begin() {
+                        std::vector<Observer*>::iterator begin() {
                             return observers.begin();
                         }
                         /**
                          * @return a const iterator on the first element
                          */
-                        inline std::vector<Observer*>::const_iterator begin() const {
+                        std::vector<Observer*>::const_iterator begin() const {
                             return observers.begin();
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
-                        inline std::vector<Observer*>::iterator end() {
+                        std::vector<Observer*>::iterator end() {
                             return observers.end();
                         }
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        inline std::vector<Observer*>::const_iterator end() const {
+                        std::vector<Observer*>::const_iterator end() const {
                             return observers.end();
                         }
 
@@ -143,20 +143,20 @@
                          * @param o the observable to copy into this
                          * @return  the reference of himself
                          */
-                        inline Observable& operator =(Observable const& o) = default;
+                        Observable& operator =(Observable const& o) = default;
                         /**
                          * Move o into this
                          * @param o the observable to move into this
                          * @return  the reference of himself
                          */
-                        inline Observable& operator =(Observable && o) = default;
+                        Observable& operator =(Observable && o) = default;
 
                 protected: // Methods
                     /**
                      * Changed setter
                      * @param state the new changed state
                      */
-                    inline void setChanged(bool state) {
+                    void setChanged(bool state) {
                         changed = state;
                     }
             };

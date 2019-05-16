@@ -55,7 +55,7 @@
                          * @param args the pack of value to set in the array
                          */
                         template <class ... Args>
-                        inline Array(Args && ... args) : data{static_cast <T> (std::forward<Args>(args))...} {
+                        Array(Args && ... args) : data{static_cast <T> (std::forward<Args>(args))...} {
                         }
 
                     //## Copy Constructor ##//
@@ -110,7 +110,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T& get(std::size_t index) {
+                        T& get(std::size_t index) {
                             if (index >= Size) {
                                 throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
                             }
@@ -121,7 +121,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T const& get(std::size_t index) const {
+                        T const& get(std::size_t index) const {
                             if (index >= Size) {
                                 throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
                             }
@@ -130,55 +130,55 @@
                         /**
                          * @return the internal data array
                          */
-                        inline T* getData() {
+                        T* getData() {
                             return data;
                         }
                         /**
                          * @return the internal data array
                          */
-                        inline const T* getData() const {
+                        const T* getData() const {
                             return data;
                         }
                         /**
                          * @return the first element
                          */
-                        inline T& getFront() {
+                        T& getFront() {
                             return data[0];
                         }
                         /**
                          * @return the first element
                          */
-                        inline T const& getFront() const {
+                        T const& getFront() const {
                             return data[0];
                         }
                         /**
                          * @return the last element
                          */
-                        inline T& getLast() {
+                        T& getLast() {
                             return data[Size - 1];
                         }
                         /**
                          * @return the last element
                          */
-                        inline T const& getLast() const {
+                        T const& getLast() const {
                             return data[Size - 1];
                         }
                         /**
                          * @return if the array is empty
                          */
-                        inline constexpr bool isEmpty() const {
+                        constexpr bool isEmpty() const {
                             return Size == 0;
                         }
                         /**
                          * @return the array size
                          */
-                        inline constexpr std::size_t getSize() const {
+                        constexpr std::size_t getSize() const {
                             return Size;
                         }
                         /**
                          * @return the maximum array size
                          */
-                        inline constexpr std::size_t getMaxSize() const {
+                        constexpr std::size_t getMaxSize() const {
                             return Size;
                         }
 
@@ -186,49 +186,49 @@
                         /**
                          * @return an iterator on the first element
                          */
-                        inline Iterator begin() {
+                        Iterator begin() {
                             return data;
                         }
                         /**
                          * @return a const iterator on the first element
                          */
-                        inline ConstIterator begin() const {
+                        ConstIterator begin() const {
                             return data;
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
-                        inline Iterator end() {
+                        Iterator end() {
                             return data + Size;
                         }
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        inline ConstIterator end() const {
+                        ConstIterator end() const {
                             return data + Size;
                         }
                         /**
                          * @return a reverse iterator on the first element
                          */
-                        inline ReverseIterator rbegin() {
+                        ReverseIterator rbegin() {
                             return ReverseIterator(data + Size);
                         }
                         /**
                          * @return a const reverse iterator on the first element
                          */
-                        inline ConstReverseIterator rbegin() const {
+                        ConstReverseIterator rbegin() const {
                             return ConstReverseIterator(data + Size);
                         }
                         /**
                          * @return a reverse iterator on the end of the container
                          */
-                        inline ReverseIterator rend() {
+                        ReverseIterator rend() {
                             return ReverseIterator(data);
                         }
                         /**
                          * @return a const reverse iterator on the end of the container
                          */
-                        inline ConstReverseIterator rend() const {
+                        ConstReverseIterator rend() const {
                             return ConstReverseIterator(data);
                         }
 
@@ -237,7 +237,7 @@
                          * Fill the array with the same value
                          * @param value the value to fill the array with
                          */
-                        inline void fill(T const& value) {
+                        void fill(T const& value) {
                             for (std::size_t i = 0; i < Size; i++) {
                                 data[i] = value;
                             }
@@ -246,7 +246,7 @@
                          * Swap this data with arr data
                          * @param arr the container to swap with
                          */
-                        inline void swap(Array& arr) noexcept {
+                        void swap(Array& arr) noexcept {
                             using namespace std;
                             swap(data, arr.data);
                         }
@@ -257,7 +257,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T& operator[](std::size_t index) {
+                        T& operator[](std::size_t index) {
                             return data[index];
                         }
                         /**
@@ -265,7 +265,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T const& operator[](std::size_t index) const {
+                        T const& operator[](std::size_t index) const {
                             return data[index];
                         }
 
@@ -275,7 +275,7 @@
                          * @param arr the observable to copy into this
                          * @return    the reference of himself
                          */
-                        inline Array& operator =(Array const& arr) {
+                        Array& operator =(Array const& arr) {
                             for (std::size_t index = 0; index < Size; index++){
                                 data[index] = arr[index];
                             }
@@ -286,7 +286,7 @@
                          * @param arr the observable to move into this
                          * @return    the reference of himself
                          */
-                        inline Array& operator =(Array && arr) {
+                        Array& operator =(Array && arr) {
                             for (std::size_t index = 0; index < Size; index++){
                                 data[index] = std::move(arr[index]);
                             }
@@ -300,7 +300,7 @@
                          * @return the test result
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        inline bool operator ==(Array const& arr) const {
+                        bool operator ==(Array const& arr) const {
                             bool equal = true;
                             std::size_t current = 0;
                             while (equal && current < Size) {
@@ -315,7 +315,7 @@
                          * @return the test result
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline bool operator ==(Array const& arr) const {
+                        bool operator ==(Array const& arr) const {
                             return std::memcmp(data, arr.data, Size * sizeof(T));
                         }
                         /**
@@ -323,7 +323,7 @@
                          * @param arr the other array
                          * @return the test result
                          */
-                        inline bool operator !=(Array const& arr) const {
+                        bool operator !=(Array const& arr) const {
                             return !(*this == arr);
                         }
             };

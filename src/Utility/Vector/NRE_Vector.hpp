@@ -50,21 +50,21 @@
                         /**
                          * Construct an empty vector
                          */
-                        inline Vector() : length(0), capacity(1), data(static_cast <T*> (::operator new (sizeof(T)))) {
+                        Vector() : length(0), capacity(1), data(static_cast <T*> (::operator new (sizeof(T)))) {
                         }
                         /**
                          * Construct a vector filled with count copy of value
                          * @param count the number of copy to perform, will be the vector capacity and length
                          * @param value the value to fill the vector with
                          */
-                        inline Vector(std::size_t count, T const& value) : length(count), capacity(count), data(static_cast <T*> (::operator new (count * sizeof(T)))) {
+                        Vector(std::size_t count, T const& value) : length(count), capacity(count), data(static_cast <T*> (::operator new (count * sizeof(T)))) {
                             assign(count, value);
                         }
                         /**
                          * Construct a vector filled with count default value
                          * @paramcount the number of default element, will be the vector capacity and length
                          */
-                        inline Vector(std::size_t count) : length(count), capacity(count), data(new T[count]()) {
+                        Vector(std::size_t count) : length(count), capacity(count), data(new T[count]()) {
                         }
                         /**
                          * Construct a vector filled with element between 2 iterators
@@ -72,14 +72,14 @@
                          * @param  end   the end iterator, pointing after the last element
                          */
                         template <class InputIterator>
-                        inline Vector(InputIterator begin, InputIterator end) : length(std::distance(begin, end)), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
+                        Vector(InputIterator begin, InputIterator end) : length(std::distance(begin, end)), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
                             assign(begin, end);
                         }
                         /**
                          * Construct a vector from an initializer list
                          * @param  init the list to fill the vector with
                          */
-                        inline Vector(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
+                        Vector(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
                             std::size_t current = 0;
                             for (auto it = init.begin(); it != init.end(); it++) {
                                 data[current] = *(new(&data[current]) T (std::move(*it)));
@@ -92,7 +92,7 @@
                          * Copy vec into this
                          * @param  vec the vector to copy
                          */
-                        inline Vector(Vector const& vec) : length(vec.length), capacity(vec.capacity), data(static_cast <T*> (::operator new (capacity * sizeof(T)))) {
+                        Vector(Vector const& vec) : length(vec.length), capacity(vec.capacity), data(static_cast <T*> (::operator new (capacity * sizeof(T)))) {
                             std::size_t current = 0;
                             std::cout << "copy" << std::endl;
                             for (T const& it : vec) {
@@ -106,7 +106,7 @@
                          * Move vec into this
                          * @param  vec the vector to copy
                          */
-                        inline Vector(Vector && vec) : length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
+                        Vector(Vector && vec) : length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
                             vec.length = 0;
                             vec.capacity = 0;
                             vec.data = nullptr;
@@ -116,7 +116,7 @@
                         /**
                          * Vector Deconstructor
                          */
-                        inline ~Vector() {
+                        ~Vector() {
                             for (std::size_t index = 0; index < length; index++) {
                                 data[index].~T();
                             }
@@ -129,7 +129,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T& get(std::size_t index) {
+                        T& get(std::size_t index) {
                             if (index >= length) {
                                 throw std::out_of_range("Accessing NRE::Utility::Vector element : " + std::to_string(index) + " while vector length is " + std::to_string(length) + ".");
                             }
@@ -140,7 +140,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T const& get(std::size_t index) const {
+                        T const& get(std::size_t index) const {
                             if (index >= length) {
                                 throw std::out_of_range("Accessing NRE::Utility::Vector element : " + std::to_string(index) + " while vector length is " + std::to_string(length) + ".");
                             }
@@ -149,61 +149,61 @@
                         /**
                          * @return the internal data array
                          */
-                        inline T* getData() {
+                        T* getData() {
                             return data;
                         }
                         /**
                          * @return the internal data array
                          */
-                        inline const T* getData() const {
+                        const T* getData() const {
                             return data;
                         }
                         /**
                          * @return the first element
                          */
-                        inline T& getFront() {
+                        T& getFront() {
                             return data[0];
                         }
                         /**
                          * @return the first element
                          */
-                        inline T const& getFront() const {
+                        T const& getFront() const {
                             return data[0];
                         }
                         /**
                          * @return the last element
                          */
-                        inline T& getLast() {
+                        T& getLast() {
                             return data[length - 1];
                         }
                         /**
                          * @return the last element
                          */
-                        inline T const& getLast() const {
+                        T const& getLast() const {
                             return data[length - 1];
                         }
                         /**
                          * @return the vector effective size
                          */
-                        inline std::size_t getSize() const {
+                        std::size_t getSize() const {
                             return length;
                         }
                         /**
                          * @return the maximum array size
                          */
-                        inline constexpr std::size_t getMaxSize() const {
+                        constexpr std::size_t getMaxSize() const {
                             return std::numeric_limits<std::size_t>::max();
                         }
                         /**
                          * @return the vector capacity
                          */
-                        inline std::size_t getCapacity() const {
+                        std::size_t getCapacity() const {
                             return capacity;
                         }
                         /**
                          * @return if the array is empty
                          */
-                        inline constexpr bool isEmpty() const {
+                        constexpr bool isEmpty() const {
                             return length == 0;
                         }
 
@@ -211,49 +211,49 @@
                         /**
                          * @return an iterator on the first element
                          */
-                        inline Iterator begin() {
+                        Iterator begin() {
                             return data;
                         }
                         /**
                          * @return a const iterator on the first element
                          */
-                        inline ConstIterator begin() const {
+                        ConstIterator begin() const {
                             return data;
                         }
                         /**
                          * @return an iterator on the end of the container
                          */
-                        inline Iterator end() {
+                        Iterator end() {
                             return data + length;
                         }
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        inline ConstIterator end() const {
+                        ConstIterator end() const {
                             return data + length;
                         }
                         /**
                          * @return a reverse iterator on the first element
                          */
-                        inline ReverseIterator rbegin() {
+                        ReverseIterator rbegin() {
                             return ReverseIterator(data + length);
                         }
                         /**
                          * @return a const reverse iterator on the first element
                          */
-                        inline ConstReverseIterator rbegin() const {
+                        ConstReverseIterator rbegin() const {
                             return ConstReverseIterator(data + length);
                         }
                         /**
                          * @return a reverse iterator on the end of the container
                          */
-                        inline ReverseIterator rend() {
+                        ReverseIterator rend() {
                             return ReverseIterator(data);
                         }
                         /**
                          * @return a const reverse iterator on the end of the container
                          */
-                        inline ConstReverseIterator rend() const {
+                        ConstReverseIterator rend() const {
                             return ConstReverseIterator(data);
                         }
 
@@ -263,7 +263,7 @@
                          * @param count the number of copy
                          * @param value the copy to fill the vector with
                          */
-                        inline void assign(std::size_t count, T const& value) {
+                        void assign(std::size_t count, T const& value) {
                             clear();
                             for (std::size_t i = 0; i < count; i++) {
                                 data[i] = *(new(&data[i]) T (value));
@@ -275,7 +275,7 @@
                          * @param  end   the end iterator, pointing after the last element
                          */
                         template <class InputIterator>
-                        inline void assign(InputIterator begin, InputIterator end) {
+                        void assign(InputIterator begin, InputIterator end) {
                             clear();
                             std::size_t current = 0;
                             for ( ; begin != end; begin++) {
@@ -289,7 +289,7 @@
                          * @param size the new capacity
                          * @warning size value is not checked against getMaxSize()
                          */
-                        inline void reserve(std::size_t size) {
+                        void reserve(std::size_t size) {
                             if (capacity < size) {
                                 reallocate(size);
                             }
@@ -298,7 +298,7 @@
                          * Clear all object in the vector, not actually releasing memory
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        inline void clear() noexcept {
+                        void clear() noexcept {
                             for (std::size_t i = 0; i < length; i++) {
                                 data[i].~T();
                             }
@@ -308,7 +308,7 @@
                          * Clear all object in the vector, not actually releasing memory
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline void clear() noexcept {
+                        void clear() noexcept {
                             length = 0;
                         }
                         /**
@@ -317,7 +317,7 @@
                          * @param  value the value to insert
                          * @return       the iterator on the inserted value
                          */
-                        inline Iterator insert(ConstIterator start, T const& value) {
+                        Iterator insert(ConstIterator start, T const& value) {
                             std::size_t index = start - ConstIterator(data);
                             if (capacity < length + 1) {
                                 reallocate();
@@ -334,7 +334,7 @@
                          * @param  value the value to insert
                          * @return       the iterator on the first inserted value
                          */
-                        inline Iterator insert(ConstIterator start, std::size_t count, T const& value) {
+                        Iterator insert(ConstIterator start, std::size_t count, T const& value) {
                             std::size_t index = start - ConstIterator(data);
                             if (capacity < length + count) {
                                 reserveWithGrowFactor(length + count);
@@ -354,7 +354,7 @@
                          * @return       the iterator on the first inserted value
                          */
                         template <class InputIterator>
-                        inline Iterator insert(ConstIterator start, InputIterator begin, InputIterator end) {
+                        Iterator insert(ConstIterator start, InputIterator begin, InputIterator end) {
                             std::size_t count = std::distance(begin, end);
                             std::size_t index = start - ConstIterator(data);
                             if (capacity < length + count) {
@@ -374,7 +374,7 @@
                          * @param  init  the list to fill the vector with
                          * @return       the iterator on the first inserted value
                          */
-                        inline Iterator insert(ConstIterator start, std::initializer_list<T> list) {
+                        Iterator insert(ConstIterator start, std::initializer_list<T> list) {
                             std::size_t count = list.size();
                                 std::size_t index = start - ConstIterator(data);
                             if (capacity < length + count) {
@@ -395,7 +395,7 @@
                          * @return       the iterator on the inserted value
                          */
                         template <class ... Args>
-                        inline Iterator emplace(ConstIterator start, Args && ... args) {
+                        Iterator emplace(ConstIterator start, Args && ... args) {
                             std::size_t index = start - ConstIterator(data);
                             if (capacity < length + 1) {
                                 reallocate();
@@ -409,7 +409,7 @@
                          * @param  pos  the position to erase
                          * @return       an iterator on the next valid element
                          */
-                        inline Iterator erase(ConstIterator pos) {
+                        Iterator erase(ConstIterator pos) {
                             (*pos).~T();
                             shiftBack(pos - ConstIterator(data), 1);
                             length--;
@@ -421,7 +421,7 @@
                          * @param  end   the end position for erasing
                          * @return       an iterator on the next valid element
                          */
-                        inline Iterator erase(ConstIterator begin, ConstIterator end) {
+                        Iterator erase(ConstIterator begin, ConstIterator end) {
                             std::size_t count = std::distance(begin, end);
                             for (auto it = begin; it != end; it++) {
                                 (*it).~T();
@@ -434,7 +434,7 @@
                          * Insert a copy of value at the end of the vector
                          * @param value the value to insert
                          */
-                        inline void pushBack(T const& value) {
+                        void pushBack(T const& value) {
                             if (capacity < length + 1) {
                                 reallocate();
                             }
@@ -445,7 +445,7 @@
                          * Emplace a value at the end of the vector
                          * @param value the value to insert
                          */
-                        inline void pushBack(T && value) {
+                        void pushBack(T && value) {
                             if (capacity < length + 1) {
                                 reallocate();
                             }
@@ -457,7 +457,7 @@
                          * @param args the arguments for the value construction
                          */
                         template <class ... Args>
-                        inline void emplaceBack(Args && ... args) {
+                        void emplaceBack(Args && ... args) {
                             if (capacity < length + 1) {
                                 reallocate();
                             }
@@ -468,7 +468,7 @@
                          * Pop the last element in the vector
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        inline void popBack() {
+                        void popBack() {
                             *(end() - 1).~T();
                             length--;
                         }
@@ -476,14 +476,14 @@
                          * Pop the last element in the vector
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline void popBack() {
+                        void popBack() {
                             length--;
                         }
                         /**
                          * Resize the container up the given size, insert value if needed
                          * @param count the new capacity
                          */
-                        inline void resize(std::size_t count) {
+                        void resize(std::size_t count) {
                             resize(count, T());
                         }
                         /**
@@ -491,7 +491,7 @@
                          * @param count the new capacity
                          * @param value the value used when inserting
                          */
-                        inline void resize(std::size_t count, T const& value) {
+                        void resize(std::size_t count, T const& value) {
                             if (capacity < count) {
                                 reallocate(count);
                                 for (std::size_t index = length; index != count; index++) {
@@ -504,7 +504,7 @@
                          * Swap the vector with an other vector
                          * @param vec the other vector
                          */
-                        inline void swap(Vector& vec) {
+                        void swap(Vector& vec) {
                             using namespace std;
                             swap(length, vec.length);
                             swap(capacity, vec.capacity);
@@ -517,7 +517,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T& operator[](std::size_t index) {
+                        T& operator[](std::size_t index) {
                             return data[index];
                         }
                         /**
@@ -525,7 +525,7 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        inline T const& operator[](std::size_t index) const {
+                        T const& operator[](std::size_t index) const {
                             return data[index];
                         }
 
@@ -535,7 +535,7 @@
                          * @param vec the vector to copy into this
                          * @return    the reference of himself
                          */
-                        inline Vector& operator =(Vector const& vec) {
+                        Vector& operator =(Vector const& vec) {
                             if (vec.data != data) {
                                 clear();
                                 length = vec.length;
@@ -555,7 +555,7 @@
                          * @param vec the vector to move into this
                          * @return    the reference of himself
                          */
-                        inline Vector& operator =(Vector && vec) {
+                        Vector& operator =(Vector && vec) {
                             if (vec.data != data) {
                                 clear();
                                 length = vec.length;
@@ -576,7 +576,7 @@
                          * @return the test result
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        inline bool operator ==(Vector const& vec) const {
+                        bool operator ==(Vector const& vec) const {
                             bool equal = true;
                             std::size_t current = 0;
                             while (equal && current < length) {
@@ -591,7 +591,7 @@
                          * @return the test result
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        inline bool operator ==(Vector const& vec) const {
+                        bool operator ==(Vector const& vec) const {
                             if (length != vec.length) {
                                 return false;
                             }
@@ -602,7 +602,7 @@
                          * @param vec the other vector
                          * @return the test result
                          */
-                        inline bool operator !=(Vector const& vec) const {
+                        bool operator !=(Vector const& vec) const {
                             return !(*this == vec);
                         }
 
@@ -610,7 +610,7 @@
                     /**
                      * Reallocate and grow the storage capacity
                      */
-                    inline void reallocate() {
+                    void reallocate() {
                         reallocate(static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
                     }
                     /**
@@ -618,7 +618,7 @@
                      * @param newSize the new capacity
                      */
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                    inline void reallocate(std::size_t newSize) {
+                    void reallocate(std::size_t newSize) {
                         capacity = newSize;
                         T* newData = static_cast <T*> (::operator new(capacity * sizeof(T)));
 
@@ -633,7 +633,7 @@
                      * @param newSize the new capacity
                      */
                     template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                    inline void reallocate(std::size_t newSize) {
+                    void reallocate(std::size_t newSize) {
                         capacity = newSize;
                         T* newData = static_cast <T*> (::operator new(capacity * sizeof(T)));
 
@@ -645,7 +645,7 @@
                      * Reallocate the vector with the neareast grow factor value
                      * @param size the new minimum capacity
                      */
-                    inline void reserveWithGrowFactor(std::size_t size) {
+                    void reserveWithGrowFactor(std::size_t size) {
                         std::size_t newSize = static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR);
                         while (newSize < size) {
                             newSize = static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR);
@@ -658,7 +658,7 @@
                      * @param count the number of shift to do
                      */
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                    inline void shift(std::size_t start, std::size_t count) {
+                    void shift(std::size_t start, std::size_t count) {
                         for (std::size_t index = length + count - 1; index != start + count - 1; index--) {
                             data[index] = *(new(&data[index]) T (std::move(data[index - count])));
                         }
@@ -669,7 +669,7 @@
                      * @param count the number of shift to do
                      */
                     template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                    inline void shift(std::size_t start, std::size_t count) {
+                    void shift(std::size_t start, std::size_t count) {
                         std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
                     }
                     /**
@@ -678,7 +678,7 @@
                      * @param count the number of shift to do
                      */
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                    inline void shiftBack(std::size_t start, std::size_t count) {
+                    void shiftBack(std::size_t start, std::size_t count) {
                         for (std::size_t index = start; index < start + count; index++) {
                             data[index] = *(new(&data[index]) T (std::move(data[index + count])));
                         }
@@ -689,7 +689,7 @@
                      * @param count the number of shift to do
                      */
                     template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                    inline void shiftBack(std::size_t start, std::size_t count) {
+                    void shiftBack(std::size_t start, std::size_t count) {
                         std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
                     }
 
