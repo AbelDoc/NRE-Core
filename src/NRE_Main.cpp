@@ -15,7 +15,6 @@
     #include "Header/NRE_Utility.hpp"
 
     int main(int, char**) {
-        std::cout << std::is_pod<int*>::value << std::endl;
         std::size_t sumSTD = 0, sumNRE = 0;
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
