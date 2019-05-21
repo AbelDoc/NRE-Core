@@ -56,7 +56,6 @@
                          * Construct a string filled with count copy of value
                          * @param count the number of copy to perform, will be the string capacity and length
                          * @param value the value to fill the string with
-                         * @pre value don't reference a string item
                          */
                         BasicString(std::size_t count, T value);
                         /**
@@ -209,7 +208,6 @@
                          * Assign the string with count copy of value, starting from the beginning
                          * @param count the number of copy
                          * @param value the copy to fill the string with
-                         * @pre value don't reference a string item
                          */
                         BasicString& assign(std::size_t count, T value);
                         /**
@@ -256,6 +254,88 @@
                          * @pre list don't contain string reference
                          */
                         BasicString& assign(std::initializer_list<T> init);
+                        /**
+                         * Set the string capacity to a minimum of size, reallocating memory if needed
+                         * @param size the new capacity
+                         * @warning size value is not checked against getMaxSize()
+                         */
+                        void reserve(std::size_t size);
+                        /**
+                         * Clear all object in the vector, not actually releasing memory
+                         */
+                        void clear();
+                        /**
+                         * Insert count copy of value at the specified position
+                         * @param  start the position to insert values
+                         * @param  count the number of copy
+                         * @param  value the value to insert
+                         * @return       the reference on himself
+                         */
+                        BasicString& insert(std::size_t start, std::size_t count, T value);
+                        /**
+                         * Insert str elements, str need to be NULL terminated
+                         * @param  start the position to insert values
+                         * @param  str   the other string
+                         * @return       the reference on himself
+                         */
+                        BasicString& insert(std::size_t start, const T* str);
+                        /**
+                         * Insert str elements
+                         * @param start the position to insert values
+                         * @param count the number of element to take from str
+                         * @param str   the other string
+                         * @return      the reference on himself
+                         */
+                        BasicString& insert(std::size_t start,  std::size_t count, const T* str);
+                        /**
+                         * Insert a string at the specified position
+                         * @param  start the position to insert values
+                         * @param  str   the string to insert
+                         * @return       the reference on himself
+                         */
+                        BasicStrin&g insert(std::size_t start, BasicString const& str);
+                        /**
+                         * Insert a string part at the specified position
+                         * @param  start the position to insert values
+                         * @param  str   the string to insert
+                         * @param  index the start index in the string
+                         * @param  count the number of character to take from the string
+                         * @return       the reference on himself
+                         */
+                        BasicString& insert(std::size_t start, BasicString const& str, std::size_t index, std::size_t count);
+                        /**
+                         * Insert the character at the specified position
+                         * @param start the position to insert values
+                         * @param value the value to insert
+                         * @return      the iterator on the first inserted value
+                         */
+                        Iterator insert(ConstIterator start, T value);
+                        /**
+                         * Insert count copy of the character at the specified position
+                         * @param start the position to insert values
+                         * @param count the number of copy
+                         * @param value the value to insert
+                         * @return      the iterator on the first inserted value
+                         */
+                        Iterator insert(ConstIterator start, std::size_t count, T value);
+                        /**
+                         * Insert a copy of element between begin and end at the specified position
+                         * @param  start the position to insert values
+                         * @param  begin the begin iterator
+                         * @param  end   the end iterator, pointing after the last element
+                         * @return       the iterator on the first inserted value
+                         * @pre begin and end are not iterator from the string
+                         */
+                        template <class InputIterator>
+                        Iterator insert(ConstIterator start, InputIterator begin, InputIterator end);
+                        /**
+                         * Insert a list of value at the specified position
+                         * @param  start the position to insert values
+                         * @param  init  the list to fill the vector with
+                         * @return       the iterator on the first inserted value
+                         * @pre list don't contain string reference
+                         */
+                        Iterator insert(ConstIterator start, std::initializer_list<T> list);
 
                     //## Access Operator ##//
                         /**
@@ -304,6 +384,12 @@
                      * Add the null terminated character at the end
                      */
                     void addNullTerminated();
+                    /**
+                     * Shift all element in the string, don't do reallocation
+                     * @param start the start position for shifting
+                     * @param count the number of shift to do
+                     */
+                    void shift(std::size_t start, std::size_t count);
 
                 private :    // Static
                     static constexpr float GROW_FACTOR = 1.5;

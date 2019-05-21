@@ -202,7 +202,9 @@
                  if (capacity < length + 1) {
                      reallocate();
                  }
-                 shift(index, 1);
+                 if (index < length) {
+                     shift(index, 1);
+                 }
                  length++;
                  data[index] = *(new(&data[index]) T (value));
                  return Iterator(data + index);
@@ -214,7 +216,9 @@
                  if (capacity < length + count) {
                      reserveWithGrowFactor(length + count);
                  }
-                 shift(index, count);
+                 if (index < length) {
+                     shift(index, count);
+                 }
                  for (std::size_t it = index; it != index + count; it++) {
                      data[it] = *(new(&data[it]) T (value));
                  }
@@ -230,7 +234,9 @@
                  if (capacity < length + count) {
                      reserveWithGrowFactor(length + count);
                  }
-                 shift(index, count);
+                 if (index < length) {
+                     shift(index, count);
+                 }
                  for ( ; begin != end; begin++) {
                      data[index] = *(new(&data[index]) T (*begin));
                      index++;
@@ -246,7 +252,9 @@
                  if (capacity < length + count) {
                      reserveWithGrowFactor(length + count);
                  }
-                 shift(index, count);
+                 if (index < length) {
+                     shift(index, count);
+                 }
                  for (auto it = list.begin(); it != list.end(); it++) {
                      data[index] = *(new(&data[index]) T (std::move(*it)));
                      index++;
@@ -262,7 +270,9 @@
                  if (capacity < length + 1) {
                      reallocate();
                  }
-                 shift(index, 1);
+                 if (index < length) {
+                     shift(index, 1);
+                 }
                  data[index] = *(new(&data[index]) T (std::forward<Args>(args)...));
                  return Iterator(data + index);
              }
