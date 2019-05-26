@@ -279,21 +279,23 @@
 
              template <class T>
              inline typename Vector<T>::Iterator Vector<T>::erase(ConstIterator pos) {
+                 std::size_t index = pos - ConstIterator(data);
                  (*pos).~T();
-                 shiftBack(pos - ConstIterator(data), 1);
+                 shiftBack(index, 1);
                  length--;
-                 return Iterator(pos++);
+                 return Iterator(data + index);
              }
 
              template <class T>
              inline typename Vector<T>::Iterator Vector<T>::erase(ConstIterator begin, ConstIterator end) {
                  std::size_t count = std::distance(begin, end);
+                 std::size_t index = begin - ConstIterator(data);
                  for (auto it = begin; it != end; it++) {
                      (*it).~T();
                  }
-                 shiftBack(begin - ConstIterator(data), count);
+                 shiftBack(index, count);
                  length -= count;
-                 return Iterator(end);
+                 return Iterator(data + index + count);
              }
 
              template <class T>

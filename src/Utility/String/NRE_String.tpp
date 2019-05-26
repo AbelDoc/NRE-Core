@@ -325,7 +325,7 @@
 
              template <class T>
              inline BasicString& BasicString<T>::insert(std::size_t start, BasicString const& str) {
-                 return insert(start, str.size(), str);
+                 return insert(start, str.size(), str.data);
              }
 
              template <class T>
@@ -427,6 +427,120 @@
              }
 
              template <class T>
+             inline BasicString<T>& BasicString<T>::erase(std::size_t index, std::size_t count) {
+                 shiftBack(index, count);
+                 length -= count;
+                 return *this;
+             }
+
+             template <class T>
+             inline Iterator BasicString<T>::erase(ConstIterator pos) {
+                 std::size_t index = pos - ConstIterator(data);
+                 shiftBack(index, 1);
+                 length--;
+                 return Iterator(data + index);
+             }
+
+             template <class T>
+             inline Iterator BasicString<T>::erase(ConstIterator begin, ConstIterator end) {
+                 std::size_t count = std::distance(begin, end);
+                 std::size_t index = begin - ConstIterator(data);
+                 shiftBack(index, count);
+                 length -= count;
+                 return Iterator(data + index + count);
+             }
+
+             template <class T>
+             inline void BasicString<T>::pushBack(T value) {
+                 if (capacity < length + 1) {
+                     reallocate();
+                 }
+                 data[length] = value;
+                 length++;
+                 addNullTerminated();
+             }
+
+             template <class T>
+             inline void BasicString<T>::popBack() {
+                 length--;
+                 addNullTerminated();
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(std::size_t count, T value) {
+                 if (capacity < length + count) {
+                     reserveWithGrowFactor(length + count);
+                 }
+                 for (std::size_t index = length; index < length + count; index++) {
+                     data[index] = value;
+                 }
+                 length += count;
+                 addNullTerminated();
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(BasicString const& str) {
+                 return append(str.data, str.size());
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(BasicString const& str, std::size_t index, std::size_t count) {
+                 return append(str.data + index, count);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(const T* str, std::size_t count) {
+                 if (capacity < length + count) {
+                     reserveWithGrowFactor(length + count);
+                 }
+                 std::memcpy(data + length, str, count * sizeof(T));
+                 length += count;
+                 addNullTerminated();
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(const T* str) {
+                 std::size_t count = 0;
+                 while (str[count] != '\0') {
+                     count++;
+                 }
+                 return append(str, count);
+             }
+
+             template <class T>
+             template <class InputIterator>
+             inline BasicString<T>& BasicString<T>::append(InputIterator begin, InputIterator end) {
+                 std::size_t count = std::distance(begin, end);
+                 if (capacity < length + count) {
+                     reserveWithGrowFactor(length + count);
+                 }
+                 std::size_t current = length;
+                 for ( ; begin != end; begin++) {
+                     data[current++] = *begin;
+                 }
+                 length += count;
+                 addNullTerminated();
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(std::initializer_list<T> list) {
+                 std::size_t count = list.size();
+                 if (capacity < length + count) {
+                     reserveWithGrowFactor(length + count);
+                 }
+                 std::size_t current = length;
+                 for (auto it = list.begin(); it != list.end(); it++) {
+                     data[current++] = std::move(*it);
+                 }
+                 length += count;
+                 addNullTerminated();
+                 return *this;
+             }
+
+             template <class T>
              inline BasicString<T>& BasicString<T>::operator =(BasicString const& str) {
                  if (str.data != data) {
                      length = str.length;
@@ -479,6 +593,11 @@
              template <class T>
              inline void BasicString<T>::shift(std::size_t start, std::size_t count) {
                  std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
+             }
+
+             template <class T>
+             inline void BasicString<T>::shiftBack(std::size_t start, std::size_t count) {
+                 std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
              }
 
          }

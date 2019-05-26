@@ -336,6 +336,83 @@
                          * @pre list don't contain string reference
                          */
                         Iterator insert(ConstIterator start, std::initializer_list<T> list);
+                        /**
+                         * Erase count character starting by index
+                         * @param  index the start index
+                         * @param  count the number of character to erase
+                         * @return       the reference on himself
+                         */
+                        BasicString& erase(std::size_t index, std::size_t count);
+                        /**
+                         * Erase the character at the given position
+                         * @param  position the position to erase
+                         * @return          the iterator after the erased value
+                         */
+                        Iterator erase(ConstIterator position);
+                        /**
+                         * Erase character between 2 iterators
+                         * @param  begin the start position
+                         * @param  end   the end position
+                         * @return       the iterator after the erased value
+                         */
+                        Iterator erase(ConstIterator begin, ConstIterator end);
+                        /**
+                         * Insert a character at the end of the string
+                         * @param value the value to insert
+                         */
+                        void pushBack(T value);
+                        /**
+                         * Pop back the last character
+                         */
+                        void popBack();
+                        /**
+                         * Append count copy of value at the end of the string
+                         * @param  count the number of copy
+                         * @param  value the value to append
+                         * @return       the reference of himself
+                         */
+                        BasicString& append(std::size_t count, T value);
+                        /**
+                         * Append the given string at the end of the string
+                         * @param  str the string to append
+                         * @return     the reference of himself
+                         */
+                        BasicString& append(BasicString const& str);
+                        /**
+                         * Append a part of the given string at the end of the string
+                         * @param  str   the string to append
+                         * @param  index the index of the first character
+                         * @param  count the number of character to copy
+                         * @return       the reference of himself
+                         */
+                        BasicString& append(BasicString const& str, std::size_t index, std::size_t count);
+                        /**
+                         * Append the count first character of the given string at the end
+                         * @param  str   the string to append
+                         * @param  count the number of character to take
+                         * @return       the reference of himself
+                         */
+                        BasicString& append(const T* str, std::size_t count);
+                        /**
+                         * Append the given string at the end, the string need to be NULL terminated
+                         * @param  str the string to append
+                         * @return     the reference of himself
+                         */
+                        BasicString& append(const T* str);
+                        /**
+                         * Append all character between given iterators
+                         * @param  begin the begin iterator
+                         * @param  end   the end iterator
+                         * @return       the reference of himself
+                         */
+                        template <class InputIterator>
+                        BasicString& append(InputIterator begin, InputIterator end);
+                        /**
+                         * Append all character in the list
+                         * @param  list the initializer list
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(std::initializer_list<T> list);
 
                     //## Access Operator ##//
                         /**
@@ -390,6 +467,12 @@
                      * @param count the number of shift to do
                      */
                     void shift(std::size_t start, std::size_t count);
+                    /**
+                     * Shift back all element in the string, don't call deconstructor
+                     * @param start the start position for shifting
+                     * @param count the number of shift to do
+                     */
+                    void shiftBack(std::size_t start, std::size_t count);
 
                 private :    // Static
                     static constexpr float GROW_FACTOR = 1.5;
