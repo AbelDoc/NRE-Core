@@ -271,7 +271,7 @@
              }
 
              template <class T>
-             inline BasicString& BasicString<T>::insert(std::size_t start, std::size_t count, T value) {
+             inline BasicString<T>& BasicString<T>::insert(std::size_t start, std::size_t count, T value) {
                  if (start > length) {
                      throw std::out_of_range("Inserting after NRE::Utility::String last element.");
                  }
@@ -295,7 +295,7 @@
              }
 
              template <class T>
-             inline BasicString& BasicString<T>::insert(std::size_t start, const T* str) {
+             inline BasicString<T>& BasicString<T>::insert(std::size_t start, const T* str) {
                  std::size_t count = 0;
                  while (str[count] != '\0') {
                      count++;
@@ -304,7 +304,7 @@
              }
 
              template <class T>
-             inline BasicString& BasicString<T>::insert(std::size_t start,  std::size_t count, const T* str) {
+             inline BasicString<T>& BasicString<T>::insert(std::size_t start,  std::size_t count, const T* str) {
                  if (start > length) {
                      throw std::out_of_range("Inserting after NRE::Utility::String last element.");
                  }
@@ -324,17 +324,17 @@
              }
 
              template <class T>
-             inline BasicString& BasicString<T>::insert(std::size_t start, BasicString const& str) {
+             inline BasicString<T>& BasicString<T>::insert(std::size_t start, BasicString const& str) {
                  return insert(start, str.size(), str.data);
              }
 
              template <class T>
-             inline BasicString& BasicString<T>::insert(std::size_t start, BasicString const& str, std::size_t index, std::size_t count) {
+             inline BasicString<T>& BasicString<T>::insert(std::size_t start, BasicString const& str, std::size_t index, std::size_t count) {
                  return insert(start, count, str.substr(index, count));
              }
 
              template <class T>
-             inline Iterator BasicString<T>::insert(ConstIterator start, T value) {
+             inline typename BasicString<T>::Iterator BasicString<T>::insert(ConstIterator start, T value) {
                  std::size_t index = start - ConstIterator(data);
                  if (capacity < length + 1) {
                      reallocate();
@@ -348,11 +348,11 @@
                      length++;
                      data[index] = value;
                  }
-                 return Iterator(data + index + count);
+                 return Iterator(data + index + 1);
              }
 
              template <class T>
-             inline Iterator BasicString<T>::insert(ConstIterator start, std::size_t count, T value) {
+             inline typename BasicString<T>::Iterator BasicString<T>::insert(ConstIterator start, std::size_t count, T value) {
                  std::size_t index = start - ConstIterator(data);
                  if (capacity < length + count) {
                      reserveWithGrowFactor(length + count);
@@ -375,7 +375,7 @@
 
              template <class T>
              template <class InputIterator>
-             inline Iterator BasicString<T>::insert(ConstIterator start, InputIterator begin, InputIterator end) {
+             inline typename BasicString<T>::Iterator BasicString<T>::insert(ConstIterator start, InputIterator begin, InputIterator end) {
                  std::size_t count = std::distance(begin, end);
                  std::size_t index = start - ConstIterator(data);
                  if (capacity < length + count) {
@@ -402,7 +402,7 @@
              }
 
              template <class T>
-             inline Iterator BasicString<T>::insert(ConstIterator start, std::initializer_list<T> list) {
+             inline typename BasicString<T>::Iterator BasicString<T>::insert(ConstIterator start, std::initializer_list<T> list) {
                  std::size_t index = start - ConstIterator(data);
                  std::size_t count = list.size();
                  if (capacity < length + count) {
@@ -434,7 +434,7 @@
              }
 
              template <class T>
-             inline Iterator BasicString<T>::erase(ConstIterator pos) {
+             inline typename BasicString<T>::Iterator BasicString<T>::erase(ConstIterator pos) {
                  std::size_t index = pos - ConstIterator(data);
                  shiftBack(index, 1);
                  length--;
@@ -442,7 +442,7 @@
              }
 
              template <class T>
-             inline Iterator BasicString<T>::erase(ConstIterator begin, ConstIterator end) {
+             inline typename BasicString<T>::Iterator BasicString<T>::erase(ConstIterator begin, ConstIterator end) {
                  std::size_t count = std::distance(begin, end);
                  std::size_t index = begin - ConstIterator(data);
                  shiftBack(index, count);
@@ -538,6 +538,47 @@
                  length += count;
                  addNullTerminated();
                  return *this;
+             }
+
+             template <class T>
+             inline int BasicString<T>::compare(BasicString const& str) const {
+                 return compare(0, length, str.data, 0, str.length);
+             }
+
+             template <class T>
+             inline int BasicString<T>::compare(std::size_t tPos, std::size_t tCount, BasicString const& str) const {
+                 return compare(tPos, tCount, str.data, 0, str.length);
+             }
+
+             template <class T>
+             inline int BasicString<T>::compare(std::size_t tPos, std::size_t tCount, BasicString const& str, std::size_t sPos, std::size_t sCount) const {
+                 return compare(tPos, tCount, str.data, sPos, sCount);
+             }
+
+             template <class T>
+             inline int BasicString<T>::compare(const T* str) const {
+                 return compare(0, length, str);
+             }
+
+             template <class T>
+             inline int BasicString<T>::compare(std::size_t tPos, std::size_t tCount, const T* str) const {
+                 std::size_t count = 0;
+                 while (str[count] != '\0') {
+                     count++;
+                 }
+                 return compare(tPos, tCount, str, 0, count);
+             }
+
+             template <class T>
+             inline int BasicString<T>::compare(std::size_t tPos, std::size_t tCount, const T* str, std::size_t sPos, std::size_t sCount) const {
+                 if (tCount != sCount) {
+                     if (tCount < sCount) {
+                         return -1;
+                     } else {
+                         return 1;
+                     }
+                 }
+                 return std::memcmp(data + tPos, str + sPos, tCount);
              }
 
              template <class T>

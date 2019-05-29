@@ -18,12 +18,12 @@
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        std::size_t firstLoopSize  = 1;
-        std::size_t constexpr containerSize  = 26;
+        std::size_t firstLoopSize  = 10'000'000;
+        std::size_t constexpr containerSize  = 216;
         std::size_t secondLoopSize = containerSize;
 
         std::cout << "Benchmark : NRE::Utility::String vs std::string" << std::endl;
-        std::cout << "Stress test [Constructor : + Copy + Iterator use] : x" << firstLoopSize << std::endl;
+        std::cout << "Stress test [Constructor + Compare] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : char" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
@@ -37,11 +37,8 @@
         std::size_t capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            std::string str = "abcdefghijklmnopqrstuvwxyz";
-            std::string copy(str);
-            for (auto it = copy.rbegin(); it != copy.rend(); it++) {
-                res += *(it);
-            }
+            std::string str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            res += str.compare("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB");
             capacity = str.capacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
@@ -69,11 +66,8 @@
         capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            NRE::Utility::String str("abcdefghijklmnopqrstuvwxyz");
-            NRE::Utility::String copy(str);
-            for (auto it = copy.rbegin(); it != copy.rend(); it++) {
-                res += *(it);
-            }
+            NRE::Utility::String str("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            res += str.compare("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB");
             capacity = str.getCapacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
@@ -87,7 +81,7 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << capacity * sizeof(char) + firstLoopSize * sizeof(std::string) << " o" << std::endl;
+        std::cout << "Final used memory : " << capacity * sizeof(char) + firstLoopSize * sizeof(NRE::Utility::String) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;

@@ -293,7 +293,7 @@
                          * @param  str   the string to insert
                          * @return       the reference on himself
                          */
-                        BasicStrin&g insert(std::size_t start, BasicString const& str);
+                        BasicString& insert(std::size_t start, BasicString const& str);
                         /**
                          * Insert a string part at the specified position
                          * @param  start the position to insert values
@@ -413,6 +413,54 @@
                          * @return      the reference of himself
                          */
                         BasicString& append(std::initializer_list<T> list);
+                        /**
+                         * Compare the given string to this, by first comparing size then memory
+                         * @param  str the string to compare with this
+                         * @return     <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
+                         */
+                        int compare(BasicString const& str) const;
+                        /**
+                         * Compare the given string to a part of this, by first comparing size then memory
+                         * @param  tPos   the first character of this
+                         * @param  tCount the number of character from this
+                         * @param  str    the string to compare with this
+                         * @return        <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
+                         */
+                        int compare(std::size_t tPos, std::size_t tCount, BasicString const& str) const;
+                        /**
+                         * Compare a part of the given string to a part of this, by first comparing size then memory
+                         * @param  tPos   the first character of this
+                         * @param  tCount the number of character from this
+                         * @param  str    the string to compare with this
+                         * @param  sPos   the first character of str
+                         * @param  sCount the number of character from str
+                         * @return        <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
+                         */
+                        int compare(std::size_t tPos, std::size_t tCount, BasicString const& str, std::size_t sPos, std::size_t sCount) const;
+                        /**
+                         * Compare the given NULL terminated string to this, by first comparing size then memory
+                         * @param  str the string to compare with this
+                         * @return     <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
+                         */
+                        int compare(const T* str) const;
+                        /**
+                         * Compare the given NULL terminated string to a part of this, by first comparing size then memory
+                         * @param  tPos   the first character of this
+                         * @param  tCount the number of character from this
+                         * @param  str    the string to compare with this
+                         * @return        <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
+                         */
+                        int compare(std::size_t tPos, std::size_t tCount, const T* str) const;
+                        /**
+                         * Compare a part of the given NULL terminated string to a part of this, by first comparing size then memory
+                         * @param  tPos   the first character of this
+                         * @param  tCount the number of character from this
+                         * @param  str    the string to compare with this
+                         * @param  sPos   the first character of str
+                         * @param  sCount the number of character from str
+                         * @return        <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
+                         */
+                        int compare(std::size_t tPos, std::size_t tCount, const T* str, std::size_t sPos, std::size_t sCount) const;
 
                     //## Access Operator ##//
                         /**
