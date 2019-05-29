@@ -32,13 +32,9 @@
 
              template <class T>
              inline BasicString<T>::BasicString(const T* str) {
-                 std::size_t count = 0;
-                 while (str[count] != '\0') {
-                     count++;
-                 }
-                 capacity = count;
-                 data = static_cast <T*> (::operator new ((count + 1) * sizeof(T)));
-                 assign(count, str);
+                 capacity = std::strlen(str);
+                 data = static_cast <T*> (::operator new ((capacity + 1) * sizeof(T)));
+                 assign(capacity, str);
              }
 
              template <class T>
@@ -220,11 +216,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::assign(const T* str) {
-                 std::size_t count = 0;
-                 while (str[count] != '\0') {
-                     count++;
-                 }
-                 return assign(count, str);
+                 return assign(std::strlen(str), str);
              }
 
              template <class T>
@@ -502,11 +494,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(const T* str) {
-                 std::size_t count = 0;
-                 while (str[count] != '\0') {
-                     count++;
-                 }
-                 return append(str, count);
+                 return append(str, std::strlen(str));
              }
 
              template <class T>
@@ -562,11 +550,7 @@
 
              template <class T>
              inline int BasicString<T>::compare(std::size_t tPos, std::size_t tCount, const T* str) const {
-                 std::size_t count = 0;
-                 while (str[count] != '\0') {
-                     count++;
-                 }
-                 return compare(tPos, tCount, str, 0, count);
+                 return compare(tPos, tCount, str, 0, std::strlen(str));
              }
 
              template <class T>
