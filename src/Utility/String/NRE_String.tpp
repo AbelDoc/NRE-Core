@@ -560,6 +560,26 @@
              }
 
              template <class T>
+             inline BasicString<T>& BasicString<T>::operator+=(BasicString const& str) {
+                 return append(str);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::operator+=(T value) {
+                 return append(value);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::operator+=(const T* str) {
+                 return append(str);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::operator+=(std::initializer_list<T> list) {
+                 return append(list);
+             }
+
+             template <class T>
              inline void BasicString<T>::reallocate() {
                  reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
                                             : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));

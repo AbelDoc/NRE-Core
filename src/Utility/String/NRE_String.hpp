@@ -442,6 +442,32 @@
                          */
                         BasicString& operator =(BasicString && str);
 
+                    //## Shortcut Operator ##//
+                        /**
+                         * Append the given string to this
+                         * @param str the string to append
+                         * @return    the reference of himself
+                         */
+                        BasicString& operator+=(BasicString const& str);
+                        /**
+                         * Append the given character to this
+                         * @param value the character to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& operator+=(T value);
+                        /**
+                         * Append the given string to this, the string need to be NULL terminated
+                         * @param str the string to append
+                         * @return    the reference of himself
+                         */
+                        BasicString& operator+=(const T* str);
+                        /**
+                         * Append the given character list to this
+                         * @param list the list to append
+                         * @return     the reference of himself
+                         */
+                        BasicString& operator+=(std::initializer_list<T> list);
+
                 private :   // Methods
                     /**
                      * Reallocate and grow the storage capacity
