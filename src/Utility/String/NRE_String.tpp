@@ -11,7 +11,7 @@
          namespace Utility {
 
              template <class T>
-             inline BasicString<T>::BasicString() : length(0), capacity(1), data(static_cast <T*> (::operator new (2 * sizeof(T)))) {
+             inline BasicString<T>::BasicString() : length(0), capacity(1), data(static_cast <T*> (::operator new (sizeof(T)))) {
                  addNullTerminated();
              }
 
@@ -563,6 +563,38 @@
                      }
                  }
                  return std::memcmp(data + tPos, str + sPos, tCount);
+             }
+
+             template <class T>
+             inline bool BasicString<T>::startsWith(BasicString const& str) const {
+                 return length >= str.size() && compare(0, str.size(), str) == 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::startsWith(T value) const {
+                 return length >= 1 && data[0] == value;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::startsWith(const T* str) const {
+                 std::size_t size = std::strlen(str);
+                 return length >= size && compare(0, size, str, 0, size) == 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::endsWith(BasicString const& str) const {
+                 return length >= str.size() && compare(length - 1 - str.size(), str.size(), str) == 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::endsWith(T value) const {
+                 return length >= 1 && data[length - 1] == value;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::endsWith(const T* str) const {
+                 std::size_t size = std::strlen(str);
+                 return length >= size && compare((length - 1 - size, size, str, 0, size) == 0;
              }
 
              template <class T>

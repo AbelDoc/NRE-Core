@@ -23,7 +23,7 @@
         std::size_t secondLoopSize = containerSize;
 
         std::cout << "Benchmark : NRE::Utility::String vs std::string" << std::endl;
-        std::cout << "Stress test [Constructor + Compare] : x" << firstLoopSize << std::endl;
+        std::cout << "Stress test [Constructor] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : char" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
@@ -38,7 +38,6 @@
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
             std::string str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-            res += str.compare("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB");
             capacity = str.capacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
@@ -66,8 +65,7 @@
         capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            NRE::Utility::String str("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            res += str.compare("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB");
+            NRE::Utility::String str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
             capacity = str.getCapacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());

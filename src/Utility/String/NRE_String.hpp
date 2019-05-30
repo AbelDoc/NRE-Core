@@ -461,6 +461,138 @@
                          * @return        <0 if this is lesser than str, >0 if this is greater than str, 0 if equals
                          */
                         int compare(std::size_t tPos, std::size_t tCount, const T* str, std::size_t sPos, std::size_t sCount) const;
+                        /**
+                         * Check if the string starts with the given one
+                         * @param  str the prefix to check
+                         * @return     if the string starts with the prefix
+                         */
+                        bool startsWith(BasicString const& str) const;
+                        /**
+                         * Check if the string starts with the given character
+                         * @param  value the prefix to check
+                         * @return       if the string starts with the prefix
+                         */
+                        bool startsWith(T value) const;
+                        /**
+                         * Check if the string starts with the given one, need to be NULL terminated
+                         * @param  str the prefix to check
+                         * @return     if the string starts with the prefix
+                         */
+                        bool startsWith(const T* str) const;
+                        /**
+                         * Check if the string ends with the given one
+                         * @param  str the suffix to check
+                         * @return     if the string ends with the suffix
+                         */
+                        bool endsWith(BasicString const& str) const;
+                        /**
+                         * Check if the string ends with the given character
+                         * @param  value the suffix to check
+                         * @return       if the string ends with the suffix
+                         */
+                        bool endsWith(T value) const;
+                        /**
+                         * Check if the string ends with the given one, need to be NULL terminated
+                         * @param  str the suffix to check
+                         * @return     if the string ends with the suffix
+                         */
+                        bool endsWith(const T* str) const;
+                        /**
+                         * Replace the given part by the given string
+                         * @param  pos   the start position to replace
+                         * @param  count the number of character to replace
+                         * @param  str   the replacement string
+                         * @return       the reference of himself
+                         */
+                        BasicString& replace(std::size_t pos, std::size_t count, BasicString const& str);
+                        /**
+                         * Replace the given part by the given string
+                         * @param  start the start position to replace
+                         * @param  end   the end range
+                         * @param  str   the replacement string
+                         * @return       the reference of himself
+                         */
+                        BasicString& replace(ConstIterator start, ConstIterator end, BasicString const& str);
+                        /**
+                         * Replace the given part by a part of the given string
+                         * @param  tPos   the start position to replace
+                         * @param  tCount the number of character to replace
+                         * @param  str    the replacement string
+                         * @param  sPos   the start position in the replacement string
+                         * @param  sCount the number of character in the replacement string
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(std::size_t tPos, std::size_t tCount, BasicString const& str, std::size_t sPos, std::size_t sCount);
+                        /**
+                         * Replace the given part by a part of the given string
+                         * @param  tStart the start position to replace
+                         * @param  tEnd   the end range
+                         * @param  str    the replacement string
+                         * @param  sStart the start position in the replacement string
+                         * @param  sEnd   the end range in the replacement string
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(ConstIterator tStart, ConstIterator tEnd, BasicString const& str, InputIterator sStart, InputIterator sEnd);
+                        /**
+                         * Replace the given part by the given string
+                         * @param  pos    the start position to replace
+                         * @param  tCount the number of character to replace
+                         * @param  str    the replacement string
+                         * @param  sCount the number of character in the replacement string
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(std::size_t pos, std::size_t tCount, const T* str, std::size_t sCount);
+                        /**
+                         * Replace the given part by the given string
+                         * @param  start  the start position to replace
+                         * @param  end    the end range
+                         * @param  str    the replacement string
+                         * @param  sCount the number of character in the replacement string
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(ConstIterator start, ConstIterator end, const T* str, std::size_t sCount);
+                        /**
+                         * Replace the given part by the given string, need to be NULL terminated
+                         * @param  pos    the start position to replace
+                         * @param  tCount the number of character to replace
+                         * @param  str    the replacement string
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(std::size_t pos, std::size_t tCount, const T* str);
+                        /**
+                         * Replace the given part by the given string, need to be NULL terminated
+                         * @param  start  the start position to replace
+                         * @param  end    the end range
+                         * @param  str    the replacement string
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(ConstIterator start, ConstIterator end, const T* str);
+                        /**
+                         * Replace the given part by sCount copy of the given character
+                         * @param  pos    the start position to replace
+                         * @param  tCount the number of character to replace
+                         * @param  value  the character to copy
+                         * @param  sCount the number of copy
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(std::size_t pos, std::size_t tCount, T value, std::size_t sCount);
+                        /**
+                         * Replace the given part by sCount copy of the given character
+                         * @param  start  the start position to replace
+                         * @param  end    the end range
+                         * @param  value  the character to copy
+                         * @param  sCount the number of copy
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(ConstIterator start, ConstIterator end, T value, std::size_t sCount);
+                        /**
+                         * Replace the given part by the given character list
+                         * @param  start  the start position to replace
+                         * @param  end    the end range
+                         * @param  list   the character list
+                         * @return        the reference of himself
+                         */
+                        BasicString& replace(ConstIterator start, ConstIterator end, std::initializer_list<T> list);
 
                     //## Access Operator ##//
                         /**
