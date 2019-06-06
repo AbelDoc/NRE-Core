@@ -995,5 +995,65 @@
                  std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
              }
 
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> const& lhs, BasicString<T> const& rhs) {
+                 return BasicString<T>(lhs).append(rhs);
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(const T* lhs, BasicString<T> const& rhs) {
+                 return BasicString<T>(lhs).append(rhs);
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(T lhs, BasicString<T> const& rhs) {
+                 return BasicString<T>(1, lhs).append(rhs);
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> const& lhs, const T* rhs) {
+                return BasicString<T>(lhs).append(rhs);
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> const& lhs, T rhs) {
+                 return BasicString<T>(lhs).append(1, rhs);
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> && lhs, BasicString<T> const& rhs) {
+                 return std::move(lhs.append(rhs));
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> const& lhs, BasicString<T> && rhs) {
+                 return std::move(rhs.insert(0, lhs));
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> && lhs, BasicString<T> && rhs) {
+                 return std::move(lhs.append(rhs));
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(const T* lhs, BasicString<T> && rhs) {
+                 return std::move(rhs.insert(0, lhs));
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(T lhs, BasicString<T> && rhs) {
+                 return std::move(rhs.insert(0, 1, lhs));
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> && lhs, const T* rhs) {
+                 return std::move(lhs.append(rhs));
+             }
+
+             template <class T>
+             inline BasicString<T> operator+(BasicString<T> && lhs, T rhs) {
+                 return std::move(lhs.append(1, rhs));
+             }
+
          }
      }

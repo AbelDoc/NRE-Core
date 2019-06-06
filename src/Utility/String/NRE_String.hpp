@@ -626,68 +626,69 @@
                          */
                         void swap(BasicString& str);
                         /**
-                         * Search the first occurence of the given string, start the search at the given position
+                         * Search the first occurrence of the given string, start the search at the given position
+
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t find(BasicString const& str, std::size_t pos = 0) const;
                         /**
-                         * Search the first occurence of the given string part, start the search at the given position
+                         * Search the first occurrence of the given string part, start the search at the given position
                          * @param  str   the string to search
                          * @param  count the max range in the given string
                          * @param  pos   the search start
-                         * @return       the position of the found string, NOT_FOUND if no occurence found
+                         * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t find(const T* str, std::size_t count, std::size_t pos = 0) const;
                         /**
-                         * Search the first occurence of the given string, need to be NULL terminated, start the search at the given position
+                         * Search the first occurrence of the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t find(const T* str, std::size_t pos = 0) const;
                         /**
-                         * Search the first occurence of the given character, start the search at the given position
+                         * Search the first occurrence of the given character, start the search at the given position
                          * @param  value the character to search
                          * @param  pos   the search start
-                         * @return       the position of the found character, NOT_FOUND if no occurence found
+                         * @return       the position of the found character, NOT_FOUND if no occurrence found
                          */
                         std::size_t find(T value, std::size_t pos = 0) const;
                         /**
-                         * Search the first occurence of the given string, start the search at the given position
+                         * Search the first occurrence of the given string, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t rfind(BasicString const& str, std::size_t pos) const;
                         /**
-                         * Search the first occurence of the given string part, start the search at the given position
+                         * Search the first occurrence of the given string part, start the search at the given position
                          * @param  str   the string to search
                          * @param  count the max range in the given string
                          * @param  pos   the search start
-                         * @return       the position of the found string, NOT_FOUND if no occurence found
+                         * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t rfind(const T* str, std::size_t count, std::size_t pos) const;
                         /**
-                         * Search the first occurence of the given string, need to be NULL terminated, start the search at the given position
+                         * Search the first occurrence of the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t rfind(const T* str, std::size_t pos) const;
                         /**
-                         * Search the first occurence of the given character, start the search at the given position
+                         * Search the first occurrence of the given character, start the search at the given position
                          * @param  value the character to search
                          * @param  pos   the search start
-                         * @return       the position of the found character, NOT_FOUND if no occurence found
+                         * @return       the position of the found character, NOT_FOUND if no occurrence found
                          */
                         std::size_t rfind(T value, std::size_t pos) const;
                         /**
                          * Search the first character that match a character in the given string, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstOf(BasicString const& str, std::size_t pos = 0) const;
                         /**
@@ -695,28 +696,28 @@
                          * @param  str   the string to search
                          * @param  count the max range in the given string
                          * @param  pos   the search start
-                         * @return       the position of the found string, NOT_FOUND if no occurence found
+                         * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstOf(const T* str, std::size_t count, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match a character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstOf(const T* str, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match the given character, start the search at the given position
                          * @param  value the character to search
                          * @param  pos   the search start
-                         * @return       the position of the found character, NOT_FOUND if no occurence found
+                         * @return       the position of the found character, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstOf(T value, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match no character in the given string, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstNotOf(BasicString const& str, std::size_t pos = 0) const;
                         /**
@@ -724,28 +725,28 @@
                          * @param  str   the string to search
                          * @param  count the max range in the given string
                          * @param  pos   the search start
-                         * @return       the position of the found string, NOT_FOUND if no occurence found
+                         * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstNotOf(const T* str, std::size_t count, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match no character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstNotOf(const T* str, std::size_t pos = 0) const;
                         /**
                          * Search the first character that doesn't match with the given character, start the search at the given position
                          * @param  value the character to search
                          * @param  pos   the search start
-                         * @return       the position of the found character, NOT_FOUND if no occurence found
+                         * @return       the position of the found character, NOT_FOUND if no occurrence found
                          */
                         std::size_t findFirstNotOf(T value, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match a character in the given string, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastOf(BasicString const& str, std::size_t pos) const;
                         /**
@@ -753,28 +754,28 @@
                          * @param  str   the string to search
                          * @param  count the max range in the given string
                          * @param  pos   the search start
-                         * @return       the position of the found string, NOT_FOUND if no occurence found
+                         * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastOf(const T* str, std::size_t count, std::size_t pos) const;
                         /**
                          * Search the first character that match a character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastOf(const T* str, std::size_t pos) const;
                         /**
                          * Search the first character that match the given character, start the search at the given position
                          * @param  value the character to search
                          * @param  pos   the search start
-                         * @return       the position of the found character, NOT_FOUND if no occurence found
+                         * @return       the position of the found character, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastOf(T value, std::size_t pos) const;
                         /**
                          * Search the first character that match no character in the given string, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastNotOf(BasicString const& str, std::size_t pos) const;
                         /**
@@ -782,21 +783,21 @@
                          * @param  str   the string to search
                          * @param  count the max range in the given string
                          * @param  pos   the search start
-                         * @return       the position of the found string, NOT_FOUND if no occurence found
+                         * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastNotOf(const T* str, std::size_t count, std::size_t pos) const;
                         /**
                          * Search the first character that match no character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
                          * @param  pos the search start
-                         * @return     the position of the found string, NOT_FOUND if no occurence found
+                         * @return     the position of the found string, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastNotOf(const T* str, std::size_t pos) const;
                         /**
                          * Search the first character that doesn't match with the given character, start the search at the given position
                          * @param  value the character to search
                          * @param  pos   the search start
-                         * @return       the position of the found character, NOT_FOUND if no occurence found
+                         * @return       the position of the found character, NOT_FOUND if no occurrence found
                          */
                         std::size_t findLastNotOf(T value, std::size_t pos) const;
 
@@ -860,12 +861,12 @@
                      */
                     void reallocate();
                     /**
-                     * Rellocate the data to the given size
+                     * Reallocate the data to the given size
                      * @param newSize the new capacity
                      */
                     void reallocate(std::size_t newSize);
                     /**
-                     * Reallocate the string with the neareast grow factor value
+                     * Reallocate the string with the nearest grow factor value
                      * @param size the new minimum capacity
                      */
                     void reserveWithGrowFactor(std::size_t size);
@@ -896,6 +897,103 @@
 
             typedef BasicString<char>    String;
             typedef BasicString<wchar_t> WideString;
+
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> const& lhs, BasicString<T> const& rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(const T* lhs, BasicString<T> const& rhs);
+            /**
+             * Concatenate a character with a string into a new string
+             * @param lhs the character
+             * @param rhs the string
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(T lhs, BasicString<T> const& rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> const& lhs, const T* rhs);
+            /**
+             * Concatenate a string with a character into a new string
+             * @param lhs the string
+             * @param rhs the character
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> const& lhs, T rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> && lhs, BasicString<T> const& rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> const& lhs, BasicString<T> && rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> && lhs, BasicString<T> && rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(const T* lhs, BasicString<T> && rhs);
+            /**
+             * Concatenate a character with a string into a new string
+             * @param lhs the character
+             * @param rhs the string
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(T lhs, BasicString<T> && rhs);
+            /**
+             * Concatenate two strings into a new one
+             * @param lhs the left string part
+             * @param rhs the right string part
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> && lhs, const T* rhs);
+            /**
+             * Concatenate a string with a character into a new string
+             * @param lhs the string
+             * @param rhs the character
+             * @return    the new string
+             */
+            template <class T>
+            BasicString<T> operator+(BasicString<T> && lhs, T rhs);
         }
     }
 
