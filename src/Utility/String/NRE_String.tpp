@@ -473,7 +473,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(BasicString const& str) {
-                 return append(str.data, str.size());
+                 return append(str.data, str.getSize());
              }
 
              template <class T>
@@ -567,7 +567,7 @@
 
              template <class T>
              inline bool BasicString<T>::startsWith(BasicString const& str) const {
-                 return length >= str.size() && compare(0, str.size(), str) == 0;
+                 return length >= str.getSize() && compare(0, str.getSize(), str) == 0;
              }
 
              template <class T>
@@ -583,7 +583,7 @@
 
              template <class T>
              inline bool BasicString<T>::endsWith(BasicString const& str) const {
-                 return length >= str.size() && compare(length - 1 - str.size(), str.size(), str) == 0;
+                 return length >= str.getSize() && compare(length - 1 - str.getSize(), str.getSize(), str) == 0;
              }
 
              template <class T>
@@ -594,7 +594,325 @@
              template <class T>
              inline bool BasicString<T>::endsWith(const T* str) const {
                  std::size_t size = std::strlen(str);
-                 return length >= size && compare((length - 1 - size, size, str, 0, size) == 0;
+                 return length >= size && compare(length - 1 - size, size, str, 0, size) == 0;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(std::size_t pos, std::size_t count, BasicString const& str) {
+                 return replace(pos, count, str, 0, str.getSize()());
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(ConstIterator start, ConstIterator end, BasicString const& str) {
+                 std::size_t index = start - ConstIterator(data);
+                 return replace(index, std::distance(start, end), str, 0, str.getSize());
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(std::size_t tPos, std::size_t tCount, BasicString const& str, std::size_t sPos, std::size_t sCount) {
+                 return replace(tPos, tCount, str.data + sPos, sCount);
+             }
+
+             template <class T>
+             template <class InputIterator>
+             inline BasicString<T>& BasicString<T>::replace(ConstIterator tStart, ConstIterator tEnd, BasicString const& str, InputIterator sStart, InputIterator sEnd) {
+                 std::size_t index = tStart - ConstIterator(data);
+                 return replace(index, std::distance(tStart, tEnd), str, sStart - InputIterator(str.data), std::distance(sStart, sEnd));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(std::size_t pos, std::size_t tCount, const T* str, std::size_t sCount) {
+                 if (tCount < sCount) {
+                     if (capacity < length + (sCount - tCount)) {
+                         reserveWithGrowFactor(length + (sCount - tCount));
+                     }
+                     shift(pos + tCount, sCount - tCount);
+                 } else {
+                     shiftBack(pos + sCount, tCount - sCount);
+                 }
+                 std::memcpy(data + pos, str, sCount * sizeof(T));
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(ConstIterator start, ConstIterator end, const T* str, std::size_t sCount) {
+                 std::size_t index = start - ConstIterator(data);
+                 return replace(index, std::distance(start, end), str, sCount);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(std::size_t pos, std::size_t count, const T* str) {
+                 return replace(pos, count, str, std::strlen(str));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(ConstIterator start, ConstIterator end, const T* str) {
+                 return replace(start, end, str, std::strlen(str));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(std::size_t pos, std::size_t tCount, T value, std::size_t sCount) {
+                 if (tCount < sCount) {
+                     if (capacity < length + (sCount - tCount)) {
+                         reserveWithGrowFactor(length + (sCount - tCount));
+                     }
+                     shift(pos + tCount, sCount - tCount);
+                 } else {
+                     shiftBack(pos + sCount, tCount - sCount);
+                 }
+                 for (std::size_t current = pos; current < pos + sCount; current++) {
+                     data[current] = value;
+                 }
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T> BasicString<T>::substr(std::size_t pos, std::size_t count) const {
+                 BasicString sub;
+                 sub.reserve(count);
+                 std::memcpy(sub.data, data + pos, count * sizeof(T));
+                 return sub;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::copy(const T* str, std::size_t pos, std::size_t count) const {
+                 std::size_t copied = std::min(count, length);
+                 std::memcpy(str, data + pos, copied);
+                 return copied;
+             }
+
+             template <class T>
+             inline void BasicString<T>::resize(std::size_t count) {
+                 resize(count, T());
+             }
+
+             template <class T>
+             inline void BasicString<T>::resize(std::size_t count, T value) {
+                 if (capacity < count) {
+                     reserve(count);
+                     for (std::size_t index = length; index != count; index++) {
+                         data[index] = value;
+                     }
+                     length = count;
+                 }
+             }
+
+             template <class T>
+             inline void BasicString<T>::swap(BasicString& str) {
+                 using namespace std;
+                 swap(length, str.length);
+                 swap(capacity, str.capacity);
+                 swap(data, str.data);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::find(BasicString const& str, std::size_t pos) const {
+                 return find(str.data, str.getSize(), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::find(const T* str, std::size_t count, std::size_t pos) const {
+                 std::size_t res = NOT_FOUND;
+                 std::size_t current = pos;
+                 std::size_t needle = 0;
+
+                 while (res == NOT_FOUND && current < length) {
+                     if (data[current] == str[needle]) {
+                         needle++;
+                         if (needle == count) {
+                             res = current - (count - 1);
+                         }
+                     } else {
+                         needle = 0;
+                     }
+                     current++;
+                 }
+                 return res;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::find(const T* str, std::size_t pos) const {
+                 return find(str, std::strlen(str), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::find(T value, std::size_t pos) const {
+                 return find(&value, 1, pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::rfind(BasicString const& str, std::size_t pos) const {
+                 return rfind(str.data, str.getSize(), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::rfind(const T* str, std::size_t count, std::size_t pos) const {
+                 std::size_t res = NOT_FOUND;
+                 std::size_t current = pos;
+                 std::size_t needle = count - 1;
+
+                 while (res == NOT_FOUND && current != static_cast <std::size_t> (-1)) {
+                     if (data[current] == str[needle]) {
+                         needle--;
+                         if (needle == static_cast <std::size_t> (-1)) {
+                             res = current;
+                         }
+                     } else {
+                         needle = count - 1;
+                     }
+                     current--;
+                 }
+                 return res;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::rfind(const T* str, std::size_t pos) const {
+                 return rfind(str, std::strlen(str), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::rfind(T value, std::size_t pos) const {
+                 return rfind(&value, 1, pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstOf(BasicString const& str, std::size_t pos) const {
+                 return findFirstOf(str.data, str.getSize(), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstOf(const T* str, std::size_t count, std::size_t pos) const {
+                 std::size_t res = NOT_FOUND;
+                 std::size_t current = pos;
+
+                 while (res == NOT_FOUND && current < length) {
+                     std::size_t needle = 0;
+                     while (res == NOT_FOUND && needle < count) {
+                         if (data[current] == str[needle]) {
+                             res = current;
+                         }
+                         needle++;
+                     }
+                     current++;
+                 }
+                 return res;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstOf(const T* str, std::size_t pos) const {
+                 return findFirstOf(str, std::strlen(str), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstOf(T value, std::size_t pos) const {
+                 return findFirstOf(&value, 1, pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstNotOf(BasicString const& str, std::size_t pos) const {
+                 return findFirstNotOf(str.data, str.getSize(), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstNotOf(const T* str, std::size_t count, std::size_t pos) const {
+                 std::size_t res = NOT_FOUND;
+                 std::size_t current = pos;
+
+                 while (res == NOT_FOUND && current < length) {
+                     std::size_t needle = 0;
+                     bool match = false;
+                     while (!match && needle < count) {
+                         if (data[current] == str[needle]) {
+                             match = true;
+                         }
+                         needle++;
+                     }
+                     if (!match) {
+                         res = current;
+                     }
+                     current++;
+                 }
+                 return res;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstNotOf(const T* str, std::size_t pos) const {
+                 return findFirstNotOf(str, std::strlen(str), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findFirstNotOf(T value, std::size_t pos) const {
+                 return findFirstNotOf(&value, 1, pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastOf(BasicString const& str, std::size_t pos) const {
+                 return findLastOf(str.data, str.getSize(), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastOf(const T* str, std::size_t count, std::size_t pos) const {
+                 std::size_t res = NOT_FOUND;
+                 std::size_t current = pos;
+
+                 while (res == NOT_FOUND && current != static_cast <std::size_t> (-1)) {
+                     std::size_t needle = 0;
+                     while (res == NOT_FOUND && needle < count) {
+                         if (data[current] == str[needle]) {
+                             res = current;
+                         }
+                         needle++;
+                     }
+                     current--;
+                 }
+                 return res;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastOf(const T* str, std::size_t pos) const {
+                 return findLastOf(str, std::strlen(str), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastOf(T value, std::size_t pos) const {
+                 return findLastOf(&value, 1, pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastNotOf(BasicString const& str, std::size_t pos) const {
+                 return findLastNotOf(str.data, str.getSize(), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastNotOf(const T* str, std::size_t count, std::size_t pos) const {
+                 std::size_t res = NOT_FOUND;
+                 std::size_t current = pos;
+
+                 while (res == NOT_FOUND && current != static_cast <std::size_t> (-1)) {
+                     std::size_t needle = 0;
+                     bool match = false;
+                     while (!match && needle < count) {
+                         if (data[current] == str[needle]) {
+                             match = true;
+                         }
+                         needle++;
+                     }
+                     if (!match) {
+                         res = current;
+                     }
+                     current--;
+                 }
+                 return res;
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastNotOf(const T* str, std::size_t pos) const {
+                 return findLastNotOf(str, std::strlen(str), pos);
+             }
+
+             template <class T>
+             inline std::size_t BasicString<T>::findLastNotOf(T value, std::size_t pos) const {
+                 return findLastNotOf(&value, 1, pos);
              }
 
              template <class T>

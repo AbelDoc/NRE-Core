@@ -18,12 +18,12 @@
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        std::size_t firstLoopSize  = 10'000'000;
+        std::size_t firstLoopSize  = 1'000'000;
         std::size_t constexpr containerSize  = 216;
         std::size_t secondLoopSize = containerSize;
 
         std::cout << "Benchmark : NRE::Utility::String vs std::string" << std::endl;
-        std::cout << "Stress test [Constructor] : x" << firstLoopSize << std::endl;
+        std::cout << "Stress test [Constructor + End Find] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : char" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
@@ -37,7 +37,8 @@
         std::size_t capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            std::string str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            std::string str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB";
+            res = str.rfind("AB");
             capacity = str.capacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
@@ -65,7 +66,8 @@
         capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            NRE::Utility::String str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            NRE::Utility::String str = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB";
+            res = str.rfind("AB", str.getSize());
             capacity = str.getCapacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
