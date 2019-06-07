@@ -855,6 +855,44 @@
                          */
                         BasicString& operator+=(std::initializer_list<T> list);
 
+                    //## Comparison Operator ##//
+                        /**
+                         * Equality test between this and str
+                         * @param str the other string to compare with this
+                         * @return    the test result
+                         */
+                        bool operator==(BasicString const& str) const;
+                        /**
+                         * Inequality test between this and str
+                         * @param str the other string to compare with this
+                         * @return    the test result
+                         */
+                        bool operator!=(BasicString const& str) const;
+                        /**
+                         * Inferiority test between this and str
+                         * @param str the other string to compare with this
+                         * @return    the test result
+                         */
+                        bool operator<(BasicString const& str) const;
+                        /**
+                         * Inferior or Equal test between this and str
+                         * @param str the other string to compare with this
+                         * @return    the test result
+                         */
+                        bool operator<=(BasicString const& str) const;
+                        /**
+                         * Superiority test between this and str
+                         * @param str the other string to compare with this
+                         * @return    the test result
+                         */
+                        bool operator>(BasicString const& str) const;
+                        /**
+                         * Superior or Equal or Equal test between this and str
+                         * @param str the other string to compare with this
+                         * @return    the test result
+                         */
+                        bool operator>=(BasicString const& str) const;
+
                 private :   // Methods
                     /**
                      * Reallocate and grow the storage capacity
@@ -897,6 +935,23 @@
 
             typedef BasicString<char>    String;
             typedef BasicString<wchar_t> WideString;
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return the    modified stream
+             */
+            template <class T>
+            std::ostream& operator <<(std::ostream& stream, BasicString<T> const& o);
+            /**
+             * Input stream operator for the object
+             * @param  stream the stream to take the object data
+             * @param  o      the object to fill from the stream
+             * @return the    modified stream
+             */
+            template <class T>
+            std::istream& operator >>(std::istream& stream, BasicString<T>& o);
 
             /**
              * Concatenate two strings into a new one

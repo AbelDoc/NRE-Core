@@ -955,6 +955,39 @@
              }
 
              template <class T>
+             inline bool BasicString<T>::operator==(BasicString const& str) const {
+                 if (length != str.length) {
+                     return false;
+                 }
+                 return std::memcmp(data, str.data, length * sizeof(T)) == 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::operator!=(BasicString const& str) const {
+                 return !(*this == str);
+             }
+
+             template <class T>
+             inline bool BasicString<T>::operator<(BasicString const& str) const {
+                 return std::memcmp(data, str.data, length * sizeof(T)) < 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::operator<=(BasicString const& str) const {
+                 return std::memcmp(data, str.data, length * sizeof(T)) <= 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::operator>(BasicString const& str) const {
+                 return std::memcmp(data, str.data, length * sizeof(T)) > 0;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::operator>=(BasicString const& str) const {
+                 return std::memcmp(data, str.data, length * sizeof(T)) >= 0;
+             }
+
+             template <class T>
              inline void BasicString<T>::reallocate() {
                  reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
                                             : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
@@ -993,6 +1026,25 @@
              template <class T>
              inline void BasicString<T>::shiftBack(std::size_t start, std::size_t count) {
                  std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
+             }
+
+             template <class T>
+             std::ostream& operator <<(std::ostream& stream, BasicString<T> const& o) {
+                 return stream.write(o.getData(), o.getSize());
+             }
+
+             template <class T>
+             std::istream& operator >>(std::istream& stream, BasicString<T>& o) {
+                 if (!stream.eof()) {
+                     T current = static_cast <T> (stream.get());
+                     bool endRead = stream.eof() || std::isspace(current, stream.getloc());
+                     while (!endRead) {
+                         o.append(1, current);
+                         current = static_cast <T> (stream.get());
+                         endRead = stream.eof() || std::isspace(current, stream.getloc());
+                     }
+                 }
+                 return stream;
              }
 
              template <class T>
