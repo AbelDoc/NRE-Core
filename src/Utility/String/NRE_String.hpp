@@ -12,6 +12,7 @@
      #include <stdexcept>
      #include <utility>
      #include <cstring>
+     #include <cmath>
 
      /**
      * @namespace NRE
@@ -30,7 +31,7 @@
              */
             template <class T>
             class BasicString {
-                static_assert(std::is_scalar<T>::value, "You can't use BasicString with non-scalar types"); // Only work with POD types but restreign to scalar type
+                static_assert(std::is_integral<T>::value, "You can't use BasicString with non-integeral types"); // Only work with POD types but restreign to integral type
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;
@@ -265,6 +266,16 @@
                          */
                         void clear();
                         /**
+                         * Reverse the whole string
+                         */
+                        void reverse();
+                        /**
+                         * Reverse a part of the string
+                         * @param pos   the start for the reverse
+                         * @param count the number of character to reverse
+                         */
+                        void reverse(std::size_t pos, std::size_t count);
+                        /**
                          * Insert count copy of value at the specified position
                          * @param  start the position to insert values
                          * @param  count the number of copy
@@ -365,6 +376,91 @@
                          * Pop back the last character
                          */
                         void popBack();
+                        /**
+                         * Append the object to string
+                         * @param o the object to append
+                         * @return  the reference of himself
+                         */
+                        template <class K>
+                        BasicString& append(K const& o);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(bool value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(T value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(short int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(long int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(long long int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(unsigned short int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(unsigned int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(unsigned long int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(unsigned long long int value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(float value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(double value);
+                        /**
+                         * Append the object to string
+                         * @param value the object to append
+                         * @return      the reference of himself
+                         */
+                        BasicString& append(long double value);
                         /**
                          * Append count copy of value at the end of the string
                          * @param  count the number of copy
@@ -893,6 +989,20 @@
                          */
                         bool operator>=(BasicString const& str) const;
 
+                    //## Stream Operator ##//
+                        /**
+                         * Convert the object into a string representation
+                         * @return the converted object
+                         */
+                        BasicString const& toString() const;
+                        /**
+                         * Output stream operator for object
+                         * @param o the object to add in the string
+                         * @return  the reference of himself
+                         */
+                        template <class K>
+                        BasicString& operator <<(K const& o);
+
                 private :   // Methods
                     /**
                      * Reallocate and grow the storage capacity
@@ -940,7 +1050,7 @@
              * Output stream operator for the object
              * @param  stream the stream to add the object's string representation
              * @param  o      the object to add in the stream
-             * @return the    modified stream
+             * @return        the modified stream
              */
             template <class T>
             std::ostream& operator <<(std::ostream& stream, BasicString<T> const& o);
@@ -948,7 +1058,7 @@
              * Input stream operator for the object
              * @param  stream the stream to take the object data
              * @param  o      the object to fill from the stream
-             * @return the    modified stream
+             * @return        the modified stream
              */
             template <class T>
             std::istream& operator >>(std::istream& stream, BasicString<T>& o);

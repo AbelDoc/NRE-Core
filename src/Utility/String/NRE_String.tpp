@@ -263,6 +263,24 @@
              }
 
              template <class T>
+             inline void BasicString<T>::reverse() {
+                 reverse(0, length);
+             }
+
+             template <class T>
+             inline void BasicString<T>::reverse(std::size_t pos, std::size_t count) {
+                 std::size_t start = pos;
+                 std::size_t end = pos + count;
+                 while (start < end) {
+                     T value = data[start];
+                     data[start] = data[end];
+                     data[end] = value;
+                     start++;
+                     end--;
+                 }
+             }
+
+             template <class T>
              inline BasicString<T>& BasicString<T>::insert(std::size_t start, std::size_t count, T value) {
                  if (start > length) {
                      throw std::out_of_range("Inserting after NRE::Utility::String last element.");
@@ -288,11 +306,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::insert(std::size_t start, const T* str) {
-                 std::size_t count = 0;
-                 while (str[count] != '\0') {
-                     count++;
-                 }
-                 insert(start, count, str);
+                 insert(start, std::strlen(str), str);
              }
 
              template <class T>
@@ -456,6 +470,132 @@
              inline void BasicString<T>::popBack() {
                  length--;
                  addNullTerminated();
+             }
+
+             template <class T>
+             template <class K>
+             inline BasicString<T>& BasicString<T>::append(K const& o) {
+                 return *this + o.toString();
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(bool value) {
+                 if (value) {
+                     append("true");
+                 } else {
+                     append("false");
+                 }
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(T value) {
+                 return append(1, value);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(short int value) {
+                 return append(static_cast<long long int>(value));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(int value) {
+                 return append(static_cast<long long int>(value));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(long int value) {
+                 return append(static_cast<long long int>(value));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(long long int value) {
+                 if (value == 0) {
+                     append('0');
+                 } else {
+                     bool isNegative = value < 0;
+                     std::size_t sizeToAdd, toProcess;
+
+                     if (isNegative) {
+                         sizeToAdd = static_cast <std::size_t> (std::ceil(std::log10(-value)));
+                         reserve(length + sizeToAdd + 1);
+                         append('-');
+                         toProcess = -value;
+                     } else {
+                         sizeToAdd = static_cast <std::size_t> (std::ceil(std::log10(value)));
+                         reserve(length + sizeToAdd);
+                         toProcess = value;
+                     }
+
+                     std::size_t start = length;
+
+                     while (toProcess != 0) {
+                         append(static_cast <T> (toProcess % 10 + '0'));
+                         toProcess = toProcess / 10;
+                     }
+                     reverse(start, sizeToAdd - 1);
+                 }
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(unsigned short int value) {
+                 return append(static_cast<unsigned long long int>(value));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(unsigned int value) {
+                 return append(static_cast<unsigned long long int>(value));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(unsigned long int value) {
+                 return append(static_cast<unsigned long long int>(value));
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(unsigned long long int value) {
+                 if (value == 0) {
+                     append(1, '0');
+                 } else {
+                     std::size_t sizeToAdd = static_cast <std::size_t> (std::ceil(std::log10(value)));
+                     std::size_t toProcess = value;
+
+                     reserve(length + sizeToAdd);
+
+                     std::size_t start = length;
+
+                     while (toProcess != 0) {
+                         append(static_cast <T> (toProcess % 10 + '0'));
+                         toProcess = toProcess / 10;
+                     }
+                     reverse(start, sizeToAdd - 1);
+                 }
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(float value) {
+                 char str[10];
+                 std::sprintf(str, "%f", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(double value) {
+                 char str[20];
+                 std::sprintf(str, "%f", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::append(long double value) {
+                 char str[20];
+                 std::sprintf(str, "%Lf", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
@@ -689,7 +829,7 @@
              template <class T>
              inline void BasicString<T>::resize(std::size_t count, T value) {
                  if (capacity < count) {
-                     reserve(count);
+                     reallocate(count);
                      for (std::size_t index = length; index != count; index++) {
                          data[index] = value;
                      }
@@ -985,6 +1125,17 @@
              template <class T>
              inline bool BasicString<T>::operator>=(BasicString const& str) const {
                  return std::memcmp(data, str.data, length * sizeof(T)) >= 0;
+             }
+
+             template <class T>
+             inline BasicString<T> const& BasicString<T>::toString() const {
+                 return *this;
+             }
+
+             template <class T>
+             template <class K>
+             inline BasicString<T>& BasicString<T>::operator<<(K const& o) {
+                 return append(o);
              }
 
              template <class T>
