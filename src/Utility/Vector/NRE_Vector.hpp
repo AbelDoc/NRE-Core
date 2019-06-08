@@ -13,6 +13,8 @@
      #include <utility>
      #include <cstring>
 
+     #include "../String/NRE_String.hpp"
+
      /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -393,6 +395,13 @@
                          */
                         bool operator !=(Vector const& vec) const;
 
+                    //## Stream Operator ##//
+                        /**
+                         * Convert the object into a string representation
+                         * @return the converted object
+                         */
+                        String toString() const;
+
                 private :   // Methods
                     /**
                      * Reallocate and grow the storage capacity
@@ -496,6 +505,15 @@
                     static constexpr float GROW_FACTOR = 1.5;
                     static constexpr std::size_t BASE_ALLOCATION_SIZE = 8;
             };
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return        the modified stream
+             */
+            template <class T>
+            std::ostream& operator <<(std::ostream& stream, Vector<T> const& o);
         }
     }
 

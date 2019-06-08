@@ -87,5 +87,8 @@
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;
         std::cout << "\tBest    : " << bestNRE  << " ns" << std::endl;
 
+        NRE::Utility::Array<int, 7> vec(0, 1, 2, 3, 4, 5, 6);
+        std::cout << vec << std::endl;
+
         return 0;
     }

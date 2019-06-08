@@ -166,5 +166,22 @@
                  return !(*this == arr);
              }
 
+             template <class T, std::size_t Size>
+             inline String Array<T, Size>::toString() const {
+                 String res;
+                 res.reserve(5 * Size);
+                 res << '[' << data[0];
+                 for (std::size_t index = 1; index < Size - 1; index++) {
+                     res << ',' << ' ' << data[index];
+                 }
+                 res << ',' << ' ' << data[Size - 1] << ']';
+                 return res;
+             }
+
+             template <class T, std::size_t Size>
+             std::ostream& operator <<(std::ostream& stream, Array<T, Size> const& o) {
+                 return stream << o.toString();
+             }
+
          }
      }

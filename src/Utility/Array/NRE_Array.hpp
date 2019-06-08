@@ -14,6 +14,8 @@
      #include <utility>
      #include <cstring>
 
+     #include "../String/NRE_String.hpp"
+
      /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -233,6 +235,13 @@
                          */
                         bool operator !=(Array const& arr) const;
 
+                    //## Stream Operator ##//
+                        /**
+                         * Convert the object into a string representation
+                         * @return the converted object
+                         */
+                        String toString() const;
+
                 private :   // Methods
                     /**
                      * Copy the array content
@@ -271,6 +280,15 @@
                         std::memcpy(data, arr.data, Size * sizeof(T));
                     }
             };
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return        the modified stream
+             */
+            template <class T, std::size_t Size>
+            std::ostream& operator <<(std::ostream& stream, Array<T, Size> const& o);
 
         }
     }

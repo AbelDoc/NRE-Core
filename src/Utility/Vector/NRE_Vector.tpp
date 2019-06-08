@@ -395,6 +395,18 @@
              }
 
              template <class T>
+             inline String Vector<T>::toString() const {
+                 String res;
+                 res << '[' << data[0];
+                 res.reserve((res.getSize() + 2) * length);
+                 for (std::size_t index = 1; index < length - 1; index++) {
+                     res << ',' << ' ' << data[index];
+                 }
+                 res << ',' << ' ' << data[length - 1] << ']';
+                 return res;
+             }
+
+             template <class T>
              inline void Vector<T>::reallocate() {
                  reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
                                             : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
@@ -408,6 +420,11 @@
                      newSize = static_cast <std::size_t> (static_cast <float> (newSize) * GROW_FACTOR);
                  }
                  reallocate(newSize);
+             }
+
+             template <class T>
+             std::ostream& operator <<(std::ostream& stream, Vector<T> const& o) {
+                 return stream << o.toString();
              }
 
          }
