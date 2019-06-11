@@ -44,8 +44,7 @@
              }
 
              template <class T>
-             inline BasicString<T>::BasicString(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new ((length + 1) * sizeof(T)))) {
-                 assign(init);
+             inline BasicString<T>::BasicString(std::initializer_list<T> init) : BasicString(init.begin(), init.end()) {
              }
 
              template <class T>
@@ -61,6 +60,9 @@
              template <class T>
              inline BasicString<T>::~BasicString() {
                  ::operator delete(data);
+                 data = nullptr;
+                 length = 0;
+                 capacity = 0;
              }
 
              template <class T>
@@ -237,17 +239,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::assign(std::initializer_list<T> init) {
-                 std::size_t count = init.size();
-                 if (capacity < count) {
-                     reserveWithGrowFactor(count);
-                 }
-                 std::size_t current = 0;
-                 for (auto it = init.begin(); it != init.end(); it++) {
-                     data[current++] = std::move(*it);
-                 }
-                 length = count;
-                 addNullTerminated();
-                 return *this;
+                 return assign(init.begin(), init.end());
              }
 
              template <class T>
@@ -409,27 +401,7 @@
 
              template <class T>
              inline typename BasicString<T>::Iterator BasicString<T>::insert(ConstIterator start, std::initializer_list<T> list) {
-                 std::size_t index = start - ConstIterator(data);
-                 std::size_t count = list.size();
-                 if (capacity < length + count) {
-                     reserveWithGrowFactor(length + count);
-                 }
-                 if (index == length) {
-                     std::size_t current = index;
-                     for (auto it = list.begin(); it != list.end(); it++) {
-                         data[current++] = std::move(*it);
-                     }
-                     length += count;
-                     addNullTerminated();
-                 } else {
-                     shift(index, count);
-                     std::size_t current = index;
-                     for (auto it = list.begin(); it != list.end(); it++) {
-                         data[current++] = std::move(*it);
-                     }
-                     length += count;
-                 }
-                 return Iterator(data + index + count);
+                 return insert(start, list.begin(), list.end());
              }
 
              template <class T>
@@ -655,17 +627,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(std::initializer_list<T> list) {
-                 std::size_t count = list.size();
-                 if (capacity < length + count) {
-                     reserveWithGrowFactor(length + count);
-                 }
-                 std::size_t current = length;
-                 for (auto it = list.begin(); it != list.end(); it++) {
-                     data[current++] = std::move(*it);
-                 }
-                 length += count;
-                 addNullTerminated();
-                 return *this;
+                 return append(list.begin(), list.end());
              }
 
              template <class T>
@@ -1058,10 +1020,8 @@
              template <class T>
              inline BasicString<T>& BasicString<T>::operator =(BasicString const& str) {
                  if (str.data != data) {
-                     length = str.length;
-                     capacity = str.capacity;
-                     data = static_cast <T*> (::operator new((capacity + 1) * sizeof(T)));
-                     assign(str);
+                     BasicString copy(str);
+                     swap(copy);
                  }
                  return *this;
              }

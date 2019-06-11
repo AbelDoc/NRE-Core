@@ -64,7 +64,7 @@
                     template <class K>
                     class ForwardIterator {
                         private :   // Fields
-                            K* current;         /**< The current iterator node */
+                            Node* current;         /**< The current iterator node */
                             bool beforeBegin;   /**< Tell if we are before the begin */
 
                         public :    // Methods
@@ -78,7 +78,7 @@
                                  * @param node   the iterator node
                                  * @param before if we are before the begin
                                  */
-                                ForwardIterator(K* node, bool before = false);
+                                ForwardIterator(Node* node, bool before = false);
 
                             //## Copy Constructor ##//
                                 /**
@@ -106,12 +106,12 @@
                                  * Dereference operator, allow access to the data
                                  * @return the iterator data
                                  */
-                                T& operator*() const;
+                                K& operator*() const;
                                 /**
                                  * Arrow dereference operator, allow access to the data
                                  * @return the iterator data
                                  */
-                                T& operator->() const;
+                                K& operator->() const;
 
                             //## Increment Operator ##//
                                 /**
@@ -142,9 +142,9 @@
                     };
 
                     /**< Shortcut to hide Iterator implementation */
-                    typedef ForwardIterator<Node>          Iterator;
+                    typedef ForwardIterator<T>          Iterator;
                     /**< Shortcut to hide ConstIterator implementation */
-                    typedef ForwardIterator<const Node>    ConstIterator;
+                    typedef ForwardIterator<const T>    ConstIterator;
 
                 private :   // Fields
                     Node* front;    /**< The front node of the list */
@@ -294,6 +294,52 @@
                          * @return      an iterator on the last inserted element
                          */
                         Iterator insertAfter(ConstIterator pos, std::initializer_list<T> list);
+                        /**
+                         * Emplace an element after the given position
+                         * @param  pos  the position to insert after
+                         * @param  args the parameters pack used to create the element
+                         * @return      an interator on the inserted element
+                         */
+                        template <class ... Args>
+                        Iterator emplaceAfter(ConstIterator pos, Args && ... args);
+                        /**
+                         * Erase the element after the given position
+                         * @param  pos the position to erase after
+                         * @return     the iterator on the element after the erased element
+                         */
+                        Iterator eraseAfter(ConstIterator pos);
+                        /**
+                         * Erase all element in the given range except the begin and end
+                         * @param  begin the begin position to erase after
+                         * @param  end   the end iterator
+                         * @return       the end iterator
+                         */
+                        Iterator eraseAfter(ConstIterator begin, ConstIterator end);
+                        /**
+                         * Insert a copy of the given element to the front of the list
+                         * @param value the value to insert
+                         */
+                        void pushFront(T const& value);
+                        /**
+                         * Insert the given element to the front of the list
+                         * @param value the value to insert
+                         */
+                        void pushFront(T && value);
+                        /**
+                         * Emplace an element to the the front of the list
+                         * @param args the parameters pack used to create the element
+                         */
+                        template <class ... Args>
+                        void emplaceFront(Args && ... args);
+                        /**
+                         * Pop the front of the list
+                         */
+                        void popFront();
+                        /**
+                         * Swap the content of the given list with this
+                         * @param list the other list
+                         */
+                        void swap(ForwardList& list);
 
                     //## Assignment Operator ##//
                         /**

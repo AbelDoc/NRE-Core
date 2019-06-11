@@ -30,12 +30,7 @@
              }
 
              template <class T>
-             inline Vector<T>::Vector(std::initializer_list<T> init) : length(init.size()), capacity(length), data(static_cast <T*> (::operator new (length * sizeof(T)))) {
-                 std::size_t current = 0;
-                 for (auto it = init.begin(); it != init.end(); it++) {
-                     data[current] = *(new(&data[current]) T (std::move(*it)));
-                     current++;
-                 }
+             inline Vector<T>::Vector(std::initializer_list<T> init) :Vector(init.begin(), init.end()) {
              }
 
              template <class T>
@@ -238,20 +233,7 @@
 
              template <class T>
              inline typename Vector<T>::Iterator Vector<T>::insert(ConstIterator start, std::initializer_list<T> list) {
-                 std::size_t count = list.size();
-                     std::size_t index = start - ConstIterator(data);
-                 if (capacity < length + count) {
-                     reserveWithGrowFactor(length + count);
-                 }
-                 if (index < length) {
-                     shift(index, count);
-                 }
-                 for (auto it = list.begin(); it != list.end(); it++) {
-                     data[index] = *(new(&data[index]) T (std::move(*it)));
-                     index++;
-                 }
-                 length += count;
-                 return Iterator(data + index);
+                 return insert(start, list.begin(), list.end());
              }
 
              template <class T>
@@ -347,12 +329,8 @@
              template <class T>
              inline Vector<T>& Vector<T>::operator =(Vector const& vec) {
                  if (vec.data != data) {
-                     clear();
-                     length = vec.length;
-                     capacity = vec.capacity;
-                     data = static_cast <T*> (::operator new(capacity * sizeof(T)));
-
-                     copy(vec);
+                     Vector copy(vec);
+                     swap(copy);
                  }
                  return *this;
              }
@@ -360,14 +338,8 @@
              template <class T>
              inline Vector<T>& Vector<T>::operator =(Vector && vec) {
                  if (vec.data != data) {
-                     clear();
-                     length = vec.length;
-                     capacity = vec.capacity;
-                     data = std::move(vec.data);
-
-                     vec.length = 0;
-                     vec.capacity = 0;
-                     vec.data = nullptr;
+                     Vector move(std::move(vec));
+                     swap(move);
                  }
                  return *this;
              }
