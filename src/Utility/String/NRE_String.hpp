@@ -102,7 +102,7 @@
                     //## Move Constructor ##//
                         /**
                          * Move str into this
-                         * @param  str the string to copy
+                         * @param  str the string to move
                          */
                         BasicString(BasicString && str);
 
@@ -168,7 +168,7 @@
                         /**
                          * @return if the array is empty
                          */
-                        constexpr bool isEmpty() const;
+                        bool isEmpty() const;
 
                     //## Iterator Access ##//
                         /**

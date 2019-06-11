@@ -12,6 +12,7 @@
     #include "../Utility/Array/NRE_Array.hpp"
     #include "../Utility/Vector/NRE_Vector.hpp"
     #include "../Utility/String/NRE_String.hpp"
+    #include "../Utility/ForwardList/NRE_ForwardList.hpp"
 
     #include "../Utility/Observer/NRE_Observer.hpp"
     #include "../Utility/Observable/NRE_Observable.hpp"

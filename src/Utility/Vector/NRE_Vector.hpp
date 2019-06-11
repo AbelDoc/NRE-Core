@@ -90,7 +90,7 @@
                     //## Move Constructor ##//
                         /**
                          * Move vec into this
-                         * @param  vec the vector to copy
+                         * @param  vec the vector to move
                          */
                         Vector(Vector && vec);
 
@@ -152,7 +152,7 @@
                         /**
                          * @return if the array is empty
                          */
-                        constexpr bool isEmpty() const;
+                        bool isEmpty() const;
 
                     //## Iterator Access ##//
                         /**

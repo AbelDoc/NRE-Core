@@ -118,7 +118,7 @@
              }
 
              template <class T>
-             inline constexpr bool Vector<T>::isEmpty() const {
+             inline bool Vector<T>::isEmpty() const {
                  return length == 0;
              }
 
@@ -198,16 +198,7 @@
 
              template <class T>
              inline typename Vector<T>::Iterator Vector<T>::insert(ConstIterator start, T const& value) {
-                 std::size_t index = start - ConstIterator(data);
-                 if (capacity < length + 1) {
-                     reallocate();
-                 }
-                 if (index < length) {
-                     shift(index, 1);
-                 }
-                 length++;
-                 data[index] = *(new(&data[index]) T (value));
-                 return Iterator(data + index);
+                 return emplace(start, value);
              }
 
              template <class T>
@@ -300,20 +291,12 @@
 
              template <class T>
              inline void Vector<T>::pushBack(T const& value) {
-                 if (capacity < length + 1) {
-                     reallocate();
-                 }
-                 data[length] = *(new(&data[length]) T (value));
-                 length++;
+                 emplaceBack(value);
              }
 
              template <class T>
              inline void Vector<T>::pushBack(T && value) {
-                 if (capacity < length + 1) {
-                     reallocate();
-                 }
-                 data[length] = *(new(&data[length]) T (value));
-                 length++;
+                 emplaceBack(std::move(value));
              }
 
              template <class T>

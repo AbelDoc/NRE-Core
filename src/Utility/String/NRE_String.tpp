@@ -125,7 +125,7 @@
              }
 
              template <class T>
-             inline constexpr bool BasicString<T>::isEmpty() const {
+             inline bool BasicString<T>::isEmpty() const {
                  return length == 0;
              }
 
