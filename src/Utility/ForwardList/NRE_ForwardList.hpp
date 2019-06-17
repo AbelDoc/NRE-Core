@@ -33,13 +33,12 @@
             class ForwardList {
                 private :   // Structures
                     /**
-                     * @class Node
+                     * @class NodeBase
                      * @brief Internal data structure to store forward list node
                      */
-                    class Node {
+                    class NodeBase {
                         public :    // Fields
-                            T data;     /**< The data from the node */
-                            T* next;    /**< The next node */
+                            NodeBase* next;    /**< The next node */
 
                         public :    // Methods
                             /**
@@ -47,13 +46,29 @@
                              * @param value the node data
                              * @param node  the next node
                              */
-                            Node(T const& value, T* node);
+                            NodeBase(NodeBase* node);
+                    };
+                    /**
+                     * @class Node
+                     * @brief Internal data structure to store forward list node
+                     */
+                    class Node : public NodeBase {
+                        public :    // Fields
+                            T data;     /**< The data from the node */
+
+                        public :    // Methods
                             /**
                              * Construct the node
                              * @param value the node data
                              * @param node  the next node
                              */
-                            Node(T && value, T* node);
+                            Node(T const& value, NodeBase* node);
+                            /**
+                             * Construct the node
+                             * @param value the node data
+                             * @param node  the next node
+                             */
+                            Node(T && value, NodeBase* node);
                     };
 
                 public :    // Iterator
@@ -63,9 +78,9 @@
                      */
                     template <class K>
                     class ForwardIterator {
+                        friend class ForwardList<T>;
                         private :   // Fields
-                            Node* current;         /**< The current iterator node */
-                            bool beforeBegin;   /**< Tell if we are before the begin */
+                            NodeBase* current;      /**< The current iterator node */
 
                         public :    // Methods
                             //## Constructor ##//
@@ -76,9 +91,8 @@
                                 /**
                                  * Construct the iterator with the give node
                                  * @param node   the iterator node
-                                 * @param before if we are before the begin
                                  */
-                                ForwardIterator(Node* node, bool before = false);
+                                ForwardIterator(NodeBase* node);
 
                             //## Copy Constructor ##//
                                 /**
@@ -148,6 +162,7 @@
 
                 private :   // Fields
                     Node* front;    /**< The front node of the list */
+                    std::size_t length; /**< The size of the list */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -204,9 +219,13 @@
                          */
                         T const& getFront() const;
                         /**
-                         * @return the maximum array size
+                         * @return the maximum list size
                          */
                         constexpr std::size_t getMaxSize() const;
+                        /**
+                         * @return the list size
+                         */
+                        std::size_t getSize() const;
                         /**
                          * @return if the list is empty
                          */
@@ -222,6 +241,10 @@
                          */
                         ConstIterator beforeBegin() const;
                         /**
+                         * @return a const iterator on the element before the first element
+                         */
+                        ConstIterator cbeforeBegin() const;
+                        /**
                          * @return an iterator on the first element
                          */
                         Iterator begin();
@@ -230,6 +253,10 @@
                          */
                         ConstIterator begin() const;
                         /**
+                         * @return a const iterator on the first element
+                         */
+                        ConstIterator cbegin() const;
+                        /**
                          * @return an iterator on the end of the container
                          */
                         Iterator end();
@@ -237,6 +264,10 @@
                          * @return a const iterator on the end of the container
                          */
                         ConstIterator end() const;
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        ConstIterator cend() const;
 
                     //## Methods ##//
                         /**
@@ -336,10 +367,106 @@
                          */
                         void popFront();
                         /**
+                         * Resize the container up the given size, insert value if needed
+                         * @param count the new capacity
+                         */
+                        void resize(std::size_t count);
+                        /**
+                         * Resize the container up the given size, insert value if needed
+                         * @param count the new capacity
+                         * @param value the value used when inserting
+                         */
+                        void resize(std::size_t count, T const& value);
+                        /**
                          * Swap the content of the given list with this
                          * @param list the other list
                          */
                         void swap(ForwardList& list);
+                        /**
+                         * Merge this with list, both need to be sorted, list becomes empty
+                         * @param list the other list to merge with this
+                         */
+                        void merge(ForwardList& list);
+                        /**
+                         * Merge this with list, both need to be sorted, list becomes empty
+                         * @param list the other list to merge with this
+                         */
+                        void merge(ForwardList && list);
+                        /**
+                         * Merge this with list, both need to be sorted, list becomes empty
+                         * @param list the other list to merge with this
+                         * @param comp function which returns ​true if the first argument is less than the second
+                         */
+                        template <class Comparator>
+                        void merge(ForwardList& list, Comparator comp);
+                        /**
+                         * Merge this with list, both need to be sorted, list becomes empty
+                         * @param list the other list to merge with this
+                         * @param comp function which returns ​true if the first argument is less than the second
+                         */
+                        template <class Comparator>
+                        void merge(ForwardList && list, Comparator comp);
+                        /**
+                         * Move elements from list into this, insertion start after pos
+                         * @param pos  the position to insert after
+                         * @param list the list to empty
+                         */
+                        void spliceAfter(ConstIterator pos, ForwardList& list);
+                        /**
+                         * Move elements from list into this, insertion start after pos
+                         * @param pos  the position to insert after
+                         * @param list the list to empty
+                         */
+                        void spliceAfter(ConstIterator pos, ForwardList && list);
+                        /**
+                         * Move the element pointed by it from list into this, insertion start after pos
+                         * @param pos  the position to insert after
+                         * @param list the list to empty
+                         * @param it   the element to move
+                         */
+                        void spliceAfter(ConstIterator pos, ForwardList& list, ConstIterator it);
+                        /**
+                         * Move the element pointed by it from list into this, insertion start after pos
+                         * @param pos  the position to insert after
+                         * @param list the list to empty
+                         * @param it   the element to move
+                         */
+                        void spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator it);
+                        /**
+                         * Move elements in the given range (begin, end) from list into this, insertion start after pos
+                         * @param pos   the position to insert after
+                         * @param list  the list to empty
+                         * @param begin the range start to take elements from
+                         * @param end   the range end to take elements from
+                         */
+                        void spliceAfter(ConstIterator pos, ForwardList& list, ConstIterator begin, ConstIterator end);
+                        /**
+                         * Move elements in the given range (begin, end) from list into this, insertion start after pos
+                         * @param pos   the position to insert after
+                         * @param list  the list to empty
+                         * @param begin the range start to take elements from
+                         * @param end   the range end to take elements from
+                         */
+                        void spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator begin, ConstIterator end);
+                        /**
+                         * Remove all elements in the list equals to the given value
+                         * @param value the value to erase
+                         */
+                        void remove(T const& value);
+                        /**
+                         * Remove all elements in the list where p return true
+                         * @param p the predicate used to remove
+                         */
+                        template <class UnaryPredicate>
+                        void removeIf(UnaryPredicate p);
+                        /**
+                         * Reverse the list
+                         */
+                        void reverse();
+                        /**
+                         * Remove successive redondants elements
+                         */
+                        void unique();
 
                     //## Assignment Operator ##//
                         /**
@@ -355,6 +482,38 @@
                          */
                         ForwardList& operator =(ForwardList && list);
 
+                    //## Comparison Operator ##//
+                        /**
+                         * Equality test between this and list
+                         * @param list the other list to compare with this
+                         * @return     the test result
+                         */
+                        bool operator==(ForwardList const& list) const;
+                        /**
+                         * Inequality test between this and list
+                         * @param list the other list to compare with this
+                         * @return     the test result
+                         */
+                        bool operator!=(ForwardList const& list) const;
+
+                    //## Stream Operator ##//
+                        /**
+                         * Convert the object into a string representation
+                         * @return the converted object
+                         */
+                        String toString() const;
+
             };
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return        the modified stream
+             */
+            template <class T>
+            std::ostream& operator <<(std::ostream& stream, ForwardList<T> const& o);
         }
     }
+
+    #include "NRE_ForwardList.tpp"

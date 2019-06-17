@@ -97,6 +97,11 @@
              }
 
              template <class T, std::size_t Size>
+             inline typename Array<T, Size>::ConstIterator Array<T, Size>::cbegin() const {
+                 return begin();
+             }
+
+             template <class T, std::size_t Size>
              inline typename Array<T, Size>::Iterator Array<T, Size>::end() {
                  return data + Size;
              }
@@ -104,6 +109,11 @@
              template <class T, std::size_t Size>
              inline typename Array<T, Size>::ConstIterator Array<T, Size>::end() const {
                  return data + Size;
+             }
+
+             template <class T, std::size_t Size>
+             inline typename Array<T, Size>::ConstIterator Array<T, Size>::cend() const {
+                 return end();
              }
 
              template <class T, std::size_t Size>
@@ -117,6 +127,11 @@
              }
 
              template <class T, std::size_t Size>
+             inline typename Array<T, Size>::ConstReverseIterator Array<T, Size>::crbegin() const {
+                 return rbegin();
+             }
+
+             template <class T, std::size_t Size>
              inline typename Array<T, Size>::ReverseIterator Array<T, Size>::rend() {
                  return ReverseIterator(data);
              }
@@ -124,6 +139,11 @@
              template <class T, std::size_t Size>
              inline typename Array<T, Size>::ConstReverseIterator Array<T, Size>::rend() const {
                  return ConstReverseIterator(data);
+             }
+
+             template <class T, std::size_t Size>
+             inline typename Array<T, Size>::ConstReverseIterator Array<T, Size>::crend() const {
+                 return rend();
              }
 
              template <class T, std::size_t Size>
@@ -171,10 +191,10 @@
                  String res;
                  res.reserve(5 * Size);
                  res << '[' << data[0];
-                 for (std::size_t index = 1; index < Size - 1; index++) {
+                 for (std::size_t index = 1; index < Size; index++) {
                      res << ',' << ' ' << data[index];
                  }
-                 res << ',' << ' ' << data[Size - 1] << ']';
+                 res << ']';
                  return res;
              }
 

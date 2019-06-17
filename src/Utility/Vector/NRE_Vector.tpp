@@ -128,6 +128,11 @@
              }
 
              template <class T>
+             inline typename Vector<T>::ConstIterator Vector<T>::cbegin() const {
+                 return begin();
+             }
+
+             template <class T>
              inline typename Vector<T>::Iterator Vector<T>::end() {
                  return data + length;
              }
@@ -135,6 +140,11 @@
              template <class T>
              inline typename Vector<T>::ConstIterator Vector<T>::end() const {
                  return data + length;
+             }
+
+             template <class T>
+             inline typename Vector<T>::ConstIterator Vector<T>::cend() const {
+                 return end();
              }
 
              template <class T>
@@ -148,6 +158,11 @@
              }
 
              template <class T>
+             inline typename Vector<T>::ConstReverseIterator Vector<T>::crbegin() const {
+                 return rbegin();
+             }
+
+             template <class T>
              inline typename Vector<T>::ReverseIterator Vector<T>::rend() {
                  return ReverseIterator(data);
              }
@@ -155,6 +170,11 @@
              template <class T>
              inline typename Vector<T>::ConstReverseIterator Vector<T>::rend() const {
                  return ConstReverseIterator(data);
+             }
+
+             template <class T>
+             inline typename Vector<T>::ConstReverseIterator Vector<T>::crend() const {
+                 return rend();
              }
 
              template <class T>
@@ -329,8 +349,8 @@
              template <class T>
              inline Vector<T>& Vector<T>::operator =(Vector const& vec) {
                  if (vec.data != data) {
-                     Vector copy(vec);
-                     swap(copy);
+                     Vector vecCopy(vec);
+                     swap(vecCopy);
                  }
                  return *this;
              }
@@ -354,10 +374,10 @@
                  String res;
                  res << '[' << data[0];
                  res.reserve((res.getSize() + 2) * length);
-                 for (std::size_t index = 1; index < length - 1; index++) {
+                 for (std::size_t index = 1; index < length; index++) {
                      res << ',' << ' ' << data[index];
                  }
-                 res << ',' << ' ' << data[length - 1] << ']';
+                 res << ']';
                  return res;
              }
 

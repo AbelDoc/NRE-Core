@@ -54,7 +54,7 @@
 
              template <class T>
              inline BasicString<T>::BasicString(BasicString && str) {
-                 assign(str);
+                 assign(std::move(str));
              }
 
              template <class T>
@@ -142,6 +142,11 @@
              }
 
              template <class T>
+             inline typename BasicString<T>::ConstIterator BasicString<T>::cbegin() const {
+                 return begin();
+             }
+
+             template <class T>
              inline typename BasicString<T>::Iterator BasicString<T>::end() {
                  return data + length;
              }
@@ -149,6 +154,11 @@
              template <class T>
              inline typename BasicString<T>::ConstIterator BasicString<T>::end() const {
                  return data + length;
+             }
+
+             template <class T>
+             inline typename BasicString<T>::ConstIterator BasicString<T>::cend() const {
+                 return end();
              }
 
              template <class T>
@@ -162,6 +172,11 @@
              }
 
              template <class T>
+             inline typename BasicString<T>::ConstReverseIterator BasicString<T>::crbegin() const {
+                 return rbegin();
+             }
+
+             template <class T>
              inline typename BasicString<T>::ReverseIterator BasicString<T>::rend() {
                  return ReverseIterator(data);
              }
@@ -169,6 +184,11 @@
              template <class T>
              inline typename BasicString<T>::ConstReverseIterator BasicString<T>::rend() const {
                  return ConstReverseIterator(data);
+             }
+
+             template <class T>
+             inline typename BasicString<T>::ConstReverseIterator BasicString<T>::crend() const {
+                 return rend();
              }
 
              template <class T>
@@ -203,6 +223,7 @@
                  str.length = 0;
                  str.capacity = 0;
                  str.data = nullptr;
+                 return *this;
              }
 
              template <class T>
@@ -1029,7 +1050,7 @@
              template <class T>
              inline BasicString<T>& BasicString<T>::operator =(BasicString && str) {
                  if (str.data != data) {
-                     assign(str);
+                     assign(std::move(str));
                  }
                  return *this;
              }

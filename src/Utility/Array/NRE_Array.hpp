@@ -139,6 +139,10 @@
                          */
                         ConstIterator begin() const;
                         /**
+                         * @return a const iterator on the first element
+                         */
+                        ConstIterator cbegin() const;
+                        /**
                          * @return an iterator on the end of the container
                          */
                         Iterator end();
@@ -146,6 +150,10 @@
                          * @return a const iterator on the end of the container
                          */
                         ConstIterator end() const;
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        ConstIterator cend() const;
                         /**
                          * @return a reverse iterator on the first element
                          */
@@ -155,6 +163,10 @@
                          */
                         ConstReverseIterator rbegin() const;
                         /**
+                         * @return a const reverse iterator on the first element
+                         */
+                        ConstReverseIterator crbegin() const;
+                        /**
                          * @return a reverse iterator on the end of the container
                          */
                         ReverseIterator rend();
@@ -162,6 +174,10 @@
                          * @return a const reverse iterator on the end of the container
                          */
                         ConstReverseIterator rend() const;
+                        /**
+                         * @return a const reverse iterator on the end of the container
+                         */
+                        ConstReverseIterator crend() const;
 
                     //## Methods ##//
                         /**
