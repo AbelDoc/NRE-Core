@@ -9,3 +9,4 @@
 
     #include <Header/NRE_Tester.cpp>
     #include "Utility/Array/NRE_Array.cpp"
+    #include "Utility/Vector/NRE_Vector.cpp"

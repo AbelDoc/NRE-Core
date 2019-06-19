@@ -28,6 +28,7 @@
     TEST(Array, Data) {
         Array<int, 5> array({0, 1, 2, 3, 4});
         assertEquals(this, array.getData(), &(array.get(0)));
+        assertNotNull(this, array.getData());
     }
 
     TEST(Array, Front) {

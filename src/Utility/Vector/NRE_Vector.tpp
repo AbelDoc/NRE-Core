@@ -186,6 +186,7 @@
                  for (std::size_t i = 0; i < count; i++) {
                      data[i] = *(new(&data[i]) T (value));
                  }
+                 length = count;
              }
 
              template <class T>
@@ -267,6 +268,7 @@
                      shift(index, 1);
                  }
                  data[index] = *(new(&data[index]) T (std::forward<Args>(args)...));
+                 length++;
                  return Iterator(data + index);
              }
 
@@ -330,7 +332,7 @@
 
              template <class T>
              inline void Vector<T>::swap(Vector& vec) {
-                 using namespace std;
+                 using std::swap;
                  swap(length, vec.length);
                  swap(capacity, vec.capacity);
                  swap(data, vec.data);
