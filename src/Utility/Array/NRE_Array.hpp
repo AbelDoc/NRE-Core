@@ -53,11 +53,10 @@
                          */
                         Array() = default;
                         /**
-                         * Cosntruct the array from an initialisation pack
-                         * @param args the pack of value to set in the array
+                         * Cosntruct the array from a list
+                         * @param list the list of value
                          */
-                        template <class ... Args>
-                        Array(Args && ... args);
+                        Array(std::initializer_list<T> list);
 
                     //## Copy Constructor ##//
                         /**
@@ -242,7 +241,7 @@
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                         bool operator ==(Array const& arr) const {
-                            return std::memcmp(data, arr.data, Size * sizeof(T));
+                            return std::memcmp(data, arr.data, Size * sizeof(T)) == 0;
                         }
                         /**
                          * Inequality test between this and arr

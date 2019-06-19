@@ -11,8 +11,11 @@
          namespace Utility {
 
              template <class T, std::size_t Size>
-             template <class ... Args>
-             inline Array<T, Size>::Array(Args && ... args) : data{static_cast <T> (std::forward<Args>(args))...} {
+             inline Array<T, Size>::Array(std::initializer_list<T> list) {
+                 std::size_t index = 0;
+                 for (auto it = list.begin(); it != list.end(); it++) {
+                     data[index++] = *it;
+                 }
              }
 
              template <class T, std::size_t Size>
@@ -73,7 +76,7 @@
 
              template <class T, std::size_t Size>
              inline constexpr bool Array<T, Size>::isEmpty() const {
-                 return Size == 0;
+                 return false;
              }
 
              template <class T, std::size_t Size>
@@ -83,7 +86,7 @@
 
              template <class T, std::size_t Size>
              inline constexpr std::size_t Array<T, Size>::getMaxSize() const {
-                 return Size;
+                 return std::numeric_limits<std::size_t>::max();
              }
 
              template <class T, std::size_t Size>
@@ -155,7 +158,7 @@
 
              template <class T, std::size_t Size>
              inline void Array<T, Size>::swap(Array& arr) noexcept {
-                 using namespace std;
+                 using std::swap;
                  swap(data, arr.data);
              }
 
