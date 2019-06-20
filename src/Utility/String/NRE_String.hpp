@@ -226,6 +226,7 @@
                          * Assign the string with count copy of value, starting from the beginning
                          * @param count the number of copy
                          * @param value the copy to fill the string with
+                         * @return      the reference on himself
                          */
                         BasicString& assign(std::size_t count, T value);
                         /**
@@ -239,6 +240,7 @@
                          * @param pos   the start position
                          * @param count the number of element to take from str
                          * @param str   the other string
+                         * @return     the reference on himself
                          */
                         BasicString& assign(std::size_t pos, std::size_t count, BasicString const& str);
                         /**
@@ -251,11 +253,13 @@
                          * Replace the string content with count first element from str
                          * @param count the number of element to take from str
                          * @param str   the other string
+                         * @return      the reference on himself
                          */
                         BasicString& assign(std::size_t count, const T* str);
                         /**
                          * Replace the string content filled with str element, str need to be terminated by a null character
                          * @param str the other string
+                         * @return    the reference on himself
                          */
                         BasicString& assign(const T* str);
                         /**
@@ -263,6 +267,7 @@
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
                          * @pre begin and end are not iterator from the string
+                         * @return       the reference on himself
                          */
                         template <class InputIterator>
                         BasicString& assign(InputIterator begin, InputIterator end);
@@ -270,6 +275,7 @@
                          * Replace the string content with content from an initializer list
                          * @param  init the list to fill the string with
                          * @pre list don't contain string reference
+                         * @return      the reference on himself
                          */
                         BasicString& assign(std::initializer_list<T> init);
                         /**
@@ -721,7 +727,7 @@
                          * @param  count the number of character to copy
                          * @return       the number of copied character
                          */
-                        std::size_t copy(const T* str, std::size_t pos, std::size_t count) const;
+                        std::size_t copy(T* str, std::size_t pos, std::size_t count) const;
                         /**
                          * Resize the string up the given size, insert value if needed
                          * @param count the new capacity
@@ -748,12 +754,12 @@
                         std::size_t find(BasicString const& str, std::size_t pos = 0) const;
                         /**
                          * Search the first occurrence of the given string part, start the search at the given position
-                         * @param  str   the string to search
                          * @param  count the max range in the given string
+                         * @param  str   the string to search
                          * @param  pos   the search start
                          * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
-                        std::size_t find(const T* str, std::size_t count, std::size_t pos = 0) const;
+                        std::size_t find(std::size_t count, const T* str, std::size_t pos = 0) const;
                         /**
                          * Search the first occurrence of the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
@@ -777,12 +783,12 @@
                         std::size_t rfind(BasicString const& str, std::size_t pos) const;
                         /**
                          * Search the first occurrence of the given string part, start the search at the given position
-                         * @param  str   the string to search
                          * @param  count the max range in the given string
+                         * @param  str   the string to search
                          * @param  pos   the search start
                          * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
-                        std::size_t rfind(const T* str, std::size_t count, std::size_t pos) const;
+                        std::size_t rfind(std::size_t count, const T* str, std::size_t pos) const;
                         /**
                          * Search the first occurrence of the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
@@ -806,12 +812,12 @@
                         std::size_t findFirstOf(BasicString const& str, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match a character in the given string part, start the search at the given position
-                         * @param  str   the string to search
                          * @param  count the max range in the given string
+                         * @param  str   the string to search
                          * @param  pos   the search start
                          * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
-                        std::size_t findFirstOf(const T* str, std::size_t count, std::size_t pos = 0) const;
+                        std::size_t findFirstOf(std::size_t count, const T* str, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match a character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
@@ -835,12 +841,12 @@
                         std::size_t findFirstNotOf(BasicString const& str, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match no character in the given string part, start the search at the given position
-                         * @param  str   the string to search
                          * @param  count the max range in the given string
+                         * @param  str   the string to search
                          * @param  pos   the search start
                          * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
-                        std::size_t findFirstNotOf(const T* str, std::size_t count, std::size_t pos = 0) const;
+                        std::size_t findFirstNotOf(std::size_t count, const T* str, std::size_t pos = 0) const;
                         /**
                          * Search the first character that match no character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
@@ -864,12 +870,12 @@
                         std::size_t findLastOf(BasicString const& str, std::size_t pos) const;
                         /**
                          * Search the first character that match a character in the given string part, start the search at the given position
-                         * @param  str   the string to search
                          * @param  count the max range in the given string
+                         * @param  str   the string to search
                          * @param  pos   the search start
                          * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
-                        std::size_t findLastOf(const T* str, std::size_t count, std::size_t pos) const;
+                        std::size_t findLastOf(std::size_t count, const T* str, std::size_t pos) const;
                         /**
                          * Search the first character that match a character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
@@ -893,12 +899,12 @@
                         std::size_t findLastNotOf(BasicString const& str, std::size_t pos) const;
                         /**
                          * Search the first character that match no character in the given string part, start the search at the given position
-                         * @param  str   the string to search
                          * @param  count the max range in the given string
+                         * @param  str   the string to search
                          * @param  pos   the search start
                          * @return       the position of the found string, NOT_FOUND if no occurrence found
                          */
-                        std::size_t findLastNotOf(const T* str, std::size_t count, std::size_t pos) const;
+                        std::size_t findLastNotOf(std::size_t count, const T* str, std::size_t pos) const;
                         /**
                          * Search the first character that match no character in the given string, need to be NULL terminated, start the search at the given position
                          * @param  str the string to search
@@ -941,6 +947,24 @@
                          * @return    the reference of himself
                          */
                         BasicString& operator =(BasicString && str);
+                        /**
+                         * Copy str into this
+                         * @param str the string to copy into this
+                         * @return    the reference of himself
+                         */
+                        BasicString& operator =(const T* str);
+                        /**
+                         * Copy value into this
+                         * @param value the character to copy into this
+                         * @return      the reference of himself
+                         */
+                        BasicString& operator =(T value);
+                        /**
+                         * Copy list elements into this
+                         * @param list the list of character to copy into this
+                         * @return     the reference of himself
+                         */
+                        BasicString& operator =(std::initializer_list<T> list);
 
                     //## Shortcut Operator ##//
                         /**

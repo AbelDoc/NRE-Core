@@ -117,6 +117,11 @@
              }
 
              template <class T>
+             inline std::size_t BasicString<T>::getLength() const {
+                 return length;
+             }
+
+             template <class T>
              inline constexpr std::size_t BasicString<T>::getMaxSize() const {
                  return std::numeric_limits<std::size_t>::max();
              }
@@ -193,15 +198,8 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::assign(std::size_t count, T value) {
-                 if (capacity < count) {
-                     reserveWithGrowFactor(count);
-                 }
-                 for (std::size_t i = 0; i < count; i++) {
-                     data[i] = value;
-                 }
-                 length = count;
-                 addNullTerminated();
-                 return *this;
+                 length = 0;
+                 return append(count, value);
              }
 
              template <class T>
@@ -228,34 +226,21 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::assign(std::size_t count, const T* str) {
-                 if (capacity < count) {
-                     reserveWithGrowFactor(count);
-                 }
-                 std::memcpy(data, str, (count + 1) * sizeof(T));
-                 length = count;
-                 addNullTerminated();
-                 return *this;
+                 length = 0;
+                 return append(str, count);
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::assign(const T* str) {
-                 return assign(std::strlen(str), str);
+                 length = 0;
+                 return append(str);
              }
 
              template <class T>
              template <class InputIterator>
              inline BasicString<T>& BasicString<T>::assign(InputIterator begin, InputIterator end) {
-                 std::size_t count = std::distance(begin, end);
-                 if (capacity < count) {
-                     reserveWithGrowFactor(count);
-                 }
-                 std::size_t current = 0;
-                 for ( ; begin != end; begin++) {
-                     data[current++] = *begin;
-                 }
-                 length = count;
-                 addNullTerminated();
-                 return *this;
+                 length = 0;
+                 return append(begin, end);
              }
 
              template <class T>
@@ -273,6 +258,7 @@
              template <class T>
              inline void BasicString<T>::clear() {
                  length = 0;
+                 addNullTerminated();
              }
 
              template <class T>
@@ -283,7 +269,7 @@
              template <class T>
              inline void BasicString<T>::reverse(std::size_t pos, std::size_t count) {
                  std::size_t start = pos;
-                 std::size_t end = pos + count;
+                 std::size_t end = pos + count - 1;
                  while (start < end) {
                      T value = data[start];
                      data[start] = data[end];
@@ -319,7 +305,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::insert(std::size_t start, const T* str) {
-                 insert(start, std::strlen(str), str);
+                 return insert(start, std::strlen(str), str);
              }
 
              template <class T>
@@ -344,12 +330,12 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::insert(std::size_t start, BasicString const& str) {
-                 return insert(start, str.size(), str.data);
+                 return insert(start, str.getSize(), str.data);
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::insert(std::size_t start, BasicString const& str, std::size_t index, std::size_t count) {
-                 return insert(start, count, str.substr(index, count));
+                 return insert(start, str.substr(index, count));
              }
 
              template <class T>
@@ -427,6 +413,9 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::erase(std::size_t index, std::size_t count) {
+                 if (index > length - 1) {
+                     throw std::out_of_range("Erasing after NRE::Utility::String last element.");
+                 }
                  shiftBack(index, count);
                  length -= count;
                  return *this;
@@ -435,6 +424,9 @@
              template <class T>
              inline typename BasicString<T>::Iterator BasicString<T>::erase(ConstIterator pos) {
                  std::size_t index = pos - ConstIterator(data);
+                 if (index > length - 1) {
+                     throw std::out_of_range("Erasing after NRE::Utility::String last element.");
+                 }
                  shiftBack(index, 1);
                  length--;
                  return Iterator(data + index);
@@ -444,6 +436,9 @@
              inline typename BasicString<T>::Iterator BasicString<T>::erase(ConstIterator begin, ConstIterator end) {
                  std::size_t count = std::distance(begin, end);
                  std::size_t index = begin - ConstIterator(data);
+                 if (index > length - count) {
+                     throw std::out_of_range("Erasing after NRE::Utility::String last element.");
+                 }
                  shiftBack(index, count);
                  length -= count;
                  return Iterator(data + index + count);
@@ -468,7 +463,7 @@
              template <class T>
              template <class K>
              inline BasicString<T>& BasicString<T>::append(K const& o) {
-                 return *this + o.toString();
+                 return append(o.toString());
              }
 
              template <class T>
@@ -526,7 +521,7 @@
                          append(static_cast <T> (toProcess % 10 + '0'));
                          toProcess = toProcess / 10;
                      }
-                     reverse(start, sizeToAdd - 1);
+                     reverse(start, sizeToAdd);
                  }
                  return *this;
              }
@@ -562,14 +557,14 @@
                          append(static_cast <T> (toProcess % 10 + '0'));
                          toProcess = toProcess / 10;
                      }
-                     reverse(start, sizeToAdd - 1);
+                     reverse(start, sizeToAdd);
                  }
                  return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(float value) {
-                 char str[10];
+                 char str[20];
                  std::sprintf(str, "%f", value);
                  append(static_cast <const T*> (&str[0]));
                  return *this;
@@ -577,7 +572,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(double value) {
-                 char str[20];
+                 char str[30];
                  std::sprintf(str, "%f", value);
                  append(static_cast <const T*> (&str[0]));
                  return *this;
@@ -585,7 +580,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(long double value) {
-                 char str[20];
+                 char str[30];
                  std::sprintf(str, "%Lf", value);
                  append(static_cast <const T*> (&str[0]));
                  return *this;
@@ -627,7 +622,13 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(const T* str) {
-                 return append(str, std::strlen(str));
+                 std::size_t count = std::strlen(str);
+                 if (capacity < length + count) {
+                     reserveWithGrowFactor(length + count);
+                 }
+                 std::memcpy(data + length, str, (count + 1) * sizeof(T));
+                 length += count;
+                 return *this;
              }
 
              template <class T>
@@ -722,7 +723,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::replace(std::size_t pos, std::size_t count, BasicString const& str) {
-                 return replace(pos, count, str, 0, str.getSize()());
+                 return replace(pos, count, str, 0, str.getSize());
              }
 
              template <class T>
@@ -750,8 +751,11 @@
                          reserveWithGrowFactor(length + (sCount - tCount));
                      }
                      shift(pos + tCount, sCount - tCount);
+                     length += (sCount - tCount);
+                     addNullTerminated();
                  } else {
                      shiftBack(pos + sCount, tCount - sCount);
+                     length -= (tCount - sCount);
                  }
                  std::memcpy(data + pos, str, sCount * sizeof(T));
                  return *this;
@@ -780,8 +784,11 @@
                          reserveWithGrowFactor(length + (sCount - tCount));
                      }
                      shift(pos + tCount, sCount - tCount);
+                     length += (sCount - tCount);
+                     addNullTerminated();
                  } else {
                      shiftBack(pos + sCount, tCount - sCount);
+                     length -= (tCount - sCount);
                  }
                  for (std::size_t current = pos; current < pos + sCount; current++) {
                      data[current] = value;
@@ -790,15 +797,47 @@
              }
 
              template <class T>
+             inline BasicString<T>& BasicString<T>::replace(ConstIterator start, ConstIterator end, T value, std::size_t sCount) {
+                 return replace(start - ConstIterator(data), std::distance(start, end), value, sCount);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::replace(ConstIterator start, ConstIterator end, std::initializer_list<T> list) {
+                 std::size_t pos = start - ConstIterator(data);
+                 std::size_t tCount = std::distance(start, end);
+                 std::size_t sCount = list.size();
+                 if (tCount < sCount) {
+                     if (capacity < length + (sCount - tCount)) {
+                         reserveWithGrowFactor(length + (sCount - tCount));
+                     }
+                     shift(pos + tCount, sCount - tCount);
+                     length += (sCount - tCount);
+                     addNullTerminated();
+                 } else {
+                     shiftBack(pos + sCount, tCount - sCount);
+                     length -= (tCount - sCount);
+                 }
+                 auto it = list.begin();
+                 for (std::size_t current = pos; current < pos + sCount; current++) {
+                     data[current] = *(it);
+                     it++;
+                 }
+                 return *this;
+             }
+
+             template <class T>
              inline BasicString<T> BasicString<T>::substr(std::size_t pos, std::size_t count) const {
                  BasicString sub;
                  sub.reserve(count);
+
                  std::memcpy(sub.data, data + pos, count * sizeof(T));
+                 sub.length = count;
+                 sub.addNullTerminated();
                  return sub;
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::copy(const T* str, std::size_t pos, std::size_t count) const {
+             inline std::size_t BasicString<T>::copy(T* str, std::size_t pos, std::size_t count) const {
                  std::size_t copied = std::min(count, length);
                  std::memcpy(str, data + pos, copied);
                  return copied;
@@ -811,18 +850,21 @@
 
              template <class T>
              inline void BasicString<T>::resize(std::size_t count, T value) {
-                 if (capacity < count) {
-                     reallocate(count);
+                 if (length < count) {
+                     if (capacity < count) {
+                         reallocate(count);
+                     }
                      for (std::size_t index = length; index != count; index++) {
                          data[index] = value;
                      }
                      length = count;
+                     addNullTerminated();
                  }
              }
 
              template <class T>
              inline void BasicString<T>::swap(BasicString& str) {
-                 using namespace std;
+                 using std::swap;
                  swap(length, str.length);
                  swap(capacity, str.capacity);
                  swap(data, str.data);
@@ -830,11 +872,11 @@
 
              template <class T>
              inline std::size_t BasicString<T>::find(BasicString const& str, std::size_t pos) const {
-                 return find(str.data, str.getSize(), pos);
+                 return find(str.length, str.data, pos);
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::find(const T* str, std::size_t count, std::size_t pos) const {
+             inline std::size_t BasicString<T>::find(std::size_t count, const T* str, std::size_t pos) const {
                  std::size_t res = NOT_FOUND;
                  std::size_t current = pos;
                  std::size_t needle = 0;
@@ -846,6 +888,7 @@
                              res = current - (count - 1);
                          }
                      } else {
+                         current -= needle;
                          needle = 0;
                      }
                      current++;
@@ -855,21 +898,21 @@
 
              template <class T>
              inline std::size_t BasicString<T>::find(const T* str, std::size_t pos) const {
-                 return find(str, std::strlen(str), pos);
+                 return find(std::strlen(str), str, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::find(T value, std::size_t pos) const {
-                 return find(&value, 1, pos);
+                 return find(1, &value, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::rfind(BasicString const& str, std::size_t pos) const {
-                 return rfind(str.data, str.getSize(), pos);
+                 return rfind(str.length, str.data, pos);
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::rfind(const T* str, std::size_t count, std::size_t pos) const {
+             inline std::size_t BasicString<T>::rfind(std::size_t count, const T* str, std::size_t pos) const {
                  std::size_t res = NOT_FOUND;
                  std::size_t current = pos;
                  std::size_t needle = count - 1;
@@ -881,6 +924,7 @@
                              res = current;
                          }
                      } else {
+                         current += count - needle - 1;
                          needle = count - 1;
                      }
                      current--;
@@ -890,21 +934,21 @@
 
              template <class T>
              inline std::size_t BasicString<T>::rfind(const T* str, std::size_t pos) const {
-                 return rfind(str, std::strlen(str), pos);
+                 return rfind(std::strlen(str), str, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::rfind(T value, std::size_t pos) const {
-                 return rfind(&value, 1, pos);
+                 return rfind(1, &value, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findFirstOf(BasicString const& str, std::size_t pos) const {
-                 return findFirstOf(str.data, str.getSize(), pos);
+                 return findFirstOf(str.length, str.data, pos);
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::findFirstOf(const T* str, std::size_t count, std::size_t pos) const {
+             inline std::size_t BasicString<T>::findFirstOf(std::size_t count, const T* str, std::size_t pos) const {
                  std::size_t res = NOT_FOUND;
                  std::size_t current = pos;
 
@@ -923,21 +967,21 @@
 
              template <class T>
              inline std::size_t BasicString<T>::findFirstOf(const T* str, std::size_t pos) const {
-                 return findFirstOf(str, std::strlen(str), pos);
+                 return findFirstOf(std::strlen(str), str, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findFirstOf(T value, std::size_t pos) const {
-                 return findFirstOf(&value, 1, pos);
+                 return findFirstOf(1, &value, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findFirstNotOf(BasicString const& str, std::size_t pos) const {
-                 return findFirstNotOf(str.data, str.getSize(), pos);
+                 return findFirstNotOf(str.length, str.data, pos);
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::findFirstNotOf(const T* str, std::size_t count, std::size_t pos) const {
+             inline std::size_t BasicString<T>::findFirstNotOf(std::size_t count, const T* str, std::size_t pos) const {
                  std::size_t res = NOT_FOUND;
                  std::size_t current = pos;
 
@@ -960,21 +1004,21 @@
 
              template <class T>
              inline std::size_t BasicString<T>::findFirstNotOf(const T* str, std::size_t pos) const {
-                 return findFirstNotOf(str, std::strlen(str), pos);
+                 return findFirstNotOf(std::strlen(str), str, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findFirstNotOf(T value, std::size_t pos) const {
-                 return findFirstNotOf(&value, 1, pos);
+                 return findFirstNotOf(1, &value, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findLastOf(BasicString const& str, std::size_t pos) const {
-                 return findLastOf(str.data, str.getSize(), pos);
+                 return findLastOf(str.length, str.data, pos);
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::findLastOf(const T* str, std::size_t count, std::size_t pos) const {
+             inline std::size_t BasicString<T>::findLastOf(std::size_t count, const T* str, std::size_t pos) const {
                  std::size_t res = NOT_FOUND;
                  std::size_t current = pos;
 
@@ -993,21 +1037,21 @@
 
              template <class T>
              inline std::size_t BasicString<T>::findLastOf(const T* str, std::size_t pos) const {
-                 return findLastOf(str, std::strlen(str), pos);
+                 return findLastOf(std::strlen(str), str, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findLastOf(T value, std::size_t pos) const {
-                 return findLastOf(&value, 1, pos);
+                 return findLastOf(1, &value, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findLastNotOf(BasicString const& str, std::size_t pos) const {
-                 return findLastNotOf(str.data, str.getSize(), pos);
+                 return findLastNotOf(str.length, str.data, pos);
              }
 
              template <class T>
-             inline std::size_t BasicString<T>::findLastNotOf(const T* str, std::size_t count, std::size_t pos) const {
+             inline std::size_t BasicString<T>::findLastNotOf(std::size_t count, const T* str, std::size_t pos) const {
                  std::size_t res = NOT_FOUND;
                  std::size_t current = pos;
 
@@ -1030,19 +1074,28 @@
 
              template <class T>
              inline std::size_t BasicString<T>::findLastNotOf(const T* str, std::size_t pos) const {
-                 return findLastNotOf(str, std::strlen(str), pos);
+                 return findLastNotOf(std::strlen(str), str, pos);
              }
 
              template <class T>
              inline std::size_t BasicString<T>::findLastNotOf(T value, std::size_t pos) const {
-                 return findLastNotOf(&value, 1, pos);
+                 return findLastNotOf(1, &value, pos);
+             }
+
+             template <class T>
+             inline T& BasicString<T>::operator[](std::size_t index) {
+                 return data[index];
+             }
+
+             template <class T>
+             inline T const& BasicString<T>::operator[](std::size_t index) const {
+                 return data[index];
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::operator =(BasicString const& str) {
                  if (str.data != data) {
-                     BasicString copy(str);
-                     swap(copy);
+                     assign(str);
                  }
                  return *this;
              }
@@ -1053,6 +1106,24 @@
                      assign(std::move(str));
                  }
                  return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::operator =(const T* str) {
+                 if (str != data) {
+                     assign(str);
+                 }
+                 return *this;
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::operator =(T value) {
+                 return assign(1, value);
+             }
+
+             template <class T>
+             inline BasicString<T>& BasicString<T>::operator =(std::initializer_list<T> list) {
+                 return assign(list);
              }
 
              template <class T>
@@ -1157,7 +1228,7 @@
 
              template <class T>
              inline void BasicString<T>::shiftBack(std::size_t start, std::size_t count) {
-                 std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
+                 std::memmove(data + start, data + start + count, (length + 1 - start) * sizeof(T));
              }
 
              template <class T>
@@ -1226,7 +1297,7 @@
 
              template <class T>
              inline BasicString<T> operator+(T lhs, BasicString<T> && rhs) {
-                 return std::move(rhs.insert(0, 1, lhs));
+                 return std::move(rhs.insert(static_cast <std::size_t> (0), static_cast <std::size_t> (1), lhs));
              }
 
              template <class T>

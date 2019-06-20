@@ -275,6 +275,9 @@
              template <class T>
              inline typename Vector<T>::Iterator Vector<T>::erase(ConstIterator pos) {
                  std::size_t index = pos - ConstIterator(data);
+                 if (index > length - 1) {
+                     throw std::out_of_range("Erasing after NRE::Utility::Vector last element.");
+                 }
                  (*pos).~T();
                  shiftBack(index, 1);
                  length--;
@@ -285,6 +288,9 @@
              inline typename Vector<T>::Iterator Vector<T>::erase(ConstIterator begin, ConstIterator end) {
                  std::size_t count = std::distance(begin, end);
                  std::size_t index = begin - ConstIterator(data);
+                 if (index > length - count) {
+                     throw std::out_of_range("Erasing after NRE::Utility::Vector last element.");
+                 }
                  for (auto it = begin; it != end; it++) {
                      (*it).~T();
                  }
@@ -374,10 +380,13 @@
              template <class T>
              inline String Vector<T>::toString() const {
                  String res;
-                 res << '[' << data[0];
-                 res.reserve((res.getSize() + 2) * length);
-                 for (std::size_t index = 1; index < length; index++) {
-                     res << ',' << ' ' << data[index];
+                 res << '[';
+                 if (length > 0) {
+                     res << data[0];
+                     res.reserve((res.getSize() + 2) * length);
+                     for (std::size_t index = 1; index < length; index++) {
+                         res << ',' << ' ' << data[index];
+                     }
                  }
                  res << ']';
                  return res;
