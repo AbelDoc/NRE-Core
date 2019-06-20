@@ -13,6 +13,7 @@
     #include <algorithm>
 
     #include "../Observer/NRE_Observer.hpp"
+    #include "../Vector/NRE_Vector.hpp"
 
      /**
      * @namespace NRE
@@ -31,8 +32,8 @@
              */
             class Observable {
                 private:    //Fields
-                    bool changed;                      /**< Tell if changes had happened */
-                    std::vector<Observer*> observers;  /**< All registered observers */
+                    bool changed;                 /**< Tell if changes had happened */
+                    Vector<Observer*> observers;  /**< All registered observers */
 
                 public:    // Methods
                     //## Constructor ##//
@@ -96,19 +97,27 @@
                         /**
                          * @return an iterator on the first element
                          */
-                        std::vector<Observer*>::iterator begin();
+                        Vector<Observer*>::Iterator begin();
                         /**
                          * @return a const iterator on the first element
                          */
-                        std::vector<Observer*>::const_iterator begin() const;
+                        Vector<Observer*>::ConstIterator begin() const;
+                        /**
+                         * @return a const iterator on the first element
+                         */
+                        Vector<Observer*>::ConstIterator cbegin() const;
                         /**
                          * @return an iterator on the end of the container
                          */
-                        std::vector<Observer*>::iterator end();
+                        Vector<Observer*>::Iterator end();
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        std::vector<Observer*>::const_iterator end() const;
+                        Vector<Observer*>::ConstIterator end() const;
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        Vector<Observer*>::ConstIterator cend() const;
 
                     //## Assignment Operator ##//
                         /**

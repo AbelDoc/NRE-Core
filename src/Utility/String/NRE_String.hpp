@@ -32,7 +32,7 @@
              */
             template <class T>
             class BasicString {
-                static_assert(std::is_integral<T>::value, "You can't use BasicString with non-integeral types"); // Only work with POD types but restreign to integral type
+                static_assert(std::is_integral<T>::value, "You can't use BasicString with non-integral types"); // Only work with POD types but restreign to integral type
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;

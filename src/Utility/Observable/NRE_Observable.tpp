@@ -18,7 +18,7 @@
             }
 
             inline void Observable::add(Observer* o) {
-                observers.push_back(o);
+                observers.pushBack(o);
             }
 
             inline void Observable::remove(Observer* o) {
@@ -30,7 +30,7 @@
             }
 
             inline std::size_t Observable::getCount() const {
-                return observers.size();
+                return observers.getSize();
             }
 
             inline void Observable::notifyAll(void* arg) {
@@ -42,26 +42,33 @@
                 }
             }
 
-            inline std::vector<Observer*>::iterator Observable::begin() {
+            inline Vector<Observer*>::Iterator Observable::begin() {
                 return observers.begin();
             }
 
-            inline std::vector<Observer*>::const_iterator Observable::begin() const {
+            inline Vector<Observer*>::ConstIterator Observable::begin() const {
                 return observers.begin();
             }
 
-            inline std::vector<Observer*>::iterator Observable::end() {
+            inline Vector<Observer*>::ConstIterator Observable::cbegin() const {
+                return observers.cbegin();
+            }
+
+            inline Vector<Observer*>::Iterator Observable::end() {
                 return observers.end();
             }
 
-            inline std::vector<Observer*>::const_iterator Observable::end() const {
+            inline Vector<Observer*>::ConstIterator Observable::end() const {
                 return observers.end();
+            }
+
+            inline Vector<Observer*>::ConstIterator Observable::cend() const {
+                return observers.cend();
             }
 
             inline void Observable::setChanged(bool state) {
                 changed = state;
             }
-
 
         }
     }

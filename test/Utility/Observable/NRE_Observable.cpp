@@ -75,6 +75,11 @@
         assertEquals(this, obs.getCount(), static_cast <std::size_t> (1));
         obs.remove(&o1);
         assertEquals(this, obs.getCount(), static_cast <std::size_t> (0));
+        obs.add(&o1);
+        obs.add(&o1);
+        assertEquals(this, obs.getCount(), static_cast <std::size_t> (2));
+        obs.remove(&o1);
+        assertEquals(this, obs.getCount(), static_cast <std::size_t> (0));
     }
 
     TEST(Observable, Clear) {

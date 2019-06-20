@@ -12,3 +12,4 @@
     #include "Utility/Array/NRE_Array.cpp"
     #include "Utility/Vector/NRE_Vector.cpp"
     #include "Utility/Observable/NRE_Observable.cpp"
+    #include "Utility/String/NRE_String.cpp"
