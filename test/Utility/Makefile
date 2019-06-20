@@ -1,7 +1,7 @@
-ARRAY = Array
+OBSERVABLE = Observable
 
 all : childs 
 
 childs:
-	@(cd $(ARRAY) && $(MAKE))
+	@(cd $(OBSERVABLE) && $(MAKE))
 

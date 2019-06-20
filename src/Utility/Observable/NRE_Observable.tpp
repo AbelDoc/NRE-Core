@@ -10,6 +10,9 @@
     namespace NRE {
         namespace Utility {
 
+            inline Observable::Observable() : changed(false) {
+            }
+
             inline bool Observable::isChanged() const {
                 return changed;
             }

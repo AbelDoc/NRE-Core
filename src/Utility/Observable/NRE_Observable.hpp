@@ -39,7 +39,7 @@
                         /**
                          * Default constructor
                          */
-                        Observable() = default;
+                        Observable();
 
                     //## Copy-Constructor ##//
                         /**
