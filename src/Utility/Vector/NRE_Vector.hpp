@@ -437,7 +437,7 @@
                         T* newData = static_cast <T*> (::operator new(capacity * sizeof(T)));
 
                         for (std::size_t current = 0; current < length; current++) {
-                            newData[current] = *(new(&newData[current]) T (std::move(data[current])));
+                            newData[current] = std::move(*(new(&newData[current]) T (std::move(data[current]))));
                         }
                         ::operator delete(data);
                         data = newData;
@@ -468,7 +468,7 @@
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     void shift(std::size_t start, std::size_t count) {
                         for (std::size_t index = length + count - 1; index != start + count - 1; index--) {
-                            data[index] = *(new(&data[index]) T (std::move(data[index - count])));
+                            data[index] = std::move(*(new(&data[index]) T (std::move(data[index - count]))));
                         }
                     }
                     /**
@@ -488,7 +488,7 @@
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     void shiftBack(std::size_t start, std::size_t count) {
                         for (std::size_t index = start; index < start + count; index++) {
-                            data[index] = *(new(&data[index]) T (std::move(data[index + count])));
+                            data[index] = std::move(*(new(&data[index]) T (std::move(data[index + count]))));
                         }
                     }
                     /**

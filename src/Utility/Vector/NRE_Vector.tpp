@@ -267,7 +267,7 @@
                  if (index < length) {
                      shift(index, 1);
                  }
-                 data[index] = *(new(&data[index]) T (std::forward<Args>(args)...));
+                 data[index] = std::move(*(new(&data[index]) T (std::forward<Args>(args)...)));
                  length++;
                  return Iterator(data + index);
              }
@@ -315,7 +315,7 @@
                  if (capacity < length + 1) {
                      reallocate();
                  }
-                 data[length] = *(new(&data[length]) T (std::forward<Args>(args)...));
+                 data[length] = std::move(*(new(&data[length]) T (std::forward<Args>(args)...)));
                  length++;
              }
 
