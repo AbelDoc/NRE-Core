@@ -12,6 +12,7 @@
      #include <string>
      #include <stdexcept>
      #include <utility>
+     #include <limits>
      #include <cstring>
 
      #include "../String/NRE_String.hpp"
