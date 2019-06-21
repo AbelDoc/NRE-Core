@@ -328,110 +328,126 @@
 
              template <class T>
              inline void ForwardList<T>::swap(ForwardList& list) {
-                 using namespace std;
+                 using std::swap;
                  swap(front, list.front);
-                 swap(length, list.front);
+                 swap(length, list.length);
              }
 
              template <class T>
              inline void ForwardList<T>::merge(ForwardList& list) {
-                 std::less<ForwardList<T>> comp;
-                 merge(list, comp);
+                 std::less<T> comp;
+                 merge(std::move(list), comp);
              }
 
              template <class T>
              inline void ForwardList<T>::merge(ForwardList && list) {
-                 std::less<ForwardList<T>> comp;
-                 merge(std::move(list), comp);
+                 std::less<T> comp;
+                 merge(list, comp);
              }
 
              template <class T>
              template <class Comparator>
              inline void ForwardList<T>::merge(ForwardList& list, Comparator comp) {
-                 if (this != &list) {
-                     Iterator it = begin();
-                     Iterator listIt = list.begin();
-                     if (comp(*it, *listIt)) {
-                         front = static_cast <Node*> (listIt.current);
-                         listIt++;
-                     } else {
-                         front = static_cast <Node*> (it.current);
-                         it++;
-                     }
-                     Node*& current = front;
-                     while (it != end() && listIt != list.end()) {
-                         if (comp(*it, *listIt)) {
-                             current->next = listIt.current;
-                             if (listIt != list.end()) {
-                                 listIt++;
-                             }
-                         } else {
-                             current->next = it.current;
-                             if (it != end()) {
-                                 it++;
-                             }
-                         }
-                         current = static_cast <Node*> (current->next);
-                     }
-
-                     length += list.length;
-                     list.front = nullptr;
-                     list.length = 0;
-                 }
+                 merge(std::move(list), comp);
              }
 
              template <class T>
              template <class Comparator>
              inline void ForwardList<T>::merge(ForwardList && list, Comparator comp) {
-                 merge(std::move(list), comp);
+                 if (this != &list) {
+                     Iterator it = begin();
+                     Iterator listIt = list.begin();
+                     if (comp(*listIt, *it)) {
+                         front.next = listIt.current;
+                         listIt++;
+                     } else {
+                         front.next = it.current;
+                         it++;
+                     }
+                     NodeBase* current = front.next;
+                     while (it != end() || listIt != list.end()) {
+                         if (comp(*listIt, *it)) {
+                             current->next = listIt.current;
+                             if (listIt != list.end()) {
+                                 listIt++;
+                                 if (listIt == list.end()) {
+                                     while (it != end()) {
+                                         current = current->next;
+                                        current->next = it.current;
+                                         it++;
+                                     }
+                                 }
+                             }
+                         } else {
+                             current->next = it.current;
+                             if (it != end()) {
+                                 it++;
+                                 if (it == end()) {
+                                     while (listIt != list.end()) {
+                                        current = current->next;
+                                        current->next = listIt.current;
+                                        listIt++;
+                                    }
+                                }
+                             }
+                         }
+                         current = current->next;
+                     }
+
+                     length += list.length;
+                     list.front.next = nullptr;
+                     list.length = 0;
+                 }
              }
 
              template <class T>
              inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList& list) {
-                 spliceAfter(pos, list, list.beforeBegin(), list.end());
+                 spliceAfter(pos, std::move(list), list.cbeforeBegin(), list.cend());
              }
 
              template <class T>
              inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList && list) {
-                 spliceAfter(pos, std::move(list), list.beforeBegin(), list.end());
+                 spliceAfter(pos, list, list.cbeforeBegin(), list.cend());
              }
 
              template <class T>
              inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList& list, ConstIterator it) {
-                 Node*& tmp = static_cast <Node*> (pos.current->next);
-                 Node*& itTmp = static_cast <Node*> (it.current->next->next);
+                 spliceAfter(pos, std::move(list), it);
+             }
+
+             template <class T>
+             inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator it) {
+                 NodeBase* tmp = pos.current->next;
+                 NodeBase* itTmp = it.current->next;
+                 NodeBase* end = it.current->next->next;
                  pos.current->next = it.current->next;
-                 pos.current->next->next = tmp;
-                 it.current->next = itTmp;
+                 itTmp->next = tmp;
+                 it.current->next = end;
 
                  list.length--;
                  length++;
              }
 
              template <class T>
-             inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator it) {
-                 spliceAfter(pos, std::move(list), it);
-             }
-
-             template <class T>
              inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList& list, ConstIterator begin, ConstIterator end) {
-                 Node*& tmp = static_cast <Node*> (pos.current->next);
-                 Node*& itTmp = static_cast <Node*> (begin.current->next->next);
-                 while (itTmp->next != end.current) {
-                     itTmp = static_cast <Node*> (itTmp->next);
-                 }
-                 pos.current->next = begin.current->next;
-                 pos.current->next->next = tmp;
-                 begin.current->next = itTmp;
-
-                 std::size_t size = std::distance(begin, end);
-                 list.length -= size;
-                 length += size;
+                 spliceAfter(pos, std::move(list), begin, end);
              }
 
              template <class T>
              inline void ForwardList<T>::spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator begin, ConstIterator end) {
-                 spliceAfter(pos, std::move(list), begin, end);
+                 std::size_t size = std::distance(begin, end) - 1;
+
+                 NodeBase* tmp = pos.current->next;
+                 NodeBase* itTmp = begin.current->next;
+                 while (itTmp->next != end.current) {
+                     itTmp = itTmp->next;
+                 }
+                 pos.current->next = begin.current->next;
+                 itTmp->next = tmp;
+                 begin.current->next = end.current;
+
+                 list.length -= size;
+                 length += size;
              }
 
              template <class T>
@@ -444,10 +460,10 @@
              template <class T>
              template <class UnaryPredicate>
              inline void ForwardList<T>::removeIf(UnaryPredicate p) {
-                 ConstIterator it = beforeBegin();
-                 while (it.current->next != end()) {
-                     if (p(*(it.current->next))) {
-                         it = eraseAfter(it);
+                 ConstIterator it = cbeforeBegin();
+                 while (it.current->next != end().current) {
+                     if (p(static_cast <Node*> (it.current->next)->data)) {
+                         eraseAfter(it);
                      } else {
                          ++it;
                      }
@@ -470,15 +486,15 @@
 
              template <class T>
              inline void ForwardList<T>::unique() {
-                 ConstIterator it = begin();
-                 ConstIterator next = it++;
-                 while (next != end()) {
-                    if (it.current == next.current) {
-                        it = eraseAfter(it);
+                 ConstIterator it = cbegin();
+                 ConstIterator next = std::next(it);
+                 while (next != cend()) {
+                    if (*it == *next) {
+                        eraseAfter(it);
                     } else {
-                        ++it;
+                        it = next;
                     }
-                    next = it++;
+                    next = std::next(it);
                  }
              }
 
@@ -505,18 +521,19 @@
                  if (length != list.length) {
                      return false;
                  }
-                 Node* node = front;
-                 Node* listNode = list.front;
+                 Node* node = static_cast <Node*> (front.next);
+                 Node* listNode = static_cast <Node*> (list.front.next);
                  std::size_t current = 0;
                  bool res = true;
                  while (current < length && res) {
-                     if (*node != *listNode) {
+                     if (node->data != listNode->data) {
                          res = false;
                      }
                      node = static_cast <Node*> (node->next);
                      listNode = static_cast <Node*> (listNode->next);
                      current++;
                  }
+                 return res;
              }
 
              template <class T>
