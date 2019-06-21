@@ -46,7 +46,7 @@
                              * @param value the node data
                              * @param node  the next node
                              */
-                            NodeBase(NodeBase* node);
+                            NodeBase(NodeBase* node = nullptr);
                     };
                     /**
                      * @class Node
@@ -83,6 +83,11 @@
                             NodeBase* current;      /**< The current iterator node */
 
                         public :    // Methods
+                            typedef std::ptrdiff_t difference_type;
+                            typedef K value_type;
+                            typedef K* pointer;
+                            typedef K& reference;
+                            typedef std::forward_iterator_tag iterator_category;
                             //## Constructor ##//
                                 /**
                                  * Default constructor with nullptr node
@@ -93,6 +98,11 @@
                                  * @param node   the iterator node
                                  */
                                 ForwardIterator(NodeBase* node);
+                                /**
+                                 * Construct the iterator with the give node
+                                 * @param node   the iterator node
+                                 */
+                                ForwardIterator(const NodeBase* node);
 
                             //## Copy Constructor ##//
                                 /**
@@ -161,7 +171,7 @@
                     typedef ForwardIterator<const T>    ConstIterator;
 
                 private :   // Fields
-                    Node* front;    /**< The front node of the list */
+                    NodeBase front;     /**< The front node of the list */
                     std::size_t length; /**< The size of the list */
 
                 public :    // Methods

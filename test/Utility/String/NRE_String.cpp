@@ -707,6 +707,9 @@
         str.resize(10, 'c');
         assertEquals(this, str.getSize(), static_cast <std::size_t> (10));
         assertEquals(this, str, String("aaaabbbbcc"));
+        str.resize(3);
+        assertEquals(this, str.getSize(), static_cast <std::size_t> (3));
+        assertEquals(this, str, String("aaa"));
     }
 
     TEST(String, Swap) {
@@ -717,6 +720,20 @@
         assertEquals(this, swap.getSize(), static_cast <std::size_t> (8));
         assertEquals(this, str, String("ccdd"));
         assertEquals(this, swap, String("aaaabbbb"));
+    }
+
+    TEST(String, ShrinkToFit) {
+        String str(static_cast <std::size_t> (100), 'a');
+        assertEquals(this, str.getSize(), static_cast <std::size_t> (100));
+        assertEquals(this, str.get(str.getSize() - 1), 'a');
+        str.resize(10);
+        assertEquals(this, str.getSize(), static_cast <std::size_t> (10));
+        assertGreaterOrEquals(this, str.getCapacity(), static_cast <std::size_t> (100));
+        assertEquals(this, str.get(str.getSize() - 1), 'a');
+        str.shrinkToFit();
+        assertEquals(this, str.getSize(), static_cast <std::size_t> (10));
+        assertEquals(this, str.getCapacity(), static_cast <std::size_t> (10));
+        assertEquals(this, str.get(str.getSize() - 1), 'a');
     }
 
     TEST(String, Find) {

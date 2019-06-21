@@ -745,6 +745,10 @@
                          */
                         void swap(BasicString& str);
                         /**
+                         * Shrink to fit the actual size, actually freeing memory
+                         */
+                        void shrinkToFit();
+                        /**
                          * Search the first occurrence of the given string, start the search at the given position
 
                          * @param  str the string to search

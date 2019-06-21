@@ -252,6 +252,9 @@
         vec.resize(10);
         assertEquals(this, vec.getSize(), static_cast <std::size_t> (10));
         assertEquals(this, vec.get(vec.getSize() - 1), 0);
+        assertEquals(this, vec.toString(), String("[0, 1, 2, 3, 4, 0, 0, 0, 0, 0]"));
+        vec.resize(3);
+        assertEquals(this, vec.toString(), String("[0, 1, 2]"));
     }
 
     TEST(Vector, ResizeValue) {
@@ -275,6 +278,20 @@
         assertEquals(this, vec.get(vec.getSize() - 1), 60);
         assertEquals(this, toSwap.getSize(), static_cast <std::size_t> (5));
         assertEquals(this, toSwap.get(toSwap.getSize() - 1), 4);
+    }
+
+    TEST(Vector, ShrinkToFit) {
+        Vector<int> vec(static_cast <std::size_t> (100), 0);
+        assertEquals(this, vec.getSize(), static_cast <std::size_t> (100));
+        assertEquals(this, vec.get(vec.getSize() - 1), 0);
+        vec.resize(10);
+        assertEquals(this, vec.getSize(), static_cast <std::size_t> (10));
+        assertGreaterOrEquals(this, vec.getCapacity(), static_cast <std::size_t> (100));
+        assertEquals(this, vec.get(vec.getSize() - 1), 0);
+        vec.shrinkToFit();
+        assertEquals(this, vec.getSize(), static_cast <std::size_t> (10));
+        assertEquals(this, vec.getCapacity(), static_cast <std::size_t> (10));
+        assertEquals(this, vec.get(vec.getSize() - 1), 0);
     }
 
     TEST(Vector, Access) {

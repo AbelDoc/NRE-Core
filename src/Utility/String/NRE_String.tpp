@@ -483,82 +483,65 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(short int value) {
-                 return append(static_cast<long long int>(value));
+                 char str[7];
+                 std::sprintf(str, "%i", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(int value) {
-                 return append(static_cast<long long int>(value));
+                 char str[12];
+                 std::sprintf(str, "%i", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(long int value) {
-                 return append(static_cast<long long int>(value));
+                 char str[21];
+                 std::sprintf(str, "%li", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(long long int value) {
-                 if (value == 0) {
-                     append('0');
-                 } else {
-                     bool isNegative = value < 0;
-                     std::size_t sizeToAdd, toProcess;
-
-                     if (isNegative) {
-                         sizeToAdd = static_cast <std::size_t> (std::ceil(std::log10(-value)));
-                         reserve(length + sizeToAdd + 1);
-                         append('-');
-                         toProcess = -value;
-                     } else {
-                         sizeToAdd = static_cast <std::size_t> (std::ceil(std::log10(value)));
-                         reserve(length + sizeToAdd);
-                         toProcess = value;
-                     }
-
-                     std::size_t start = length;
-
-                     while (toProcess != 0) {
-                         append(static_cast <T> (toProcess % 10 + '0'));
-                         toProcess = toProcess / 10;
-                     }
-                     reverse(start, sizeToAdd);
-                 }
+                 char str[21];
+                 std::sprintf(str, "%lli", value);
+                 append(static_cast <const T*> (&str[0]));
                  return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(unsigned short int value) {
-                 return append(static_cast<unsigned long long int>(value));
+                 char str[6];
+                 std::sprintf(str, "%u", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(unsigned int value) {
-                 return append(static_cast<unsigned long long int>(value));
+                 char str[11];
+                 std::sprintf(str, "%u", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(unsigned long int value) {
-                 return append(static_cast<unsigned long long int>(value));
+                 char str[11];
+                 std::sprintf(str, "%lu", value);
+                 append(static_cast <const T*> (&str[0]));
+                 return *this;
              }
 
              template <class T>
              inline BasicString<T>& BasicString<T>::append(unsigned long long int value) {
-                 if (value == 0) {
-                     append(1, '0');
-                 } else {
-                     std::size_t sizeToAdd = static_cast <std::size_t> (std::ceil(std::log10(value)));
-                     std::size_t toProcess = value;
-
-                     reserve(length + sizeToAdd);
-
-                     std::size_t start = length;
-
-                     while (toProcess != 0) {
-                         append(static_cast <T> (toProcess % 10 + '0'));
-                         toProcess = toProcess / 10;
-                     }
-                     reverse(start, sizeToAdd);
-                 }
+                 char str[21];
+                 std::sprintf(str, "%llu", value);
+                 append(static_cast <const T*> (&str[0]));
                  return *this;
              }
 
@@ -850,14 +833,18 @@
 
              template <class T>
              inline void BasicString<T>::resize(std::size_t count, T value) {
-                 if (length < count) {
-                     if (capacity < count) {
-                         reallocate(count);
+                 if (count != length) {
+                     if (count < length) {
+                         length = count;
+                     } else {
+                         if (capacity < count) {
+                             reallocate(count);
+                         }
+                         for (std::size_t index = length; index != count; index++) {
+                             data[index] = value;
+                         }
+                         length = count;
                      }
-                     for (std::size_t index = length; index != count; index++) {
-                         data[index] = value;
-                     }
-                     length = count;
                      addNullTerminated();
                  }
              }
@@ -868,6 +855,11 @@
                  swap(length, str.length);
                  swap(capacity, str.capacity);
                  swap(data, str.data);
+             }
+
+             template <class T>
+             inline void BasicString<T>::shrinkToFit() {
+                 reallocate(length);
              }
 
              template <class T>

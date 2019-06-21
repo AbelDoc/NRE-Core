@@ -327,12 +327,21 @@
 
              template <class T>
              inline void Vector<T>::resize(std::size_t count, T const& value) {
-                 if (capacity < count) {
-                     reallocate(count);
-                     for (std::size_t index = length; index != count; index++) {
-                         data[index] = *(new(&data[index]) T (value));
+                 if (count != length) {
+                     if (count < length) {
+                         for (std::size_t index = count; index != length; index++) {
+                             data[index].~T();
+                         }
+                         length = count;
+                     } else {
+                         if (capacity < count) {
+                             reallocate(count);
+                         }
+                         for (std::size_t index = length; index != count; index++) {
+                             data[index] = *(new(&data[index]) T (value));
+                         }
+                         length = count;
                      }
-                     length = count;
                  }
              }
 
@@ -342,6 +351,11 @@
                  swap(length, vec.length);
                  swap(capacity, vec.capacity);
                  swap(data, vec.data);
+             }
+
+             template <class T>
+             inline void Vector<T>::shrinkToFit() {
+                 reallocate(length);
              }
 
              template <class T>
@@ -379,17 +393,20 @@
 
              template <class T>
              inline String Vector<T>::toString() const {
-                 String res;
-                 res << '[';
-                 if (length > 0) {
-                     res << data[0];
+                 if (isEmpty()) {
+                     String res;
+                     res << '[' << ']';
+                     return res;
+                 } else {
+                     String res;
+                     res << '[' << data[0];
                      res.reserve((res.getSize() + 2) * length);
                      for (std::size_t index = 1; index < length; index++) {
                          res << ',' << ' ' << data[index];
                      }
+                     res << ']';
+                     return res;
                  }
-                 res << ']';
-                 return res;
              }
 
              template <class T>

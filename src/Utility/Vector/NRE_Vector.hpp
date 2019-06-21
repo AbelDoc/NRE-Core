@@ -347,6 +347,10 @@
                          * @param vec the other vector
                          */
                         void swap(Vector& vec);
+                        /**
+                         * Shrink to fit the actual size, actually freeing memory
+                         */
+                        void shrinkToFit();
 
                     //## Access Operator ##//
                         /**
