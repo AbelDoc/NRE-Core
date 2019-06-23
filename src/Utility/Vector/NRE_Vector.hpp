@@ -343,7 +343,7 @@
                          */
                         void resize(std::size_t count, T const& value);
                         /**
-                         * Swap the vector with an other vector
+                         * Swap the vector with another vector
                          * @param vec the other vector
                          */
                         void swap(Vector& vec);
