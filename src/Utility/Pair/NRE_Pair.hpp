@@ -9,6 +9,8 @@
 
      #pragma once
 
+     #include "../String/NRE_String.hpp"
+
      /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -155,7 +157,23 @@
                          */
                         bool operator>=(Pair const& p) const;
 
+                    //## Stream Operator ##//
+                        /**
+                         * Convert the object into a string representation
+                         * @return the converted object
+                         */
+                        String toString() const;
+
             };
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return        the modified stream
+             */
+            template <class T, class K>
+            std::ostream& operator <<(std::ostream& stream, Pair<T, K> const& o);
         }
     }
 

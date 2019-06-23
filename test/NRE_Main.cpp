@@ -14,3 +14,4 @@
     #include "Utility/Observable/NRE_Observable.cpp"
     #include "Utility/String/NRE_String.cpp"
     #include "Utility/ForwardList/NRE_ForwardList.cpp"
+    #include "Utility/Pair/NRE_Pair.cpp"

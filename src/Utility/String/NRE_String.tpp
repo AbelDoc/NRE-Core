@@ -34,7 +34,7 @@
              inline BasicString<T>::BasicString(const T* str) {
                  capacity = std::strlen(str) + 1;
                  data = static_cast <T*> (::operator new ((capacity) * sizeof(T)));
-                 assign(capacity, str);
+                 assign(capacity - 1, str);
              }
 
              template <class T>

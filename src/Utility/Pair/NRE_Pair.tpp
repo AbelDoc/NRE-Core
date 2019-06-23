@@ -15,26 +15,26 @@
              }
 
              template <class T, class K>
-             Pair<T, K>::Pair(T const& x, K const& y) : first(x), second(y) {
+             inline Pair<T, K>::Pair(T const& x, K const& y) : first(x), second(y) {
              }
 
              template <class T, class K>
              template <class T2, class K2>
-             Pair<T, K>::Pair(T2 && x, K2 && y) : first(std::forward<T2>(x)), second(std::forward<K2>(y)) {
+             inline Pair<T, K>::Pair(T2 && x, K2 && y) : first(std::forward<T2>(x)), second(std::forward<K2>(y)) {
              }
 
              template <class T, class K>
              template <class T2, class K2>
-             Pair<T, K>::Pair(Pair<T2, K2> const& p) : first(p.first), second(p.second) {
+             inline Pair<T, K>::Pair(Pair<T2, K2> const& p) : first(p.first), second(p.second) {
              }
 
              template <class T, class K>
              template <class T2, class K2>
-             Pair<T, K>::Pair(Pair<T2, K2> && p) : first(std::move(p.first)), second(std::move(p.second)) {
+             inline Pair<T, K>::Pair(Pair<T2, K2> && p) : first(std::move(p.first)), second(std::move(p.second)) {
              }
 
              template <class T, class K>
-             void Pair<T, K>::swap(Pair& p) {
+             inline void Pair<T, K>::swap(Pair& p) {
                  using std::swap;
                  swap(first, p.first);
                  swap(second, p.second);
@@ -42,7 +42,7 @@
 
              template <class T, class K>
              template <class T2, class K2>
-             Pair<T, K>& Pair<T, K>::operator=(Pair<T2, K2> const& p) {
+             inline Pair<T, K>& Pair<T, K>::operator=(Pair<T2, K2> const& p) {
                  first = p.first;
                  second = p.second;
                  return *this;
@@ -50,42 +50,53 @@
 
              template <class T, class K>
              template <class T2, class K2>
-             Pair<T, K>& Pair<T, K>::operator=(Pair<T2, K2> && p) {
+             inline Pair<T, K>& Pair<T, K>::operator=(Pair<T2, K2> && p) {
                  first = std::forward<T2>(p.first);
                  second = std::forward<K2>(p.second);
                  return *this;
              }
 
              template <class T, class K>
-             bool Pair<T, K>::operator==(Pair const& p) const {
+             inline bool Pair<T, K>::operator==(Pair const& p) const {
                  return first == p.first && second == p.second;
              }
 
              template <class T, class K>
-             bool Pair<T, K>::operator!=(Pair const& p) const {
+             inline bool Pair<T, K>::operator!=(Pair const& p) const {
                  return !(*this == p);
              }
 
              template <class T, class K>
-             bool Pair<T, K>::operator<(Pair const& p) const {
+             inline bool Pair<T, K>::operator<(Pair const& p) const {
                  return first < p.first || (!(p.first < first) && second < p.second);
              }
 
              template <class T, class K>
-             bool Pair<T, K>::operator<=(Pair const& p) const {
+             inline bool Pair<T, K>::operator<=(Pair const& p) const {
                  return !(p < *this);
              }
 
              template <class T, class K>
-             bool Pair<T, K>::operator>(Pair const& p) const {
+             inline bool Pair<T, K>::operator>(Pair const& p) const {
                  return p < *this;
              }
 
              template <class T, class K>
-             bool Pair<T, K>::operator>=(Pair const& p) const {
+             inline bool Pair<T, K>::operator>=(Pair const& p) const {
                  return !(*this < p);
              }
 
+             template <class T, class K>
+             inline String Pair<T, K>::toString() const {
+                 String res;
+                 res << '(' << first << ',' << ' ' << second << ')';
+                 return res;
+             }
+
+             template <class T, class K>
+             std::ostream& operator <<(std::ostream& stream, Pair<T, K> const& o) {
+                 return stream << o.toString();
+             }
 
          }
      }
