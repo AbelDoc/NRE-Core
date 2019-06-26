@@ -40,8 +40,8 @@
 
              template <class T>
              template <class K>
-             inline K& ForwardList<T>::ForwardIterator<K>::operator->() const {
-                 return static_cast <Node*>(current)->data;
+             inline K* ForwardList<T>::ForwardIterator<K>::operator->() const {
+                 return &static_cast <Node*>(current)->data;
              }
 
              template <class T>
@@ -509,8 +509,7 @@
              template <class T>
              inline ForwardList<T>& ForwardList<T>::operator=(ForwardList && list) {
                  if (this != &list) {
-                     ForwardList move(std::move(list));
-                     swap(move);
+                     swap(list);
                  }
                  return *this;
              }

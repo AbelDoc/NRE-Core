@@ -78,7 +78,7 @@
                      */
                     template <class K>
                     class ForwardIterator {
-                        friend class ForwardList<T>;
+                        friend class ForwardList;
                         private :   // Fields
                             NodeBase* current;      /**< The current iterator node */
 
@@ -88,18 +88,19 @@
                             typedef K* pointer;
                             typedef K& reference;
                             typedef std::forward_iterator_tag iterator_category;
+
                             //## Constructor ##//
                                 /**
                                  * Default constructor with nullptr node
                                  */
                                 ForwardIterator() = default;
                                 /**
-                                 * Construct the iterator with the give node
+                                 * Construct the iterator with the given node
                                  * @param node   the iterator node
                                  */
                                 ForwardIterator(NodeBase* node);
                                 /**
-                                 * Construct the iterator with the give node
+                                 * Construct the iterator with the given node
                                  * @param node   the iterator node
                                  */
                                 ForwardIterator(const NodeBase* node);
@@ -133,9 +134,9 @@
                                 K& operator*() const;
                                 /**
                                  * Arrow dereference operator, allow access to the data
-                                 * @return the iterator data
+                                 * @return the iterator data pointer
                                  */
-                                K& operator->() const;
+                                K* operator->() const;
 
                             //## Increment Operator ##//
                                 /**

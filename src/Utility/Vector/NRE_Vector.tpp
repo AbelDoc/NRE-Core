@@ -379,8 +379,7 @@
              template <class T>
              inline Vector<T>& Vector<T>::operator =(Vector && vec) {
                  if (this != &vec) {
-                     Vector move(std::move(vec));
-                     swap(move);
+                     swap(vec);
                  }
                  return *this;
              }
