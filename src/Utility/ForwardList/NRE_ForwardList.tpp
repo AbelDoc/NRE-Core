@@ -501,8 +501,7 @@
              template <class T>
              inline ForwardList<T>& ForwardList<T>::operator=(ForwardList const& list) {
                  if (this != &list) {
-                     ForwardList copy(list);
-                     swap(copy);
+                     assign(list.begin(), list.end());
                  }
                  return *this;
              }

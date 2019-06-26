@@ -370,16 +370,15 @@
 
              template <class T>
              inline Vector<T>& Vector<T>::operator =(Vector const& vec) {
-                 if (vec.data != data) {
-                     Vector vecCopy(vec);
-                     swap(vecCopy);
+                 if (this != &vec) {
+                     assign(vec.begin(), vec.end());
                  }
                  return *this;
              }
 
              template <class T>
              inline Vector<T>& Vector<T>::operator =(Vector && vec) {
-                 if (vec.data != data) {
+                 if (this != &vec) {
                      Vector move(std::move(vec));
                      swap(move);
                  }

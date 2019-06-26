@@ -1086,7 +1086,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::operator =(BasicString const& str) {
-                 if (str.data != data) {
+                 if (this != &str) {
                      assign(str);
                  }
                  return *this;
@@ -1094,7 +1094,7 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::operator =(BasicString && str) {
-                 if (str.data != data) {
+                 if (this != &str) {
                      assign(std::move(str));
                  }
                  return *this;
