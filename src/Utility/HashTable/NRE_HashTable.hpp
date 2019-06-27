@@ -261,6 +261,50 @@
                          */
                         HashTable(HashTable && table);
 
+                    //## Getter ##//
+                        /**
+                         * @return the number of buckets in the table
+                         */
+                        std::size_t getBucketCount() const;
+                        /**
+                         * @return the number of elements in the table
+                         */
+                        std::size_t getSize() const;
+                        /**
+                         * @return the maximum hash table size
+                         */
+                        constexpr std::size_t getMaxSize() const;
+                        /**
+                         * @return if the table is empty
+                         */
+                        bool isEmpty() const;
+
+                    //## Iterator Access ##//
+                        /**
+                         * @return an iterator on the first element
+                         */
+                        Iterator begin();
+                        /**
+                         * @return a const iterator on the first element
+                         */
+                        ConstIterator begin() const;
+                        /**
+                         * @return a const iterator on the first element
+                         */
+                        ConstIterator cbegin() const;
+                        /**
+                         * @return an iterator on the end of the container
+                         */
+                        Iterator end();
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        ConstIterator end() const;
+                        /**
+                         * @return a const iterator on the end of the container
+                         */
+                        ConstIterator cend() const;
+
                     //## Methods ##//
                         /**
                          * Clear all buckets

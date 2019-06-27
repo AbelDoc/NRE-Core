@@ -155,7 +155,7 @@
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(std::size_t bucketCount, Hash const& hash, KeyEqual const& equal) : Hash(hash), KeyEqual(equal), nbElements(0), maxLoadFactor() {
+             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(std::size_t bucketCount, Hash const& hash, KeyEqual const& equal) : Hash(hash), KeyEqual(equal), nbElements(0), maxLoadFactor(DEFAULT_MAX_LOAD_FACTOR) {
                  data.resize(bucketCount);
                  data.getBack().setAsLastBucket();
              }
@@ -177,6 +177,66 @@
 
              template <class Key, class T, class Hash, class KeyEqual>
              inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable && table) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data)), nbElements(table.data), maxLoadFactor(table.maxLoadFactor) {
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::getBucketCount() const {
+                 return data.getSize();
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::getSize() const {
+                 return nbElements;
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline constexpr std::size_t HashTable<Key, T, Hash, KeyEqual>::getMaxSize() const {
+                 return std::numeric_limits<std::size_t>::max();
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline bool HashTable<Key, T, Hash, KeyEqual>::isEmpty() const {
+                 return nbElements == 0;
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::begin() {
+                 std::size_t index = 0;
+                 while (i < getBucketCount() && data[i].isEmpty()) {
+                     ++i;
+                 }
+
+                 return Iterator(data.getData() + i);
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::begin() const {
+                 std::size_t index = 0;
+                 while (i < getBucketCount() && data[i].isEmpty()) {
+                     ++i;
+                 }
+
+                 return ConstIterator(data.getCData() + i);
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::cbegin() const {
+                 return begin();
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::end() {
+                 return Iterator(data.getData() + data.getSize());
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::end() const {
+                 return ConstIterator(data.getCData() + data.getSize());
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::cend() const {
+                 return end();
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
