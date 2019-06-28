@@ -615,6 +615,11 @@
              }
 
              template <class T>
+             inline BasicString<T>& BasicString<T>::append(std::string const& str) {
+                 return append(str.c_str(), str.size());
+             }
+
+             template <class T>
              template <class InputIterator>
              inline BasicString<T>& BasicString<T>::append(InputIterator begin, InputIterator end) {
                  std::size_t count = std::distance(begin, end);

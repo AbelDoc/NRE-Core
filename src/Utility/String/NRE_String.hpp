@@ -13,6 +13,7 @@
      #include <utility>
      #include <limits>
      #include <cstring>
+     #include <string>
      #include <cmath>
      #include <iostream>
 
@@ -519,6 +520,12 @@
                          * @return     the reference of himself
                          */
                         BasicString& append(const T* str);
+                        /**
+                         * Append the given string at the end
+                         * @param  str the string to append
+                         * @return     the reference of himself
+                         */
+                        BasicString& append(std::string const& str);
                         /**
                          * Append all character between given iterators
                          * @param  begin the begin iterator

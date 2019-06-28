@@ -82,12 +82,34 @@
                                  * @return if the bucket is the last
                                  */
                                 bool isLastBucket() const;
+                                /**
+                                 * @return the distance to the next bucket
+                                 */
+                                std::ptrdiff_t getDistanceToNext() const;
+                                /**
+                                 * @return the bucket key
+                                 */
+                                Key const& getKey() const;
+                                /**
+                                 * @return the bucket data
+                                 */
+                                Pair<Key, T>& getData();
+                                /**
+                                 * @return the bucket data
+                                 */
+                                Pair<Key, T> const& getData() const;
 
                             //## Setter ##//
                                 /**
                                  * Set this as the last bucket
                                  */
                                 void setAsLastBucket();
+                                /**
+                                 * Set the bucket data, must be empty
+                                 * @param distance the distance to the next bucket
+                                 * @param newData  the data to set
+                                 */
+                                void setData(std::ptrdiff_t distance, Pair<Key, T> && newData);
 
                             //## Methods ##//
                                 /**
@@ -99,6 +121,12 @@
                                  * @param bucket the other bucket
                                  */
                                 void swap(BucketEntry& bucket);
+                                /**
+                                 * Swap the bucket data with given one
+                                 * @param distance the distance to the next bucket
+                                 * @param newData  the data to set
+                                 */
+                                void swapWithData(std::ptrdiff_t& distance, Pair<Key, T> && newData);
 
                             //## Assignment Operator ##//
                                 /**
@@ -217,6 +245,7 @@
                 private :    // Fields
                     Vector<BucketEntry> data;   /**< The hash table data */
                     std::size_t nbElements;     /**< The number in the table */
+                    std::size_t mask;           /**< The mask used with the power of two policy */
                     float maxLoadFactor;        /**< The maximum load factor before rehash and grow */
 
                 public :     // Methods
@@ -224,28 +253,28 @@
                         /**
                          * Construct an empty hashtable with a number of bucket
                          * @param bucketCount the base bucket count
-                         * @param hash        the hash function used in the table
+                         * @param hasher      the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
-                        HashTable(std::size_t bucketCount, Hash const& hash, KeyEqual const& equal);
+                        HashTable(std::size_t bucketCount = DEFAULT_BUCKET_COUNT , Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
                         /**
                          * Construct an hashtable with a number of bucket and filled with elements in the given range
                          * @param begin       the begin iterator
                          * @param end         the end iterator
                          * @param bucketCount the base bucket count
-                         * @param hash        the hash function used in the table
+                         * @param hasher      the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
                         template <class InputIterator>
-                        HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount, Hash const& hash, KeyEqual const& equal);
+                        HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
                         /**
                          * Construct an hashtable with a number of bucket and filled with elements in the given list
                          * @param list        the list to fill the table with
                          * @param bucketCount the base bucket count
-                         * @param hash        the hash function used in the table
+                         * @param haser       the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
-                        HashTable(std::initializer_list<Pair<Key, T>> list, std::size_t bucketCount, Hash const& hash, KeyEqual const& equal);
+                        HashTable(std::initializer_list<Pair<Key, T>> list, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
 
                     //## Copy Constructor ##//
                         /**
@@ -263,13 +292,37 @@
 
                     //## Getter ##//
                         /**
+                         * Access a particular element with bound checking
+                         * @param  k the element key
+                         * @return   the corresponding element
+                         */
+                        T& get(Key const& k);
+                        /**
+                         * Access a particular element with bound checking
+                         * @param  k the element key
+                         * @return   the corresponding element
+                         */
+                        T const& get(Key const& k) const;
+                        /**
                          * @return the number of buckets in the table
                          */
                         std::size_t getBucketCount() const;
                         /**
+                         * @return the maximum number of bucket in the table
+                         */
+                        constexpr std::size_t getMaxBucketCount() const;
+                        /**
                          * @return the number of elements in the table
                          */
                         std::size_t getSize() const;
+                        /**
+                         * @return the maximum load factor
+                         */
+                        float getMaxLoadFactor() const;
+                        /**
+                         * @return the current load factor
+                         */
+                        float getLoadFactor() const;
                         /**
                          * @return the maximum hash table size
                          */
@@ -278,6 +331,12 @@
                          * @return if the table is empty
                          */
                         bool isEmpty() const;
+                        /**
+                         * Find the number of element with the given key
+                         * @param  k the key to search
+                         * @return   the number of corresponding elements
+                         */
+                        std::size_t getCount(Key const& k) const;
 
                     //## Iterator Access ##//
                         /**
@@ -307,6 +366,60 @@
 
                     //## Methods ##//
                         /**
+                         * Insert the given value in the table
+                         * @param value the pair with the key and the corresponding element
+                         * @return      a pair containing an iterator on the inserted element, and a boolean telling if the insertion has been done
+                         */
+                        Pair<Iterator, bool> insert(Pair<Key, T> const& value);
+                        /**
+                         * Insert the given value in the table
+                         * @param value the pair with the key and the corresponding element
+                         * @return      a pair containing an iterator on the inserted element, and a boolean telling if the insertion has been done
+                         */
+                        template <class P>
+                        Pair<Iterator, bool> insert(P && value);
+                        /**
+                         * Insert elements in the given range
+                         * @param begin the begin iterator
+                         * @param end   the end iterator
+                         */
+                        template <class InputIterator>
+                        void insert(InputIterator begin, InputIterator end);
+                        /**
+                         * Insert elements in the given list
+                         * @param list the list of value to insert
+                         */
+                        void insert(std::initializer_list<Pair<Key, T>> list);
+                        /**
+                         * Insert the given value in the table using the hint as a suggestion for the search start
+                         * @param  hint  the hint used for the search
+                         * @param  value the value to insert
+                         * @return       an iterator on the inserted element
+                         */
+                        Iterator insertHint(ConstIterator hint, Pair<Key, T> const& value);
+                        /**
+                         * Insert the given value in the table using the hint as a suggestion for the search start
+                         * @param  hint  the hint used for the search
+                         * @param  value the value to insert
+                         * @return       an iterator on the inserted element
+                         */
+                        template <class P>
+                        Iterator insertHint(ConstIterator hint, P && value);
+                        /**
+                         * Emplace an element using the given elements
+                         * @param args the parameter pack used to create the inserted pair
+                         * @return     a pair containing an iterator on the inserted element, and a boolean telling if the insertion has been done
+                         */
+                        template <class ... Args>
+                        Pair<Iterator, bool> emplace(Args && ... args);
+                        /**
+                         * Emplace an element using the given elements
+                         * @param args the parameter pack used to create the inserted pair
+                         * @return     an iterator on the inserted element
+                         */
+                        template <class ... Args>
+                        Iterator emplaceHint(ConstIterator hint, Args && ... args);
+                        /**
                          * Clear all buckets
                          */
                         void clear();
@@ -315,6 +428,59 @@
                          * @param table the other hash table
                          */
                         void swap(HashTable& table);
+                        /**
+                         * Reserve at least count bucket in the table and rehash the table
+                         * @param count the number of desired bucket
+                         */
+                        void reserve(std::size_t count);
+                        /**
+                         * Reserve at least coutn bucket in the table and rehash the table
+                         * @param count the number of desired bucket
+                         */
+                        void rehash(std::size_t count);
+                        /**
+                         * Find a range of iterator containing all elements with the given key, both end if not found
+                         * @param key the key to search
+                         * @return    a pair of iterator
+                         */
+                        Pair<Iterator, Iterator> equalRange(Key const& key);
+                        /**
+                         * Find a range of iterator containing all elements with the given key, both end if not found
+                         * @param key the key to search
+                         * @return    a pair of iterator
+                         */
+                        Pair<ConstIterator, ConstIterator> equalRange(Key const& key) const;
+                        /**
+                         * Find the element corresponding with the given key
+                         * @param  k the key to search
+                         * @return   the iterator pointing on the element, or end if not found
+                         */
+                        Iterator find(Key const& k);
+                        /**
+                         * Find the element corresponding with the given key
+                         * @param  k the key to search
+                         * @return   the iterator pointing on the element, or end if not found
+                         */
+                        ConstIterator find(Key const& k) const;
+                        /**
+                         * Erase the element pointed by the iterator
+                         * @param  pos the iterator on the erased element
+                         * @return     an iterator after the erased element
+                         */
+                        Iterator erase(ConstIterator pos);
+                        /**
+                         * Erase the element in the given range
+                         * @param  begin the begin iterator for erasing
+                         * @param  end   the end iterator for erasing
+                         * @return       an iterator after the last erased element
+                         */
+                        Iterator erase(ConstIterator begin, ConstIterator end);
+                        /**
+                         * Erase all element with the given key
+                         * @param  k the key to search and erase
+                         * @return   the number of erased elements
+                         */
+                        std::size_t erase(Key const& k);
 
                     //## Assignment Operator ##//
                         /**
@@ -330,9 +496,93 @@
                          */
                         HashTable& operator =(HashTable && table);
 
-                public :    // Static
+                    //## Access Operator ##//
+                        /**
+                         * Try to access the element designed by the given key, if not found insert a default one
+                         * @param  k the key used for access
+                         * @return   the found/inserted element
+                         */
+                        T& operator[](Key const& k);
+                        /**
+                         * Try to access the element designed by the given key, if not found insert a default one
+                         * @param  k the key used for access
+                         * @return   the found/inserted element
+                         */
+                        T& operator[](Key && k);
+
+                    //## Stream Operator ##//
+                        /**
+                         * Convert the object into a string representation
+                         * @return the converted object
+                         */
+                        String toString() const;
+
+                private :   // Methods
+                    /**
+                     * Compute the hash value from the given key
+                     * @param  k the key to hash
+                     * @return   the corresponding hash value
+                     */
+                    std::size_t hashKey(Key const& k) const;
+                    /**
+                     * Compare two key and return if they are equals
+                     * @param  k1 the first key
+                     * @param  k2 the second key
+                     * @return    if both key are equals
+                     */
+                    bool compareKey(Key const& k1, Key const& k2) const;
+                    /**
+                     * Compute the next index using the probing function
+                     * @param  index the index to advance
+                     * @return       the new index
+                     */
+                    std::size_t next(std::size_t index) const;
+                    /**
+                     * Get the corresponding bucket from a given hash
+                     * @param  hash the hash value
+                     * @return      the corresponding bucket index
+                     */
+                    std::size_t bucketFromHash(std::size_t hash) const;
+                    /**
+                     * Round up to the next power of two value
+                     * @param  count the value to round up
+                     * @return       the rounded value
+                     */
+                    std::size_t roundUpToPowerOfTwo(std::size_t count) const;
+                    /**
+                     * Insert a value in a full bucket
+                     * @param index          the bucket index
+                     * @param distanceToNext the distance to the next bucket
+                     * @param pair           the data to insert
+                     */
+                    void insertValue(std::size_t index, std::ptrdiff_t distanceToNext, Pair<Key, T> && pair);
+                    /**
+                     * Insert a value from a rehash call
+                     * @param index          the bucket index
+                     * @param distanceToNext the distance to the next bucket
+                     * @param pair           the data to insert
+                     */
+                    void insertOnRehash(std::size_t index, std::ptrdiff_t distanceToNext, Pair<Key, T> && pair);
+                    /**
+                     * @return the next valid size for the table
+                     */
+                    std::size_t getNewSize() const;
+
+                private :    // Static
                     static constexpr float DEFAULT_MAX_LOAD_FACTOR = 0.9f;
+                    static constexpr float REHASH_MIN_LOAD_FACTOR = 0.15f;
+                    static const std::ptrdiff_t REHASH_HIGH_PROBE = 128;
+                    static const std::size_t DEFAULT_BUCKET_COUNT = 0;
             };
+
+            /**
+             * Output stream operator for the object
+             * @param  stream the stream to add the object's string representation
+             * @param  o      the object to add in the stream
+             * @return        the modified stream
+             */
+            template <class Key, class T, class Hash, class KeyEqual>
+            std::ostream& operator <<(std::ostream& stream, HashTable<Key, T, Hash, KeyEqual> const& o);
         }
     }
 

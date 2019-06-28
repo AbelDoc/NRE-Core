@@ -317,7 +317,6 @@
         vec = std::move(toMove);
         assertEquals(this, vec.getSize(), static_cast <std::size_t> (6));
         assertEquals(this, vec.get(vec.getSize() - 1), 60);
-        assertEquals(this, toMove.getSize(), static_cast <std::size_t> (0));
     }
 
     TEST(Vector, Equals) {

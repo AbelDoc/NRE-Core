@@ -459,7 +459,6 @@
         assertEquals(this, list.toString(), String("(0, 1, 2, 3, 4)"));
         list = std::move(other);
         assertEquals(this, list.toString(), String("(10, 20, 30, 40, 50, 60)"));
-        assertEquals(this, other.toString(), String("()"));
     }
 
     TEST(ForwardList, Equals) {

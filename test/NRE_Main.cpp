@@ -15,3 +15,4 @@
     #include "Utility/String/NRE_String.cpp"
     #include "Utility/ForwardList/NRE_ForwardList.cpp"
     #include "Utility/Pair/NRE_Pair.cpp"
+    #include "Utility/HashTable/NRE_HashTable.cpp"
