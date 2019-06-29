@@ -472,7 +472,13 @@
                         /**
                          * Erase the element pointed by the iterator
                          * @param  pos the iterator on the erased element
-                         * @return     an iterator after the erased element
+                         * @return      an iterator after the erased element
+                         */
+                        Iterator erase(Iterator pos);
+                        /**
+                         * Erase the element pointed by the iterator
+                         * @param  pos the iterator on the erased element
+                         * @return      an iterator after the erased element
                          */
                         Iterator erase(ConstIterator pos);
                         /**

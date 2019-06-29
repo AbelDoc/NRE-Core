@@ -353,13 +353,13 @@
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::insertHint(ConstIterator hint, Pair<Key, T> const& value) {
+             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::insertHint(ConstIterator, Pair<Key, T> const& value) {
                  return insert(value).first;
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
              template <class P>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::insertHint(ConstIterator hint, P && value) {
+             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::insertHint(ConstIterator, P && value) {
                  return insert(std::forward<P>(value)).first;
              }
 
@@ -394,8 +394,8 @@
 
              template <class Key, class T, class Hash, class KeyEqual>
              template <class ... Args>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::emplaceHint(ConstIterator hint, Args && ... args) {
-                 return emplace(std::forward<Args>(args)...);
+             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::emplaceHint(ConstIterator, Args && ... args) {
+                 return emplace(std::forward<Args>(args)...).first;
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
@@ -443,24 +443,29 @@
              template <class Key, class T, class Hash, class KeyEqual>
              inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::Iterator, typename HashTable<Key, T, Hash, KeyEqual>::Iterator> HashTable<Key, T, Hash, KeyEqual>::equalRange(Key const& k) {
                  Iterator it = find(k);
-                 return Pair<Key, T>(it, (it == end()) ? (it) : (std::next(it)));
+                 return Pair<Iterator, Iterator>(it, (it == end()) ? (it) : (std::next(it)));
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
              inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator, typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator> HashTable<Key, T, Hash, KeyEqual>::equalRange(Key const& k) const {
                  ConstIterator it = find(k);
-                 return Pair<Key, T>(it, (it == end()) ? (it) : (std::next(it)));
+                 return Pair<ConstIterator, ConstIterator>(it, (it == end()) ? (it) : (std::next(it)));
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
              inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::find(Key const& k) {
+                 return Iterator(const_cast <const HashTable&>(*this).find(k).current);
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::find(Key const& k) const {
                  std::size_t hashValue = hashKey(k);
                  std::size_t index = bucketFromHash(hashValue);
                  std::ptrdiff_t distanceToNext = 0;
 
                  while (distanceToNext <= data[index].getDistanceToNext()) {
                      if (compareKey(data[index].getKey(), k)) {
-                         return Iterator(data.getData() + index);
+                         return ConstIterator(data.getData() + index);
                      }
 
                      index = next(index);
@@ -471,8 +476,8 @@
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::find(Key const& k) const {
-                 return ConstIterator(find(k).current);
+             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::erase(Iterator pos) {
+                 return erase(ConstIterator(pos.current));
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
@@ -495,7 +500,7 @@
                 if (pos.current->isEmpty()) {
                     ++pos;
                 }
-                return pos;
+                return Iterator(pos.current);
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
@@ -513,8 +518,8 @@
                      }
                  }
 
-                 if (endIt == end()) {
-                     return end();
+                 if (endIt == this->end()) {
+                     return this->end();
                  }
 
                  std::size_t closerIndex = static_cast <std::size_t> (beginIt.current - data.getData());
@@ -538,8 +543,8 @@
 
              template <class Key, class T, class Hash, class KeyEqual>
              inline std::size_t HashTable<Key, T, Hash, KeyEqual>::erase(Key const& k) {
-                 ConstIterator it = find(k);
-                 if (it != cend()) {
+                 Iterator it = find(k);
+                 if (it != end()) {
                      erase(it);
                      return 1;
                  } else {
@@ -558,6 +563,7 @@
                      mask = table.mask;
                      maxLoadFactor = table.maxLoadFactor;
                  }
+                 return *this;
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
@@ -566,6 +572,7 @@
                      swap(table);
                      table.clear();
                  }
+                 return *this;
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
