@@ -338,6 +338,13 @@
                          */
                         std::size_t getCount(Key const& k) const;
 
+                    //## Setter ##//
+                        /**
+                         * Set the new max load factor, must be between 0.0 and 1.0
+                         * @param factor the new factor
+                         */
+                        void setMaxLoadFactor(float factor);
+
                     //## Iterator Access ##//
                         /**
                          * @return an iterator on the first element

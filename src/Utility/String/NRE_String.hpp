@@ -757,8 +757,19 @@
                          */
                         void shrinkToFit();
                         /**
+                         * Test if the string contains the given string
+                         * @param  str the string to test
+                         * @return     if the string is contained
+                         */
+                        bool contains(const T* str) const;
+                        /**
+                         * Test if the string contains the given string
+                         * @param  str the string to test
+                         * @return     if the string is contained
+                         */
+                        bool contains(BasicString const& str) const;
+                        /**
                          * Search the first occurrence of the given string, start the search at the given position
-
                          * @param  str the string to search
                          * @param  pos the search start
                          * @return     the position of the found string, NOT_FOUND if no occurrence found

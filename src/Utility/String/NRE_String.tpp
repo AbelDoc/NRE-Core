@@ -868,6 +868,16 @@
              }
 
              template <class T>
+             inline bool BasicString<T>::contains(const T* str) const {
+                 return find(str) != NOT_FOUND;
+             }
+
+             template <class T>
+             inline bool BasicString<T>::contains(BasicString const& str) const {
+                 return find(str) != NOT_FOUND;
+             }
+
+             template <class T>
              inline std::size_t BasicString<T>::find(BasicString const& str, std::size_t pos) const {
                  return find(str.length, str.data, pos);
              }

@@ -736,6 +736,14 @@
         assertEquals(this, str.get(str.getSize() - 1), 'a');
     }
 
+    TEST(String, Contains) {
+        String str("aaaabbbb");
+        assertTrue(this, str.contains("aaaa"));
+        assertFalse(this, str.contains("aaaaa"));
+        assertTrue(this, str.contains("ab"));
+        assertFalse(this, str.contains("bab"));
+    }
+
     TEST(String, Find) {
         String str("aaaabbbb");
         assertEquals(this, str.find(String("ab")), static_cast <std::size_t> (3));

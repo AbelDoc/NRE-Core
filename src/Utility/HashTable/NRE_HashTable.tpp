@@ -206,16 +206,16 @@
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable const& table) : Hash(table), KeyEqual(table), data(table.data), nbElements(table.data), mask(table.mask), maxLoadFactor(table.maxLoadFactor) {
+             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable const& table) : Hash(table), KeyEqual(table), data(table.data), nbElements(table.nbElements), mask(table.mask), maxLoadFactor(table.maxLoadFactor) {
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable && table) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data)), nbElements(table.data), mask(table.mask), maxLoadFactor(table.maxLoadFactor) {
+             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable && table) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data)), nbElements(table.nbElements), mask(table.mask), maxLoadFactor(table.maxLoadFactor) {
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
              inline T& HashTable<Key, T, Hash, KeyEqual>::get(Key const& k) {
-                 auto it = find(k).first;
+                 auto it = find(k);
                  if (it == end()) {
                      throw std::out_of_range("Accessing non existing element in NRE::Utility::HashTable.");
                  }
@@ -224,7 +224,7 @@
 
              template <class Key, class T, class Hash, class KeyEqual>
              inline T const& HashTable<Key, T, Hash, KeyEqual>::get(Key const& k) const {
-                 auto it = find(k).first;
+                 auto it = find(k);
                  if (it == end()) {
                      throw std::out_of_range("Accessing non existing element in NRE::Utility::HashTable.");
                  }
@@ -273,6 +273,14 @@
                  } else {
                      return 0;
                  }
+             }
+
+             template <class Key, class T, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, Hash, KeyEqual>::setMaxLoadFactor(float factor) {
+                 if (factor < 0.0f || factor > 1.0f) {
+                     throw std::out_of_range("NRE::Utility::HashTable max load factor must be between 0.0 and 1.0.");
+                 }
+                 maxLoadFactor = factor;
              }
 
              template <class Key, class T, class Hash, class KeyEqual>
@@ -452,7 +460,7 @@
 
                  while (distanceToNext <= data[index].getDistanceToNext()) {
                      if (compareKey(data[index].getKey(), k)) {
-                         return Iterator(data + index);
+                         return Iterator(data.getData() + index);
                      }
 
                      index = next(index);
@@ -579,9 +587,10 @@
                      ConstIterator first = begin();
                      res << '{' << (*first);
                      res.reserve((res.getSize() + 2) * nbElements);
+                     ++first;
                      while (first != end()) {
-                         ++first;
                          res << ',' << ' ' << (*first);
+                         ++first;
                      }
                      res << '}';
                      return res;
