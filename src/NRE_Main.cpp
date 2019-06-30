@@ -7,7 +7,7 @@
      * @copyright CC-BY-NC-SA
      */
 
-    #include <forward_list>
+    #include <unordered_map>
     #include <iostream>
     #include <chrono>
 
@@ -18,30 +18,33 @@
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        std::size_t firstLoopSize  = 1;
-        std::size_t constexpr containerSize  = 1'000;
+        std::size_t firstLoopSize  = 100;
+        std::size_t constexpr containerSize  = 10'000;
         std::size_t secondLoopSize = containerSize;
 
-        std::cout << "Benchmark : NRE::Utility::ForwardList vs std::forward_list" << std::endl;
-        std::cout << "Stress test [Constructor + PushFront] : x" << firstLoopSize << std::endl;
+        std::cout << "Benchmark : NRE::Utility::HashTable vs std::unordered_map" << std::endl;
+        std::cout << "Stress test [Constructor + Insert + LookUp] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
 
 
-        std::cout << "Current target : std::forward_list" << std::endl;
-        std::cout << "Size of target : " << sizeof(std::forward_list<std::size_t>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(std::forward_list<std::size_t>::iterator) << std::endl;
+        std::cout << "Current target : std::unordered_map" << std::endl;
+        std::cout << "Size of target : " << sizeof(std::unordered_map<std::size_t, std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(std::unordered_map<std::size_t, std::size_t>::iterator) << std::endl;
 
         std::size_t res = 0;
         std::size_t capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            std::forward_list<std::size_t> list;
+            std::unordered_map<std::size_t, std::size_t> map(secondLoopSize);
             for (std::size_t j = 0; j < secondLoopSize; j++) {
-                list.push_front(j);
+                map.insert({j, j});
             }
-            capacity = secondLoopSize;
+            for (auto& it : map) {
+                res += it.second;
+            }
+            capacity = map.bucket_count();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumSTD += diff;
@@ -54,25 +57,28 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << capacity * sizeof(std::size_t) + firstLoopSize * sizeof(std::forward_list<std::size_t>) << " o" << std::endl;
+        std::cout << "Final used memory : " << capacity * sizeof(std::pair<std::size_t, std::size_t>) + firstLoopSize * sizeof(std::unordered_map<std::size_t, std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumSTD / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstSTD << " ns" << std::endl;
         std::cout << "\tBest    : " << bestSTD  << " ns" << std::endl;
 
-        std::cout << "Current target : NRE::Utility::ForwardList" << std::endl;
-        std::cout << "Size of target : " << sizeof(NRE::Utility::ForwardList<std::size_t>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(NRE::Utility::ForwardList<std::size_t>::Iterator) << std::endl;
+        std::cout << "Current target : NRE::Utility::HashTable" << std::endl;
+        std::cout << "Size of target : " << sizeof(NRE::Utility::HashTable<std::size_t, std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(NRE::Utility::HashTable<std::size_t, std::size_t>::Iterator) << std::endl;
 
         res = 0;
         capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            NRE::Utility::ForwardList<std::size_t> list;
+            NRE::Utility::HashTable<std::size_t, std::size_t> map(secondLoopSize);
             for (std::size_t j = 0; j < secondLoopSize; j++) {
-                list.pushFront(j);
+                map.insert({j, j});
             }
-            capacity = secondLoopSize;
+            for (auto& it : map) {
+                res += it.second;
+            }
+            capacity = map.getBucketCount();;
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE += diff;
@@ -85,7 +91,7 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << capacity * sizeof(std::size_t) + firstLoopSize * sizeof(NRE::Utility::ForwardList<std::size_t>) << " o" << std::endl;
+        std::cout << "Final used memory : " << capacity * sizeof(NRE::Utility::Pair<std::size_t, std::size_t>) + firstLoopSize * sizeof(NRE::Utility::HashTable<std::size_t, std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;
