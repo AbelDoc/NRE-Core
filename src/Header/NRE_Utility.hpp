@@ -16,6 +16,7 @@
 
     #include "../Utility/Pair/NRE_Pair.hpp"
     #include "../Utility/HashTable/NRE_HashTable.hpp"
+    #include "../Utility/UnorderedMap/NRE_UnorderedMap.hpp"
 
     #include "../Utility/Observer/NRE_Observer.hpp"
     #include "../Utility/Observable/NRE_Observable.hpp"

@@ -432,7 +432,7 @@
                          * @param hasher      the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
-                        HashTable(std::size_t bucketCount = DEFAULT_BUCKET_COUNT , Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        HashTable(std::size_t bucketCount , Hash const& hasher, KeyEqual const& equal);
                         /**
                          * Construct an hashtable with a number of bucket and filled with elements in the given range
                          * @param begin       the begin iterator
@@ -442,7 +442,7 @@
                          * @param equal       the equal function used in the table
                          */
                         template <class InputIterator>
-                        HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal);
                         /**
                          * Construct an hashtable with a number of bucket and filled with elements in the given list
                          * @param list        the list to fill the table with
@@ -450,7 +450,7 @@
                          * @param haser       the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
-                        HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal);
 
                     //## Copy Constructor ##//
                         /**
@@ -815,11 +815,10 @@
                     std::size_t getNewSize() const;
 
                 private :    // Static
-                    static constexpr bool USE_STORED_HASH_ON_LOOKUP = StoreHash;                                                                                                                                                            /**< Tell if we use the stored hash on lookup */
-                    static constexpr float DEFAULT_MAX_LOAD_FACTOR = 0.9f;                                                                                                                                                                  /**< The default max load factor before growing */
-                    static constexpr float REHASH_MIN_LOAD_FACTOR = 0.15f;                                                                                                                                                                  /**< The minimum load factor for rehash */
-                    static const DistanceType REHASH_HIGH_PROBE = 128;                                                                                                                                                                      /**< The maximum distance between 2 bucket before rehash */
-                    static const std::size_t DEFAULT_BUCKET_COUNT = 0;                                                                                                                                                                      /**< The default bucket count */
+                    static constexpr bool USE_STORED_HASH_ON_LOOKUP = StoreHash;    /**< Tell if we use the stored hash on lookup */
+                    static constexpr float DEFAULT_MAX_LOAD_FACTOR = 0.9f;          /**< The default max load factor before growing */
+                    static constexpr float REHASH_MIN_LOAD_FACTOR = 0.15f;          /**< The minimum load factor for rehash */
+                    static const DistanceType REHASH_HIGH_PROBE = 128;              /**< The maximum distance between 2 bucket before rehash */
 
                     /**
                      * Tell if we use the stored hash on rehash
@@ -829,6 +828,9 @@
                     static bool USE_STORED_HASH_ON_REHASH(std::size_t count) {
                         return STORE_HASH && count - 1 <= std::numeric_limits<TruncatedHash>::max();
                     }
+
+                public :    // Static
+                    static const std::size_t DEFAULT_BUCKET_COUNT = 0;              /**< The default bucket count */
             };
 
             /**
