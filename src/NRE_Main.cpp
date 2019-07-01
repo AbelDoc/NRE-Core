@@ -22,7 +22,7 @@
         std::size_t constexpr containerSize = 10'000;
         std::size_t secondLoopSize = containerSize;
 
-        std::cout << "Benchmark : NRE::Utility::HashTable vs std::unordered_map" << std::endl;
+        std::cout << "Benchmark : NRE::Utility::UnorderedMap vs std::unordered_map" << std::endl;
         std::cout << "Stress test [Constructor + Insert + LookUp] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
@@ -63,15 +63,15 @@
         std::cout << "\tWorst   : " << worstSTD << " ns" << std::endl;
         std::cout << "\tBest    : " << bestSTD  << " ns" << std::endl;
 
-        std::cout << "Current target : NRE::Utility::HashTable" << std::endl;
-        std::cout << "Size of target : " << sizeof(NRE::Utility::HashTable<std::size_t, std::size_t>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(NRE::Utility::HashTable<std::size_t, std::size_t>::Iterator) << std::endl;
+        std::cout << "Current target : NRE::Utility::UnorderedMap" << std::endl;
+        std::cout << "Size of target : " << sizeof(NRE::Utility::UnorderedMap<std::size_t, std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(NRE::Utility::UnorderedMap<std::size_t, std::size_t>::Iterator) << std::endl;
 
         res = 0;
         capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            NRE::Utility::HashTable<std::size_t, std::size_t> map(secondLoopSize);
+            NRE::Utility::UnorderedMap<std::size_t, std::size_t> map(secondLoopSize);
             for (std::size_t j = 0; j < secondLoopSize; j++) {
                 map.insert({j, j});
             }
@@ -91,7 +91,7 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << capacity * sizeof(NRE::Utility::Pair<std::size_t, std::size_t>) + firstLoopSize * sizeof(NRE::Utility::HashTable<std::size_t, std::size_t>) << " o" << std::endl;
+        std::cout << "Final used memory : " << capacity * sizeof(NRE::Utility::Pair<std::size_t, std::size_t>) + firstLoopSize * sizeof(NRE::Utility::UnorderedMap<std::size_t, std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;
