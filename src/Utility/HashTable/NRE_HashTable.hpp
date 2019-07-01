@@ -3,7 +3,7 @@
      * @file NRE_HashTable.hpp
      * @brief Declaration of Utility's API's Object : HashTable
      * @author Louis ABEL
-     * @date 25/65/2019
+     * @date 25/06/2019
      * @copyright CC-BY-NC-SA
      */
 
@@ -313,10 +313,108 @@
                                 bool operator!=(ForwardIterator const& it) const;
                     };
 
+                    /**
+                     * @class LocalForwardIterator
+                     * @brief Hash table local forward iterator
+                     */
+                    template <class K>
+                    class LocalForwardIterator {
+                        friend class HashTable;
+                        private :   // Fields
+                            BucketEntry* current;   /**< The current iterator bucket */
+
+                        public :    // Methods
+                            typedef std::ptrdiff_t difference_type;
+                            typedef typename HashTable::ValueType value_type;
+                            typedef value_type* pointer;
+                            typedef value_type& reference;
+                            typedef std::forward_iterator_tag iterator_category;
+
+                            //## Constructor ##//
+                                /**
+                                 * Default constructor with nullptr node
+                                 */
+                                LocalForwardIterator() = default;
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param bucket the iterator bucket
+                                 */
+                                LocalForwardIterator(BucketEntry* bucket);
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param bucket the iterator bucket
+                                 */
+                                LocalForwardIterator(const BucketEntry* bucket);
+
+                            //## Copy Constructor ##//
+                                /**
+                                 * Copy it into this
+                                 * @param it the iterator to copy
+                                 */
+                                LocalForwardIterator(LocalForwardIterator const& it) = default;
+
+                            //## Deconstructor ##//
+                                /**
+                                 * LocalForwardIterator Deconstructor
+                                 */
+                                ~LocalForwardIterator() = default;
+
+                            //## Assignment Operator ##//
+                                /**
+                                 * Copy assignment of it into this
+                                 * @param it the iterator to copy into this
+                                 * @return   the reference of himself
+                                 */
+                                LocalForwardIterator& operator =(LocalForwardIterator const& it) = default;
+
+                            //## Access Operator ##//
+                                /**
+                                 * Dereference operator, allow access to the data
+                                 * @return the iterator data
+                                 */
+                                K& operator*() const;
+                                /**
+                                 * Arrow dereference operator, allow access to the data
+                                 * @return the iterator data pointer
+                                 */
+                                K* operator->() const;
+
+                            //## Increment Operator ##//
+                                /**
+                                 * Pre increment operator, access the next element
+                                 * @return the reference of himself
+                                 */
+                                LocalForwardIterator& operator++();
+                                /**
+                                 * Post increment operator, access the next element
+                                 * @return the iterator on the current element
+                                 */
+                                LocalForwardIterator operator++(int);
+
+                            //## Comparison Operator ##//
+                                /**
+                                 * Equality test between this and it
+                                 * @param it the other iterator
+                                 * @return   the test result
+                                 */
+                                bool operator==(LocalForwardIterator const& it) const;
+                                /**
+                                 * Inequality test between this and it
+                                 * @param it the other iterator
+                                 * @return   the test result
+                                 */
+                                bool operator!=(LocalForwardIterator const& it) const;
+                    };
+
                     /**< Shortcut to hide Iterator implementation */
                     typedef ForwardIterator<ValueType>          Iterator;
                     /**< Shortcut to hide ConstIterator implementation */
                     typedef ForwardIterator<const ValueType>    ConstIterator;
+
+                    /**< Shortcut to hide Iterator implementation */
+                    typedef LocalForwardIterator<ValueType>          LocalIterator;
+                    /**< Shortcut to hide ConstIterator implementation */
+                    typedef LocalForwardIterator<const ValueType>    ConstLocalIterator;
 
                 private :    // Fields
                     Vector<BucketEntry> data;   /**< The hash table data */
@@ -415,6 +513,12 @@
                          * @return   the number of corresponding elements
                          */
                         std::size_t getCount(Key const& k) const;
+                        /**
+                         * Get the bucket index from a given key
+                         * @param  k the key to search
+                         * @return   the corresponding bucket
+                         */
+                        std::size_t getBucket(Key const& k) const;
 
                     //## Setter ##//
                         /**
@@ -448,6 +552,42 @@
                          * @return a const iterator on the end of the container
                          */
                         ConstIterator cend() const;
+                        /**
+                         * Grab an iterator on a given bucket
+                         * @param index the bucket index
+                         * @return the iterator on the bucket
+                         */
+                        LocalIterator begin(std::size_t index);
+                        /**
+                         * Grab a const iterator on a given bucket
+                         * @param index the bucket index
+                         * @return the iterator on the bucket
+                         */
+                        ConstLocalIterator begin(std::size_t index) const;
+                        /**
+                         * Grab a const iterator on a given bucket
+                         * @param index the bucket index
+                         * @return the iterator on the bucket
+                         */
+                        ConstLocalIterator cbegin(std::size_t index) const;
+                        /**
+                         * Grab an iterator on a given bucket end
+                         * @param index the bucket index
+                         * @return the iterator on the bucket end
+                         */
+                        LocalIterator end(std::size_t index);
+                        /**
+                         * Grab a const iterator on a given bucket end
+                         * @param index the bucket index
+                         * @return the iterator on the bucket end
+                         */
+                        ConstLocalIterator end(std::size_t index) const;
+                        /**
+                         * Grab a const iterator on a given bucket end
+                         * @param index the bucket index
+                         * @return the iterator on the bucket end
+                         */
+                        ConstLocalIterator cend(std::size_t index) const;
 
                     //## Methods ##//
                         /**
@@ -572,6 +712,14 @@
                          * @return   the number of erased elements
                          */
                         std::size_t erase(Key const& k);
+                        /**
+                         * @return the hash function
+                         */
+                        Hash getHash() const;
+                        /**
+                         * @return the key equal function
+                         */
+                        KeyEqual getKeyEqual() const;
 
                     //## Assignment Operator ##//
                         /**

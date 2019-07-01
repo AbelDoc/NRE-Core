@@ -117,6 +117,11 @@
         assertEquals(this, table.getCount("A"), static_cast <std::size_t> (1));
     }
 
+    TEST(HashTable, BeginBucket) {
+        HashTable<std::string, int> table({{"A", 1}});
+        assertEquals(this, *(table.begin(table.getBucket("A"))), {"A", 1});
+    }
+
     TEST(HashTable, Begin) {
         HashTable<std::string, int> table({{"A", 1}});
         assertEquals(this, *(table.begin()), {"A", 1});

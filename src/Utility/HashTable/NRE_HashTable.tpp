@@ -185,6 +185,55 @@
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(BucketEntry* bucket) : current(bucket) {
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(const BucketEntry* bucket) : current(const_cast <BucketEntry*> (bucket)) {
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline K& HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator*() const {
+                 return current->getData();
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline K* HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator->() const {
+                 return &current->getData();
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::template LocalForwardIterator<K>& HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator++() {
+                 current = nullptr;
+                 return *this;
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::template LocalForwardIterator<K> HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator++(int) {
+                 LocalForwardIterator it(current);
+                 ++(*this);
+                 return it;
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator==(LocalForwardIterator const& it) const {
+                 return current == it.current;
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             template <class K>
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator!=(LocalForwardIterator const& it) const {
+                 return current != it.current;
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::HashTable(std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : Hash(hasher), KeyEqual(equal), nbElements(0), maxLoadFactor(DEFAULT_MAX_LOAD_FACTOR), growAtNextInsert(false) {
                  data.resize(roundUpToPowerOfTwo(bucketCount));
                  data.getLast().setAsLastBucket();
@@ -278,6 +327,11 @@
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getBucket(Key const& k) const {
+                 return bucketFromHash(hashKey(k));
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::setMaxLoadFactor(float factor) {
                  if (factor < 0.0f || factor > 1.0f) {
                      throw std::out_of_range("NRE::Utility::HashTable max load factor must be between 0.0 and 1.0.");
@@ -323,6 +377,36 @@
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::cend() const {
+                 return end();
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::begin(std::size_t index) {
+                 return LocalIterator(&data[index]);
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::begin(std::size_t index) const {
+                 return ConstLocalIterator(&data[index]);
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::cbegin(std::size_t index) const {
+                 return begin();
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::end(std::size_t index) {
+                 return LocalIterator(nullptr);
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::end(std::size_t index) const {
+                 return ConstLocalIterator(nullptr);
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::cend(std::size_t index) const {
                  return end();
              }
 
@@ -568,6 +652,16 @@
                  } else {
                      return 0;
                  }
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline Hash HashTable<Key, T, StoreHash, Hash, KeyEqual>::getHash() const {
+                 return static_cast <Hash&> (*this);
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline KeyEqual HashTable<Key, T, StoreHash, Hash, KeyEqual>::getKeyEqual() const {
+                 return static_cast <KeyEqual&> (*this);
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
