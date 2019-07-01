@@ -9,6 +9,8 @@
 
      #pragma once
 
+     #include <climits>
+
      #include "../String/NRE_String.hpp"
      #include "../Pair/NRE_Pair.hpp"
      #include "../Vector/NRE_Vector.hpp"
@@ -217,8 +219,7 @@
                     static constexpr bool STORE_HASH = StoreHash || ((sizeof(BucketEntry<ValueType, true>) == sizeof(BucketEntry<ValueType, false>)) && (!std::is_arithmetic<Key>::value || !std::is_same<Hash, std::hash<Key>>::value));    /**< Tell if we store the hash in the bucket with the key */
 
                 public :     // Iterator
-                    typedef BucketEntry<ValueType, STORE_HASH> BucketEntry;
-                    typedef typename BucketEntry::DistanceType DistanceType;
+                    typedef typename BucketEntry<ValueType, STORE_HASH>::DistanceType DistanceType;
 
                     /**
                      * @class ForwardIterator
@@ -228,7 +229,7 @@
                     class ForwardIterator {
                         friend class HashTable;
                         private :   // Fields
-                            BucketEntry* current;   /**< The current iterator bucket */
+                            BucketEntry<ValueType, STORE_HASH>* current;   /**< The current iterator bucket */
 
                         public :    // Methods
                             typedef std::ptrdiff_t difference_type;
@@ -246,12 +247,12 @@
                                  * Construct the iterator with the given node
                                  * @param bucket the iterator bucket
                                  */
-                                ForwardIterator(BucketEntry* bucket);
+                                ForwardIterator(BucketEntry<ValueType, STORE_HASH>* bucket);
                                 /**
                                  * Construct the iterator with the given node
                                  * @param bucket the iterator bucket
                                  */
-                                ForwardIterator(const BucketEntry* bucket);
+                                ForwardIterator(const BucketEntry<ValueType, STORE_HASH>* bucket);
 
                             //## Copy Constructor ##//
                                 /**
@@ -321,7 +322,7 @@
                     class LocalForwardIterator {
                         friend class HashTable;
                         private :   // Fields
-                            BucketEntry* current;   /**< The current iterator bucket */
+                            BucketEntry<ValueType, STORE_HASH>* current;   /**< The current iterator bucket */
 
                         public :    // Methods
                             typedef std::ptrdiff_t difference_type;
@@ -339,12 +340,12 @@
                                  * Construct the iterator with the given node
                                  * @param bucket the iterator bucket
                                  */
-                                LocalForwardIterator(BucketEntry* bucket);
+                                LocalForwardIterator(BucketEntry<ValueType, STORE_HASH>* bucket);
                                 /**
                                  * Construct the iterator with the given node
                                  * @param bucket the iterator bucket
                                  */
-                                LocalForwardIterator(const BucketEntry* bucket);
+                                LocalForwardIterator(const BucketEntry<ValueType, STORE_HASH>* bucket);
 
                             //## Copy Constructor ##//
                                 /**
@@ -417,7 +418,7 @@
                     typedef LocalForwardIterator<const ValueType>    ConstLocalIterator;
 
                 private :    // Fields
-                    Vector<BucketEntry> data;   /**< The hash table data */
+                    Vector<BucketEntry<ValueType, STORE_HASH>> data;   /**< The hash table data */
                     std::size_t nbElements;     /**< The number in the table */
                     std::size_t mask;           /**< The mask used with the power of two policy */
                     std::size_t loadThresHold;  /**< The number of element before growing the table */

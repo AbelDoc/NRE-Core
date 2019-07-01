@@ -128,12 +128,12 @@
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(BucketEntry* bucket) : current(bucket) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(BucketEntry<ValueType, STORE_HASH>* bucket) : current(bucket) {
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(const BucketEntry* bucket) : current(const_cast <BucketEntry*> (bucket)) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(const BucketEntry<ValueType, STORE_HASH>* bucket) : current(const_cast <BucketEntry<ValueType, STORE_HASH>*> (bucket)) {
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
@@ -186,12 +186,12 @@
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(BucketEntry* bucket) : current(bucket) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(BucketEntry<ValueType, STORE_HASH>* bucket) : current(bucket) {
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(const BucketEntry* bucket) : current(const_cast <BucketEntry*> (bucket)) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(const BucketEntry<ValueType, STORE_HASH>* bucket) : current(const_cast <BucketEntry<ValueType, STORE_HASH>*> (bucket)) {
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
@@ -497,7 +497,7 @@
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::clear() {
-                 for (BucketEntry& bucket : data) {
+                 for (BucketEntry<ValueType, STORE_HASH>& bucket : data) {
                      bucket.clear();
                  }
 
