@@ -78,12 +78,12 @@
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline std::size_t UnorderedMap<Key, T, StoreHash, Hash, KeyEqual>::getCount(Key const& k) const {
-                 return table.getCount();
+                 return table.getCount(k);
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline std::size_t UnorderedMap<Key, T, StoreHash, Hash, KeyEqual>::getBucket(Key const& k) const {
-                 return table.getBucket();
+                 return table.getBucket(k);
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
@@ -214,7 +214,7 @@
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              inline void UnorderedMap<Key, T, StoreHash, Hash, KeyEqual>::rehash(std::size_t count) {
-                 table.resrehasherve(count);
+                 table.rehash(count);
              }
 
              template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
