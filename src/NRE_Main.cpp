@@ -18,8 +18,8 @@
         std::size_t worstSTD = 0, worstNRE = 0;
         std::size_t bestSTD = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        std::size_t firstLoopSize  = 100;
-        std::size_t constexpr containerSize  = 10'000;
+        std::size_t firstLoopSize = 100;
+        std::size_t constexpr containerSize = 10'000;
         std::size_t secondLoopSize = containerSize;
 
         std::cout << "Benchmark : NRE::Utility::HashTable vs std::unordered_map" << std::endl;

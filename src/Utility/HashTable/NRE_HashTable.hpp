@@ -24,130 +24,206 @@
          */
         namespace Utility {
 
+            typedef std::uint_least32_t TruncatedHash;
+
+            /**
+             * @class BucketEntryHash
+             * @brief Used to store the key hash, or not depending on the template value
+             */
+            template <bool StoreHash>
+            class BucketEntryHash {
+                public :    // Methods
+                    /**
+                     * Compare the given hash with the stored one and test if they are equals
+                     * @return if both hash are equals
+                     */
+                    bool bucketHashEquals(std::size_t) const {
+                        return true;
+                    }
+                    /**
+                     * @return the truncated hash
+                     */
+                    TruncatedHash getTruncatedHash() const {
+                        return 0;
+                    }
+
+                protected : // Methods
+                    /**
+                     * Set the internal stored hash
+                     */
+                    void setHash(TruncatedHash) {
+                    }
+            };
+
+            /**
+             * @class BucketEntryHash
+             * @brief Used to store the key hash, or not depending on the template value
+             */
+            template <>
+            class BucketEntryHash<true> {
+                private :   // Fields
+                    TruncatedHash hash;     /**< The internal stored hash */
+
+                public :    // Methods
+                    /**
+                     * Compare the given hash with the stored one and test if they are equals
+                     * @param h the hash to compare
+                     * @return  if both hash are equals
+                     */
+                    bool bucketHashEquals(std::size_t h) const {
+                        return hash == TruncatedHash(h);
+                    }
+                    /**
+                     * @return the truncated hash
+                     */
+                    TruncatedHash getTruncatedHash() const {
+                        return hash;
+                    }
+
+                protected : // Methods
+                    /**
+                     * Set the internal stored hash
+                     * @param h the new hash
+                     */
+                    void setHash(TruncatedHash h) {
+                        hash = TruncatedHash(h);
+                    }
+            };
+
+            /**
+             * @class BucketEntry
+             * @brief A bucket entry used as the hash table elements
+             */
+            template <class ValueType, bool StoreHash>
+            class BucketEntry : public BucketEntryHash<StoreHash> {
+                public :    // Typedef
+                    typedef std::int_least16_t DistanceType;
+                    typedef typename std::aligned_storage<sizeof(ValueType), alignof(ValueType)>::type Storage;
+
+                private :   // Fields
+                    DistanceType distanceToNext;    /**< The ideal distance to the next bucket */
+                    bool last;                      /**< Tell if the bucket is the last filled */
+                    Storage data;                   /**< The bucket entry data */
+
+                public :    // Methods
+                    //## Constructor ##//
+                        /**
+                         * Construct an empty bucket
+                         */
+                        BucketEntry();
+                        /**
+                         * Construct an empty bucket with user defined last marker
+                         * @param state tell if the bucket is the last
+                         */
+                        BucketEntry(bool state);
+
+                    //## Copy Constructor ##//
+                        /**
+                         * Copy bucket into this
+                         * @param bucket the bucket entry to copy
+                         */
+                        BucketEntry(BucketEntry const& bucket);
+
+                    //## Move Constructor ##//
+                        /**
+                         * Move bucket into this
+                         * @param bucket the bucket entry to move
+                         */
+                        BucketEntry(BucketEntry && bucket);
+
+                    //## Deconstructor ##//
+                        /**
+                         * BucketEntry Deconstructor
+                         */
+                        ~BucketEntry();
+
+                    //## Getter ##//
+                        /**
+                         * @return if the bucket is empty
+                         */
+                        bool isEmpty() const;
+                        /**
+                         * @return if the bucket is the last
+                         */
+                        bool isLastBucket() const;
+                        /**
+                         * @return the distance to the next bucket
+                         */
+                        DistanceType getDistanceToNext() const;
+                        /**
+                         * @return the bucket data
+                         */
+                        ValueType& getData();
+                        /**
+                         * @return the bucket data
+                         */
+                        ValueType const& getData() const;
+
+                    //## Setter ##//
+                        /**
+                         * Set this as the last bucket
+                         */
+                        void setAsLastBucket();
+                        /**
+                         * Set the bucket data, must be empty
+                         * @param distance the distance to the next bucket
+                         * @param h        the new truncated hash
+                         * @param newData  the data to set
+                         */
+                        void setData(DistanceType distance, TruncatedHash h, ValueType && newData);
+
+                    //## Methods ##//
+                        /**
+                         * Clear the bucket data if not empty
+                         */
+                        void clear();
+                        /**
+                         * Swap the bucket data with given one
+                         * @param distance the distance to the next bucket
+                         * @param h        the new truncated hash
+                         * @param newData  the data to set
+                         */
+                        void swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData);
+
+                    //## Assignment Operator ##//
+                        /**
+                         * Copy bucket into this
+                         * @param bucket the bucket entry to copy into this
+                         * @return    the reference of himself
+                         */
+                        BucketEntry& operator =(BucketEntry const& bucket);
+                        /**
+                         * Move bucket into this
+                         * @param bucket the bucket entry to move into this
+                         * @return       the reference of himself
+                         */
+                        BucketEntry& operator =(BucketEntry && bucket);
+
+                public :    // Static
+                    static const DistanceType EMPTY_BUCKET_DISTANCE = -1; /**< The distance used to mark a bucket as empty */
+
+            };
+
             /**
              * @class HashTable
-             * @brief An hashtable used in map and set, an associative container using linear probing, robin hood and shift back optimisation
+             * @brief Based on TSL Robin Hash, An hashtable used in map and set, an associative container using linear probing, robin hood and shift back optimisation
              */
-            template <class Key, class T, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
+            template <class Key, class T, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
             class HashTable : private Hash, private KeyEqual {
-                private :    // Structures
-                    /**
-                     * @class BucketEntry
-                     * @brief A bucket entry used as the hash table elements
-                     */
-                    class BucketEntry {
-                        private :   // Fields
-                            std::ptrdiff_t distanceToNext;  /**< The ideal distance to the next bucket */
-                            bool last;                      /**< Tell if the bucket is the last filled */
-                            Pair<Key, T> data;              /**< The bucket entry data */
+                public :    // Typedef
+                    typedef Pair<Key, T> ValueType;
 
-                        public :    // Methods
-                            //## Constructor ##//
-                                /**
-                                 * Construct an empty bucket
-                                 */
-                                BucketEntry();
-                                /**
-                                 * Construct an empty bucket with user defined last marker
-                                 * @param state tell if the bucket is the last
-                                 */
-                                BucketEntry(bool state);
-
-                            //## Copy Constructor ##//
-                                /**
-                                 * Copy bucket into this
-                                 * @param bucket the bucket entry to copy
-                                 */
-                                BucketEntry(BucketEntry const& bucket);
-
-                            //## Move Constructor ##//
-                                /**
-                                 * Move bucket into this
-                                 * @param bucket the bucket entry to move
-                                 */
-                                BucketEntry(BucketEntry && bucket);
-
-                            //## Deconstructor ##//
-                                /**
-                                 * BucketEntry Deconstructor
-                                 */
-                                ~BucketEntry();
-
-                            //## Getter ##//
-                                /**
-                                 * @return if the bucket is empty
-                                 */
-                                bool isEmpty() const;
-                                /**
-                                 * @return if the bucket is the last
-                                 */
-                                bool isLastBucket() const;
-                                /**
-                                 * @return the distance to the next bucket
-                                 */
-                                std::ptrdiff_t getDistanceToNext() const;
-                                /**
-                                 * @return the bucket key
-                                 */
-                                Key const& getKey() const;
-                                /**
-                                 * @return the bucket data
-                                 */
-                                Pair<Key, T>& getData();
-                                /**
-                                 * @return the bucket data
-                                 */
-                                Pair<Key, T> const& getData() const;
-
-                            //## Setter ##//
-                                /**
-                                 * Set this as the last bucket
-                                 */
-                                void setAsLastBucket();
-                                /**
-                                 * Set the bucket data, must be empty
-                                 * @param distance the distance to the next bucket
-                                 * @param newData  the data to set
-                                 */
-                                void setData(std::ptrdiff_t distance, Pair<Key, T> && newData);
-
-                            //## Methods ##//
-                                /**
-                                 * Clear the bucket data if not empty
-                                 */
-                                void clear();
-                                /**
-                                 * Swap the bucket entry with another bucket entry
-                                 * @param bucket the other bucket
-                                 */
-                                void swap(BucketEntry& bucket);
-                                /**
-                                 * Swap the bucket data with given one
-                                 * @param distance the distance to the next bucket
-                                 * @param newData  the data to set
-                                 */
-                                void swapWithData(std::ptrdiff_t& distance, Pair<Key, T> && newData);
-
-                            //## Assignment Operator ##//
-                                /**
-                                 * Copy bucket into this
-                                 * @param bucket the bucket entry to copy into this
-                                 * @return    the reference of himself
-                                 */
-                                BucketEntry& operator =(BucketEntry const& bucket);
-                                /**
-                                 * Move bucket into this
-                                 * @param bucket the bucket entry to move into this
-                                 * @return       the reference of himself
-                                 */
-                                BucketEntry& operator =(BucketEntry && bucket);
-
-                        public :    // Static
-                            static const std::ptrdiff_t EMPTY_BUCKET_DISTANCE = -1; /**< The distance used to mark a bucket as empty */
-
-                    };
+                private :   // Static
+                    static constexpr bool STORE_HASH = StoreHash || ((sizeof(BucketEntry<ValueType, true>) == sizeof(BucketEntry<ValueType, false>)) && (!std::is_arithmetic<Key>::value || !std::is_same<Hash, std::hash<Key>>::value));    /**< Tell if we store the hash in the bucket with the key */
 
                 public :     // Iterator
+                    typedef BucketEntry<ValueType, STORE_HASH> BucketEntry;
+                    typedef typename BucketEntry::DistanceType DistanceType;
+
+                    /**
+                     * @class ForwardIterator
+                     * @brief Hash table forward iterator
+                     */
                     template <class K>
                     class ForwardIterator {
                         friend class HashTable;
@@ -156,9 +232,9 @@
 
                         public :    // Methods
                             typedef std::ptrdiff_t difference_type;
-                            typedef Pair<Key, T> value_type;
-                            typedef Pair<Key, T>* pointer;
-                            typedef Pair<Key, T>& reference;
+                            typedef typename HashTable::ValueType value_type;
+                            typedef value_type* pointer;
+                            typedef value_type& reference;
                             typedef std::forward_iterator_tag iterator_category;
 
                             //## Constructor ##//
@@ -238,15 +314,17 @@
                     };
 
                     /**< Shortcut to hide Iterator implementation */
-                    typedef ForwardIterator<Pair<Key, T>>          Iterator;
+                    typedef ForwardIterator<ValueType>          Iterator;
                     /**< Shortcut to hide ConstIterator implementation */
-                    typedef ForwardIterator<const Pair<Key, T>>    ConstIterator;
+                    typedef ForwardIterator<const ValueType>    ConstIterator;
 
                 private :    // Fields
                     Vector<BucketEntry> data;   /**< The hash table data */
                     std::size_t nbElements;     /**< The number in the table */
                     std::size_t mask;           /**< The mask used with the power of two policy */
+                    std::size_t loadThresHold;  /**< The number of element before growing the table */
                     float maxLoadFactor;        /**< The maximum load factor before rehash and grow */
+                    bool growAtNextInsert;      /**< Used to grow at the next insert call */
 
                 public :     // Methods
                     //## Constructor ##//
@@ -274,7 +352,7 @@
                          * @param haser       the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
-                        HashTable(std::initializer_list<Pair<Key, T>> list, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
 
                     //## Copy Constructor ##//
                         /**
@@ -377,7 +455,7 @@
                          * @param value the pair with the key and the corresponding element
                          * @return      a pair containing an iterator on the inserted element, and a boolean telling if the insertion has been done
                          */
-                        Pair<Iterator, bool> insert(Pair<Key, T> const& value);
+                        Pair<Iterator, bool> insert(ValueType const& value);
                         /**
                          * Insert the given value in the table
                          * @param value the pair with the key and the corresponding element
@@ -396,14 +474,14 @@
                          * Insert elements in the given list
                          * @param list the list of value to insert
                          */
-                        void insert(std::initializer_list<Pair<Key, T>> list);
+                        void insert(std::initializer_list<ValueType> list);
                         /**
                          * Insert the given value in the table using the hint as a suggestion for the search start
                          * @param  hint  the hint used for the search
                          * @param  value the value to insert
                          * @return       an iterator on the inserted element
                          */
-                        Iterator insertHint(ConstIterator hint, Pair<Key, T> const& value);
+                        Iterator insertHint(ConstIterator hint, ValueType const& value);
                         /**
                          * Insert the given value in the table using the hint as a suggestion for the search start
                          * @param  hint  the hint used for the search
@@ -566,26 +644,43 @@
                      * Insert a value in a full bucket
                      * @param index          the bucket index
                      * @param distanceToNext the distance to the next bucket
+                     * @param h              the truncated hash
                      * @param pair           the data to insert
                      */
-                    void insertValue(std::size_t index, std::ptrdiff_t distanceToNext, Pair<Key, T> && pair);
+                    void insertValue(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType& pair);
                     /**
                      * Insert a value from a rehash call
                      * @param index          the bucket index
                      * @param distanceToNext the distance to the next bucket
+                     * @param h              the truncated hash
                      * @param pair           the data to insert
                      */
-                    void insertOnRehash(std::size_t index, std::ptrdiff_t distanceToNext, Pair<Key, T> && pair);
+                    void insertOnRehash(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType && pair);
+                    /**
+                     * Rehash the table if it's under extreme load
+                     * @return if the table has been rehashed
+                     */
+                    bool rehashOnExtremeLoad();
                     /**
                      * @return the next valid size for the table
                      */
                     std::size_t getNewSize() const;
 
                 private :    // Static
-                    static constexpr float DEFAULT_MAX_LOAD_FACTOR = 0.9f;
-                    static constexpr float REHASH_MIN_LOAD_FACTOR = 0.15f;
-                    static const std::ptrdiff_t REHASH_HIGH_PROBE = 128;
-                    static const std::size_t DEFAULT_BUCKET_COUNT = 0;
+                    static constexpr bool USE_STORED_HASH_ON_LOOKUP = StoreHash;                                                                                                                                                            /**< Tell if we use the stored hash on lookup */
+                    static constexpr float DEFAULT_MAX_LOAD_FACTOR = 0.9f;                                                                                                                                                                  /**< The default max load factor before growing */
+                    static constexpr float REHASH_MIN_LOAD_FACTOR = 0.15f;                                                                                                                                                                  /**< The minimum load factor for rehash */
+                    static const DistanceType REHASH_HIGH_PROBE = 128;                                                                                                                                                                      /**< The maximum distance between 2 bucket before rehash */
+                    static const std::size_t DEFAULT_BUCKET_COUNT = 0;                                                                                                                                                                      /**< The default bucket count */
+
+                    /**
+                     * Tell if we use the stored hash on rehash
+                     * @param  count the current bucket count
+                     * @return       if we use the stored hash
+                     */
+                    static bool USE_STORED_HASH_ON_REHASH(std::size_t count) {
+                        return STORE_HASH && count - 1 <= std::numeric_limits<TruncatedHash>::max();
+                    }
             };
 
             /**
@@ -594,8 +689,8 @@
              * @param  o      the object to add in the stream
              * @return        the modified stream
              */
-            template <class Key, class T, class Hash, class KeyEqual>
-            std::ostream& operator <<(std::ostream& stream, HashTable<Key, T, Hash, KeyEqual> const& o);
+            template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+            std::ostream& operator <<(std::ostream& stream, HashTable<Key, T, StoreHash, Hash, KeyEqual> const& o);
         }
     }
 

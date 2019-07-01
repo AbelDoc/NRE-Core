@@ -10,102 +10,98 @@
      namespace NRE {
          namespace Utility {
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::BucketEntry::BucketEntry() : distanceToNext(EMPTY_BUCKET_DISTANCE), last(false) {
+             template <class ValueType, bool StoreHash>
+             inline BucketEntry<ValueType, StoreHash>::BucketEntry() : BucketEntryHash<StoreHash>(), distanceToNext(EMPTY_BUCKET_DISTANCE), last(false) {
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::BucketEntry::BucketEntry(BucketEntry const& bucket) : distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
+             template <class ValueType, bool StoreHash>
+             inline BucketEntry<ValueType, StoreHash>::BucketEntry(BucketEntry const& bucket) : BucketEntryHash<StoreHash>(bucket), distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
                  if (!bucket.isEmpty()) {
-                     new (&data) Pair<Key, T>(bucket.data);
+                     new (&data) ValueType(bucket.getData());
                      distanceToNext = bucket.distanceToNext;
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::BucketEntry::BucketEntry(BucketEntry && bucket) : distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
+             template <class ValueType, bool StoreHash>
+             inline BucketEntry<ValueType, StoreHash>::BucketEntry(BucketEntry && bucket) : BucketEntryHash<StoreHash>(bucket), distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
                  if (!bucket.isEmpty()) {
-                     new (&data) Pair<Key, T>(std::move(bucket.data));
+                     new (&data) ValueType(std::move(bucket.getData()));
                      distanceToNext = bucket.distanceToNext;
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::BucketEntry::~BucketEntry() {
+             template <class ValueType, bool StoreHash>
+             inline BucketEntry<ValueType, StoreHash>::~BucketEntry() {
                  clear();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline bool HashTable<Key, T, Hash, KeyEqual>::BucketEntry::isEmpty() const {
+             template <class ValueType, bool StoreHash>
+             inline bool BucketEntry<ValueType, StoreHash>::isEmpty() const {
                  return distanceToNext == EMPTY_BUCKET_DISTANCE;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline bool HashTable<Key, T, Hash, KeyEqual>::BucketEntry::isLastBucket() const {
+             template <class ValueType, bool StoreHash>
+             inline bool BucketEntry<ValueType, StoreHash>::isLastBucket() const {
                  return last;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::ptrdiff_t HashTable<Key, T, Hash, KeyEqual>::BucketEntry::getDistanceToNext() const {
+             template <class ValueType, bool StoreHash>
+             inline typename BucketEntry<ValueType, StoreHash>::DistanceType BucketEntry<ValueType, StoreHash>::getDistanceToNext() const {
                  return distanceToNext;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline Key const& HashTable<Key, T, Hash, KeyEqual>::BucketEntry::getKey() const {
-                 return data.first;
+             template <class ValueType, bool StoreHash>
+             inline ValueType& BucketEntry<ValueType, StoreHash>::getData() {
+                 return *reinterpret_cast <ValueType*> (&data);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline Pair<Key, T>& HashTable<Key, T, Hash, KeyEqual>::BucketEntry::getData() {
-                 return data;
+             template <class ValueType, bool StoreHash>
+             inline ValueType const& BucketEntry<ValueType, StoreHash>::getData() const {
+                 return *reinterpret_cast <const ValueType*> (&data);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline Pair<Key, T> const& HashTable<Key, T, Hash, KeyEqual>::BucketEntry::getData() const {
-                 return data;
-             }
-
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::BucketEntry::setAsLastBucket() {
+             template <class ValueType, bool StoreHash>
+             inline void BucketEntry<ValueType, StoreHash>::setAsLastBucket() {
                  last = true;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::BucketEntry::setData(std::ptrdiff_t distance, Pair<Key, T> && newData) {
-                 new (&data) Pair<Key, T>(std::move(newData));
+             template <class ValueType, bool StoreHash>
+             inline void BucketEntry<ValueType, StoreHash>::setData(DistanceType distance, TruncatedHash h, ValueType && newData) {
+                 new (&data) ValueType(std::move(newData));
+                 this->setHash(h);
                  distanceToNext = distance;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::BucketEntry::clear() {
+             template <class ValueType, bool StoreHash>
+             inline void BucketEntry<ValueType, StoreHash>::clear() {
                  if (!isEmpty()) {
-                     data.~Pair<Key, T>();
+                     getData().~ValueType();
                      distanceToNext = EMPTY_BUCKET_DISTANCE;
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::BucketEntry::swap(BucketEntry& bucket) {
-                using std::swap;
-                swap(distanceToNext, bucket.distanceToNext);
-                swap(last, bucket.last);
-                swap(data, bucket.data);
-             }
-
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::BucketEntry::swapWithData(std::ptrdiff_t& distance, Pair<Key, T> && newData) {
+             template <class ValueType, bool StoreHash>
+             inline void BucketEntry<ValueType, StoreHash>::swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData) {
                 using std::swap;
                 swap(distanceToNext, distance);
-                swap(data, newData);
+                swap(getData(), newData);
+
+                (void) h;
+                if (StoreHash) {
+                    auto tmp = this->getTruncatedHash();
+                    this->setHash(h);
+                    h = tmp;
+                }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::BucketEntry& HashTable<Key, T, Hash, KeyEqual>::BucketEntry::operator=(BucketEntry const& bucket) {
+             template <class ValueType, bool StoreHash>
+             inline BucketEntry<ValueType, StoreHash>& BucketEntry<ValueType, StoreHash>::operator=(BucketEntry const& bucket) {
                 if (this != &bucket) {
                     clear();
 
+                    BucketEntryHash<StoreHash>::operator=(bucket);
                     if (!bucket.isEmpty()) {
-                        new (&data) Pair<Key, T>(bucket.data);
+                        new (&data) ValueType(bucket.getData());
                     }
 
                     distanceToNext = bucket.distanceToNext;
@@ -114,13 +110,14 @@
                 return *this;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::BucketEntry& HashTable<Key, T, Hash, KeyEqual>::BucketEntry::operator=(BucketEntry && bucket) {
+             template <class ValueType, bool StoreHash>
+             inline BucketEntry<ValueType, StoreHash>& BucketEntry<ValueType, StoreHash>::operator=(BucketEntry && bucket) {
                 if (this != &bucket) {
                     clear();
 
+                    BucketEntryHash<StoreHash>::operator=(std::move(bucket));
                     if (!bucket.isEmpty()) {
-                        new (&data) Pair<Key, T>(std::move(bucket.data));
+                        new (&data) ValueType(std::move(bucket.getData()));
                     }
 
                     distanceToNext = bucket.distanceToNext;
@@ -129,31 +126,31 @@
                 return *this;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(BucketEntry* bucket) : current(bucket) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(BucketEntry* bucket) : current(bucket) {
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(const BucketEntry* bucket) : current(const_cast <BucketEntry*> (bucket)) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(const BucketEntry* bucket) : current(const_cast <BucketEntry*> (bucket)) {
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline K& HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::operator*() const {
+             inline K& HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator*() const {
                  return current->getData();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline K* HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::operator->() const {
+             inline K* HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator->() const {
                  return &current->getData();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::template ForwardIterator<K>& HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::operator++() {
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::template ForwardIterator<K>& HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator++() {
                  while (true) {
                      if (current->isLastBucket()) {
                          ++current;
@@ -167,54 +164,59 @@
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::template ForwardIterator<K> HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::operator++(int) {
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::template ForwardIterator<K> HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator++(int) {
                  ForwardIterator it(current);
                  ++(*this);
                  return it;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline bool HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::operator==(ForwardIterator const& it) const {
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator==(ForwardIterator const& it) const {
                  return current == it.current;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class K>
-             inline bool HashTable<Key, T, Hash, KeyEqual>::ForwardIterator<K>::operator!=(ForwardIterator const& it) const {
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator!=(ForwardIterator const& it) const {
                  return current != it.current;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : Hash(hasher), KeyEqual(equal), nbElements(0), maxLoadFactor(DEFAULT_MAX_LOAD_FACTOR) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::HashTable(std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : Hash(hasher), KeyEqual(equal), nbElements(0), maxLoadFactor(DEFAULT_MAX_LOAD_FACTOR), growAtNextInsert(false) {
                  data.resize(roundUpToPowerOfTwo(bucketCount));
                  data.getLast().setAsLastBucket();
                  mask = data.getSize() - 1;
+                 setMaxLoadFactor(maxLoadFactor);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class InputIterator>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : HashTable(bucketCount, hasher, equal) {
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : HashTable(bucketCount, hasher, equal) {
                  insert(begin, end);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(std::initializer_list<Pair<Key, T>> list, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : HashTable(bucketCount, hasher, equal) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal) : HashTable(bucketCount, hasher, equal) {
                  insert(list);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable const& table) : Hash(table), KeyEqual(table), data(table.data), nbElements(table.nbElements), mask(table.mask), maxLoadFactor(table.maxLoadFactor) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::HashTable(HashTable const& table) : Hash(table), KeyEqual(table), data(table.data), nbElements(table.nbElements), mask(table.mask), loadThresHold(table.loadThresHold), maxLoadFactor(table.maxLoadFactor), growAtNextInsert(table.growAtNextInsert) {
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>::HashTable(HashTable && table) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data)), nbElements(table.nbElements), mask(table.mask), maxLoadFactor(table.maxLoadFactor) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>::HashTable(HashTable && table) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data)), nbElements(table.nbElements), mask(table.mask), loadThresHold(table.loadThresHold), maxLoadFactor(table.maxLoadFactor), growAtNextInsert(table.growAtNextInsert) {
+                 table.data.clear();
+                 table.nbElements = 0;
+                 table.loadThresHold = 0;
+                 table.growAtNextInsert = false;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline T& HashTable<Key, T, Hash, KeyEqual>::get(Key const& k) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline T& HashTable<Key, T, StoreHash, Hash, KeyEqual>::get(Key const& k) {
                  auto it = find(k);
                  if (it == end()) {
                      throw std::out_of_range("Accessing non existing element in NRE::Utility::HashTable.");
@@ -222,8 +224,8 @@
                  return it->second;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline T const& HashTable<Key, T, Hash, KeyEqual>::get(Key const& k) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline T const& HashTable<Key, T, StoreHash, Hash, KeyEqual>::get(Key const& k) const {
                  auto it = find(k);
                  if (it == end()) {
                      throw std::out_of_range("Accessing non existing element in NRE::Utility::HashTable.");
@@ -231,43 +233,43 @@
                  return it->second;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::getBucketCount() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getBucketCount() const {
                  return data.getSize();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline constexpr std::size_t HashTable<Key, T, Hash, KeyEqual>::getMaxBucketCount() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline constexpr std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getMaxBucketCount() const {
                  return data.getMaxSize();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::getSize() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getSize() const {
                  return nbElements;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline float HashTable<Key, T, Hash, KeyEqual>::getMaxLoadFactor() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline float HashTable<Key, T, StoreHash, Hash, KeyEqual>::getMaxLoadFactor() const {
                  return maxLoadFactor;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline float HashTable<Key, T, Hash, KeyEqual>::getLoadFactor() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline float HashTable<Key, T, StoreHash, Hash, KeyEqual>::getLoadFactor() const {
                  return static_cast <float> (getSize()) / static_cast <float> (getBucketCount());
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline constexpr std::size_t HashTable<Key, T, Hash, KeyEqual>::getMaxSize() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline constexpr std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getMaxSize() const {
                  return std::numeric_limits<std::size_t>::max();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline bool HashTable<Key, T, Hash, KeyEqual>::isEmpty() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::isEmpty() const {
                  return nbElements == 0;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::getCount(Key const& k) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getCount(Key const& k) const {
                  if (find(k) != end()) {
                      return 1;
                  } else {
@@ -275,16 +277,17 @@
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::setMaxLoadFactor(float factor) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::setMaxLoadFactor(float factor) {
                  if (factor < 0.0f || factor > 1.0f) {
                      throw std::out_of_range("NRE::Utility::HashTable max load factor must be between 0.0 and 1.0.");
                  }
                  maxLoadFactor = factor;
+                 loadThresHold = static_cast <std::size_t> (static_cast <float> (getBucketCount()) * maxLoadFactor);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::begin() {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::begin() {
                  std::size_t index = 0;
                  while (index < getBucketCount() && data[index].isEmpty()) {
                      ++index;
@@ -293,8 +296,8 @@
                  return Iterator(data.getData() + index);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::begin() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::begin() const {
                  std::size_t index = 0;
                  while (index < getBucketCount() && data[index].isEmpty()) {
                      ++index;
@@ -303,43 +306,43 @@
                  return ConstIterator(data.getData() + index);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::cbegin() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::cbegin() const {
                  return begin();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::end() {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::end() {
                  return Iterator(data.getData() + data.getSize());
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::end() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::end() const {
                  return ConstIterator(data.getData() + data.getSize());
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::cend() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::cend() const {
                  return end();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, Hash, KeyEqual>::insert(Pair<Key, T> const& value) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline Pair<typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, StoreHash, Hash, KeyEqual>::insert(ValueType const& value) {
                  return emplace(value);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class P>
-             inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, Hash, KeyEqual>::insert(P && value) {
+             inline Pair<typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, StoreHash, Hash, KeyEqual>::insert(P && value) {
                  return emplace(std::forward<P>(value));
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class InputIterator>
-             inline void HashTable<Key, T, Hash, KeyEqual>::insert(InputIterator begin, InputIterator end) {
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::insert(InputIterator begin, InputIterator end) {
                  std::size_t count = std::distance(begin, end);
-                 std::size_t free = getBucketCount() - getSize();
-                 if (free < count) {
+                 std::size_t free = loadThresHold - getSize();
+                 if (count > 0 && free < count) {
                      reserve(getSize() + count);
                  }
                  for ( ; begin != end; ++begin) {
@@ -347,34 +350,34 @@
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::insert(std::initializer_list<Pair<Key, T>> list) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::insert(std::initializer_list<ValueType> list) {
                  insert(list.begin(), list.end());
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::insertHint(ConstIterator, Pair<Key, T> const& value) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::insertHint(ConstIterator, ValueType const& value) {
                  return insert(value).first;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class P>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::insertHint(ConstIterator, P && value) {
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::insertHint(ConstIterator, P && value) {
                  return insert(std::forward<P>(value)).first;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class ... Args>
-             inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, Hash, KeyEqual>::emplace(Args && ... args) {
-                 Pair<Key, T> toInsert(std::forward<Args>(args)...);
+             inline Pair<typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, StoreHash, Hash, KeyEqual>::emplace(Args && ... args) {
+                 ValueType toInsert(std::forward<Args>(args)...);
                  Key& key = toInsert.first;
 
                  std::size_t hashValue = hashKey(key);
                  std::size_t index = bucketFromHash(hashValue);
-                 std::ptrdiff_t distanceToNext = 0;
+                 DistanceType distanceToNext = 0;
 
                  while (distanceToNext <= data[index].getDistanceToNext()) {
-                     if (compareKey(data[index].getKey(), key)) {
+                     if ((!USE_STORED_HASH_ON_LOOKUP || data[index].bucketHashEquals(hashValue)) && compareKey(data[index].getData().first, key)) {
                          return Pair<Iterator, bool>(data.getData() + index, false);
                      }
 
@@ -382,33 +385,44 @@
                      ++distanceToNext;
                  }
 
+                 if (rehashOnExtremeLoad()) {
+                    index = bucketFromHash(hashValue);
+                    distanceToNext = 0;
+
+                    while (distanceToNext <= data[index].getDistanceToNext()) {
+                        index = next(index);
+                        ++distanceToNext;
+                    }
+                 }
+
                  if (data[index].isEmpty()) {
-                     data[index].setData(distanceToNext, std::move(toInsert));
+                     data[index].setData(distanceToNext, TruncatedHash(hashValue), std::move(toInsert));
                  } else {
-                     insertValue(index, distanceToNext, std::move(toInsert));
+                     insertValue(index, distanceToNext, TruncatedHash(hashValue), toInsert);
                  }
                  ++nbElements;
 
                  return Pair<Iterator, bool>(Iterator(data.getData() + index), true);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
              template <class ... Args>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::emplaceHint(ConstIterator, Args && ... args) {
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::emplaceHint(ConstIterator, Args && ... args) {
                  return emplace(std::forward<Args>(args)...).first;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::clear() {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::clear() {
                  for (BucketEntry& bucket : data) {
                      bucket.clear();
                  }
 
                  nbElements = 0;
+                 growAtNextInsert = false;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::swap(HashTable& table) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::swap(HashTable& table) {
                  using std::swap;
 
                  swap(static_cast <Hash&> (*this), static_cast <Hash&> (table));
@@ -416,23 +430,27 @@
                  swap(data, table.data);
                  swap(nbElements, table.nbElements);
                  swap(mask, table.mask);
+                 swap(loadThresHold, table.loadThresHold);
                  swap(maxLoadFactor, table.maxLoadFactor);
+                 swap(growAtNextInsert, table.growAtNextInsert);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::reserve(std::size_t count) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::reserve(std::size_t count) {
                  rehash(static_cast <std::size_t> (std::ceil(static_cast <float> (count) / getMaxLoadFactor())));
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::rehash(std::size_t count) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::rehash(std::size_t count) {
                  count = std::max(count, static_cast <std::size_t> (std::ceil(static_cast <float> (getSize()) / getMaxLoadFactor())));
                  HashTable newTable(count, static_cast <Hash&> (*this), static_cast <KeyEqual&> (*this));
 
+                 bool useStoredHash = USE_STORED_HASH_ON_REHASH(newTable.getBucketCount());
+
                  for (auto& bucket : data) {
                      if (!bucket.isEmpty()) {
-                         std::size_t hashValue = newTable.hashKey(bucket.getKey());
-                         newTable.insertOnRehash(newTable.bucketFromHash(hashValue), 0, std::move(bucket.getData()));
+                         std::size_t hashValue = (useStoredHash) ? (static_cast <std::size_t> (bucket.getTruncatedHash())) : (newTable.hashKey(bucket.getData().first));
+                         newTable.insertOnRehash(newTable.bucketFromHash(hashValue), 0, TruncatedHash(hashValue), std::move(bucket.getData()));
                      }
                  }
 
@@ -440,31 +458,31 @@
                  newTable.swap(*this);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::Iterator, typename HashTable<Key, T, Hash, KeyEqual>::Iterator> HashTable<Key, T, Hash, KeyEqual>::equalRange(Key const& k) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline Pair<typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator, typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator> HashTable<Key, T, StoreHash, Hash, KeyEqual>::equalRange(Key const& k) {
                  Iterator it = find(k);
                  return Pair<Iterator, Iterator>(it, (it == end()) ? (it) : (std::next(it)));
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline Pair<typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator, typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator> HashTable<Key, T, Hash, KeyEqual>::equalRange(Key const& k) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline Pair<typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator, typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator> HashTable<Key, T, StoreHash, Hash, KeyEqual>::equalRange(Key const& k) const {
                  ConstIterator it = find(k);
                  return Pair<ConstIterator, ConstIterator>(it, (it == end()) ? (it) : (std::next(it)));
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::find(Key const& k) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::find(Key const& k) {
                  return Iterator(const_cast <const HashTable&>(*this).find(k).current);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Hash, KeyEqual>::find(Key const& k) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::find(Key const& k) const {
                  std::size_t hashValue = hashKey(k);
                  std::size_t index = bucketFromHash(hashValue);
-                 std::ptrdiff_t distanceToNext = 0;
+                 DistanceType distanceToNext = 0;
 
                  while (distanceToNext <= data[index].getDistanceToNext()) {
-                     if (compareKey(data[index].getKey(), k)) {
+                     if ((!USE_STORED_HASH_ON_LOOKUP || data[index].bucketHashEquals(hashValue)) && compareKey(data[index].getData().first, k)) {
                          return ConstIterator(data.getData() + index);
                      }
 
@@ -475,13 +493,13 @@
                  return end();
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::erase(Iterator pos) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::erase(Iterator pos) {
                  return erase(ConstIterator(pos.current));
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::erase(ConstIterator pos) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::erase(ConstIterator pos) {
                 pos.current->clear();
                 nbElements--;
 
@@ -489,8 +507,8 @@
                 std::size_t index = next(previousIndex);
 
                 while (data[index].getDistanceToNext() > 0) {
-                    std::ptrdiff_t newDistance = static_cast <std::ptrdiff_t>(data[index].getDistanceToNext() - 1);
-                    data[previousIndex].setData(newDistance, std::move(data[index].getData()));
+                    DistanceType newDistance = static_cast <DistanceType>(data[index].getDistanceToNext() - 1);
+                    data[previousIndex].setData(newDistance, data[index].getTruncatedHash(), std::move(data[index].getData()));
                     data[index].clear();
 
                     previousIndex = index;
@@ -503,8 +521,8 @@
                 return Iterator(pos.current);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline typename HashTable<Key, T, Hash, KeyEqual>::Iterator HashTable<Key, T, Hash, KeyEqual>::erase(ConstIterator begin, ConstIterator end) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, StoreHash, Hash, KeyEqual>::erase(ConstIterator begin, ConstIterator end) {
                  if (begin == end) {
                      return Iterator(begin.current);
                  }
@@ -529,9 +547,9 @@
 
                  while (moveCloserIndex < getBucketCount() && data[moveCloserIndex].getDistanceToNext() > 0) {
                      closerIndex = moveCloserIndex  - std::min(moveCloserIndex - closerIndex, static_cast <std::size_t> (data[moveCloserIndex].getDistanceToNext()));
-                     std::ptrdiff_t newDistance = static_cast <std::ptrdiff_t> (data[moveCloserIndex].getDistanceToNext() - (moveCloserIndex - closerIndex));
+                     DistanceType newDistance = static_cast <DistanceType> (data[moveCloserIndex].getDistanceToNext() - (moveCloserIndex - closerIndex));
 
-                     data[closerIndex].setData(newDistance, std::move(data[moveCloserIndex].getData()));
+                     data[closerIndex].setData(newDistance, data[moveCloserIndex].getTruncatedHash(), std::move(data[moveCloserIndex].getData()));
                      data[moveCloserIndex].clear();
 
                      ++closerIndex;
@@ -541,8 +559,8 @@
                  return Iterator(data.getData() + returnIndex);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::erase(Key const& k) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::erase(Key const& k) {
                  Iterator it = find(k);
                  if (it != end()) {
                      erase(it);
@@ -552,8 +570,8 @@
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>& HashTable<Key, T, Hash, KeyEqual>::operator=(HashTable const& table) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>& HashTable<Key, T, StoreHash, Hash, KeyEqual>::operator=(HashTable const& table) {
                  if (this != &table) {
                      Hash::operator=(table);
                      KeyEqual::operator=(table);
@@ -561,13 +579,15 @@
                      data = table.data;
                      nbElements = table.nbElements;
                      mask = table.mask;
+                     loadThresHold = table.loadThresHold;
                      maxLoadFactor = table.maxLoadFactor;
+                     growAtNextInsert = table.growAtNextInsert;
                  }
                  return *this;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline HashTable<Key, T, Hash, KeyEqual>& HashTable<Key, T, Hash, KeyEqual>::operator=(HashTable && table) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline HashTable<Key, T, StoreHash, Hash, KeyEqual>& HashTable<Key, T, StoreHash, Hash, KeyEqual>::operator=(HashTable && table) {
                  if (this != &table) {
                      swap(table);
                      table.clear();
@@ -575,18 +595,18 @@
                  return *this;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline T& HashTable<Key, T, Hash, KeyEqual>::operator[](Key const& k) {
-                 return (insert(Pair<Key, T>(k, T())).first)->second;
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline T& HashTable<Key, T, StoreHash, Hash, KeyEqual>::operator[](Key const& k) {
+                 return (insert(ValueType(k, T())).first)->second;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline T& HashTable<Key, T, Hash, KeyEqual>::operator[](Key && k) {
-                 return (insert(Pair<Key, T>(std::move(k), T())).first)->second;
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline T& HashTable<Key, T, StoreHash, Hash, KeyEqual>::operator[](Key && k) {
+                 return (insert(ValueType(std::move(k), T())).first)->second;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline String HashTable<Key, T, Hash, KeyEqual>::toString() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline String HashTable<Key, T, StoreHash, Hash, KeyEqual>::toString() const {
                  if (isEmpty()) {
                      return String("{}");
                  } else {
@@ -604,28 +624,28 @@
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::hashKey(Key const& k) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::hashKey(Key const& k) const {
                  return Hash::operator()(k);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline bool HashTable<Key, T, Hash, KeyEqual>::compareKey(Key const& k1, Key const& k2) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::compareKey(Key const& k1, Key const& k2) const {
                  return KeyEqual::operator()(k1, k2);
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::next(std::size_t index) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::next(std::size_t index) const {
                  return (index + 1) & mask;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::bucketFromHash(std::size_t hashValue) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::bucketFromHash(std::size_t hashValue) const {
                  return hashValue & mask;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::roundUpToPowerOfTwo(std::size_t count) const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::roundUpToPowerOfTwo(std::size_t count) const {
                  if (count == 0) {
                      return 1;
                  }
@@ -641,37 +661,37 @@
                  return count + 1;
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::insertValue(std::size_t index, std::ptrdiff_t distanceToNext, Pair<Key, T> && pair) {
-                 data[index].swapWithData(distanceToNext, std::move(pair));
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::insertValue(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType& pair) {
+                 data[index].swapWithData(distanceToNext, h, pair);
                  index = next(index);
                  ++distanceToNext;
 
                  while (!data[index].isEmpty()) {
                      if (distanceToNext > data[index].getDistanceToNext()) {
                          if (distanceToNext >= REHASH_HIGH_PROBE && getLoadFactor() >= REHASH_MIN_LOAD_FACTOR) {
-                             rehash(getNewSize());
+                            growAtNextInsert = true;
                          }
-                         data[index].swapWithData(distanceToNext, std::move(pair));
+                         data[index].swapWithData(distanceToNext, h, pair);
                      }
 
                      index = next(index);
                      ++distanceToNext;
                  }
 
-                 data[index].setData(distanceToNext, std::move(pair));
+                 data[index].setData(distanceToNext, h, std::move(pair));
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline void HashTable<Key, T, Hash, KeyEqual>::insertOnRehash(std::size_t index, std::ptrdiff_t distanceToNext, Pair<Key, T> && pair) {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline void HashTable<Key, T, StoreHash, Hash, KeyEqual>::insertOnRehash(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType && pair) {
                  bool done = false;
                  while (!done) {
                      if (distanceToNext > data[index].getDistanceToNext()) {
                          if (data[index].isEmpty()) {
-                             data[index].setData(distanceToNext, std::move(pair));
+                             data[index].setData(distanceToNext, h, std::move(pair));
                              done = true;
                          } else {
-                            data[index].swapWithData(distanceToNext, std::move(pair));
+                            data[index].swapWithData(distanceToNext, h, pair);
                          }
                      }
 
@@ -680,9 +700,24 @@
                  }
              }
 
-             template <class Key, class T, class Hash, class KeyEqual>
-             inline std::size_t HashTable<Key, T, Hash, KeyEqual>::getNewSize() const {
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline bool HashTable<Key, T, StoreHash, Hash, KeyEqual>::rehashOnExtremeLoad() {
+                 if (growAtNextInsert || getSize() >= loadThresHold) {
+                     rehash(getNewSize());
+                     growAtNextInsert = false;
+                     return true;
+                 }
+                 return false;
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             inline std::size_t HashTable<Key, T, StoreHash, Hash, KeyEqual>::getNewSize() const {
                 return data.getSize() * 2;
+             }
+
+             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
+             std::ostream& operator <<(std::ostream& stream, HashTable<Key, T, StoreHash, Hash, KeyEqual> const& o) {
+                 return stream << o.toString();
              }
 
          }
