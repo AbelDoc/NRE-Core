@@ -19,16 +19,6 @@
              }
 
              template <class T, std::size_t Size>
-             inline Array<T, Size>::Array(Array const& arr) {
-                 copy(arr);
-             }
-
-             template <class T, std::size_t Size>
-             inline Array<T, Size>::Array(Array && arr) {
-                 move(arr);
-             }
-
-             template <class T, std::size_t Size>
              inline T& Array<T, Size>::get(std::size_t index) {
                  if (index >= Size) {
                      throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
@@ -170,18 +160,6 @@
              template <class T, std::size_t Size>
              inline T const& Array<T, Size>::operator[](std::size_t index) const {
                  return data[index];
-             }
-
-             template <class T, std::size_t Size>
-             inline Array<T, Size>& Array<T, Size>::operator =(Array const& arr) {
-                 copy(arr);
-                 return *this;
-             }
-
-             template <class T, std::size_t Size>
-             inline Array<T, Size>& Array<T, Size>::operator =(Array && arr) {
-                 move(arr);
-                 return *this;
              }
 
              template <class T, std::size_t Size>

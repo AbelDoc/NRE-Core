@@ -64,14 +64,14 @@
                          * Copy arr into this
                          * @param arr the array to copy
                          */
-                        Array(Array const& arr);
+                        Array(Array const& arr) = default;
 
                     //## Move Constructor ##//
                         /**
                          * Move arr into this
                          * @param arr the array to move
                          */
-                        Array(Array && arr);
+                        Array(Array && arr) = default;
 
                     //## Deconstructor ##//
                         /**
@@ -207,17 +207,17 @@
 
                     //## Assignment Operator ##//
                         /**
-                         * Copy assignment of o into this
-                         * @param arr the observable to copy into this
+                         * Copy assignment of arr into this
+                         * @param arr the array to copy into this
                          * @return    the reference of himself
                          */
-                        Array& operator =(Array const& arr);
+                        Array& operator =(Array const& arr) = default;
                         /**
-                         * Move assignment of o into this, leaving o empty
-                         * @param arr the observable to move into this
+                         * Move assignment of arr into this, leaving o empty
+                         * @param arr the array to move into this
                          * @return    the reference of himself
                          */
-                        Array& operator =(Array && arr);
+                        Array& operator =(Array && arr) = default;
 
                     //## Comparison Operator ##//
                         /**
@@ -257,44 +257,6 @@
                          * @return the converted object
                          */
                         String toString() const;
-
-                private :   // Methods
-                    /**
-                     * Copy the array content
-                     * @param arr the array to copy
-                     */
-                    template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                    void copy(Array const& arr) {
-                        for (std::size_t index = 0; index < Size; index++) {
-                            data[index] = arr[index];
-                        }
-                    }
-                    /**
-                     * Copy the array content
-                     * @param arr the array to copy
-                     */
-                    template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                    void copy(Array const& arr) {
-                        std::memcpy(data, arr.data, Size * sizeof(T));
-                    }
-                    /**
-                     * Move the array content
-                     * @param arr the array to move
-                     */
-                    template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                    void move(Array && arr) {
-                        for (std::size_t index = 0; index < Size; index++) {
-                            data[index] = std::move(arr[index]);
-                        }
-                    }
-                    /**
-                     * Move the array content
-                     * @param arr the array to move
-                     */
-                    template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                    void move(Array && arr) {
-                        std::memcpy(data, arr.data, Size * sizeof(T));
-                    }
             };
 
             /**
