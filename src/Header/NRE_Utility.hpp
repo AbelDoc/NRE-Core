@@ -20,3 +20,4 @@
 
     #include "../Utility/Observer/NRE_Observer.hpp"
     #include "../Utility/Observable/NRE_Observable.hpp"
+    #include "../Utility/Singleton/NRE_Singleton.hpp"
