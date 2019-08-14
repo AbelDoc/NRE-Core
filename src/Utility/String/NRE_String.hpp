@@ -367,7 +367,7 @@
                         /**
                          * Insert a list of value at the specified position
                          * @param  start the position to insert values
-                         * @param  init  the list to fill the vector with
+                         * @param  list  the list to fill the vector with
                          * @return       the iterator on the first inserted value
                          * @pre list don't contain string reference
                          */

@@ -448,7 +448,7 @@
                          * Construct an hashtable with a number of bucket and filled with elements in the given list
                          * @param list        the list to fill the table with
                          * @param bucketCount the base bucket count
-                         * @param haser       the hash function used in the table
+                         * @param hasher      the hash function used in the table
                          * @param equal       the equal function used in the table
                          */
                         HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal);
@@ -640,6 +640,7 @@
                         Pair<Iterator, bool> emplace(Args && ... args);
                         /**
                          * Emplace an element using the given elements
+                         * @param hint the iterator used as a hint to emplace the element
                          * @param args the parameter pack used to create the inserted pair
                          * @return     an iterator on the inserted element
                          */

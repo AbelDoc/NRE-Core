@@ -61,7 +61,7 @@
                          * Construct a map with a number of bucket and filled with elements in the given list
                          * @param list        the list to fill the map with
                          * @param bucketCount the base bucket count
-                         * @param haser       the hash function used in the map
+                         * @param hasher       the hash function used in the map
                          * @param equal       the equal function used in the map
                          */
                         UnorderedMap(std::initializer_list<ValueType> list, std::size_t bucketCount = HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
@@ -253,6 +253,7 @@
                         Pair<Iterator, bool> emplace(Args && ... args);
                         /**
                          * Emplace an element using the given elements
+                         * @param hint the iterator used as a hint to emplace the element
                          * @param args the parameter pack used to create the inserted pair
                          * @return     an iterator on the inserted element
                          */

@@ -62,7 +62,7 @@
                         Vector(std::size_t count, T const& value);
                         /**
                          * Construct a vector filled with count default value
-                         * @paramcount the number of default element, will be the vector capacity and length
+                         * @param count the number of default element, will be the vector capacity and length
                          */
                         Vector(std::size_t count);
                         /**
@@ -273,7 +273,7 @@
                         /**
                          * Insert a list of value at the specified position
                          * @param  start the position to insert values
-                         * @param  init  the list to fill the vector with
+                         * @param  list  the list to fill the vector with
                          * @return       the iterator on the first inserted value
                          * @pre list don't contain vector reference
                          */

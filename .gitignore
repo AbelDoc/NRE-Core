@@ -1,5 +1,5 @@
 *.o
-*.nre
+config*
+archive.sh
 *.exe
 DoxyFile
-archive.sh
