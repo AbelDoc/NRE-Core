@@ -1079,3 +1079,9 @@
         String str("aa");
         assertEquals(this, std::move(str) + 'b', String("aab"));
     }
+
+    TEST(String, Hash) {
+        std::hash<String> hashUtil;
+        std::hash<std::string> hashStl;
+        assertEquals(this, hashUtil(String("Hello")), hashStl(std::string("Hello")));
+    }

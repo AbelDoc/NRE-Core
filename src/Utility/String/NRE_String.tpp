@@ -1319,3 +1319,117 @@
 
          }
      }
+
+     namespace {
+         inline std::size_t unalignedLoad(const char* p) {
+             std::size_t result;
+             __builtin_memcpy(&result, p, sizeof(result));
+             return result;
+         }
+
+         #if __SIZEOF_SIZE_T__  == 8
+            inline std::size_t loadBytes(const char* p, int n) {
+                std::size_t result = 0;
+                --n;
+                do {
+                    result = (result << 8) + static_cast <unsigned char> (p[n]);
+                } while (--n >= 0);
+
+                return result;
+            }
+
+            inline std::size_t shiftMix(std::size_t v) {
+                return v ^ (v >> 47);
+            }
+         #endif
+     }
+
+     namespace std {
+
+         #if __SIZEOF_SIZE_T__  == 4
+             inline size_t hash<NRE::Utility::String>::operator()(NRE::Utility::String const& str) const {
+                 constexpr size_t seed = static_cast <size_t> (0xc70f6907UL);
+                 constexpr size_t m    = 0x5bd1e995;
+                 size_t len = str.getSize();
+
+                 size_t result = seed ^ len;
+                 const char* buf = str.getCData();
+
+                 // Mix 4 bytes at a time into the hash.
+                 while (len >= 4) {
+                  	 size_t k = unalignedLoad(buf);
+                 	 k *= m;
+                 	 k ^= k >> 24;
+                	 k *= m;
+                	 result *= m;
+                	 result ^= k;
+        	         buf += 4;
+                	 len -= 4;
+                 }
+
+                 // Handle the last few bytes of the input array.
+                 switch (len) {
+                     case 3: {
+                         result ^= static_cast<unsigned char>(buf[2]) << 16;
+                         [[fallthrough]];
+                     }
+                     case 2: {
+                         result ^= static_cast<unsigned char>(buf[1]) << 8;
+                         [[fallthrough]];
+                     }
+                     case 1: {
+                    	 result ^= static_cast<unsigned char>(buf[0]);
+                     }
+                     result *= m;
+                 };
+
+                 // Do a few final mixes of the hash.
+                 result ^= result >> 13;
+                 result *= m;
+                 result ^= result >> 15;
+
+                 return result;
+             }
+        #elif __SIZEOF_SIZE_T__ == 8
+            inline size_t hash<NRE::Utility::String>::operator()(NRE::Utility::String const& str) const {
+                constexpr size_t seed = static_cast <size_t> (0xc70f6907UL);
+                constexpr size_t mul = (( static_cast <size_t> (0xc6a4a793UL)) << 32UL) + static_cast <size_t> (0x5bd1e995UL);
+                size_t len = str.getSize();
+
+                const char* const buf = str.getCData();
+
+                // Remove the bytes not divisible by the sizeof(size_t).  This
+                // allows the main loop to process the data as 64-bit integers.
+                const int len_aligned = static_cast <int> (len & ~0x7);
+                const char* const end = buf + len_aligned;
+
+                size_t result = seed ^ (len * mul);
+
+                for (const char* p = buf; p != end; p += 8) {
+                    const size_t data = shiftMix(unalignedLoad(p) * mul) * mul;
+                    result ^= data;
+                    result *= mul;
+                }
+
+                if ((len & 0x7) != 0) {
+                    const size_t data = loadBytes(end, len & 0x7);
+                    result ^= data;
+                    result *= mul;
+                }
+
+                result = shiftMix(result) * mul;
+                result = shiftMix(result);
+                return result;
+            }
+        #else
+            inline size_t hash<NRE::Utility::String>::operator()(NRE::Utility::String const& str) const {
+                constexpr size_t seed = static_cast <size_t> (0xc70f6907UL);
+                size_t result = seed;
+                const char* cptr = str.getCData();
+                for (; len; --len) {
+                    result = (result * 131) + *cptr++;
+                }
+                return result;
+            }
+        #endif
+     }

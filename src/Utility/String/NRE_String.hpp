@@ -1226,4 +1226,24 @@
         }
     }
 
+    /**
+    * @namespace std
+    * @brief The stl standard namespace
+    */
+    namespace std {
+        /**
+         * @class hash
+         * @brief Manage hashing for specialized version
+         */
+        template <>
+        class hash<NRE::Utility::String> {
+            public:
+                /**
+                 * Compute a hash for a string
+                 * @return the computed hash
+                 */
+                size_t operator()(NRE::Utility::String const& str) const;
+        };
+    }
+
     #include "NRE_String.tpp"
