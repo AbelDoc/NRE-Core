@@ -3,7 +3,7 @@
      * @file NRE_IException.hpp
      * @brief Declaration of Utility's API's Object : IException
      * @author Louis ABEL
-     * @date 19/09/2019
+     * @date 19/08/2019
      * @copyright CC-BY-NC-SA
      */
 
@@ -72,16 +72,16 @@
                     Utility::String toString() const {
                        return Utility::String(what());
                     }
-            };
 
-            /**
-             * Output stream operator for the object
-             * @param  stream the stream to add the object's string representation
-             * @param  o      the object to add in the stream
-             * @return        the modified stream
-             */
-            std::ostream& operator <<(std::ostream& stream, IException const& o) {
-                return stream << o.toString();
-            }
+                    /**
+                     * Output stream operator for the object
+                     * @param  stream the stream to add the object's string representation
+                     * @param  o      the object to add in the stream
+                     * @return        the modified stream
+                     */
+                    friend std::ostream& operator <<(std::ostream& stream, IException const& o) {
+                        return stream << o.toString();
+                    }
+            };
         }
     }

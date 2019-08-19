@@ -23,3 +23,5 @@
     #include "../Utility/Singleton/NRE_Singleton.hpp"
 
     #include "../Utility/Id/NRE_Id.hpp"
+
+    #include "NRE_Exception.hpp"
