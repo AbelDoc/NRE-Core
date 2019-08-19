@@ -12,6 +12,7 @@
     #include <chrono>
 
     #include "Header/NRE_Utility.hpp"
+    #include "Header/NRE_Exception.hpp"
 
     int main(int, char**) {
         std::size_t sumSTD = 0, sumNRE = 0;
