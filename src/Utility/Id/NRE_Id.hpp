@@ -14,5 +14,5 @@
      * @brief The NearlyRealEngine's global namespace
      */
     namespace NRE {
-        typedef std::size_t Id;
+        typedef uint32_t Id;
     }
