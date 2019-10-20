@@ -9,7 +9,9 @@
 
      #pragma once
 
-     /**
+    #include "../Interfaces/Uncopyable/NRE_Uncopyable.hpp"
+
+    /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
      */
@@ -25,23 +27,8 @@
              * @brief Describe a singleton object
              */
             template <class T>
-            class Singleton {
+            class Singleton : public Uncopyable<Singleton<T>> {
                 friend T;
-                public :    // Methods
-                    //## Copy-Constructor ##//
-                        /**
-                         * Copy forbidden
-                         * @param s the singleton to copy
-                         */
-                        Singleton(Singleton const& s) = delete;
-
-                    //## Assignment Operator ##//
-                        /**
-                         * Copy forbidden
-                         * @param s the singleton to copy
-                         */
-                        Singleton& operator=(Singleton const& s) = delete;
-
                 protected: // Methods
                     //## Constructor ##//
                         /**
@@ -54,7 +41,6 @@
                          * Singleton Deconstructor
                          */
                         ~Singleton() = default;
-
 
                 public:     // Static
                     /**

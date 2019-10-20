@@ -35,6 +35,9 @@ set(COMPILE_LIST
         src/Utility/Singleton/NRE_Singleton.hpp
         src/Utility/String/NRE_String.hpp
         src/Utility/UnorderedMap/NRE_UnorderedMap.hpp
+        src/Utility/Interfaces/NRE_StaticInterface.hpp
+        src/Utility/Interfaces/Uncopyable/NRE_Uncopyable.hpp
+        src/Utility/Interfaces/Stringable/NRE_Stringable.hpp
         src/Utility/Vector/NRE_Vector.hpp)
 
 set(EXEC_LIST
