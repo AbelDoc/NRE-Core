@@ -7,18 +7,19 @@
      * @copyright CC-BY-NC-SA
      */
 
-     #pragma once
+    #pragma once
 
-     #include <climits>
+    #include <climits>
 
      #include "../String/NRE_String.hpp"
      #include "../Pair/NRE_Pair.hpp"
      #include "../Vector/NRE_Vector.hpp"
+    #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
-     /**
-     * @namespace NRE
-     * @brief The NearlyRealEngine's global namespace
-     */
+    /**
+    * @namespace NRE
+    * @brief The NearlyRealEngine's global namespace
+    */
     namespace NRE {
         /**
          * @namespace Utility
@@ -211,7 +212,7 @@
              * @brief Based on TSL Robin Hash, An hashtable used in map and set, an associative container using linear probing, robin hood and shift back optimisation
              */
             template <class Key, class T, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
-            class HashTable : private Hash, private KeyEqual {
+            class HashTable : public Stringable<HashTable<Key, T, StoreHash, Hash, KeyEqual>>, private Hash, private KeyEqual {
                 public :    // Typedef
                     typedef Pair<Key, T> ValueType;
 
@@ -834,15 +835,6 @@
                 public :    // Static
                     static const std::size_t DEFAULT_BUCKET_COUNT = 0;              /**< The default bucket count */
             };
-
-            /**
-             * Output stream operator for the object
-             * @param  stream the stream to add the object's string representation
-             * @param  o      the object to add in the stream
-             * @return        the modified stream
-             */
-            template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
-            std::ostream& operator <<(std::ostream& stream, HashTable<Key, T, StoreHash, Hash, KeyEqual> const& o);
         }
     }
 

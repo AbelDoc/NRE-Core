@@ -14,6 +14,7 @@
      #include <cstring>
 
      #include "../String/NRE_String.hpp"
+     #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
      /**
      * @namespace NRE
@@ -31,7 +32,7 @@
              * @brief A dynamic array, guarantee to be in contiguous memory
              */
             template <class T>
-            class Vector {
+            class Vector : public Stringable<Vector<T>> {
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;
@@ -525,15 +526,6 @@
                     static constexpr float GROW_FACTOR = 1.5;
                     static constexpr std::size_t BASE_ALLOCATION_SIZE = 8;
             };
-
-            /**
-             * Output stream operator for the object
-             * @param  stream the stream to add the object's string representation
-             * @param  o      the object to add in the stream
-             * @return        the modified stream
-             */
-            template <class T>
-            std::ostream& operator <<(std::ostream& stream, Vector<T> const& o);
         }
     }
 

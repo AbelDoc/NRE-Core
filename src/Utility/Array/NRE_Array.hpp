@@ -16,6 +16,7 @@
      #include <cstring>
 
      #include "../String/NRE_String.hpp"
+     #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
      /**
      * @namespace NRE
@@ -33,7 +34,7 @@
              * @brief A fixed size array
              */
             template <class T, std::size_t Size>
-            class Array {
+            class Array : public Stringable<Array<T, Size>> {
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;
@@ -258,16 +259,6 @@
                          */
                         String toString() const;
             };
-
-            /**
-             * Output stream operator for the object
-             * @param  stream the stream to add the object's string representation
-             * @param  o      the object to add in the stream
-             * @return        the modified stream
-             */
-            template <class T, std::size_t Size>
-            std::ostream& operator <<(std::ostream& stream, Array<T, Size> const& o);
-
         }
     }
 

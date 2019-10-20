@@ -9,10 +9,11 @@
 
      #pragma once
 
-     #include <stdexcept>
-     #include <utility>
-     #include <cstring>
-     #include <cmath>
+    #include <stdexcept>
+    #include <utility>
+    #include <cstring>
+    #include <cmath>
+    #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
      /**
      * @namespace NRE
@@ -30,7 +31,7 @@
              * @brief A simple linked list
              */
             template <class T>
-            class ForwardList {
+            class ForwardList : public Stringable<ForwardList<T>> {
                 private :   // Structures
                     /**
                      * @class NodeBase
@@ -515,15 +516,6 @@
                         String toString() const;
 
             };
-
-            /**
-             * Output stream operator for the object
-             * @param  stream the stream to add the object's string representation
-             * @param  o      the object to add in the stream
-             * @return        the modified stream
-             */
-            template <class T>
-            std::ostream& operator <<(std::ostream& stream, ForwardList<T> const& o);
         }
     }
 

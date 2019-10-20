@@ -9,7 +9,8 @@
 
      #pragma once
 
-     #include "../String/NRE_String.hpp"
+    #include "../String/NRE_String.hpp"
+    #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
      /**
      * @namespace NRE
@@ -27,7 +28,7 @@
              * @brief A basic template pair
              */
             template <class T, class K>
-            class Pair {
+            class Pair : public Stringable<Pair<T, K>> {
                 public :   // Fields
                     T first;    /**< The first object */
                     K second;   /**< The second object */
@@ -165,15 +166,6 @@
                         String toString() const;
 
             };
-
-            /**
-             * Output stream operator for the object
-             * @param  stream the stream to add the object's string representation
-             * @param  o      the object to add in the stream
-             * @return        the modified stream
-             */
-            template <class T, class K>
-            std::ostream& operator <<(std::ostream& stream, Pair<T, K> const& o);
         }
     }
 

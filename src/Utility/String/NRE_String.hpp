@@ -27,6 +27,8 @@
          * @brief Utility's API
          */
         namespace Utility {
+            
+            template<class> class Stringable;
 
             /**
              * @class BasicString
@@ -406,8 +408,10 @@
                          * @param o the object to append
                          * @return  the reference of himself
                          */
-                        template <class K>
-                        BasicString& append(K const& o);
+                        template <class K, typename std::enable_if_t<std::is_base_of<Stringable<K>, K>::value, int> = 0>
+                        BasicString& append(K const& o) {
+                            return append(o.toString());
+                        }
                         /**
                          * Append the object to string
                          * @param value the object to append

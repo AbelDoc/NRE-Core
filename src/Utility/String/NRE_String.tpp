@@ -461,12 +461,6 @@
              }
 
              template <class T>
-             template <class K>
-             inline BasicString<T>& BasicString<T>::append(K const& o) {
-                 return append(o.toString());
-             }
-
-             template <class T>
              inline BasicString<T>& BasicString<T>::append(bool value) {
                  if (value) {
                      append("true");
