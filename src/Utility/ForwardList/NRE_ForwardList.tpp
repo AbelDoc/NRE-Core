@@ -561,10 +561,5 @@
                  }
              }
 
-             template <class T>
-             std::ostream& operator <<(std::ostream& stream, ForwardList<T> const& o) {
-                 return stream << o.toString();
-             }
-
         }
     }

@@ -9,7 +9,7 @@
 
      #pragma once
 
-    #include "../HashTable/NRE_HashTable.hpp"
+    #include "../Detail/HashTable/NRE_HashTable.hpp"
 
      /**
      * @namespace NRE
@@ -27,16 +27,16 @@
              * @brief An unordered map, associative unordered container
              */
             template <class Key, class T, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
-            class UnorderedMap {
+            class UnorderedMap : public Stringable<UnorderedMap<Key, T, StoreHash, Hash, KeyEqual>> {
                 public :    // Typedef
                     typedef Pair<Key, T> ValueType;
-                    typedef typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator             Iterator;
-                    typedef typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator        ConstIterator;
-                    typedef typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalIterator        LocalIterator;
-                    typedef typename HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstLocalIterator   ConstLocalIterator;
+                    typedef typename Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::Iterator             Iterator;
+                    typedef typename Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstIterator        ConstIterator;
+                    typedef typename Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::LocalIterator        LocalIterator;
+                    typedef typename Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::ConstLocalIterator   ConstLocalIterator;
 
                 private :   // Fields
-                     HashTable<Key, T, StoreHash, Hash, KeyEqual> table; /**< The internal hash table */
+                     Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual> table; /**< The internal hash table */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -46,7 +46,7 @@
                          * @param hasher      the hash function used in the map
                          * @param equal       the equal function used in the map
                          */
-                        UnorderedMap(std::size_t bucketCount = HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT , Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        UnorderedMap(std::size_t bucketCount = Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT , Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
                         /**
                          * Construct a map with a number of bucket and filled with elements in the given range
                          * @param begin       the begin iterator
@@ -56,7 +56,7 @@
                          * @param equal       the equal function used in the map
                          */
                         template <class InputIterator>
-                        UnorderedMap(InputIterator begin, InputIterator end, std::size_t bucketCount = HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        UnorderedMap(InputIterator begin, InputIterator end, std::size_t bucketCount = Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
                         /**
                          * Construct a map with a number of bucket and filled with elements in the given list
                          * @param list        the list to fill the map with
@@ -64,7 +64,7 @@
                          * @param hasher       the hash function used in the map
                          * @param equal       the equal function used in the map
                          */
-                        UnorderedMap(std::initializer_list<ValueType> list, std::size_t bucketCount = HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
+                        UnorderedMap(std::initializer_list<ValueType> list, std::size_t bucketCount = Detail::HashTable<Key, T, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual());
 
                     //## Copy Constructor ##//
                         /**

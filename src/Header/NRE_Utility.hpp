@@ -13,13 +13,14 @@
     #include "../Utility/Interfaces/Uncopyable/NRE_Uncopyable.hpp"
     #include "../Utility/Interfaces/Stringable/NRE_Stringable.hpp"
 
+    #include "../Utility/Detail/HashTable/NRE_HashTable.hpp"
+
     #include "../Utility/Array/NRE_Array.hpp"
     #include "../Utility/Vector/NRE_Vector.hpp"
     #include "../Utility/String/NRE_String.hpp"
     #include "../Utility/ForwardList/NRE_ForwardList.hpp"
 
     #include "../Utility/Pair/NRE_Pair.hpp"
-    #include "../Utility/HashTable/NRE_HashTable.hpp"
     #include "../Utility/UnorderedMap/NRE_UnorderedMap.hpp"
 
     #include "../Utility/Observer/NRE_Observer.hpp"

@@ -178,11 +178,5 @@
                  res << ']';
                  return res;
              }
-
-             template <class T, std::size_t Size>
-             std::ostream& operator <<(std::ostream& stream, Array<T, Size> const& o) {
-                 return stream << o.toString();
-             }
-
          }
      }

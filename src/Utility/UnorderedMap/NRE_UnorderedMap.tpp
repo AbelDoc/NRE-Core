@@ -314,10 +314,5 @@
              inline bool UnorderedMap<Key, T, StoreHash, Hash, KeyEqual>::operator!=(UnorderedMap const& map) const {
                  return !(*this == map);
              }
-
-             template <class Key, class T, bool StoreHash, class Hash, class KeyEqual>
-             std::ostream& operator <<(std::ostream& stream, UnorderedMap<Key, T, StoreHash, Hash, KeyEqual> const& o) {
-                 return stream << o.toString();
-             }
          }
      }

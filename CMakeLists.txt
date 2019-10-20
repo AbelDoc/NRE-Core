@@ -27,7 +27,7 @@ set(COMPILE_LIST
         src/Header/NRE_Utility.hpp
         src/Utility/Array/NRE_Array.hpp
         src/Utility/ForwardList/NRE_ForwardList.hpp
-        src/Utility/HashTable/NRE_HashTable.hpp
+        src/Utility/DetaiL/HashTable/NRE_HashTable.hpp
         src/Utility/Id/NRE_Id.hpp
         src/Utility/Observable/NRE_Observable.hpp
         src/Utility/Observer/NRE_Observer.hpp

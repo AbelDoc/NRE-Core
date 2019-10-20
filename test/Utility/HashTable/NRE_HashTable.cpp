@@ -11,6 +11,7 @@
     #include <Header/NRE_Tester.hpp>
 
     using namespace NRE::Utility;
+    using namespace NRE::Utility::Detail;
     using namespace NRE::Tester;
 
     TEST(HashTable, Ctr) {

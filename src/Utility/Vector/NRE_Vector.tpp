@@ -423,10 +423,5 @@
                  reallocate(newSize);
              }
 
-             template <class T>
-             std::ostream& operator <<(std::ostream& stream, Vector<T> const& o) {
-                 return stream << o.toString();
-             }
-
          }
      }

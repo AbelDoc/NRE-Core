@@ -93,10 +93,5 @@
                  return res;
              }
 
-             template <class T, class K>
-             std::ostream& operator <<(std::ostream& stream, Pair<T, K> const& o) {
-                 return stream << o.toString();
-             }
-
          }
      }
