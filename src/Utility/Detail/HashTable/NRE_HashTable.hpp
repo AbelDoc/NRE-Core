@@ -11,10 +11,10 @@
 
     #include <climits>
 
-     #include "../String/NRE_String.hpp"
-     #include "../Pair/NRE_Pair.hpp"
-     #include "../Vector/NRE_Vector.hpp"
-    #include "../Interfaces/Stringable/NRE_Stringable.hpp"
+    #include "../../String/NRE_String.hpp"
+    #include "../../Pair/NRE_Pair.hpp"
+    #include "../../Vector/NRE_Vector.hpp"
+    #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
 
     /**
     * @namespace NRE
