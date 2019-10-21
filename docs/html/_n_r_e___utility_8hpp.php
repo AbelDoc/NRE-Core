@@ -104,16 +104,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Header.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_n_r_e___array_8hpp_source.php">../Utility/Array/NRE_Array.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_n_r_e___static_interface_8hpp_source.php">../Utility/Interfaces/NRE_StaticInterface.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___uncopyable_8hpp_source.php">../Utility/Interfaces/Uncopyable/NRE_Uncopyable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___stringable_8hpp_source.php">../Utility/Interfaces/Stringable/NRE_Stringable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">../Utility/Detail/HashTable/NRE_HashTable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___array_8hpp_source.php">../Utility/Array/NRE_Array.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___vector_8hpp_source.php">../Utility/Vector/NRE_Vector.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___string_8hpp_source.php">../Utility/String/NRE_String.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___forward_list_8hpp_source.php">../Utility/ForwardList/NRE_ForwardList.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___pair_8hpp_source.php">../Utility/Pair/NRE_Pair.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">../Utility/HashTable/NRE_HashTable.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___unordered_map_8hpp_source.php">../Utility/UnorderedMap/NRE_UnorderedMap.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___observer_8hpp_source.php">../Utility/Observer/NRE_Observer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___observable_8hpp_source.php">../Utility/Observable/NRE_Observable.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___singleton_8hpp_source.php">../Utility/Singleton/NRE_Singleton.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___id_8hpp_source.php">../Utility/Id/NRE_Id.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___exception_8hpp_source.php">NRE_Exception.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_n_r_e___utility_8hpp_source.php">Go to the source code of this file.</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

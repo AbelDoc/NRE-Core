@@ -101,7 +101,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="class_n_r_e_1_1_utility_1_1_singleton-members.php">List of all members</a>  </div>
@@ -114,14 +113,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="class_n_r_e_1_1_utility_1_1_singleton.php#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___singleton_8hpp_source.php">NRE_Singleton.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for NRE::Utility::Singleton&lt; T &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_n_r_e_1_1_utility_1_1_singleton.png" usemap="#NRE::Utility::Singleton_3C_20T_20_3E_map" alt=""/>
+  <map id="NRE::Utility::Singleton_3C_20T_20_3E_map" name="NRE::Utility::Singleton&lt; T &gt;_map">
+<area href="class_n_r_e_1_1_utility_1_1_uncopyable.php" alt="NRE::Utility::Uncopyable&lt; Singleton&lt; T &gt; &gt;" shape="rect" coords="0,0,253,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:ad291548d37200f518817a0b55a68dad1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#ad291548d37200f518817a0b55a68dad1">Singleton</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a> const &amp;s)=delete</td></tr>
-<tr class="separator:ad291548d37200f518817a0b55a68dad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7102d296f84817d3c69e1cd937b6008"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#aa7102d296f84817d3c69e1cd937b6008">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a> const &amp;s)=delete</td></tr>
-<tr class="separator:aa7102d296f84817d3c69e1cd937b6008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e091e62c1e71832789eeb30e17e2ec4"><td class="memItemLeft" align="right" valign="top">static T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#a2e091e62c1e71832789eeb30e17e2ec4">get</a> ()</td></tr>
@@ -133,6 +134,19 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:ae79c4625beb4d88a7aae6eafe337172a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1f4682ad559628d1dcd3b465c20259"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#a1c1f4682ad559628d1dcd3b465c20259">~Singleton</a> ()=default</td></tr>
 <tr class="separator:a1c1f4682ad559628d1dcd3b465c20259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_n_r_e_1_1_utility_1_1_uncopyable')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">NRE::Utility::Uncopyable&lt; Singleton&lt; T &gt; &gt;</a></td></tr>
+<tr class="memitem:a489b7621ae8e5109bda3af891d9f0053 inherit pro_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a489b7621ae8e5109bda3af891d9f0053">Uncopyable</a> ()=default</td></tr>
+<tr class="separator:a489b7621ae8e5109bda3af891d9f0053 inherit pro_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2873929128bbf993c84d0535417b018 inherit pro_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ae2873929128bbf993c84d0535417b018">~Uncopyable</a> ()=default</td></tr>
+<tr class="separator:ae2873929128bbf993c84d0535417b018 inherit pro_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_uncopyable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">NRE::Utility::Uncopyable&lt; Singleton&lt; T &gt; &gt;</a></td></tr>
+<tr class="memitem:ac180584842c7aa72d28d65e598552647 inherit pub_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ac180584842c7aa72d28d65e598552647">Uncopyable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> const &amp;o)=delete</td></tr>
+<tr class="separator:ac180584842c7aa72d28d65e598552647 inherit pub_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b9fb76c97851e039bd1ba7df7ad982 inherit pub_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a64b9fb76c97851e039bd1ba7df7ad982">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> const &amp;o)=delete</td></tr>
+<tr class="separator:a64b9fb76c97851e039bd1ba7df7ad982 inherit pub_methods_class_n_r_e_1_1_utility_1_1_uncopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
@@ -140,38 +154,6 @@ class NRE::Utility::Singleton&lt; T &gt;</h3>
 
 <p>Describe a singleton object. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ad291548d37200f518817a0b55a68dad1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">NRE::Utility::Singleton</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a>&lt; T &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Copy forbidden </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">s</td><td>the singleton to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ae79c4625beb4d88a7aae6eafe337172a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -248,38 +230,6 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Access function </p><dl class="section return"><dt>Returns</dt><dd>the static singleton </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa7102d296f84817d3c69e1cd937b6008"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">NRE::Utility::Singleton</a>&lt; T &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a>&lt; T &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Copy forbidden </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">s</td><td>the singleton to copy </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

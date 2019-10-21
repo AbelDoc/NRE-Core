@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php"><span>Functions</span></a></li>
       <li class="current"><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -106,10 +107,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 &#160;<ul>
 <li>DEFAULT_BUCKET_COUNT
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#a00d7b0db04c8c757eb43cfe71d0e9134">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a8b5c83feca46fffd42008923459af247">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 <li>EMPTY_BUCKET_DISTANCE
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry.php#a0fef8d48cbabdbc2ad0f8f1bfeccbf9a">NRE::Utility::BucketEntry&lt; ValueType, StoreHash &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php#abbcb1b8b41205bc789a169b6683aecc6">NRE::Utility::Detail::BucketEntry&lt; ValueType, StoreHash &gt;</a>
 </li>
 <li>first
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a5f1680a6219dc720fb4d5d133f3dc60c">NRE::Utility::Pair&lt; T, K &gt;</a>

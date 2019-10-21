@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -136,7 +137,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a5ed9cfc1f219ef3670d02dbb938da41d">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>rehash()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#aaf083637ad2a911ab9e8a315d3883fb8">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af77694f505c90c3792d6109a447881fe">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a360fb4e1d41a846c1a52bd5ad0c2cdb0">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 <li>remove()
@@ -156,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>reserve()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a21efaef50166a748a6a26db815cfeef5">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#a8769a3698acd3327234acdaacf516e1c">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9e956a5766ef1f19f450b95af1278319">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#af05674231300073636d401ce3e157879">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a53b14e9f414f1304e2e3fb1c39bb7086">NRE::Utility::Vector&lt; T &gt;</a>
 </li>

@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Container : UnorderedMap.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">../HashTable/NRE_HashTable.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">../Detail/HashTable/NRE_HashTable.hpp</a>&quot;</code><br />
 <code>#include &quot;NRE_UnorderedMap.tpp&quot;</code><br />
 </div>
 <p><a href="_n_r_e___unordered_map_8hpp_source.php">Go to the source code of this file.</a></p>

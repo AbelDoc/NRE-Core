@@ -99,8 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">NRE_ForwardList.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -112,6 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___stringable_8hpp_source.php">../Interfaces/Stringable/NRE_Stringable.hpp</a>&quot;</code><br />
 <code>#include &quot;NRE_ForwardList.tpp&quot;</code><br />
 </div>
 <p><a href="_n_r_e___forward_list_8hpp_source.php">Go to the source code of this file.</a></p>
@@ -133,56 +133,13 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespace_utility"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utility.php">Utility</a></td></tr>
 <tr class="memdesc:namespace_utility"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a64b9028c639a2fc46d8d94239c3befbb"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a64b9028c639a2fc46d8d94239c3befbb"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_n_r_e___forward_list_8hpp.php#a64b9028c639a2fc46d8d94239c3befbb">NRE::Utility::operator&lt;&lt;</a> (std::ostream &amp;stream, ForwardList&lt; T &gt; const &amp;o)</td></tr>
-<tr class="separator:a64b9028c639a2fc46d8d94239c3befbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Container : ForwardList. </p>
 <dl class="section author"><dt>Author</dt><dd>Louis ABEL </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>10/06/2019 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>CC-BY-NC-SA </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="file_a64b9028c639a2fc46d8d94239c3befbb"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; NRE::Utility::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php">ForwardList</a>&lt; T &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>o</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Output stream operator for the object </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>the stream to add the object's string representation </td></tr>
-    <tr><td class="paramname">o</td><td>the object to add in the stream </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the modified stream </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>

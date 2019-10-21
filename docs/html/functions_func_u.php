@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -130,11 +131,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 &#160;
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>Uncopyable()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ac180584842c7aa72d28d65e598552647">NRE::Utility::Uncopyable&lt; T &gt;</a>
+</li>
 <li>unique()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a95a00f5843333bc8e849403aa33eb736">NRE::Utility::ForwardList&lt; T &gt;</a>
 </li>
 <li>UnorderedMap()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a7e3e5eccb7be0df9e0019f78f8e58fa1">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a98202ff80e405f9e9fa0a9aca8d57624">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 <li>update()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a2e502d0563cb72165b216e55fd80ea60">NRE::Utility::Observer</a>

@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -134,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ac57384199059d8393992578bbc6b9b34">NRE::Utility::Observable</a>
 </li>
 <li>append()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a20fb2d291dad6b589ddc5089c50fea1d">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad9f8a1f41b958481360428112a87f49f">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>Array()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab271b77f1c13cb32617bc822deefc8d6">NRE::Utility::Array&lt; T, Size &gt;</a>

@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -131,11 +132,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>toString()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad8ecae20e4a7da25f9067f2c9011133f">NRE::Utility::Array&lt; T, Size &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a4457260a3da3363e38b1ed75ca64407e">NRE::Exception::IException</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad8ecae20e4a7da25f9067f2c9011133f">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3869ddf5653784b3b5734572bbfd3159">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a05925f7afd8f3ceff9b66086ce259137">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#aafa290016886ac3246f976789186ab75">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#ad3fb017f9a554b8e1d644077cfdcbba7">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a97059c18f5babb318015b3855537c91a">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">NRE::Utility::Stringable&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a2f193920c3436b6a0dcc79fe9c04a184">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#ae06ea911c6026374457bfc4ba19d8d57">NRE::Utility::Vector&lt; T &gt;</a>
 </li>

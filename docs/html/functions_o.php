@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -137,65 +138,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>operator!=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#acdf188605ad6e9c864aa034bd8e8b4d7">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afaef88927e530b9475ce143779b7f851">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a36d9c2ac5d0990f15a2652c75ebf94bb">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#a3a0038de8a11af8428a8d2e0f3c4546d">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a2a51aaf1eec5b75db4e68b7a4fd09abf">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#ad0fd2ac4cb1bdf018495f6883d1f6abd">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#ae3973b928fb3dc00d58a24006dd46968">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a67ce61b1cbbef37b18fa94fa62270056">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a2fac4903c4b01a343834008e80abb8c5">NRE::Utility::Pair&lt; T, K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#aa19fb2c0ad2ada8c2e4873ccfb131034">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#adc1b419631e45a8e8a8cdafe02be6129">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
+<li>operator()()
+: <a class="el" href="classstd_1_1hash_3_01_n_r_e_1_1_utility_1_1_string_01_4.php#a3b62fd2a790b87848fb3606132cf7663">std::hash&lt; NRE::Utility::String &gt;</a>
+</li>
 <li>operator*()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a415565fb8123e01b535c558129b29c27">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#ac40f134237ebbcde838703ea5f424142">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a9a447f25982ac38a738588b898698cc5">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a14b5fb1e6e91670e47b179ccfedad92d">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#ac4e9c37edf4175528f13dd78087d5615">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a415565fb8123e01b535c558129b29c27">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 </li>
 <li>operator++()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a4772f1bdf4ce522e68637fdf92cc2b4d">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#a24f0c086bcca6a37f05226c82a2b7436">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a895f32099ab3a58449d7f7f9f7b72539">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a47c6aaed43aacea1aa0a4ce3e84c20d6">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#afd3cbc2d0efbc62762c2e030077c4865">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a4772f1bdf4ce522e68637fdf92cc2b4d">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 </li>
 <li>operator+=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab4db6b5abd9d325e1a343e257b8799a2">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>operator-&gt;()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#af2e7635ebf29682e5ad4a51c6016bbfe">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#ab16ced6c86bd4bd294bb3809b7fe1b02">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a73805dac7e5f85b7cdc678bf9f427325">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a5c24bcb7954fe6d5d313cf63be34114c">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#af3368764a70ae5e069ebce35498a5415">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#af2e7635ebf29682e5ad4a51c6016bbfe">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 </li>
 <li>operator&lt;()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab06ee127d12a726f58c955365592fe3f">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a262597f8ced59f41bc0f0982f76c5579">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
-<li>operator&lt;&lt;()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8c42d379cd90d3c8c02a0eeb31fd7482">NRE::Utility::BasicString&lt; T &gt;</a>
+<li>operator&lt;&lt;
+: <a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a7be8a289585c1239ca5bb64845e0c3b3">NRE::Exception::IException</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8c42d379cd90d3c8c02a0eeb31fd7482">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a2f1f99296816e02780f1f74ebba13f22">NRE::Utility::Stringable&lt; T &gt;</a>
 </li>
 <li>operator&lt;=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7d68e5ffd1eac743a66f364e1e064536">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a2b46341a5868a01876b6c0a355130811">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator=()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#adbd441f61e6a9784dc1e7c1055639738">NRE::Utility::Array&lt; T, Size &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a837a351b0d155dd31dc44f50bbe6b5ce">NRE::Exception::IException</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#adbd441f61e6a9784dc1e7c1055639738">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2a6ad7eedb04b8fea0193e1d80275ba6">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry.php#a95b0c1515d88bda0e43a228dbce95947">NRE::Utility::BucketEntry&lt; ValueType, StoreHash &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php#ad947b55675d7af985c6aa4463e0d9ccf">NRE::Utility::Detail::BucketEntry&lt; ValueType, StoreHash &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a424515c1614e1b2e45812cb82181c497">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#a87c531cb0efe2e7cba2344e9dc1d2562">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae180ce93001f7bdf8ced12b3fdd44746">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a9161b028c0f302c911d54a6d38f3531b">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a518040ca55236bc4b6311d3e4b81c4e1">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#a2dd176c02e1bd26922a3aef1f7f7ea5a">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a1a3148fde0f7b56e7597cea21515bafb">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#a9c4f3089307b114f559f24eb3ac89046">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#af2070c089e1fc97f47e9aca09999a23e">NRE::Utility::Observable</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a1718d1cf9731dbf685484d24ac634349">NRE::Utility::Pair&lt; T, K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#aa7102d296f84817d3c69e1cd937b6008">NRE::Utility::Singleton&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a30884e5f0d6deab4d581e7a3256e2b07">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a873d0b6f87717711b39f36845a96d82c">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a64b9fb76c97851e039bd1ba7df7ad982">NRE::Utility::Uncopyable&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a21a39952d3c046be68ef7fdbbf9de4f7">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a0d79e58c0fa7ea52628a3b84b54a1c6f">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>operator==()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac3841ae70203b4f1d773a9fe65020970">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2cf9e947bb8ed9a5deae560978c131be">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a592ad0ebb870db3c29b5ef0c8bc18acc">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#a30ab40dfb5d2490b52334b84552912e8">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a0054b7032a951bc8b920eb97c4a132ec">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a179773ca079ad121d576e1f968e4dd3d">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#a9a1fb8a66c8eaf2925e0fa3d979c77a9">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a0cce92aff30bfcc480f0a0c2f654465b">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#af46c65eaf55e6a87a163fcd977247268">NRE::Utility::Pair&lt; T, K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae66540800e04243d83690db04803e618">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#aff21ca4b619758e7d5f816113750d5dd">NRE::Utility::Vector&lt; T &gt;</a>
@@ -209,10 +216,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a78b90e8f19d12b49a9effc89e349e125">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator[]()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a039cf013fe61d56bc12c554eda5d2fc6">NRE::Utility::Array&lt; T, Size &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9e804b2d067e38705651da6a72cb32e7">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ace21e34dff89527e0e17355e0b6bfa24">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#a8d0898ff37a00e8d9ea46b980cd31984">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#aa33af55cfbf0d7e8f06571b47004cc46">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af060a2734bf76f6e69343b55fcd2744d">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a09272af8ec48fdeeae1d395b23d705d7">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a37835b4a75e13ed9b57194e7fe5a82c6">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 </ul>

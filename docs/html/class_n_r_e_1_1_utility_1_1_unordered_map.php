@@ -113,34 +113,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="class_n_r_e_1_1_utility_1_1_unordered_map.php#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___unordered_map_8hpp_source.php">NRE_UnorderedMap.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_n_r_e_1_1_utility_1_1_unordered_map.png" usemap="#NRE::Utility::UnorderedMap_3C_20Key_2C_20T_2C_20StoreHash_2C_20Hash_2C_20KeyEqual_20_3E_map" alt=""/>
+  <map id="NRE::Utility::UnorderedMap_3C_20Key_2C_20T_2C_20StoreHash_2C_20Hash_2C_20KeyEqual_20_3E_map" name="NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;_map">
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="0,56,565,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T, M &gt;" shape="rect" coords="0,0,565,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a45a5248b1fbf31fc61b12d597dbdfe93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45a5248b1fbf31fc61b12d597dbdfe93"></a>
 typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; Key, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ValueType</b></td></tr>
 <tr class="separator:a45a5248b1fbf31fc61b12d597dbdfe93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60950ad809a01d316c53476240d3d578"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60950ad809a01d316c53476240d3d578"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Iterator</b></td></tr>
-<tr class="separator:a60950ad809a01d316c53476240d3d578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27ebb5a651384494976c76de07c9164f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27ebb5a651384494976c76de07c9164f"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ConstIterator</b></td></tr>
-<tr class="separator:a27ebb5a651384494976c76de07c9164f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c80c16544741693f0da9e26a814bfef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c80c16544741693f0da9e26a814bfef"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LocalIterator</b></td></tr>
-<tr class="separator:a1c80c16544741693f0da9e26a814bfef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d8b8cdd9829c0fff09e26e6c98d552d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d8b8cdd9829c0fff09e26e6c98d552d"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ConstLocalIterator</b></td></tr>
-<tr class="separator:a4d8b8cdd9829c0fff09e26e6c98d552d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608c49d96c6b3f887cd0c952959dea8c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a608c49d96c6b3f887cd0c952959dea8c"></a>
+typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Iterator</b></td></tr>
+<tr class="separator:a608c49d96c6b3f887cd0c952959dea8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7a71bacfc57d6942d88211009952bb9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7a71bacfc57d6942d88211009952bb9"></a>
+typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ConstIterator</b></td></tr>
+<tr class="separator:ab7a71bacfc57d6942d88211009952bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93003c21eb073dc731202c62a9d56c2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93003c21eb073dc731202c62a9d56c2f"></a>
+typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LocalIterator</b></td></tr>
+<tr class="separator:a93003c21eb073dc731202c62a9d56c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6940b4343e65d48d33dd5fcca5fedc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6940b4343e65d48d33dd5fcca5fedc1"></a>
+typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ConstLocalIterator</b></td></tr>
+<tr class="separator:af6940b4343e65d48d33dd5fcca5fedc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7e3e5eccb7be0df9e0019f78f8e58fa1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a7e3e5eccb7be0df9e0019f78f8e58fa1">UnorderedMap</a> (std::size_t bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual())</td></tr>
-<tr class="separator:a7e3e5eccb7be0df9e0019f78f8e58fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73121580771b302310b85fdafcbd2240"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a73121580771b302310b85fdafcbd2240"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a73121580771b302310b85fdafcbd2240">UnorderedMap</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a>, std::size_t bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual())</td></tr>
-<tr class="separator:a73121580771b302310b85fdafcbd2240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba7f63d20573ef3bfee4e006e3191589"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#aba7f63d20573ef3bfee4e006e3191589">UnorderedMap</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt; list, std::size_t bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual())</td></tr>
-<tr class="separator:aba7f63d20573ef3bfee4e006e3191589"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc9ddea0c5f0acaf1138cabe27a88a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a9fc9ddea0c5f0acaf1138cabe27a88a7">UnorderedMap</a> (std::size_t bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual())</td></tr>
+<tr class="separator:a9fc9ddea0c5f0acaf1138cabe27a88a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ca3e6ba8f842a31d94df0e081c5765"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
+<tr class="memitem:ad8ca3e6ba8f842a31d94df0e081c5765"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ad8ca3e6ba8f842a31d94df0e081c5765">UnorderedMap</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a>, std::size_t bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual())</td></tr>
+<tr class="separator:ad8ca3e6ba8f842a31d94df0e081c5765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50fa15fc2b9f31e617c60161e1016742"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a50fa15fc2b9f31e617c60161e1016742">UnorderedMap</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt; list, std::size_t bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual())</td></tr>
+<tr class="separator:a50fa15fc2b9f31e617c60161e1016742"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98202ff80e405f9e9fa0a9aca8d57624"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a98202ff80e405f9e9fa0a9aca8d57624">UnorderedMap</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">UnorderedMap</a> const &amp;map)</td></tr>
 <tr class="separator:a98202ff80e405f9e9fa0a9aca8d57624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948787cc52f988cd60e2cd928f49b9f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a948787cc52f988cd60e2cd928f49b9f7">UnorderedMap</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">UnorderedMap</a> &amp;&amp;map)</td></tr>
@@ -169,50 +179,50 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a32996f01a50577b97f432a0a4648494a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a59ca3b74264612ee338d654a48305d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a7a59ca3b74264612ee338d654a48305d">setMaxLoadFactor</a> (float factor)</td></tr>
 <tr class="separator:a7a59ca3b74264612ee338d654a48305d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a714d8056d1eb4286be47decc94dae308"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a> ()</td></tr>
+<tr class="memitem:a714d8056d1eb4286be47decc94dae308"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a> ()</td></tr>
 <tr class="separator:a714d8056d1eb4286be47decc94dae308"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3a307ec912be5178a94e982f6f11fd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ac3a307ec912be5178a94e982f6f11fd1">begin</a> () const </td></tr>
+<tr class="memitem:ac3a307ec912be5178a94e982f6f11fd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ac3a307ec912be5178a94e982f6f11fd1">begin</a> () const </td></tr>
 <tr class="separator:ac3a307ec912be5178a94e982f6f11fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8c5b0b065a32d568ca26baa60cf011c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae8c5b0b065a32d568ca26baa60cf011c">cbegin</a> () const </td></tr>
+<tr class="memitem:ae8c5b0b065a32d568ca26baa60cf011c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae8c5b0b065a32d568ca26baa60cf011c">cbegin</a> () const </td></tr>
 <tr class="separator:ae8c5b0b065a32d568ca26baa60cf011c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e243f443573677bae65799ad879bd4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a> ()</td></tr>
+<tr class="memitem:a4e243f443573677bae65799ad879bd4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a> ()</td></tr>
 <tr class="separator:a4e243f443573677bae65799ad879bd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d82085581d7ce35853faee8352faf64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4d82085581d7ce35853faee8352faf64">end</a> () const </td></tr>
+<tr class="memitem:a4d82085581d7ce35853faee8352faf64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4d82085581d7ce35853faee8352faf64">end</a> () const </td></tr>
 <tr class="separator:a4d82085581d7ce35853faee8352faf64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0d88ac768154bb20d3efc16dac59039"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae0d88ac768154bb20d3efc16dac59039">cend</a> () const </td></tr>
+<tr class="memitem:ae0d88ac768154bb20d3efc16dac59039"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae0d88ac768154bb20d3efc16dac59039">cend</a> () const </td></tr>
 <tr class="separator:ae0d88ac768154bb20d3efc16dac59039"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1176a42606f4dff2d2e2c0d12e183d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#af1176a42606f4dff2d2e2c0d12e183d0">begin</a> (std::size_t index)</td></tr>
+<tr class="memitem:af1176a42606f4dff2d2e2c0d12e183d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#af1176a42606f4dff2d2e2c0d12e183d0">begin</a> (std::size_t index)</td></tr>
 <tr class="separator:af1176a42606f4dff2d2e2c0d12e183d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a829e72b645b3dfb2f2f0d05eaac28c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a0a829e72b645b3dfb2f2f0d05eaac28c">begin</a> (std::size_t index) const </td></tr>
+<tr class="memitem:a0a829e72b645b3dfb2f2f0d05eaac28c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a0a829e72b645b3dfb2f2f0d05eaac28c">begin</a> (std::size_t index) const </td></tr>
 <tr class="separator:a0a829e72b645b3dfb2f2f0d05eaac28c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dcbe535faa19a0704325e5e3fe926d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4dcbe535faa19a0704325e5e3fe926d9">cbegin</a> (std::size_t index) const </td></tr>
+<tr class="memitem:a4dcbe535faa19a0704325e5e3fe926d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4dcbe535faa19a0704325e5e3fe926d9">cbegin</a> (std::size_t index) const </td></tr>
 <tr class="separator:a4dcbe535faa19a0704325e5e3fe926d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2ea987132ad6bf798be5aebd111d1ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#af2ea987132ad6bf798be5aebd111d1ab">end</a> (std::size_t index)</td></tr>
+<tr class="memitem:af2ea987132ad6bf798be5aebd111d1ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#af2ea987132ad6bf798be5aebd111d1ab">end</a> (std::size_t index)</td></tr>
 <tr class="separator:af2ea987132ad6bf798be5aebd111d1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f277e2d015dfd54e0b567024a5b4e0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a9f277e2d015dfd54e0b567024a5b4e0d">end</a> (std::size_t index) const </td></tr>
+<tr class="memitem:a9f277e2d015dfd54e0b567024a5b4e0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a9f277e2d015dfd54e0b567024a5b4e0d">end</a> (std::size_t index) const </td></tr>
 <tr class="separator:a9f277e2d015dfd54e0b567024a5b4e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6636771041fe32c3968e5615db9c1b74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a6636771041fe32c3968e5615db9c1b74">cend</a> (std::size_t index) const </td></tr>
+<tr class="memitem:a6636771041fe32c3968e5615db9c1b74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a6636771041fe32c3968e5615db9c1b74">cend</a> (std::size_t index) const </td></tr>
 <tr class="separator:a6636771041fe32c3968e5615db9c1b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a932990b476a73019472d6ff4897bd8db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a932990b476a73019472d6ff4897bd8db">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;value)</td></tr>
+<tr class="memitem:a932990b476a73019472d6ff4897bd8db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a932990b476a73019472d6ff4897bd8db">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;value)</td></tr>
 <tr class="separator:a932990b476a73019472d6ff4897bd8db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22f8e71f76d1746ec956ea810fcf6e98"><td class="memTemplParams" colspan="2">template&lt;class P &gt; </td></tr>
-<tr class="memitem:a22f8e71f76d1746ec956ea810fcf6e98"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a22f8e71f76d1746ec956ea810fcf6e98">insert</a> (P &amp;&amp;value)</td></tr>
+<tr class="memitem:a22f8e71f76d1746ec956ea810fcf6e98"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a22f8e71f76d1746ec956ea810fcf6e98">insert</a> (P &amp;&amp;value)</td></tr>
 <tr class="separator:a22f8e71f76d1746ec956ea810fcf6e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47e190a0fee925313b5d26cf3abd670"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
 <tr class="memitem:ac47e190a0fee925313b5d26cf3abd670"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ac47e190a0fee925313b5d26cf3abd670">insert</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a>)</td></tr>
 <tr class="separator:ac47e190a0fee925313b5d26cf3abd670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a384dfed27b110ae724efc9c2725ee74b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a384dfed27b110ae724efc9c2725ee74b">insert</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt; list)</td></tr>
 <tr class="separator:a384dfed27b110ae724efc9c2725ee74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61ee95960f1bf68a174bed58b088e13a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a61ee95960f1bf68a174bed58b088e13a">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> hint, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;value)</td></tr>
+<tr class="memitem:a61ee95960f1bf68a174bed58b088e13a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a61ee95960f1bf68a174bed58b088e13a">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> hint, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;value)</td></tr>
 <tr class="separator:a61ee95960f1bf68a174bed58b088e13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c7a84417b5058f82856686d5e04383a"><td class="memTemplParams" colspan="2">template&lt;class P &gt; </td></tr>
-<tr class="memitem:a7c7a84417b5058f82856686d5e04383a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a7c7a84417b5058f82856686d5e04383a">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> hint, P &amp;&amp;value)</td></tr>
+<tr class="memitem:a7c7a84417b5058f82856686d5e04383a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a7c7a84417b5058f82856686d5e04383a">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> hint, P &amp;&amp;value)</td></tr>
 <tr class="separator:a7c7a84417b5058f82856686d5e04383a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70d673f11138359299dbc1ab023dd3b7"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:a70d673f11138359299dbc1ab023dd3b7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a70d673f11138359299dbc1ab023dd3b7">emplace</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="memitem:a70d673f11138359299dbc1ab023dd3b7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a70d673f11138359299dbc1ab023dd3b7">emplace</a> (Args &amp;&amp;...args)</td></tr>
 <tr class="separator:a70d673f11138359299dbc1ab023dd3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a263bf9f6eb2c0e782e46737554966671"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:a263bf9f6eb2c0e782e46737554966671"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a263bf9f6eb2c0e782e46737554966671">emplaceHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> hint, Args &amp;&amp;...args)</td></tr>
+<tr class="memitem:a263bf9f6eb2c0e782e46737554966671"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a263bf9f6eb2c0e782e46737554966671">emplaceHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> hint, Args &amp;&amp;...args)</td></tr>
 <tr class="separator:a263bf9f6eb2c0e782e46737554966671"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed91971771c9165ba9f45b7ebeb5196"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a9ed91971771c9165ba9f45b7ebeb5196">clear</a> ()</td></tr>
 <tr class="separator:a9ed91971771c9165ba9f45b7ebeb5196"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,19 +232,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af05674231300073636d401ce3e157879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a360fb4e1d41a846c1a52bd5ad0c2cdb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a360fb4e1d41a846c1a52bd5ad0c2cdb0">rehash</a> (std::size_t count)</td></tr>
 <tr class="separator:a360fb4e1d41a846c1a52bd5ad0c2cdb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b3bc62bb94d24c821eda023229616eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4b3bc62bb94d24c821eda023229616eb">equalRange</a> (Key const &amp;key)</td></tr>
+<tr class="memitem:a4b3bc62bb94d24c821eda023229616eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4b3bc62bb94d24c821eda023229616eb">equalRange</a> (Key const &amp;key)</td></tr>
 <tr class="separator:a4b3bc62bb94d24c821eda023229616eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06c734a505ad3f8edfdd3a4003ed125e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a06c734a505ad3f8edfdd3a4003ed125e">equalRange</a> (Key const &amp;key) const </td></tr>
+<tr class="memitem:a06c734a505ad3f8edfdd3a4003ed125e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a06c734a505ad3f8edfdd3a4003ed125e">equalRange</a> (Key const &amp;key) const </td></tr>
 <tr class="separator:a06c734a505ad3f8edfdd3a4003ed125e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90b3b5b70e81d330ed80d13c76ca197a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a90b3b5b70e81d330ed80d13c76ca197a">find</a> (Key const &amp;k)</td></tr>
+<tr class="memitem:a90b3b5b70e81d330ed80d13c76ca197a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a90b3b5b70e81d330ed80d13c76ca197a">find</a> (Key const &amp;k)</td></tr>
 <tr class="separator:a90b3b5b70e81d330ed80d13c76ca197a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc6ea384a8413ec57b42e1f4f814b80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a2dc6ea384a8413ec57b42e1f4f814b80">find</a> (Key const &amp;k) const </td></tr>
+<tr class="memitem:a2dc6ea384a8413ec57b42e1f4f814b80"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a2dc6ea384a8413ec57b42e1f4f814b80">find</a> (Key const &amp;k) const </td></tr>
 <tr class="separator:a2dc6ea384a8413ec57b42e1f4f814b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a399c4b2a80300912c52785752fb016d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a399c4b2a80300912c52785752fb016d4">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> pos)</td></tr>
+<tr class="memitem:a399c4b2a80300912c52785752fb016d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a399c4b2a80300912c52785752fb016d4">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> pos)</td></tr>
 <tr class="separator:a399c4b2a80300912c52785752fb016d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6d2606523f7f2ad7f6d74866c78b887"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ab6d2606523f7f2ad7f6d74866c78b887">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> pos)</td></tr>
+<tr class="memitem:ab6d2606523f7f2ad7f6d74866c78b887"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ab6d2606523f7f2ad7f6d74866c78b887">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> pos)</td></tr>
 <tr class="separator:ab6d2606523f7f2ad7f6d74866c78b887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47295ef0587a3eace1002f2934088a90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a47295ef0587a3eace1002f2934088a90">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a>)</td></tr>
+<tr class="memitem:a47295ef0587a3eace1002f2934088a90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a47295ef0587a3eace1002f2934088a90">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a714d8056d1eb4286be47decc94dae308">begin</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a4e243f443573677bae65799ad879bd4f">end</a>)</td></tr>
 <tr class="separator:a47295ef0587a3eace1002f2934088a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf27822bac0646998d0a706d34d8fe41"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#aaf27822bac0646998d0a706d34d8fe41">erase</a> (Key const &amp;k)</td></tr>
 <tr class="separator:aaf27822bac0646998d0a706d34d8fe41"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -256,6 +266,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa19fb2c0ad2ada8c2e4873ccfb131034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f193920c3436b6a0dcc79fe9c04a184"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a2f193920c3436b6a0dcc79fe9c04a184">toString</a> () const </td></tr>
 <tr class="separator:a2f193920c3436b6a0dcc79fe9c04a184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;</a></td></tr>
+<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
+<tr class="separator:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_static_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface&lt; T, M &gt;</a></td></tr>
+<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
+<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
+<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt;<br />
@@ -263,7 +281,7 @@ class NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</h3>
 
 <p>An unordered map, associative unordered container. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7e3e5eccb7be0df9e0019f78f8e58fa1"></a>
+<a class="anchor" id="a9fc9ddea0c5f0acaf1138cabe27a88a7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -273,7 +291,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">UnorderedMap</a> </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt;&#160;Key,&#160;T,&#160;StoreHash,&#160;Hash,&#160;KeyEqual&#160;&gt;::DEFAULT_BUCKET_COUNT</code>, </td>
+          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt;&#160;Key,&#160;T,&#160;StoreHash,&#160;Hash,&#160;KeyEqual&#160;&gt;::DEFAULT_BUCKET_COUNT</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -305,7 +323,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 
 </div>
 </div>
-<a class="anchor" id="a73121580771b302310b85fdafcbd2240"></a>
+<a class="anchor" id="ad8ca3e6ba8f842a31d94df0e081c5765"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -329,7 +347,7 @@ template&lt;class InputIterator &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt;&#160;Key,&#160;T,&#160;StoreHash,&#160;Hash,&#160;KeyEqual&#160;&gt;::DEFAULT_BUCKET_COUNT</code>, </td>
+          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt;&#160;Key,&#160;T,&#160;StoreHash,&#160;Hash,&#160;KeyEqual&#160;&gt;::DEFAULT_BUCKET_COUNT</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -363,7 +381,7 @@ template&lt;class InputIterator &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aba7f63d20573ef3bfee4e006e3191589"></a>
+<a class="anchor" id="a50fa15fc2b9f31e617c60161e1016742"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -379,7 +397,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt;&#160;Key,&#160;T,&#160;StoreHash,&#160;Hash,&#160;KeyEqual&#160;&gt;::DEFAULT_BUCKET_COUNT</code>, </td>
+          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">Detail::HashTable</a>&lt;&#160;Key,&#160;T,&#160;StoreHash,&#160;Hash,&#160;KeyEqual&#160;&gt;::DEFAULT_BUCKET_COUNT</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -468,7 +486,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -486,7 +504,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -504,7 +522,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -529,7 +547,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -554,7 +572,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -572,7 +590,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -597,7 +615,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -615,7 +633,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cend </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -660,7 +678,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::emplace </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::emplace </td>
           <td>(</td>
           <td class="paramtype">Args &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
@@ -687,9 +705,9 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::emplaceHint </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::emplaceHint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>
@@ -723,7 +741,7 @@ template&lt;class... Args&gt; </div>
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -741,7 +759,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -759,7 +777,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -784,7 +802,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -809,7 +827,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
           <td>(</td>
           <td class="paramtype">Key const &amp;&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -834,7 +852,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
           <td>(</td>
           <td class="paramtype">Key const &amp;&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -859,9 +877,9 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -884,9 +902,9 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -909,15 +927,15 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -970,7 +988,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::find </td>
           <td>(</td>
           <td class="paramtype">Key const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -995,7 +1013,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::find </td>
           <td>(</td>
           <td class="paramtype">Key const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -1264,7 +1282,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -1291,7 +1309,7 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class P &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
           <td>(</td>
           <td class="paramtype">P &amp;&amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -1377,9 +1395,9 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::hash&lt;Key&gt;, class KeyEqual  = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>
@@ -1415,9 +1433,9 @@ template&lt;class Key , class T , bool StoreHash = false, class Hash  = std::has
 template&lt;class P &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">NRE::Utility::UnorderedMap</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>

@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -137,17 +138,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4767aa21ed166bbcbba3346e20063c81">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>~BucketEntry()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry.php#adf920402af50f4a9c6c7606420de8f11">NRE::Utility::BucketEntry&lt; ValueType, StoreHash &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php#a3ae7cc0e4b8a95a881eeee75aefd576b">NRE::Utility::Detail::BucketEntry&lt; ValueType, StoreHash &gt;</a>
 </li>
 <li>~ForwardIterator()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a82b3fee333473efd55096bb3c4fb1f25">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#a866b9cb820c6bbf185a674e24ff09cd6">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a47f37804a81012f21e3d0d2b8ac05cd2">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a82b3fee333473efd55096bb3c4fb1f25">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 </li>
 <li>~ForwardList()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a0eb628d246691f5df775d4d0b11b9f43">NRE::Utility::ForwardList&lt; T &gt;</a>
 </li>
+<li>~IException()
+: <a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#aed938ddc7fa6b6971a1b563c25ec1c8e">NRE::Exception::IException</a>
+</li>
 <li>~LocalForwardIterator()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#ad7fc2411f43cabca1cb316e7645e6864">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#acd38f7ce899f4caa878b2f2f4140dc0b">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
 </li>
 <li>~Observable()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a0c1f5eb43b26526d963b8f354d6efefd">NRE::Utility::Observable</a>
@@ -160,6 +164,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>~Singleton()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#a1c1f4682ad559628d1dcd3b465c20259">NRE::Utility::Singleton&lt; T &gt;</a>
+</li>
+<li>~Uncopyable()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ae2873929128bbf993c84d0535417b018">NRE::Utility::Uncopyable&lt; T &gt;</a>
 </li>
 <li>~Vector()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#ab29b80e7a67b9530485c6771465bce28">NRE::Utility::Vector&lt; T &gt;</a>

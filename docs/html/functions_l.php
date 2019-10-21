@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -132,10 +133,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>LocalForwardIterator()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#a1f4b091e5ece04627634e7574f4ad0a3">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#abcb25162027ccb7e5911c588853b9993">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
 </li>
 <li>LocalIterator
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#add5494be99938c1e6fb845ce18d82720">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php"><span>Functions</span></a></li>
       <li><a href="functions_vars.php"><span>Variables</span></a></li>
       <li><a href="functions_type.php"><span>Typedefs</span></a></li>
+      <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -140,18 +141,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>begin()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a370a4e484cee21247a74334eef4d2b2d">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa064790d80bdfa7c7ad005369287c315">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a7b03fbc213155287dc80a64098d4614f">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php#a60c4f9e6eea13836da6698c7d35cdc8b">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a3e9dac8ffe51ab4d3ab84f1aba171972">NRE::Utility::Observable</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#af1176a42606f4dff2d2e2c0d12e183d0">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a6bd2d0b71d8e8b93861c4caafc9fd041">NRE::Utility::Vector&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a7aa353d783fef64406568550d4a883d1">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>BucketEntry()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry.php#ade0e9c2f08f57fc567433ada7ce770dc">NRE::Utility::BucketEntry&lt; ValueType, StoreHash &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php#abad3c49ed94e2d95f5b043d743225ca7">NRE::Utility::Detail::BucketEntry&lt; ValueType, StoreHash &gt;</a>
 </li>
 <li>bucketHashEquals()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash.php#a6a0f44c490c0f828d1377a231d1166d4">NRE::Utility::BucketEntryHash&lt; StoreHash &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash_3_01true_01_4.php#a6c2f26dbdc3db097c8d816a36f57da09">NRE::Utility::BucketEntryHash&lt; true &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash.php#a44bbda026b156df237763c94c030e5ae">NRE::Utility::Detail::BucketEntryHash&lt; StoreHash &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash_3_01true_01_4.php#a6e125a3385973a5cb3c77adadeb07992">NRE::Utility::Detail::BucketEntryHash&lt; true &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

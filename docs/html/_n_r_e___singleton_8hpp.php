@@ -107,7 +107,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Object : Singleton.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;NRE_Singleton.tpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_n_r_e___uncopyable_8hpp_source.php">../Interfaces/Uncopyable/NRE_Uncopyable.hpp</a>&quot;</code><br />
+<code>#include &quot;NRE_Singleton.tpp&quot;</code><br />
 </div>
 <p><a href="_n_r_e___singleton_8hpp_source.php">Go to the source code of this file.</a></p>
 <table class="memberdecls">

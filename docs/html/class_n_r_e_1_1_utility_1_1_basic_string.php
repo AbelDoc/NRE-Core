@@ -254,9 +254,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1fc5c8410a87b1802e3b006a7177569c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51b3da7e0493d6fd6a870629dabc871a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a51b3da7e0493d6fd6a870629dabc871a">popBack</a> ()</td></tr>
 <tr class="separator:a51b3da7e0493d6fd6a870629dabc871a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20fb2d291dad6b589ddc5089c50fea1d"><td class="memTemplParams" colspan="2">template&lt;class K &gt; </td></tr>
-<tr class="memitem:a20fb2d291dad6b589ddc5089c50fea1d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a20fb2d291dad6b589ddc5089c50fea1d">append</a> (K const &amp;o)</td></tr>
-<tr class="separator:a20fb2d291dad6b589ddc5089c50fea1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f8a1f41b958481360428112a87f49f"><td class="memTemplParams" colspan="2">template&lt;class K , typename std::enable_if_t&lt; std::is_base_of&lt; Stringable&lt; K &gt;, K &gt;::value, int &gt;  = 0&gt; </td></tr>
+<tr class="memitem:ad9f8a1f41b958481360428112a87f49f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad9f8a1f41b958481360428112a87f49f">append</a> (K const &amp;o)</td></tr>
+<tr class="separator:ad9f8a1f41b958481360428112a87f49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b367b1b7cc3c95851d67061e6e20f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a79b367b1b7cc3c95851d67061e6e20f0">append</a> (bool value)</td></tr>
 <tr class="separator:a79b367b1b7cc3c95851d67061e6e20f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6a5d675e0e9dac8ae9bb0de1810845e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad6a5d675e0e9dac8ae9bb0de1810845e">append</a> (T value)</td></tr>
@@ -793,13 +793,16 @@ template&lt;class T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a20fb2d291dad6b589ddc5089c50fea1d"></a>
+<a class="anchor" id="ad9f8a1f41b958481360428112a87f49f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
 <div class="memtemplate">
-template&lt;class K &gt; </div>
+template&lt;class K , typename std::enable_if_t&lt; std::is_base_of&lt; Stringable&lt; K &gt;, K &gt;::value, int &gt;  = 0&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::append </td>
@@ -809,6 +812,11 @@ template&lt;class K &gt; </div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Append the object to string </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

@@ -113,6 +113,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="class_n_r_e_1_1_utility_1_1_pair.php#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___pair_8hpp_source.php">NRE_Pair.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for NRE::Utility::Pair&lt; T, K &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_n_r_e_1_1_utility_1_1_pair.png" usemap="#NRE::Utility::Pair_3C_20T_2C_20K_20_3E_map" alt=""/>
+  <map id="NRE::Utility::Pair_3C_20T_2C_20K_20_3E_map" name="NRE::Utility::Pair&lt; T, K &gt;_map">
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Pair&lt; T, K &gt; &gt;" shape="rect" coords="0,56,321,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T, M &gt;" shape="rect" coords="0,0,321,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -161,6 +171,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a78b90e8f19d12b49a9effc89e349e125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97059c18f5babb318015b3855537c91a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a97059c18f5babb318015b3855537c91a">toString</a> () const </td></tr>
 <tr class="separator:a97059c18f5babb318015b3855537c91a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; Pair&lt; T, K &gt; &gt;</a></td></tr>
+<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
+<tr class="separator:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_static_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface&lt; T, M &gt;</a></td></tr>
+<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
+<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
+<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>

@@ -93,6 +93,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">NRE Namespace Reference</div>  </div>
 </div><!--header-->
@@ -100,6 +102,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>The NearlyRealEngine's global namespace.  
 <a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5942dd350bdb718c0730019ef51c673d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5942dd350bdb718c0730019ef51c673d"></a>
+typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Id</b></td></tr>
+<tr class="separator:a5942dd350bdb718c0730019ef51c673d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The NearlyRealEngine's global namespace. </p>
 </div></div><!-- contents -->

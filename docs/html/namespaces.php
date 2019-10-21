@@ -99,8 +99,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock">Here is a list of all documented namespaces with brief descriptions:</div><div class="directory">
 <table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespace_n_r_e.php" target="_self">NRE</a></td><td class="desc">The NearlyRealEngine's global namespace </td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespace_utility.php" target="_self">Utility</a></td><td class="desc"><a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API </td></tr>
+<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespace_exception.php" target="_self">Exception</a></td><td class="desc"><a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API </td></tr>
+<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespace_n_r_e.php" target="_self">NRE</a></td><td class="desc">The NearlyRealEngine's global namespace </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespacestd.php" target="_self">std</a></td><td class="desc">The stl standard namespace </td></tr>
+<tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespace_utility.php" target="_self">Utility</a></td><td class="desc"><a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->

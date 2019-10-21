@@ -104,6 +104,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
+<tr class="memitem:_n_r_e___exception_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_r_e___exception_8hpp.php">NRE_Exception.hpp</a> <a href="_n_r_e___exception_8hpp_source.php">[code]</a></td></tr>
+<tr class="memdesc:_n_r_e___exception_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's <a class="el" href="namespace_exception.php" title="Utility&#39;s API. ">Exception</a> Header. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:_n_r_e___utility_8hpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_r_e___utility_8hpp.php">NRE_Utility.hpp</a> <a href="_n_r_e___utility_8hpp_source.php">[code]</a></td></tr>
 <tr class="memdesc:_n_r_e___utility_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Header. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="namespace_utility_php"><div class="ttname"><a href="namespace_utility.php">Utility</a></div><div class="ttdoc">Utility&amp;#39;s API. </div></div>
 <div class="ttc" id="class_n_r_e_1_1_utility_1_1_observable_php_a0c1f5eb43b26526d963b8f354d6efefd"><div class="ttname"><a href="class_n_r_e_1_1_utility_1_1_observable.php#a0c1f5eb43b26526d963b8f354d6efefd">NRE::Utility::Observable::~Observable</a></div><div class="ttdeci">virtual ~Observable()=default</div></div>
 <div class="ttc" id="class_n_r_e_1_1_utility_1_1_observable_php_af2070c089e1fc97f47e9aca09999a23e"><div class="ttname"><a href="class_n_r_e_1_1_utility_1_1_observable.php#af2070c089e1fc97f47e9aca09999a23e">NRE::Utility::Observable::operator=</a></div><div class="ttdeci">Observable &amp; operator=(Observable const &amp;o)=default</div></div>
-<div class="ttc" id="class_n_r_e_1_1_utility_1_1_vector_php"><div class="ttname"><a href="class_n_r_e_1_1_utility_1_1_vector.php">NRE::Utility::Vector</a></div><div class="ttdoc">A dynamic array, guarantee to be in contiguous memory. </div><div class="ttdef"><b>Definition:</b> NRE_Vector.hpp:34</div></div>
+<div class="ttc" id="class_n_r_e_1_1_utility_1_1_vector_php"><div class="ttname"><a href="class_n_r_e_1_1_utility_1_1_vector.php">NRE::Utility::Vector</a></div><div class="ttdoc">A dynamic array, guarantee to be in contiguous memory. </div><div class="ttdef"><b>Definition:</b> NRE_Vector.hpp:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->

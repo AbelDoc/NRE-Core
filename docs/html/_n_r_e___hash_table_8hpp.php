@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
-        <title>NRE-Utility: /mnt/c/Users/abell/Documents/GitHub/NRE-Utility/src/Utility/HashTable/NRE_HashTable.hpp File Reference</title>
+        <title>NRE-Utility: /mnt/c/Users/abell/Documents/GitHub/NRE-Utility/src/Utility/Detail/HashTable/NRE_HashTable.hpp File Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -93,15 +93,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.php">src</a></li><li class="navelem"><a class="el" href="dir_9761b53e3d9349800c0cb59b71c8cd3d.php">Utility</a></li><li class="navelem"><a class="el" href="dir_816ecf5d6339a20bbafcd6370c27be51.php">HashTable</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.php">src</a></li><li class="navelem"><a class="el" href="dir_9761b53e3d9349800c0cb59b71c8cd3d.php">Utility</a></li><li class="navelem"><a class="el" href="dir_4ba482d33c8dc209b0ed648ba592bf4f.php">Detail</a></li><li class="navelem"><a class="el" href="dir_965090ab86abf012716b7185f6c8c77d.php">HashTable</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">NRE_HashTable.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -110,31 +109,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Object : HashTable.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;climits&gt;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___string_8hpp_source.php">../String/NRE_String.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___pair_8hpp_source.php">../Pair/NRE_Pair.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___vector_8hpp_source.php">../Vector/NRE_Vector.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___string_8hpp_source.php">../../String/NRE_String.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___pair_8hpp_source.php">../../Pair/NRE_Pair.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___vector_8hpp_source.php">../../Vector/NRE_Vector.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___stringable_8hpp_source.php">../../Interfaces/Stringable/NRE_Stringable.hpp</a>&quot;</code><br />
 <code>#include &quot;NRE_HashTable.tpp&quot;</code><br />
 </div>
 <p><a href="_n_r_e___hash_table_8hpp_source.php">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash.php">NRE::Utility::BucketEntryHash&lt; StoreHash &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to store the key hash, or not depending on the template value.  <a href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash.php#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash.php">NRE::Utility::Detail::BucketEntryHash&lt; StoreHash &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to store the key hash, or not depending on the template value.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash.php#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash_3_01true_01_4.php">NRE::Utility::BucketEntryHash&lt; true &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash_3_01true_01_4.php">NRE::Utility::Detail::BucketEntryHash&lt; true &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry.php">NRE::Utility::BucketEntry&lt; ValueType, StoreHash &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A bucket entry used as the hash table elements.  <a href="class_n_r_e_1_1_utility_1_1_bucket_entry.php#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php">NRE::Utility::Detail::BucketEntry&lt; ValueType, StoreHash &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A bucket entry used as the hash table elements.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Based on TSL Robin Hash, An hashtable used in map and set, an associative container using linear probing, robin hood and shift back optimisation.  <a href="class_n_r_e_1_1_utility_1_1_hash_table.php#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Based on TSL Robin Hash, An hashtable used in map and set, an associative container using linear probing, robin hood and shift back optimisation.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table forward iterator.  <a href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table forward iterator.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">NRE::Utility::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table local forward iterator.  <a href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table local forward iterator.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -148,59 +148,16 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aa605b1380cf5bf03b4cafa26ff38837a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa605b1380cf5bf03b4cafa26ff38837a"></a>
-typedef std::uint_least32_t&#160;</td><td class="memItemRight" valign="bottom"><b>NRE::Utility::TruncatedHash</b></td></tr>
-<tr class="separator:aa605b1380cf5bf03b4cafa26ff38837a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a8ee97a194ad8d697f8001affdcbda787"><td class="memTemplParams" colspan="2">template&lt;class Key , class T , bool StoreHash, class Hash , class KeyEqual &gt; </td></tr>
-<tr class="memitem:a8ee97a194ad8d697f8001affdcbda787"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_n_r_e___hash_table_8hpp.php#a8ee97a194ad8d697f8001affdcbda787">NRE::Utility::operator&lt;&lt;</a> (std::ostream &amp;stream, HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; const &amp;o)</td></tr>
-<tr class="separator:a8ee97a194ad8d697f8001affdcbda787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803b88c8c921565f8ff849b40839ebde"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a803b88c8c921565f8ff849b40839ebde"></a>
+typedef std::uint_least32_t&#160;</td><td class="memItemRight" valign="bottom"><b>NRE::Utility::Detail::TruncatedHash</b></td></tr>
+<tr class="separator:a803b88c8c921565f8ff849b40839ebde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Object : HashTable. </p>
 <dl class="section author"><dt>Author</dt><dd>Louis ABEL </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>25/06/2019 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>CC-BY-NC-SA </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="file_a8ee97a194ad8d697f8001affdcbda787"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Key , class T , bool StoreHash, class Hash , class KeyEqual &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; NRE::Utility::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt; const &amp;&#160;</td>
-          <td class="paramname"><em>o</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Output stream operator for the object </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">stream</td><td>the stream to add the object's string representation </td></tr>
-    <tr><td class="paramname">o</td><td>the object to add in the stream </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the modified stream </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>

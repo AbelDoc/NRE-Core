@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Class Index</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_A">A</a>&#160;|&#160;<a class="qindex" href="#letter_B">B</a>&#160;|&#160;<a class="qindex" href="#letter_F">F</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_L">L</a>&#160;|&#160;<a class="qindex" href="#letter_O">O</a>&#160;|&#160;<a class="qindex" href="#letter_P">P</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_U">U</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
+<div class="qindex"><a class="qindex" href="#letter_A">A</a>&#160;|&#160;<a class="qindex" href="#letter_B">B</a>&#160;|&#160;<a class="qindex" href="#letter_F">F</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_I">I</a>&#160;|&#160;<a class="qindex" href="#letter_L">L</a>&#160;|&#160;<a class="qindex" href="#letter_O">O</a>&#160;|&#160;<a class="qindex" href="#letter_P">P</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_U">U</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
 <table class="classindex">
 <tr><td rowspan="2" valign="bottom"><a name="letter_A"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;A&#160;&#160;</div></td></tr></table>
 </td><td rowspan="2" valign="bottom"><a name="letter_O"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;O&#160;&#160;</div></td></tr></table>
@@ -112,29 +112,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td rowspan="2" valign="bottom"><a name="letter_P"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;P&#160;&#160;</div></td></tr></table>
 </td></tr>
 <tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry.php">BucketEntry</a> (NRE::Utility)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash.php">BucketEntryHash</a> (NRE::Utility)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_S"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;S&#160;&#160;</div></td></tr></table>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php">BucketEntry</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash.php">BucketEntryHash</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_S"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;S&#160;&#160;</div></td></tr></table>
 </td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_bucket_entry_hash_3_01true_01_4.php">BucketEntryHash&lt; true &gt;</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry_hash_3_01true_01_4.php">BucketEntryHash&lt; true &gt;</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td></tr>
 <tr><td rowspan="2" valign="bottom"><a name="letter_F"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;F&#160;&#160;</div></td></tr></table>
 </td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php">Singleton</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
-<tr><td rowspan="2" valign="bottom"><a name="letter_U"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;U&#160;&#160;</div></td></tr></table>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">StaticInterface</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php">ForwardList::ForwardIterator</a> (NRE::Utility)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">Stringable</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">HashTable::ForwardIterator</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_U"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;U&#160;&#160;</div></td></tr></table>
 </td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php">ForwardList::ForwardIterator</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_forward_iterator.php">HashTable::ForwardIterator</a> (NRE::Utility)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">UnorderedMap</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php">ForwardList</a> (NRE::Utility)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_V"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;V&#160;&#160;</div></td></tr></table>
-</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php">ForwardList</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
 <tr><td rowspan="2" valign="bottom"><a name="letter_H"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;H&#160;&#160;</div></td></tr></table>
+</td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php">UnorderedMap</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_V"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;V&#160;&#160;</div></td></tr></table>
+</td></tr>
+<tr><td rowspan="2" valign="bottom"><a name="letter_I"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;I&#160;&#160;</div></td></tr></table>
 </td></tr>
 <tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table.php">HashTable</a> (NRE::Utility)&#160;&#160;&#160;</td><td></td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php">IException</a> (NRE::Exception)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_h"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;h&#160;&#160;</div></td></tr></table>
+</td></tr>
 <tr><td rowspan="2" valign="bottom"><a name="letter_L"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;L&#160;&#160;</div></td></tr></table>
-</td><td></td></tr>
-<tr><td></td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_hash_table_1_1_local_forward_iterator.php">HashTable::LocalForwardIterator</a> (NRE::Utility)&#160;&#160;&#160;</td><td></td></tr>
+</td></tr>
+<tr><td valign="top"><a class="el" href="classhash.php">hash</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">HashTable::LocalForwardIterator</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td><td></td></tr>
 <tr><td></td><td></td></tr>
 </table>
-<div class="qindex"><a class="qindex" href="#letter_A">A</a>&#160;|&#160;<a class="qindex" href="#letter_B">B</a>&#160;|&#160;<a class="qindex" href="#letter_F">F</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_L">L</a>&#160;|&#160;<a class="qindex" href="#letter_O">O</a>&#160;|&#160;<a class="qindex" href="#letter_P">P</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_U">U</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
+<div class="qindex"><a class="qindex" href="#letter_A">A</a>&#160;|&#160;<a class="qindex" href="#letter_B">B</a>&#160;|&#160;<a class="qindex" href="#letter_F">F</a>&#160;|&#160;<a class="qindex" href="#letter_H">H</a>&#160;|&#160;<a class="qindex" href="#letter_I">I</a>&#160;|&#160;<a class="qindex" href="#letter_L">L</a>&#160;|&#160;<a class="qindex" href="#letter_O">O</a>&#160;|&#160;<a class="qindex" href="#letter_P">P</a>&#160;|&#160;<a class="qindex" href="#letter_S">S</a>&#160;|&#160;<a class="qindex" href="#letter_U">U</a>&#160;|&#160;<a class="qindex" href="#letter_V">V</a></div>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->

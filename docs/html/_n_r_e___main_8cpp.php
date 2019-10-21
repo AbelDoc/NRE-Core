@@ -110,6 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___utility_8hpp_source.php">Header/NRE_Utility.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___exception_8hpp_source.php">Header/NRE_Exception.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
