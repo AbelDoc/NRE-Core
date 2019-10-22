@@ -9,6 +9,8 @@
 
      #pragma once
 
+    #include <cstdint>
+
      /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
