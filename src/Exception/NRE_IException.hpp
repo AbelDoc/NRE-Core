@@ -11,6 +11,7 @@
 
     #include <stdexcept>
     #include "../Utility/String/NRE_String.hpp"
+    #include "../Utility/Interfaces/Stringable/NRE_Stringable.hpp"
 
     /**
      * @namespace NRE
@@ -27,7 +28,7 @@
              * @pure IException
              * @brief An interface for exception
              */
-            class IException : public std::runtime_error {
+            class IException : public std::runtime_error, public Utility::Stringable<IException> {
                 public:
                     /**
                      * No Default Constructor
@@ -71,16 +72,6 @@
                      */
                     Utility::String toString() const {
                        return Utility::String(what());
-                    }
-
-                    /**
-                     * Output stream operator for the object
-                     * @param  stream the stream to add the object's string representation
-                     * @param  o      the object to add in the stream
-                     * @return        the modified stream
-                     */
-                    friend std::ostream& operator <<(std::ostream& stream, IException const& o) {
-                        return stream << o.toString();
                     }
             };
         }
