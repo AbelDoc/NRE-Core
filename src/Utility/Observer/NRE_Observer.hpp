@@ -28,6 +28,26 @@
              */
             class Observer {
                 public:    // Methods
+                    //## Constructor ##//
+                        /**
+                         * Default constructor
+                         */
+                        Observer() = default;
+    
+                    //## Copy-Constructor ##//
+                        /**
+                         * Copy o into this
+                         * @param o the observer to copy
+                         */
+                        Observer(Observer const& o) = default;
+        
+                    //## Move-Constructor ##//
+                        /**
+                         * Move o into this
+                         * @param o the observer to move
+                         */
+                        Observer(Observer && o) = default;
+                        
                     //## Deconstructor ##//
                         /**
                          * Observer Deconstructor
@@ -41,6 +61,20 @@
                          * @param arg notification data
                          */
                         virtual void update(Observable* obs, void* arg) = 0;
+    
+                    //## Assignment Operator ##//
+                        /**
+                         * Copy o into this
+                         * @param o the observer to copy into this
+                         * @return  the reference of himself
+                         */
+                        Observer& operator =(Observer const& o) = default;
+                        /**
+                         * Move o into this
+                         * @param o the observer to move into this
+                         * @return  the reference of himself
+                         */
+                        Observer& operator =(Observer && o) = default;
             };
         }
     }

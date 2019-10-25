@@ -34,6 +34,14 @@
                          * @param o the object to copy the content
                          */
                         Uncopyable(Uncopyable const& o) = delete;
+                        
+                    //## Move-Constructor ##//
+                        /**
+                         * Move o into this
+                         * @param o the object to move the content
+                         */
+                        Uncopyable(Uncopyable && o) = default;
+                        
                     
                     //## Assignment Operator ##//
                         /**
@@ -42,6 +50,12 @@
                          * @return  the reference of himself
                          */
                         Uncopyable& operator =(Uncopyable const& o) = delete;
+                        /**
+                         * Move assignment of o into this
+                         * @param o the object to move into this
+                         * @return  the reference of himself
+                         */
+                        Uncopyable& operator =(Uncopyable && o) = default;
                 
                 protected: // Methods
                     //## Constructor ##//
