@@ -11,30 +11,30 @@
          namespace Utility {
 
              template <class T>
-             inline BasicString<T>::BasicString() : length(0), capacity(1), data(static_cast <T*> (::operator new (sizeof(T)))) {
+             inline BasicString<T>::BasicString() : length(0), capacity(0), data(static_cast <T*> (::operator new ((capacity + 1) * sizeof(T)))) {
                  addNullTerminated();
              }
 
              template <class T>
-             inline BasicString<T>::BasicString(std::size_t count, T value) : length(count), capacity(count), data(static_cast <T*> (::operator new ((count + 1) * sizeof(T)))) {
+             inline BasicString<T>::BasicString(std::size_t count, T value) : length(count), capacity(count), data(static_cast <T*> (::operator new ((capacity + 1) * sizeof(T)))) {
                  assign(count, value);
              }
 
              template <class T>
-             inline BasicString<T>::BasicString(std::size_t pos, std::size_t count, BasicString const& str) : length(count), capacity(count), data(static_cast <T*> (::operator new ((count + 1) * sizeof(T)))) {
+             inline BasicString<T>::BasicString(std::size_t pos, std::size_t count, BasicString const& str) : length(count), capacity(count), data(static_cast <T*> (::operator new ((capacity + 1) * sizeof(T)))) {
                  assign(pos, count, str);
              }
 
              template <class T>
-             inline BasicString<T>::BasicString(std::size_t count, const T* str) : length(count), capacity(count), data(static_cast <T*> (::operator new ((count + 1) * sizeof(T)))) {
+             inline BasicString<T>::BasicString(std::size_t count, const T* str) : length(count), capacity(count), data(static_cast <T*> (::operator new ((capacity + 1) * sizeof(T)))) {
                  assign(count, str);
              }
 
              template <class T>
              inline BasicString<T>::BasicString(const T* str) {
-                 capacity = std::strlen(str) + 1;
-                 data = static_cast <T*> (::operator new ((capacity) * sizeof(T)));
-                 assign(capacity - 1, str);
+                 capacity = std::strlen(str);
+                 data = static_cast <T*> (::operator new ((capacity + 1) * sizeof(T)));
+                 assign(capacity, str);
              }
 
              template <class T>
@@ -1193,7 +1193,7 @@
 
              template <class T>
              inline void BasicString<T>::reallocate() {
-                 reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
+                 reallocate((capacity <= BASE_ALLOCATION_SIZE / 2) ? (BASE_ALLOCATION_SIZE)
                                             : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
              }
 
@@ -1209,7 +1209,7 @@
 
              template <class T>
              inline void BasicString<T>::reserveWithGrowFactor(std::size_t size) {
-                 std::size_t newSize = (capacity == 1) ? (BASE_ALLOCATION_SIZE)
+                 std::size_t newSize = (capacity <= BASE_ALLOCATION_SIZE / 2) ? (BASE_ALLOCATION_SIZE)
                                                        : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
                  while (newSize < size) {
                      newSize = static_cast <std::size_t> (static_cast <float> (newSize) * GROW_FACTOR);
