@@ -16,6 +16,7 @@
     #include "../Utility/Detail/HashTable/NRE_HashTable.hpp"
 
     #include "../Utility/Array/NRE_Array.hpp"
+    #include "../Utility/DynamicArray/NRE_DynamicArray.hpp"
     #include "../Utility/Vector/NRE_Vector.hpp"
     #include "../Utility/String/NRE_String.hpp"
     #include "../Utility/ForwardList/NRE_ForwardList.hpp"

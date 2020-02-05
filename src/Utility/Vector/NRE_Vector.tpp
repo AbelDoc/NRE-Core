@@ -49,6 +49,7 @@
              inline Vector<T>::~Vector() {
                  clear();
                  ::operator delete(data);
+                 data = nullptr;
              }
 
              template <class T>
@@ -184,7 +185,7 @@
                      reserveWithGrowFactor(count);
                  }
                  for (std::size_t i = 0; i < count; i++) {
-                     data[i] = *(new(&data[i]) T (value));
+                     new(&data[i]) T (value);
                  }
                  length = count;
              }
@@ -199,7 +200,7 @@
                  }
                  std::size_t current = 0;
                  for ( ; begin != end; begin++) {
-                     data[current] = *(new(&data[current]) T (*(begin)));
+                     new(&data[current]) T (*(begin));
                      current++;
                  }
                  length = current;
@@ -227,7 +228,7 @@
                      shift(index, count);
                  }
                  for (std::size_t it = index; it != index + count; it++) {
-                     data[it] = *(new(&data[it]) T (value));
+                     new(&data[it]) T (value);
                  }
                  length += count;
                  return Iterator(data + index);
@@ -245,7 +246,7 @@
                      shift(index, count);
                  }
                  for ( ; begin != end; begin++) {
-                     data[index] = *(new(&data[index]) T (*begin));
+                     new(&data[index]) T (*begin);
                      index++;
                  }
                  length += count;
@@ -267,7 +268,7 @@
                  if (index < length) {
                      shift(index, 1);
                  }
-                 data[index] = std::move(*(new(&data[index]) T (std::forward<Args>(args)...)));
+                 new(&data[index]) T (std::forward<Args>(args)...);
                  length++;
                  return Iterator(data + index);
              }
@@ -315,7 +316,7 @@
                  if (capacity < length + 1) {
                      reallocate();
                  }
-                 data[length] = std::move(*(new(&data[length]) T (std::forward<Args>(args)...)));
+                 new(&data[length]) T (std::forward<Args>(args)...);
                  length++;
              }
 
@@ -337,8 +338,8 @@
                          if (capacity < count) {
                              reallocate(count);
                          }
-                         for (std::size_t index = length; index != count; index++) {
-                             data[index] = *(new(&data[index]) T (value));
+                         for (std::size_t index = length; index < count; index++) {
+                             new(&data[index]) T (value);
                          }
                          length = count;
                      }
@@ -409,14 +410,14 @@
 
              template <class T>
              inline void Vector<T>::reallocate() {
-                 reallocate((capacity == 1) ? (BASE_ALLOCATION_SIZE)
-                                            : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
+                 reallocate((capacity < BASE_ALLOCATION_SIZE) ? (BASE_ALLOCATION_SIZE)
+                                                              : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR)));
              }
 
              template <class T>
              inline void Vector<T>::reserveWithGrowFactor(std::size_t size) {
-                 std::size_t newSize = (capacity == 1) ? (BASE_ALLOCATION_SIZE)
-                                                       : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
+                 std::size_t newSize = (capacity < BASE_ALLOCATION_SIZE) ? (BASE_ALLOCATION_SIZE)
+                                                                         : (static_cast <std::size_t> (static_cast <float> (capacity) * GROW_FACTOR));
                  while (newSize < size) {
                      newSize = static_cast <std::size_t> (static_cast <float> (newSize) * GROW_FACTOR);
                  }
