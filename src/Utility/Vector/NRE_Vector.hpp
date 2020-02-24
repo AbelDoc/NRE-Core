@@ -143,7 +143,7 @@
                          */
                         std::size_t getSize() const;
                         /**
-                         * @return the maximum array size
+                         * @return the maximum vector size
                          */
                         constexpr std::size_t getMaxSize() const;
                         /**
@@ -151,7 +151,7 @@
                          */
                         std::size_t getCapacity() const;
                         /**
-                         * @return if the array is empty
+                         * @return if the vector is empty
                          */
                         bool isEmpty() const;
 
@@ -385,7 +385,7 @@
                         /**
                          * Equality test between this and vec
                          * @param vec the other vector
-                         * @return the test result
+                         * @return    the test result
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         bool operator ==(Vector const& vec) const {
@@ -400,7 +400,7 @@
                         /**
                          * Equality test between this and vec
                          * @param vec the other vector
-                         * @return the test result
+                         * @return    the test result
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                         bool operator ==(Vector const& vec) const {
@@ -412,7 +412,7 @@
                         /**
                          * Inequality test between this and vec
                          * @param vec the other vector
-                         * @return the test result
+                         * @return    the test result
                          */
                         bool operator !=(Vector const& vec) const;
 
