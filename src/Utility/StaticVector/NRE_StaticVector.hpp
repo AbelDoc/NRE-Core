@@ -1,7 +1,7 @@
     
     /**
-     * @file NRE_DynamicArray.hpp
-     * @brief Declaration of Utility's API's Container : DynamicArray
+     * @file NRE_StaticVector.hpp
+     * @brief Declaration of Utility's API's Container : StaticVector
      * @author Louis ABEL
      * @date 05/02/2020
      * @copyright CC-BY-NC-SA
@@ -29,11 +29,11 @@
         namespace Utility {
             
             /**
-             * @class DynamicArray
-             * @brief A dynamic array, with a fixed size capacity on the stack but vector behavior
+             * @class StaticVector
+             * @brief A static vector, with a fixed size capacity on the stack but vector behavior
              */
             template <class T, std::size_t Size = 128>
-            class DynamicArray : public Stringable<DynamicArray<T, Size>> {
+            class StaticVector : public Stringable<StaticVector<T, Size>> {
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;
@@ -51,55 +51,55 @@
                 public :    // Methods
                     //## Constructor ##//
                         /**
-                         * Construct an empty dynamic array
+                         * Construct an empty static vector
                          */
-                        DynamicArray();
+                        StaticVector();
                         /**
-                         * Construct a dynamic array filled with count copy of value
-                         * @param count the number of copy to perform, will be the dynamic array capacity and length
-                         * @param value the value to fill the dynamic array with
-                         * @pre value don't reference a dynamic array item
+                         * Construct a static vector filled with count copy of value
+                         * @param count the number of copy to perform, will be the static vector capacity and length
+                         * @param value the value to fill the static vector with
+                         * @pre value don't reference a static vector item
                          */
-                        DynamicArray(std::size_t count, T const& value);
+                        StaticVector(std::size_t count, T const& value);
                         /**
-                         * Construct a dynamic array filled with count default value
-                         * @param count the number of default element, will be the dynamic array capacity and length
+                         * Construct a static vector filled with count default value
+                         * @param count the number of default element, will be the static vector capacity and length
                          */
-                        DynamicArray(std::size_t count);
+                        StaticVector(std::size_t count);
                         /**
-                         * Construct a dynamic array filled with element between 2 iterators
+                         * Construct a static vector filled with element between 2 iterators
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
-                         * @pre begin and end are not iterator from the dynamic array
+                         * @pre begin and end are not iterator from the static vector
                          */
                         template <class InputIterator>
-                        DynamicArray(InputIterator begin, InputIterator end);
+                        StaticVector(InputIterator begin, InputIterator end);
                         /**
-                         * Construct a dynamic array from an initializer list
-                         * @param  init the list to fill the dynamic array with
-                         * @pre list don't contain dynamic array reference
+                         * Construct a static vector from an initializer list
+                         * @param  init the list to fill the static vector with
+                         * @pre list don't contain static vector reference
                          */
-                        DynamicArray(std::initializer_list<T> init);
+                        StaticVector(std::initializer_list<T> init);
         
                     //## Copy Constructor ##//
                         /**
-                         * Copy arr into this
-                         * @param  arr the dynamic array to copy
+                         * Copy vec into this
+                         * @param  vec the static vector to copy
                          */
-                        DynamicArray(DynamicArray const& arr);
+                        StaticVector(StaticVector const& vec);
         
                     //## Move Constructor ##//
                         /**
-                         * Move arr into this
-                         * @param  arr the dynamic array to move
+                         * Move vec into this
+                         * @param  vec the static vector to move
                          */
-                        DynamicArray(DynamicArray && arr);
+                        StaticVector(StaticVector && vec);
         
                     //## Deconstructor ##//
                         /**
-                         * DynamicArray Deconstructor
+                         * StaticVector Deconstructor
                          */
-                        ~DynamicArray();
+                        ~StaticVector();
         
                     //## Getter ##//
                         /**
@@ -139,7 +139,7 @@
                          */
                         T const& getLast() const;
                         /**
-                         * @return the dynamic array effective size
+                         * @return the static vector effective size
                          */
                         std::size_t getSize() const;
                         /**
@@ -147,7 +147,7 @@
                          */
                         constexpr std::size_t getMaxSize() const;
                         /**
-                         * @return the dynamic array capacity
+                         * @return the static vector capacity
                          */
                         std::size_t getCapacity() const;
                         /**
@@ -207,22 +207,22 @@
         
                     //## Methods ##//
                         /**
-                         * Assign the dynamic array with count copy of value, starting from the beginning
+                         * Assign the static vector with count copy of value, starting from the beginning
                          * @param count the number of copy
-                         * @param value the copy to fill the dynamic array with
-                         * @pre value don't reference a dynamic array item
+                         * @param value the copy to fill the static vector with
+                         * @pre value don't reference a static vector item
                          */
                         void assign(std::size_t count, T const& value);
                         /**
-                         * Assign the dynamic array with element between 2 iterators
+                         * Assign the static vector with element between 2 iterators
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
-                         * @pre begin and end are not iterator from the dynamic array
+                         * @pre begin and end are not iterator from the static vector
                          */
                         template <class InputIterator>
                         void assign(InputIterator begin, InputIterator end);
                         /**
-                         * Clear all object in the dynamic array, not actually releasing memory
+                         * Clear all object in the static vector, not actually releasing memory
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         void clear() noexcept {
@@ -232,7 +232,7 @@
                             length = 0;
                         }
                         /**
-                         * Clear all object in the dynamic array, not actually releasing memory
+                         * Clear all object in the static vector, not actually releasing memory
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                         void clear() noexcept {
@@ -243,7 +243,7 @@
                          * @param  start the position to insert the value
                          * @param  value the value to insert
                          * @return       the iterator on the inserted value
-                         * @pre value don't reference a dynamic array item
+                         * @pre value don't reference a static vector item
                          */
                         Iterator insert(ConstIterator start, T const& value);
                         /**
@@ -252,7 +252,7 @@
                          * @param  count the number of copy
                          * @param  value the value to insert
                          * @return       the iterator on the first inserted value
-                         * @pre value don't reference a dynamic array item
+                         * @pre value don't reference a static vector item
                          */
                         Iterator insert(ConstIterator start, std::size_t count, T const& value);
                         /**
@@ -261,16 +261,16 @@
                          * @param  begin the begin iterator
                          * @param  end   the end iterator, pointing after the last element
                          * @return       the iterator on the first inserted value
-                         * @pre begin and end are not iterator from the dynamic array
+                         * @pre begin and end are not iterator from the static vector
                          */
                         template <class InputIterator>
                         Iterator insert(ConstIterator start, InputIterator begin, InputIterator end);
                         /**
                          * Insert a list of value at the specified position
                          * @param  start the position to insert values
-                         * @param  list  the list to fill the dynamic array with
+                         * @param  list  the list to fill the static vector with
                          * @return       the iterator on the first inserted value
-                         * @pre list don't contain dynamic array reference
+                         * @pre list don't contain static vector reference
                          */
                         Iterator insert(ConstIterator start, std::initializer_list<T> list);
                         /**
@@ -282,37 +282,37 @@
                         template <class ... Args>
                         Iterator emplace(ConstIterator start, Args && ... args);
                         /**
-                         * Erase an element in the dynamic array
+                         * Erase an element in the static vector
                          * @param  pos  the position to erase
                          * @return       an iterator on the next valid element
                          */
                         Iterator erase(ConstIterator pos);
                         /**
-                         * Erase a set of element from the dynamic array
+                         * Erase a set of element from the static vector
                          * @param  begin the start position for erasing
                          * @param  end   the end position for erasing
                          * @return       an iterator on the next valid element
                          */
                         Iterator erase(ConstIterator begin, ConstIterator end);
                         /**
-                         * Insert a copy of value at the end of the dynamic array
+                         * Insert a copy of value at the end of the static vector
                          * @param value the value to insert
-                         * @pre value don't reference a dynamic array item
+                         * @pre value don't reference a static vector item
                          */
                         void pushBack(T const& value);
                         /**
-                         * Emplace a value at the end of the dynamic array
+                         * Emplace a value at the end of the static vector
                          * @param value the value to insert
                          */
                         void pushBack(T && value);
                         /**
-                         * Emplace a value at the end of the dynamic array
+                         * Emplace a value at the end of the static vector
                          * @param args the arguments for the value construction
                          */
                         template <class ... Args>
                         void emplaceBack(Args && ... args);
                         /**
-                         * Pop the last element in the dynamic array
+                         * Pop the last element in the static vector
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         void popBack() {
@@ -320,7 +320,7 @@
                             length--;
                         }
                         /**
-                         * Pop the last element in the dynamic array
+                         * Pop the last element in the static vector
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                         void popBack() {
@@ -338,10 +338,10 @@
                          */
                         void resize(std::size_t count, T const& value);
                         /**
-                         * Swap the dynamic array with another dynamic array
-                         * @param arr the other dynamic array
+                         * Swap the static vector with another static vector
+                         * @param vec the other static vector
                          */
-                        void swap(DynamicArray& arr);
+                        void swap(StaticVector& vec);
         
                     //## Access Operator ##//
                         /**
@@ -359,52 +359,52 @@
         
                     //## Assignment Operator ##//
                         /**
-                         * Copy arr into this
-                         * @param arr the dynamic array to copy into this
+                         * Copy vec into this
+                         * @param vec the static vector to copy into this
                          * @return    the reference of himself
                          */
-                        DynamicArray& operator =(DynamicArray const& arr);
+                        StaticVector& operator =(StaticVector const& vec);
                         /**
-                         * Move arr into this
-                         * @param arr the dynamic array to move into this
+                         * Move vec into this
+                         * @param vec the static vector to move into this
                          * @return    the reference of himself
                          */
-                        DynamicArray& operator =(DynamicArray && arr);
+                        StaticVector& operator =(StaticVector && vec);
         
                     //## Comparison Operator ##//
                         /**
-                         * Equality test between this and arr
-                         * @param arr the other dynamic array
+                         * Equality test between this and vec
+                         * @param vec the other static vector
                          * @return the test result
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        bool operator ==(DynamicArray const& arr) const {
+                        bool operator ==(StaticVector const& vec) const {
                             bool equal = true;
                             std::size_t current = 0;
                             while (equal && current < length) {
-                                equal = data[current] == arr[current];
+                                equal = data[current] == vec[current];
                                 current++;
                             }
                             return equal;
                         }
                         /**
-                         * Equality test between this and arr
-                         * @param arr the other dynamic array
+                         * Equality test between this and vec
+                         * @param vec the other static vector
                          * @return the test result
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        bool operator ==(DynamicArray const& arr) const {
-                            if (length != arr.length) {
+                        bool operator ==(StaticVector const& vec) const {
+                            if (length != vec.length) {
                                 return false;
                             }
-                            return std::memcmp(data, arr.data, length * sizeof(T)) == 0;
+                            return std::memcmp(data, vec.data, length * sizeof(T)) == 0;
                         }
                         /**
-                         * Inequality test between this and arr
-                         * @param arr the other dynamic array
+                         * Inequality test between this and vec
+                         * @param vec the other static vector
                          * @return the test result
                          */
-                        bool operator !=(DynamicArray const& arr) const;
+                        bool operator !=(StaticVector const& vec) const;
         
                     //## Stream Operator ##//
                         /**
@@ -415,7 +415,7 @@
     
                 private :   // Methods
                         /**
-                         * Shift all element in the dynamic array, don't do reallocation
+                         * Shift all element in the static vector, don't do reallocation
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
@@ -426,7 +426,7 @@
                             }
                         }
                         /**
-                         * Shift all element in the dynamic array, don't do reallocation
+                         * Shift all element in the static vector, don't do reallocation
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
@@ -435,7 +435,7 @@
                             std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
                         }
                         /**
-                         * Shift back all element in the dynamic array, don't call deconstructor
+                         * Shift back all element in the static vector, don't call deconstructor
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
@@ -446,7 +446,7 @@
                             }
                         }
                         /**
-                         * Shift back all element in the dynamic array, don't call deconstructor
+                         * Shift back all element in the static vector, don't call deconstructor
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
@@ -455,48 +455,48 @@
                             std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
                         }
                         /**
-                         * Copy the dynamic array content
-                         * @param arr the dynamic array to copy
+                         * Copy the static vector content
+                         * @param vec the static vector to copy
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void copy(DynamicArray const& arr) {
+                        void copy(StaticVector const& vec) {
                             std::size_t current = 0;
-                            for (T const& it : arr) {
+                            for (T const& it : vec) {
                                 new(&data[current]) T (it);
                                 current++;
                             }
                         }
                         /**
-                         * Copy the dynamic array content
-                         * @param arr the dynamic array to copy
+                         * Copy the static vector content
+                         * @param vec the static vector to copy
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void copy(DynamicArray const& arr) {
-                            std::memcpy(data, arr.data, arr.length * sizeof(T));
+                        void copy(StaticVector const& vec) {
+                            std::memcpy(data, vec.data, vec.length * sizeof(T));
                         }
                         /**
-                         * Move the dynamic array content
-                         * @param arr the dynamic array to move
+                         * Move the static vector content
+                         * @param vec the static vector to move
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void move(DynamicArray const& arr) {
+                        void move(StaticVector const& vec) {
                             std::size_t current = 0;
-                            for (T const& it : arr) {
+                            for (T const& it : vec) {
                                 new(&data[current]) T (std::move(it));
                                 current++;
                             }
                         }
                         /**
-                         * Move the dynamic array content
-                         * @param arr the dynamic array to move
+                         * Move the static vector content
+                         * @param vec the static vector to move
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void move(DynamicArray const& arr) {
-                            std::memmove(data, arr.data, arr.length * sizeof(T));
+                        void move(StaticVector const& vec) {
+                            std::memmove(data, vec.data, vec.length * sizeof(T));
                         }
             };
         
         }
     }
 
-    #include "NRE_DynamicArray.tpp"
+    #include "NRE_StaticVector.tpp"

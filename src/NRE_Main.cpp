@@ -25,22 +25,22 @@
         std::size_t constexpr containerSize = 100'000;
         std::size_t secondLoopSize = containerSize;
 
-        std::cout << "Benchmark : NRE::Utility::DynamicArray vs NRE::Utility::Vector" << std::endl;
+        std::cout << "Benchmark : NRE::Utility::StaticVector vs NRE::Utility::Vector" << std::endl;
         std::cout << "Stress test [Constructor + Insert + LookUp] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
 
 
-        std::cout << "Current target : NRE::Utility::DynamicArray" << std::endl;
-        std::cout << "Size of target : " << sizeof(DynamicArray<std::size_t, containerSize>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(DynamicArray<std::size_t, containerSize>::Iterator) << std::endl;
+        std::cout << "Current target : NRE::Utility::StaticVector" << std::endl;
+        std::cout << "Size of target : " << sizeof(StaticVector<std::size_t, containerSize>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(StaticVector<std::size_t, containerSize>::Iterator) << std::endl;
 
         std::size_t res = 0;
         std::size_t capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            DynamicArray<std::size_t, containerSize> o;
+            StaticVector<std::size_t, containerSize> o;
             for (std::size_t j = 0; j < secondLoopSize; j++) {
                 o.emplaceBack(j);
             }
@@ -60,7 +60,7 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(DynamicArray<std::size_t, containerSize>) << " o" << std::endl;
+        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(StaticVector<std::size_t, containerSize>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE2 / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE2 << " ns" << std::endl;
