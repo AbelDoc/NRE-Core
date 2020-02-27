@@ -1129,7 +1129,7 @@ template&lt;class T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>the maximum array size </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the maximum vector size </dd></dl>
 
 </div>
 </div>
@@ -1329,7 +1329,7 @@ template&lt;class T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>if the array is empty </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>if the vector is empty </dd></dl>
 
 </div>
 </div>

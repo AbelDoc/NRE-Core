@@ -134,19 +134,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Pair()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a4ebd1142d7bf6bf6d4b56a00077e5141">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
+<li>pop()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a27f8d9c497e05251326a49655bd9da48">NRE::Utility::Stack&lt; T, Container &gt;</a>
+</li>
 <li>popBack()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a51b3da7e0493d6fd6a870629dabc871a">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#adddc7f4c611502fcf6f6bb55141325f1">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a3d808b6e7fedafc95b472c3dda5af3f0">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>popFront()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#afd08bbd64f1332e2846332faf05edf0c">NRE::Utility::ForwardList&lt; T &gt;</a>
 </li>
+<li>push()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#acc50e85f466cc273d80552bd03b1a2db">NRE::Utility::Stack&lt; T, Container &gt;</a>
+</li>
 <li>pushBack()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1fc5c8410a87b1802e3b006a7177569c">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a66c4300aaa3ddf9f2f802a4ac0184b56">NRE::Utility::Vector&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#aa30dbf77ea78f7b7e359aca82f2db2e6">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a1275882662e370b622c78880ed57a703">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>pushFront()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a833cba92bec5201dc68285da899a6c91">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a5720966108c053486764488b175c8236">NRE::Utility::ForwardList&lt; T &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

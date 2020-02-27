@@ -92,7 +92,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">NRE-Utility </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p>NRE-Utility is simple library implementing standard container found in STL and other functionnalities. It doesn't meet all requirement from the STL, but the interface is similar and make some assumptions in order to have better performance.</p>
+<h2>Features</h2>
+<ul>
+<li>Header only</li>
+<li>STL containers implementation :<ul>
+<li>Array, simple fixed size (at compilation) array.</li>
+<li>Vector, dynamic size array, reallocating itself when needed.</li>
+<li>StaticVector, fixed size array but with vector behavior (without reallocation).</li>
+<li>UnorderedMap, based on HashTable with linear probing and robin-hood hashing optimisation (not standard complient).</li>
+<li>String, simple implementation (similar to Vector) for a string.</li>
+<li>Stack, simple adapter for stack behavior on other container.</li>
+<li>ForwardList, single-linked list implementation</li>
+<li>Pair, a basic object pair</li>
+</ul>
+</li>
+<li>Common utilitary :<ul>
+<li>Observer/Observable implementation.</li>
+<li>Singleton, simplest singleton using CRTP pattern for no runtime overhead.</li>
+<li>StaticInterface, allowing the use of static polymorphism.</li>
+<li>Stringable, any object inheriting from this class will be able to be printed on stream (using StaticInterface).</li>
+<li>Uncopyable, inheriting from this class make the derived object uncopyable.</li>
+<li>Id, simple typedef for 32bit unsigned int, allow abstraction for other NRE-API.</li>
+<li>IException, a Stringable exception interface.</li>
+</ul>
+</li>
+</ul>
+<p>Every containers has been tested to match/outpass STL performance and work as intended. </p>
+</div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>

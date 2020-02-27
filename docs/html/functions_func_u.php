@@ -138,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a95a00f5843333bc8e849403aa33eb736">NRE::Utility::ForwardList&lt; T &gt;</a>
 </li>
 <li>UnorderedMap()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a98202ff80e405f9e9fa0a9aca8d57624">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a50fa15fc2b9f31e617c60161e1016742">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 <li>update()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a2e502d0563cb72165b216e55fd80ea60">NRE::Utility::Observer</a>

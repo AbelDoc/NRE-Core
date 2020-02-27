@@ -138,6 +138,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a05925f7afd8f3ceff9b66086ce259137">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#aafa290016886ac3246f976789186ab75">NRE::Utility::ForwardList&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a97059c18f5babb318015b3855537c91a">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a9259e7119a6d5a7c50770431379098b1">NRE::Utility::Stack&lt; T, Container &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#af3127ae80bb19109fc51b6b1557215d2">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">NRE::Utility::Stringable&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a2f193920c3436b6a0dcc79fe9c04a184">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#ae06ea911c6026374457bfc4ba19d8d57">NRE::Utility::Vector&lt; T &gt;</a>

@@ -135,6 +135,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Observable()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a809470a00740d22093325490e0fe8bd2">NRE::Utility::Observable</a>
 </li>
+<li>Observer()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a30dbd1b1a7fca00013f05aa889a08691">NRE::Utility::Observer</a>
+</li>
 <li>operator!=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#acdf188605ad6e9c864aa034bd8e8b4d7">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afaef88927e530b9475ce143779b7f851">NRE::Utility::BasicString&lt; T &gt;</a>
@@ -143,6 +146,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a2a51aaf1eec5b75db4e68b7a4fd09abf">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#ad0fd2ac4cb1bdf018495f6883d1f6abd">NRE::Utility::ForwardList&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a2fac4903c4b01a343834008e80abb8c5">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ac3cd88146c5182ab3e876440c329ab31">NRE::Utility::Stack&lt; T, Container &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a244cc18bc667549731cd2e095cf51202">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#aa19fb2c0ad2ada8c2e4873ccfb131034">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#adc1b419631e45a8e8a8cdafe02be6129">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
@@ -171,9 +176,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab06ee127d12a726f58c955365592fe3f">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a262597f8ced59f41bc0f0982f76c5579">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
-<li>operator&lt;&lt;
-: <a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a7be8a289585c1239ca5bb64845e0c3b3">NRE::Exception::IException</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8c42d379cd90d3c8c02a0eeb31fd7482">NRE::Utility::BasicString&lt; T &gt;</a>
+<li>operator&lt;&lt;()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8c42d379cd90d3c8c02a0eeb31fd7482">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a2f1f99296816e02780f1f74ebba13f22">NRE::Utility::Stringable&lt; T &gt;</a>
 </li>
 <li>operator&lt;=()
@@ -191,10 +195,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a9161b028c0f302c911d54a6d38f3531b">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a518040ca55236bc4b6311d3e4b81c4e1">NRE::Utility::ForwardList&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#af2070c089e1fc97f47e9aca09999a23e">NRE::Utility::Observable</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a873d0b6f87717711b39f36845a96d82c">NRE::Utility::Pair&lt; T, K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a64b9fb76c97851e039bd1ba7df7ad982">NRE::Utility::Uncopyable&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a21a39952d3c046be68ef7fdbbf9de4f7">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a0d79e58c0fa7ea52628a3b84b54a1c6f">NRE::Utility::Vector&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#ab4075eac314d88cb193dc8d5d0156834">NRE::Utility::Observer</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a8dc30774bcc9eafb81ceb16154e2098d">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#aa0591770d9d6ffd0b3d20b91b7632030">NRE::Utility::Stack&lt; T, Container &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a21511b3b12b38cf0254d099d014ad253">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#aa50630519fadd682e97e76dd55bbba7e">NRE::Utility::Uncopyable&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a30884e5f0d6deab4d581e7a3256e2b07">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a1e6a1628e4c81bb6203fdee57f8d2eba">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>operator==()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac3841ae70203b4f1d773a9fe65020970">NRE::Utility::Array&lt; T, Size &gt;</a>
@@ -204,6 +211,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a0054b7032a951bc8b920eb97c4a132ec">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a179773ca079ad121d576e1f968e4dd3d">NRE::Utility::ForwardList&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#af46c65eaf55e6a87a163fcd977247268">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a39f4b130a39d707e1f26a6e1ae7911ea">NRE::Utility::Stack&lt; T, Container &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a522adbfcb3a52831fecedbd5a4864e46">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae66540800e04243d83690db04803e618">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#aff21ca4b619758e7d5f816113750d5dd">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
@@ -216,10 +225,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a78b90e8f19d12b49a9effc89e349e125">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator[]()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9e804b2d067e38705651da6a72cb32e7">NRE::Utility::Array&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ace21e34dff89527e0e17355e0b6bfa24">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a039cf013fe61d56bc12c554eda5d2fc6">NRE::Utility::Array&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3902a5024a884655e6d759d8a9e5fdca">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af060a2734bf76f6e69343b55fcd2744d">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a09272af8ec48fdeeae1d395b23d705d7">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#adb6ffb6eb79687ffd391a28f81c6455b">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#aa33af55cfbf0d7e8f06571b47004cc46">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a37835b4a75e13ed9b57194e7fe5a82c6">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 </ul>

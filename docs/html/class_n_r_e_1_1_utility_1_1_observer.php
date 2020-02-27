@@ -115,14 +115,108 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a30dbd1b1a7fca00013f05aa889a08691"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a30dbd1b1a7fca00013f05aa889a08691">Observer</a> ()=default</td></tr>
+<tr class="separator:a30dbd1b1a7fca00013f05aa889a08691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4988aa3587a4f4dc18ca99274a7c1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a8d4988aa3587a4f4dc18ca99274a7c1b">Observer</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> const &amp;o)=default</td></tr>
+<tr class="separator:a8d4988aa3587a4f4dc18ca99274a7c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63e5fa4d17c18acd02a7a99560dbc0e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#ac63e5fa4d17c18acd02a7a99560dbc0e">Observer</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> &amp;&amp;o)=default</td></tr>
+<tr class="separator:ac63e5fa4d17c18acd02a7a99560dbc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac425fc080154c33f0ad942ef5786f1ad"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#ac425fc080154c33f0ad942ef5786f1ad">~Observer</a> ()=default</td></tr>
 <tr class="separator:ac425fc080154c33f0ad942ef5786f1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e502d0563cb72165b216e55fd80ea60"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a2e502d0563cb72165b216e55fd80ea60">update</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php">Observable</a> *obs, void *arg)=0</td></tr>
 <tr class="separator:a2e502d0563cb72165b216e55fd80ea60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4018e5167f3939ec00d1f9df8ba6556"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#ae4018e5167f3939ec00d1f9df8ba6556">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> const &amp;o)=default</td></tr>
+<tr class="separator:ae4018e5167f3939ec00d1f9df8ba6556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4075eac314d88cb193dc8d5d0156834"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#ab4075eac314d88cb193dc8d5d0156834">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> &amp;&amp;o)=default</td></tr>
+<tr class="separator:ab4075eac314d88cb193dc8d5d0156834"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Describe an observer object attached to an <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php" title="Describe an observable object, coupled with observer. ">Observable</a>. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a30dbd1b1a7fca00013f05aa889a08691"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NRE::Utility::Observer::Observer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default constructor </p>
+
+</div>
+</div>
+<a class="anchor" id="a8d4988aa3587a4f4dc18ca99274a7c1b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NRE::Utility::Observer::Observer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> const &amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Copy o into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>the observer to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac63e5fa4d17c18acd02a7a99560dbc0e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NRE::Utility::Observer::Observer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Move o into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>the observer to move </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ac425fc080154c33f0ad942ef5786f1ad"></a>
 <div class="memitem">
 <div class="memproto">
@@ -148,6 +242,68 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae4018e5167f3939ec00d1f9df8ba6556"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>&amp; NRE::Utility::Observer::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> const &amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Copy o into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>the observer to copy into this </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the reference of himself </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab4075eac314d88cb193dc8d5d0156834"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>&amp; NRE::Utility::Observer::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Move o into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>the observer to move into this </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the reference of himself </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a2e502d0563cb72165b216e55fd80ea60"></a>
 <div class="memitem">
 <div class="memproto">

@@ -138,11 +138,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad9f8a1f41b958481360428112a87f49f">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>Array()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab271b77f1c13cb32617bc822deefc8d6">NRE::Utility::Array&lt; T, Size &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a95ae132a7378240b2eeadb19f7cee568">NRE::Utility::Array&lt; T, Size &gt;</a>
 </li>
 <li>assign()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a12b1678540e15327f9ebcabafd51afc1">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a89b70adb308a6301e29e97c5c3892e46">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a1f3169ea97a042f3735b0a880e0ccca0">NRE::Utility::ForwardList&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a60610842fc4ecac298a00b79a14f71db">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a98b87cbf6835d6c369fdd28acebf7bcc">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 </ul>

@@ -118,8 +118,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac180584842c7aa72d28d65e598552647"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ac180584842c7aa72d28d65e598552647">Uncopyable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> const &amp;o)=delete</td></tr>
 <tr class="separator:ac180584842c7aa72d28d65e598552647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4584669188ebc5e722f967451eec27dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a4584669188ebc5e722f967451eec27dc">Uncopyable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> &amp;&amp;o)=default</td></tr>
+<tr class="separator:a4584669188ebc5e722f967451eec27dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b9fb76c97851e039bd1ba7df7ad982"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a64b9fb76c97851e039bd1ba7df7ad982">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> const &amp;o)=delete</td></tr>
 <tr class="separator:a64b9fb76c97851e039bd1ba7df7ad982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa50630519fadd682e97e76dd55bbba7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#aa50630519fadd682e97e76dd55bbba7e">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> &amp;&amp;o)=default</td></tr>
+<tr class="separator:aa50630519fadd682e97e76dd55bbba7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -160,6 +164,38 @@ template&lt;class T&gt; </div>
 <p>Copy o into this </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">o</td><td>the object to copy the content </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4584669188ebc5e722f967451eec27dc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">NRE::Utility::Uncopyable</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a>&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Move o into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>the object to move the content </td></tr>
   </table>
   </dd>
 </dl>
@@ -245,6 +281,39 @@ template&lt;class T&gt; </div>
 <p>Copy assignment of o into this </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">o</td><td>the object to copy into this </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the reference of himself </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa50630519fadd682e97e76dd55bbba7e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">NRE::Utility::Uncopyable</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php">Uncopyable</a>&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Move assignment of o into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">o</td><td>the object to move into this </td></tr>
   </table>
   </dd>
 </dl>

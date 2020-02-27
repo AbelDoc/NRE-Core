@@ -107,8 +107,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Container : Array.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />

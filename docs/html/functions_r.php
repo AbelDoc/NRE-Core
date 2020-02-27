@@ -134,8 +134,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>rbegin()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a61ee3b447d3335c18bdd833a5debc3a0">NRE::Utility::Array&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a428f523963a236e6e9b165f01e1ecd8c">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a5ed9cfc1f219ef3670d02dbb938da41d">NRE::Utility::Vector&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a295b7f396e515c30e490d0d8a10b7e30">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a9e3a096a1a93825836217e48e220a50f">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a41f5e611ca8bd827e3c1e92a60edc538">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>rehash()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af77694f505c90c3792d6109a447881fe">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
@@ -151,10 +152,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>rend()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0406aa5d43b160d9d733897906fcdb6d">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a009469819f09df8cafa2dce131d19cb2">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a47bf9791abb7dae3d4e030892a9848e6">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a5455bed3ad1618600685de6ca73e8f2d">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>replace()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac196e1a45da4c10b3cea7ac859704c66">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a209163aab69f8989c05ef621ed3cd8c2">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>reserve()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a21efaef50166a748a6a26db815cfeef5">NRE::Utility::BasicString&lt; T &gt;</a>
@@ -164,8 +166,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>resize()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a828b20842d0d6de3e052f51e83f8dcec">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#aec2b33767a48b922718c48537d170a8f">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#af414d545204d0288d12293382c5c091e">NRE::Utility::Vector&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a20f9fa2f08136e35abd328d181894efe">NRE::Utility::ForwardList&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a8dd7b1e42be46e3dad592b5c593d11be">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#ad4d461cc13fa0fd2c7e1d9ad720b7dc9">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>reverse()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a043d8789a2fcc13972175e55cb0ae9c0">NRE::Utility::BasicString&lt; T &gt;</a>
@@ -174,6 +177,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>ReverseIterator
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a1f5c21e6c9193fa4940d03c964590442">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a52eee3309a729b97a0e9fd9e76a07fae">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>rfind()

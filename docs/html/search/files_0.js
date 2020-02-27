@@ -12,6 +12,7 @@ var searchData=
   ['nre_5fpair_2ehpp',['NRE_Pair.hpp',['../_n_r_e___pair_8hpp.php',1,'']]],
   ['nre_5fsingleton_2ehpp',['NRE_Singleton.hpp',['../_n_r_e___singleton_8hpp.php',1,'']]],
   ['nre_5fstaticinterface_2ehpp',['NRE_StaticInterface.hpp',['../_n_r_e___static_interface_8hpp.php',1,'']]],
+  ['nre_5fstaticvector_2ehpp',['NRE_StaticVector.hpp',['../_n_r_e___static_vector_8hpp.php',1,'']]],
   ['nre_5fstring_2ehpp',['NRE_String.hpp',['../_n_r_e___string_8hpp.php',1,'']]],
   ['nre_5fstringable_2ehpp',['NRE_Stringable.hpp',['../_n_r_e___stringable_8hpp.php',1,'']]],
   ['nre_5funcopyable_2ehpp',['NRE_Uncopyable.hpp',['../_n_r_e___uncopyable_8hpp.php',1,'']]],

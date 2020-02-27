@@ -166,6 +166,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>~Singleton()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_singleton.php#a1c1f4682ad559628d1dcd3b465c20259">NRE::Utility::Singleton&lt; T &gt;</a>
 </li>
+<li>~Stack()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#abde8678c62784d73239a488e6a16f8d3">NRE::Utility::Stack&lt; T, Container &gt;</a>
+</li>
+<li>~StaticVector()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#aa5808b79191635ede98e88037adc8d3b">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+</li>
 <li>~Uncopyable()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ae2873929128bbf993c84d0535417b018">NRE::Utility::Uncopyable&lt; T &gt;</a>
 </li>

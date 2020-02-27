@@ -158,8 +158,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>spliceAfter()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#aa28f27244f2d0ac15d3f65bfd50ccb2e">NRE::Utility::ForwardList&lt; T &gt;</a>
 </li>
+<li>Stack()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a0fb9f26708174bd16ad33be23fa79b0b">NRE::Utility::Stack&lt; T, Container &gt;</a>
+</li>
 <li>startsWith()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a047e6ea23a748f1001aab1c7e913171a">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8f2456c9acbacc6c2b8692324aba86af">NRE::Utility::BasicString&lt; T &gt;</a>
+</li>
+<li>StaticVector()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#ac692837d615bd0ee94fe8b86cc7c84eb">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 <li>substr()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0639e5b3e9ecf3f6fc07a0c13347266b">NRE::Utility::BasicString&lt; T &gt;</a>
@@ -170,6 +176,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aef515ccfe0d364b1f52c8945f5a4ced5">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a7ea1219016b9a78be086cf0295c5b30a">NRE::Utility::ForwardList&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a7acddd3fdb5069d0ee5eb2b0e365c086">NRE::Utility::Pair&lt; T, K &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#aa7846ea11319d74378c03278fa5ac7b0">NRE::Utility::Stack&lt; T, Container &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a66a0be1752a04198ac5a58fe1368ece7">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#ae63b3b2b29756084705015715d1f1ff5">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a7178023d23d25c5bf762c1851044042f">NRE::Utility::Vector&lt; T &gt;</a>
 </li>

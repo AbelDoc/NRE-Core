@@ -121,11 +121,14 @@ Inheritance diagram for NRE::Utility::StaticInterface&lt; T, M &gt;:</div>
 <area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Array&lt; T, Size &gt; &gt;" shape="rect" coords="611,56,1212,80"/>
 <area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; ForwardList&lt; T &gt; &gt;" shape="rect" coords="611,112,1212,136"/>
 <area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="611,168,1212,192"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Pair&lt; T, K &gt; &gt;" shape="rect" coords="611,224,1212,248"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="611,280,1212,304"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Detail::BucketEntry&lt; NRE::Utility::Pair, STORE_HASH &gt; &gt; &gt;" shape="rect" coords="611,336,1212,360"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Observer * &gt; &gt;" shape="rect" coords="611,392,1212,416"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; T &gt; &gt;" shape="rect" coords="611,448,1212,472"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; IException &gt;" shape="rect" coords="611,224,1212,248"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Pair&lt; T, K &gt; &gt;" shape="rect" coords="611,280,1212,304"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Stack&lt; T, Container &gt; &gt;" shape="rect" coords="611,336,1212,360"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; StaticVector&lt; T, Size &gt; &gt;" shape="rect" coords="611,392,1212,416"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="611,448,1212,472"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Detail::BucketEntry&lt; NRE::Utility::Pair, STORE_HASH &gt; &gt; &gt;" shape="rect" coords="611,504,1212,528"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Observer * &gt; &gt;" shape="rect" coords="611,560,1212,584"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; T &gt; &gt;" shape="rect" coords="611,616,1212,640"/>
 </map>
  </div></div>
 <table class="memberdecls">

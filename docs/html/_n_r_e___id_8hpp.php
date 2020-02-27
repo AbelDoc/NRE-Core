@@ -107,7 +107,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Object : Id.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
+</div>
 <p><a href="_n_r_e___id_8hpp_source.php">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>

@@ -110,6 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a9fb3a9830033245bc2160609de5ba318">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a00fbf24e911c0a9ccee4a3b0eac8e5b1">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>Iterator
@@ -117,6 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">NRE::Utility::BasicString&lt; T &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a3acc0d8cec711c5199f9f50b438819a2">NRE::Utility::ForwardList&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a7fcd032b11c041d13f635cfeb2f49c27">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a4f62eb0eba61b38e5f6b03c60ea6a49c">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 <li>LocalIterator
@@ -125,6 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>ReverseIterator
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">NRE::Utility::Array&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a1f5c21e6c9193fa4940d03c964590442">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a52eee3309a729b97a0e9fd9e76a07fae">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 </ul>

@@ -109,6 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___string_8hpp_source.php">../Utility/String/NRE_String.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___stringable_8hpp_source.php">../Utility/Interfaces/Stringable/NRE_Stringable.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_n_r_e___i_exception_8hpp_source.php">Go to the source code of this file.</a></p>
 <table class="memberdecls">

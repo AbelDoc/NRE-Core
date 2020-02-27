@@ -40,7 +40,7 @@
                         Stack(Container && container = Container());
                         /**
                          * Construct a stack from a container to copy
-                         * @param cotnainer the container to copy
+                         * @param container the container to copy
                          */
                         Stack(Container const& container);
     
