@@ -97,24 +97,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <ul>
 <li>Header only</li>
 <li>STL containers implementation :<ul>
-<li>Array, simple fixed size (at compilation) array.</li>
-<li>Vector, dynamic size array, reallocating itself when needed.</li>
-<li>StaticVector, fixed size array but with vector behavior (without reallocation).</li>
-<li>UnorderedMap, based on HashTable with linear probing and robin-hood hashing optimisation (not standard complient).</li>
-<li>String, simple implementation (similar to Vector) for a string.</li>
-<li>Stack, simple adapter for stack behavior on other container.</li>
-<li>ForwardList, single-linked list implementation</li>
-<li>Pair, a basic object pair</li>
+<li><b>Array</b>, simple fixed size (at compilation) array.</li>
+<li><b>Vector</b>, dynamic size array, reallocating itself when needed.</li>
+<li><b>StaticVector</b>, fixed size array but with vector behavior (without reallocation).</li>
+<li><b>UnorderedMap</b>, based on HashTable with linear probing and robin-hood hashing optimisation (not standard complient).</li>
+<li><b>String</b>, simple implementation (similar to Vector) for a string.</li>
+<li><b>Stack</b>, simple adapter for stack behavior on other container.</li>
+<li><b>ForwardList</b>, single-linked list implementation</li>
+<li><b>Pair</b>, a basic object pair</li>
 </ul>
 </li>
-<li>Common utilitary :<ul>
-<li>Observer/Observable implementation.</li>
-<li>Singleton, simplest singleton using CRTP pattern for no runtime overhead.</li>
-<li>StaticInterface, allowing the use of static polymorphism.</li>
-<li>Stringable, any object inheriting from this class will be able to be printed on stream (using StaticInterface).</li>
-<li>Uncopyable, inheriting from this class make the derived object uncopyable.</li>
-<li>Id, simple typedef for 32bit unsigned int, allow abstraction for other NRE-API.</li>
-<li>IException, a Stringable exception interface.</li>
+<li>Commons utilities :<ul>
+<li><b>Observer/Observable</b> implementation.</li>
+<li><b>Singleton</b>, simplest singleton using CRTP pattern for no runtime overhead.</li>
+<li><b>StaticInterface</b>, allowing the use of static polymorphism.</li>
+<li><b>Stringable</b>, any object inheriting from this class will be able to be printed on stream (using StaticInterface).</li>
+<li><b>Uncopyable</b>, inheriting from this class make the derived object uncopyable.</li>
+<li><b>Id</b>, simple typedef for 32bit unsigned int, allow abstraction for other NRE-API.</li>
+<li><b>IException</b>, a Stringable exception interface.</li>
 </ul>
 </li>
 </ul>
