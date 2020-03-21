@@ -93,22 +93,12 @@
                     //## Copy Constructor ##//
                         /**
                          * Copy vec into this
-                         * @param vec the vector to copy
-                         */
-                        Vector(Vector const& vec);
-                        /**
-                         * Copy vec into this
                          * @param vec   the vector to copy
                          * @param alloc the vector's memory allocator
                          */
                         Vector(Vector const& vec, Allocator const& alloc = Allocator());
 
                     //## Move Constructor ##//
-                        /**
-                         * Move vec into this
-                         * @param vec the vector to move
-                         */
-                        Vector(Vector && vec);
                         /**
                          * Move vec into this
                          * @param vec   the vector to move

@@ -32,18 +32,10 @@
              template <class T, class Allocator>
              inline Vector<T, Allocator>::Vector(std::initializer_list<T> init, Allocator const& alloc) : Vector(init.begin(), init.end(), alloc) {
              }
-
-             template <class T, class Allocator>
-             inline Vector<T, Allocator>::Vector(Vector const& vec) : Vector(vec, Allocator(vec.allocator)) {
-             }
     
              template <class T, class Allocator>
              inline Vector<T, Allocator>::Vector(Vector const& vec, Allocator const& alloc) : length(vec.length), capacity(vec.capacity), allocator(alloc), data(allocator.allocate(vec.capacity)) {
                  copy(vec);
-             }
-
-             template <class T, class Allocator>
-             inline Vector<T, Allocator>::Vector(Vector && vec) : Vector(std::move(vec), Allocator(vec.allocator)) {
              }
     
              template <class T, class Allocator>
