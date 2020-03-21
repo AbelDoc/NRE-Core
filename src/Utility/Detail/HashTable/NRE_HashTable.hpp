@@ -420,7 +420,7 @@
                     typedef LocalForwardIterator<const ValueType>    ConstLocalIterator;
     
                 private :    // Fields
-                    Vector<BucketEntry<ValueType, STORE_HASH>> data;   /**< The hash table data */
+                    Utility::Vector<BucketEntry<ValueType, STORE_HASH>> data;   /**< The hash table data */
                     std::size_t nbElements;     /**< The number in the table */
                     std::size_t mask;           /**< The mask used with the power of two policy */
                     std::size_t loadThresHold;  /**< The number of element before growing the table */
