@@ -21,33 +21,33 @@
         std::size_t bestNRE2 = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
         
-        std::size_t firstLoopSize = 100;
+        std::size_t firstLoopSize = 1'000;
         std::size_t constexpr containerSize = 100'000;
         std::size_t secondLoopSize = containerSize;
 
-        std::cout << "Benchmark : NRE::Utility::StaticVector vs NRE::Utility::Vector" << std::endl;
+        std::cout << "Benchmark : std::vector vs NRE::Utility::Vector" << std::endl;
         std::cout << "Stress test [Constructor + Insert + LookUp] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
 
 
-        std::cout << "Current target : NRE::Utility::StaticVector" << std::endl;
-        std::cout << "Size of target : " << sizeof(StaticVector<std::size_t, containerSize>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(StaticVector<std::size_t, containerSize>::Iterator) << std::endl;
+        std::cout << "Current target : std::vector" << std::endl;
+        std::cout << "Size of target : " << sizeof(std::vector<std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(std::vector<std::size_t>::iterator) << std::endl;
 
         std::size_t res = 0;
         std::size_t capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            StaticVector<std::size_t, containerSize> o;
+            std::vector<std::size_t> o;
             for (std::size_t j = 0; j < secondLoopSize; j++) {
-                o.emplaceBack(j);
+                o.emplace_back(j);
             }
             for (auto& it : o) {
                 res += it;
             }
-            capacity = o.getCapacity();
+            capacity = o.capacity();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE2 += diff;
@@ -60,7 +60,7 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(StaticVector<std::size_t, containerSize>) << " o" << std::endl;
+        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(std::vector<std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE2 / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE2 << " ns" << std::endl;

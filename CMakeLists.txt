@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wno-virtual-move-assign -Wall -Wextra -Wfatal-errors -Wfloat-equal -Wstrict-overflow -Wshadow -Wconversion -Wunreachable-code -Wuninitialized -Winit-self -Werror -fstrict-overflow -O3 -std=c++17")
 
 include_directories(C:/Users/abell/Documents/GitHub/NRE-Tester/src)
+include_directories(C:/Users/abell/Documents/GitHub/NRE-Memory/src)
 
+include_directories(src)
 include_directories(src/Exception)
 include_directories(src/Header)
 include_directories(src/Utility)

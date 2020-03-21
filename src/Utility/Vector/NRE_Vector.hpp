@@ -16,6 +16,9 @@
      #include "../String/NRE_String.hpp"
      #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
+     #include "Memory/NRE_Allocator.hpp"
+    
+
      /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
@@ -31,8 +34,8 @@
              * @class Vector
              * @brief A dynamic array, guarantee to be in contiguous memory
              */
-            template <class T>
-            class Vector : public Stringable<Vector<T>> {
+            template <class T, class Allocator = Memory::Allocator<T>>
+            class Vector : public Stringable<Vector<T, Allocator>> {
                 public :    // Iterator
                     /**< Shortcut to hide Iterator implementation */
                     typedef T*          Iterator;
@@ -46,54 +49,72 @@
                 private :   // Fields
                     std::size_t length;     /**< The data length */
                     std::size_t capacity;   /**< The data capacity */
+                    Allocator allocator;    /**< The memory allocator */
                     T* data;                /**< The internal data array */
 
                 public :    // Methods
                     //## Constructor ##//
                         /**
-                         * Construct an empty vector
+                         * Construct an empty vector with a base capacity
+                         * @param alloc the vector's memory allocator
                          */
-                        Vector();
+                        Vector(Allocator const& alloc = Allocator());
                         /**
                          * Construct a vector filled with count copy of value
                          * @param count the number of copy to perform, will be the vector capacity and length
                          * @param value the value to fill the vector with
+                         * @param alloc the vector's memory allocator
                          * @pre value don't reference a vector item
                          */
-                        Vector(std::size_t count, T const& value);
+                        Vector(std::size_t count, T const& value, Allocator const& alloc = Allocator());
                         /**
                          * Construct a vector filled with count default value
                          * @param count the number of default element, will be the vector capacity and length
+                         * @param alloc the vector's memory allocator
                          */
-                        Vector(std::size_t count);
+                        Vector(std::size_t count, Allocator const& alloc = Allocator());
                         /**
                          * Construct a vector filled with element between 2 iterators
-                         * @param  begin the begin iterator
-                         * @param  end   the end iterator, pointing after the last element
+                         * @param begin the begin iterator
+                         * @param end   the end iterator, pointing after the last element
+                         * @param alloc the vector's memory allocator
                          * @pre begin and end are not iterator from the vector
                          */
                         template <class InputIterator>
-                        Vector(InputIterator begin, InputIterator end);
+                        Vector(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
                         /**
                          * Construct a vector from an initializer list
-                         * @param  init the list to fill the vector with
+                         * @param init  the list to fill the vector with
+                         * @param alloc the vector's memory allocator
                          * @pre list don't contain vector reference
                          */
-                        Vector(std::initializer_list<T> init);
+                        Vector(std::initializer_list<T> init, Allocator const& alloc = Allocator());
 
                     //## Copy Constructor ##//
                         /**
                          * Copy vec into this
-                         * @param  vec the vector to copy
+                         * @param vec the vector to copy
                          */
                         Vector(Vector const& vec);
+                        /**
+                         * Copy vec into this
+                         * @param vec   the vector to copy
+                         * @param alloc the vector's memory allocator
+                         */
+                        Vector(Vector const& vec, Allocator const& alloc = Allocator());
 
                     //## Move Constructor ##//
                         /**
                          * Move vec into this
-                         * @param  vec the vector to move
+                         * @param vec the vector to move
                          */
                         Vector(Vector && vec);
+                        /**
+                         * Move vec into this
+                         * @param vec   the vector to move
+                         * @param alloc the vector's memory allocator
+                         */
+                        Vector(Vector && vec, Allocator const& alloc = Allocator());
 
                     //## Deconstructor ##//
                         /**
@@ -150,6 +171,10 @@
                          * @return the vector capacity
                          */
                         std::size_t getCapacity() const;
+                        /**
+                         * @return the vector's memory allocator
+                         */
+                        Allocator getAllocator() const;
                         /**
                          * @return if the vector is empty
                          */
@@ -233,7 +258,7 @@
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         void clear() noexcept {
                             for (std::size_t i = 0; i < length; i++) {
-                                data[i].~T();
+                                allocator.destroy(&data[i]);
                             }
                             length = 0;
                         }
@@ -322,7 +347,7 @@
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         void popBack() {
-                            *(end() - 1).~T();
+                            allocator.destroy(end() - 1);
                             length--;
                         }
                         /**
@@ -434,13 +459,14 @@
                      */
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     void reallocate(std::size_t newSize) {
+                        std::size_t tmp = capacity;
                         capacity = newSize;
-                        T* newData = static_cast <T*> (::operator new(capacity * sizeof(T)));
+                        T* newData = allocator.allocate(capacity);
     
                         for (std::size_t current = 0; current < length; current++) {
-                            new(&newData[current]) T (std::move(data[current]));
+                            allocator.construct(&newData[current], std::move(data[current]));
                         }
-                        ::operator delete(data);
+                        allocator.deallocate(data, tmp);
                         data = newData;
                     }
                     /**
@@ -449,11 +475,12 @@
                      */
                     template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
                     void reallocate(std::size_t newSize) {
+                        std::size_t tmp = capacity;
                         capacity = newSize;
-                        T* newData = static_cast <T*> (::operator new(capacity * sizeof(T)));
+                        T* newData = allocator.allocate(capacity);
 
                         std::memmove(newData, data, length * sizeof(T));
-                        ::operator delete(data);
+                        allocator.deallocate(data, tmp);
                         data = newData;
                     }
                     /**
@@ -469,7 +496,7 @@
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     void shift(std::size_t start, std::size_t count) {
                         for (std::size_t index = length + count - 1; index != start + count - 1; index--) {
-                            new(&data[index]) T (std::move(data[index - count]));
+                            allocator.construct(&data[index], std::move(data[index - count]));
                         }
                     }
                     /**
@@ -489,7 +516,7 @@
                     template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                     void shiftBack(std::size_t start, std::size_t count) {
                         for (std::size_t index = start; index < start + count; index++) {
-                            new(&data[index]) T (std::move(data[index + count]));
+                            allocator.construct(&data[index], std::move(data[index + count]));
                         }
                     }
                     /**
@@ -509,7 +536,7 @@
                     void copy(Vector const& vec) {
                         std::size_t current = 0;
                         for (T const& it : vec) {
-                            new(&data[current]) T (it);
+                            allocator.construct(&data[current], it);
                             current++;
                         }
                     }
@@ -524,7 +551,7 @@
 
                 private :    // Static
                     static constexpr float GROW_FACTOR = 1.5;
-                    static constexpr std::size_t BASE_ALLOCATION_SIZE = 8;
+                    static constexpr std::size_t BASE_ALLOCATION_SIZE = 16;
             };
         }
     }
