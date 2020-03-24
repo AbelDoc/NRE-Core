@@ -38,17 +38,18 @@
                  */
                 template <class T, class Allocator>
                 class Vector : public Stringable<Vector<T, Allocator>> {
-                    static_assert(Memory::IsAllocatorV<Allocator>);
+                    static_assert(Memory::IsAllocatorV<Allocator>);                     /**< Check if the given Allocator inherit from NRE::Memory::AllocatorTraits */
+                    static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
                     
                     public :    // Iterator
-                        /**< Shortcut to hide Iterator implementation */
-                        typedef T* Iterator;
-                        /**< Shortcut to hide ConstIterator implementation */
-                        typedef const T* ConstIterator;
-                        /**< Shortcut to hide ReverseIterator implementation */
-                        typedef std::reverse_iterator<T*> ReverseIterator;
-                        /**< Shortcut to hide ConstReverseIterator implementation */
-                        typedef std::reverse_iterator<const T*> ConstReverseIterator;
+                        /**< Mutable random access iterator */
+                        using Iterator              = T*;
+                        /**< Immuable random access iterator */
+                        using ConstIterator         = const T*;
+                        /**< Mutable reverse random access iterator */
+                        using ReverseIterator       = std::reverse_iterator<Iterator>;
+                        /**< Immuable reverse random access iterator */
+                        using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
         
                     private :   // Fields
                         std::size_t length;     /**< The data length */
