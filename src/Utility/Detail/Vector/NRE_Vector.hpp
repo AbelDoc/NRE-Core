@@ -16,7 +16,7 @@
      #include "../../String/NRE_String.hpp"
      #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
 
-     #include <Memory/Allocator/NRE_IAllocator.hpp>
+     #include <Memory/Allocator/NRE_AllocatorTraits.hpp>
     
 
      /**
@@ -29,7 +29,7 @@
          * @brief Utility's API
          */
         namespace Utility {
-    
+            
             namespace Detail {
     
                 /**
@@ -38,7 +38,7 @@
                  */
                 template <class T, class Allocator>
                 class Vector : public Stringable<Vector<T, Allocator>> {
-                    static_assert(std::is_base_of_v<Memory::IAllocator<Allocator>, Allocator>);
+                    static_assert(Memory::IsAllocatorV<Allocator>);
                     
                     public :    // Iterator
                         /**< Shortcut to hide Iterator implementation */

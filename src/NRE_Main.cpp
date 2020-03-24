@@ -6,7 +6,9 @@
      * @date 13/05/2019
      * @copyright CC-BY-NC-SA
      */
-
+    
+    #define NRE_USE_MEMORY_MANAGER
+    
     #include <unordered_map>
     #include <iostream>
     #include <chrono>
@@ -21,33 +23,33 @@
         std::size_t bestNRE2 = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
         
-        std::size_t firstLoopSize = 1'000;
-        std::size_t constexpr containerSize = 100'000;
+        std::size_t firstLoopSize = 100;
+        std::size_t constexpr containerSize = 10'000;
         std::size_t secondLoopSize = containerSize;
 
-        std::cout << "Benchmark : std::vector vs NRE::Utility::Vector" << std::endl;
+        std::cout << "Benchmark : std::unordered_map vs NRE::Utility::UnorderedMap" << std::endl;
         std::cout << "Stress test [Constructor + Insert + LookUp] : x" << firstLoopSize << std::endl;
         std::cout << "\tDeclaration size : " << containerSize << std::endl;
         std::cout << "\tContainer type : std::size_t" << std::endl;
         std::cout << "\tIterator loop size : " << secondLoopSize << std::endl << std::endl;
 
 
-        std::cout << "Current target : std::vector" << std::endl;
-        std::cout << "Size of target : " << sizeof(std::vector<std::size_t>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(std::vector<std::size_t>::iterator) << std::endl;
+        std::cout << "Current target : std::unordered_map" << std::endl;
+        std::cout << "Size of target : " << sizeof(std::unordered_map<std::size_t, std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(std::unordered_map<std::size_t, std::size_t>::iterator) << std::endl;
 
         std::size_t res = 0;
         std::size_t capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            std::vector<std::size_t> o;
+            std::unordered_map<std::size_t, std::size_t> o;
             for (std::size_t j = 0; j < secondLoopSize; j++) {
-                o.emplace_back(j);
+                o.emplace(std::pair<std::size_t, std::size_t>(j, j));
             }
             for (auto& it : o) {
-                res += it;
+                res += it.first;
             }
-            capacity = o.capacity();
+            capacity = o.bucket_count();
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE2 += diff;
@@ -60,28 +62,28 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(std::vector<std::size_t>) << " o" << std::endl;
+        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(std::unordered_map<std::size_t, std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE2 / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE2 << " ns" << std::endl;
         std::cout << "\tBest    : " << bestNRE2 << " ns" << std::endl;
 
-        std::cout << "Current target : NRE::Utility::Vector" << std::endl;
-        std::cout << "Size of target : " << sizeof(Vector<std::size_t>) << std::endl;
-        std::cout << "Size of target iterator : " << sizeof(Vector<std::size_t>::Iterator) << std::endl;
+        std::cout << "Current target : NRE::Utility::UnorderedMap" << std::endl;
+        std::cout << "Size of target : " << sizeof(UnorderedMap<std::size_t, std::size_t>) << std::endl;
+        std::cout << "Size of target iterator : " << sizeof(UnorderedMap<std::size_t, std::size_t>::Iterator) << std::endl;
 
         res = 0;
         capacity = 0;
         for (std::size_t i = 0; i < firstLoopSize; i++) {
             auto start = std::chrono::steady_clock::now();
-            Vector<std::size_t> o;
+            UnorderedMap<std::size_t, std::size_t> o;
             for (std::size_t j = 0; j < secondLoopSize; j++) {
-                o.emplaceBack(j);
+                o.emplace(Pair<std::size_t, std::size_t>(j, j));
             }
             for (auto& it : o) {
-                res += it;
+                res += it.first;
             }
-            capacity = o.getCapacity();;
+            capacity = o.getBucketCount();;
             auto end = std::chrono::steady_clock::now();
             auto diff = static_cast <std::size_t> (std::chrono::duration<double, std::nano>(end - start).count());
             sumNRE += diff;
@@ -94,7 +96,7 @@
         }
 
         std::cout << "Result : " << res << std::endl;
-        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(Vector<std::size_t>) << " o" << std::endl;
+        std::cout << "Final used memory : " << firstLoopSize * capacity * sizeof(std::size_t) + firstLoopSize * sizeof(UnorderedMap<std::size_t, std::size_t>) << " o" << std::endl;
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;

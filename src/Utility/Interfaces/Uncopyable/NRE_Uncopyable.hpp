@@ -31,18 +31,17 @@
                     //## Copy-Constructor ##//
                         /**
                          * Copy o into this
-                         * @param o the object to copy the content
+                         * @param o the object to copy
                          */
                         Uncopyable(Uncopyable const& o) = delete;
                         
                     //## Move-Constructor ##//
                         /**
                          * Move o into this
-                         * @param o the object to move the content
+                         * @param o the object to move
                          */
                         Uncopyable(Uncopyable && o) = default;
                         
-                    
                     //## Assignment Operator ##//
                         /**
                          * Copy assignment of o into this
@@ -62,13 +61,13 @@
                         /**
                          * Default constructor
                          */
-                        Uncopyable() = default;
+                        Uncopyable() noexcept = default;
                         
                     //## Deconstructor ##//
                         /**
                          * Uncopyable Deconstructor
                          */
-                        ~Uncopyable() = default;
+                        ~Uncopyable() noexcept = default;
             };
         }
     }

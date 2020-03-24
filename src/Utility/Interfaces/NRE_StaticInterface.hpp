@@ -24,8 +24,15 @@
              * @class StaticInterface
              * @brief Describe an object using CRTP to create static interface (static polymorphism)
              */
-            template <class T, template<class> class M>
+            template <class T>
             class StaticInterface {
+            };
+            /**
+             * @class StaticInterface
+             * @brief Describe an object using CRTP to create static interface (static polymorphism)
+             */
+            template <template<class, class...> class M, class T, class ... Args>
+            class StaticInterface<M<T, Args...>> {
                 public:    // Methods
                     /**
                      * @return the derived object
