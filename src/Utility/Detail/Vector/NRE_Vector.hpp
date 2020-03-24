@@ -52,9 +52,9 @@
                         using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
         
                     private :   // Fields
+                        Allocator allocator;    /**< The memory allocator */
                         std::size_t length;     /**< The data length */
                         std::size_t capacity;   /**< The data capacity */
-                        Allocator allocator;    /**< The memory allocator */
                         T* data;                /**< The internal data array */
         
                     public :    // Methods
@@ -545,7 +545,7 @@
                         }
         
                     private :    // Static
-                        static constexpr float GROW_FACTOR = 1.5;
+                        static constexpr float GROW_FACTOR = 2;
                         static constexpr std::size_t BASE_ALLOCATION_SIZE = 16;
                 };
             }

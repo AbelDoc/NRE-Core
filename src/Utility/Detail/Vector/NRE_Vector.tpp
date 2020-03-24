@@ -12,21 +12,21 @@
              namespace Detail {
 
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Allocator const& alloc) : length(0), capacity(BASE_ALLOCATION_SIZE), allocator(alloc), data(allocator.allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(Allocator const& alloc) :  allocator(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(allocator.allocate(capacity)) {
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(std::size_t count, T const& value, Allocator const& alloc) : length(count), capacity(count), allocator(alloc), data(allocator.allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(std::size_t count, T const& value, Allocator const& alloc) : allocator(alloc), length(count), capacity(count), data(allocator.allocate(capacity)) {
                      assign(count, value);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(std::size_t count, Allocator const& alloc) : length(count), capacity(count), allocator(alloc), data(allocator.construct(allocator.allocate(count))) {
+                 inline Vector<T, Allocator>::Vector(std::size_t count, Allocator const& alloc) : allocator(alloc), length(count), capacity(count), data(allocator.construct(allocator.allocate(count))) {
                  }
     
                  template <class T, class Allocator>
                  template <class InputIterator>
-                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, Allocator const& alloc) : length(std::distance(begin, end)), capacity(length), allocator(alloc), data(allocator.allocate(length)) {
+                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, Allocator const& alloc) : allocator(alloc), length(std::distance(begin, end)), capacity(length), data(allocator.allocate(length)) {
                      assign(begin, end);
                  }
     
@@ -35,12 +35,12 @@
                  }
         
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector const& vec, Allocator const& alloc) : length(vec.length), capacity(vec.capacity), allocator(alloc), data(allocator.allocate(vec.capacity)) {
+                 inline Vector<T, Allocator>::Vector(Vector const& vec, Allocator const& alloc) : allocator(alloc), length(vec.length), capacity(vec.capacity), data(allocator.allocate(vec.capacity)) {
                      copy(vec);
                  }
         
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector && vec, Allocator const& alloc) : length(vec.length), capacity(vec.capacity), allocator(alloc), data(std::move(vec.data)) {
+                 inline Vector<T, Allocator>::Vector(Vector && vec, Allocator const& alloc) : allocator(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
                      vec.length = 0;
                      vec.capacity = 0;
                      vec.data = nullptr;
