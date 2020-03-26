@@ -37,7 +37,7 @@
                  * @brief A dynamic array, guarantee to be in contiguous memory
                  */
                 template <class T, class Allocator>
-                class Vector : public Stringable<Vector<T, Allocator>> {
+                class Vector : public Stringable<Vector<T, Allocator>>, public Allocator {
                     static_assert(Memory::IsAllocatorV<Allocator>);                     /**< Check if the given Allocator inherit from NRE::Memory::AllocatorTraits */
                     static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
                     
@@ -50,12 +50,13 @@
                         using ReverseIterator       = std::reverse_iterator<Iterator>;
                         /**< Immuable reverse random access iterator */
                         using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
+                        /**< The object's size type */
+                        using SizeType              = std::size_t;
         
                     private :   // Fields
-                        Allocator allocator;    /**< The memory allocator */
-                        std::size_t length;     /**< The data length */
-                        std::size_t capacity;   /**< The data capacity */
-                        T* data;                /**< The internal data array */
+                        SizeType length;     /**< The data length */
+                        SizeType capacity;   /**< The data capacity */
+                        T* data;             /**< The internal data array */
         
                     public :    // Methods
                         //## Constructor ##//
@@ -71,13 +72,13 @@
                              * @param alloc the vector's memory allocator
                              * @pre value don't reference a vector item
                              */
-                            Vector(std::size_t count, T const& value, Allocator const& alloc = Allocator());
+                            Vector(SizeType count, T const& value, Allocator const& alloc = Allocator());
                             /**
                              * Construct a vector filled with count default value
                              * @param count the number of default element, will be the vector capacity and length
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(std::size_t count, Allocator const& alloc = Allocator());
+                            Vector(SizeType count, Allocator const& alloc = Allocator());
                             /**
                              * Construct a vector filled with element between 2 iterators
                              * @param begin the begin iterator
@@ -98,18 +99,28 @@
                         //## Copy Constructor ##//
                             /**
                              * Copy vec into this
+                             * @param vec the vector to copy
+                             */
+                            Vector(Vector const& vec);
+                            /**
+                             * Copy vec into this
                              * @param vec   the vector to copy
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector const& vec, Allocator const& alloc = Allocator());
+                            Vector(Vector const& vec, Allocator const& alloc);
             
                         //## Move Constructor ##//
+                            /**
+                             * Move vec into this
+                             * @param vec the vector to move
+                             */
+                            Vector(Vector && vec);
                             /**
                              * Move vec into this
                              * @param vec   the vector to move
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector && vec, Allocator const& alloc = Allocator());
+                            Vector(Vector && vec, Allocator const& alloc);
             
                         //## Deconstructor ##//
                             /**
@@ -123,13 +134,13 @@
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T& get(std::size_t index);
+                            T& get(SizeType index);
                             /**
                              * Access a particular element with bound checking
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T const& get(std::size_t index) const;
+                            T const& get(SizeType index) const;
                             /**
                              * @return the internal data array
                              */
@@ -157,19 +168,19 @@
                             /**
                              * @return the vector effective size
                              */
-                            std::size_t getSize() const;
+                            SizeType getSize() const;
                             /**
                              * @return the maximum vector size
                              */
-                            constexpr std::size_t getMaxSize() const;
+                            constexpr SizeType getMaxSize() const;
                             /**
                              * @return the vector capacity
                              */
-                            std::size_t getCapacity() const;
+                            SizeType getCapacity() const;
                             /**
                              * @return the vector's memory allocator
                              */
-                            Allocator getAllocator() const;
+                            Allocator const& getAllocator() const;
                             /**
                              * @return if the vector is empty
                              */
@@ -232,7 +243,7 @@
                              * @param value the copy to fill the vector with
                              * @pre value don't reference a vector item
                              */
-                            void assign(std::size_t count, T const& value);
+                            void assign(SizeType count, T const& value);
                             /**
                              * Assign the vector with element between 2 iterators
                              * @param  begin the begin iterator
@@ -246,14 +257,14 @@
                              * @param size the new capacity
                              * @warning size value is not checked against getMaxSize()
                              */
-                            void reserve(std::size_t size);
+                            void reserve(SizeType size);
                             /**
                              * Clear all object in the vector, not actually releasing memory
                              */
                             template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                             void clear() noexcept {
-                                for (std::size_t i = 0; i < length; i++) {
-                                    allocator.destroy(&data[i]);
+                                for (SizeType i = 0; i < length; i++) {
+                                    this->destroy(&data[i]);
                                 }
                                 length = 0;
                             }
@@ -280,7 +291,7 @@
                              * @return       the iterator on the first inserted value
                              * @pre value don't reference a vector item
                              */
-                            Iterator insert(ConstIterator start, std::size_t count, T const& value);
+                            Iterator insert(ConstIterator start, SizeType count, T const& value);
                             /**
                              * Insert a copy of element between begin and end at the specified position
                              * @param  start the position to insert values
@@ -342,7 +353,7 @@
                              */
                             template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                             void popBack() {
-                                allocator.destroy(end() - 1);
+                                this->destroy(end() - 1);
                                 length--;
                             }
                             /**
@@ -356,13 +367,13 @@
                              * Resize the container up the given size, insert value if needed
                              * @param count the new capacity
                              */
-                            void resize(std::size_t count);
+                            void resize(SizeType count);
                             /**
                              * Resize the container up the given size, insert value if needed
                              * @param count the new capacity
                              * @param value the value used when inserting
                              */
-                            void resize(std::size_t count, T const& value);
+                            void resize(SizeType count, T const& value);
                             /**
                              * Swap the vector with another vector
                              * @param vec the other vector
@@ -379,13 +390,13 @@
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T& operator [](std::size_t index);
+                            T& operator [](SizeType index);
                             /**
                              * Access a particular element without bound checking
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T const& operator [](std::size_t index) const;
+                            T const& operator [](SizeType index) const;
             
                         //## Assignment Operator ##//
                             /**
@@ -410,7 +421,7 @@
                             template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                             bool operator ==(Vector const& vec) const {
                                 bool equal = true;
-                                std::size_t current = 0;
+                                SizeType current = 0;
                                 while (equal && current < length) {
                                     equal = data[current] == vec[current];
                                     current++;
@@ -453,15 +464,15 @@
                          * @param newSize the new capacity
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void reallocate(std::size_t newSize) {
-                            std::size_t tmp = capacity;
+                        void reallocate(SizeType newSize) {
+                            SizeType tmp = capacity;
                             capacity = newSize;
-                            T* newData = allocator.allocate(capacity);
+                            T* newData = this->allocate(capacity);
                 
-                            for (std::size_t current = 0; current < length; current++) {
-                                allocator.construct(&newData[current], std::move(data[current]));
+                            for (SizeType current = 0; current < length; current++) {
+                                this->construct(&newData[current], std::move(data[current]));
                             }
-                            allocator.deallocate(data, tmp);
+                            this->deallocate(data, tmp);
                             data = newData;
                         }
                         /**
@@ -469,29 +480,29 @@
                          * @param newSize the new capacity
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void reallocate(std::size_t newSize) {
-                            std::size_t tmp = capacity;
+                        void reallocate(SizeType newSize) {
+                            SizeType tmp = capacity;
                             capacity = newSize;
-                            T* newData = allocator.allocate(capacity);
+                            T* newData = this->allocate(capacity);
                 
                             std::memmove(newData, data, length * sizeof(T));
-                            allocator.deallocate(data, tmp);
+                            this->deallocate(data, tmp);
                             data = newData;
                         }
                         /**
                          * Reallocate the vector with the neareast grow factor value
                          * @param size the new minimum capacity
                          */
-                        void reserveWithGrowFactor(std::size_t size);
+                        void reserveWithGrowFactor(SizeType size);
                         /**
                          * Shift all element in the vector, don't do reallocation
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void shift(std::size_t start, std::size_t count) {
-                            for (std::size_t index = length + count - 1; index != start + count - 1; index--) {
-                                allocator.construct(&data[index], std::move(data[index - count]));
+                        void shift(SizeType start, SizeType count) {
+                            for (SizeType index = length + count - 1; index != start + count - 1; index--) {
+                                this->construct(&data[index], std::move(data[index - count]));
                             }
                         }
                         /**
@@ -500,7 +511,7 @@
                          * @param count the number of shift to do
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void shift(std::size_t start, std::size_t count) {
+                        void shift(SizeType start, SizeType count) {
                             std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
                         }
                         /**
@@ -509,9 +520,9 @@
                          * @param count the number of shift to do
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void shiftBack(std::size_t start, std::size_t count) {
-                            for (std::size_t index = start; index < start + count; index++) {
-                                allocator.construct(&data[index], std::move(data[index + count]));
+                        void shiftBack(SizeType start, SizeType count) {
+                            for (SizeType index = start; index < start + count; index++) {
+                                this->construct(&data[index], std::move(data[index + count]));
                             }
                         }
                         /**
@@ -520,7 +531,7 @@
                          * @param count the number of shift to do
                          */
                         template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void shiftBack(std::size_t start, std::size_t count) {
+                        void shiftBack(SizeType start, SizeType count) {
                             std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
                         }
                         /**
@@ -529,9 +540,9 @@
                          */
                         template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
                         void copy(Vector const& vec) {
-                            std::size_t current = 0;
+                            SizeType current = 0;
                             for (T const& it : vec) {
-                                allocator.construct(&data[current], it);
+                                this->construct(&data[current], it);
                                 current++;
                             }
                         }
@@ -546,7 +557,7 @@
         
                     private :    // Static
                         static constexpr float GROW_FACTOR = 2;
-                        static constexpr std::size_t BASE_ALLOCATION_SIZE = 16;
+                        static constexpr SizeType BASE_ALLOCATION_SIZE = 16;
                 };
             }
         }
