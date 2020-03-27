@@ -12,14 +12,14 @@
 
              template <class T, std::size_t Size>
              inline Array<T, Size>::Array(std::initializer_list<T> list) {
-                 std::size_t index = 0;
+                 SizeType index = 0;
                  for (auto it = list.begin(); it != list.end(); it++) {
                      data[index++] = *it;
                  }
              }
 
              template <class T, std::size_t Size>
-             inline T& Array<T, Size>::get(std::size_t index) {
+             inline typename Array<T, Size>::Reference Array<T, Size>::get(SizeType index) {
                  if (index >= Size) {
                      throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
                  }
@@ -27,7 +27,7 @@
              }
 
              template <class T, std::size_t Size>
-             inline T const& Array<T, Size>::get(std::size_t index) const {
+             inline typename Array<T, Size>::ConstReference Array<T, Size>::get(SizeType index) const {
                  if (index >= Size) {
                      throw std::out_of_range("Accessing NRE::Utility::Array element : " + std::to_string(index) + " while array has " + std::to_string(Size) + " maximum capacity.");
                  }
@@ -35,48 +35,48 @@
              }
 
              template <class T, std::size_t Size>
-             inline T* Array<T, Size>::getData() {
+             inline typename Array<T, Size>::Pointer Array<T, Size>::getData() {
                  return data;
              }
 
              template <class T, std::size_t Size>
-             inline const T* Array<T, Size>::getData() const {
+             inline typename Array<T, Size>::ConstPointer Array<T, Size>::getData() const {
                  return data;
              }
 
              template <class T, std::size_t Size>
-             inline T& Array<T, Size>::getFront() {
+             inline typename Array<T, Size>::Reference Array<T, Size>::getFront() {
                  return data[0];
              }
 
              template <class T, std::size_t Size>
-             inline T const& Array<T, Size>::getFront() const {
+             inline typename Array<T, Size>::ConstReference Array<T, Size>::getFront() const {
                  return data[0];
              }
 
              template <class T, std::size_t Size>
-             inline T& Array<T, Size>::getLast() {
+             inline typename Array<T, Size>::Reference Array<T, Size>::getLast() {
                  return data[Size - 1];
              }
 
              template <class T, std::size_t Size>
-             inline T const& Array<T, Size>::getLast() const {
+             inline typename Array<T, Size>::ConstReference Array<T, Size>::getLast() const {
                  return data[Size - 1];
              }
 
              template <class T, std::size_t Size>
-             inline constexpr bool Array<T, Size>::isEmpty() const {
+             constexpr bool Array<T, Size>::isEmpty() const {
                  return false;
              }
 
              template <class T, std::size_t Size>
-             inline constexpr std::size_t Array<T, Size>::getSize() const {
+             constexpr typename Array<T, Size>::SizeType Array<T, Size>::getSize() const {
                  return Size;
              }
 
              template <class T, std::size_t Size>
-             inline constexpr std::size_t Array<T, Size>::getMaxSize() const {
-                 return std::numeric_limits<std::size_t>::max();
+             constexpr typename Array<T, Size>::SizeType Array<T, Size>::getMaxSize() const {
+                 return std::numeric_limits<SizeType>::max();
              }
 
              template <class T, std::size_t Size>
@@ -140,8 +140,8 @@
              }
 
              template <class T, std::size_t Size>
-             inline void Array<T, Size>::fill(T const& value) {
-                 for (std::size_t i = 0; i < Size; i++) {
+             inline void Array<T, Size>::fill(ConstReference value) {
+                 for (SizeType i = 0; i < Size; i++) {
                      data[i] = value;
                  }
              }
@@ -153,12 +153,12 @@
              }
 
              template <class T, std::size_t Size>
-             inline T& Array<T, Size>::operator[](std::size_t index) {
+             inline typename Array<T, Size>::Reference Array<T, Size>::operator[](SizeType index) {
                  return data[index];
              }
 
              template <class T, std::size_t Size>
-             inline T const& Array<T, Size>::operator[](std::size_t index) const {
+             inline typename Array<T, Size>::ConstReference Array<T, Size>::operator[](SizeType index) const {
                  return data[index];
              }
 
@@ -172,7 +172,7 @@
                  String res;
                  res.reserve(5 * Size);
                  res << '[' << data[0];
-                 for (std::size_t index = 1; index < Size; index++) {
+                 for (SizeType index = 1; index < Size; index++) {
                      res << ',' << ' ' << data[index];
                  }
                  res << ']';

@@ -34,18 +34,54 @@
              */
             template <class T, std::size_t Size>
             class Array : public Stringable<Array<T, Size>> {
-                public :    // Iterator
-                    /**< Shortcut to hide Iterator implementation */
-                    typedef T*          Iterator;
-                    /**< Shortcut to hide ConstIterator implementation */
-                    typedef const T*    ConstIterator;
-                    /**< Shortcut to hide ReverseIterator implementation */
-                    typedef std::reverse_iterator<T*>          ReverseIterator;
-                    /**< Shortcut to hide ConstReverseIterator implementation */
-                    typedef std::reverse_iterator<const T*>    ConstReverseIterator;
+                public :    // Traits
+                    /**< The container's allocated type */
+                    using ValueType             = T;
+                    /**< The object's size type */
+                    using SizeType              = std::size_t;
+                    /**< The object's difference type */
+                    using DifferenceType        = std::ptrdiff_t;
+                    /**< The allocated type reference */
+                    using Reference             = ValueType&;
+                    /**< The allocated type const reference */
+                    using ConstReference        = ValueType const&;
+                    /**< The allocated type pointer */
+                    using Pointer               = ValueType*;
+                    /**< The allocated type const pointer */
+                    using ConstPointer          = const ValueType*;
+                    /**< Mutable random access iterator */
+                    using Iterator              = Pointer;
+                    /**< Immuable random access iterator */
+                    using ConstIterator         = ConstPointer;
+                    /**< Mutable reverse random access iterator */
+                    using ReverseIterator       = std::reverse_iterator<Iterator>;
+                    /**< Immuable reverse random access iterator */
+                    using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
+                    /**< STL compatibility */
+                    using value_type            = ValueType;
+                    /**< STL compatibility */
+                    using size_type             = SizeType;
+                    /**< STL compatibility */
+                    using difference_type       = DifferenceType;
+                    /**< STL compatibility */
+                    using reference             = Reference;
+                    /**< STL compatibility */
+                    using const_reference       = ConstReference;
+                    /**< STL compatibility */
+                    using pointer               = Pointer;
+                    /**< STL compatibility */
+                    using const_pointer         = ConstPointer;
+                    /**< STL compatibility */
+                    using iterator              = Iterator;
+                    /**< STL compatibility */
+                    using const_iterator        = ConstIterator;
+                    /**< STL compatibility */
+                    using reverse_iterator      = ReverseIterator;
+                    /**< STL compatibility */
+                    using const_reverse_iterator= ConstReverseIterator;
 
                 private :   // Fields
-                    T data[Size];   /**< The internal array */
+                    ValueType data[Size];   /**< The internal array */
 
                 public :    // Methods
                     //## Constructor ##//
@@ -85,37 +121,37 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& get(std::size_t index);
+                        Reference get(SizeType index);
                         /**
                          * Access a particular element with bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& get(std::size_t index) const;
+                        ConstReference get(SizeType index) const;
                         /**
                          * @return the internal data array
                          */
-                        T* getData();
+                        Pointer getData();
                         /**
                          * @return the internal data array
                          */
-                        const T* getData() const;
+                        ConstPointer getData() const;
                         /**
                          * @return the first element
                          */
-                        T& getFront();
+                        Reference getFront();
                         /**
                          * @return the first element
                          */
-                        T const& getFront() const;
+                        ConstReference getFront() const;
                         /**
                          * @return the last element
                          */
-                        T& getLast();
+                        Reference getLast();
                         /**
                          * @return the last element
                          */
-                        T const& getLast() const;
+                        ConstReference getLast() const;
                         /**
                          * @return if the array is empty
                          */
@@ -123,11 +159,11 @@
                         /**
                          * @return the array size
                          */
-                        constexpr std::size_t getSize() const;
+                        constexpr SizeType getSize() const;
                         /**
                          * @return the maximum array size
                          */
-                        constexpr std::size_t getMaxSize() const;
+                        constexpr SizeType getMaxSize() const;
 
                     //## Iterator Access ##//
                         /**
@@ -184,7 +220,7 @@
                          * Fill the array with the same value
                          * @param value the value to fill the array with
                          */
-                        void fill(T const& value);
+                        void fill(ConstReference value);
                         /**
                          * Swap this data with arr data
                          * @param arr the container to swap with
@@ -197,13 +233,13 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& operator[](std::size_t index);
+                        Reference operator[](SizeType index);
                         /**
                          * Access a particular element without bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& operator[](std::size_t index) const;
+                        ConstReference operator[](SizeType index) const;
 
                     //## Assignment Operator ##//
                         /**
@@ -225,10 +261,10 @@
                          * @param arr the other array
                          * @return the test result
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         bool operator ==(Array const& arr) const {
                             bool equal = true;
-                            std::size_t current = 0;
+                            SizeType current = 0;
                             while (equal && current < Size) {
                                 equal = data[current] == arr[current];
                                 current++;
@@ -240,7 +276,7 @@
                          * @param arr the other array
                          * @return the test result
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         bool operator ==(Array const& arr) const {
                             return std::memcmp(data, arr.data, Size * sizeof(T)) == 0;
                         }

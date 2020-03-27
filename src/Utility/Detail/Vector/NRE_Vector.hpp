@@ -95,7 +95,7 @@
                     private :   // Fields
                         SizeType length;     /**< The data length */
                         SizeType capacity;   /**< The data capacity */
-                        Pointer data;             /**< The internal data array */
+                        Pointer data;        /**< The internal data array */
         
                     public :    // Methods
                         //## Constructor ##//
