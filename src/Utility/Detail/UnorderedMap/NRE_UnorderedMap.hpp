@@ -394,7 +394,7 @@
                              * Convert the object into a string representation
                              * @return the converted object
                              */
-                            String toString() const;
+                            [[nodiscard]] String toString() const;
                 };
     
                 /**

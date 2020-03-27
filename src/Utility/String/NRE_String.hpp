@@ -1062,7 +1062,7 @@
                          * Convert the object into a string representation
                          * @return the converted object
                          */
-                        BasicString const& toString() const;
+                        [[nodiscard]] BasicString const& toString() const;
                         /**
                          * Output stream operator for object
                          * @param o the object to add in the string
