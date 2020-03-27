@@ -15,6 +15,7 @@
 
      #include "../../String/NRE_String.hpp"
      #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
+     #include "../../Traits/NRE_TypeTraits.hpp"
 
      #include <Memory/Allocator/NRE_AllocatorTraits.hpp>
     
@@ -38,33 +39,70 @@
                  */
                 template <class T, class Allocator>
                 class Vector : public Stringable<Vector<T, Allocator>>, public Allocator {
-                    static_assert(Memory::IsAllocatorV<Allocator>);                     /**< Check if the given Allocator inherit from NRE::Memory::AllocatorTraits */
+                    static_assert(Memory::IsAllocatorV<Allocator>);                     /**< Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits */
                     static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
                     
-                    public :    // Iterator
+                    public :    // Traits
+                        /**< The container's allocated type */
+                        using ValueType             = T;
+                        /**< The container's allocator */
+                        using AllocatorType         = Allocator;
+                        /**< The object's size type */
+                        using SizeType              = std::size_t;
+                        /**< The object's difference type */
+                        using DifferenceType        = std::ptrdiff_t;
+                        /**< The allocated type reference */
+                        using Reference             = ValueType&;
+                        /**< The allocated type const reference */
+                        using ConstReference        = ValueType const&;
+                        /**< The allocated type pointer */
+                        using Pointer               = typename AllocatorType::Pointer;
+                        /**< The allocated type const pointer */
+                        using ConstPointer          = typename AllocatorType::ConstPointer;
                         /**< Mutable random access iterator */
-                        using Iterator              = T*;
+                        using Iterator              = Pointer;
                         /**< Immuable random access iterator */
-                        using ConstIterator         = const T*;
+                        using ConstIterator         = ConstPointer;
                         /**< Mutable reverse random access iterator */
                         using ReverseIterator       = std::reverse_iterator<Iterator>;
                         /**< Immuable reverse random access iterator */
                         using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
-                        /**< The object's size type */
-                        using SizeType              = std::size_t;
+                        /**< STL compatibility */
+                        using value_type            = ValueType;
+                        /**< STL compatibility */
+                        using allocator_type        = AllocatorType;
+                        /**< STL compatibility */
+                        using size_type             = SizeType;
+                        /**< STL compatibility */
+                        using difference_type       = DifferenceType;
+                        /**< STL compatibility */
+                        using reference             = Reference;
+                        /**< STL compatibility */
+                        using const_reference       = ConstReference;
+                        /**< STL compatibility */
+                        using pointer               = Pointer;
+                        /**< STL compatibility */
+                        using const_pointer         = ConstPointer;
+                        /**< STL compatibility */
+                        using iterator              = Iterator;
+                        /**< STL compatibility */
+                        using const_iterator        = ConstIterator;
+                        /**< STL compatibility */
+                        using reverse_iterator      = ReverseIterator;
+                        /**< STL compatibility */
+                        using const_reverse_iterator= ConstReverseIterator;
         
                     private :   // Fields
                         SizeType length;     /**< The data length */
                         SizeType capacity;   /**< The data capacity */
-                        T* data;             /**< The internal data array */
+                        Pointer data;             /**< The internal data array */
         
                     public :    // Methods
                         //## Constructor ##//
                             /**
                              * Construct an empty vector with a base capacity
-                             * @param alloc the vector's memory allocator
                              */
-                            Vector(Allocator const& alloc = Allocator());
+                            Vector(AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector filled with count copy of value
                              * @param count the number of copy to perform, will be the vector capacity and length
@@ -72,13 +110,13 @@
                              * @param alloc the vector's memory allocator
                              * @pre value don't reference a vector item
                              */
-                            Vector(SizeType count, T const& value, Allocator const& alloc = Allocator());
+                            Vector(SizeType count, ConstReference value, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector filled with count default value
                              * @param count the number of default element, will be the vector capacity and length
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(SizeType count, Allocator const& alloc = Allocator());
+                            Vector(SizeType count, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector filled with element between 2 iterators
                              * @param begin the begin iterator
@@ -87,14 +125,14 @@
                              * @pre begin and end are not iterator from the vector
                              */
                             template <class InputIterator>
-                            Vector(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
+                            Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector from an initializer list
                              * @param init  the list to fill the vector with
                              * @param alloc the vector's memory allocator
                              * @pre list don't contain vector reference
                              */
-                            Vector(std::initializer_list<T> init, Allocator const& alloc = Allocator());
+                            Vector(std::initializer_list<T> init, AllocatorType const& alloc = AllocatorType());
             
                         //## Copy Constructor ##//
                             /**
@@ -107,7 +145,7 @@
                              * @param vec   the vector to copy
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector const& vec, Allocator const& alloc);
+                            Vector(Vector const& vec, AllocatorType const& alloc);
             
                         //## Move Constructor ##//
                             /**
@@ -120,7 +158,7 @@
                              * @param vec   the vector to move
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector && vec, Allocator const& alloc);
+                            Vector(Vector && vec, AllocatorType const& alloc);
             
                         //## Deconstructor ##//
                             /**
@@ -134,37 +172,41 @@
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T& get(SizeType index);
+                            Reference get(SizeType index);
                             /**
                              * Access a particular element with bound checking
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T const& get(SizeType index) const;
+                            ConstReference get(SizeType index) const;
                             /**
                              * @return the internal data array
                              */
-                            T* getData();
+                            Pointer getData();
                             /**
                              * @return the internal data array
                              */
-                            const T* getData() const;
+                            ConstPointer getData() const;
+                            /**
+                             * @return the internal data array
+                             */
+                            ConstPointer getCData() const;
                             /**
                              * @return the first element
                              */
-                            T& getFront();
+                            Reference getFront();
                             /**
                              * @return the first element
                              */
-                            T const& getFront() const;
+                            ConstReference getFront() const;
                             /**
                              * @return the last element
                              */
-                            T& getLast();
+                            Reference getLast();
                             /**
                              * @return the last element
                              */
-                            T const& getLast() const;
+                            ConstReference getLast() const;
                             /**
                              * @return the vector effective size
                              */
@@ -180,7 +222,7 @@
                             /**
                              * @return the vector's memory allocator
                              */
-                            Allocator const& getAllocator() const;
+                            AllocatorType const& getAllocator() const;
                             /**
                              * @return if the vector is empty
                              */
@@ -243,7 +285,7 @@
                              * @param value the copy to fill the vector with
                              * @pre value don't reference a vector item
                              */
-                            void assign(SizeType count, T const& value);
+                            void assign(SizeType count, ConstReference value);
                             /**
                              * Assign the vector with element between 2 iterators
                              * @param  begin the begin iterator
@@ -261,7 +303,7 @@
                             /**
                              * Clear all object in the vector, not actually releasing memory
                              */
-                            template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                            template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                             void clear() noexcept {
                                 for (SizeType i = 0; i < length; i++) {
                                     this->destroy(&data[i]);
@@ -271,7 +313,7 @@
                             /**
                              * Clear all object in the vector, not actually releasing memory
                              */
-                            template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                            template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                             void clear() noexcept {
                                 length = 0;
                             }
@@ -282,7 +324,7 @@
                              * @return       the iterator on the inserted value
                              * @pre value don't reference a vector item
                              */
-                            Iterator insert(ConstIterator start, T const& value);
+                            Iterator insert(ConstIterator start, ConstReference value);
                             /**
                              * Insert count copy of value at the specified position
                              * @param  start the position to insert values
@@ -291,7 +333,7 @@
                              * @return       the iterator on the first inserted value
                              * @pre value don't reference a vector item
                              */
-                            Iterator insert(ConstIterator start, SizeType count, T const& value);
+                            Iterator insert(ConstIterator start, SizeType count, ConstReference value);
                             /**
                              * Insert a copy of element between begin and end at the specified position
                              * @param  start the position to insert values
@@ -336,7 +378,7 @@
                              * @param value the value to insert
                              * @pre value don't reference a vector item
                              */
-                            void pushBack(T const& value);
+                            void pushBack(ConstReference value);
                             /**
                              * Emplace a value at the end of the vector
                              * @param value the value to insert
@@ -351,7 +393,7 @@
                             /**
                              * Pop the last element in the vector
                              */
-                            template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                            template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                             void popBack() {
                                 this->destroy(end() - 1);
                                 length--;
@@ -359,7 +401,7 @@
                             /**
                              * Pop the last element in the vector
                              */
-                            template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                            template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                             void popBack() {
                                 length--;
                             }
@@ -373,7 +415,7 @@
                              * @param count the new capacity
                              * @param value the value used when inserting
                              */
-                            void resize(SizeType count, T const& value);
+                            void resize(SizeType count, ConstReference value);
                             /**
                              * Swap the vector with another vector
                              * @param vec the other vector
@@ -390,13 +432,13 @@
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T& operator [](SizeType index);
+                            Reference operator [](SizeType index);
                             /**
                              * Access a particular element without bound checking
                              * @param  index the element index
                              * @return       the corresponding element
                              */
-                            T const& operator [](SizeType index) const;
+                            ConstReference operator [](SizeType index) const;
             
                         //## Assignment Operator ##//
                             /**
@@ -418,7 +460,7 @@
                              * @param vec the other vector
                              * @return    the test result
                              */
-                            template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                            template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                             bool operator ==(Vector const& vec) const {
                                 bool equal = true;
                                 SizeType current = 0;
@@ -433,7 +475,7 @@
                              * @param vec the other vector
                              * @return    the test result
                              */
-                            template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                            template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                             bool operator ==(Vector const& vec) const {
                                 if (length != vec.length) {
                                     return false;
@@ -463,11 +505,11 @@
                          * Rellocate the data to the given size
                          * @param newSize the new capacity
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         void reallocate(SizeType newSize) {
                             SizeType tmp = capacity;
                             capacity = newSize;
-                            T* newData = this->allocate(capacity);
+                            Pointer newData = this->allocate(capacity);
                 
                             for (SizeType current = 0; current < length; current++) {
                                 this->construct(&newData[current], std::move(data[current]));
@@ -479,11 +521,11 @@
                          * Rellocate the data to the given size
                          * @param newSize the new capacity
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         void reallocate(SizeType newSize) {
                             SizeType tmp = capacity;
                             capacity = newSize;
-                            T* newData = this->allocate(capacity);
+                            Pointer newData = this->allocate(capacity);
                 
                             std::memmove(newData, data, length * sizeof(T));
                             this->deallocate(data, tmp);
@@ -499,7 +541,7 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         void shift(SizeType start, SizeType count) {
                             for (SizeType index = length + count - 1; index != start + count - 1; index--) {
                                 this->construct(&data[index], std::move(data[index - count]));
@@ -510,7 +552,7 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         void shift(SizeType start, SizeType count) {
                             std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
                         }
@@ -519,7 +561,7 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         void shiftBack(SizeType start, SizeType count) {
                             for (SizeType index = start; index < start + count; index++) {
                                 this->construct(&data[index], std::move(data[index + count]));
@@ -530,7 +572,7 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         void shiftBack(SizeType start, SizeType count) {
                             std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
                         }
@@ -538,10 +580,10 @@
                          * Copy the vector content
                          * @param vec the vector to copy
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         void copy(Vector const& vec) {
                             SizeType current = 0;
-                            for (T const& it : vec) {
+                            for (ConstReference it : vec) {
                                 this->construct(&data[current], it);
                                 current++;
                             }
@@ -550,14 +592,14 @@
                          * Copy the vector content
                          * @param vec the vector to copy
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         void copy(Vector const& vec) {
                             std::memcpy(data, vec.data, vec.length * sizeof(T));
                         }
         
                     private :    // Static
-                        static constexpr float GROW_FACTOR = 2;
-                        static constexpr SizeType BASE_ALLOCATION_SIZE = 16;
+                        static constexpr float GROW_FACTOR = 2;                 /**< The container's reallocation growth factor */
+                        static constexpr SizeType BASE_ALLOCATION_SIZE = 16;    /**< The container's base size if not given */
                 };
             }
         }

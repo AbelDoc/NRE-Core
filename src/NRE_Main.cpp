@@ -22,7 +22,6 @@
         std::size_t worstNRE2 = 0, worstNRE = 0;
         std::size_t bestNRE2 = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
-        
         std::size_t firstLoopSize = 1000;
         std::size_t constexpr containerSize = 100'000;
         std::size_t secondLoopSize = containerSize;

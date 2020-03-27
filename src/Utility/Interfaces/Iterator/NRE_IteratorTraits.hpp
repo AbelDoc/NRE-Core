@@ -27,48 +27,64 @@
              * @brief Used in IteratorTraits to detect InputIterator category
              */
             struct InputIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::input_iterator_tag;
             };
             /**
              * @class OutputIterator
              * @brief Used in IteratorTraits to detect OutputIterator category
              */
             struct OutputIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::output_iterator_tag;
             };
             /**
              * @class ForwardIterator
              * @brief Used in IteratorTraits to detect ForwardIterator category
              */
             struct ForwardIterator : InputIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::forward_iterator_tag;
             };
             /**
              * @class BidirectionalIterator
              * @brief Used in IteratorTraits to detect BidirectionalIterator category
              */
             struct BidirectionalIterator : ForwardIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::bidirectional_iterator_tag;
             };
             /**
              * @class RandomAccessIterator
              * @brief Used in IteratorTraits to detect RandomAccessIterator category
              */
             struct RandomAccessIterator : BidirectionalIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::random_access_iterator_tag;
             };
             /**
              * @class InOutForwardIterator
              * @brief Used in IteratorTraits to detect ForwardIterator category allowing Output operation
              */
             struct InOutForwardIterator : ForwardIterator, OutputIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::forward_iterator_tag;
             };
             /**
              * @class InOutBidirectionalIterator
              * @brief Used in IteratorTraits to detect BidirectionalIterator category allowing Output operation
              */
             struct InOutBidirectionalIterator : BidirectionalIterator, OutputIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::bidirectional_iterator_tag;
             };
             /**
              * @class InOutRandomAccessIterator
              * @brief Used in IteratorTraits to detect RandomAccessIterator category allowing Output operation
              */
             struct InOutRandomAccessIterator : RandomAccessIterator, OutputIterator {
+                /**< STL compatiblity */
+                using iterator_category = std::random_access_iterator_tag;
             };
     
     
@@ -149,9 +165,6 @@
             template <class It>
             using UseIfRandomAccessIterator  = std::enable_if_t<IsRandomAccessIteratorV<It>>;
     
-    
-    
-    
             /**
              * @class IteratorTraits
              * @brief Describe an iterator object
@@ -186,6 +199,8 @@
                     using reference         = Reference;
                     /**< STL compatibility */
                     using difference_type   = DifferenceType;
+                    /**< STL compatibility */
+                    using iterator_category = std::conditional_t<std::is_pointer_v<T>, std::random_access_iterator_tag, typename Category::iterator_category>;
                     
                 public :    // Methods
                     //## Methods ##//

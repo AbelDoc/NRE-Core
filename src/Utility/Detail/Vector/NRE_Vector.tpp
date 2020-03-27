@@ -12,43 +12,43 @@
              namespace Detail {
 
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Allocator const& alloc) :  Allocator(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(AllocatorType const& alloc) :  Allocator(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(SizeType count, T const& value, Allocator const& alloc) : Allocator(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(SizeType count, ConstReference value, AllocatorType const& alloc) : Allocator(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
                      assign(count, value);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(SizeType count, Allocator const& alloc) : Allocator(alloc), length(count), capacity(count), data(this->construct(this->allocate(count))) {
+                 inline Vector<T, Allocator>::Vector(SizeType count, AllocatorType const& alloc) : Allocator(alloc), length(count), capacity(count), data(this->construct(this->allocate(count))) {
                  }
     
                  template <class T, class Allocator>
                  template <class InputIterator>
-                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, Allocator const& alloc) : Allocator(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
+                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc) : Allocator(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
                      assign(begin, end);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(std::initializer_list<T> init, Allocator const& alloc) : Vector(init.begin(), init.end(), alloc) {
+                 inline Vector<T, Allocator>::Vector(std::initializer_list<T> init, AllocatorType const& alloc) : Vector(init.begin(), init.end(), alloc) {
                  }
         
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector const& vec) : Vector(vec, static_cast <Allocator const&> (vec)) {
+                 inline Vector<T, Allocator>::Vector(Vector const& vec) : Vector(vec, static_cast <AllocatorType const&> (vec)) {
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector const& vec, Allocator const& alloc) : Allocator(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
+                 inline Vector<T, Allocator>::Vector(Vector const& vec, AllocatorType const& alloc) : Allocator(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
                      copy(vec);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector && vec) : Vector(std::move(vec), static_cast <Allocator const&> (vec)) {
+                 inline Vector<T, Allocator>::Vector(Vector && vec) : Vector(std::move(vec), static_cast <AllocatorType const&> (vec)) {
                  }
         
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector && vec, Allocator const& alloc) : Allocator(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
+                 inline Vector<T, Allocator>::Vector(Vector && vec, AllocatorType const& alloc) : Allocator(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
                      vec.length = 0;
                      vec.capacity = 0;
                      vec.data = nullptr;
@@ -61,7 +61,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline T& Vector<T, Allocator>::get(SizeType index) {
+                 inline typename Vector<T, Allocator>::Reference Vector<T, Allocator>::get(SizeType index) {
                      if (index >= length) {
                          throw std::out_of_range("Accessing NRE::Utility::Vector element : " + std::to_string(index) + " while vector length is " + std::to_string(length) + ".");
                      }
@@ -69,7 +69,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline T const& Vector<T, Allocator>::get(SizeType index) const {
+                 inline typename Vector<T, Allocator>::ConstReference Vector<T, Allocator>::get(SizeType index) const {
                      if (index >= length) {
                          throw std::out_of_range("Accessing NRE::Utility::Vector element : " + std::to_string(index) + " while vector length is " + std::to_string(length) + ".");
                      }
@@ -77,32 +77,37 @@
                  }
     
                  template <class T, class Allocator>
-                 inline T* Vector<T, Allocator>::getData() {
+                 inline typename Vector<T, Allocator>::Pointer Vector<T, Allocator>::getData() {
                      return data;
                  }
     
                  template <class T, class Allocator>
-                 inline const T* Vector<T, Allocator>::getData() const {
+                 inline typename Vector<T, Allocator>::ConstPointer Vector<T, Allocator>::getData() const {
                      return data;
                  }
     
                  template <class T, class Allocator>
-                 inline T& Vector<T, Allocator>::getFront() {
+                 inline typename Vector<T, Allocator>::ConstPointer Vector<T, Allocator>::getCData() const {
+                     return data;
+                 }
+    
+                 template <class T, class Allocator>
+                 inline typename Vector<T, Allocator>::Reference Vector<T, Allocator>::getFront() {
                      return data[0];
                  }
     
                  template <class T, class Allocator>
-                 inline T const& Vector<T, Allocator>::getFront() const {
+                 inline typename Vector<T, Allocator>::ConstReference Vector<T, Allocator>::getFront() const {
                      return data[0];
                  }
     
                  template <class T, class Allocator>
-                 inline T& Vector<T, Allocator>::getLast() {
+                 inline typename Vector<T, Allocator>::Reference Vector<T, Allocator>::getLast() {
                      return data[length - 1];
                  }
     
                  template <class T, class Allocator>
-                 inline T const& Vector<T, Allocator>::getLast() const {
+                 inline typename Vector<T, Allocator>::ConstReference Vector<T, Allocator>::getLast() const {
                      return data[length - 1];
                  }
     
@@ -122,7 +127,7 @@
                  }
         
                  template <class T, class Allocator>
-                 inline Allocator const& Vector<T, Allocator>::getAllocator() const {
+                 inline typename Vector<T, Allocator>::AllocatorType const& Vector<T, Allocator>::getAllocator() const {
                      return *this;
                  }
     
@@ -192,7 +197,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline void Vector<T, Allocator>::assign(SizeType count, T const& value) {
+                 inline void Vector<T, Allocator>::assign(SizeType count, ConstReference value) {
                      clear();
                      if (capacity < count) {
                          reserveWithGrowFactor(count);
@@ -227,12 +232,12 @@
                  }
     
                  template <class T, class Allocator>
-                 inline typename Vector<T, Allocator>::Iterator Vector<T, Allocator>::insert(ConstIterator start, T const& value) {
+                 inline typename Vector<T, Allocator>::Iterator Vector<T, Allocator>::insert(ConstIterator start, ConstReference value) {
                      return emplace(start, value);
                  }
     
                  template <class T, class Allocator>
-                 inline typename Vector<T, Allocator>::Iterator Vector<T, Allocator>::insert(ConstIterator start, SizeType count, T const& value) {
+                 inline typename Vector<T, Allocator>::Iterator Vector<T, Allocator>::insert(ConstIterator start, SizeType count, ConstReference value) {
                      SizeType index = start - ConstIterator(data);
                      if (capacity < length + count) {
                          reserveWithGrowFactor(length + count);
@@ -314,7 +319,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline void Vector<T, Allocator>::pushBack(T const& value) {
+                 inline void Vector<T, Allocator>::pushBack(ConstReference value) {
                      emplaceBack(value);
                  }
     
@@ -340,7 +345,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline void Vector<T, Allocator>::resize(SizeType count, T const& value) {
+                 inline void Vector<T, Allocator>::resize(SizeType count, ConstReference value) {
                      if (count != length) {
                          if (count < length) {
                              for (SizeType index = count; index != length; index++) {
@@ -374,19 +379,19 @@
                  }
     
                  template <class T, class Allocator>
-                 inline T& Vector<T, Allocator>::operator[](SizeType index) {
+                 inline typename Vector<T, Allocator>::Reference Vector<T, Allocator>::operator[](SizeType index) {
                      return data[index];
                  }
     
                  template <class T, class Allocator>
-                 inline T const& Vector<T, Allocator>::operator[](SizeType index) const {
+                 inline typename Vector<T, Allocator>::ConstReference Vector<T, Allocator>::operator[](SizeType index) const {
                      return data[index];
                  }
     
                  template <class T, class Allocator>
                  inline Vector<T, Allocator>& Vector<T, Allocator>::operator =(Vector const& vec) {
                      if (this != &vec) {
-                         Allocator::operator=(static_cast <Allocator const&> (vec));
+                         Allocator::operator=(static_cast <AllocatorType const&> (vec));
                          assign(vec.begin(), vec.end());
                      }
                      return *this;
