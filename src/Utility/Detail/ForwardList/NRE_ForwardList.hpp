@@ -321,6 +321,10 @@
                              */
                             constexpr SizeType getMaxSize() const;
                             /**
+                             * @return the list's memory allocator
+                             */
+                            AllocatorType const& getAllocator() const;
+                            /**
                              * @return the list size
                              */
                             SizeType getSize() const;

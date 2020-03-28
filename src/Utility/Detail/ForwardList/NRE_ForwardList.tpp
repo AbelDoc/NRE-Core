@@ -111,6 +111,11 @@
                  }
     
                  template <class T, class Allocator>
+                 inline typename ForwardList<T, Allocator>::AllocatorType const& ForwardList<T, Allocator>::getAllocator() const {
+                     return *this;
+                 }
+    
+                 template <class T, class Allocator>
                  inline typename ForwardList<T, Allocator>::SizeType ForwardList<T, Allocator>::getSize() const {
                      return length;
                  }
