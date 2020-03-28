@@ -12,21 +12,21 @@
              namespace Detail {
 
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(AllocatorType const& alloc) :  Allocator(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(AllocatorType const& alloc) :  AllocatorType(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(SizeType count, ConstReference value, AllocatorType const& alloc) : Allocator(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(SizeType count, ConstReference value, AllocatorType const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
                      assign(count, value);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(SizeType count, AllocatorType const& alloc) : Allocator(alloc), length(count), capacity(count), data(this->construct(this->allocate(count))) {
+                 inline Vector<T, Allocator>::Vector(SizeType count, AllocatorType const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(this->construct(this->allocate(count))) {
                  }
     
                  template <class T, class Allocator>
                  template <class InputIterator>
-                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc) : Allocator(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
+                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc) : AllocatorType(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
                      assign(begin, end);
                  }
     
@@ -39,7 +39,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector const& vec, AllocatorType const& alloc) : Allocator(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
+                 inline Vector<T, Allocator>::Vector(Vector const& vec, AllocatorType const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
                      copy(vec);
                  }
     
@@ -48,7 +48,7 @@
                  }
         
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector && vec, AllocatorType const& alloc) : Allocator(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
+                 inline Vector<T, Allocator>::Vector(Vector && vec, AllocatorType const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
                      vec.length = 0;
                      vec.capacity = 0;
                      vec.data = nullptr;
@@ -58,6 +58,7 @@
                  inline Vector<T, Allocator>::~Vector() {
                      clear();
                      this->deallocate(data, capacity);
+                     data = nullptr;
                  }
     
                  template <class T, class Allocator>
@@ -367,7 +368,7 @@
                  template <class T, class Allocator>
                  inline void Vector<T, Allocator>::swap(Vector& vec) {
                      using std::swap;
-                     swap(static_cast <Allocator&> (*this), static_cast <Allocator&> (vec));
+                     swap(static_cast <AllocatorType&> (*this), static_cast <AllocatorType&> (vec));
                      swap(length, vec.length);
                      swap(capacity, vec.capacity);
                      swap(data, vec.data);
@@ -391,7 +392,7 @@
                  template <class T, class Allocator>
                  inline Vector<T, Allocator>& Vector<T, Allocator>::operator =(Vector const& vec) {
                      if (this != &vec) {
-                         Allocator::operator=(static_cast <AllocatorType const&> (vec));
+                         AllocatorType::operator=(static_cast <AllocatorType const&> (vec));
                          assign(vec.begin(), vec.end());
                      }
                      return *this;

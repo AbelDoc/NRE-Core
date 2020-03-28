@@ -169,20 +169,20 @@
              * @class IteratorTraits
              * @brief Describe an iterator object
              */
-            template <class It, class Category>
+            template <class It, class T, class Category>
             class IteratorTraits {
             };
             /**
              * @class IteratorTraits
              * @brief Describe an iterator object
              */
-            template <template <class, class ...> class It, class T, class Category, class ... Args>
-            class IteratorTraits<It<T, Args...>, Category> : public StaticInterface<IteratorTraits<It<T, Args...>, Category>>, public Category {
+            template <template <class ...> class It, class T, class Category, class ... Args>
+            class IteratorTraits<It<Args...>, T, Category> : public StaticInterface<IteratorTraits<It<Args...>, T, Category>>, public Category {
                 static_assert(IsIteratorV<Category>);  /**< You must at least be an input iterator or output iterator */
                 
                 public :    // Traits
                     /**< The iterator object */
-                    using Iterator          = It<T, Args...>;
+                    using Iterator          = It<Args...>;
                     /**< The iterated object */
                     using ValueType         = T;
                     /**< The pointer on iterated object */
@@ -377,7 +377,7 @@
                          * @return   the test result
                          */
                         bool operator!=(Iterator const& it) const {
-                            return this->impl().equal(it);
+                            return !this->impl().equal(it);
                         }
                         /**
                          * Inferior test between this and it
@@ -424,8 +424,8 @@
              * @param it the iterator to move
              * @rturn    the new iterator
              */
-            template <template <class, class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
-            It<T, Args...> operator +(std::ptrdiff_t k, IteratorTraits<It<T, Args...>, Category> const& it) {
+            template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
+            It<Args...> operator +(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
                 return It<T, Args...>(it) += k;
             }
     
@@ -435,8 +435,8 @@
              * @param it the iterator to move
              * @rturn    the new iterator
              */
-            template <template <class, class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
-            It<T, Args...> operator -(std::ptrdiff_t k, IteratorTraits<It<T, Args...>, Category> const& it) {
+            template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
+            It<Args...> operator -(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
                 return It<T, Args...>(it) -= k;
             }
             

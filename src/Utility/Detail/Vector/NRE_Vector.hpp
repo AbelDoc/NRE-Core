@@ -101,6 +101,7 @@
                         //## Constructor ##//
                             /**
                              * Construct an empty vector with a base capacity
+                             * @param alloc the vector's memory allocator
                              */
                             Vector(AllocatorType const& alloc = AllocatorType());
                             /**
