@@ -28,7 +28,8 @@
         namespace Utility {
             
             namespace Detail {
-                typedef std::uint_least32_t TruncatedHash;
+                /**< Hide hash type implementation */
+                using TruncatedHash = std::uint_least32_t;
     
                 /**
                  * @class BucketEntryHash
@@ -101,8 +102,10 @@
                 template <class ValueType, bool StoreHash>
                 class BucketEntry : public BucketEntryHash<StoreHash> {
                     public :    // Typedef
-                        typedef std::int_least16_t DistanceType;
-                        typedef typename std::aligned_storage<sizeof(ValueType), alignof(ValueType)>::type Storage;
+                        /**< The bucket distance type */
+                        using DistanceType  = std::int_least16_t;
+                        /**< The bucket internal storage type */
+                        using Storage       = typename std::aligned_storage<sizeof(ValueType), alignof(ValueType)>::type;
         
                     private :   // Fields
                         DistanceType distanceToNext;    /**< The ideal distance to the next bucket */
@@ -111,97 +114,97 @@
         
                     public :    // Methods
                         //## Constructor ##//
-                        /**
-                         * Construct an empty bucket
-                         */
-                        BucketEntry();
-                        /**
-                         * Construct an empty bucket with user defined last marker
-                         * @param state tell if the bucket is the last
-                         */
-                        BucketEntry(bool state);
+                            /**
+                             * Construct an empty bucket
+                             */
+                            BucketEntry();
+                            /**
+                             * Construct an empty bucket with user defined last marker
+                             * @param state tell if the bucket is the last
+                             */
+                            BucketEntry(bool state);
             
                         //## Copy Constructor ##//
-                        /**
-                         * Copy bucket into this
-                         * @param bucket the bucket entry to copy
-                         */
-                        BucketEntry(BucketEntry const& bucket);
+                            /**
+                             * Copy bucket into this
+                             * @param bucket the bucket entry to copy
+                             */
+                            BucketEntry(BucketEntry const& bucket);
             
                         //## Move Constructor ##//
-                        /**
-                         * Move bucket into this
-                         * @param bucket the bucket entry to move
-                         */
-                        BucketEntry(BucketEntry && bucket);
+                            /**
+                             * Move bucket into this
+                             * @param bucket the bucket entry to move
+                             */
+                            BucketEntry(BucketEntry && bucket);
             
                         //## Deconstructor ##//
-                        /**
-                         * BucketEntry Deconstructor
-                         */
-                        ~BucketEntry();
+                            /**
+                             * BucketEntry Deconstructor
+                             */
+                            ~BucketEntry();
             
                         //## Getter ##//
-                        /**
-                         * @return if the bucket is empty
-                         */
-                        bool isEmpty() const;
-                        /**
-                         * @return if the bucket is the last
-                         */
-                        bool isLastBucket() const;
-                        /**
-                         * @return the distance to the next bucket
-                         */
-                        DistanceType getDistanceToNext() const;
-                        /**
-                         * @return the bucket data
-                         */
-                        ValueType& getData();
-                        /**
-                         * @return the bucket data
-                         */
-                        ValueType const& getData() const;
+                            /**
+                             * @return if the bucket is empty
+                             */
+                            bool isEmpty() const;
+                            /**
+                             * @return if the bucket is the last
+                             */
+                            bool isLastBucket() const;
+                            /**
+                             * @return the distance to the next bucket
+                             */
+                            DistanceType getDistanceToNext() const;
+                            /**
+                             * @return the bucket data
+                             */
+                            ValueType& getData();
+                            /**
+                             * @return the bucket data
+                             */
+                            ValueType const& getData() const;
             
                         //## Setter ##//
-                        /**
-                         * Set this as the last bucket
-                         */
-                        void setAsLastBucket();
-                        /**
-                         * Set the bucket data, must be empty
-                         * @param distance the distance to the next bucket
-                         * @param h        the new truncated hash
-                         * @param newData  the data to set
-                         */
-                        void setData(DistanceType distance, TruncatedHash h, ValueType && newData);
-            
-                        //## Methods ##//
-                        /**
-                         * Clear the bucket data if not empty
-                         */
-                        void clear();
-                        /**
-                         * Swap the bucket data with given one
-                         * @param distance the distance to the next bucket
-                         * @param h        the new truncated hash
-                         * @param newData  the data to set
-                         */
-                        void swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData);
-            
+                            /**
+                             * Set this as the last bucket
+                             */
+                            void setAsLastBucket();
+                            /**
+                             * Set the bucket data, must be empty
+                             * @param distance the distance to the next bucket
+                             * @param h        the new truncated hash
+                             * @param newData  the data to set
+                             */
+                            void setData(DistanceType distance, TruncatedHash h, ValueType && newData);
+                
+                            //## Methods ##//
+                            /**
+                             * Clear the bucket data if not empty
+                             */
+                            void clear();
+                            /**
+                             * Swap the bucket data with given one
+                             * @param distance the distance to the next bucket
+                             * @param h        the new truncated hash
+                             * @param newData  the data to set
+                             */
+                            void swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData);
+                
                         //## Assignment Operator ##//
-                        /**
-                         * Copy bucket into this
-                         * @param bucket the bucket entry to copy into this
-                         * @return    the reference of himself
-                         */
-                        BucketEntry& operator =(BucketEntry const& bucket);
-                        /**
-                         * Move bucket into this
-                         * @param bucket the bucket entry to move into this
-                         * @return       the reference of himself
-                         */
-                        BucketEntry& operator =(BucketEntry && bucket);
+                            /**
+                             * Copy bucket into this
+                             * @param bucket the bucket entry to copy into this
+                             * @return    the reference of himself
+                             */
+                            BucketEntry& operator =(BucketEntry const& bucket);
+                            /**
+                             * Move bucket into this
+                             * @param bucket the bucket entry to move into this
+                             * @return       the reference of himself
+                             */
+                            BucketEntry& operator =(BucketEntry && bucket);
         
                     public :    // Static
                         static const DistanceType EMPTY_BUCKET_DISTANCE = -1; /**< The distance used to mark a bucket as empty */
@@ -215,33 +218,87 @@
                 template <class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
                 class HashTable : public Stringable<HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>>, private Hash, private KeyEqual {
                     static_assert(Memory::IsAllocatorV<Allocator>);
+                    public :    // Traits
+                        /**< The table key type */
+                        using KeyType               = Key;
+                        /**< The table mapped type */
+                        using MappedType            = T;
+                        /**< The container's allocated type */
+                        using ValueType             = Pair<KeyType, MappedType>;
+                        
+                    private :     // Static
+                        static constexpr bool STORE_HASH = StoreHash || ((sizeof(BucketEntry<ValueType, true>) == sizeof(BucketEntry<ValueType, false>)) && (!std::is_arithmetic<KeyType>::value || !std::is_same<Hash, std::hash<KeyType>>::value));    /**< Tell if we store the hash in the bucket with the key */
                     
-                    public :    // Typedef
-                        typedef Pair<Key, T> ValueType;
+                    public :    // Traits
+                        /**< The container's internal allocated type */
+                        using ContainerType         = BucketEntry<ValueType, STORE_HASH>;
+                        /**< The container's allocator */
+                        using AllocatorType         = typename Allocator::template Rebind<ContainerType>;
+                        /**< The object's size type */
+                        using SizeType              = std::size_t;
+                        /**< The object's difference type */
+                        using DifferenceType        = std::ptrdiff_t;
+                        /**< The table distance type */
+                        using DistanceType          = typename BucketEntry<ValueType, STORE_HASH>::DistanceType;
+                        /**< The allocated type reference */
+                        using Reference             = ValueType&;
+                        /**< The allocated type const reference */
+                        using ConstReference        = ValueType const&;
+                        /**< The allocated type pointer */
+                        using Pointer               = typename AllocatorType::Pointer;
+                        /**< The allocated type const pointer */
+                        using ConstPointer          = typename AllocatorType::ConstPointer;
+                        /**< STL compatibility */
+                        using value_type            = ValueType;
+                        /**< STL compatibility */
+                        using allocator_type        = AllocatorType;
+                        /**< STL compatibility */
+                        using size_type             = SizeType;
+                        /**< STL compatibility */
+                        using difference_type       = DifferenceType;
+                        /**< STL compatibility */
+                        using reference             = Reference;
+                        /**< STL compatibility */
+                        using const_reference       = ConstReference;
+                        /**< STL compatibility */
+                        using pointer               = Pointer;
+                        /**< STL compatibility */
+                        using const_pointer         = ConstPointer;
         
-                    private :   // Static
-                        static constexpr bool STORE_HASH = StoreHash || ((sizeof(BucketEntry<ValueType, true>) == sizeof(BucketEntry<ValueType, false>)) && (!std::is_arithmetic<Key>::value || !std::is_same<Hash, std::hash<Key>>::value));    /**< Tell if we store the hash in the bucket with the key */
-        
-                    public :     // Iterator
-                        typedef typename BucketEntry<ValueType, STORE_HASH>::DistanceType DistanceType;
-        
+                    private :     // Iterator
                         /**
                          * @class ForwardIterator
                          * @brief Hash table forward iterator
                          */
-                        template <class K>
-                        class ForwardIterator {
+                        template <class Category>
+                        class ForwardIterator : public IteratorTraits<ForwardIterator<Category>, ValueType, Category> {
                             friend class HashTable;
+                            public :    // Traits
+                                /**< Inherited iterator traits */
+                                using Traits = IteratorTraits<ForwardIterator<Category>, ValueType, Category>;
+                                /**< The iterated object */
+                                using ValueType         = typename Traits::ValueType;
+                                /**< The pointer on iterated object */
+                                using Pointer           = typename Traits::Pointer;
+                                /**< The reference on iterated object */
+                                using Reference         = typename Traits::Reference;
+                                /**< The iterator difference type */
+                                using DifferenceType    = typename Traits::DifferenceType;
+                                /**< STL compatibility */
+                                using value_type        = ValueType;
+                                /**< STL compatibility */
+                                using pointer           = Pointer;
+                                /**< STL compatibility */
+                                using reference         = Reference;
+                                /**< STL compatibility */
+                                using difference_type   = DifferenceType;
+                                /**< STL compatibility */
+                                using iterator_category = typename Traits::iterator_category;
+                                
                             private :   // Fields
                                 BucketEntry<ValueType, STORE_HASH>* current;   /**< The current iterator bucket */
-                
+                                
                             public :    // Methods
-                                typedef std::ptrdiff_t difference_type;
-                                typedef typename HashTable::ValueType value_type;
-                                typedef value_type* pointer;
-                                typedef value_type& reference;
-                                typedef std::forward_iterator_tag iterator_category;
-                    
                                 //## Constructor ##//
                                     /**
                                      * Default constructor with nullptr node
@@ -264,77 +321,84 @@
                                      * @param it the iterator to copy
                                      */
                                     ForwardIterator(ForwardIterator const& it) = default;
+    
+                                //## Move Constructor ##//
+                                    /**
+                                     * Move it into this
+                                     * @param it the iterator to move
+                                     */
+                                    ForwardIterator(ForwardIterator && it) = default;
                         
-                                    //## Deconstructor ##//
+                                //## Deconstructor ##//
                                     /**
                                      * ForwardIterator Deconstructor
                                      */
                                     ~ForwardIterator() = default;
+    
+                                //## Methods ##//
+                                    /**
+                                     * @return a reference on the iterated data
+                                     */
+                                    Reference dereference() const;
+                                    /**
+                                     * Increment the iterator position by one
+                                     */
+                                    void increment();
+                                    /**
+                                     * Test if the given iterator point to the same position
+                                     * @param it the other iterator
+                                     * @return   the test's result
+                                     */
+                                    bool equal(ForwardIterator const& it) const;
                     
                                 //## Assignment Operator ##//
                                     /**
                                      * Copy assignment of it into this
-                                     * @param it the iterator to copy into this
+                                     * @param it the iterator to copy
                                      * @return   the reference of himself
                                      */
                                     ForwardIterator& operator =(ForwardIterator const& it) = default;
-                    
-                                //## Access Operator ##//
                                     /**
-                                     * Dereference operator, allow access to the data
-                                     * @return the iterator data
+                                     * Move assignment of it into this
+                                     * @param it the iterator to move
+                                     * @return   the reference of himself
                                      */
-                                    K& operator*() const;
-                                    /**
-                                     * Arrow dereference operator, allow access to the data
-                                     * @return the iterator data pointer
-                                     */
-                                    K* operator->() const;
-                    
-                                //## Increment Operator ##//
-                                    /**
-                                     * Pre increment operator, access the next element
-                                     * @return the reference of himself
-                                     */
-                                    ForwardIterator& operator++();
-                                    /**
-                                     * Post increment operator, access the next element
-                                     * @return the iterator on the current element
-                                     */
-                                    ForwardIterator operator++(int);
-                    
-                                //## Comparison Operator ##//
-                                    /**
-                                     * Equality test between this and it
-                                     * @param it the other iterator
-                                     * @return   the test result
-                                     */
-                                    bool operator==(ForwardIterator const& it) const;
-                                    /**
-                                     * Inequality test between this and it
-                                     * @param it the other iterator
-                                     * @return   the test result
-                                     */
-                                    bool operator!=(ForwardIterator const& it) const;
+                                    ForwardIterator& operator =(ForwardIterator && it) = default;
                         };
             
                         /**
                          * @class LocalForwardIterator
                          * @brief Hash table local forward iterator
                          */
-                        template <class K>
-                        class LocalForwardIterator {
+                        template <class Category>
+                        class LocalForwardIterator : public IteratorTraits<ForwardIterator<Category>, ValueType, Category> {
                             friend class HashTable;
+                            public :    // Traits
+                                /**< Inherited iterator traits */
+                                using Traits = IteratorTraits<ForwardIterator<Category>, ValueType, Category>;
+                                /**< The iterated object */
+                                using ValueType         = typename Traits::ValueType;
+                                /**< The pointer on iterated object */
+                                using Pointer           = typename Traits::Pointer;
+                                /**< The reference on iterated object */
+                                using Reference         = typename Traits::Reference;
+                                /**< The iterator difference type */
+                                using DifferenceType    = typename Traits::DifferenceType;
+                                /**< STL compatibility */
+                                using value_type        = ValueType;
+                                /**< STL compatibility */
+                                using pointer           = Pointer;
+                                /**< STL compatibility */
+                                using reference         = Reference;
+                                /**< STL compatibility */
+                                using difference_type   = DifferenceType;
+                                /**< STL compatibility */
+                                using iterator_category = typename Traits::iterator_category;
+                                
                             private :   // Fields
                                 BucketEntry<ValueType, STORE_HASH>* current;   /**< The current iterator bucket */
-                
+
                             public :    // Methods
-                                typedef std::ptrdiff_t difference_type;
-                                typedef typename HashTable::ValueType value_type;
-                                typedef value_type* pointer;
-                                typedef value_type& reference;
-                                typedef std::forward_iterator_tag iterator_category;
-                    
                                 //## Constructor ##//
                                     /**
                                      * Default constructor with nullptr node
@@ -357,80 +421,76 @@
                                      * @param it the iterator to copy
                                      */
                                     LocalForwardIterator(LocalForwardIterator const& it) = default;
-                    
+    
+                                //## Move Constructor ##//
+                                    /**
+                                     * Move it into this
+                                     * @param it the iterator to move
+                                     */
+                                    LocalForwardIterator(LocalForwardIterator && it) = default;
+                        
                                 //## Deconstructor ##//
                                     /**
                                      * LocalForwardIterator Deconstructor
                                      */
                                     ~LocalForwardIterator() = default;
+    
+                                //## Methods ##//
+                                    /**
+                                     * @return a reference on the iterated data
+                                     */
+                                    Reference dereference() const;
+                                    /**
+                                     * Increment the iterator position by one
+                                     */
+                                    void increment();
+                                    /**
+                                     * Test if the given iterator point to the same position
+                                     * @param it the other iterator
+                                     * @return   the test's result
+                                     */
+                                    bool equal(LocalForwardIterator const& it) const;
                     
                                 //## Assignment Operator ##//
                                     /**
                                      * Copy assignment of it into this
-                                     * @param it the iterator to copy into this
+                                     * @param it the iterator to copy
                                      * @return   the reference of himself
                                      */
                                     LocalForwardIterator& operator =(LocalForwardIterator const& it) = default;
-                    
-                                //## Access Operator ##//
                                     /**
-                                     * Dereference operator, allow access to the data
-                                     * @return the iterator data
+                                     * Move assignment of it into this
+                                     * @param it the iterator to move
+                                     * @return   the reference of himself
                                      */
-                                    K& operator*() const;
-                                    /**
-                                     * Arrow dereference operator, allow access to the data
-                                     * @return the iterator data pointer
-                                     */
-                                    K* operator->() const;
-                    
-                                //## Increment Operator ##//
-                                    /**
-                                     * Pre increment operator, access the next element
-                                     * @return the reference of himself
-                                     */
-                                    LocalForwardIterator& operator++();
-                                    /**
-                                     * Post increment operator, access the next element
-                                     * @return the iterator on the current element
-                                     */
-                                    LocalForwardIterator operator++(int);
-                    
-                                //## Comparison Operator ##//
-                                    /**
-                                     * Equality test between this and it
-                                     * @param it the other iterator
-                                     * @return   the test result
-                                     */
-                                    bool operator==(LocalForwardIterator const& it) const;
-                                    /**
-                                     * Inequality test between this and it
-                                     * @param it the other iterator
-                                     * @return   the test result
-                                     */
-                                    bool operator!=(LocalForwardIterator const& it) const;
+                                    LocalForwardIterator& operator =(LocalForwardIterator && it) = default;
                         };
-            
-                        /**< Shortcut to hide Iterator implementation */
-                        typedef ForwardIterator<ValueType>          Iterator;
-                        /**< Shortcut to hide ConstIterator implementation */
-                        typedef ForwardIterator<const ValueType>    ConstIterator;
-            
-                        /**< Shortcut to hide Iterator implementation */
-                        typedef LocalForwardIterator<ValueType>          LocalIterator;
-                        /**< Shortcut to hide ConstIterator implementation */
-                        typedef LocalForwardIterator<const ValueType>    ConstLocalIterator;
-                        
-                        using ContainerType = BucketEntry<ValueType, STORE_HASH>;
-                        using ContainerAllocator = typename Allocator::template Rebind<ContainerType>;
+
+                    public :     // Traits
+                        /**< Mutable random access iterator */
+                        using Iterator              = ForwardIterator<InOutForwardIterator>;
+                        /**< Immuable random access iterator */
+                        using ConstIterator         = ForwardIterator<Utility::ForwardIterator>;
+                        /**< Mutable random access iterator */
+                        using LocalIterator         = LocalForwardIterator<InOutForwardIterator>;
+                        /**< Immuable random access iterator */
+                        using ConstLocalIterator    = LocalForwardIterator<Utility::ForwardIterator>;
+                        /**< STL compatibility */
+                        using iterator              = Iterator;
+                        /**< STL compatibility */
+                        using const_iterator        = ConstIterator;
+                        /**< STL compatibility */
+                        using local_iterator        = LocalIterator;
+                        /**< STL compatibility */
+                        using const_local_iterator  = ConstLocalIterator;
     
                     private :    // Fields
-                        Detail::Vector<ContainerType, ContainerAllocator> data;   /**< The hash table data */
-                        std::size_t nbElements;                                                                                           /**< The number in the table */
-                        std::size_t mask;                                                                                                 /**< The mask used with the power of two policy */
-                        std::size_t loadThresHold;                                                                                        /**< The number of element before growing the table */
-                        float maxLoadFactor;                                                                                              /**< The maximum load factor before rehash and grow */
-                        bool growAtNextInsert;                                                                                            /**< Used to grow at the next insert call */
+                        Detail::Vector<ContainerType, AllocatorType> data;   /**< The hash table data */
+                        SizeType nbElements;                                 /**< The number in the table */
+                        SizeType mask;                                       /**< The mask used with the power of two policy */
+                        SizeType loadThresHold;                              /**< The number of element before growing the table */
+                        float maxLoadFactor;                                 /**< The maximum load factor before rehash and grow */
+                        bool growAtNextInsert;                               /**< Used to grow at the next insert call */
         
                     public :     // Methods
                         //## Constructor ##//
@@ -441,7 +501,7 @@
                              * @param equal       the equal function used in the table
                              * @param alloc       the hashtable's memory allocator
                              */
-                            HashTable(std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
+                            HashTable(SizeType bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
                             /**
                              * Construct an hashtable with a number of bucket and filled with elements in the given range
                              * @param begin       the begin iterator
@@ -452,7 +512,7 @@
                              * @param alloc       the hashtable's memory allocator
                              */
                             template <class InputIterator>
-                            HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
+                            HashTable(InputIterator begin, InputIterator end, SizeType bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
                             /**
                              * Construct an hashtable with a number of bucket and filled with elements in the given list
                              * @param list        the list to fill the table with
@@ -461,23 +521,33 @@
                              * @param equal       the equal function used in the table
                              * @param alloc       the hashtable's memory allocator
                              */
-                            HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
+                            HashTable(std::initializer_list<ValueType> list, SizeType bucketCount = DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
                 
                         //## Copy Constructor ##//
                             /**
                              * Copy table into this
                              * @param table the table to copy
+                             */
+                            HashTable(HashTable const& table);
+                            /**
+                             * Copy table into this
+                             * @param table the table to copy
                              * @param alloc the hashtable's memory allocator
                              */
-                            HashTable(HashTable const& table, Allocator const& alloc = Allocator());
+                            HashTable(HashTable const& table, Allocator const& alloc);
             
                         //## Move Constructor ##//
                             /**
                              * Move table into this
                              * @param table the table to move
+                             */
+                            HashTable(HashTable && table);
+                            /**
+                             * Move table into this
+                             * @param table the table to move
                              * @param alloc the hashtable's memory allocator
                              */
-                            HashTable(HashTable && table, Allocator const& alloc = Allocator());
+                            HashTable(HashTable && table, Allocator const& alloc);
             
                         //## Getter ##//
                             /**
@@ -485,25 +555,25 @@
                              * @param  k the element key
                              * @return   the corresponding element
                              */
-                            T& get(Key const& k);
+                            MappedType& get(KeyType const& k);
                             /**
                              * Access a particular element with bound checking
                              * @param  k the element key
                              * @return   the corresponding element
                              */
-                            T const& get(Key const& k) const;
+                            MappedType const& get(KeyType const& k) const;
                             /**
                              * @return the number of buckets in the table
                              */
-                            std::size_t getBucketCount() const;
+                            SizeType getBucketCount() const;
                             /**
                              * @return the maximum number of bucket in the table
                              */
-                            constexpr std::size_t getMaxBucketCount() const;
+                            constexpr SizeType getMaxBucketCount() const;
                             /**
                              * @return the number of elements in the table
                              */
-                            std::size_t getSize() const;
+                            SizeType getSize() const;
                             /**
                              * @return the maximum load factor
                              */
@@ -515,7 +585,7 @@
                             /**
                              * @return the maximum hash table size
                              */
-                            constexpr std::size_t getMaxSize() const;
+                            constexpr SizeType getMaxSize() const;
                             /**
                              * @return the hashtable's memory allocator
                              */
@@ -529,13 +599,13 @@
                              * @param  k the key to search
                              * @return   the number of corresponding elements
                              */
-                            std::size_t getCount(Key const& k) const;
+                            SizeType getCount(KeyType const& k) const;
                             /**
                              * Get the bucket index from a given key
                              * @param  k the key to search
                              * @return   the corresponding bucket
                              */
-                            std::size_t getBucket(Key const& k) const;
+                            SizeType getBucket(KeyType const& k) const;
             
                         //## Setter ##//
                             /**
@@ -574,37 +644,37 @@
                              * @param index the bucket index
                              * @return the iterator on the bucket
                              */
-                            LocalIterator begin(std::size_t index);
+                            LocalIterator begin(SizeType index);
                             /**
                              * Grab a const iterator on a given bucket
                              * @param index the bucket index
                              * @return the iterator on the bucket
                              */
-                            ConstLocalIterator begin(std::size_t index) const;
+                            ConstLocalIterator begin(SizeType index) const;
                             /**
                              * Grab a const iterator on a given bucket
                              * @param index the bucket index
                              * @return the iterator on the bucket
                              */
-                            ConstLocalIterator cbegin(std::size_t index) const;
+                            ConstLocalIterator cbegin(SizeType index) const;
                             /**
                              * Grab an iterator on a given bucket end
                              * @param index the bucket index
                              * @return the iterator on the bucket end
                              */
-                            LocalIterator end(std::size_t index);
+                            LocalIterator end(SizeType index);
                             /**
                              * Grab a const iterator on a given bucket end
                              * @param index the bucket index
                              * @return the iterator on the bucket end
                              */
-                            ConstLocalIterator end(std::size_t index) const;
+                            ConstLocalIterator end(SizeType index) const;
                             /**
                              * Grab a const iterator on a given bucket end
                              * @param index the bucket index
                              * @return the iterator on the bucket end
                              */
-                            ConstLocalIterator cend(std::size_t index) const;
+                            ConstLocalIterator cend(SizeType index) const;
             
                         //## Methods ##//
                             /**
@@ -675,36 +745,36 @@
                              * Reserve at least count bucket in the table and rehash the table
                              * @param count the number of desired bucket
                              */
-                            void reserve(std::size_t count);
+                            void reserve(SizeType count);
                             /**
                              * Reserve at least coutn bucket in the table and rehash the table
                              * @param count the number of desired bucket
                              */
-                            void rehash(std::size_t count);
+                            void rehash(SizeType count);
                             /**
                              * Find a range of iterator containing all elements with the given key, both end if not found
                              * @param key the key to search
                              * @return    a pair of iterator
                              */
-                            Pair<Iterator, Iterator> equalRange(Key const& key);
+                            Pair<Iterator, Iterator> equalRange(KeyType const& key);
                             /**
                              * Find a range of iterator containing all elements with the given key, both end if not found
                              * @param key the key to search
                              * @return    a pair of iterator
                              */
-                            Pair<ConstIterator, ConstIterator> equalRange(Key const& key) const;
+                            Pair<ConstIterator, ConstIterator> equalRange(KeyType const& key) const;
                             /**
                              * Find the element corresponding with the given key
                              * @param  k the key to search
                              * @return   the iterator pointing on the element, or end if not found
                              */
-                            Iterator find(Key const& k);
+                            Iterator find(KeyType const& k);
                             /**
                              * Find the element corresponding with the given key
                              * @param  k the key to search
                              * @return   the iterator pointing on the element, or end if not found
                              */
-                            ConstIterator find(Key const& k) const;
+                            ConstIterator find(KeyType const& k) const;
                             /**
                              * Erase the element pointed by the iterator
                              * @param  pos the iterator on the erased element
@@ -729,7 +799,7 @@
                              * @param  k the key to search and erase
                              * @return   the number of erased elements
                              */
-                            std::size_t erase(Key const& k);
+                            SizeType erase(KeyType const& k);
                             /**
                              * @return the hash function
                              */
@@ -759,13 +829,13 @@
                              * @param  k the key used for access
                              * @return   the found/inserted element
                              */
-                            T& operator[](Key const& k);
+                            MappedType& operator[](KeyType const& k);
                             /**
                              * Try to access the element designed by the given key, if not found insert a default one
                              * @param  k the key used for access
                              * @return   the found/inserted element
                              */
-                            T& operator[](Key && k);
+                            MappedType& operator[](KeyType && k);
             
                         //## Stream Operator ##//
                             /**
@@ -780,32 +850,32 @@
                          * @param  k the key to hash
                          * @return   the corresponding hash value
                          */
-                        std::size_t hashKey(Key const& k) const;
+                        SizeType hashKey(KeyType const& k) const;
                         /**
                          * Compare two key and return if they are equals
                          * @param  k1 the first key
                          * @param  k2 the second key
                          * @return    if both key are equals
                          */
-                        bool compareKey(Key const& k1, Key const& k2) const;
+                        bool compareKey(KeyType const& k1, KeyType const& k2) const;
                         /**
                          * Compute the next index using the probing function
                          * @param  index the index to advance
                          * @return       the new index
                          */
-                        std::size_t next(std::size_t index) const;
+                        SizeType next(SizeType index) const;
                         /**
                          * Get the corresponding bucket from a given hash
                          * @param  hash the hash value
                          * @return      the corresponding bucket index
                          */
-                        std::size_t bucketFromHash(std::size_t hash) const;
+                        SizeType bucketFromHash(SizeType hash) const;
                         /**
                          * Round up to the next power of two value
                          * @param  count the value to round up
                          * @return       the rounded value
                          */
-                        std::size_t roundUpToPowerOfTwo(std::size_t count) const;
+                        SizeType roundUpToPowerOfTwo(SizeType count) const;
                         /**
                          * Insert a value in a full bucket
                          * @param index          the bucket index
@@ -813,7 +883,7 @@
                          * @param h              the truncated hash
                          * @param pair           the data to insert
                          */
-                        void insertValue(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType& pair);
+                        void insertValue(SizeType index, DistanceType distanceToNext, TruncatedHash h, ValueType& pair);
                         /**
                          * Insert a value from a rehash call
                          * @param index          the bucket index
@@ -821,7 +891,7 @@
                          * @param h              the truncated hash
                          * @param pair           the data to insert
                          */
-                        void insertOnRehash(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType && pair);
+                        void insertOnRehash(SizeType index, DistanceType distanceToNext, TruncatedHash h, ValueType && pair);
                         /**
                          * Rehash the table if it's under extreme load
                          * @return if the table has been rehashed
@@ -830,25 +900,25 @@
                         /**
                          * @return the next valid size for the table
                          */
-                        std::size_t getNewSize() const;
+                        SizeType getNewSize() const;
         
                     private :    // Static
                         static constexpr bool USE_STORED_HASH_ON_LOOKUP = StoreHash;    /**< Tell if we use the stored hash on lookup */
-                        static constexpr float DEFAULT_MAX_LOAD_FACTOR = 0.9f;          /**< The default max load factor before growing */
-                        static constexpr float REHASH_MIN_LOAD_FACTOR = 0.15f;          /**< The minimum load factor for rehash */
-                        static const DistanceType REHASH_HIGH_PROBE = 128;              /**< The maximum distance between 2 bucket before rehash */
+                        static constexpr float DEFAULT_MAX_LOAD_FACTOR  = 0.9f;         /**< The default max load factor before growing */
+                        static constexpr float REHASH_MIN_LOAD_FACTOR   = 0.15f;        /**< The minimum load factor for rehash */
+                        static const DistanceType REHASH_HIGH_PROBE     = 128;          /**< The maximum distance between 2 bucket before rehash */
             
                         /**
                          * Tell if we use the stored hash on rehash
                          * @param  count the current bucket count
                          * @return       if we use the stored hash
                          */
-                        static bool USE_STORED_HASH_ON_REHASH(std::size_t count) {
+                        static bool USE_STORED_HASH_ON_REHASH(SizeType count) {
                             return STORE_HASH && count - 1 <= std::numeric_limits<TruncatedHash>::max();
                         }
         
                     public :    // Static
-                        static const std::size_t DEFAULT_BUCKET_COUNT = 0;              /**< The default bucket count */
+                        static const SizeType DEFAULT_BUCKET_COUNT = 0;              /**< The default bucket count */
                 };
             }
         }

@@ -186,7 +186,7 @@
                     /**< The iterated object */
                     using ValueType         = T;
                     /**< The pointer on iterated object */
-                    using Pointer           = ValueType*;
+                    using Pointer           = std::conditional_t<IsOutputIteratorV<Category>, ValueType*, const ValueType*>;
                     /**< The reference on iterated object */
                     using Reference         = std::conditional_t<IsOutputIteratorV<Category>, ValueType&, ValueType const&>;
                     /**< The iterator difference type */
@@ -261,7 +261,6 @@
                          * Arrow dereference operator, allow access to the data
                          * @return the iterator data pointer
                          */
-                        template <class K = Category, typename = UseIfOutputIterator<K>>
                         Pointer operator->() {
                             return &dereference();
                         }

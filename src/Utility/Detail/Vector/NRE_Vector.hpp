@@ -103,7 +103,7 @@
                              * Construct an empty vector with a base capacity
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(AllocatorType const& alloc = AllocatorType());
+                            Vector(Allocator const& alloc = Allocator());
                             /**
                              * Construct a vector filled with count copy of value
                              * @param count the number of copy to perform, will be the vector capacity and length
@@ -111,13 +111,13 @@
                              * @param alloc the vector's memory allocator
                              * @pre value don't reference a vector item
                              */
-                            Vector(SizeType count, ConstReference value, AllocatorType const& alloc = AllocatorType());
+                            Vector(SizeType count, ConstReference value, Allocator const& alloc = Allocator());
                             /**
                              * Construct a vector filled with count default value
                              * @param count the number of default element, will be the vector capacity and length
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(SizeType count, AllocatorType const& alloc = AllocatorType());
+                            Vector(SizeType count, Allocator const& alloc = Allocator());
                             /**
                              * Construct a vector filled with element between 2 iterators
                              * @param begin the begin iterator
@@ -126,14 +126,14 @@
                              * @pre begin and end are not iterator from the vector
                              */
                             template <class InputIterator>
-                            Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc = AllocatorType());
+                            Vector(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
                             /**
                              * Construct a vector from an initializer list
                              * @param init  the list to fill the vector with
                              * @param alloc the vector's memory allocator
                              * @pre list don't contain vector reference
                              */
-                            Vector(std::initializer_list<T> init, AllocatorType const& alloc = AllocatorType());
+                            Vector(std::initializer_list<T> init, Allocator const& alloc = Allocator());
             
                         //## Copy Constructor ##//
                             /**
@@ -146,7 +146,7 @@
                              * @param vec   the vector to copy
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector const& vec, AllocatorType const& alloc);
+                            Vector(Vector const& vec, Allocator const& alloc);
             
                         //## Move Constructor ##//
                             /**
@@ -159,7 +159,7 @@
                              * @param vec   the vector to move
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector && vec, AllocatorType const& alloc);
+                            Vector(Vector && vec, Allocator const& alloc);
             
                         //## Deconstructor ##//
                             /**
@@ -223,7 +223,7 @@
                             /**
                              * @return the vector's memory allocator
                              */
-                            AllocatorType const& getAllocator() const;
+                            Allocator getAllocator() const;
                             /**
                              * @return if the vector is empty
                              */

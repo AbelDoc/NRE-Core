@@ -139,53 +139,31 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline K& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator *() const {
+                 template <class Category>
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template ForwardIterator<Category>::Reference HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<Category>::dereference() const {
                      return current->getData();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline K* HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator ->() const {
-                     return &current->getData();
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template ForwardIterator<K>&
-                 HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator ++() {
+                 template <class Category>
+                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<Category>::increment() {
                      while (true) {
                          if (current->isLastBucket()) {
                              ++current;
-                             return *this;
+                             break;
                          }
-            
+        
                          ++current;
                          if (!current->isEmpty()) {
-                             return *this;
+                             break;
                          }
                      }
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template ForwardIterator<K>
-                 HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator ++(int) {
-                     ForwardIterator it(current);
-                     ++(*this);
-                     return it;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator ==(ForwardIterator const& it) const {
+                 template <class Category>
+                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<Category>::equal(ForwardIterator const& it) const {
                      return current == it.current;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::operator !=(ForwardIterator const& it) const {
-                     return current != it.current;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
@@ -199,48 +177,25 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline K& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator *() const {
+                 template <class Category>
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template LocalForwardIterator<Category>::Reference HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<Category>::dereference() const {
                      return current->getData();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline K* HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator ->() const {
-                     return &current->getData();
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template LocalForwardIterator<K>&
-                 HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator ++() {
+                 template <class Category>
+                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<Category>::increment() {
                      current = nullptr;
-                     return *this;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template LocalForwardIterator<K>
-                 HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator ++(int) {
-                     LocalForwardIterator it(current);
-                     ++(*this);
-                     return it;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator ==(LocalForwardIterator const& it) const {
+                 template <class Category>
+                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<Category>::equal(LocalForwardIterator const& it) const {
                      return current == it.current;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::operator !=(LocalForwardIterator const& it) const {
-                     return current != it.current;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : Hash(hasher), KeyEqual(equal), data(alloc), nbElements(0), maxLoadFactor(DEFAULT_MAX_LOAD_FACTOR), growAtNextInsert(false) {
+                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(SizeType bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : Hash(hasher), KeyEqual(equal), data(alloc), nbElements(0), maxLoadFactor(DEFAULT_MAX_LOAD_FACTOR), growAtNextInsert(false) {
                      data.resize(roundUpToPowerOfTwo(bucketCount));
                      data.getLast().setAsLastBucket();
                      mask = data.getSize() - 1;
@@ -249,13 +204,17 @@
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  template <class InputIterator>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(InputIterator begin, InputIterator end, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : HashTable(bucketCount, hasher, equal, alloc) {
+                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(InputIterator begin, InputIterator end, SizeType bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : HashTable(bucketCount, hasher, equal, alloc) {
                      insert(begin, end);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(std::initializer_list<ValueType> list, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : HashTable(bucketCount, hasher, equal, alloc) {
+                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(std::initializer_list<ValueType> list, SizeType bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : HashTable(bucketCount, hasher, equal, alloc) {
                      insert(list);
+                 }
+    
+                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
+                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(HashTable const& table) : HashTable(table, table.getAllocator()) {
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
@@ -263,7 +222,11 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(HashTable&& table, Allocator const& alloc) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data), alloc), nbElements(table.nbElements), mask(table.mask), loadThresHold(table.loadThresHold), maxLoadFactor(table.maxLoadFactor), growAtNextInsert(table.growAtNextInsert) {
+                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(HashTable && table) : HashTable(std::move(table), table.getAllocator()) {
+                 }
+    
+                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
+                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::HashTable(HashTable && table, Allocator const& alloc) : Hash(std::move(static_cast <Hash&> (table))), KeyEqual(std::move(static_cast <KeyEqual&> (table))), data(std::move(table.data), alloc), nbElements(table.nbElements), mask(table.mask), loadThresHold(table.loadThresHold), maxLoadFactor(table.maxLoadFactor), growAtNextInsert(table.growAtNextInsert) {
                      table.data.clear();
                      table.nbElements = 0;
                      table.loadThresHold = 0;
@@ -271,7 +234,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(Key const& k) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(KeyType const& k) {
                      auto it = find(k);
                      if (it == end()) {
                          throw std::out_of_range("Accessing non existing element in NRE::Utility::HashTable.");
@@ -280,7 +243,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T const& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(Key const& k) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType const& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(KeyType const& k) const {
                      auto it = find(k);
                      if (it == end()) {
                          throw std::out_of_range("Accessing non existing element in NRE::Utility::HashTable.");
@@ -289,17 +252,17 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucketCount() const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucketCount() const {
                      return data.getSize();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 constexpr std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxBucketCount() const {
+                 constexpr typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxBucketCount() const {
                      return data.getMaxSize();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getSize() const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getSize() const {
                      return nbElements;
                  }
     
@@ -315,12 +278,12 @@
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline Allocator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getAllocator() const {
-                     return data.getAllocator();
+                     return Allocator(data.getAllocator());
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 constexpr std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxSize() const {
-                     return std::numeric_limits<std::size_t>::max();
+                 constexpr typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxSize() const {
+                     return std::numeric_limits<SizeType>::max();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
@@ -329,7 +292,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getCount(Key const& k) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getCount(KeyType const& k) const {
                      if (find(k) != end()) {
                          return 1;
                      } else {
@@ -338,7 +301,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucket(Key const& k) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucket(KeyType const& k) const {
                      return bucketFromHash(hashKey(k));
                  }
     
@@ -348,12 +311,12 @@
                          throw std::out_of_range("NRE::Utility::HashTable max load factor must be between 0.0 and 1.0.");
                      }
                      maxLoadFactor = factor;
-                     loadThresHold = static_cast <std::size_t> (static_cast <float> (getBucketCount()) * maxLoadFactor);
+                     loadThresHold = static_cast <SizeType> (static_cast <float> (getBucketCount()) * maxLoadFactor);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin() {
-                     std::size_t index = 0;
+                     SizeType index = 0;
                      while (index < getBucketCount() && data[index].isEmpty()) {
                          ++index;
                      }
@@ -363,7 +326,7 @@
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin() const {
-                     std::size_t index = 0;
+                     SizeType index = 0;
                      while (index < getBucketCount() && data[index].isEmpty()) {
                          ++index;
                      }
@@ -392,32 +355,32 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(std::size_t index) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(SizeType index) {
                      return LocalIterator(&data[index]);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(std::size_t index) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(SizeType index) const {
                      return ConstLocalIterator(&data[index]);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cbegin(std::size_t index) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cbegin(SizeType index) const {
                      return begin();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(std::size_t index) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(SizeType index) {
                      return LocalIterator(nullptr);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(std::size_t index) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(SizeType index) const {
                      return ConstLocalIterator(nullptr);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cend(std::size_t index) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cend(SizeType index) const {
                      return end();
                  }
     
@@ -435,8 +398,8 @@
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  template <class InputIterator>
                  inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::insert(InputIterator begin, InputIterator end) {
-                     std::size_t count = std::distance(begin, end);
-                     std::size_t free = loadThresHold - getSize();
+                     SizeType count = std::distance(begin, end);
+                     SizeType free = loadThresHold - getSize();
                      if (count > 0 && free < count) {
                          reserve(getSize() + count);
                      }
@@ -465,10 +428,10 @@
                  template <class ... Args>
                  inline Pair<typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator, bool> HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::emplace(Args&& ... args) {
                      ValueType toInsert(std::forward<Args>(args)...);
-                     Key& key = toInsert.first;
+                     KeyType const& key = toInsert.first;
         
-                     std::size_t hashValue = hashKey(key);
-                     std::size_t index = bucketFromHash(hashValue);
+                     SizeType hashValue = hashKey(key);
+                     SizeType index = bucketFromHash(hashValue);
                      DistanceType distanceToNext = 0;
         
                      while (distanceToNext <= data[index].getDistanceToNext()) {
@@ -532,20 +495,20 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::reserve(std::size_t count) {
-                     rehash(static_cast <std::size_t> (std::ceil(static_cast <float> (count) / getMaxLoadFactor())));
+                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::reserve(SizeType count) {
+                     rehash(static_cast <SizeType> (std::ceil(static_cast <float> (count) / getMaxLoadFactor())));
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::rehash(std::size_t count) {
-                     count = std::max(count, static_cast <std::size_t> (std::ceil(static_cast <float> (getSize()) / getMaxLoadFactor())));
+                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::rehash(SizeType count) {
+                     count = std::max(count, static_cast <SizeType> (std::ceil(static_cast <float> (getSize()) / getMaxLoadFactor())));
                      HashTable newTable(count, static_cast <Hash&> (*this), static_cast <KeyEqual&> (*this));
         
                      bool useStoredHash = USE_STORED_HASH_ON_REHASH(newTable.getBucketCount());
         
                      for (auto& bucket : data) {
                          if (!bucket.isEmpty()) {
-                             std::size_t hashValue = (useStoredHash) ? (static_cast <std::size_t> (bucket.getTruncatedHash())) : (newTable.hashKey(bucket.getData().first));
+                             SizeType hashValue = (useStoredHash) ? (static_cast <SizeType> (bucket.getTruncatedHash())) : (newTable.hashKey(bucket.getData().first));
                              newTable.insertOnRehash(newTable.bucketFromHash(hashValue), 0, TruncatedHash(hashValue), std::move(bucket.getData()));
                          }
                      }
@@ -555,26 +518,26 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline Pair<typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator, typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator> HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(Key const& k) {
+                 inline Pair<typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator, typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator> HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(KeyType const& k) {
                      Iterator it = find(k);
                      return Pair<Iterator, Iterator>(it, (it == end()) ? (it) : (std::next(it)));
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline Pair<typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator, typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator> HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(Key const& k) const {
+                 inline Pair<typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator, typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator> HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(KeyType const& k) const {
                      ConstIterator it = find(k);
                      return Pair<ConstIterator, ConstIterator>(it, (it == end()) ? (it) : (std::next(it)));
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(Key const& k) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(KeyType const& k) {
                      return Iterator(const_cast <const HashTable&>(*this).find(k).current);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(Key const& k) const {
-                     std::size_t hashValue = hashKey(k);
-                     std::size_t index = bucketFromHash(hashValue);
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(KeyType const& k) const {
+                     SizeType hashValue = hashKey(k);
+                     SizeType index = bucketFromHash(hashValue);
                      DistanceType distanceToNext = 0;
         
                      while (distanceToNext <= data[index].getDistanceToNext()) {
@@ -599,8 +562,8 @@
                      pos.current->clear();
                      nbElements--;
         
-                     std::size_t previousIndex = static_cast <std::size_t> (pos.current - data.getData());
-                     std::size_t index = next(previousIndex);
+                     SizeType previousIndex = static_cast <SizeType> (pos.current - data.getData());
+                     SizeType index = next(previousIndex);
         
                      while (data[index].getDistanceToNext() > 0) {
                          DistanceType newDistance = static_cast <DistanceType>(data[index].getDistanceToNext() - 1);
@@ -636,13 +599,13 @@
                          return this->end();
                      }
         
-                     std::size_t closerIndex = static_cast <std::size_t> (beginIt.current - data.getData());
-                     std::size_t moveCloserIndex = static_cast <std::size_t> (endIt.current - data.getData());
+                     SizeType closerIndex = static_cast <SizeType> (beginIt.current - data.getData());
+                     SizeType moveCloserIndex = static_cast <SizeType> (endIt.current - data.getData());
         
-                     std::size_t returnIndex = moveCloserIndex - std::min(moveCloserIndex - closerIndex, static_cast <std::size_t> (data[moveCloserIndex].getDistanceToNext()));
+                     SizeType returnIndex = moveCloserIndex - std::min(moveCloserIndex - closerIndex, static_cast <SizeType> (data[moveCloserIndex].getDistanceToNext()));
         
                      while (moveCloserIndex < getBucketCount() && data[moveCloserIndex].getDistanceToNext() > 0) {
-                         closerIndex = moveCloserIndex - std::min(moveCloserIndex - closerIndex, static_cast <std::size_t> (data[moveCloserIndex].getDistanceToNext()));
+                         closerIndex = moveCloserIndex - std::min(moveCloserIndex - closerIndex, static_cast <SizeType> (data[moveCloserIndex].getDistanceToNext()));
                          DistanceType newDistance = static_cast <DistanceType> (data[moveCloserIndex].getDistanceToNext() - (moveCloserIndex - closerIndex));
             
                          data[closerIndex].setData(newDistance, data[moveCloserIndex].getTruncatedHash(), std::move(data[moveCloserIndex].getData()));
@@ -656,7 +619,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(Key const& k) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(KeyType const& k) {
                      Iterator it = find(k);
                      if (it != end()) {
                          erase(it);
@@ -702,12 +665,12 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator [](Key const& k) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator [](KeyType const& k) {
                      return (insert(ValueType(k, T())).first)->second;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator [](Key&& k) {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType& HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator [](KeyType && k) {
                      return (insert(ValueType(std::move(k), T())).first)->second;
                  }
     
@@ -731,27 +694,27 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::hashKey(Key const& k) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::hashKey(KeyType const& k) const {
                      return Hash::operator ()(k);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::compareKey(Key const& k1, Key const& k2) const {
+                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::compareKey(KeyType const& k1, KeyType const& k2) const {
                      return KeyEqual::operator ()(k1, k2);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::next(std::size_t index) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::next(SizeType index) const {
                      return (index + 1) & mask;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::bucketFromHash(std::size_t hashValue) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::bucketFromHash(SizeType hashValue) const {
                      return hashValue & mask;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::roundUpToPowerOfTwo(std::size_t count) const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::roundUpToPowerOfTwo(SizeType count) const {
                      if (count == 0) {
                          return 1;
                      }
@@ -761,14 +724,14 @@
                      }
         
                      --count;
-                     for (std::size_t i = 1; i < sizeof(std::size_t) * CHAR_BIT; i *= 2) {
+                     for (SizeType i = 1; i < sizeof(SizeType) * CHAR_BIT; i *= 2) {
                          count |= count >> i;
                      }
                      return count + 1;
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::insertValue(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType& pair) {
+                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::insertValue(SizeType index, DistanceType distanceToNext, TruncatedHash h, ValueType& pair) {
                      data[index].swapWithData(distanceToNext, h, pair);
                      index = next(index);
                      ++distanceToNext;
@@ -789,7 +752,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::insertOnRehash(std::size_t index, DistanceType distanceToNext, TruncatedHash h, ValueType&& pair) {
+                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::insertOnRehash(SizeType index, DistanceType distanceToNext, TruncatedHash h, ValueType&& pair) {
                      bool done = false;
                      while (!done) {
                          if (distanceToNext > data[index].getDistanceToNext()) {
@@ -817,7 +780,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getNewSize() const {
+                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getNewSize() const {
                      return data.getSize() * 2;
                  }
     

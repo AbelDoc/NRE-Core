@@ -30,12 +30,59 @@
                  */
                 template <class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
                 class UnorderedMap : public Stringable<UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>> {
-                    public :    // Typedef
-                        typedef Pair<Key, T> ValueType;
-                        typedef typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator             Iterator;
-                        typedef typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator        ConstIterator;
-                        typedef typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator        LocalIterator;
-                        typedef typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator   ConstLocalIterator;
+                    public :     // Traits
+                        /**< The table key type */
+                        using KeyType               = Key;
+                        /**< The table mapped type */
+                        using MappedType            = T;
+                        /**< The container's allocated type */
+                        using ValueType             = Pair<KeyType, MappedType>;
+                        /**< The container's allocator */
+                        using AllocatorType         = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::AllocatorType;
+                        /**< The object's size type */
+                        using SizeType              = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType;
+                        /**< The object's difference type */
+                        using DifferenceType        = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DifferenceType;
+                        /**< The allocated type reference */
+                        using Reference             = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Reference;
+                        /**< The allocated type const reference */
+                        using ConstReference        = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstReference;
+                        /**< The allocated type pointer */
+                        using Pointer               = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Pointer;
+                        /**< The allocated type const pointer */
+                        using ConstPointer          = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstPointer;
+                        /**< Mutable random access iterator */
+                        using Iterator              = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator;
+                        /**< Immuable random access iterator */
+                        using ConstIterator         = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator;
+                        /**< Mutable random access iterator */
+                        using LocalIterator         = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator;
+                        /**< Immuable random access iterator */
+                        using ConstLocalIterator    = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator;
+                        /**< STL compatibility */
+                        using value_type            = ValueType;
+                        /**< STL compatibility */
+                        using allocator_type        = AllocatorType;
+                        /**< STL compatibility */
+                        using size_type             = SizeType;
+                        /**< STL compatibility */
+                        using difference_type       = DifferenceType;
+                        /**< STL compatibility */
+                        using reference             = Reference;
+                        /**< STL compatibility */
+                        using const_reference       = ConstReference;
+                        /**< STL compatibility */
+                        using pointer               = Pointer;
+                        /**< STL compatibility */
+                        using const_pointer         = ConstPointer;
+                        /**< STL compatibility */
+                        using iterator              = Iterator;
+                        /**< STL compatibility */
+                        using const_iterator        = ConstIterator;
+                        /**< STL compatibility */
+                        using local_iterator        = LocalIterator;
+                        /**< STL compatibility */
+                        using const_local_iterator  = ConstLocalIterator;
     
                     private :   // Fields
                          HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual> table; /**< The internal hash table */
@@ -49,7 +96,7 @@
                              * @param equal       the equal function used in the map
                              * @param alloc       the hashtable's memory allocator
                              */
-                            UnorderedMap(std::size_t bucketCount = HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT , Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
+                            UnorderedMap(SizeType bucketCount = HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
                             /**
                              * Construct a map with a number of bucket and filled with elements in the given range
                              * @param begin       the begin iterator
@@ -60,7 +107,7 @@
                              * @param alloc       the hashtable's memory allocator
                              */
                             template <class InputIterator>
-                            UnorderedMap(InputIterator begin, InputIterator end, std::size_t bucketCount = HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
+                            UnorderedMap(InputIterator begin, InputIterator end, SizeType bucketCount = HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
                             /**
                              * Construct a map with a number of bucket and filled with elements in the given list
                              * @param list        the list to fill the map with
@@ -69,7 +116,7 @@
                              * @param equal       the equal function used in the map
                              * @param alloc       the hashtable's memory allocator
                              */
-                            UnorderedMap(std::initializer_list<ValueType> list, std::size_t bucketCount = HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
+                            UnorderedMap(std::initializer_list<ValueType> list, SizeType bucketCount = HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DEFAULT_BUCKET_COUNT, Hash const& hasher = Hash(), KeyEqual const& equal = KeyEqual(), Allocator const& alloc = Allocator());
     
                         //## Copy Constructor ##//
                             /**
@@ -93,25 +140,25 @@
                              * @param  k the element key
                              * @return   the corresponding element
                              */
-                            T& get(Key const& k);
+                            MappedType& get(KeyType const& k);
                             /**
                              * Access a particular element with bound checking
                              * @param  k the element key
                              * @return   the corresponding element
                              */
-                            T const& get(Key const& k) const;
+                            MappedType const& get(KeyType const& k) const;
                             /**
                              * @return the number of buckets in the map
                              */
-                            std::size_t getBucketCount() const;
+                            SizeType getBucketCount() const;
                             /**
                              * @return the maximum number of bucket in the map
                              */
-                            constexpr std::size_t getMaxBucketCount() const;
+                            constexpr SizeType getMaxBucketCount() const;
                             /**
                              * @return the number of elements in the map
                              */
-                            std::size_t getSize() const;
+                            SizeType getSize() const;
                             /**
                              * @return the maximum load factor
                              */
@@ -123,7 +170,7 @@
                             /**
                              * @return the maximum map size
                              */
-                            constexpr std::size_t getMaxSize() const;
+                            constexpr SizeType getMaxSize() const;
                             /**
                              * @return the hashtable's memory allocator
                              */
@@ -137,13 +184,13 @@
                              * @param  k the key to search
                              * @return   the number of corresponding elements
                              */
-                            std::size_t getCount(Key const& k) const;
+                            SizeType getCount(KeyType const& k) const;
                             /**
                              * Get the bucket index from a given key
                              * @param  k the key to search
                              * @return   the corresponding bucket
                              */
-                            std::size_t getBucket(Key const& k) const;
+                            SizeType getBucket(KeyType const& k) const;
     
                         //## Setter ##//
                             /**
@@ -182,37 +229,37 @@
                              * @param index the bucket index
                              * @return the iterator on the bucket
                              */
-                            LocalIterator begin(std::size_t index);
+                            LocalIterator begin(SizeType index);
                             /**
                              * Grab a const iterator on a given bucket
                              * @param index the bucket index
                              * @return the iterator on the bucket
                              */
-                            ConstLocalIterator begin(std::size_t index) const;
+                            ConstLocalIterator begin(SizeType index) const;
                             /**
                              * Grab a const iterator on a given bucket
                              * @param index the bucket index
                              * @return the iterator on the bucket
                              */
-                            ConstLocalIterator cbegin(std::size_t index) const;
+                            ConstLocalIterator cbegin(SizeType index) const;
                             /**
                              * Grab an iterator on a given bucket end
                              * @param index the bucket index
                              * @return the iterator on the bucket end
                              */
-                            LocalIterator end(std::size_t index);
+                            LocalIterator end(SizeType index);
                             /**
                              * Grab a const iterator on a given bucket end
                              * @param index the bucket index
                              * @return the iterator on the bucket end
                              */
-                            ConstLocalIterator end(std::size_t index) const;
+                            ConstLocalIterator end(SizeType index) const;
                             /**
                              * Grab a const iterator on a given bucket end
                              * @param index the bucket index
                              * @return the iterator on the bucket end
                              */
-                            ConstLocalIterator cend(std::size_t index) const;
+                            ConstLocalIterator cend(SizeType index) const;
     
                         //## Methods ##//
                             /**
@@ -283,36 +330,36 @@
                              * Reserve at least count bucket in the map and rehash the map
                              * @param count the number of desired bucket
                              */
-                            void reserve(std::size_t count);
+                            void reserve(SizeType count);
                             /**
                              * Reserve at least coutn bucket in the map and rehash the map
                              * @param count the number of desired bucket
                              */
-                            void rehash(std::size_t count);
+                            void rehash(SizeType count);
                             /**
                              * Find a range of iterator containing all elements with the given key, both end if not found
                              * @param key the key to search
                              * @return    a pair of iterator
                              */
-                            Pair<Iterator, Iterator> equalRange(Key const& key);
+                            Pair<Iterator, Iterator> equalRange(KeyType const& key);
                             /**
                              * Find a range of iterator containing all elements with the given key, both end if not found
                              * @param key the key to search
                              * @return    a pair of iterator
                              */
-                            Pair<ConstIterator, ConstIterator> equalRange(Key const& key) const;
+                            Pair<ConstIterator, ConstIterator> equalRange(KeyType const& key) const;
                             /**
                              * Find the element corresponding with the given key
                              * @param  k the key to search
                              * @return   the iterator pointing on the element, or end if not found
                              */
-                            Iterator find(Key const& k);
+                            Iterator find(KeyType const& k);
                             /**
                              * Find the element corresponding with the given key
                              * @param  k the key to search
                              * @return   the iterator pointing on the element, or end if not found
                              */
-                            ConstIterator find(Key const& k) const;
+                            ConstIterator find(KeyType const& k) const;
                             /**
                              * Erase the element pointed by the iterator
                              * @param  pos the iterator on the erased element
@@ -337,7 +384,7 @@
                              * @param  k the key to search and erase
                              * @return   the number of erased elements
                              */
-                            std::size_t erase(Key const& k);
+                            SizeType erase(KeyType const& k);
                             /**
                              * @return the hash function
                              */
@@ -367,13 +414,13 @@
                              * @param  k the key used for access
                              * @return   the found/inserted element
                              */
-                            T& operator[](Key const& k);
+                            MappedType& operator[](KeyType const& k);
                             /**
                              * Try to access the element designed by the given key, if not found insert a default one
                              * @param  k the key used for access
                              * @return   the found/inserted element
                              */
-                            T& operator[](Key && k);
+                            MappedType& operator[](KeyType && k);
     
                         //## Comparison Operator ##//
                             /**
@@ -396,15 +443,6 @@
                              */
                             [[nodiscard]] String toString() const;
                 };
-    
-                /**
-                 * Output stream operator for the object
-                 * @param  stream the stream to add the object's string representation
-                 * @param  o      the object to add in the stream
-                 * @return        the modified stream
-                 */
-                template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                std::ostream& operator <<(std::ostream& stream, UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual> const& o);
             }
         }
     }

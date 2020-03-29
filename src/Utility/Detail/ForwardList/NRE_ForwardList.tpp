@@ -53,22 +53,22 @@
                  }
     
                  template <class T, class Allocator>
-                 inline ForwardList<T, Allocator>::ForwardList(AllocatorType const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
+                 inline ForwardList<T, Allocator>::ForwardList(Allocator const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
                  }
     
                  template <class T, class Allocator>
-                 inline ForwardList<T, Allocator>::ForwardList(SizeType count, ConstReference value, AllocatorType const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
+                 inline ForwardList<T, Allocator>::ForwardList(SizeType count, ConstReference value, Allocator const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
                      assign(count, value);
                  }
     
                  template <class T, class Allocator>
                  template <class InputIterator>
-                 inline ForwardList<T, Allocator>::ForwardList(InputIterator begin, InputIterator end, AllocatorType const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
+                 inline ForwardList<T, Allocator>::ForwardList(InputIterator begin, InputIterator end, Allocator const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
                      assign(begin, end);
                  }
     
                  template <class T, class Allocator>
-                 inline ForwardList<T, Allocator>::ForwardList(std::initializer_list<T> list, AllocatorType const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
+                 inline ForwardList<T, Allocator>::ForwardList(std::initializer_list<T> list, Allocator const& alloc) : AllocatorType(alloc), front(nullptr), length(0) {
                      assign(list.begin(), list.end());
                  }
     
@@ -77,7 +77,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline ForwardList<T, Allocator>::ForwardList(ForwardList const& list, AllocatorType const& alloc) : ForwardList(list.begin(), list.end(), alloc) {
+                 inline ForwardList<T, Allocator>::ForwardList(ForwardList const& list, Allocator const& alloc) : ForwardList(list.begin(), list.end(), alloc) {
                  }
     
                  template <class T, class Allocator>
@@ -85,7 +85,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline ForwardList<T, Allocator>::ForwardList(ForwardList && list, AllocatorType const& alloc) : AllocatorType(alloc), front(list.front), length(list.length) {
+                 inline ForwardList<T, Allocator>::ForwardList(ForwardList && list, Allocator const& alloc) : AllocatorType(alloc), front(list.front), length(list.length) {
                      list.front = nullptr;
                      list.length = 0;
                  }
@@ -111,8 +111,8 @@
                  }
     
                  template <class T, class Allocator>
-                 inline typename ForwardList<T, Allocator>::AllocatorType const& ForwardList<T, Allocator>::getAllocator() const {
-                     return *this;
+                 inline Allocator ForwardList<T, Allocator>::getAllocator() const {
+                     return Allocator(*this);
                  }
     
                  template <class T, class Allocator>

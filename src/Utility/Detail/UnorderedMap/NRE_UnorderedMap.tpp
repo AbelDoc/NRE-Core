@@ -12,16 +12,16 @@
              namespace Detail {
 
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::UnorderedMap(std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : table(bucketCount, hasher, equal, alloc) {
+                 inline UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::UnorderedMap(SizeType bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : table(bucketCount, hasher, equal, alloc) {
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  template <class InputIterator>
-                 inline UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::UnorderedMap(InputIterator begin, InputIterator end, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : table(begin, end, bucketCount, hasher, equal, alloc) {
+                 inline UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::UnorderedMap(InputIterator begin, InputIterator end, SizeType bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : table(begin, end, bucketCount, hasher, equal, alloc) {
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::UnorderedMap(std::initializer_list<ValueType> list, std::size_t bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : table(list, bucketCount, hasher, equal, alloc) {
+                 inline UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::UnorderedMap(std::initializer_list<ValueType> list, SizeType bucketCount, Hash const& hasher, KeyEqual const& equal, Allocator const& alloc) : table(list, bucketCount, hasher, equal, alloc) {
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
@@ -33,27 +33,27 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(Key const& k) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(KeyType const& k) {
                      return table.get(k);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T const& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(Key const& k) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType const& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::get(KeyType const& k) const {
                      return table.get(k);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucketCount() const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucketCount() const {
                      return table.getBucketCount();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline constexpr std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxBucketCount() const {
+                 constexpr typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxBucketCount() const {
                      return table.getMaxBucketCount();
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getSize() const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getSize() const {
                      return table.getSize();
                  }
     
@@ -68,7 +68,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 constexpr std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxSize() const {
+                 constexpr typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getMaxSize() const {
                      return table.getMaxSize();
                  }
     
@@ -83,12 +83,12 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getCount(Key const& k) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getCount(KeyType const& k) const {
                      return table.getCount(k);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucket(Key const& k) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::getBucket(KeyType const& k) const {
                      return table.getBucket(k);
                  }
     
@@ -128,32 +128,32 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(std::size_t index) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(SizeType index) {
                      return table.begin(index);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(std::size_t index) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::begin(SizeType index) const {
                      return table.begin(index);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cbegin(std::size_t index) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cbegin(SizeType index) const {
                      return table.cbegin(index);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(std::size_t index) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(SizeType index) {
                      return table.end(index);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(std::size_t index) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::end(SizeType index) const {
                      return table.end(index);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cend(std::size_t index) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::cend(SizeType index) const {
                      return table.cend(index);
                  }
     
@@ -214,32 +214,32 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline void UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::reserve(std::size_t count) {
+                 inline void UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::reserve(SizeType count) {
                      table.reserve(count);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline void UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::rehash(std::size_t count) {
+                 inline void UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::rehash(SizeType count) {
                      table.rehash(count);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline Pair<typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator, typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator> UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(Key const& key) {
+                 inline Pair<typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator, typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator> UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(KeyType const& key) {
                      return table.equalRange(key);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline Pair<typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator, typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator> UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(Key const& key) const {
+                 inline Pair<typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator, typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator> UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::equalRange(KeyType const& key) const {
                      return table.equalRange(key);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(Key const& k) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(KeyType const& k) {
                      return table.find(k);
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(Key const& k) const {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(KeyType const& k) const {
                      return table.find(k);
                  }
     
@@ -259,7 +259,7 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline std::size_t UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(Key const& k) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(KeyType const& k) {
                      return table.erase(k);
                  }
     
@@ -286,12 +286,12 @@
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator[](Key const& k) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator[](KeyType const& k) {
                      return table[k];
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 inline T& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator[](Key && k) {
+                 inline typename UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::MappedType& UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>::operator[](KeyType && k) {
                      return table[std::forward<Key>(k)];
                  }
     

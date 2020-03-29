@@ -122,7 +122,7 @@
                         /**< Inner container */
                         using Node = ForwardListInner::Node<ValueType>;
                     
-                    public :    // Iterator
+                    private :    // Iterator
                         /**
                          * @class ForwardIterator
                          * @brief Internal iterator for forward list
@@ -208,19 +208,19 @@
                                      */
                                     bool equal(ForwardIterator const& it) const;
     
-                            //## Assignment Operator ##//
-                                /**
-                                 * Copy assignment of it into this
-                                 * @param it the iterator to copy
-                                 * @return   the reference of himself
-                                 */
-                                ForwardIterator& operator =(ForwardIterator const& it) = default;
-                                /**
-                                 * Move assignment of it into this
-                                 * @param it the iterator to move
-                                 * @return   the reference of himself
-                                 */
-                                ForwardIterator& operator =(ForwardIterator && it) = default;
+                                //## Assignment Operator ##//
+                                    /**
+                                     * Copy assignment of it into this
+                                     * @param it the iterator to copy
+                                     * @return   the reference of himself
+                                     */
+                                    ForwardIterator& operator =(ForwardIterator const& it) = default;
+                                    /**
+                                     * Move assignment of it into this
+                                     * @param it the iterator to move
+                                     * @return   the reference of himself
+                                     */
+                                    ForwardIterator& operator =(ForwardIterator && it) = default;
     
                         };
                         
@@ -229,18 +229,10 @@
                         using Iterator              = ForwardIterator<InOutForwardIterator>;
                         /**< Immuable random access iterator */
                         using ConstIterator         = ForwardIterator<Utility::ForwardIterator>;
-                        /**< Mutable reverse random access iterator */
-                        using ReverseIterator       = std::reverse_iterator<Iterator>;
-                        /**< Immuable reverse random access iterator */
-                        using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
                         /**< STL compatibility */
                         using iterator              = Iterator;
                         /**< STL compatibility */
                         using const_iterator        = ConstIterator;
-                        /**< STL compatibility */
-                        using reverse_iterator      = ReverseIterator;
-                        /**< STL compatibility */
-                        using const_reverse_iterator= ConstReverseIterator;
     
                     private :   // Fields
                         NodeBase front;     /**< The front node of the list */
@@ -252,14 +244,14 @@
                              * Construct an empty list
                              * @param alloc the list's memory allocator
                              */
-                            ForwardList(AllocatorType const& alloc = AllocatorType());
+                            ForwardList(Allocator const& alloc = Allocator());
                             /**
                              * Construct a list with count copy of value
                              * @param count the number of copy
                              * @param value the value to use for copy
                              * @param alloc the list's memory allocator
                              */
-                            ForwardList(SizeType count, ConstReference value = ValueType(), AllocatorType const& alloc = AllocatorType());
+                            ForwardList(SizeType count, ConstReference value = ValueType(), Allocator const& alloc = Allocator());
                             /**
                              * Construct a list using elements in the given range
                              * @param begin the iterator on the first element
@@ -267,13 +259,13 @@
                              * @param alloc the list's memory allocator
                              */
                             template <class InputIterator>
-                            ForwardList(InputIterator begin, InputIterator end, AllocatorType const& alloc = AllocatorType());
+                            ForwardList(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
                             /**
                              * Construct a list using elements in the given list
                              * @param list  the initializer list
                              * @param alloc the list's memory allocator
                              */
-                            ForwardList(std::initializer_list<ValueType> list, AllocatorType const& alloc = AllocatorType());
+                            ForwardList(std::initializer_list<ValueType> list, Allocator const& alloc = Allocator());
     
                         //## Copy Constructor ##//
                             /**
@@ -286,7 +278,7 @@
                              * @param list  the list to copy
                              * @param alloc the list's memory allocator
                              */
-                            ForwardList(ForwardList const& list, AllocatorType const& alloc);
+                            ForwardList(ForwardList const& list, Allocator const& alloc);
     
                         //## Move Constructor ##//
                             /**
@@ -299,7 +291,7 @@
                              * @param list  the list to move
                              * @param alloc the list's memory allocator
                              */
-                            ForwardList(ForwardList && list, AllocatorType const& alloc);
+                            ForwardList(ForwardList && list, Allocator const& alloc);
             
                         //## Deconstructor ##//
                             /**
@@ -323,7 +315,7 @@
                             /**
                              * @return the list's memory allocator
                              */
-                            AllocatorType const& getAllocator() const;
+                            Allocator getAllocator() const;
                             /**
                              * @return the list size
                              */
