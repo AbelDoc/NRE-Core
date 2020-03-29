@@ -29,7 +29,7 @@
                 observers.clear();
             }
 
-            inline std::size_t Observable::getCount() const {
+            inline typename Observable::SizeType Observable::getCount() const {
                 return observers.getSize();
             }
 
@@ -42,27 +42,27 @@
                 }
             }
 
-            inline Vector<Observer*>::Iterator Observable::begin() {
+            inline typename Observable::Iterator Observable::begin() {
                 return observers.begin();
             }
 
-            inline Vector<Observer*>::ConstIterator Observable::begin() const {
+            inline typename Observable::ConstIterator Observable::begin() const {
                 return observers.begin();
             }
 
-            inline Vector<Observer*>::ConstIterator Observable::cbegin() const {
+            inline typename Observable::ConstIterator Observable::cbegin() const {
                 return observers.cbegin();
             }
 
-            inline Vector<Observer*>::Iterator Observable::end() {
+            inline typename Observable::Iterator Observable::end() {
                 return observers.end();
             }
 
-            inline Vector<Observer*>::ConstIterator Observable::end() const {
+            inline typename Observable::ConstIterator Observable::end() const {
                 return observers.end();
             }
 
-            inline Vector<Observer*>::ConstIterator Observable::cend() const {
+            inline typename Observable::ConstIterator Observable::cend() const {
                 return observers.cend();
             }
 

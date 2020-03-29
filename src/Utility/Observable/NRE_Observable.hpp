@@ -31,9 +31,19 @@
              * @brief Describe an observable object, coupled with observer
              */
             class Observable {
+                public:     //Traits
+                    /**< The observers container */
+                    using Container     = Vector<Observer*>;
+                    /**< The observers iterator */
+                    using Iterator      = typename Container::Iterator;
+                    /**< The observers const iterator */
+                    using ConstIterator = typename Container::ConstIterator;
+                    /**< The observable size type */
+                    using SizeType      = typename Container::SizeType;
+                    
                 private:    //Fields
-                    bool changed;                 /**< Tell if changes had happened */
-                    Vector<Observer*> observers;  /**< All registered observers */
+                    bool changed;         /**< Tell if changes had happened */
+                    Container observers;  /**< All registered observers */
 
                 public:    // Methods
                     //## Constructor ##//
@@ -86,7 +96,7 @@
                         /**
                          * @return the number of observer
                          */
-                        std::size_t getCount() const;
+                        SizeType getCount() const;
                         /**
                          * Notify all observer if changes happened
                          * @param arg the notification argument
@@ -97,27 +107,27 @@
                         /**
                          * @return an iterator on the first element
                          */
-                        Vector<Observer*>::Iterator begin();
+                        Iterator begin();
                         /**
                          * @return a const iterator on the first element
                          */
-                        Vector<Observer*>::ConstIterator begin() const;
+                        ConstIterator begin() const;
                         /**
                          * @return a const iterator on the first element
                          */
-                        Vector<Observer*>::ConstIterator cbegin() const;
+                        ConstIterator cbegin() const;
                         /**
                          * @return an iterator on the end of the container
                          */
-                        Vector<Observer*>::Iterator end();
+                        Iterator end();
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        Vector<Observer*>::ConstIterator end() const;
+                        ConstIterator end() const;
                         /**
                          * @return a const iterator on the end of the container
                          */
-                        Vector<Observer*>::ConstIterator cend() const;
+                        ConstIterator cend() const;
 
                     //## Assignment Operator ##//
                         /**
