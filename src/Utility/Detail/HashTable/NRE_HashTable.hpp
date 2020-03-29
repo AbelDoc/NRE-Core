@@ -217,7 +217,9 @@
                  */
                 template <class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
                 class HashTable : public Stringable<HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>>, private Hash, private KeyEqual {
-                    static_assert(Memory::IsAllocatorV<Allocator>);
+                    static_assert(Memory::IsAllocatorV<Allocator>);                                /**< Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits */
+                    static_assert(std::is_same_v<Pair<Key, T>, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
+                    
                     public :    // Traits
                         /**< The table key type */
                         using KeyType               = Key;

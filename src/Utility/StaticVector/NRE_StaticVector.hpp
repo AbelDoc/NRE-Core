@@ -14,6 +14,8 @@
     #include <limits>
     #include <cstring>
     
+    #include <Memory/Allocator/NRE_Allocator.hpp>
+    
     #include "../String/NRE_String.hpp"
     #include "../Interfaces/Stringable/NRE_Stringable.hpp"
     
@@ -34,19 +36,55 @@
              */
             template <class T, std::size_t Size = 128>
             class StaticVector : public Stringable<StaticVector<T, Size>> {
-                public :    // Iterator
-                    /**< Shortcut to hide Iterator implementation */
-                    typedef T*          Iterator;
-                    /**< Shortcut to hide ConstIterator implementation */
-                    typedef const T*    ConstIterator;
-                    /**< Shortcut to hide ReverseIterator implementation */
-                    typedef std::reverse_iterator<T*>          ReverseIterator;
-                    /**< Shortcut to hide ConstReverseIterator implementation */
-                    typedef std::reverse_iterator<const T*>    ConstReverseIterator;
+                public :    // Traits
+                    /**< The container's allocated type */
+                    using ValueType             = T;
+                    /**< The object's size type */
+                    using SizeType              = std::size_t;
+                    /**< The object's difference type */
+                    using DifferenceType        = std::ptrdiff_t;
+                    /**< The allocated type reference */
+                    using Reference             = ValueType&;
+                    /**< The allocated type const reference */
+                    using ConstReference        = ValueType const&;
+                    /**< The allocated type pointer */
+                    using Pointer               = ValueType*;
+                    /**< The allocated type const pointer */
+                    using ConstPointer          = const ValueType*;
+                    /**< Mutable random access iterator */
+                    using Iterator              = Pointer;
+                    /**< Immuable random access iterator */
+                    using ConstIterator         = ConstPointer;
+                    /**< Mutable reverse random access iterator */
+                    using ReverseIterator       = std::reverse_iterator<Iterator>;
+                    /**< Immuable reverse random access iterator */
+                    using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
+                    /**< STL compatibility */
+                    using value_type            = ValueType;
+                    /**< STL compatibility */
+                    using size_type             = SizeType;
+                    /**< STL compatibility */
+                    using difference_type       = DifferenceType;
+                    /**< STL compatibility */
+                    using reference             = Reference;
+                    /**< STL compatibility */
+                    using const_reference       = ConstReference;
+                    /**< STL compatibility */
+                    using pointer               = Pointer;
+                    /**< STL compatibility */
+                    using const_pointer         = ConstPointer;
+                    /**< STL compatibility */
+                    using iterator              = Iterator;
+                    /**< STL compatibility */
+                    using const_iterator        = ConstIterator;
+                    /**< STL compatibility */
+                    using reverse_iterator      = ReverseIterator;
+                    /**< STL compatibility */
+                    using const_reverse_iterator= ConstReverseIterator;
 
                 private :   // Fields
-                    std::size_t length;     /**< The data length */
-                    T data[Size];           /**< The internal data */
+                    SizeType length;       /**< The data length */
+                    ValueType data[Size];  /**< The internal data */
                     
                 public :    // Methods
                     //## Constructor ##//
@@ -60,12 +98,12 @@
                          * @param value the value to fill the static vector with
                          * @pre value don't reference a static vector item
                          */
-                        StaticVector(std::size_t count, T const& value);
+                        StaticVector(SizeType count, ConstReference value);
                         /**
                          * Construct a static vector filled with count default value
                          * @param count the number of default element, will be the static vector capacity and length
                          */
-                        StaticVector(std::size_t count);
+                        StaticVector(SizeType count);
                         /**
                          * Construct a static vector filled with element between 2 iterators
                          * @param  begin the begin iterator
@@ -79,7 +117,7 @@
                          * @param  init the list to fill the static vector with
                          * @pre list don't contain static vector reference
                          */
-                        StaticVector(std::initializer_list<T> init);
+                        StaticVector(std::initializer_list<ValueType> init);
         
                     //## Copy Constructor ##//
                         /**
@@ -107,49 +145,53 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& get(std::size_t index);
+                        Reference get(SizeType index);
                         /**
                          * Access a particular element with bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& get(std::size_t index) const;
+                        ConstReference get(SizeType index) const;
                         /**
                          * @return the internal data array
                          */
-                        T* getData();
+                        Pointer getData();
                         /**
                          * @return the internal data array
                          */
-                        const T* getData() const;
+                        ConstPointer getData() const;
+                        /**
+                         * @return the internal data array
+                         */
+                        ConstPointer getCData() const;
                         /**
                          * @return the first element
                          */
-                        T& getFront();
+                        Reference getFront();
                         /**
                          * @return the first element
                          */
-                        T const& getFront() const;
+                        ConstReference getFront() const;
                         /**
                          * @return the last element
                          */
-                        T& getLast();
+                        Reference getLast();
                         /**
                          * @return the last element
                          */
-                        T const& getLast() const;
+                        ConstReference getLast() const;
                         /**
                          * @return the static vector effective size
                          */
-                        std::size_t getSize() const;
+                        SizeType getSize() const;
                         /**
                          * @return the maximum array size
                          */
-                        constexpr std::size_t getMaxSize() const;
+                        constexpr SizeType getMaxSize() const;
                         /**
                          * @return the static vector capacity
                          */
-                        std::size_t getCapacity() const;
+                        SizeType getCapacity() const;
                         /**
                          * @return if the array is empty
                          */
@@ -212,7 +254,7 @@
                          * @param value the copy to fill the static vector with
                          * @pre value don't reference a static vector item
                          */
-                        void assign(std::size_t count, T const& value);
+                        void assign(SizeType count, ConstReference value);
                         /**
                          * Assign the static vector with element between 2 iterators
                          * @param  begin the begin iterator
@@ -224,20 +266,7 @@
                         /**
                          * Clear all object in the static vector, not actually releasing memory
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void clear() noexcept {
-                            for (std::size_t i = 0; i < length; i++) {
-                                data[i].~T();
-                            }
-                            length = 0;
-                        }
-                        /**
-                         * Clear all object in the static vector, not actually releasing memory
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void clear() noexcept {
-                            length = 0;
-                        }
+                        void clear() noexcept;
                         /**
                          * Insert a copy of value at the specified position
                          * @param  start the position to insert the value
@@ -245,7 +274,7 @@
                          * @return       the iterator on the inserted value
                          * @pre value don't reference a static vector item
                          */
-                        Iterator insert(ConstIterator start, T const& value);
+                        Iterator insert(ConstIterator start, ConstReference value);
                         /**
                          * Insert count copy of value at the specified position
                          * @param  start the position to insert values
@@ -254,7 +283,7 @@
                          * @return       the iterator on the first inserted value
                          * @pre value don't reference a static vector item
                          */
-                        Iterator insert(ConstIterator start, std::size_t count, T const& value);
+                        Iterator insert(ConstIterator start, SizeType count, ConstReference value);
                         /**
                          * Insert a copy of element between begin and end at the specified position
                          * @param  start the position to insert values
@@ -272,7 +301,7 @@
                          * @return       the iterator on the first inserted value
                          * @pre list don't contain static vector reference
                          */
-                        Iterator insert(ConstIterator start, std::initializer_list<T> list);
+                        Iterator insert(ConstIterator start, std::initializer_list<ValueType> list);
                         /**
                          * Emplace an element at the specified position
                          * @param  start the position to insert the value
@@ -299,12 +328,12 @@
                          * @param value the value to insert
                          * @pre value don't reference a static vector item
                          */
-                        void pushBack(T const& value);
+                        void pushBack(ConstReference value);
                         /**
                          * Emplace a value at the end of the static vector
                          * @param value the value to insert
                          */
-                        void pushBack(T && value);
+                        void pushBack(ValueType && value);
                         /**
                          * Emplace a value at the end of the static vector
                          * @param args the arguments for the value construction
@@ -314,29 +343,18 @@
                         /**
                          * Pop the last element in the static vector
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void popBack() {
-                            *(end() - 1).~T();
-                            length--;
-                        }
-                        /**
-                         * Pop the last element in the static vector
-                         */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void popBack() {
-                            length--;
-                        }
+                        void popBack();
                         /**
                          * Resize the container up the given size, insert value if needed
                          * @param count the new capacity
                          */
-                        void resize(std::size_t count);
+                        void resize(SizeType count);
                         /**
                          * Resize the container up the given size, insert value if needed
                          * @param count the new capacity
                          * @param value the value used when inserting
                          */
-                        void resize(std::size_t count, T const& value);
+                        void resize(SizeType count, ConstReference value);
                         /**
                          * Swap the static vector with another static vector
                          * @param vec the other static vector
@@ -349,13 +367,13 @@
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T& operator[](std::size_t index);
+                        Reference operator[](SizeType index);
                         /**
                          * Access a particular element without bound checking
                          * @param  index the element index
                          * @return       the corresponding element
                          */
-                        T const& operator[](std::size_t index) const;
+                        ConstReference operator[](SizeType index) const;
         
                     //## Assignment Operator ##//
                         /**
@@ -377,10 +395,10 @@
                          * @param vec the other static vector
                          * @return the test result
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         bool operator ==(StaticVector const& vec) const {
                             bool equal = true;
-                            std::size_t current = 0;
+                            SizeType current = 0;
                             while (equal && current < length) {
                                 equal = data[current] == vec[current];
                                 current++;
@@ -392,12 +410,12 @@
                          * @param vec the other static vector
                          * @return the test result
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         bool operator ==(StaticVector const& vec) const {
                             if (length != vec.length) {
                                 return false;
                             }
-                            return std::memcmp(data, vec.data, length * sizeof(T)) == 0;
+                            return std::memcmp(data, vec.data, length * sizeof(ValueType)) == 0;
                         }
                         /**
                          * Inequality test between this and vec
@@ -419,10 +437,10 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void shift(std::size_t start, std::size_t count) {
-                            for (std::size_t index = length + count - 1; index != start + count - 1; index--) {
-                                new(&data[index]) T (std::move(data[index - count]));
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
+                        void shift(SizeType start, SizeType count) {
+                            for (SizeType index = length + count - 1; index != start + count - 1; index--) {
+                                data[index] = std::move(data[index - count]);
                             }
                         }
                         /**
@@ -430,19 +448,19 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void shift(std::size_t start, std::size_t count) {
-                            std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
+                        void shift(SizeType start, SizeType count) {
+                            std::memmove(data + start + count, data + start, (length - start) * sizeof(ValueType));
                         }
                         /**
                          * Shift back all element in the static vector, don't call deconstructor
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void shiftBack(std::size_t start, std::size_t count) {
-                            for (std::size_t index = start; index < start + count; index++) {
-                                new(&data[index]) T (std::move(data[index + count]));
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
+                        void shiftBack(SizeType start, SizeType count) {
+                            for (SizeType index = start; index < start + count; index++) {
+                                data[index] = std::move(data[index + count]);
                             }
                         }
                         /**
@@ -450,49 +468,51 @@
                          * @param start the start position for shifting
                          * @param count the number of shift to do
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void shiftBack(std::size_t start, std::size_t count) {
-                            std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
+                        void shiftBack(SizeType start, SizeType count) {
+                            std::memmove(data + start, data + start + count, (length - start) * sizeof(ValueType));
                         }
                         /**
-                         * Copy the static vector content
-                         * @param vec the static vector to copy
+                         * Copy the given vector into this
+                         * @param vec the vector to copy
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
                         void copy(StaticVector const& vec) {
-                            std::size_t current = 0;
-                            for (T const& it : vec) {
-                                new(&data[current]) T (it);
-                                current++;
+                            length = vec.length;
+                            for (SizeType index = 0; index < length; index++) {
+                                data[index] = vec.data[index];
                             }
                         }
                         /**
-                         * Copy the static vector content
-                         * @param vec the static vector to copy
+                         * Copy the given vector into this
+                         * @param vec the vector to copy
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
                         void copy(StaticVector const& vec) {
-                            std::memcpy(data, vec.data, vec.length * sizeof(T));
+                            length = vec.length;
+                            std::memcpy(data, vec.data, length * sizeof(ValueType));
                         }
                         /**
-                         * Move the static vector content
-                         * @param vec the static vector to move
+                         * Move the given vector into this
+                         * @param vec the vector to move
                          */
-                        template <typename U = T, typename std::enable_if<!std::is_pod<U>::value, int>::type = 0>
-                        void move(StaticVector const& vec) {
-                            std::size_t current = 0;
-                            for (T const& it : vec) {
-                                new(&data[current]) T (std::move(it));
-                                current++;
+                        template <class K = T, typename Utility::UseIfNotTriviallyCopyable<K> = 0>
+                        void move(StaticVector && vec) {
+                            length = vec.length;
+                            vec.length = 0;
+                            for (SizeType index = 0; index < length; index++) {
+                                data[index] = std::move(vec.data[index]);
                             }
                         }
                         /**
-                         * Move the static vector content
-                         * @param vec the static vector to move
+                         * Move the given vector into this
+                         * @param vec the vector to move
                          */
-                        template <typename U = T, typename std::enable_if<std::is_pod<U>::value, int>::type = 0>
-                        void move(StaticVector const& vec) {
-                            std::memmove(data, vec.data, vec.length * sizeof(T));
+                        template <class K = T, typename Utility::UseIfTriviallyCopyable<K> = 0>
+                        void move(StaticVector && vec) {
+                            length = vec.length;
+                            vec.length = 0;
+                            std::memmove(data, vec.data, length * sizeof(ValueType));
                         }
             };
         

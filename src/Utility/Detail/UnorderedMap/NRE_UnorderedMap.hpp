@@ -30,6 +30,9 @@
                  */
                 template <class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
                 class UnorderedMap : public Stringable<UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>> {
+                    static_assert(Memory::IsAllocatorV<Allocator>);                                /**< Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits */
+                    static_assert(std::is_same_v<Pair<Key, T>, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
+                    
                     public :     // Traits
                         /**< The table key type */
                         using KeyType               = Key;

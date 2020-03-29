@@ -23,7 +23,7 @@
          */
         namespace Utility {
             
-            template <class Key, class T, class Allocator = Memory::Allocator<T>, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
+            template <class Key, class T, class Allocator = Memory::Allocator<Pair<Key, T>>, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
             using UnorderedMap = Detail::UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>;
         }
     }

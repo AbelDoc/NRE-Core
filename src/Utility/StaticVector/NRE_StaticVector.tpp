@@ -15,13 +15,13 @@
              }
 
              template <class T, std::size_t Size>
-             inline StaticVector<T, Size>::StaticVector(std::size_t count, T const& value) : length(0) {
+             inline StaticVector<T, Size>::StaticVector(SizeType count, ConstReference value) : length(0) {
                  assign(count, value);
              }
 
              template <class T, std::size_t Size>
-             inline StaticVector<T, Size>::StaticVector(std::size_t count) : length(0) {
-                 assign(count, T());
+             inline StaticVector<T, Size>::StaticVector(SizeType count) : length(0) {
+                 assign(count, ValueType());
              }
 
              template <class T, std::size_t Size>
@@ -35,14 +35,13 @@
              }
 
              template <class T, std::size_t Size>
-             inline StaticVector<T, Size>::StaticVector(StaticVector const& vec) : length(vec.length) {
+             inline StaticVector<T, Size>::StaticVector(StaticVector const& vec) {
                  copy(vec);
              }
 
              template <class T, std::size_t Size>
-             inline StaticVector<T, Size>::StaticVector(StaticVector && vec) : length(vec.length) {
-                 move(vec);
-                 vec.length = 0;
+             inline StaticVector<T, Size>::StaticVector(StaticVector && vec) {
+                 move(std::move(vec));
              }
 
              template <class T, std::size_t Size>
@@ -51,7 +50,7 @@
              }
 
              template <class T, std::size_t Size>
-             inline T& StaticVector<T, Size>::get(std::size_t index) {
+             inline typename StaticVector<T, Size>::Reference StaticVector<T, Size>::get(SizeType index) {
                  if (index >= length) {
                      throw std::out_of_range("Accessing NRE::Utility::StaticVector element : " + std::to_string(index) + " while dynamic array length is " + std::to_string(length) + ".");
                  }
@@ -59,7 +58,7 @@
              }
 
              template <class T, std::size_t Size>
-             inline T const& StaticVector<T, Size>::get(std::size_t index) const {
+             inline typename StaticVector<T, Size>::ConstReference StaticVector<T, Size>::get(SizeType index) const {
                  if (index >= length) {
                      throw std::out_of_range("Accessing NRE::Utility::StaticVector element : " + std::to_string(index) + " while dynamic array length is " + std::to_string(length) + ".");
                  }
@@ -67,47 +66,52 @@
              }
 
              template <class T, std::size_t Size>
-             inline T* StaticVector<T, Size>::getData() {
+             inline typename StaticVector<T, Size>::Pointer StaticVector<T, Size>::getData() {
                  return data;
              }
 
              template <class T, std::size_t Size>
-             inline const T* StaticVector<T, Size>::getData() const {
+             inline typename StaticVector<T, Size>::ConstPointer StaticVector<T, Size>::getData() const {
+                 return data;
+             }
+    
+             template <class T, std::size_t Size>
+             inline typename StaticVector<T, Size>::ConstPointer StaticVector<T, Size>::getCData() const {
                  return data;
              }
 
              template <class T, std::size_t Size>
-             inline T& StaticVector<T, Size>::getFront() {
+             inline typename StaticVector<T, Size>::Reference StaticVector<T, Size>::getFront() {
                  return data[0];
              }
 
              template <class T, std::size_t Size>
-             inline T const& StaticVector<T, Size>::getFront() const {
+             inline typename StaticVector<T, Size>::ConstReference StaticVector<T, Size>::getFront() const {
                  return data[0];
              }
 
              template <class T, std::size_t Size>
-             inline T& StaticVector<T, Size>::getLast() {
+             inline typename StaticVector<T, Size>::Reference StaticVector<T, Size>::getLast() {
                  return data[length - 1];
              }
 
              template <class T, std::size_t Size>
-             inline T const& StaticVector<T, Size>::getLast() const {
+             inline typename StaticVector<T, Size>::ConstReference StaticVector<T, Size>::getLast() const {
                  return data[length - 1];
              }
 
              template <class T, std::size_t Size>
-             inline std::size_t StaticVector<T, Size>::getSize() const {
+             inline typename StaticVector<T, Size>::SizeType StaticVector<T, Size>::getSize() const {
                  return length;
              }
 
              template <class T, std::size_t Size>
-             inline constexpr std::size_t StaticVector<T, Size>::getMaxSize() const {
-                 return std::numeric_limits<std::size_t>::max();
+             constexpr typename StaticVector<T, Size>::SizeType StaticVector<T, Size>::getMaxSize() const {
+                 return std::numeric_limits<SizeType>::max();
              }
 
              template <class T, std::size_t Size>
-             inline std::size_t StaticVector<T, Size>::getCapacity() const {
+             inline typename StaticVector<T, Size>::SizeType StaticVector<T, Size>::getCapacity() const {
                  return Size;
              }
 
@@ -177,13 +181,13 @@
              }
 
              template <class T, std::size_t Size>
-             inline void StaticVector<T, Size>::assign(std::size_t count, T const& value) {
+             inline void StaticVector<T, Size>::assign(SizeType count, ConstReference value) {
                  clear();
                  if (Size < count) {
                      throw std::out_of_range("Assigning more element than NRE::Utility::StaticVector can handle.");
                  }
-                 for (std::size_t i = 0; i < count; i++) {
-                     new(&data[i]) T (value);
+                 for (SizeType i = 0; i < count; i++) {
+                     data[i] = value;
                  }
                  length = count;
              }
@@ -192,34 +196,39 @@
              template <class InputIterator>
              inline void StaticVector<T, Size>::assign(InputIterator begin, InputIterator end) {
                  clear();
-                 std::size_t size = std::distance(begin, end);
+                 SizeType size = std::distance(begin, end);
                  if (Size < size) {
                      throw std::out_of_range("Assigning more element than NRE::Utility::StaticVector can handle.");
                  }
-                 std::size_t current = 0;
+                 SizeType current = 0;
                  for ( ; begin != end; begin++) {
-                     new(&data[current]) T (*(begin));
+                     data[current] = *begin;
                      current++;
                  }
                  length = current;
              }
-
+             
              template <class T, std::size_t Size>
-             inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::insert(ConstIterator start, T const& value) {
+             inline void StaticVector<T, Size>::clear() noexcept {
+                 length = 0;
+             }
+             
+             template <class T, std::size_t Size>
+             inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::insert(ConstIterator start, ConstReference value) {
                  return emplace(start, value);
              }
 
              template <class T, std::size_t Size>
-             inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::insert(ConstIterator start, std::size_t count, T const& value) {
-                 std::size_t index = start - ConstIterator(data);
+             inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::insert(ConstIterator start, SizeType count, ConstReference value) {
+                 SizeType index = start - ConstIterator(data);
                  if (Size < length + count) {
                      throw std::out_of_range("Inserting more element than NRE::Utility::StaticVector can handle.");
                  }
                  if (index < length) {
                      shift(index, count);
                  }
-                 for (std::size_t it = index; it != index + count; it++) {
-                     new(&data[it]) T (value);
+                 for (SizeType it = index; it != index + count; it++) {
+                     data[it] = value;
                  }
                  length += count;
                  return Iterator(data + index);
@@ -228,8 +237,8 @@
              template <class T, std::size_t Size>
              template <class InputIterator>
              inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::insert(ConstIterator start, InputIterator begin, InputIterator end) {
-                 std::size_t count = std::distance(begin, end);
-                 std::size_t index = start - ConstIterator(data);
+                 SizeType count = std::distance(begin, end);
+                 SizeType index = start - ConstIterator(data);
                  if (Size < length + count) {
                      throw std::out_of_range("Inserting more element than NRE::Utility::StaticVector can handle.");
                  }
@@ -237,7 +246,7 @@
                      shift(index, count);
                  }
                  for ( ; begin != end; begin++) {
-                     new(&data[index]) T (*begin);
+                     data[index] = *begin;
                      index++;
                  }
                  length += count;
@@ -252,25 +261,24 @@
              template <class T, std::size_t Size>
              template <class ... Args>
              inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::emplace(ConstIterator start, Args && ... args) {
-                 std::size_t index = start - ConstIterator(data);
+                 SizeType index = start - ConstIterator(data);
                  if (Size < length + 1) {
                      throw std::out_of_range("Inserting more element than NRE::Utility::StaticVector can handle.");
                  }
                  if (index < length) {
                      shift(index, 1);
                  }
-                 new(&data[index]) T (std::forward<Args>(args)...);
+                 data[index] = ValueType (std::forward<Args>(args)...);
                  length++;
                  return Iterator(data + index);
              }
 
              template <class T, std::size_t Size>
              inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::erase(ConstIterator pos) {
-                 std::size_t index = pos - ConstIterator(data);
+                 SizeType index = pos - ConstIterator(data);
                  if (index > length - 1) {
                      throw std::out_of_range("Erasing after NRE::Utility::StaticVector last element.");
                  }
-                 (*pos).~T();
                  shiftBack(index, 1);
                  length--;
                  return Iterator(data + index);
@@ -278,13 +286,10 @@
 
              template <class T, std::size_t Size>
              inline typename StaticVector<T, Size>::Iterator StaticVector<T, Size>::erase(ConstIterator begin, ConstIterator end) {
-                 std::size_t count = std::distance(begin, end);
-                 std::size_t index = begin - ConstIterator(data);
+                 SizeType count = std::distance(begin, end);
+                 SizeType index = begin - ConstIterator(data);
                  if (index > length - count) {
                      throw std::out_of_range("Erasing after NRE::Utility::StaticVector last element.");
-                 }
-                 for (auto it = begin; it != end; it++) {
-                     (*it).~T();
                  }
                  shiftBack(index, count);
                  length -= count;
@@ -292,12 +297,12 @@
              }
 
              template <class T, std::size_t Size>
-             inline void StaticVector<T, Size>::pushBack(T const& value) {
+             inline void StaticVector<T, Size>::pushBack(ConstReference value) {
                  emplaceBack(value);
              }
 
              template <class T, std::size_t Size>
-             inline void StaticVector<T, Size>::pushBack(T && value) {
+             inline void StaticVector<T, Size>::pushBack(ValueType && value) {
                  emplaceBack(std::move(value));
              }
 
@@ -307,30 +312,31 @@
                  if (Size < length + 1) {
                      throw std::out_of_range("Inserting more element than NRE::Utility::StaticVector can handle.");
                  }
-                 new(&data[length]) T (std::forward<Args>(args)...);
+                 data[length] = ValueType(std::forward<Args>(args)...);
                  length++;
              }
-
-
+             
              template <class T, std::size_t Size>
-             inline void StaticVector<T, Size>::resize(std::size_t count) {
-                 resize(count, T());
+             inline void StaticVector<T, Size>::popBack() {
+                 length--;
              }
 
              template <class T, std::size_t Size>
-             inline void StaticVector<T, Size>::resize(std::size_t count, T const& value) {
+             inline void StaticVector<T, Size>::resize(SizeType count) {
+                 resize(count, ValueType());
+             }
+
+             template <class T, std::size_t Size>
+             inline void StaticVector<T, Size>::resize(SizeType count, ConstReference value) {
                  if (count != length) {
                      if (count < length) {
-                         for (std::size_t index = count; index != length; index++) {
-                             data[index].~T();
-                         }
                          length = count;
                      } else {
                          if (Size < count) {
                              throw std::out_of_range("Resizing past NRE::Utility::StaticVector fixed capacity.");
                          }
-                         for (std::size_t index = length; index < count; index++) {
-                             new(&data[index]) T (value);
+                         for (SizeType index = length; index < count; index++) {
+                             data[index] = value;
                          }
                          length = count;
                      }
@@ -345,19 +351,19 @@
              }
 
              template <class T, std::size_t Size>
-             inline T& StaticVector<T, Size>::operator[](std::size_t index) {
+             inline typename StaticVector<T, Size>::Reference StaticVector<T, Size>::operator[](SizeType index) {
                  return data[index];
              }
 
              template <class T, std::size_t Size>
-             inline T const& StaticVector<T, Size>::operator[](std::size_t index) const {
+             inline typename StaticVector<T, Size>::ConstReference StaticVector<T, Size>::operator[](SizeType index) const {
                  return data[index];
              }
 
              template <class T, std::size_t Size>
              inline StaticVector<T, Size>& StaticVector<T, Size>::operator =(StaticVector const& vec) {
                  if (this != &vec) {
-                     assign(vec.begin(), vec.end());
+                     copy(vec);
                  }
                  return *this;
              }
@@ -365,9 +371,7 @@
              template <class T, std::size_t Size>
              inline StaticVector<T, Size>& StaticVector<T, Size>::operator =(StaticVector && vec) {
                  if (this != &vec) {
-                     move(vec);
-                     length = vec.length;
-                     vec.length = 0;
+                     swap(vec);
                  }
                  return *this;
              }
@@ -387,7 +391,7 @@
                      String res;
                      res << '[' << data[0];
                      res.reserve((res.getSize() + 2) * length);
-                     for (std::size_t index = 1; index < length; index++) {
+                     for (SizeType index = 1; index < length; index++) {
                          res << ',' << ' ' << data[index];
                      }
                      res << ']';
