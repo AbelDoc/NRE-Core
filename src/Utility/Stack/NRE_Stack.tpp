@@ -19,12 +19,12 @@
             }
     
             template <class T, class Container>
-            inline T& Stack<T, Container>::getTop() {
+            inline typename Stack<T, Container>::Reference Stack<T, Container>::getTop() {
                 return c.getLast();
             }
     
             template <class T, class Container>
-            inline T const& Stack<T, Container>::getTop() const {
+            inline typename Stack<T, Container>::ConstReference Stack<T, Container>::getTop() const {
                 return c.getLast();
             }
             
@@ -34,17 +34,17 @@
             }
             
             template <class T, class Container>
-            inline std::size_t Stack<T, Container>::getSize() const {
+            inline typename Stack<T, Container>::SizeType Stack<T, Container>::getSize() const {
                 return c.getSize();
             }
             
             template <class T, class Container>
-            inline void Stack<T, Container>::push(T const& value) {
+            inline void Stack<T, Container>::push(ConstReference value) {
                 c.pushBack(value);
             }
             
             template <class T, class Container>
-            inline void Stack<T, Container>::push(T && value) {
+            inline void Stack<T, Container>::push(ValueType && value) {
                 c.pushBack(std::move(value));
             }
             

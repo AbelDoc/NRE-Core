@@ -28,6 +28,17 @@
              */
             template <class T, class Container = Vector<T>>
             class Stack : public Stringable<Stack<T, Container>> {
+                static_assert(std::is_same_v<T, Container::ValueType>);
+                public :    // Traits
+                    /**< The container value type */
+                    using ValueType      = typename Container::ValueType;
+                    /**< The container size type */
+                    using SizeType       = typename Container::SizeType;
+                    /**< The value type reference */
+                    using Reference      = typename Container::Reference;
+                    /**< The value type const reference */
+                    using ConstReference = typename Container::ConstReference;
+                    
                 private :   // Fields
                     Container c;    /**< The internal container */
 
@@ -68,11 +79,11 @@
                         /**
                          * @return the top element
                          */
-                        T& getTop();
+                        Reference getTop();
                         /**
                          * @return the top element
                          */
-                        T const& getTop() const;
+                        ConstReference getTop() const;
                         /**
                          * @return if the stack is empty
                          */
@@ -80,7 +91,7 @@
                         /**
                          * @return the stack effective size
                          */
-                        std::size_t getSize() const;
+                        SizeType getSize() const;
         
                     //## Methods ##//
                         /**
@@ -88,12 +99,12 @@
                          * @param value the value to insert
                          * @pre value don't reference a stack item
                          */
-                        void push(T const& value);
+                        void push(ConstReference value);
                         /**
                          * Emplace a value at the top of the stack
                          * @param value the value to insert
                          */
-                        void push(T && value);
+                        void push(ValueType && value);
                         /**
                          * Emplace a value at the top of the stack
                          * @param args the arguments for the value construction
