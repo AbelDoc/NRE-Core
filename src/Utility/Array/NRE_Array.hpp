@@ -14,6 +14,7 @@
      #include <limits>
      #include <cstring>
 
+     #include "../Traits/NRE_TypeTraits.hpp"
      #include "../String/NRE_String.hpp"
      #include "../Interfaces/Stringable/NRE_Stringable.hpp"
 
