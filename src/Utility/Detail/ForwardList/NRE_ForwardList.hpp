@@ -15,6 +15,7 @@
     #include <cmath>
     #include "../../Interfaces/Iterator/NRE_IteratorTraits.hpp"
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
+    #include "../../Traits/NRE_TypeTraits.hpp"
 
      /**
      * @namespace NRE

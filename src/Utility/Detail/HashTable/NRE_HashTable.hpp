@@ -14,6 +14,8 @@
     #include "../../String/NRE_String.hpp"
     #include "../../Pair/NRE_Pair.hpp"
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
+    #include "../../Interfaces/Iterator/NRE_IteratorTraits.hpp"
+    #include "../../Traits/NRE_TypeTraits.hpp"
     #include "../Vector/NRE_Vector.hpp"
 
     /**

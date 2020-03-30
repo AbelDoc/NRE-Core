@@ -18,6 +18,8 @@
     
     #include "../String/NRE_String.hpp"
     #include "../Interfaces/Stringable/NRE_Stringable.hpp"
+    #include "../Interfaces/Iterator/NRE_IteratorTraits.hpp"
+    #include "../Traits/NRE_TypeTraits.hpp"
     
     /**
     * @namespace NRE
