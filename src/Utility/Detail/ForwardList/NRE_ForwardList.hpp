@@ -41,12 +41,12 @@
         
                         public :    // Methods
                             //## Constructor ##//
-                            /**
-                             * Construct the node
-                             * @param value the node data
-                             * @param node  the next node
-                             */
-                            NodeBase(NodeBase* node = nullptr);
+                                /**
+                                 * Construct the node
+                                 * @param value the node data
+                                 * @param node  the next node
+                                 */
+                                NodeBase(NodeBase* node = nullptr);
                         };
                     /**
                      * @class Node
@@ -59,18 +59,123 @@
         
                         public :    // Methods
                             //## Constructor ##//
-                            /**
-                             * Construct the node
-                             * @param value the node data
-                             * @param node  the next node
-                             */
-                            Node(T const& value, NodeBase* node);
-                            /**
-                             * Construct the node
-                             * @param value the node data
-                             * @param node  the next node
-                             */
-                            Node(T && value, NodeBase* node);
+                                /**
+                                 * Construct the node
+                                 * @param value the node data
+                                 * @param node  the next node
+                                 */
+                                Node(T const& value, NodeBase* node);
+                                /**
+                                 * Construct the node
+                                 * @param value the node data
+                                 * @param node  the next node
+                                 */
+                                Node(T && value, NodeBase* node);
+                    };
+                    /**
+                     * @class ForwardIterator
+                     * @brief Internal iterator for forward list
+                     */
+                    template <class T, class Category>
+                    class ForwardIterator : public IteratorTraits<ForwardIterator<T, Category>, T, Category> {
+                        public :    // Traits
+                            /**< Inherited iterator traits */
+                            using Traits = IteratorTraits<ForwardIterator<T, Category>, T, Category>;
+                            /**< The iterated object */
+                            using ValueType         = typename Traits::ValueType;
+                            /**< The pointer on iterated object */
+                            using Pointer           = typename Traits::Pointer;
+                            /**< The reference on iterated object */
+                            using Reference         = typename Traits::Reference;
+                            /**< The iterator difference type */
+                            using DifferenceType    = typename Traits::DifferenceType;
+                            /**< STL compatibility */
+                            using value_type        = ValueType;
+                            /**< STL compatibility */
+                            using pointer           = Pointer;
+                            /**< STL compatibility */
+                            using reference         = Reference;
+                            /**< STL compatibility */
+                            using difference_type   = DifferenceType;
+                            /**< STL compatibility */
+                            using iterator_category = typename Traits::iterator_category;
+        
+                        private :   // Fields
+                            NodeBase* current;      /**< The current iterator node */
+        
+                        public :    // Methods
+                            //## Constructor ##//
+                                /**
+                                 * Default constructor with nullptr node
+                                 */
+                                ForwardIterator() = default;
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param node   the iterator node
+                                 */
+                                ForwardIterator(NodeBase* node);
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param node   the iterator node
+                                 */
+                                ForwardIterator(const NodeBase* node);
+            
+                            //## Copy Constructor ##//
+                                /**
+                                 * Copy it into this
+                                 * @param it the iterator to copy
+                                 */
+                                ForwardIterator(ForwardIterator const& it) = default;
+            
+                            //## Move Constructor ##//
+                                /**
+                                 * Move it into this
+                                 * @param it the iterator to move
+                                 */
+                                ForwardIterator(ForwardIterator && it) = default;
+            
+                            //## Deconstructor ##//
+                                /**
+                                 * ForwardIterator Deconstructor
+                                 */
+                                ~ForwardIterator() = default;
+    
+                            //## Getter ##//
+                                /**
+                                 * @return the current node
+                                 */
+                                NodeBase* getCurrent();
+            
+                            //## Methods ##//
+                                /**
+                                 * @return a reference on the iterated data
+                                 */
+                                Reference dereference() const;
+                                /**
+                                 * Increment the iterator position by one
+                                 */
+                                void increment();
+                                /**
+                                 * Test if the given iterator point to the same position
+                                 * @param it the other iterator
+                                 * @return   the test's result
+                                 */
+                                bool equal(ForwardIterator const& it) const;
+            
+                            //## Assignment Operator ##//
+                                /**
+                                 * Copy assignment of it into this
+                                 * @param it the iterator to copy
+                                 * @return   the reference of himself
+                                 */
+                                ForwardIterator& operator =(ForwardIterator const& it) = default;
+                                /**
+                                 * Move assignment of it into this
+                                 * @param it the iterator to move
+                                 * @return   the reference of himself
+                                 */
+                                ForwardIterator& operator =(ForwardIterator && it) = default;
+        
                     };
                 }
     
@@ -100,6 +205,10 @@
                         using Pointer               = typename AllocatorType::Pointer;
                         /**< The allocated type const pointer */
                         using ConstPointer          = typename AllocatorType::ConstPointer;
+                        /**< Mutable random access iterator */
+                        using Iterator              = ForwardListInner::ForwardIterator<ValueType, InOutForwardIterator>;
+                        /**< Immuable random access iterator */
+                        using ConstIterator         = ForwardListInner::ForwardIterator<ValueType, Utility::ForwardIterator>;
                         /**< STL compatibility */
                         using value_type            = ValueType;
                         /**< STL compatibility */
@@ -116,125 +225,17 @@
                         using pointer               = Pointer;
                         /**< STL compatibility */
                         using const_pointer         = ConstPointer;
+                        /**< STL compatibility */
+                        using iterator              = Iterator;
+                        /**< STL compatibility */
+                        using const_iterator        = ConstIterator;
 
                     private :   // Traits
                         /**< Inner container */
                         using NodeBase = ForwardListInner::NodeBase;
                         /**< Inner container */
                         using Node = ForwardListInner::Node<ValueType>;
-                    
-                    private :    // Iterator
-                        /**
-                         * @class ForwardIterator
-                         * @brief Internal iterator for forward list
-                         */
-                        template <class Category>
-                        class ForwardIterator : public IteratorTraits<ForwardIterator<Category>, ValueType, Category> {
-                            friend class ForwardList;
-                            public :    // Traits
-                                /**< Inherited iterator traits */
-                                using Traits = IteratorTraits<ForwardIterator<Category>, ValueType, Category>;
-                                /**< The iterated object */
-                                using ValueType         = typename Traits::ValueType;
-                                /**< The pointer on iterated object */
-                                using Pointer           = typename Traits::Pointer;
-                                /**< The reference on iterated object */
-                                using Reference         = typename Traits::Reference;
-                                /**< The iterator difference type */
-                                using DifferenceType    = typename Traits::DifferenceType;
-                                /**< STL compatibility */
-                                using value_type        = ValueType;
-                                /**< STL compatibility */
-                                using pointer           = Pointer;
-                                /**< STL compatibility */
-                                using reference         = Reference;
-                                /**< STL compatibility */
-                                using difference_type   = DifferenceType;
-                                /**< STL compatibility */
-                                using iterator_category = typename Traits::iterator_category;
-                            
-                            private :   // Fields
-                                NodeBase* current;      /**< The current iterator node */
-    
-                            public :    // Methods
-                                //## Constructor ##//
-                                    /**
-                                     * Default constructor with nullptr node
-                                     */
-                                    ForwardIterator() = default;
-                                    /**
-                                     * Construct the iterator with the given node
-                                     * @param node   the iterator node
-                                     */
-                                    ForwardIterator(NodeBase* node);
-                                    /**
-                                     * Construct the iterator with the given node
-                                     * @param node   the iterator node
-                                     */
-                                    ForwardIterator(const NodeBase* node);
-            
-                                //## Copy Constructor ##//
-                                    /**
-                                     * Copy it into this
-                                     * @param it the iterator to copy
-                                     */
-                                    ForwardIterator(ForwardIterator const& it) = default;
-    
-                                //## Move Constructor ##//
-                                    /**
-                                     * Move it into this
-                                     * @param it the iterator to move
-                                     */
-                                    ForwardIterator(ForwardIterator && it) = default;
-            
-                                //## Deconstructor ##//
-                                    /**
-                                     * ForwardIterator Deconstructor
-                                     */
-                                    ~ForwardIterator() = default;
-                                    
-                                //## Methods ##//
-                                    /**
-                                     * @return a reference on the iterated data
-                                     */
-                                    Reference dereference() const;
-                                    /**
-                                     * Increment the iterator position by one
-                                     */
-                                    void increment();
-                                    /**
-                                     * Test if the given iterator point to the same position
-                                     * @param it the other iterator
-                                     * @return   the test's result
-                                     */
-                                    bool equal(ForwardIterator const& it) const;
-    
-                                //## Assignment Operator ##//
-                                    /**
-                                     * Copy assignment of it into this
-                                     * @param it the iterator to copy
-                                     * @return   the reference of himself
-                                     */
-                                    ForwardIterator& operator =(ForwardIterator const& it) = default;
-                                    /**
-                                     * Move assignment of it into this
-                                     * @param it the iterator to move
-                                     * @return   the reference of himself
-                                     */
-                                    ForwardIterator& operator =(ForwardIterator && it) = default;
-    
-                        };
                         
-                    public :    // Traits
-                        /**< Mutable random access iterator */
-                        using Iterator              = ForwardIterator<InOutForwardIterator>;
-                        /**< Immuable random access iterator */
-                        using ConstIterator         = ForwardIterator<Utility::ForwardIterator>;
-                        /**< STL compatibility */
-                        using iterator              = Iterator;
-                        /**< STL compatibility */
-                        using const_iterator        = ConstIterator;
-    
                     private :   // Fields
                         NodeBase front;     /**< The front node of the list */
                         SizeType length; /**< The size of the list */

@@ -22,34 +22,34 @@
                      template <class T>
                      inline Node<T>::Node(T && value, NodeBase* node) : NodeBase(node), data(value) {
                      }
-                 }
     
-                 template <class T, class Allocator>
-                 template <class Category>
-                 inline ForwardList<T, Allocator>::ForwardIterator<Category>::ForwardIterator(NodeBase* node) : current(node) {
-                 }
+                     template <class T, class Category>
+                     inline ForwardIterator<T, Category>::ForwardIterator(NodeBase* node) : current(node) {
+                     }
     
-                 template <class T, class Allocator>
-                 template <class Category>
-                 inline ForwardList<T, Allocator>::ForwardIterator<Category>::ForwardIterator(const NodeBase* node) : current(const_cast <NodeBase*> (node)) {
-                 }
-        
-                 template <class T, class Allocator>
-                 template <class Category>
-                 inline typename ForwardList<T, Allocator>::template ForwardIterator<Category>::Reference ForwardList<T, Allocator>::ForwardIterator<Category>::dereference() const {
-                     return static_cast <Node*>(current)->data;
-                 }
-        
-                 template <class T, class Allocator>
-                 template <class Category>
-                 inline void ForwardList<T, Allocator>::ForwardIterator<Category>::increment() {
-                     current = current->next;
-                 }
-        
-                 template <class T, class Allocator>
-                 template <class Category>
-                 inline bool ForwardList<T, Allocator>::ForwardIterator<Category>::equal(ForwardIterator const& it) const {
-                     return current == it.current;
+                     template <class T, class Category>
+                     inline ForwardIterator<T, Category>::ForwardIterator(const NodeBase* node) : current(const_cast <NodeBase*> (node)) {
+                     }
+    
+                     template <class T, class Category>
+                     inline NodeBase* ForwardIterator<T, Category>::getCurrent() {
+                         return current;
+                     }
+    
+                     template <class T, class Category>
+                     inline typename ForwardIterator<T, Category>::Reference ForwardIterator<T, Category>::dereference() const {
+                         return static_cast <Node<T>*>(current)->data;
+                     }
+    
+                     template <class T, class Category>
+                     inline void ForwardIterator<T, Category>::increment() {
+                         current = current->next;
+                     }
+    
+                     template <class T, class Category>
+                     inline bool ForwardIterator<T, Category>::equal(ForwardIterator const& it) const {
+                         return current == it.current;
+                     }
                  }
     
                  template <class T, class Allocator>
@@ -220,9 +220,9 @@
                  template <class T, class Allocator>
                  template <class InputIterator>
                  inline typename ForwardList<T, Allocator>::Iterator ForwardList<T, Allocator>::insertAfter(ConstIterator pos, InputIterator begin, InputIterator end) {
-                     Iterator it = Iterator(pos.current);
+                     Iterator it = Iterator(pos.getCurrent());
                      for ( ; begin != end; begin++) {
-                         it = insertAfter(ConstIterator(it.current), *begin);
+                         it = insertAfter(ConstIterator(it.getCurrent()), *begin);
                      }
                      return it;
                  }
@@ -235,22 +235,22 @@
                  template <class T, class Allocator>
                  template <class ... Args>
                  inline typename ForwardList<T, Allocator>::Iterator ForwardList<T, Allocator>::emplaceAfter(ConstIterator pos, Args  && ... args) {
-                    Node* inserted = this->construct(this->allocate(), T(std::forward<Args>(args)...), pos.current->next);
-                    pos.current->next = inserted;
+                    Node* inserted = this->construct(this->allocate(), T(std::forward<Args>(args)...), pos.getCurrent()->next);
+                    pos.getCurrent()->next = inserted;
                     length++;
                     return Iterator(inserted);
                  }
     
                  template <class T, class Allocator>
                  inline typename ForwardList<T, Allocator>::Iterator ForwardList<T, Allocator>::eraseAfter(ConstIterator pos) {
-                     if (pos.current == &front) {
+                     if (pos.getCurrent() == &front) {
                          popFront();
                          return begin();
                      } else {
-                         if (pos.current && pos.current->next) {
-                             NodeBase* tmp = pos.current->next->next;
-                             this->deallocate(this->destroy(static_cast <Node*>(pos.current->next)));
-                             pos.current->next = tmp;
+                         if (pos.getCurrent() && pos.getCurrent()->next) {
+                             NodeBase* tmp = pos.getCurrent()->next->next;
+                             this->deallocate(this->destroy(static_cast <Node*>(pos.getCurrent()->next)));
+                             pos.getCurrent()->next = tmp;
                              length--;
                              return Iterator(tmp);
                          } else {
@@ -261,19 +261,19 @@
     
                  template <class T, class Allocator>
                  inline typename ForwardList<T, Allocator>::Iterator ForwardList<T, Allocator>::eraseAfter(ConstIterator begin, ConstIterator end) {
-                     if (begin.current == &front) {
+                     if (begin.getCurrent() == &front) {
                          for (std::ptrdiff_t index = 0; index < std::distance(begin, end); index++) {
                              popFront();
                          }
                          return this->begin();
                      } else {
-                         while (begin.current && begin.current->next && begin.current->next != end.current) {
-                             NodeBase* tmp = begin.current->next->next;
-                             this->deallocate(this->destroy(static_cast <Node*>(begin.current->next)));
-                             begin.current->next = tmp;
+                         while (begin.getCurrent() && begin.getCurrent()->next && begin.getCurrent()->next != end.getCurrent()) {
+                             NodeBase* tmp = begin.getCurrent()->next->next;
+                             this->deallocate(this->destroy(static_cast <Node*>(begin.getCurrent()->next)));
+                             begin.getCurrent()->next = tmp;
                              length--;
                          }
-                         return Iterator(end.current);
+                         return Iterator(end.getCurrent());
                      }
                  }
     
@@ -353,34 +353,34 @@
                          Iterator it = begin();
                          Iterator listIt = list.begin();
                          if (comp(*listIt, *it)) {
-                             front.next = listIt.current;
+                             front.next = listIt.getCurrent();
                              listIt++;
                          } else {
-                             front.next = it.current;
+                             front.next = it.getCurrent();
                              it++;
                          }
                          NodeBase* current = front.next;
                          while (it != end() || listIt != list.end()) {
                              if (comp(*listIt, *it)) {
-                                 current->next = listIt.current;
+                                 current->next = listIt.getCurrent();
                                  if (listIt != list.end()) {
                                      listIt++;
                                      if (listIt == list.end()) {
                                          while (it != end()) {
                                              current = current->next;
-                                            current->next = it.current;
+                                             current->next = it.getCurrent();
                                              it++;
                                          }
                                      }
                                  }
                              } else {
-                                 current->next = it.current;
+                                 current->next = it.getCurrent();
                                  if (it != end()) {
                                      it++;
                                      if (it == end()) {
                                          while (listIt != list.end()) {
                                             current = current->next;
-                                            current->next = listIt.current;
+                                            current->next = listIt.getCurrent();
                                             listIt++;
                                         }
                                     }
@@ -412,12 +412,12 @@
     
                  template <class T, class Allocator>
                  inline void ForwardList<T, Allocator>::spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator it) {
-                     NodeBase* tmp = pos.current->next;
-                     NodeBase* itTmp = it.current->next;
-                     NodeBase* end = it.current->next->next;
-                     pos.current->next = it.current->next;
+                     NodeBase* tmp = pos.getCurrent()->next;
+                     NodeBase* itTmp = it.getCurrent()->next;
+                     NodeBase* end = it.getCurrent()->next->next;
+                     pos.getCurrent()->next = it.getCurrent()->next;
                      itTmp->next = tmp;
-                     it.current->next = end;
+                     it.getCurrent()->next = end;
     
                      list.length--;
                      length++;
@@ -432,14 +432,14 @@
                  inline void ForwardList<T, Allocator>::spliceAfter(ConstIterator pos, ForwardList && list, ConstIterator begin, ConstIterator end) {
                      SizeType size = std::distance(begin, end) - 1;
     
-                     NodeBase* tmp = pos.current->next;
-                     NodeBase* itTmp = begin.current->next;
-                     while (itTmp->next != end.current) {
+                     NodeBase* tmp = pos.getCurrent()->next;
+                     NodeBase* itTmp = begin.getCurrent()->next;
+                     while (itTmp->next != end.getCurrent()) {
                          itTmp = itTmp->next;
                      }
-                     pos.current->next = begin.current->next;
+                     pos.getCurrent()->next = begin.getCurrent()->next;
                      itTmp->next = tmp;
-                     begin.current->next = end.current;
+                     begin.getCurrent()->next = end.getCurrent();
     
                      list.length -= size;
                      length += size;
@@ -456,8 +456,8 @@
                  template <class UnaryPredicate>
                  inline void ForwardList<T, Allocator>::removeIf(UnaryPredicate p) {
                      ConstIterator it = cbeforeBegin();
-                     while (it.current->next != end().current) {
-                         if (p(static_cast <Node*> (it.current->next)->data)) {
+                     while (it.getCurrent()->next != end().getCurrent()) {
+                         if (p(static_cast <Node*> (it.getCurrent()->next)->data)) {
                              eraseAfter(it);
                          } else {
                              ++it;

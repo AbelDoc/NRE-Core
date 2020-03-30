@@ -10,188 +10,184 @@
      namespace NRE {
          namespace Utility {
              namespace Detail {
+                namespace HashTableInner {
     
-                 template <class ValueType, bool StoreHash>
-                 inline BucketEntry<ValueType, StoreHash>::BucketEntry() : BucketEntryHash<StoreHash>(), distanceToNext(EMPTY_BUCKET_DISTANCE), last(false) {
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline BucketEntry<ValueType, StoreHash>::BucketEntry(BucketEntry const& bucket) : BucketEntryHash<StoreHash>(bucket), distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
-                     if (!bucket.isEmpty()) {
-                         ::new(&data) ValueType(bucket.getData());
-                         distanceToNext = bucket.distanceToNext;
+                     template <class ValueType, bool StoreHash>
+                     inline BucketEntry<ValueType, StoreHash>::BucketEntry() : BucketEntryHash<StoreHash>(), distanceToNext(EMPTY_BUCKET_DISTANCE), last(false) {
                      }
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline BucketEntry<ValueType, StoreHash>::BucketEntry(BucketEntry&& bucket) : BucketEntryHash<StoreHash>(bucket), distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
-                     if (!bucket.isEmpty()) {
-                         ::new(&data) ValueType(std::move(bucket.getData()));
-                         distanceToNext = bucket.distanceToNext;
-                     }
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline BucketEntry<ValueType, StoreHash>::~BucketEntry() {
-                     clear();
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline bool BucketEntry<ValueType, StoreHash>::isEmpty() const {
-                     return distanceToNext == EMPTY_BUCKET_DISTANCE;
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline bool BucketEntry<ValueType, StoreHash>::isLastBucket() const {
-                     return last;
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline typename BucketEntry<ValueType, StoreHash>::DistanceType
-                 BucketEntry<ValueType, StoreHash>::getDistanceToNext() const {
-                     return distanceToNext;
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline ValueType& BucketEntry<ValueType, StoreHash>::getData() {
-                     return *reinterpret_cast <ValueType*> (&data);
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline ValueType const& BucketEntry<ValueType, StoreHash>::getData() const {
-                     return *reinterpret_cast <const ValueType*> (&data);
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline void BucketEntry<ValueType, StoreHash>::setAsLastBucket() {
-                     last = true;
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline void BucketEntry<ValueType, StoreHash>::setData(DistanceType distance, TruncatedHash h,ValueType&& newData) {
-                     ::new(&data) ValueType(std::move(newData));
-                     this->setHash(h);
-                     distanceToNext = distance;
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline void BucketEntry<ValueType, StoreHash>::clear() {
-                     if (!isEmpty()) {
-                         getData().~ValueType();
-                         distanceToNext = EMPTY_BUCKET_DISTANCE;
-                     }
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline void BucketEntry<ValueType, StoreHash>::swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData) {
-                     using std::swap;
-                     swap(distanceToNext, distance);
-                     swap(getData(), newData);
         
-                     (void) h;
-                     if (StoreHash) {
-                         auto tmp = this->getTruncatedHash();
-                         this->setHash(h);
-                         h = tmp;
-                     }
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline BucketEntry<ValueType, StoreHash>& BucketEntry<ValueType, StoreHash>::operator =(BucketEntry const& bucket) {
-                     if (this != &bucket) {
-                         clear();
-            
-                         BucketEntryHash<StoreHash>::operator =(bucket);
+                     template <class ValueType, bool StoreHash>
+                     inline BucketEntry<ValueType, StoreHash>::BucketEntry(BucketEntry const& bucket) : BucketEntryHash<StoreHash>(bucket), distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
                          if (!bucket.isEmpty()) {
                              ::new(&data) ValueType(bucket.getData());
+                             distanceToNext = bucket.distanceToNext;
                          }
-            
-                         distanceToNext = bucket.distanceToNext;
-                         last = bucket.last;
                      }
-                     return *this;
-                 }
-    
-                 template <class ValueType, bool StoreHash>
-                 inline BucketEntry<ValueType, StoreHash>& BucketEntry<ValueType, StoreHash>::operator =(BucketEntry&& bucket) {
-                     if (this != &bucket) {
-                         clear();
-            
-                         BucketEntryHash<StoreHash>::operator =(std::move(bucket));
+        
+                     template <class ValueType, bool StoreHash>
+                     inline BucketEntry<ValueType, StoreHash>::BucketEntry(BucketEntry&& bucket) : BucketEntryHash<StoreHash>(bucket), distanceToNext(EMPTY_BUCKET_DISTANCE), last(bucket.last) {
                          if (!bucket.isEmpty()) {
                              ::new(&data) ValueType(std::move(bucket.getData()));
+                             distanceToNext = bucket.distanceToNext;
                          }
-            
-                         distanceToNext = bucket.distanceToNext;
-                         last = bucket.last;
                      }
-                     return *this;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(BucketEntry <ValueType, STORE_HASH>* bucket) : current(bucket) {
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<K>::ForwardIterator(const BucketEntry <ValueType, STORE_HASH>* bucket) : current(const_cast <BucketEntry <ValueType, STORE_HASH>*> (bucket)) {
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class Category>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template ForwardIterator<Category>::Reference HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<Category>::dereference() const {
-                     return current->getData();
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class Category>
-                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<Category>::increment() {
-                     while (true) {
-                         if (current->isLastBucket()) {
-                             ++current;
-                             break;
-                         }
         
-                         ++current;
-                         if (!current->isEmpty()) {
-                             break;
+                     template <class ValueType, bool StoreHash>
+                     inline BucketEntry<ValueType, StoreHash>::~BucketEntry() {
+                         clear();
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline bool BucketEntry<ValueType, StoreHash>::isEmpty() const {
+                         return distanceToNext == EMPTY_BUCKET_DISTANCE;
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline bool BucketEntry<ValueType, StoreHash>::isLastBucket() const {
+                         return last;
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline typename BucketEntry<ValueType, StoreHash>::DistanceType BucketEntry<ValueType, StoreHash>::getDistanceToNext() const {
+                         return distanceToNext;
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline ValueType& BucketEntry<ValueType, StoreHash>::getData() {
+                         return *reinterpret_cast <ValueType*> (&data);
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline ValueType const& BucketEntry<ValueType, StoreHash>::getData() const {
+                         return *reinterpret_cast <const ValueType*> (&data);
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline void BucketEntry<ValueType, StoreHash>::setAsLastBucket() {
+                         last = true;
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline void BucketEntry<ValueType, StoreHash>::setData(DistanceType distance, TruncatedHash h,ValueType&& newData) {
+                         ::new(&data) ValueType(std::move(newData));
+                         this->setHash(h);
+                         distanceToNext = distance;
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline void BucketEntry<ValueType, StoreHash>::clear() {
+                         if (!isEmpty()) {
+                             getData().~ValueType();
+                             distanceToNext = EMPTY_BUCKET_DISTANCE;
                          }
                      }
-                 }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline void BucketEntry<ValueType, StoreHash>::swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData) {
+                         using std::swap;
+                         swap(distanceToNext, distance);
+                         swap(getData(), newData);
+            
+                         (void) h;
+                         if (StoreHash) {
+                             auto tmp = this->getTruncatedHash();
+                             this->setHash(h);
+                             h = tmp;
+                         }
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline BucketEntry<ValueType, StoreHash>& BucketEntry<ValueType, StoreHash>::operator =(BucketEntry const& bucket) {
+                         if (this != &bucket) {
+                             clear();
+                
+                             BucketEntryHash<StoreHash>::operator =(bucket);
+                             if (!bucket.isEmpty()) {
+                                 ::new(&data) ValueType(bucket.getData());
+                             }
+                
+                             distanceToNext = bucket.distanceToNext;
+                             last = bucket.last;
+                         }
+                         return *this;
+                     }
+        
+                     template <class ValueType, bool StoreHash>
+                     inline BucketEntry<ValueType, StoreHash>& BucketEntry<ValueType, StoreHash>::operator =(BucketEntry&& bucket) {
+                         if (this != &bucket) {
+                             clear();
+                
+                             BucketEntryHash<StoreHash>::operator =(std::move(bucket));
+                             if (!bucket.isEmpty()) {
+                                 ::new(&data) ValueType(std::move(bucket.getData()));
+                             }
+                
+                             distanceToNext = bucket.distanceToNext;
+                             last = bucket.last;
+                         }
+                         return *this;
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline ForwardIterator<T, Category, Bucket>::ForwardIterator(Bucket* bucket) : current(bucket) {
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline ForwardIterator<T, Category, Bucket>::ForwardIterator(const Bucket* bucket) : current(const_cast <Bucket*> (bucket)) {
+                     }
     
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class Category>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ForwardIterator<Category>::equal(ForwardIterator const& it) const {
-                     return current == it.current;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(BucketEntry <ValueType, STORE_HASH>* bucket) : current(bucket) {
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class K>
-                 inline HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<K>::LocalForwardIterator(const BucketEntry <ValueType, STORE_HASH>* bucket) : current(const_cast <BucketEntry <ValueType, STORE_HASH>*> (bucket)) {
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class Category>
-                 inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::template LocalForwardIterator<Category>::Reference HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<Category>::dereference() const {
-                     return current->getData();
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class Category>
-                 inline void HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<Category>::increment() {
-                     current = nullptr;
-                 }
-    
-                 template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
-                 template <class Category>
-                 inline bool HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalForwardIterator<Category>::equal(LocalForwardIterator const& it) const {
-                     return current == it.current;
+                     template <class T, class Category, class Bucket>
+                     inline Bucket* ForwardIterator<T, Category, Bucket>::getCurrent() {
+                         return current;
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline typename ForwardIterator<T, Category, Bucket>::Reference ForwardIterator<T, Category, Bucket>::dereference() const {
+                         return current->getData();
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline void ForwardIterator<T, Category, Bucket>::increment() {
+                         while (true) {
+                             if (current->isLastBucket()) {
+                                 ++current;
+                                 break;
+                             }
+            
+                             ++current;
+                             if (!current->isEmpty()) {
+                                 break;
+                             }
+                         }
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline bool ForwardIterator<T, Category, Bucket>::equal(ForwardIterator const& it) const {
+                         return current == it.current;
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline LocalForwardIterator<T, Category, Bucket>::LocalForwardIterator(Bucket* bucket) : current(bucket) {
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline LocalForwardIterator<T, Category, Bucket>::LocalForwardIterator(const Bucket* bucket) : current(const_cast <Bucket*> (bucket)) {
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline typename LocalForwardIterator<T, Category, Bucket>::Reference LocalForwardIterator<T, Category, Bucket>::dereference() const {
+                         return current->getData();
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline void LocalForwardIterator<T, Category, Bucket>::increment() {
+                         current = nullptr;
+                     }
+        
+                     template <class T, class Category, class Bucket>
+                     inline bool LocalForwardIterator<T, Category, Bucket>::equal(LocalForwardIterator const& it) const {
+                         return current == it.current;
+                     }
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
@@ -531,7 +527,7 @@
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::find(KeyType const& k) {
-                     return Iterator(const_cast <const HashTable&>(*this).find(k).current);
+                     return Iterator(const_cast <const HashTable&>(*this).find(k).getCurrent());
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
@@ -554,15 +550,15 @@
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(Iterator pos) {
-                     return erase(ConstIterator(pos.current));
+                     return erase(ConstIterator(pos.getCurrent()));
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(ConstIterator pos) {
-                     pos.current->clear();
+                     pos.getCurrent()->clear();
                      nbElements--;
         
-                     SizeType previousIndex = static_cast <SizeType> (pos.current - data.getData());
+                     SizeType previousIndex = static_cast <SizeType> (pos.getCurrent() - data.getData());
                      SizeType index = next(previousIndex);
         
                      while (data[index].getDistanceToNext() > 0) {
@@ -574,21 +570,21 @@
                          index = next(index);
                      }
         
-                     if (pos.current->isEmpty()) {
+                     if (pos.getCurrent()->isEmpty()) {
                          ++pos;
                      }
-                     return Iterator(pos.current);
+                     return Iterator(pos.getCurrent());
                  }
     
                  template <class Key, class T, class Allocator, bool StoreHash, class Hash, class KeyEqual>
                  inline typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::erase(ConstIterator begin, ConstIterator end) {
                      if (begin == end) {
-                         return Iterator(begin.current);
+                         return Iterator(begin.getCurrent());
                      }
         
-                     Iterator beginIt(begin.current);
-                     Iterator endIt(end.current);
-                     for (auto it = beginIt.current; it != endIt.current; ++it) {
+                     Iterator beginIt(begin.getCurrent());
+                     Iterator endIt(end.getCurrent());
+                     for (auto it = beginIt.getCurrent(); it != endIt.getCurrent(); ++it) {
                          if (!it->isEmpty()) {
                              it->clear();
                              nbElements--;
@@ -599,8 +595,8 @@
                          return this->end();
                      }
         
-                     SizeType closerIndex = static_cast <SizeType> (beginIt.current - data.getData());
-                     SizeType moveCloserIndex = static_cast <SizeType> (endIt.current - data.getData());
+                     SizeType closerIndex = static_cast <SizeType> (beginIt.getCurrent() - data.getData());
+                     SizeType moveCloserIndex = static_cast <SizeType> (endIt.getCurrent() - data.getData());
         
                      SizeType returnIndex = moveCloserIndex - std::min(moveCloserIndex - closerIndex, static_cast <SizeType> (data[moveCloserIndex].getDistanceToNext()));
         

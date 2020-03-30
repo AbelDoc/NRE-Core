@@ -30,188 +30,395 @@
         namespace Utility {
             
             namespace Detail {
-                /**< Hide hash type implementation */
-                using TruncatedHash = std::uint_least32_t;
     
-                /**
-                 * @class BucketEntryHash
-                 * @brief Used to store the key hash, or not depending on the template value
-                 */
-                template <bool StoreHash>
-                class BucketEntryHash {
-                    public :    // Methods
-                        /**
-                         * Compare the given hash with the stored one and test if they are equals
-                         * @return if both hash are equals
-                         */
-                        bool bucketHashEquals(std::size_t) const {
-                            return true;
-                        }
-                        /**
-                         * @return the truncated hash
-                         */
-                        TruncatedHash getTruncatedHash() const {
-                            return 0;
-                        }
-        
-                    protected : // Methods
-                        /**
-                         * Set the internal stored hash
-                         */
-                        void setHash(TruncatedHash) {
-                        }
-                };
+                namespace HashTableInner {
+                    /**< Hide hash type implementation */
+                    using TruncatedHash = std::uint_least32_t;
     
-                /**
-                 * @class BucketEntryHash
-                 * @brief Used to store the key hash, or not depending on the template value
-                 */
-                template <>
-                class BucketEntryHash<true> {
-                    private :   // Fields
-                        TruncatedHash hash;     /**< The internal stored hash */
+                    /**
+                     * @class BucketEntryHash
+                     * @brief Used to store the key hash, or not depending on the template value
+                     */
+                    template <bool StoreHash>
+                    class BucketEntryHash {
+                        public :    // Methods
+                            /**
+                             * Compare the given hash with the stored one and test if they are equals
+                             * @return if both hash are equals
+                             */
+                            bool bucketHashEquals(std::size_t) const {
+                                return true;
+                            }
+                            /**
+                             * @return the truncated hash
+                             */
+                            TruncatedHash getTruncatedHash() const {
+                                return 0;
+                            }
+            
+                        protected : // Methods
+                            /**
+                             * Set the internal stored hash
+                             */
+                            void setHash(TruncatedHash) {
+                            }
+                    };
         
-                    public :    // Methods
-                        /**
-                         * Compare the given hash with the stored one and test if they are equals
-                         * @param h the hash to compare
-                         * @return  if both hash are equals
-                         */
-                        bool bucketHashEquals(std::size_t h) const {
-                            return hash == TruncatedHash(h);
-                        }
-                        /**
-                         * @return the truncated hash
-                         */
-                        TruncatedHash getTruncatedHash() const {
-                            return hash;
-                        }
+                    /**
+                     * @class BucketEntryHash
+                     * @brief Used to store the key hash, or not depending on the template value
+                     */
+                    template <>
+                    class BucketEntryHash<true> {
+                        private :   // Fields
+                            TruncatedHash hash;     /**< The internal stored hash */
+            
+                        public :    // Methods
+                            /**
+                             * Compare the given hash with the stored one and test if they are equals
+                             * @param h the hash to compare
+                             * @return  if both hash are equals
+                             */
+                            bool bucketHashEquals(std::size_t h) const {
+                                return hash == TruncatedHash(h);
+                            }
+                            /**
+                             * @return the truncated hash
+                             */
+                            TruncatedHash getTruncatedHash() const {
+                                return hash;
+                            }
+            
+                        protected : // Methods
+                            /**
+                             * Set the internal stored hash
+                             * @param h the new hash
+                             */
+                            void setHash(TruncatedHash h) {
+                                hash = TruncatedHash(h);
+                            }
+                    };
         
-                    protected : // Methods
-                        /**
-                         * Set the internal stored hash
-                         * @param h the new hash
-                         */
-                        void setHash(TruncatedHash h) {
-                            hash = TruncatedHash(h);
-                        }
-                };
-    
-                /**
-                 * @class BucketEntry
-                 * @brief A bucket entry used as the hash table elements
-                 */
-                template <class ValueType, bool StoreHash>
-                class BucketEntry : public BucketEntryHash<StoreHash> {
-                    public :    // Typedef
-                        /**< The bucket distance type */
-                        using DistanceType  = std::int_least16_t;
-                        /**< The bucket internal storage type */
-                        using Storage       = typename std::aligned_storage<sizeof(ValueType), alignof(ValueType)>::type;
-        
-                    private :   // Fields
-                        DistanceType distanceToNext;    /**< The ideal distance to the next bucket */
-                        bool last;                      /**< Tell if the bucket is the last filled */
-                        Storage data;                   /**< The bucket entry data */
-        
-                    public :    // Methods
-                        //## Constructor ##//
-                            /**
-                             * Construct an empty bucket
-                             */
-                            BucketEntry();
-                            /**
-                             * Construct an empty bucket with user defined last marker
-                             * @param state tell if the bucket is the last
-                             */
-                            BucketEntry(bool state);
+                    /**
+                     * @class BucketEntry
+                     * @brief A bucket entry used as the hash table elements
+                     */
+                    template <class ValueType, bool StoreHash>
+                    class BucketEntry : public BucketEntryHash<StoreHash> {
+                        public :    // Typedef
+                            /**< The bucket distance type */
+                            using DistanceType  = std::int_least16_t;
+                            /**< The bucket internal storage type */
+                            using Storage       = typename std::aligned_storage<sizeof(ValueType), alignof(ValueType)>::type;
             
-                        //## Copy Constructor ##//
-                            /**
-                             * Copy bucket into this
-                             * @param bucket the bucket entry to copy
-                             */
-                            BucketEntry(BucketEntry const& bucket);
+                        private :   // Fields
+                            DistanceType distanceToNext;    /**< The ideal distance to the next bucket */
+                            bool last;                      /**< Tell if the bucket is the last filled */
+                            Storage data;                   /**< The bucket entry data */
             
-                        //## Move Constructor ##//
-                            /**
-                             * Move bucket into this
-                             * @param bucket the bucket entry to move
-                             */
-                            BucketEntry(BucketEntry && bucket);
-            
-                        //## Deconstructor ##//
-                            /**
-                             * BucketEntry Deconstructor
-                             */
-                            ~BucketEntry();
-            
-                        //## Getter ##//
-                            /**
-                             * @return if the bucket is empty
-                             */
-                            bool isEmpty() const;
-                            /**
-                             * @return if the bucket is the last
-                             */
-                            bool isLastBucket() const;
-                            /**
-                             * @return the distance to the next bucket
-                             */
-                            DistanceType getDistanceToNext() const;
-                            /**
-                             * @return the bucket data
-                             */
-                            ValueType& getData();
-                            /**
-                             * @return the bucket data
-                             */
-                            ValueType const& getData() const;
-            
-                        //## Setter ##//
-                            /**
-                             * Set this as the last bucket
-                             */
-                            void setAsLastBucket();
-                            /**
-                             * Set the bucket data, must be empty
-                             * @param distance the distance to the next bucket
-                             * @param h        the new truncated hash
-                             * @param newData  the data to set
-                             */
-                            void setData(DistanceType distance, TruncatedHash h, ValueType && newData);
+                        public :    // Methods
+                            //## Constructor ##//
+                                /**
+                                 * Construct an empty bucket
+                                 */
+                                BucketEntry();
+                                /**
+                                 * Construct an empty bucket with user defined last marker
+                                 * @param state tell if the bucket is the last
+                                 */
+                                BucketEntry(bool state);
                 
+                            //## Copy Constructor ##//
+                                /**
+                                 * Copy bucket into this
+                                 * @param bucket the bucket entry to copy
+                                 */
+                                BucketEntry(BucketEntry const& bucket);
+                
+                            //## Move Constructor ##//
+                                /**
+                                 * Move bucket into this
+                                 * @param bucket the bucket entry to move
+                                 */
+                                BucketEntry(BucketEntry && bucket);
+                
+                            //## Deconstructor ##//
+                                /**
+                                 * BucketEntry Deconstructor
+                                 */
+                                ~BucketEntry();
+                
+                            //## Getter ##//
+                                /**
+                                 * @return if the bucket is empty
+                                 */
+                                bool isEmpty() const;
+                                /**
+                                 * @return if the bucket is the last
+                                 */
+                                bool isLastBucket() const;
+                                /**
+                                 * @return the distance to the next bucket
+                                 */
+                                DistanceType getDistanceToNext() const;
+                                /**
+                                 * @return the bucket data
+                                 */
+                                ValueType& getData();
+                                /**
+                                 * @return the bucket data
+                                 */
+                                ValueType const& getData() const;
+                
+                            //## Setter ##//
+                                /**
+                                 * Set this as the last bucket
+                                 */
+                                void setAsLastBucket();
+                                /**
+                                 * Set the bucket data, must be empty
+                                 * @param distance the distance to the next bucket
+                                 * @param h        the new truncated hash
+                                 * @param newData  the data to set
+                                 */
+                                void setData(DistanceType distance, TruncatedHash h, ValueType && newData);
+                    
                             //## Methods ##//
-                            /**
-                             * Clear the bucket data if not empty
-                             */
-                            void clear();
-                            /**
-                             * Swap the bucket data with given one
-                             * @param distance the distance to the next bucket
-                             * @param h        the new truncated hash
-                             * @param newData  the data to set
-                             */
-                            void swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData);
-                
-                        //## Assignment Operator ##//
-                            /**
-                             * Copy bucket into this
-                             * @param bucket the bucket entry to copy into this
-                             * @return    the reference of himself
-                             */
-                            BucketEntry& operator =(BucketEntry const& bucket);
-                            /**
-                             * Move bucket into this
-                             * @param bucket the bucket entry to move into this
-                             * @return       the reference of himself
-                             */
-                            BucketEntry& operator =(BucketEntry && bucket);
-        
-                    public :    // Static
-                        static const DistanceType EMPTY_BUCKET_DISTANCE = -1; /**< The distance used to mark a bucket as empty */
+                                /**
+                                 * Clear the bucket data if not empty
+                                 */
+                                void clear();
+                                /**
+                                 * Swap the bucket data with given one
+                                 * @param distance the distance to the next bucket
+                                 * @param h        the new truncated hash
+                                 * @param newData  the data to set
+                                 */
+                                void swapWithData(DistanceType& distance, TruncatedHash& h, ValueType& newData);
+                    
+                            //## Assignment Operator ##//
+                                /**
+                                 * Copy bucket into this
+                                 * @param bucket the bucket entry to copy into this
+                                 * @return    the reference of himself
+                                 */
+                                BucketEntry& operator =(BucketEntry const& bucket);
+                                /**
+                                 * Move bucket into this
+                                 * @param bucket the bucket entry to move into this
+                                 * @return       the reference of himself
+                                 */
+                                BucketEntry& operator =(BucketEntry && bucket);
             
-                };
+                        public :    // Static
+                            static const DistanceType EMPTY_BUCKET_DISTANCE = -1; /**< The distance used to mark a bucket as empty */
+                
+                    };
+    
+                    /**
+                     * @class ForwardIterator
+                     * @brief Hash table forward iterator
+                     */
+                    template <class T, class Category, class Bucket>
+                    class ForwardIterator : public IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category> {
+                        public :    // Traits
+                            /**< Inherited iterator traits */
+                            using Traits = IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category>;
+                            /**< The iterated object */
+                            using ValueType         = typename Traits::ValueType;
+                            /**< The pointer on iterated object */
+                            using Pointer           = typename Traits::Pointer;
+                            /**< The reference on iterated object */
+                            using Reference         = typename Traits::Reference;
+                            /**< The iterator difference type */
+                            using DifferenceType    = typename Traits::DifferenceType;
+                            /**< STL compatibility */
+                            using value_type        = ValueType;
+                            /**< STL compatibility */
+                            using pointer           = Pointer;
+                            /**< STL compatibility */
+                            using reference         = Reference;
+                            /**< STL compatibility */
+                            using difference_type   = DifferenceType;
+                            /**< STL compatibility */
+                            using iterator_category = typename Traits::iterator_category;
+        
+                        private :   // Fields
+                            Bucket* current;   /**< The current iterator bucket */
+        
+                        public :    // Methods
+                            //## Constructor ##//
+                                /**
+                                 * Default constructor with nullptr node
+                                 */
+                                ForwardIterator() = default;
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param bucket the iterator bucket
+                                 */
+                                ForwardIterator(Bucket* bucket);
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param bucket the iterator bucket
+                                 */
+                                ForwardIterator(const Bucket* bucket);
+            
+                            //## Copy Constructor ##//
+                                /**
+                                 * Copy it into this
+                                 * @param it the iterator to copy
+                                 */
+                                ForwardIterator(ForwardIterator const& it) = default;
+            
+                            //## Move Constructor ##//
+                                /**
+                                 * Move it into this
+                                 * @param it the iterator to move
+                                 */
+                                ForwardIterator(ForwardIterator && it) = default;
+            
+                            //## Deconstructor ##//
+                                /**
+                                 * ForwardIterator Deconstructor
+                                 */
+                                ~ForwardIterator() = default;
+    
+                            //## Getter ##//
+                                /**
+                                 * @return the current bucket
+                                 */
+                                Bucket* getCurrent();
+            
+                            //## Methods ##//
+                                /**
+                                 * @return a reference on the iterated data
+                                 */
+                                Reference dereference() const;
+                                /**
+                                 * Increment the iterator position by one
+                                 */
+                                void increment();
+                                /**
+                                 * Test if the given iterator point to the same position
+                                 * @param it the other iterator
+                                 * @return   the test's result
+                                 */
+                                bool equal(ForwardIterator const& it) const;
+            
+                            //## Assignment Operator ##//
+                                /**
+                                 * Copy assignment of it into this
+                                 * @param it the iterator to copy
+                                 * @return   the reference of himself
+                                 */
+                                ForwardIterator& operator =(ForwardIterator const& it) = default;
+                                /**
+                                 * Move assignment of it into this
+                                 * @param it the iterator to move
+                                 * @return   the reference of himself
+                                 */
+                                ForwardIterator& operator =(ForwardIterator && it) = default;
+                    };
+    
+                    /**
+                     * @class LocalForwardIterator
+                     * @brief Hash table local forward iterator
+                     */
+                    template <class T, class Category, class Bucket>
+                    class LocalForwardIterator : public IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category> {
+                        public :    // Traits
+                            /**< Inherited iterator traits */
+                            using Traits = IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category>;
+                            /**< The iterated object */
+                            using ValueType         = typename Traits::ValueType;
+                            /**< The pointer on iterated object */
+                            using Pointer           = typename Traits::Pointer;
+                            /**< The reference on iterated object */
+                            using Reference         = typename Traits::Reference;
+                            /**< The iterator difference type */
+                            using DifferenceType    = typename Traits::DifferenceType;
+                            /**< STL compatibility */
+                            using value_type        = ValueType;
+                            /**< STL compatibility */
+                            using pointer           = Pointer;
+                            /**< STL compatibility */
+                            using reference         = Reference;
+                            /**< STL compatibility */
+                            using difference_type   = DifferenceType;
+                            /**< STL compatibility */
+                            using iterator_category = typename Traits::iterator_category;
+        
+                        private :   // Fields
+                            Bucket* current;   /**< The current iterator bucket */
+        
+                        public :    // Methods
+                            //## Constructor ##//
+                                /**
+                                 * Default constructor with nullptr node
+                                 */
+                                LocalForwardIterator() = default;
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param bucket the iterator bucket
+                                 */
+                                LocalForwardIterator(Bucket* bucket);
+                                /**
+                                 * Construct the iterator with the given node
+                                 * @param bucket the iterator bucket
+                                 */
+                                LocalForwardIterator(const Bucket* bucket);
+            
+                            //## Copy Constructor ##//
+                                /**
+                                 * Copy it into this
+                                 * @param it the iterator to copy
+                                 */
+                                LocalForwardIterator(LocalForwardIterator const& it) = default;
+            
+                            //## Move Constructor ##//
+                                /**
+                                 * Move it into this
+                                 * @param it the iterator to move
+                                 */
+                                LocalForwardIterator(LocalForwardIterator && it) = default;
+            
+                            //## Deconstructor ##//
+                                /**
+                                 * LocalForwardIterator Deconstructor
+                                 */
+                                ~LocalForwardIterator() = default;
+            
+                            //## Methods ##//
+                                /**
+                                 * @return a reference on the iterated data
+                                 */
+                                Reference dereference() const;
+                                /**
+                                 * Increment the iterator position by one
+                                 */
+                                void increment();
+                                /**
+                                 * Test if the given iterator point to the same position
+                                 * @param it the other iterator
+                                 * @return   the test's result
+                                 */
+                                bool equal(LocalForwardIterator const& it) const;
+            
+                            //## Assignment Operator ##//
+                                /**
+                                 * Copy assignment of it into this
+                                 * @param it the iterator to copy
+                                 * @return   the reference of himself
+                                 */
+                                LocalForwardIterator& operator =(LocalForwardIterator const& it) = default;
+                                /**
+                                 * Move assignment of it into this
+                                 * @param it the iterator to move
+                                 * @return   the reference of himself
+                                 */
+                                LocalForwardIterator& operator =(LocalForwardIterator && it) = default;
+                    };
+                }
                 
                 /**
                  * @class HashTable
@@ -229,6 +436,13 @@
                         using MappedType            = T;
                         /**< The container's allocated type */
                         using ValueType             = Pair<KeyType, MappedType>;
+                        
+                    private :   // Traits
+                        /**< Shortcut to bucket entry */
+                        template <class K, bool Store>
+                        using BucketEntry = HashTableInner::BucketEntry<K, Store>;
+                        /**< Shortcut to truncated hash */
+                        using TruncatedHash = HashTableInner::TruncatedHash;
                         
                     private :     // Static
                         static constexpr bool STORE_HASH = StoreHash || ((sizeof(BucketEntry<ValueType, true>) == sizeof(BucketEntry<ValueType, false>)) && (!std::is_arithmetic<KeyType>::value || !std::is_same<Hash, std::hash<KeyType>>::value));    /**< Tell if we store the hash in the bucket with the key */
@@ -252,6 +466,14 @@
                         using Pointer               = typename AllocatorType::Pointer;
                         /**< The allocated type const pointer */
                         using ConstPointer          = typename AllocatorType::ConstPointer;
+                        /**< Mutable random access iterator */
+                        using Iterator              = HashTableInner::ForwardIterator<ValueType, InOutForwardIterator, BucketEntry<ValueType, STORE_HASH>>;
+                        /**< Immuable random access iterator */
+                        using ConstIterator         = HashTableInner::ForwardIterator<ValueType, Utility::ForwardIterator, BucketEntry<ValueType, STORE_HASH>>;
+                        /**< Mutable random access iterator */
+                        using LocalIterator         = HashTableInner::LocalForwardIterator<ValueType, InOutForwardIterator, BucketEntry<ValueType, STORE_HASH>>;
+                        /**< Immuable random access iterator */
+                        using ConstLocalIterator    = HashTableInner::LocalForwardIterator<ValueType, Utility::ForwardIterator, BucketEntry<ValueType, STORE_HASH>>;
                         /**< STL compatibility */
                         using value_type            = ValueType;
                         /**< STL compatibility */
@@ -268,217 +490,6 @@
                         using pointer               = Pointer;
                         /**< STL compatibility */
                         using const_pointer         = ConstPointer;
-        
-                    private :     // Iterator
-                        /**
-                         * @class ForwardIterator
-                         * @brief Hash table forward iterator
-                         */
-                        template <class Category>
-                        class ForwardIterator : public IteratorTraits<ForwardIterator<Category>, ValueType, Category> {
-                            friend class HashTable;
-                            public :    // Traits
-                                /**< Inherited iterator traits */
-                                using Traits = IteratorTraits<ForwardIterator<Category>, ValueType, Category>;
-                                /**< The iterated object */
-                                using ValueType         = typename Traits::ValueType;
-                                /**< The pointer on iterated object */
-                                using Pointer           = typename Traits::Pointer;
-                                /**< The reference on iterated object */
-                                using Reference         = typename Traits::Reference;
-                                /**< The iterator difference type */
-                                using DifferenceType    = typename Traits::DifferenceType;
-                                /**< STL compatibility */
-                                using value_type        = ValueType;
-                                /**< STL compatibility */
-                                using pointer           = Pointer;
-                                /**< STL compatibility */
-                                using reference         = Reference;
-                                /**< STL compatibility */
-                                using difference_type   = DifferenceType;
-                                /**< STL compatibility */
-                                using iterator_category = typename Traits::iterator_category;
-                                
-                            private :   // Fields
-                                BucketEntry<ValueType, STORE_HASH>* current;   /**< The current iterator bucket */
-                                
-                            public :    // Methods
-                                //## Constructor ##//
-                                    /**
-                                     * Default constructor with nullptr node
-                                     */
-                                    ForwardIterator() = default;
-                                    /**
-                                     * Construct the iterator with the given node
-                                     * @param bucket the iterator bucket
-                                     */
-                                    ForwardIterator(BucketEntry<ValueType, STORE_HASH>* bucket);
-                                    /**
-                                     * Construct the iterator with the given node
-                                     * @param bucket the iterator bucket
-                                     */
-                                    ForwardIterator(const BucketEntry<ValueType, STORE_HASH>* bucket);
-                    
-                                //## Copy Constructor ##//
-                                    /**
-                                     * Copy it into this
-                                     * @param it the iterator to copy
-                                     */
-                                    ForwardIterator(ForwardIterator const& it) = default;
-    
-                                //## Move Constructor ##//
-                                    /**
-                                     * Move it into this
-                                     * @param it the iterator to move
-                                     */
-                                    ForwardIterator(ForwardIterator && it) = default;
-                        
-                                //## Deconstructor ##//
-                                    /**
-                                     * ForwardIterator Deconstructor
-                                     */
-                                    ~ForwardIterator() = default;
-    
-                                //## Methods ##//
-                                    /**
-                                     * @return a reference on the iterated data
-                                     */
-                                    Reference dereference() const;
-                                    /**
-                                     * Increment the iterator position by one
-                                     */
-                                    void increment();
-                                    /**
-                                     * Test if the given iterator point to the same position
-                                     * @param it the other iterator
-                                     * @return   the test's result
-                                     */
-                                    bool equal(ForwardIterator const& it) const;
-                    
-                                //## Assignment Operator ##//
-                                    /**
-                                     * Copy assignment of it into this
-                                     * @param it the iterator to copy
-                                     * @return   the reference of himself
-                                     */
-                                    ForwardIterator& operator =(ForwardIterator const& it) = default;
-                                    /**
-                                     * Move assignment of it into this
-                                     * @param it the iterator to move
-                                     * @return   the reference of himself
-                                     */
-                                    ForwardIterator& operator =(ForwardIterator && it) = default;
-                        };
-            
-                        /**
-                         * @class LocalForwardIterator
-                         * @brief Hash table local forward iterator
-                         */
-                        template <class Category>
-                        class LocalForwardIterator : public IteratorTraits<ForwardIterator<Category>, ValueType, Category> {
-                            friend class HashTable;
-                            public :    // Traits
-                                /**< Inherited iterator traits */
-                                using Traits = IteratorTraits<ForwardIterator<Category>, ValueType, Category>;
-                                /**< The iterated object */
-                                using ValueType         = typename Traits::ValueType;
-                                /**< The pointer on iterated object */
-                                using Pointer           = typename Traits::Pointer;
-                                /**< The reference on iterated object */
-                                using Reference         = typename Traits::Reference;
-                                /**< The iterator difference type */
-                                using DifferenceType    = typename Traits::DifferenceType;
-                                /**< STL compatibility */
-                                using value_type        = ValueType;
-                                /**< STL compatibility */
-                                using pointer           = Pointer;
-                                /**< STL compatibility */
-                                using reference         = Reference;
-                                /**< STL compatibility */
-                                using difference_type   = DifferenceType;
-                                /**< STL compatibility */
-                                using iterator_category = typename Traits::iterator_category;
-                                
-                            private :   // Fields
-                                BucketEntry<ValueType, STORE_HASH>* current;   /**< The current iterator bucket */
-
-                            public :    // Methods
-                                //## Constructor ##//
-                                    /**
-                                     * Default constructor with nullptr node
-                                     */
-                                    LocalForwardIterator() = default;
-                                    /**
-                                     * Construct the iterator with the given node
-                                     * @param bucket the iterator bucket
-                                     */
-                                    LocalForwardIterator(BucketEntry<ValueType, STORE_HASH>* bucket);
-                                    /**
-                                     * Construct the iterator with the given node
-                                     * @param bucket the iterator bucket
-                                     */
-                                    LocalForwardIterator(const BucketEntry<ValueType, STORE_HASH>* bucket);
-                    
-                                //## Copy Constructor ##//
-                                    /**
-                                     * Copy it into this
-                                     * @param it the iterator to copy
-                                     */
-                                    LocalForwardIterator(LocalForwardIterator const& it) = default;
-    
-                                //## Move Constructor ##//
-                                    /**
-                                     * Move it into this
-                                     * @param it the iterator to move
-                                     */
-                                    LocalForwardIterator(LocalForwardIterator && it) = default;
-                        
-                                //## Deconstructor ##//
-                                    /**
-                                     * LocalForwardIterator Deconstructor
-                                     */
-                                    ~LocalForwardIterator() = default;
-    
-                                //## Methods ##//
-                                    /**
-                                     * @return a reference on the iterated data
-                                     */
-                                    Reference dereference() const;
-                                    /**
-                                     * Increment the iterator position by one
-                                     */
-                                    void increment();
-                                    /**
-                                     * Test if the given iterator point to the same position
-                                     * @param it the other iterator
-                                     * @return   the test's result
-                                     */
-                                    bool equal(LocalForwardIterator const& it) const;
-                    
-                                //## Assignment Operator ##//
-                                    /**
-                                     * Copy assignment of it into this
-                                     * @param it the iterator to copy
-                                     * @return   the reference of himself
-                                     */
-                                    LocalForwardIterator& operator =(LocalForwardIterator const& it) = default;
-                                    /**
-                                     * Move assignment of it into this
-                                     * @param it the iterator to move
-                                     * @return   the reference of himself
-                                     */
-                                    LocalForwardIterator& operator =(LocalForwardIterator && it) = default;
-                        };
-
-                    public :     // Traits
-                        /**< Mutable random access iterator */
-                        using Iterator              = ForwardIterator<InOutForwardIterator>;
-                        /**< Immuable random access iterator */
-                        using ConstIterator         = ForwardIterator<Utility::ForwardIterator>;
-                        /**< Mutable random access iterator */
-                        using LocalIterator         = LocalForwardIterator<InOutForwardIterator>;
-                        /**< Immuable random access iterator */
-                        using ConstLocalIterator    = LocalForwardIterator<Utility::ForwardIterator>;
                         /**< STL compatibility */
                         using iterator              = Iterator;
                         /**< STL compatibility */
