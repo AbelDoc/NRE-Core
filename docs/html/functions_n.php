@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_g.php#index_g"><span>g</span></a></li>
       <li><a href="functions_h.php#index_h"><span>h</span></a></li>
       <li><a href="functions_i.php#index_i"><span>i</span></a></li>
+      <li><a href="functions_k.php#index_k"><span>k</span></a></li>
       <li><a href="functions_l.php#index_l"><span>l</span></a></li>
       <li><a href="functions_m.php#index_m"><span>m</span></a></li>
       <li class="current"><a href="functions_n.php#index_n"><span>n</span></a></li>
@@ -132,6 +133,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
 <h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>next
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_node_base.php#afa59d41401a671da519d5835efabfd01">NRE::Utility::Detail::ForwardListInner::NodeBase</a>
+</li>
+<li>Node()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_node.php#ae9ee2d5696b642909a2cc7b5488af8e8">NRE::Utility::Detail::ForwardListInner::Node&lt; T &gt;</a>
+</li>
+<li>NodeBase()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_node_base.php#a9013e07c0e966f654588b59d7968d353">NRE::Utility::Detail::ForwardListInner::NodeBase</a>
+</li>
+<li>NOT_FOUND
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a80dc21317d22ab231ed732c8f222e471">NRE::Utility::BasicString&lt; T &gt;</a>
+</li>
 <li>notifyAll()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ae53ec28846ac7a5bf311dfe2fc9893bf">NRE::Utility::Observable</a>
 </li>

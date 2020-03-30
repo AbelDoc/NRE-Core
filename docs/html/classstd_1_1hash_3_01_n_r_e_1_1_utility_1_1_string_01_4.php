@@ -110,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3b62fd2a790b87848fb3606132cf7663"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstd_1_1hash_3_01_n_r_e_1_1_utility_1_1_string_01_4.php#a3b62fd2a790b87848fb3606132cf7663">operator()</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::String</a> const &amp;str) const </td></tr>
+<tr class="memitem:a3b62fd2a790b87848fb3606132cf7663"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstd_1_1hash_3_01_n_r_e_1_1_utility_1_1_string_01_4.php#a3b62fd2a790b87848fb3606132cf7663">operator()</a> (<a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">NRE::Utility::String</a> const &amp;str) const </td></tr>
 <tr class="separator:a3b62fd2a790b87848fb3606132cf7663"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -119,9 +119,9 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t std::hash&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::String</a> &gt;::operator() </td>
+          <td class="memname">size_t std::hash&lt; <a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">NRE::Utility::String</a> &gt;::operator() </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::String</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">NRE::Utility::String</a> const &amp;&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td> const</td>
         </tr>

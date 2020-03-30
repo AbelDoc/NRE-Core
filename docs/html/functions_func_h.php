@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php#index_a"><span>a</span></a></li>
       <li><a href="functions_func_b.php#index_b"><span>b</span></a></li>
       <li><a href="functions_func_c.php#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_d.php#index_d"><span>d</span></a></li>
       <li><a href="functions_func_e.php#index_e"><span>e</span></a></li>
       <li><a href="functions_func_f.php#index_f"><span>f</span></a></li>
       <li><a href="functions_func_g.php#index_g"><span>g</span></a></li>
@@ -132,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
 <li>HashTable()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a121255a050e66ac71ef1c8b0c40fd13a">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a39fff67e2ee1feabb31a2dd059d55d83">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

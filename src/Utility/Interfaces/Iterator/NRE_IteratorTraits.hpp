@@ -27,7 +27,7 @@
              * @brief Used in IteratorTraits to detect InputIterator category
              */
             struct InputIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::input_iterator_tag;
             };
             /**
@@ -35,7 +35,7 @@
              * @brief Used in IteratorTraits to detect OutputIterator category
              */
             struct OutputIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::output_iterator_tag;
             };
             /**
@@ -43,7 +43,7 @@
              * @brief Used in IteratorTraits to detect ForwardIterator category
              */
             struct ForwardIterator : InputIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::forward_iterator_tag;
             };
             /**
@@ -51,7 +51,7 @@
              * @brief Used in IteratorTraits to detect BidirectionalIterator category
              */
             struct BidirectionalIterator : ForwardIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::bidirectional_iterator_tag;
             };
             /**
@@ -59,7 +59,7 @@
              * @brief Used in IteratorTraits to detect RandomAccessIterator category
              */
             struct RandomAccessIterator : BidirectionalIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::random_access_iterator_tag;
             };
             /**
@@ -67,7 +67,7 @@
              * @brief Used in IteratorTraits to detect ForwardIterator category allowing Output operation
              */
             struct InOutForwardIterator : ForwardIterator, OutputIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::forward_iterator_tag;
             };
             /**
@@ -75,7 +75,7 @@
              * @brief Used in IteratorTraits to detect BidirectionalIterator category allowing Output operation
              */
             struct InOutBidirectionalIterator : BidirectionalIterator, OutputIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::bidirectional_iterator_tag;
             };
             /**
@@ -83,7 +83,7 @@
              * @brief Used in IteratorTraits to detect RandomAccessIterator category allowing Output operation
              */
             struct InOutRandomAccessIterator : RandomAccessIterator, OutputIterator {
-                /**< STL compatiblity */
+                /** STL compatibility */
                 using iterator_category = std::random_access_iterator_tag;
             };
     
@@ -139,29 +139,29 @@
             struct IsRandomAccessIterator : std::is_base_of<RandomAccessIterator, It> {
             };
     
-            /**< Shortcut to IsIterator inner value */
+            /** Shortcut to IsIterator inner value */
             template <class T>
             constexpr bool IsIteratorV = IsIterator<T>::value;
-            /**< Shortcut to IsInputIterator inner value */
+            /** Shortcut to IsInputIterator inner value */
             template <class It>
             constexpr bool IsInputIteratorV         = IsInputIterator<It>::value;
-            /**< Shortcut to IsOutputIterator inner value */
+            /** Shortcut to IsOutputIterator inner value */
             template <class It>
             constexpr bool IsOutputIteratorV        = IsOutputIterator<It>::value;
-            /**< Shortcut to IsBidirectionalIterator inner value */
+            /** Shortcut to IsBidirectionalIterator inner value */
             template <class It>
             constexpr bool IsBidirectionalIteratorV = IsBidirectionalIterator<It>::value;
-            /**< Shortcut to IsRandomAccessIterator inner value */
+            /** Shortcut to IsRandomAccessIterator inner value */
             template <class It>
             constexpr bool IsRandomAccessIteratorV  = IsRandomAccessIterator<It>::value;
     
-            /**< Allow to enable a function if the given template parameter is an output iterator */
+            /** Allow to enable a function if the given template parameter is an output iterator */
             template <class It>
             using UseIfOutputIterator        = std::enable_if_t<IsOutputIteratorV<It>>;
-            /**< Allow to enable a function if the given template parameter is a bidirectional iterator */
+            /** Allow to enable a function if the given template parameter is a bidirectional iterator */
             template <class It>
             using UseIfBidirectionalIterator = std::enable_if_t<IsBidirectionalIteratorV<It>>;
-            /**< Allow to enable a function if the given template parameter is a random access iterator */
+            /** Allow to enable a function if the given template parameter is a random access iterator */
             template <class It>
             using UseIfRandomAccessIterator  = std::enable_if_t<IsRandomAccessIteratorV<It>>;
     
@@ -181,25 +181,25 @@
                 static_assert(IsIteratorV<Category>);  /**< You must at least be an input iterator or output iterator */
                 
                 public :    // Traits
-                    /**< The iterator object */
+                    /** The iterator object */
                     using Iterator          = It<Args...>;
-                    /**< The iterated object */
+                    /** The iterated object */
                     using ValueType         = T;
-                    /**< The pointer on iterated object */
+                    /** The pointer on iterated object */
                     using Pointer           = std::conditional_t<IsOutputIteratorV<Category>, ValueType*, const ValueType*>;
-                    /**< The reference on iterated object */
+                    /** The reference on iterated object */
                     using Reference         = std::conditional_t<IsOutputIteratorV<Category>, ValueType&, ValueType const&>;
-                    /**< The iterator difference type */
+                    /** The iterator difference type */
                     using DifferenceType    = std::ptrdiff_t;
-                    /**< STL compatibility */
+                    /** STL compatibility */
                     using value_type        = ValueType;
-                    /**< STL compatibility */
+                    /** STL compatibility */
                     using pointer           = Pointer;
-                    /**< STL compatibility */
+                    /** STL compatibility */
                     using reference         = Reference;
-                    /**< STL compatibility */
+                    /** STL compatibility */
                     using difference_type   = DifferenceType;
-                    /**< STL compatibility */
+                    /** STL compatibility */
                     using iterator_category = std::conditional_t<std::is_pointer_v<T>, std::random_access_iterator_tag, typename Category::iterator_category>;
                     
                 public :    // Methods
@@ -345,7 +345,7 @@
                         /**
                          * Create an iterator resulting in the move of this by k
                          * @param k the distance to add
-                         * @rturn   the new iterator
+                         * @return   the new iterator
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         Iterator operator +(DifferenceType k) const {
@@ -354,7 +354,7 @@
                         /**
                          * Create an iterator resulting in the move of this by k
                          * @param k the distance to subtract
-                         * @rturn   the new iterator
+                         * @return   the new iterator
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         Iterator operator -(DifferenceType k) const {
@@ -421,7 +421,7 @@
              * Create an iterator resulting in the move of it by k
              * @param k  the distance to add
              * @param it the iterator to move
-             * @rturn    the new iterator
+             * @return   the new iterator
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
             It<Args...> operator +(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
@@ -432,14 +432,12 @@
              * Create an iterator resulting in the move of it by k
              * @param k  the distance to subtract
              * @param it the iterator to move
-             * @rturn    the new iterator
+             * @return   the new iterator
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
             It<Args...> operator -(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
                 return It<T, Args...>(it) -= k;
             }
-            
-            
         
         }
     }

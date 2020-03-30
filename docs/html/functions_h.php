@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_g.php#index_g"><span>g</span></a></li>
       <li class="current"><a href="functions_h.php#index_h"><span>h</span></a></li>
       <li><a href="functions_i.php#index_i"><span>i</span></a></li>
+      <li><a href="functions_k.php#index_k"><span>k</span></a></li>
       <li><a href="functions_l.php#index_l"><span>l</span></a></li>
       <li><a href="functions_m.php#index_m"><span>m</span></a></li>
       <li><a href="functions_n.php#index_n"><span>n</span></a></li>
@@ -133,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
 <li>HashTable()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a121255a050e66ac71ef1c8b0c40fd13a">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a39fff67e2ee1feabb31a2dd059d55d83">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

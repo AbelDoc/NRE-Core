@@ -107,14 +107,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &quot;<a class="el" href="_n_r_e___static_interface_8hpp_source.php">../Utility/Interfaces/NRE_StaticInterface.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___uncopyable_8hpp_source.php">../Utility/Interfaces/Uncopyable/NRE_Uncopyable.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___stringable_8hpp_source.php">../Utility/Interfaces/Stringable/NRE_Stringable.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">../Utility/Detail/HashTable/NRE_HashTable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___iterator_traits_8hpp_source.php">../Utility/Interfaces/Iterator/NRE_IteratorTraits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___array_8hpp_source.php">../Utility/Array/NRE_Array.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___static_vector_8hpp_source.php">../Utility/StaticVector/NRE_StaticVector.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___vector_8hpp_source.php">../Utility/Vector/NRE_Vector.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_vector_2_n_r_e___vector_8hpp_source.php">../Utility/Vector/NRE_Vector.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___string_8hpp_source.php">../Utility/String/NRE_String.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___forward_list_8hpp_source.php">../Utility/ForwardList/NRE_ForwardList.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_forward_list_2_n_r_e___forward_list_8hpp_source.php">../Utility/ForwardList/NRE_ForwardList.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">../Utility/Detail/HashTable/NRE_HashTable.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_detail_2_forward_list_2_n_r_e___forward_list_8hpp_source.php">../Utility/Detail/ForwardList/NRE_ForwardList.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_detail_2_vector_2_n_r_e___vector_8hpp_source.php">../Utility/Detail/Vector/NRE_Vector.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_detail_2_unordered_map_2_n_r_e___unordered_map_8hpp_source.php">../Utility/Detail/UnorderedMap/NRE_UnorderedMap.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___pair_8hpp_source.php">../Utility/Pair/NRE_Pair.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___unordered_map_8hpp_source.php">../Utility/UnorderedMap/NRE_UnorderedMap.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_unordered_map_2_n_r_e___unordered_map_8hpp_source.php">../Utility/UnorderedMap/NRE_UnorderedMap.hpp</a>&quot;</code><br />
 <code>#include &quot;../Utility/Stack/NRE_Stack.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___observer_8hpp_source.php">../Utility/Observer/NRE_Observer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___observable_8hpp_source.php">../Utility/Observable/NRE_Observable.hpp</a>&quot;</code><br />

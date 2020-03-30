@@ -118,8 +118,8 @@ Inheritance diagram for NRE::Exception::IException:</div>
  <div class="center">
   <img src="class_n_r_e_1_1_exception_1_1_i_exception.png" usemap="#NRE::Exception::IException_map" alt=""/>
   <map id="NRE::Exception::IException_map" name="NRE::Exception::IException_map">
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; IException &gt;" shape="rect" coords="318,56,626,80"/>
-<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T, M &gt;" shape="rect" coords="318,0,626,24"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; IException &gt;" shape="rect" coords="333,56,656,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T &gt;" shape="rect" coords="333,0,656,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -127,7 +127,7 @@ Inheritance diagram for NRE::Exception::IException:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7d7ccf53661a097afcb0836cd77996c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a7d7ccf53661a097afcb0836cd77996c8">IException</a> ()=delete</td></tr>
 <tr class="separator:a7d7ccf53661a097afcb0836cd77996c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c5da16704c4cc9bca0a502c23b192d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a9c5da16704c4cc9bca0a502c23b192d0">IException</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">Utility::String</a> const &amp;log)  throw ()</td></tr>
+<tr class="memitem:a9c5da16704c4cc9bca0a502c23b192d0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a9c5da16704c4cc9bca0a502c23b192d0">IException</a> (<a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">Utility::String</a> const &amp;log)  throw ()</td></tr>
 <tr class="separator:a9c5da16704c4cc9bca0a502c23b192d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5a8faf1cbb5603e77eaffb848a85aef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#af5a8faf1cbb5603e77eaffb848a85aef">IException</a> (<a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php">IException</a> const &amp;e)=default  throw ()</td></tr>
 <tr class="separator:af5a8faf1cbb5603e77eaffb848a85aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,16 +139,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a837a351b0d155dd31dc44f50bbe6b5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0d7b8b12ba151d2573b5cdb2e2c2b08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php">IException</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#ac0d7b8b12ba151d2573b5cdb2e2c2b08">operator=</a> (<a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php">IException</a> &amp;&amp;e)=default</td></tr>
 <tr class="separator:ac0d7b8b12ba151d2573b5cdb2e2c2b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4457260a3da3363e38b1ed75ca64407e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">Utility::String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a4457260a3da3363e38b1ed75ca64407e">toString</a> () const </td></tr>
+<tr class="memitem:a4457260a3da3363e38b1ed75ca64407e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">Utility::String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#a4457260a3da3363e38b1ed75ca64407e">toString</a> () const </td></tr>
 <tr class="separator:a4457260a3da3363e38b1ed75ca64407e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; IException &gt;</a></td></tr>
-<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
+<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
 <tr class="separator:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_static_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface&lt; T, M &gt;</a></td></tr>
-<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
-<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
-<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An interface for exception. </p>
@@ -188,7 +183,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">NRE::Exception::IException::IException </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">Utility::String</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">Utility::String</a> const &amp;&#160;</td>
           <td class="paramname"><em>log</em></td><td>)</td>
           <td></td>
         </tr>
@@ -387,7 +382,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">Utility::String</a> NRE::Exception::IException::toString </td>
+          <td class="memname"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">Utility::String</a> NRE::Exception::IException::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

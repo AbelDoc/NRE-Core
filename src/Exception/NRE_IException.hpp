@@ -30,49 +30,60 @@
              */
             class IException : public std::runtime_error, public Utility::Stringable<IException> {
                 public:
-                    /**
-                     * No Default Constructor
-                     */
-                    IException() = delete;
-                    /**
-                     * Construct an IException with a custom log
-                     * @param log the IException's log
-                     */
-                    IException(Utility::String const& log) throw() : runtime_error(log.getCData()) {
-                    }
-                    /**
-                     * Copy e into this
-                     * @param e the IException to copy the content
-                     */
-                    IException(IException const& e) throw() = default;
-                    /**
-                     * Move e into this, leaving e empty
-                     * @param e the IException to move
-                     */
-                    IException(IException && e) throw() = default;
-                    /**
-                     * IException Deconstructor
-                     */
-                    virtual ~IException() throw() = default;
-                    /**
-                     * Copy assignment of e into this
-                     * @param e the IException to copy into this
-                     * @return the reference of himself
-                     */
-                    IException& operator=(IException const& e) = default;
-                    /**
-                     * Move assignment of e into this, leaving e empty
-                     * @param e the IException to move into this
-                     * @return the reference of himself
-                     */
-                    IException& operator=(IException && e) = default;
-                    /**
-                     * Convert an IException into a string
-                     * @return   the converted IException
-                     */
-                    Utility::String toString() const {
-                       return Utility::String(what());
-                    }
+                    //## Constructor ##//
+                        /**
+                         * No Default Constructor
+                         */
+                        IException() = delete;
+                        /**
+                         * Construct an IException with a custom log
+                         * @param log the IException's log
+                         */
+                        IException(Utility::String const& log) throw() : runtime_error(log.getCData()) {
+                        }
+    
+                    //## Copy Constructor ##//
+                        /**
+                         * Copy e into this
+                         * @param e the IException to copy the content
+                         */
+                        IException(IException const& e) throw() = default;
+    
+                    //## Move Constructor ##//
+                        /**
+                         * Move e into this, leaving e empty
+                         * @param e the IException to move
+                         */
+                        IException(IException && e) throw() = default;
+    
+                    //## Deconstructor ##//
+                        /**
+                         * IException Deconstructor
+                         */
+                        virtual ~IException() throw() = default;
+    
+                    //## Assignment Operator ##//
+                        /**
+                         * Copy assignment of e into this
+                         * @param e the IException to copy into this
+                         * @return the reference of himself
+                         */
+                        IException& operator=(IException const& e) = default;
+                        /**
+                         * Move assignment of e into this, leaving e empty
+                         * @param e the IException to move into this
+                         * @return the reference of himself
+                         */
+                        IException& operator=(IException && e) = default;
+    
+                    //## Stream Operator ##//
+                        /**
+                         * Convert an IException into a string
+                         * @return   the converted IException
+                         */
+                        Utility::String toString() const {
+                           return Utility::String(what());
+                        }
             };
         }
     }

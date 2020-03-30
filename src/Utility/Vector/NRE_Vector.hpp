@@ -1,6 +1,6 @@
 
     /**
-     * @file NRE_Vector.hpp
+     * @file Utility/Vector/NRE_Vector.hpp
      * @brief Declaration of Utility's API's Container : Vector
      * @author Louis ABEL
      * @date 15/05/2019
@@ -23,6 +23,7 @@
          */
         namespace Utility {
         
+            /** Hide Vector detail implementation and provide default allocator */
             template <class T, class Allocator = Memory::Allocator<T>>
             using Vector = Detail::Vector<T, Allocator>;
         }

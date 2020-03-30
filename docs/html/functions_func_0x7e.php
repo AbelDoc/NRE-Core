@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php#index_a"><span>a</span></a></li>
       <li><a href="functions_func_b.php#index_b"><span>b</span></a></li>
       <li><a href="functions_func_c.php#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_d.php#index_d"><span>d</span></a></li>
       <li><a href="functions_func_e.php#index_e"><span>e</span></a></li>
       <li><a href="functions_func_f.php#index_f"><span>f</span></a></li>
       <li><a href="functions_func_g.php#index_g"><span>g</span></a></li>
@@ -138,20 +139,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4767aa21ed166bbcbba3346e20063c81">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>~BucketEntry()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php#a3ae7cc0e4b8a95a881eeee75aefd576b">NRE::Utility::Detail::BucketEntry&lt; ValueType, StoreHash &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php#ae350c76f79a8c8b5244e3e6434afbc89">NRE::Utility::Detail::HashTableInner::BucketEntry&lt; ValueType, StoreHash &gt;</a>
 </li>
 <li>~ForwardIterator()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#a47f37804a81012f21e3d0d2b8ac05cd2">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::ForwardIterator&lt; K &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list_1_1_forward_iterator.php#a82b3fee333473efd55096bb3c4fb1f25">NRE::Utility::ForwardList&lt; T &gt;::ForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#ab3edf0f4d37b6d69f945a24c1b9c480d">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#af5cf2f0aa3344066ba4c8d37f372ab08">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
 </li>
 <li>~ForwardList()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a0eb628d246691f5df775d4d0b11b9f43">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a6a9df6d52236f0b703b457a327528995">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
 </li>
 <li>~IException()
 : <a class="el" href="class_n_r_e_1_1_exception_1_1_i_exception.php#aed938ddc7fa6b6971a1b563c25ec1c8e">NRE::Exception::IException</a>
 </li>
 <li>~LocalForwardIterator()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#acd38f7ce899f4caa878b2f2f4140dc0b">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::LocalForwardIterator&lt; K &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#a0e899633c233597428388473f9d8e856">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
 </li>
 <li>~Observable()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a0c1f5eb43b26526d963b8f354d6efefd">NRE::Utility::Observable</a>
@@ -172,10 +173,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#aa5808b79191635ede98e88037adc8d3b">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 <li>~Uncopyable()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ae2873929128bbf993c84d0535417b018">NRE::Utility::Uncopyable&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ab625b406b79b118177290cc155190590">NRE::Utility::Uncopyable&lt; T &gt;</a>
 </li>
 <li>~Vector()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#ab29b80e7a67b9530485c6771465bce28">NRE::Utility::Vector&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a0c23d4206db910b24d944da31548806a">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

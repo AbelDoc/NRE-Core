@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
-        <title>NRE-Utility: NRE::Utility::StaticInterface&lt; T, M &gt; Class Template Reference</title>
+        <title>NRE-Utility: NRE::Utility::StaticInterface&lt; T &gt; Class Template Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -100,11 +100,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="class_n_r_e_1_1_utility_1_1_static_interface-members.php">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">NRE::Utility::StaticInterface&lt; T, M &gt; Class Template Reference</div>  </div>
+<div class="title">NRE::Utility::StaticInterface&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -113,91 +110,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___static_interface_8hpp_source.php">NRE_StaticInterface.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for NRE::Utility::StaticInterface&lt; T, M &gt;:</div>
+Inheritance diagram for NRE::Utility::StaticInterface&lt; T &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_n_r_e_1_1_utility_1_1_static_interface.png" usemap="#NRE::Utility::StaticInterface_3C_20T_2C_20M_20_3E_map" alt=""/>
-  <map id="NRE::Utility::StaticInterface_3C_20T_2C_20M_20_3E_map" name="NRE::Utility::StaticInterface&lt; T, M &gt;_map">
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Array&lt; T, Size &gt; &gt;" shape="rect" coords="611,56,1212,80"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; ForwardList&lt; T &gt; &gt;" shape="rect" coords="611,112,1212,136"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="611,168,1212,192"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; IException &gt;" shape="rect" coords="611,224,1212,248"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Pair&lt; T, K &gt; &gt;" shape="rect" coords="611,280,1212,304"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Stack&lt; T, Container &gt; &gt;" shape="rect" coords="611,336,1212,360"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; StaticVector&lt; T, Size &gt; &gt;" shape="rect" coords="611,392,1212,416"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="611,448,1212,472"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Detail::BucketEntry&lt; NRE::Utility::Pair, STORE_HASH &gt; &gt; &gt;" shape="rect" coords="611,504,1212,528"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Observer * &gt; &gt;" shape="rect" coords="611,560,1212,584"/>
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; T &gt; &gt;" shape="rect" coords="611,616,1212,640"/>
+  <img src="class_n_r_e_1_1_utility_1_1_static_interface.png" usemap="#NRE::Utility::StaticInterface_3C_20T_20_3E_map" alt=""/>
+  <map id="NRE::Utility::StaticInterface_3C_20T_20_3E_map" name="NRE::Utility::StaticInterface&lt; T &gt;_map">
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Array&lt; T, Size &gt; &gt;" shape="rect" coords="588,56,1166,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; ForwardList&lt; T, Allocator &gt; &gt;" shape="rect" coords="588,112,1166,136"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="588,168,1166,192"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; IException &gt;" shape="rect" coords="588,224,1166,248"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Pair&lt; T, K &gt; &gt;" shape="rect" coords="588,280,1166,304"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Stack&lt; T, Container &gt; &gt;" shape="rect" coords="588,336,1166,360"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; StaticVector&lt; T, Size &gt; &gt;" shape="rect" coords="588,392,1166,416"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="588,448,1166,472"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; NRE::Utility::Detail::HashTableInner::BucketEntry, AllocatorType &gt; &gt;" shape="rect" coords="588,504,1166,528"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; Observer *, Allocator &gt; &gt;" shape="rect" coords="588,560,1166,584"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Vector&lt; T, Allocator &gt; &gt;" shape="rect" coords="588,616,1166,640"/>
 </map>
  </div></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
-<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
-<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class T, template&lt; class &gt; class M&gt;<br />
-class NRE::Utility::StaticInterface&lt; T, M &gt;</h3>
+<div class="textblock"><h3>template&lt;class T&gt;<br />
+class NRE::Utility::StaticInterface&lt; T &gt;</h3>
 
 <p>Describe an object using CRTP to create static interface (static polymorphism) </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a72fd5f7816f2a8309328186e1bf2b2f5"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, template&lt; class &gt; class M&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface</a>&lt; T, M &gt;::impl </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>the derived object </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a1fcc521ea437ea9edceae7f0c03ab6b1"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T, template&lt; class &gt; class M&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface</a>&lt; T, M &gt;::impl </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>the derived object </dd></dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/mnt/c/Users/abell/Documents/GitHub/NRE-Utility/src/Utility/Interfaces/<a class="el" href="_n_r_e___static_interface_8hpp_source.php">NRE_StaticInterface.hpp</a></li>
 </ul>
 </div><!-- contents -->

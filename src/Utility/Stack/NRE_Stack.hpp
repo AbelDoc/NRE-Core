@@ -30,13 +30,13 @@
             class Stack : public Stringable<Stack<T, Container>> {
                 static_assert(std::is_same_v<T, Container::ValueType>);
                 public :    // Traits
-                    /**< The container value type */
+                    /** The container value type */
                     using ValueType      = typename Container::ValueType;
-                    /**< The container size type */
+                    /** The container size type */
                     using SizeType       = typename Container::SizeType;
-                    /**< The value type reference */
+                    /** The value type reference */
                     using Reference      = typename Container::Reference;
-                    /**< The value type const reference */
+                    /** The value type const reference */
                     using ConstReference = typename Container::ConstReference;
                     
                 private :   // Fields

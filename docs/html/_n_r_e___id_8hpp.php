@@ -119,9 +119,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a5942dd350bdb718c0730019ef51c673d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5942dd350bdb718c0730019ef51c673d"></a>
-typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>NRE::Id</b></td></tr>
-<tr class="separator:a5942dd350bdb718c0730019ef51c673d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b6f7c663efa49f33ea330055837b6f3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_r_e.php#a0b6f7c663efa49f33ea330055837b6f3">NRE::Id</a> = uint32_t</td></tr>
+<tr class="separator:a0b6f7c663efa49f33ea330055837b6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declaration of <a class="el" href="namespace_utility.php" title="Utility&#39;s API. ">Utility</a>'s API's Object : Id. </p>

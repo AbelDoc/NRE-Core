@@ -16,6 +16,6 @@
      * @brief The NearlyRealEngine's global namespace
      */
     namespace NRE {
-        /**< Id are currently unsigned 32 bits values, could change to longer values but will never be signed */
+        /** Id are currently unsigned 32 bits values, could change to longer values but will never be signed */
         using Id =  uint32_t;
     }

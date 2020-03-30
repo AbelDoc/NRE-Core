@@ -145,12 +145,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ac77070df61fe8121e2a133e30f781aed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac77070df61fe8121e2a133e30f781aed"></a>
-typedef BasicString&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NRE::Utility::String</b></td></tr>
-<tr class="separator:ac77070df61fe8121e2a133e30f781aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bca96f8776a06349155584938a919dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bca96f8776a06349155584938a919dc"></a>
-typedef BasicString&lt; wchar_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NRE::Utility::WideString</b></td></tr>
-<tr class="separator:a5bca96f8776a06349155584938a919dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20410cefd428aefdf41f418a1e489d66"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">NRE::Utility::String</a> = BasicString&lt; char &gt;</td></tr>
+<tr class="separator:a20410cefd428aefdf41f418a1e489d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6be5787a1191a18b3c8e92875af1bcf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_r_e___string_8hpp.php#aa6be5787a1191a18b3c8e92875af1bcf">NRE::Utility::WideString</a> = BasicString&lt; wchar_t &gt;</td></tr>
+<tr class="separator:aa6be5787a1191a18b3c8e92875af1bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -202,7 +200,34 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Louis ABEL </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>16/05/2019 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>CC-BY-NC-SA </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="file_a20410cefd428aefdf41f418a1e489d66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">NRE::Utility::String</a> = typedef BasicString&lt;char&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Basic string using simple caracter </p>
+
+</div>
+</div>
+<a class="anchor" id="file_aa6be5787a1191a18b3c8e92875af1bcf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="_n_r_e___string_8hpp.php#aa6be5787a1191a18b3c8e92875af1bcf">NRE::Utility::WideString</a> = typedef BasicString&lt;wchar_t&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Basic string using wide caracter </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="file_a0a2123576c1cb87f5fbfb7e7cbcb2221"></a>
 <div class="memitem">
 <div class="memproto">

@@ -1,6 +1,6 @@
 
     /**
-     * @file Detail/NRE_UnorderedMap.hpp
+     * @file Detail/UnorderedMap/NRE_UnorderedMap.hpp
      * @brief Declaration of Utility's API's Container : UnorderedMap
      * @author Louis ABEL
      * @date 01/07/2019
@@ -34,57 +34,57 @@
                     static_assert(std::is_same_v<Pair<Key, T>, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
                     
                     public :     // Traits
-                        /**< The table key type */
+                        /** The table key type */
                         using KeyType               = Key;
-                        /**< The table mapped type */
+                        /** The table mapped type */
                         using MappedType            = T;
-                        /**< The container's allocated type */
+                        /** The container's allocated type */
                         using ValueType             = Pair<KeyType, MappedType>;
-                        /**< The container's allocator */
+                        /** The container's allocator */
                         using AllocatorType         = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::AllocatorType;
-                        /**< The object's size type */
+                        /** The object's size type */
                         using SizeType              = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::SizeType;
-                        /**< The object's difference type */
+                        /** The object's difference type */
                         using DifferenceType        = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::DifferenceType;
-                        /**< The allocated type reference */
+                        /** The allocated type reference */
                         using Reference             = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Reference;
-                        /**< The allocated type const reference */
+                        /** The allocated type const reference */
                         using ConstReference        = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstReference;
-                        /**< The allocated type pointer */
+                        /** The allocated type pointer */
                         using Pointer               = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Pointer;
-                        /**< The allocated type const pointer */
+                        /** The allocated type const pointer */
                         using ConstPointer          = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstPointer;
-                        /**< Mutable random access iterator */
+                        /** Mutable forward access iterator */
                         using Iterator              = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::Iterator;
-                        /**< Immuable random access iterator */
+                        /** Immuable forward access iterator */
                         using ConstIterator         = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstIterator;
-                        /**< Mutable random access iterator */
+                        /** Mutable local forward access iterator */
                         using LocalIterator         = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::LocalIterator;
-                        /**< Immuable random access iterator */
+                        /** Immuable local forward access iterator */
                         using ConstLocalIterator    = typename HashTable<Key, T, Allocator, StoreHash, Hash, KeyEqual>::ConstLocalIterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using value_type            = ValueType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using allocator_type        = AllocatorType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using size_type             = SizeType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using difference_type       = DifferenceType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using reference             = Reference;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_reference       = ConstReference;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using pointer               = Pointer;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_pointer         = ConstPointer;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using iterator              = Iterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_iterator        = ConstIterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using local_iterator        = LocalIterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_local_iterator  = ConstLocalIterator;
     
                     private :   // Fields

@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_func.php#index_a"><span>a</span></a></li>
       <li><a href="functions_func_b.php#index_b"><span>b</span></a></li>
       <li><a href="functions_func_c.php#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_d.php#index_d"><span>d</span></a></li>
       <li><a href="functions_func_e.php#index_e"><span>e</span></a></li>
       <li><a href="functions_func_f.php#index_f"><span>f</span></a></li>
       <li><a href="functions_func_g.php#index_g"><span>g</span></a></li>
@@ -134,17 +135,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>add()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ac57384199059d8393992578bbc6b9b34">NRE::Utility::Observable</a>
 </li>
+<li>advance()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a6c4bdfbe2f20d2fa4b551fc1429a3616">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+</li>
 <li>append()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad9f8a1f41b958481360428112a87f49f">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a79b367b1b7cc3c95851d67061e6e20f0">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>Array()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a95ae132a7378240b2eeadb19f7cee568">NRE::Utility::Array&lt; T, Size &gt;</a>
 </li>
 <li>assign()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a89b70adb308a6301e29e97c5c3892e46">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a1f3169ea97a042f3735b0a880e0ccca0">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a12b1678540e15327f9ebcabafd51afc1">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#af67c4e40c88ae453b9f76e1ad8ef8dfd">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#ac6181434f65b91f6e2800ec46b3639df">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a60610842fc4ecac298a00b79a14f71db">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a98b87cbf6835d6c369fdd28acebf7bcc">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -111,6 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
+<code>#include &quot;<a class="el" href="_n_r_e___type_traits_8hpp_source.php">../Traits/NRE_TypeTraits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___string_8hpp_source.php">../String/NRE_String.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___stringable_8hpp_source.php">../Interfaces/Stringable/NRE_Stringable.hpp</a>&quot;</code><br />
 <code>#include &quot;NRE_Array.tpp&quot;</code><br />

@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_g.php#index_g"><span>g</span></a></li>
       <li><a href="functions_h.php#index_h"><span>h</span></a></li>
       <li><a href="functions_i.php#index_i"><span>i</span></a></li>
+      <li><a href="functions_k.php#index_k"><span>k</span></a></li>
       <li><a href="functions_l.php#index_l"><span>l</span></a></li>
       <li><a href="functions_m.php#index_m"><span>m</span></a></li>
       <li><a href="functions_n.php#index_n"><span>n</span></a></li>
@@ -135,17 +136,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>add()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ac57384199059d8393992578bbc6b9b34">NRE::Utility::Observable</a>
 </li>
+<li>advance()
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a6c4bdfbe2f20d2fa4b551fc1429a3616">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+</li>
+<li>allocator_type
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a081f9d38f4c1e3f11a247564831e7e9d">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a13a0615e94211d1e66e1976949c27080">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#ac356511c108ff2c9e1373e4d5875ce69">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a6f8483736c3ab10b3c801351f0f7c544">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+</li>
+<li>AllocatorType
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a98742f9cf6e329c4dc8a09ac3df5e78d">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7bb20d543962da1c87eb87dd5ab2c8da">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a03464c30ebfb1db56a08da6a54b01592">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a1c2cdf70435eb56895d6ea0464aadc0f">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+</li>
 <li>append()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad9f8a1f41b958481360428112a87f49f">NRE::Utility::BasicString&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac0ff6c2544d0a49345e56e6947239549">NRE::Utility::BasicString&lt; T &gt;</a>
 </li>
 <li>Array()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a95ae132a7378240b2eeadb19f7cee568">NRE::Utility::Array&lt; T, Size &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#adca9e0bfc6bec4c47db6b4cb1ba3f693">NRE::Utility::Array&lt; T, Size &gt;</a>
 </li>
 <li>assign()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a89b70adb308a6301e29e97c5c3892e46">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a1f3169ea97a042f3735b0a880e0ccca0">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a19e77dd1dcd1204e991a95cc62405812">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#afc5f7c78c1cdeb5ee8df7f095490aa49">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a8710259caea8c9b2eebca8dded618ffe">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a60610842fc4ecac298a00b79a14f71db">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a98b87cbf6835d6c369fdd28acebf7bcc">NRE::Utility::Vector&lt; T &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

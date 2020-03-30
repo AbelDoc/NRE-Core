@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_g.php#index_g"><span>g</span></a></li>
       <li><a href="functions_h.php#index_h"><span>h</span></a></li>
       <li><a href="functions_i.php#index_i"><span>i</span></a></li>
+      <li><a href="functions_k.php#index_k"><span>k</span></a></li>
       <li><a href="functions_l.php#index_l"><span>l</span></a></li>
       <li><a href="functions_m.php#index_m"><span>m</span></a></li>
       <li><a href="functions_n.php#index_n"><span>n</span></a></li>
@@ -135,27 +136,85 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Pair()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a4ebd1142d7bf6bf6d4b56a00077e5141">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac68c74ca15842976d265ae8164c0ebb7">NRE::Utility::Array&lt; T, Size &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">NRE::Utility::Array&lt; T, Size &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af7b448ec42d7514c7c2c7c22c93d4cac">NRE::Utility::BasicString&lt; T &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">NRE::Utility::BasicString&lt; T &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a139479f5d470f6701c09b865bfde3a32">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a91db4246bb362ee07b4b86be64aa9f3b">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#ab62d03403d1822e891106e4a94dcc287">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a75e3abc43993291c3a22a3825f7aae88">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a478651e1b2037ac607b4f37d9bf23d3c">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a751ffc9b1eec31f8608de2052127761e">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#a90423bd688acefee4bc0fb1f40c442a9">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#a7c6d57464fbe894b22ee5577450616c9">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#a28ce846fce3ff622ea4856c1dcd1c557">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#a3b58150a0b84305ff72cee6ce1295bf3">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a07a05fc86d0e88685b064d4e5862d7f0">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a1e9462b4b390aa8743fea458307554ff">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a031e5dcbd857faad81733cad07637ffe">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a35bce7ca703d329523b019d1ab878426">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac5fed734bb18a765a42300e9df123ada">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+</li>
+<li>pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#afbd4bf4ff944c98565f38d094aa38d24">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+</li>
+<li>Pointer
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#ab4b46d5c5a9455aade196eafded060cf">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+</li>
 <li>pop()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a27f8d9c497e05251326a49655bd9da48">NRE::Utility::Stack&lt; T, Container &gt;</a>
 </li>
 <li>popBack()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a51b3da7e0493d6fd6a870629dabc871a">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#adddc7f4c611502fcf6f6bb55141325f1">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a3d808b6e7fedafc95b472c3dda5af3f0">NRE::Utility::Vector&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a4e77cf42a0a643c430e9a2b2f11eff24">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#abf9715dee1a6b54130f82435fd4a6469">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 <li>popFront()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#afd08bbd64f1332e2846332faf05edf0c">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#af715030e77cd1887848662888b506204">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
 </li>
 <li>push()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#acc50e85f466cc273d80552bd03b1a2db">NRE::Utility::Stack&lt; T, Container &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a22a62fc0840fce8a0d9275814b673702">NRE::Utility::Stack&lt; T, Container &gt;</a>
 </li>
 <li>pushBack()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1fc5c8410a87b1802e3b006a7177569c">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#aa30dbf77ea78f7b7e359aca82f2db2e6">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a1275882662e370b622c78880ed57a703">NRE::Utility::Vector&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac3e78e4c5091b5d8e50bfdf0eef53e67">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a10a8cb65c3b98883b0c65fdd7bb197d8">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a5a6bec26ac07072baf8d07b5c9dc4b27">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 <li>pushFront()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a5720966108c053486764488b175c8236">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a47d3a65b61872657d62f085d2f8e7641">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

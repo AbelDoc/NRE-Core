@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_g.php#index_g"><span>g</span></a></li>
       <li><a href="functions_h.php#index_h"><span>h</span></a></li>
       <li><a href="functions_i.php#index_i"><span>i</span></a></li>
+      <li><a href="functions_k.php#index_k"><span>k</span></a></li>
       <li><a href="functions_l.php#index_l"><span>l</span></a></li>
       <li><a href="functions_m.php#index_m"><span>m</span></a></li>
       <li><a href="functions_n.php#index_n"><span>n</span></a></li>
@@ -132,8 +133,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
 <h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>value_type
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8de99b6b188fe6f33a7335e7754b441e">NRE::Utility::Array&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af27e966c6ccb0d67b7e9e1e097557c7d">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#ae83d059e5734227abe6bd9c97d7aa545">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a4bcca1d42c5ee414f0cca6685e080347">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a29c036fb2db3c66d8fcdd1598102082f">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#a23a518e5e85181ae9ec897fcbe4f9b6d">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#a58370f850743434282b30431983841d5">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#aa5f75b329ddc50e92491c3d93b984677">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a5a3b1914f63f8020a45f0e6d4efca1a6">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a514afaebd5ebefb537558c76b2e9a4de">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a5c873068c670e1ff121bcfbc67da81fb">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+</li>
+<li>ValueType
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">NRE::Utility::Array&lt; T, Size &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">NRE::Utility::BasicString&lt; T &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a94a9c6feab3ff50ed41e9615ab58347e">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a57a8c0ce2d71e964d460def04051c777">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#ac10c16cbd77db61e0c0ba0faee471e4e">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#ad3658f20355955264dc2a08d24cae3ee">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a0de54a72d0fc3ed8177f686737352bae">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#afe57483f5b5e6af2694a084a372d224c">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a5c743a548f840e6225b6a2d461c0aaf6">NRE::Utility::Stack&lt; T, Container &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#ae0dfc43cf7b4c03544a44e3806b4881f">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
+</li>
 <li>Vector()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#ad4013a6eedf95e4f7ba991da26c9bc5c">NRE::Utility::Vector&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a95239c62edf4a9d822f3477e160b3384">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

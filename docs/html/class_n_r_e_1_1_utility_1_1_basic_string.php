@@ -117,30 +117,65 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a84fd549f39f627b1caf412fac4459597"><td class="memItemLeft" align="right" valign="top">typedef T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a></td></tr>
-<tr class="separator:a84fd549f39f627b1caf412fac4459597"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a557d930ae5e01b60275a3b01a3a19f86"><td class="memItemLeft" align="right" valign="top">typedef const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a></td></tr>
-<tr class="separator:a557d930ae5e01b60275a3b01a3a19f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed577da05148ce11444e7aaa61e8619"><td class="memItemLeft" align="right" valign="top">typedef std::reverse_iterator&lt; T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">ReverseIterator</a></td></tr>
-<tr class="separator:a6ed577da05148ce11444e7aaa61e8619"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a485e704b88080f8e73b348504a6dd333"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a485e704b88080f8e73b348504a6dd333"></a>
-typedef std::reverse_iterator&lt; const T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ConstReverseIterator</b></td></tr>
-<tr class="separator:a485e704b88080f8e73b348504a6dd333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad05eef994fea38c5d1c5e5dda05d4806"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> = T</td></tr>
+<tr class="separator:ad05eef994fea38c5d1c5e5dda05d4806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc26180f68e827e77bce464afa03255"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> = std::size_t</td></tr>
+<tr class="separator:a8fc26180f68e827e77bce464afa03255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a112de487adde9aec102fb6a5e3d562"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4a112de487adde9aec102fb6a5e3d562">DifferenceType</a> = std::ptrdiff_t</td></tr>
+<tr class="separator:a4a112de487adde9aec102fb6a5e3d562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ebb9b56406afd8fd5dae7cb88d4e8fb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> &amp;</td></tr>
+<tr class="separator:a1ebb9b56406afd8fd5dae7cb88d4e8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b0fd9d01870016e685c23c456b7f13"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> const &amp;</td></tr>
+<tr class="separator:ac5b0fd9d01870016e685c23c456b7f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c5b4cad76f901a56920ba93bb57366c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> *</td></tr>
+<tr class="separator:a2c5b4cad76f901a56920ba93bb57366c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a856da4ed7172faf22930edef2b3de7eb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> = const <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> *</td></tr>
+<tr class="separator:a856da4ed7172faf22930edef2b3de7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6060a89f1bd8f3b40a53e76157f6f091"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a></td></tr>
+<tr class="separator:a6060a89f1bd8f3b40a53e76157f6f091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a121c89664b8182e62334547e032e25a9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a></td></tr>
+<tr class="separator:a121c89664b8182e62334547e032e25a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a417f6581726a0ad98b930909606d1212"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a> = std::reverse_iterator&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> &gt;</td></tr>
+<tr class="separator:a417f6581726a0ad98b930909606d1212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e037d86eff7538a37db0bae2ae97db1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a> = std::reverse_iterator&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> &gt;</td></tr>
+<tr class="separator:a0e037d86eff7538a37db0bae2ae97db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af27e966c6ccb0d67b7e9e1e097557c7d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af27e966c6ccb0d67b7e9e1e097557c7d">value_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a></td></tr>
+<tr class="separator:af27e966c6ccb0d67b7e9e1e097557c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4b85c563aaf6faa1c7f077e69419eb1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa4b85c563aaf6faa1c7f077e69419eb1">size_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a></td></tr>
+<tr class="separator:aa4b85c563aaf6faa1c7f077e69419eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac06dc72c93d7c347a776ede452eae018"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac06dc72c93d7c347a776ede452eae018">difference_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4a112de487adde9aec102fb6a5e3d562">DifferenceType</a></td></tr>
+<tr class="separator:ac06dc72c93d7c347a776ede452eae018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ababffd6bcfcbd5c7f3a612af2b71453a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ababffd6bcfcbd5c7f3a612af2b71453a">reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a></td></tr>
+<tr class="separator:ababffd6bcfcbd5c7f3a612af2b71453a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfaac45fb451dc8006a19caf33e7b942"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#abfaac45fb451dc8006a19caf33e7b942">const_reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a></td></tr>
+<tr class="separator:abfaac45fb451dc8006a19caf33e7b942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b448ec42d7514c7c2c7c22c93d4cac"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af7b448ec42d7514c7c2c7c22c93d4cac">pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a></td></tr>
+<tr class="separator:af7b448ec42d7514c7c2c7c22c93d4cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0be03e2ca9f4c8721a1b1fd7887f0501"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0be03e2ca9f4c8721a1b1fd7887f0501">const_pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a></td></tr>
+<tr class="separator:a0be03e2ca9f4c8721a1b1fd7887f0501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96f8d4660963b2997db6fd31bdd871a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac96f8d4660963b2997db6fd31bdd871a">iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a></td></tr>
+<tr class="separator:ac96f8d4660963b2997db6fd31bdd871a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bfd5738ba0f33e562e8476a4fc3170a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3bfd5738ba0f33e562e8476a4fc3170a">const_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a></td></tr>
+<tr class="separator:a3bfd5738ba0f33e562e8476a4fc3170a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9854c18ec08c4b445906f32c063aee"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4d9854c18ec08c4b445906f32c063aee">reverse_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a></td></tr>
+<tr class="separator:a4d9854c18ec08c4b445906f32c063aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8884e7c5fd53e304c23c4dbe731537c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af8884e7c5fd53e304c23c4dbe731537c">const_reverse_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a></td></tr>
+<tr class="separator:af8884e7c5fd53e304c23c4dbe731537c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9a3f02658ae8cb4aefeaebfd72b92020"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a9a3f02658ae8cb4aefeaebfd72b92020">BasicString</a> ()</td></tr>
 <tr class="separator:a9a3f02658ae8cb4aefeaebfd72b92020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafcdc42cb6c6c15740c2bc90f15b32b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aafcdc42cb6c6c15740c2bc90f15b32b2">BasicString</a> (std::size_t count, T value)</td></tr>
-<tr class="separator:aafcdc42cb6c6c15740c2bc90f15b32b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22c30b99214255bb730c8672a3904866"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a22c30b99214255bb730c8672a3904866">BasicString</a> (std::size_t pos, std::size_t count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
-<tr class="separator:a22c30b99214255bb730c8672a3904866"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b49cf0023848f6cbe9f954d46cf3ff5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2b49cf0023848f6cbe9f954d46cf3ff5">BasicString</a> (std::size_t count, const T *str)</td></tr>
-<tr class="separator:a2b49cf0023848f6cbe9f954d46cf3ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee30c7d284a0db0c0620e1a6903ea302"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aee30c7d284a0db0c0620e1a6903ea302">BasicString</a> (const T *str)</td></tr>
-<tr class="separator:aee30c7d284a0db0c0620e1a6903ea302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67061d547a418102349a519e29d331f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a67061d547a418102349a519e29d331f2">BasicString</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a67061d547a418102349a519e29d331f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8717d6cd3a66e5418bb21e3f93358046"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8717d6cd3a66e5418bb21e3f93358046">BasicString</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
+<tr class="separator:a8717d6cd3a66e5418bb21e3f93358046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a0bd1cc9d643306d75b9068d142bb3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3a0bd1cc9d643306d75b9068d142bb3b">BasicString</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a3a0bd1cc9d643306d75b9068d142bb3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49009d5cee0d62077866b33192081c40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a49009d5cee0d62077866b33192081c40">BasicString</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a49009d5cee0d62077866b33192081c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6917a729f68384e412f0702a57da5abd"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a6917a729f68384e412f0702a57da5abd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6917a729f68384e412f0702a57da5abd">BasicString</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
+<tr class="memitem:a6917a729f68384e412f0702a57da5abd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6917a729f68384e412f0702a57da5abd">BasicString</a> (<a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
 <tr class="separator:a6917a729f68384e412f0702a57da5abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c4f5cf3fea12096e51c6e5f55c35629"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c4f5cf3fea12096e51c6e5f55c35629">BasicString</a> (std::initializer_list&lt; T &gt; init)</td></tr>
 <tr class="separator:a2c4f5cf3fea12096e51c6e5f55c35629"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,108 +185,108 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af2e21d830517beb02a3cb3a1310fcd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4767aa21ed166bbcbba3346e20063c81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4767aa21ed166bbcbba3346e20063c81">~BasicString</a> ()</td></tr>
 <tr class="separator:a4767aa21ed166bbcbba3346e20063c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ee35a3d0dc9aaa82ef5d1f2161adb1b"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ee35a3d0dc9aaa82ef5d1f2161adb1b">get</a> (std::size_t index)</td></tr>
-<tr class="separator:a1ee35a3d0dc9aaa82ef5d1f2161adb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38195baf7bd0232759d4a8f144684a1e"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a38195baf7bd0232759d4a8f144684a1e">get</a> (std::size_t index) const </td></tr>
-<tr class="separator:a38195baf7bd0232759d4a8f144684a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa168f5bdce940de92d3f5c39e8159759"><td class="memItemLeft" align="right" valign="top">const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa168f5bdce940de92d3f5c39e8159759">getData</a> () const </td></tr>
-<tr class="separator:aa168f5bdce940de92d3f5c39e8159759"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0077ab896a00c0aa6e785fffb2b417d5"><td class="memItemLeft" align="right" valign="top">const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0077ab896a00c0aa6e785fffb2b417d5">getCData</a> () const </td></tr>
-<tr class="separator:a0077ab896a00c0aa6e785fffb2b417d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e4c324e16594a98292ff51b0b00267"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab3e4c324e16594a98292ff51b0b00267">getFront</a> ()</td></tr>
-<tr class="separator:ab3e4c324e16594a98292ff51b0b00267"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09ef555d16d12a3c42d31cf7eefbf5a7"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a09ef555d16d12a3c42d31cf7eefbf5a7">getFront</a> () const </td></tr>
-<tr class="separator:a09ef555d16d12a3c42d31cf7eefbf5a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e466d36e361dc572931d21896c527cd"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5e466d36e361dc572931d21896c527cd">getLast</a> ()</td></tr>
-<tr class="separator:a5e466d36e361dc572931d21896c527cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed8592590a7a0097dc9cf28f6101799c"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aed8592590a7a0097dc9cf28f6101799c">getLast</a> () const </td></tr>
-<tr class="separator:aed8592590a7a0097dc9cf28f6101799c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a446670e0a8bf0b49e2c4dde3d7e68542"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a446670e0a8bf0b49e2c4dde3d7e68542">getSize</a> () const </td></tr>
-<tr class="separator:a446670e0a8bf0b49e2c4dde3d7e68542"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed01f192a9c748153b095d56da2796a"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed01f192a9c748153b095d56da2796a">getLength</a> () const </td></tr>
-<tr class="separator:a6ed01f192a9c748153b095d56da2796a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a649e9db31cfa007fcb42d3a72b67284c"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a649e9db31cfa007fcb42d3a72b67284c">getMaxSize</a> () const </td></tr>
-<tr class="separator:a649e9db31cfa007fcb42d3a72b67284c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a328ebd77a8bbb49a6776fefd417ebf4a"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a328ebd77a8bbb49a6776fefd417ebf4a">getCapacity</a> () const </td></tr>
-<tr class="separator:a328ebd77a8bbb49a6776fefd417ebf4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2d2828bb7916521c07326818b4916fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae2d2828bb7916521c07326818b4916fe">get</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index)</td></tr>
+<tr class="separator:ae2d2828bb7916521c07326818b4916fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bcc61953c6f5cf55b3634256a101934"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3bcc61953c6f5cf55b3634256a101934">get</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index) const </td></tr>
+<tr class="separator:a3bcc61953c6f5cf55b3634256a101934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab82653ee746eb017750672e68ab57966"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab82653ee746eb017750672e68ab57966">getData</a> () const </td></tr>
+<tr class="separator:ab82653ee746eb017750672e68ab57966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab546b026ad9dfb4b6a189df9f4f5c088"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab546b026ad9dfb4b6a189df9f4f5c088">getCData</a> () const </td></tr>
+<tr class="separator:ab546b026ad9dfb4b6a189df9f4f5c088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0049a28371f2d7c99e76355524d686aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0049a28371f2d7c99e76355524d686aa">getFront</a> ()</td></tr>
+<tr class="separator:a0049a28371f2d7c99e76355524d686aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a81213ea7b8dbe06bb7d19b8b00cd0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7a81213ea7b8dbe06bb7d19b8b00cd0b">getFront</a> () const </td></tr>
+<tr class="separator:a7a81213ea7b8dbe06bb7d19b8b00cd0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0527b734b72a1b70565eb73a55cb1db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af0527b734b72a1b70565eb73a55cb1db">getLast</a> ()</td></tr>
+<tr class="separator:af0527b734b72a1b70565eb73a55cb1db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95355100d0742d24cca22d9f0541e595"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a95355100d0742d24cca22d9f0541e595">getLast</a> () const </td></tr>
+<tr class="separator:a95355100d0742d24cca22d9f0541e595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf451864206f81c8b321ff26406f1b00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#acf451864206f81c8b321ff26406f1b00">getSize</a> () const </td></tr>
+<tr class="separator:acf451864206f81c8b321ff26406f1b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66ec3113b5f283b77cc33f0e8a74924e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a66ec3113b5f283b77cc33f0e8a74924e">getLength</a> () const </td></tr>
+<tr class="separator:a66ec3113b5f283b77cc33f0e8a74924e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ef0431f31869ef81f7e33dec6c46b51"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4ef0431f31869ef81f7e33dec6c46b51">getMaxSize</a> () const </td></tr>
+<tr class="separator:a4ef0431f31869ef81f7e33dec6c46b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b45a5b50afd3ad39e09b95c4f1330ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5b45a5b50afd3ad39e09b95c4f1330ec">getCapacity</a> () const </td></tr>
+<tr class="separator:a5b45a5b50afd3ad39e09b95c4f1330ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20203ddad7a07bb0bdfb23260d7585f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a20203ddad7a07bb0bdfb23260d7585f2">isEmpty</a> () const </td></tr>
 <tr class="separator:a20203ddad7a07bb0bdfb23260d7585f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87336e1c57b46a945b6edf733b0a926d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a> ()</td></tr>
+<tr class="memitem:a87336e1c57b46a945b6edf733b0a926d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a> ()</td></tr>
 <tr class="separator:a87336e1c57b46a945b6edf733b0a926d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bdd1cd2ef63b3fd7fd48e0e92e96d07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5bdd1cd2ef63b3fd7fd48e0e92e96d07">begin</a> () const </td></tr>
+<tr class="memitem:a5bdd1cd2ef63b3fd7fd48e0e92e96d07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5bdd1cd2ef63b3fd7fd48e0e92e96d07">begin</a> () const </td></tr>
 <tr class="separator:a5bdd1cd2ef63b3fd7fd48e0e92e96d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fbaa10da05afb1e38f01550f089ec3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4fbaa10da05afb1e38f01550f089ec3b">cbegin</a> () const </td></tr>
+<tr class="memitem:a4fbaa10da05afb1e38f01550f089ec3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4fbaa10da05afb1e38f01550f089ec3b">cbegin</a> () const </td></tr>
 <tr class="separator:a4fbaa10da05afb1e38f01550f089ec3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40d0473b2964f19ba6f4a98696cc91b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a> ()</td></tr>
+<tr class="memitem:a40d0473b2964f19ba6f4a98696cc91b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a> ()</td></tr>
 <tr class="separator:a40d0473b2964f19ba6f4a98696cc91b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add891802026c21f0982402995b25fe43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#add891802026c21f0982402995b25fe43">end</a> () const </td></tr>
+<tr class="memitem:add891802026c21f0982402995b25fe43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#add891802026c21f0982402995b25fe43">end</a> () const </td></tr>
 <tr class="separator:add891802026c21f0982402995b25fe43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa620f4b3a6a6e8783fdb343b919e0ef6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa620f4b3a6a6e8783fdb343b919e0ef6">cend</a> () const </td></tr>
+<tr class="memitem:aa620f4b3a6a6e8783fdb343b919e0ef6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa620f4b3a6a6e8783fdb343b919e0ef6">cend</a> () const </td></tr>
 <tr class="separator:aa620f4b3a6a6e8783fdb343b919e0ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a295b7f396e515c30e490d0d8a10b7e30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a295b7f396e515c30e490d0d8a10b7e30">rbegin</a> ()</td></tr>
+<tr class="memitem:a295b7f396e515c30e490d0d8a10b7e30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a295b7f396e515c30e490d0d8a10b7e30">rbegin</a> ()</td></tr>
 <tr class="separator:a295b7f396e515c30e490d0d8a10b7e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a428f523963a236e6e9b165f01e1ecd8c"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a428f523963a236e6e9b165f01e1ecd8c">rbegin</a> () const </td></tr>
+<tr class="memitem:a428f523963a236e6e9b165f01e1ecd8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a428f523963a236e6e9b165f01e1ecd8c">rbegin</a> () const </td></tr>
 <tr class="separator:a428f523963a236e6e9b165f01e1ecd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50d7fda113a402d7e7b18669aa7ea227"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a50d7fda113a402d7e7b18669aa7ea227">crbegin</a> () const </td></tr>
+<tr class="memitem:a50d7fda113a402d7e7b18669aa7ea227"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a50d7fda113a402d7e7b18669aa7ea227">crbegin</a> () const </td></tr>
 <tr class="separator:a50d7fda113a402d7e7b18669aa7ea227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a009469819f09df8cafa2dce131d19cb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a009469819f09df8cafa2dce131d19cb2">rend</a> ()</td></tr>
+<tr class="memitem:a009469819f09df8cafa2dce131d19cb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a009469819f09df8cafa2dce131d19cb2">rend</a> ()</td></tr>
 <tr class="separator:a009469819f09df8cafa2dce131d19cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a579ac9b5d39c1e924c1a2ff45d59d68f"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a579ac9b5d39c1e924c1a2ff45d59d68f">rend</a> () const </td></tr>
+<tr class="memitem:a579ac9b5d39c1e924c1a2ff45d59d68f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a579ac9b5d39c1e924c1a2ff45d59d68f">rend</a> () const </td></tr>
 <tr class="separator:a579ac9b5d39c1e924c1a2ff45d59d68f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae487050caf2434abc9b16bfab7241eba"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae487050caf2434abc9b16bfab7241eba">crend</a> () const </td></tr>
+<tr class="memitem:ae487050caf2434abc9b16bfab7241eba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae487050caf2434abc9b16bfab7241eba">crend</a> () const </td></tr>
 <tr class="separator:ae487050caf2434abc9b16bfab7241eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a009f07466409c0f15528f63e273f0a5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a009f07466409c0f15528f63e273f0a5e">assign</a> (std::size_t count, T value)</td></tr>
-<tr class="separator:a009f07466409c0f15528f63e273f0a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a70cf9872e66647cf748c58571f644"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad7a70cf9872e66647cf748c58571f644">assign</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:ad7a70cf9872e66647cf748c58571f644"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab04d419d62fa599e802084a8a33dcd54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab04d419d62fa599e802084a8a33dcd54">assign</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
 <tr class="separator:ab04d419d62fa599e802084a8a33dcd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23db49a6689502a918d487fddf14346d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a23db49a6689502a918d487fddf14346d">assign</a> (std::size_t pos, std::size_t count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
-<tr class="separator:a23db49a6689502a918d487fddf14346d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac630a5ca2f5901be872f544b95a24a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aac630a5ca2f5901be872f544b95a24a1">assign</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
+<tr class="separator:aac630a5ca2f5901be872f544b95a24a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b1678540e15327f9ebcabafd51afc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a12b1678540e15327f9ebcabafd51afc1">assign</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&amp;str)</td></tr>
 <tr class="separator:a12b1678540e15327f9ebcabafd51afc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40ba4bea020e19d1835c3b64f5f7fb37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40ba4bea020e19d1835c3b64f5f7fb37">assign</a> (std::size_t count, const T *str)</td></tr>
-<tr class="separator:a40ba4bea020e19d1835c3b64f5f7fb37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89b70adb308a6301e29e97c5c3892e46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a89b70adb308a6301e29e97c5c3892e46">assign</a> (const T *str)</td></tr>
-<tr class="separator:a89b70adb308a6301e29e97c5c3892e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42725d8fdb6eb398e60e2a2647284383"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a42725d8fdb6eb398e60e2a2647284383">assign</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a42725d8fdb6eb398e60e2a2647284383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3008b3e86cbc2e32e38fd387c32a3a68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3008b3e86cbc2e32e38fd387c32a3a68">assign</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a3008b3e86cbc2e32e38fd387c32a3a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8327bffba598171ede088d3b1fc16ace"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a8327bffba598171ede088d3b1fc16ace"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8327bffba598171ede088d3b1fc16ace">assign</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
+<tr class="memitem:a8327bffba598171ede088d3b1fc16ace"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8327bffba598171ede088d3b1fc16ace">assign</a> (<a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
 <tr class="separator:a8327bffba598171ede088d3b1fc16ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19e77dd1dcd1204e991a95cc62405812"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a19e77dd1dcd1204e991a95cc62405812">assign</a> (std::initializer_list&lt; T &gt; init)</td></tr>
 <tr class="separator:a19e77dd1dcd1204e991a95cc62405812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21efaef50166a748a6a26db815cfeef5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a21efaef50166a748a6a26db815cfeef5">reserve</a> (std::size_t size)</td></tr>
-<tr class="separator:a21efaef50166a748a6a26db815cfeef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c876ccb7ba4245ed559df07c207bd34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7c876ccb7ba4245ed559df07c207bd34">reserve</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> size)</td></tr>
+<tr class="separator:a7c876ccb7ba4245ed559df07c207bd34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6035700c6308e4161bfec5fee48730e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6035700c6308e4161bfec5fee48730e0">clear</a> ()</td></tr>
 <tr class="separator:a6035700c6308e4161bfec5fee48730e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a043d8789a2fcc13972175e55cb0ae9c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a043d8789a2fcc13972175e55cb0ae9c0">reverse</a> ()</td></tr>
 <tr class="separator:a043d8789a2fcc13972175e55cb0ae9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc0af8aedbfa789a79f0ae92d9a2898a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#adc0af8aedbfa789a79f0ae92d9a2898a">reverse</a> (std::size_t pos, std::size_t count)</td></tr>
-<tr class="separator:adc0af8aedbfa789a79f0ae92d9a2898a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a408cb985f4efc28bc4a77b672ad65cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a408cb985f4efc28bc4a77b672ad65cf0">insert</a> (std::size_t start, std::size_t count, T value)</td></tr>
-<tr class="separator:a408cb985f4efc28bc4a77b672ad65cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a698ce5fcbcb0c124a6411c426eeef386"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a698ce5fcbcb0c124a6411c426eeef386">insert</a> (std::size_t start, const T *str)</td></tr>
-<tr class="separator:a698ce5fcbcb0c124a6411c426eeef386"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a556f4cdfea29a0430cf37f33873a16f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a556f4cdfea29a0430cf37f33873a16f5">insert</a> (std::size_t start, std::size_t count, const T *str)</td></tr>
-<tr class="separator:a556f4cdfea29a0430cf37f33873a16f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c7336f4719ec36b9fdc8277aebccc99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c7336f4719ec36b9fdc8277aebccc99">insert</a> (std::size_t start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
-<tr class="separator:a2c7336f4719ec36b9fdc8277aebccc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a019fce3826f9d7d1cadbdfd133b715a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a019fce3826f9d7d1cadbdfd133b715a3">insert</a> (std::size_t start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t index, std::size_t count)</td></tr>
-<tr class="separator:a019fce3826f9d7d1cadbdfd133b715a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2507a9cb1f068ad86aa82d0b61ed9ebe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2507a9cb1f068ad86aa82d0b61ed9ebe">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, T value)</td></tr>
-<tr class="separator:a2507a9cb1f068ad86aa82d0b61ed9ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4cc21bcc8a8d686a8a02d1ede47afd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa4cc21bcc8a8d686a8a02d1ede47afd4">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, std::size_t count, T value)</td></tr>
-<tr class="separator:aa4cc21bcc8a8d686a8a02d1ede47afd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d814a866a5088ec280f9fa991f5c240"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1d814a866a5088ec280f9fa991f5c240">reverse</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count)</td></tr>
+<tr class="separator:a1d814a866a5088ec280f9fa991f5c240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ad1d5f470fc6e7e5fff7e0f747ce439"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ad1d5f470fc6e7e5fff7e0f747ce439">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a6ad1d5f470fc6e7e5fff7e0f747ce439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a455d3ffdcf305888574870fb5877c1d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a455d3ffdcf305888574870fb5877c1d8">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a455d3ffdcf305888574870fb5877c1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3e76b176aa06bc2024f9d5e622dbcd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af3e76b176aa06bc2024f9d5e622dbcd3">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:af3e76b176aa06bc2024f9d5e622dbcd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aada8c59818b1b0570c1f4252e1a89232"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aada8c59818b1b0570c1f4252e1a89232">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
+<tr class="separator:aada8c59818b1b0570c1f4252e1a89232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170ca6da9abf425d5a49e92967ada82f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a170ca6da9abf425d5a49e92967ada82f">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count)</td></tr>
+<tr class="separator:a170ca6da9abf425d5a49e92967ada82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c28a97e0ee391825e9ea938c52d2b3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3c28a97e0ee391825e9ea938c52d2b3d">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a3c28a97e0ee391825e9ea938c52d2b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8495d07649a412c6a96bcdb44c1ca681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8495d07649a412c6a96bcdb44c1ca681">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a8495d07649a412c6a96bcdb44c1ca681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13757cedd43c3f03ab141f9f77a131c9"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a13757cedd43c3f03ab141f9f77a131c9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a13757cedd43c3f03ab141f9f77a131c9">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
+<tr class="memitem:a13757cedd43c3f03ab141f9f77a131c9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a13757cedd43c3f03ab141f9f77a131c9">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
 <tr class="separator:a13757cedd43c3f03ab141f9f77a131c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0898bf3a5f72eb5bf6ca3e59de50957"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae0898bf3a5f72eb5bf6ca3e59de50957">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, std::initializer_list&lt; T &gt; list)</td></tr>
+<tr class="memitem:ae0898bf3a5f72eb5bf6ca3e59de50957"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae0898bf3a5f72eb5bf6ca3e59de50957">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, std::initializer_list&lt; T &gt; list)</td></tr>
 <tr class="separator:ae0898bf3a5f72eb5bf6ca3e59de50957"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b2e04417a714f974453663ba7ffb6ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8b2e04417a714f974453663ba7ffb6ef">erase</a> (std::size_t index, std::size_t count)</td></tr>
-<tr class="separator:a8b2e04417a714f974453663ba7ffb6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bf88394c90dcdead82d565616b57c1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1bf88394c90dcdead82d565616b57c1f">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> position)</td></tr>
+<tr class="memitem:aa6027e93950c7b8edfdef44440f13105"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa6027e93950c7b8edfdef44440f13105">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count)</td></tr>
+<tr class="separator:aa6027e93950c7b8edfdef44440f13105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf88394c90dcdead82d565616b57c1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1bf88394c90dcdead82d565616b57c1f">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> position)</td></tr>
 <tr class="separator:a1bf88394c90dcdead82d565616b57c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefa48bb2f2b634ef7661880d2757d3e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aefa48bb2f2b634ef7661880d2757d3e4">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
+<tr class="memitem:aefa48bb2f2b634ef7661880d2757d3e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aefa48bb2f2b634ef7661880d2757d3e4">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
 <tr class="separator:aefa48bb2f2b634ef7661880d2757d3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fc5c8410a87b1802e3b006a7177569c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1fc5c8410a87b1802e3b006a7177569c">pushBack</a> (T value)</td></tr>
-<tr class="separator:a1fc5c8410a87b1802e3b006a7177569c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3e78e4c5091b5d8e50bfdf0eef53e67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac3e78e4c5091b5d8e50bfdf0eef53e67">pushBack</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:ac3e78e4c5091b5d8e50bfdf0eef53e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51b3da7e0493d6fd6a870629dabc871a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a51b3da7e0493d6fd6a870629dabc871a">popBack</a> ()</td></tr>
 <tr class="separator:a51b3da7e0493d6fd6a870629dabc871a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9f8a1f41b958481360428112a87f49f"><td class="memTemplParams" colspan="2">template&lt;class K , typename std::enable_if_t&lt; std::is_base_of&lt; Stringable&lt; K &gt;, K &gt;::value, int &gt;  = 0&gt; </td></tr>
@@ -259,8 +294,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad9f8a1f41b958481360428112a87f49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b367b1b7cc3c95851d67061e6e20f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a79b367b1b7cc3c95851d67061e6e20f0">append</a> (bool value)</td></tr>
 <tr class="separator:a79b367b1b7cc3c95851d67061e6e20f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6a5d675e0e9dac8ae9bb0de1810845e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad6a5d675e0e9dac8ae9bb0de1810845e">append</a> (T value)</td></tr>
-<tr class="separator:ad6a5d675e0e9dac8ae9bb0de1810845e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac197ac8d8f962607fa132fec013a0e89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac197ac8d8f962607fa132fec013a0e89">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:ac197ac8d8f962607fa132fec013a0e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a604e598bb4291331936837f03daa221f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a604e598bb4291331936837f03daa221f">append</a> (short int value)</td></tr>
 <tr class="separator:a604e598bb4291331936837f03daa221f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07fc84ee065d04e1d120c6cf46b3d7bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a07fc84ee065d04e1d120c6cf46b3d7bd">append</a> (int value)</td></tr>
@@ -283,154 +318,154 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a01113158a0457b8eca3aa01f4a68f19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa24090a62a4744d254b7c4f6711a169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aaa24090a62a4744d254b7c4f6711a169">append</a> (long double value)</td></tr>
 <tr class="separator:aaa24090a62a4744d254b7c4f6711a169"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a437b4bf3c704c5a9beaa82a78c425fbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a437b4bf3c704c5a9beaa82a78c425fbe">append</a> (std::size_t count, T value)</td></tr>
-<tr class="separator:a437b4bf3c704c5a9beaa82a78c425fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358d0f085ec2faf6794e75237bb32934"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a358d0f085ec2faf6794e75237bb32934">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a358d0f085ec2faf6794e75237bb32934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17bd172896ff73d97cdb0cc612bb7e28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a17bd172896ff73d97cdb0cc612bb7e28">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
 <tr class="separator:a17bd172896ff73d97cdb0cc612bb7e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3205fe9991c3b207853cf8be2c6d094e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3205fe9991c3b207853cf8be2c6d094e">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t index, std::size_t count)</td></tr>
-<tr class="separator:a3205fe9991c3b207853cf8be2c6d094e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f94818d9322f516124b918c202d7ab4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2f94818d9322f516124b918c202d7ab4">append</a> (const T *str, std::size_t count)</td></tr>
-<tr class="separator:a2f94818d9322f516124b918c202d7ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3f8fdfea90fe2f7dfe5ba74da485b99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac3f8fdfea90fe2f7dfe5ba74da485b99">append</a> (const T *str)</td></tr>
-<tr class="separator:ac3f8fdfea90fe2f7dfe5ba74da485b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d94472706346b83512f3311cf9d045"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a38d94472706346b83512f3311cf9d045">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count)</td></tr>
+<tr class="separator:a38d94472706346b83512f3311cf9d045"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad77bada498ce8caeb8d39ba9432cb577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad77bada498ce8caeb8d39ba9432cb577">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count)</td></tr>
+<tr class="separator:ad77bada498ce8caeb8d39ba9432cb577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab779ec0fdb160aa681c84b5a7701e4a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab779ec0fdb160aa681c84b5a7701e4a5">append</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:ab779ec0fdb160aa681c84b5a7701e4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefcc5c42ddaddc5a4c63b4af9a54086b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aefcc5c42ddaddc5a4c63b4af9a54086b">append</a> (std::string const &amp;str)</td></tr>
 <tr class="separator:aefcc5c42ddaddc5a4c63b4af9a54086b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac81947765f131eb41fd35c111edb165d"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:ac81947765f131eb41fd35c111edb165d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac81947765f131eb41fd35c111edb165d">append</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
+<tr class="memitem:ac81947765f131eb41fd35c111edb165d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac81947765f131eb41fd35c111edb165d">append</a> (<a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a87336e1c57b46a945b6edf733b0a926d">begin</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>)</td></tr>
 <tr class="separator:ac81947765f131eb41fd35c111edb165d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77dc49f9e04a64d0adce9bb8afe7daa2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a77dc49f9e04a64d0adce9bb8afe7daa2">append</a> (std::initializer_list&lt; T &gt; list)</td></tr>
 <tr class="separator:a77dc49f9e04a64d0adce9bb8afe7daa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad41793193f7610c892d24bb650c272db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad41793193f7610c892d24bb650c272db">compare</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
 <tr class="separator:ad41793193f7610c892d24bb650c272db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5be5efba3e60692f0b7d68a81251b967"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5be5efba3e60692f0b7d68a81251b967">compare</a> (std::size_t tPos, std::size_t tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
-<tr class="separator:a5be5efba3e60692f0b7d68a81251b967"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c26227c3a27b11bf07be636cc004c6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3c26227c3a27b11bf07be636cc004c6f">compare</a> (std::size_t tPos, std::size_t tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t sPos, std::size_t sCount) const </td></tr>
-<tr class="separator:a3c26227c3a27b11bf07be636cc004c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad141c8c93180d61ac18f9da85ff6a62d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad141c8c93180d61ac18f9da85ff6a62d">compare</a> (const T *str) const </td></tr>
-<tr class="separator:ad141c8c93180d61ac18f9da85ff6a62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65cf63fe6927e45827cb486bd4fc69d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a65cf63fe6927e45827cb486bd4fc69d1">compare</a> (std::size_t tPos, std::size_t tCount, const T *str) const </td></tr>
-<tr class="separator:a65cf63fe6927e45827cb486bd4fc69d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17385a3e70dec404d8c58eaeaaa0a4b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a17385a3e70dec404d8c58eaeaaa0a4b1">compare</a> (std::size_t tPos, std::size_t tCount, const T *str, std::size_t sPos, std::size_t sCount) const </td></tr>
-<tr class="separator:a17385a3e70dec404d8c58eaeaaa0a4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96321e3ffe8cee0c1042d4511e0ec56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa96321e3ffe8cee0c1042d4511e0ec56">compare</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
+<tr class="separator:aa96321e3ffe8cee0c1042d4511e0ec56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fc940d899c833e64475b5f71755afb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a56fc940d899c833e64475b5f71755afb">compare</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount) const </td></tr>
+<tr class="separator:a56fc940d899c833e64475b5f71755afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2921d49f1ac51dfd90dab87e0c2c2b40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2921d49f1ac51dfd90dab87e0c2c2b40">compare</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str) const </td></tr>
+<tr class="separator:a2921d49f1ac51dfd90dab87e0c2c2b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2696f4fa17d0d5f002dd6997bc3c25c8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2696f4fa17d0d5f002dd6997bc3c25c8">compare</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str) const </td></tr>
+<tr class="separator:a2696f4fa17d0d5f002dd6997bc3c25c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3fb7402d9661b1d7e0cec34750f3335"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac3fb7402d9661b1d7e0cec34750f3335">compare</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount) const </td></tr>
+<tr class="separator:ac3fb7402d9661b1d7e0cec34750f3335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a047e6ea23a748f1001aab1c7e913171a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a047e6ea23a748f1001aab1c7e913171a">startsWith</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
 <tr class="separator:a047e6ea23a748f1001aab1c7e913171a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ca87fa6562bfd1a1342978d0dfbd60b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0ca87fa6562bfd1a1342978d0dfbd60b">startsWith</a> (T value) const </td></tr>
-<tr class="separator:a0ca87fa6562bfd1a1342978d0dfbd60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f2456c9acbacc6c2b8692324aba86af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8f2456c9acbacc6c2b8692324aba86af">startsWith</a> (const T *str) const </td></tr>
-<tr class="separator:a8f2456c9acbacc6c2b8692324aba86af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a355a6ae4615470c9d85bc66f5d50d771"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a355a6ae4615470c9d85bc66f5d50d771">startsWith</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value) const </td></tr>
+<tr class="separator:a355a6ae4615470c9d85bc66f5d50d771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85922010ff5f614d53b40741d1f7c698"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a85922010ff5f614d53b40741d1f7c698">startsWith</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str) const </td></tr>
+<tr class="separator:a85922010ff5f614d53b40741d1f7c698"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a477dbc8a44874807dd41a2d8b91ec14b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a477dbc8a44874807dd41a2d8b91ec14b">endsWith</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
 <tr class="separator:a477dbc8a44874807dd41a2d8b91ec14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fee0d4f5bbc6235754f14b99fbaa60a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4fee0d4f5bbc6235754f14b99fbaa60a">endsWith</a> (T value) const </td></tr>
-<tr class="separator:a4fee0d4f5bbc6235754f14b99fbaa60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada05264b34bafd8bd7d76979852520a6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ada05264b34bafd8bd7d76979852520a6">endsWith</a> (const T *str) const </td></tr>
-<tr class="separator:ada05264b34bafd8bd7d76979852520a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac196e1a45da4c10b3cea7ac859704c66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac196e1a45da4c10b3cea7ac859704c66">replace</a> (std::size_t pos, std::size_t count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
-<tr class="separator:ac196e1a45da4c10b3cea7ac859704c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dc5a2b396270298682358aa7667ce69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4dc5a2b396270298682358aa7667ce69">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
+<tr class="memitem:ae4a2c09c47c5f5eeecc0104b598d0ad9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae4a2c09c47c5f5eeecc0104b598d0ad9">endsWith</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value) const </td></tr>
+<tr class="separator:ae4a2c09c47c5f5eeecc0104b598d0ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dff34bb24ef023f3471e7dec702c0c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6dff34bb24ef023f3471e7dec702c0c7">endsWith</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str) const </td></tr>
+<tr class="separator:a6dff34bb24ef023f3471e7dec702c0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa4db452ca6a1399363b27bf5572ee19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afa4db452ca6a1399363b27bf5572ee19">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
+<tr class="separator:afa4db452ca6a1399363b27bf5572ee19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc5a2b396270298682358aa7667ce69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4dc5a2b396270298682358aa7667ce69">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
 <tr class="separator:a4dc5a2b396270298682358aa7667ce69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a1833c4bc94071b2884d15dc01b8bf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3a1833c4bc94071b2884d15dc01b8bf1">replace</a> (std::size_t tPos, std::size_t tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t sPos, std::size_t sCount)</td></tr>
-<tr class="separator:a3a1833c4bc94071b2884d15dc01b8bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a491ab29b0ac9dc32763870a0570e9748"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a491ab29b0ac9dc32763870a0570e9748">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sPos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount)</td></tr>
+<tr class="separator:a491ab29b0ac9dc32763870a0570e9748"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15a6b724fd6dd01df42db1c70404722d"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a15a6b724fd6dd01df42db1c70404722d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a15a6b724fd6dd01df42db1c70404722d">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> tStart, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> tEnd, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, InputIterator sStart, InputIterator sEnd)</td></tr>
+<tr class="memitem:a15a6b724fd6dd01df42db1c70404722d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a15a6b724fd6dd01df42db1c70404722d">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> tStart, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> tEnd, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> sStart, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> sEnd)</td></tr>
 <tr class="separator:a15a6b724fd6dd01df42db1c70404722d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6babb3a40ac571290391347dcfeb1182"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6babb3a40ac571290391347dcfeb1182">replace</a> (std::size_t pos, std::size_t tCount, const T *str, std::size_t sCount)</td></tr>
-<tr class="separator:a6babb3a40ac571290391347dcfeb1182"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d78b95be2f40cb6fbbf41c2246c941c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7d78b95be2f40cb6fbbf41c2246c941c">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, const T *str, std::size_t sCount)</td></tr>
-<tr class="separator:a7d78b95be2f40cb6fbbf41c2246c941c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a809f6cddf662a64fb73c416e1157ec2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a809f6cddf662a64fb73c416e1157ec2f">replace</a> (std::size_t pos, std::size_t count, const T *str)</td></tr>
-<tr class="separator:a809f6cddf662a64fb73c416e1157ec2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab762acab3ed28387534fec5e78c5d87b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab762acab3ed28387534fec5e78c5d87b">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, const T *str)</td></tr>
-<tr class="separator:ab762acab3ed28387534fec5e78c5d87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a9e9a68ae0d503083faa6d3c6b71001"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0a9e9a68ae0d503083faa6d3c6b71001">replace</a> (std::size_t pos, std::size_t tCount, T value, std::size_t sCount)</td></tr>
-<tr class="separator:a0a9e9a68ae0d503083faa6d3c6b71001"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e783583a07979d7967e7d01a55e0d18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e783583a07979d7967e7d01a55e0d18">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, T value, std::size_t sCount)</td></tr>
-<tr class="separator:a0e783583a07979d7967e7d01a55e0d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a209163aab69f8989c05ef621ed3cd8c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a209163aab69f8989c05ef621ed3cd8c2">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, std::initializer_list&lt; T &gt; list)</td></tr>
+<tr class="memitem:a0b638bc7649e00d77e2b35998aff9f1a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0b638bc7649e00d77e2b35998aff9f1a">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount)</td></tr>
+<tr class="separator:a0b638bc7649e00d77e2b35998aff9f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5630affbf487b95dbaabdbfe2883dd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab5630affbf487b95dbaabdbfe2883dd9">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount)</td></tr>
+<tr class="separator:ab5630affbf487b95dbaabdbfe2883dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a997331b5cc17474d958a839ed5978e7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a997331b5cc17474d958a839ed5978e7c">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a997331b5cc17474d958a839ed5978e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a155934b1e4c6f18366ae7c80a2ea4948"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a155934b1e4c6f18366ae7c80a2ea4948">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a155934b1e4c6f18366ae7c80a2ea4948"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b1e962947f7f65bd01bfa2b36e43130"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0b1e962947f7f65bd01bfa2b36e43130">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> tCount, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount)</td></tr>
+<tr class="separator:a0b1e962947f7f65bd01bfa2b36e43130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ecdd975c5bca6f4a04f77afab25af76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a9ecdd975c5bca6f4a04f77afab25af76">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> sCount)</td></tr>
+<tr class="separator:a9ecdd975c5bca6f4a04f77afab25af76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209163aab69f8989c05ef621ed3cd8c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a209163aab69f8989c05ef621ed3cd8c2">replace</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> start, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a40d0473b2964f19ba6f4a98696cc91b2">end</a>, std::initializer_list&lt; T &gt; list)</td></tr>
 <tr class="separator:a209163aab69f8989c05ef621ed3cd8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0639e5b3e9ecf3f6fc07a0c13347266b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0639e5b3e9ecf3f6fc07a0c13347266b">substr</a> (std::size_t pos, std::size_t count) const </td></tr>
-<tr class="separator:a0639e5b3e9ecf3f6fc07a0c13347266b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1db70d8010b41e9d5d2f773cce692359"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1db70d8010b41e9d5d2f773cce692359">copy</a> (T *str, std::size_t pos, std::size_t count) const </td></tr>
-<tr class="separator:a1db70d8010b41e9d5d2f773cce692359"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a828b20842d0d6de3e052f51e83f8dcec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a828b20842d0d6de3e052f51e83f8dcec">resize</a> (std::size_t count)</td></tr>
-<tr class="separator:a828b20842d0d6de3e052f51e83f8dcec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea55af05648a6ff2a5e93cd2cf95c591"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aea55af05648a6ff2a5e93cd2cf95c591">resize</a> (std::size_t count, T value)</td></tr>
-<tr class="separator:aea55af05648a6ff2a5e93cd2cf95c591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c61a8aa1fbbcf4aeb0d313a952dc81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a30c61a8aa1fbbcf4aeb0d313a952dc81">substr</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count) const </td></tr>
+<tr class="separator:a30c61a8aa1fbbcf4aeb0d313a952dc81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c3ec96296f82b810a58ebbc2d459b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a75c3ec96296f82b810a58ebbc2d459b5">copy</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count) const </td></tr>
+<tr class="separator:a75c3ec96296f82b810a58ebbc2d459b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcf5ec5c3a8b24f2204b53f418301bc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afcf5ec5c3a8b24f2204b53f418301bc3">resize</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count)</td></tr>
+<tr class="separator:afcf5ec5c3a8b24f2204b53f418301bc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a8f4eb8e778db18b36d703436c6e94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a08a8f4eb8e778db18b36d703436c6e94">resize</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a08a8f4eb8e778db18b36d703436c6e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c5b14da8a367e0cb88268194e721ce0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6c5b14da8a367e0cb88268194e721ce0">swap</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;str)</td></tr>
 <tr class="separator:a6c5b14da8a367e0cb88268194e721ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe91c26205f7c7f70d2a3edfb242fb88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afe91c26205f7c7f70d2a3edfb242fb88">shrinkToFit</a> ()</td></tr>
 <tr class="separator:afe91c26205f7c7f70d2a3edfb242fb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cd15fa3754a286297b35ea3946db3b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a9cd15fa3754a286297b35ea3946db3b2">contains</a> (const T *str) const </td></tr>
-<tr class="separator:a9cd15fa3754a286297b35ea3946db3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d3bfafe29101468e70432930a876c4e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8d3bfafe29101468e70432930a876c4e">contains</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str) const </td></tr>
+<tr class="separator:a8d3bfafe29101468e70432930a876c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34bc09210c179fad41babad1f94cc01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae34bc09210c179fad41babad1f94cc01">contains</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
 <tr class="separator:ae34bc09210c179fad41babad1f94cc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173b725cf3bfbbcf401cdf2a44b16609"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a173b725cf3bfbbcf401cdf2a44b16609">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a173b725cf3bfbbcf401cdf2a44b16609"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4180e49b43fad06984367dbe35401ddc"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4180e49b43fad06984367dbe35401ddc">find</a> (std::size_t count, const T *str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a4180e49b43fad06984367dbe35401ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf14ff35915cf394e6935c174d199bce"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aaf14ff35915cf394e6935c174d199bce">find</a> (const T *str, std::size_t pos=0) const </td></tr>
-<tr class="separator:aaf14ff35915cf394e6935c174d199bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43968a1e6f05fef1ec959f37d2e2739d"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a43968a1e6f05fef1ec959f37d2e2739d">find</a> (T value, std::size_t pos=0) const </td></tr>
-<tr class="separator:a43968a1e6f05fef1ec959f37d2e2739d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6b6578b24ac6d25bab6829a0ca445da"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae6b6578b24ac6d25bab6829a0ca445da">rfind</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t pos) const </td></tr>
-<tr class="separator:ae6b6578b24ac6d25bab6829a0ca445da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab444c88955b7061381c05d2a77a04c18"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab444c88955b7061381c05d2a77a04c18">rfind</a> (std::size_t count, const T *str, std::size_t pos) const </td></tr>
-<tr class="separator:ab444c88955b7061381c05d2a77a04c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c0488ba233f682afc89b592e3c49657"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6c0488ba233f682afc89b592e3c49657">rfind</a> (const T *str, std::size_t pos) const </td></tr>
-<tr class="separator:a6c0488ba233f682afc89b592e3c49657"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51fcbc02f5c2c0db76f4bc164854a1df"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a51fcbc02f5c2c0db76f4bc164854a1df">rfind</a> (T value, std::size_t pos) const </td></tr>
-<tr class="separator:a51fcbc02f5c2c0db76f4bc164854a1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a364d9113d5f5ffe468e2abc0843c1b3b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a364d9113d5f5ffe468e2abc0843c1b3b">findFirstOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a364d9113d5f5ffe468e2abc0843c1b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93323a167408c3a44cb52770197ade74"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a93323a167408c3a44cb52770197ade74">findFirstOf</a> (std::size_t count, const T *str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a93323a167408c3a44cb52770197ade74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a0e4d4f7295afb0038e7d8c5c7fa267"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a9a0e4d4f7295afb0038e7d8c5c7fa267">findFirstOf</a> (const T *str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a9a0e4d4f7295afb0038e7d8c5c7fa267"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff39311e04d9bab37d8f9e1123c05354"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aff39311e04d9bab37d8f9e1123c05354">findFirstOf</a> (T value, std::size_t pos=0) const </td></tr>
-<tr class="separator:aff39311e04d9bab37d8f9e1123c05354"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5479bebe9d7dbde8be07e476935468b2"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5479bebe9d7dbde8be07e476935468b2">findFirstNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a5479bebe9d7dbde8be07e476935468b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affa05c2f41e2ef8936ae1f71994cd61b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#affa05c2f41e2ef8936ae1f71994cd61b">findFirstNotOf</a> (std::size_t count, const T *str, std::size_t pos=0) const </td></tr>
-<tr class="separator:affa05c2f41e2ef8936ae1f71994cd61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a007fdab8cb51260e5b6e0b303fbbb516"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a007fdab8cb51260e5b6e0b303fbbb516">findFirstNotOf</a> (const T *str, std::size_t pos=0) const </td></tr>
-<tr class="separator:a007fdab8cb51260e5b6e0b303fbbb516"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5e703c7653f2f32425a6ff6581a6a14"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad5e703c7653f2f32425a6ff6581a6a14">findFirstNotOf</a> (T value, std::size_t pos=0) const </td></tr>
-<tr class="separator:ad5e703c7653f2f32425a6ff6581a6a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ee2c392596a64a276edf3d90b3dc01a"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7ee2c392596a64a276edf3d90b3dc01a">findLastOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t pos) const </td></tr>
-<tr class="separator:a7ee2c392596a64a276edf3d90b3dc01a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf6b9c73f1b26b414b7366de5b4a6cd4"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#acf6b9c73f1b26b414b7366de5b4a6cd4">findLastOf</a> (std::size_t count, const T *str, std::size_t pos) const </td></tr>
-<tr class="separator:acf6b9c73f1b26b414b7366de5b4a6cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac54629878f6a29de68c35b89fd860bd2"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac54629878f6a29de68c35b89fd860bd2">findLastOf</a> (const T *str, std::size_t pos) const </td></tr>
-<tr class="separator:ac54629878f6a29de68c35b89fd860bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef0f9908b934f09ab7e94c9f0471fe46"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aef0f9908b934f09ab7e94c9f0471fe46">findLastOf</a> (T value, std::size_t pos) const </td></tr>
-<tr class="separator:aef0f9908b934f09ab7e94c9f0471fe46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe13e8614d8f30631ee893758c69275f"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afe13e8614d8f30631ee893758c69275f">findLastNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, std::size_t pos) const </td></tr>
-<tr class="separator:afe13e8614d8f30631ee893758c69275f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c46c66eadeae49916dc2e54fd302eb6"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7c46c66eadeae49916dc2e54fd302eb6">findLastNotOf</a> (std::size_t count, const T *str, std::size_t pos) const </td></tr>
-<tr class="separator:a7c46c66eadeae49916dc2e54fd302eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae47fed6bacfdd1ca6923b6aaa5f8f61e"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae47fed6bacfdd1ca6923b6aaa5f8f61e">findLastNotOf</a> (const T *str, std::size_t pos) const </td></tr>
-<tr class="separator:ae47fed6bacfdd1ca6923b6aaa5f8f61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e304a4df2a7efae006b7044ded91849"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4e304a4df2a7efae006b7044ded91849">findLastNotOf</a> (T value, std::size_t pos) const </td></tr>
-<tr class="separator:a4e304a4df2a7efae006b7044ded91849"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace21e34dff89527e0e17355e0b6bfa24"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ace21e34dff89527e0e17355e0b6bfa24">operator[]</a> (std::size_t index)</td></tr>
-<tr class="separator:ace21e34dff89527e0e17355e0b6bfa24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3902a5024a884655e6d759d8a9e5fdca"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3902a5024a884655e6d759d8a9e5fdca">operator[]</a> (std::size_t index) const </td></tr>
-<tr class="separator:a3902a5024a884655e6d759d8a9e5fdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6537c13bf4b536d53502aaeb0db0ddec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6537c13bf4b536d53502aaeb0db0ddec">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:a6537c13bf4b536d53502aaeb0db0ddec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0163509014e3048061727244b3c4ff8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab0163509014e3048061727244b3c4ff8">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:ab0163509014e3048061727244b3c4ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1dd3f18a57d98a5a4a37e59c8f463af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa1dd3f18a57d98a5a4a37e59c8f463af">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:aa1dd3f18a57d98a5a4a37e59c8f463af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca9011b413219c835f602ccbaa48d0e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aca9011b413219c835f602ccbaa48d0e5">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:aca9011b413219c835f602ccbaa48d0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeef0a6d6a61926e7ddb3c5f84d6fd2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afeef0a6d6a61926e7ddb3c5f84d6fd2c">rfind</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:afeef0a6d6a61926e7ddb3c5f84d6fd2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ef1ea6f110297075b4ab8a57d644e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad4ef1ea6f110297075b4ab8a57d644e6">rfind</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:ad4ef1ea6f110297075b4ab8a57d644e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a821d8d4faee6368b4b6824c265ba9a81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a821d8d4faee6368b4b6824c265ba9a81">rfind</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:a821d8d4faee6368b4b6824c265ba9a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c7794411c58f2a806f48d876e2315f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af6c7794411c58f2a806f48d876e2315f">rfind</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:af6c7794411c58f2a806f48d876e2315f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c56758496249f0ead3781cacdb700f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad8c56758496249f0ead3781cacdb700f">findFirstOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:ad8c56758496249f0ead3781cacdb700f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4022e456cf3eb7420d730397b6175f66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4022e456cf3eb7420d730397b6175f66">findFirstOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:a4022e456cf3eb7420d730397b6175f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34508fd300a8f8921943e5da95693f17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a34508fd300a8f8921943e5da95693f17">findFirstOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:a34508fd300a8f8921943e5da95693f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a408015e1252ab5f66026794562a215cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a408015e1252ab5f66026794562a215cc">findFirstOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:a408015e1252ab5f66026794562a215cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc4c9523f10725fc880aca22e5875c3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#afc4c9523f10725fc880aca22e5875c3e">findFirstNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:afc4c9523f10725fc880aca22e5875c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c9b5140e16894ce901b8649dcadb674"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a5c9b5140e16894ce901b8649dcadb674">findFirstNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:a5c9b5140e16894ce901b8649dcadb674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02149b5e985fde901523e7cb39b6a17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac02149b5e985fde901523e7cb39b6a17">findFirstNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:ac02149b5e985fde901523e7cb39b6a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6933bbe0d5850b04475c8eae6d3c8df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af6933bbe0d5850b04475c8eae6d3c8df">findFirstNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos=0) const </td></tr>
+<tr class="separator:af6933bbe0d5850b04475c8eae6d3c8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7914a1113b96ed2044f79cc9dd67c6ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7914a1113b96ed2044f79cc9dd67c6ef">findLastOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:a7914a1113b96ed2044f79cc9dd67c6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b103c02d96926be28c0048b732dcad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a20b103c02d96926be28c0048b732dcad">findLastOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:a20b103c02d96926be28c0048b732dcad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8876f8fd769e771efceabfa6424eaa32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8876f8fd769e771efceabfa6424eaa32">findLastOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:a8876f8fd769e771efceabfa6424eaa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24a182d47488f68cbd78fc12f27d5c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad24a182d47488f68cbd78fc12f27d5c4">findLastOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:ad24a182d47488f68cbd78fc12f27d5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f3de328d3ea0cd1dd02e5e9a109bd71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4f3de328d3ea0cd1dd02e5e9a109bd71">findLastNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:a4f3de328d3ea0cd1dd02e5e9a109bd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e91efa0e5317f2024f248415e56506b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e91efa0e5317f2024f248415e56506b">findLastNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> count, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:a0e91efa0e5317f2024f248415e56506b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95a31382f6080dc9085b3d0178afdaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ae95a31382f6080dc9085b3d0178afdaa">findLastNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:ae95a31382f6080dc9085b3d0178afdaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa882e5a46e50ecc0aab0aef51418f677"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa882e5a46e50ecc0aab0aef51418f677">findLastNotOf</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> pos) const </td></tr>
+<tr class="separator:aa882e5a46e50ecc0aab0aef51418f677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c519f820809ae4011fa3d9976a0405f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6c519f820809ae4011fa3d9976a0405f">operator[]</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index)</td></tr>
+<tr class="separator:a6c519f820809ae4011fa3d9976a0405f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cae682baa97faca6543f996a8461b3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a9cae682baa97faca6543f996a8461b3f">operator[]</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> index) const </td></tr>
+<tr class="separator:a9cae682baa97faca6543f996a8461b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a6ad7eedb04b8fea0193e1d80275ba6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2a6ad7eedb04b8fea0193e1d80275ba6">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
 <tr class="separator:a2a6ad7eedb04b8fea0193e1d80275ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ac20b4bf7b077d252e0983e1d73ce98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4ac20b4bf7b077d252e0983e1d73ce98">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&amp;str)</td></tr>
 <tr class="separator:a4ac20b4bf7b077d252e0983e1d73ce98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7f74d20e9be29852138c5141e76e97d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa7f74d20e9be29852138c5141e76e97d">operator=</a> (const T *str)</td></tr>
-<tr class="separator:aa7f74d20e9be29852138c5141e76e97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84f17cee41ffe4e58eb371db8eb614cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84f17cee41ffe4e58eb371db8eb614cb">operator=</a> (T value)</td></tr>
-<tr class="separator:a84f17cee41ffe4e58eb371db8eb614cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e34c66f6da636b29a6a354e18a9fc47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7e34c66f6da636b29a6a354e18a9fc47">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a7e34c66f6da636b29a6a354e18a9fc47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc49b0461664327ba810848d06f69819"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#acc49b0461664327ba810848d06f69819">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:acc49b0461664327ba810848d06f69819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1da605ba807fd74d9936dc231974ee7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab1da605ba807fd74d9936dc231974ee7">operator=</a> (std::initializer_list&lt; T &gt; list)</td></tr>
 <tr class="separator:ab1da605ba807fd74d9936dc231974ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4db6b5abd9d325e1a343e257b8799a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab4db6b5abd9d325e1a343e257b8799a2">operator+=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str)</td></tr>
 <tr class="separator:ab4db6b5abd9d325e1a343e257b8799a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a954159d735c0da5b5fc4cd5e0ec6e9cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a954159d735c0da5b5fc4cd5e0ec6e9cb">operator+=</a> (T value)</td></tr>
-<tr class="separator:a954159d735c0da5b5fc4cd5e0ec6e9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc140e485a8a83de3f3c52496035231d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#adc140e485a8a83de3f3c52496035231d">operator+=</a> (const T *str)</td></tr>
-<tr class="separator:adc140e485a8a83de3f3c52496035231d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be6af650d1f593a3d5f8558b9719797"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7be6af650d1f593a3d5f8558b9719797">operator+=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> value)</td></tr>
+<tr class="separator:a7be6af650d1f593a3d5f8558b9719797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ff24efca46a367bbbfa8c7956699ebb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0ff24efca46a367bbbfa8c7956699ebb">operator+=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> str)</td></tr>
+<tr class="separator:a0ff24efca46a367bbbfa8c7956699ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2167114fbd1b521c9f18bd7515858a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab2167114fbd1b521c9f18bd7515858a3">operator+=</a> (std::initializer_list&lt; T &gt; list)</td></tr>
 <tr class="separator:ab2167114fbd1b521c9f18bd7515858a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cf9e947bb8ed9a5deae560978c131be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2cf9e947bb8ed9a5deae560978c131be">operator==</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> const &amp;str) const </td></tr>
@@ -453,9 +488,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a69e75ea27ac8b51a196c893d05c07a81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69e75ea27ac8b51a196c893d05c07a81"></a>
-static constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>NOT_FOUND</b> = -1</td></tr>
-<tr class="separator:a69e75ea27ac8b51a196c893d05c07a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80dc21317d22ab231ed732c8f222e471"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a80dc21317d22ab231ed732c8f222e471">NOT_FOUND</a> = -1</td></tr>
+<tr class="separator:a80dc21317d22ab231ed732c8f222e471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
@@ -463,48 +497,333 @@ class NRE::Utility::BasicString&lt; T &gt;</h3>
 
 <p>A basic template string, with dynamic size, guarantee to be in contiguous memory. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a557d930ae5e01b60275a3b01a3a19f86"></a>
+<a class="anchor" id="a3bfd5738ba0f33e562e8476a4fc3170a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef const T* <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3bfd5738ba0f33e562e8476a4fc3170a">const_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide ReverseIterator implementation </p>
+<p>STL compatibility </p>
 
 </div>
 </div>
-<a class="anchor" id="a84fd549f39f627b1caf412fac4459597"></a>
+<a class="anchor" id="a0be03e2ca9f4c8721a1b1fd7887f0501"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef T* <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0be03e2ca9f4c8721a1b1fd7887f0501">const_pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Shortcut to hide Iterator implementation Shortcut to hide ConstIterator implementation </p>
+<p>STL compatibility </p>
 
 </div>
 </div>
-<a class="anchor" id="a6ed577da05148ce11444e7aaa61e8619"></a>
+<a class="anchor" id="abfaac45fb451dc8006a19caf33e7b942"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::reverse_iterator&lt;T*&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">ReverseIterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#abfaac45fb451dc8006a19caf33e7b942">const_reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide ConstReverseIterator implementation </p>
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="af8884e7c5fd53e304c23c4dbe731537c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af8884e7c5fd53e304c23c4dbe731537c">const_reverse_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a121c89664b8182e62334547e032e25a9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Immuable random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a856da4ed7172faf22930edef2b3de7eb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> =  const <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>*</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type const pointer </p>
+
+</div>
+</div>
+<a class="anchor" id="ac5b0fd9d01870016e685c23c456b7f13"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> const&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type const reference </p>
+
+</div>
+</div>
+<a class="anchor" id="a0e037d86eff7538a37db0bae2ae97db1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a> =  std::reverse_iterator&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Immuable reverse random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="ac06dc72c93d7c347a776ede452eae018"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac06dc72c93d7c347a776ede452eae018">difference_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4a112de487adde9aec102fb6a5e3d562">DifferenceType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a4a112de487adde9aec102fb6a5e3d562"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4a112de487adde9aec102fb6a5e3d562">DifferenceType</a> =  std::ptrdiff_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The object's difference type </p>
+
+</div>
+</div>
+<a class="anchor" id="a6060a89f1bd8f3b40a53e76157f6f091"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutable random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="ac96f8d4660963b2997db6fd31bdd871a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac96f8d4660963b2997db6fd31bdd871a">iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a2c5b4cad76f901a56920ba93bb57366c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>*</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type pointer </p>
+
+</div>
+</div>
+<a class="anchor" id="af7b448ec42d7514c7c2c7c22c93d4cac"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af7b448ec42d7514c7c2c7c22c93d4cac">pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a1ebb9b56406afd8fd5dae7cb88d4e8fb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type reference </p>
+
+</div>
+</div>
+<a class="anchor" id="ababffd6bcfcbd5c7f3a612af2b71453a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ababffd6bcfcbd5c7f3a612af2b71453a">reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a4d9854c18ec08c4b445906f32c063aee"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4d9854c18ec08c4b445906f32c063aee">reverse_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a417f6581726a0ad98b930909606d1212"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a> =  std::reverse_iterator&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutable reverse random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="aa4b85c563aaf6faa1c7f077e69419eb1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa4b85c563aaf6faa1c7f077e69419eb1">size_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a8fc26180f68e827e77bce464afa03255"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> =  std::size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The object's size type </p>
+
+</div>
+</div>
+<a class="anchor" id="af27e966c6ccb0d67b7e9e1e097557c7d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#af27e966c6ccb0d67b7e9e1e097557c7d">value_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="ad05eef994fea38c5d1c5e5dda05d4806"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a> =  T</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The container's allocated type </p>
 
 </div>
 </div>
@@ -527,7 +846,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aafcdc42cb6c6c15740c2bc90f15b32b2"></a>
+<a class="anchor" id="a67061d547a418102349a519e29d331f2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -536,13 +855,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -562,7 +881,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a22c30b99214255bb730c8672a3904866"></a>
+<a class="anchor" id="a8717d6cd3a66e5418bb21e3f93358046"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -571,13 +890,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
@@ -604,7 +923,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2b49cf0023848f6cbe9f954d46cf3ff5"></a>
+<a class="anchor" id="a3a0bd1cc9d643306d75b9068d142bb3b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -613,13 +932,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -639,7 +958,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aee30c7d284a0db0c0620e1a6903ea302"></a>
+<a class="anchor" id="a49009d5cee0d62077866b33192081c40"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -648,7 +967,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
         </tr>
@@ -674,13 +993,13 @@ template&lt;class InputIterator &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> </td>
           <td>(</td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -853,7 +1172,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ad6a5d675e0e9dac8ae9bb0de1810845e"></a>
+<a class="anchor" id="ac197ac8d8f962607fa132fec013a0e89"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -862,7 +1181,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::append </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1153,7 +1472,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a437b4bf3c704c5a9beaa82a78c425fbe"></a>
+<a class="anchor" id="a358d0f085ec2faf6794e75237bb32934"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1162,13 +1481,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::append </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -1214,7 +1533,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3205fe9991c3b207853cf8be2c6d094e"></a>
+<a class="anchor" id="a38d94472706346b83512f3311cf9d045"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1229,13 +1548,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -1257,7 +1576,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2f94818d9322f516124b918c202d7ab4"></a>
+<a class="anchor" id="ad77bada498ce8caeb8d39ba9432cb577"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1266,13 +1585,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::append </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -1293,7 +1612,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ac3f8fdfea90fe2f7dfe5ba74da485b99"></a>
+<a class="anchor" id="ab779ec0fdb160aa681c84b5a7701e4a5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1302,7 +1621,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::append </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1354,13 +1673,13 @@ template&lt;class InputIterator &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::append </td>
           <td>(</td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -1406,7 +1725,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a009f07466409c0f15528f63e273f0a5e"></a>
+<a class="anchor" id="ad7a70cf9872e66647cf748c58571f644"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1415,13 +1734,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::assign </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -1467,7 +1786,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a23db49a6689502a918d487fddf14346d"></a>
+<a class="anchor" id="aac630a5ca2f5901be872f544b95a24a1"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1476,13 +1795,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::assign </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
@@ -1535,7 +1854,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a40ba4bea020e19d1835c3b64f5f7fb37"></a>
+<a class="anchor" id="a42725d8fdb6eb398e60e2a2647284383"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1544,13 +1863,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::assign </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -1571,7 +1890,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a89b70adb308a6301e29e97c5c3892e46"></a>
+<a class="anchor" id="a3008b3e86cbc2e32e38fd387c32a3a68"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1580,7 +1899,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::assign </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1607,13 +1926,13 @@ template&lt;class InputIterator &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::assign </td>
           <td>(</td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -1668,7 +1987,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1686,7 +2005,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1704,7 +2023,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::cbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1722,7 +2041,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1776,7 +2095,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5be5efba3e60692f0b7d68a81251b967"></a>
+<a class="anchor" id="aa96321e3ffe8cee0c1042d4511e0ec56"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1785,13 +2104,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::compare </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
@@ -1819,7 +2138,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3c26227c3a27b11bf07be636cc004c6f"></a>
+<a class="anchor" id="a56fc940d899c833e64475b5f71755afb"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1828,13 +2147,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::compare </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
@@ -1846,13 +2165,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -1876,7 +2195,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ad141c8c93180d61ac18f9da85ff6a62d"></a>
+<a class="anchor" id="a2921d49f1ac51dfd90dab87e0c2c2b40"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1885,7 +2204,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::compare </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1901,7 +2220,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a65cf63fe6927e45827cb486bd4fc69d1"></a>
+<a class="anchor" id="a2696f4fa17d0d5f002dd6997bc3c25c8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1910,19 +2229,19 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::compare </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -1944,7 +2263,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a17385a3e70dec404d8c58eaeaaa0a4b1"></a>
+<a class="anchor" id="ac3fb7402d9661b1d7e0cec34750f3335"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1953,31 +2272,31 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::compare </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -2001,7 +2320,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9cd15fa3754a286297b35ea3946db3b2"></a>
+<a class="anchor" id="a8d3bfafe29101468e70432930a876c4e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -2010,7 +2329,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::contains </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -2051,28 +2370,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1db70d8010b41e9d5d2f773cce692359"></a>
+<a class="anchor" id="a75c3ec96296f82b810a58ebbc2d459b5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::copy </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::copy </td>
           <td>(</td>
-          <td class="paramtype">T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a2c5b4cad76f901a56920ba93bb57366c">Pointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -2101,7 +2420,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::crbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::crbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -2119,7 +2438,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::crend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::crend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -2137,7 +2456,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2155,7 +2474,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -2191,7 +2510,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a4fee0d4f5bbc6235754f14b99fbaa60a"></a>
+<a class="anchor" id="ae4a2c09c47c5f5eeecc0104b598d0ad9"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -2200,7 +2519,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::endsWith </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -2216,7 +2535,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ada05264b34bafd8bd7d76979852520a6"></a>
+<a class="anchor" id="a6dff34bb24ef023f3471e7dec702c0c7"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -2225,7 +2544,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::endsWith </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -2241,7 +2560,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a8b2e04417a714f974453663ba7ffb6ef"></a>
+<a class="anchor" id="aa6027e93950c7b8edfdef44440f13105"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -2250,13 +2569,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -2284,9 +2603,9 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2309,15 +2628,15 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -2338,14 +2657,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a173b725cf3bfbbcf401cdf2a44b16609"></a>
+<a class="anchor" id="a6537c13bf4b536d53502aaeb0db0ddec"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -2353,7 +2672,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2374,28 +2693,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a4180e49b43fad06984367dbe35401ddc"></a>
+<a class="anchor" id="ab0163509014e3048061727244b3c4ff8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2417,22 +2736,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aaf14ff35915cf394e6935c174d199bce"></a>
+<a class="anchor" id="aa1dd3f18a57d98a5a4a37e59c8f463af"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2453,22 +2772,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a43968a1e6f05fef1ec959f37d2e2739d"></a>
+<a class="anchor" id="aca9011b413219c835f602ccbaa48d0e5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2489,14 +2808,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5479bebe9d7dbde8be07e476935468b2"></a>
+<a class="anchor" id="afc4c9523f10725fc880aca22e5875c3e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -2504,7 +2823,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2525,28 +2844,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="affa05c2f41e2ef8936ae1f71994cd61b"></a>
+<a class="anchor" id="a5c9b5140e16894ce901b8649dcadb674"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2568,22 +2887,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a007fdab8cb51260e5b6e0b303fbbb516"></a>
+<a class="anchor" id="ac02149b5e985fde901523e7cb39b6a17"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2604,22 +2923,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ad5e703c7653f2f32425a6ff6581a6a14"></a>
+<a class="anchor" id="af6933bbe0d5850b04475c8eae6d3c8df"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstNotOf </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2640,14 +2959,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a364d9113d5f5ffe468e2abc0843c1b3b"></a>
+<a class="anchor" id="ad8c56758496249f0ead3781cacdb700f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -2655,7 +2974,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2676,28 +2995,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a93323a167408c3a44cb52770197ade74"></a>
+<a class="anchor" id="a4022e456cf3eb7420d730397b6175f66"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2719,22 +3038,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9a0e4d4f7295afb0038e7d8c5c7fa267"></a>
+<a class="anchor" id="a34508fd300a8f8921943e5da95693f17"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2755,22 +3074,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aff39311e04d9bab37d8f9e1123c05354"></a>
+<a class="anchor" id="a408015e1252ab5f66026794562a215cc"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findFirstOf </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
@@ -2791,14 +3110,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="afe13e8614d8f30631ee893758c69275f"></a>
+<a class="anchor" id="a4f3de328d3ea0cd1dd02e5e9a109bd71"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -2806,7 +3125,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -2827,28 +3146,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a7c46c66eadeae49916dc2e54fd302eb6"></a>
+<a class="anchor" id="a0e91efa0e5317f2024f248415e56506b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -2870,22 +3189,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ae47fed6bacfdd1ca6923b6aaa5f8f61e"></a>
+<a class="anchor" id="ae95a31382f6080dc9085b3d0178afdaa"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -2906,22 +3225,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a4e304a4df2a7efae006b7044ded91849"></a>
+<a class="anchor" id="aa882e5a46e50ecc0aab0aef51418f677"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastNotOf </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -2942,14 +3261,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a7ee2c392596a64a276edf3d90b3dc01a"></a>
+<a class="anchor" id="a7914a1113b96ed2044f79cc9dd67c6ef"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -2957,7 +3276,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -2978,28 +3297,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="acf6b9c73f1b26b414b7366de5b4a6cd4"></a>
+<a class="anchor" id="a20b103c02d96926be28c0048b732dcad"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -3021,22 +3340,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ac54629878f6a29de68c35b89fd860bd2"></a>
+<a class="anchor" id="a8876f8fd769e771efceabfa6424eaa32"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -3057,22 +3376,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aef0f9908b934f09ab7e94c9f0471fe46"></a>
+<a class="anchor" id="ad24a182d47488f68cbd78fc12f27d5c4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::findLastOf </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -3093,16 +3412,16 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1ee35a3d0dc9aaa82ef5d1f2161adb1b"></a>
+<a class="anchor" id="ae2d2828bb7916521c07326818b4916fe"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::get </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::get </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -3118,16 +3437,16 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a38195baf7bd0232759d4a8f144684a1e"></a>
+<a class="anchor" id="a3bcc61953c6f5cf55b3634256a101934"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::get </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::get </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -3143,14 +3462,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a328ebd77a8bbb49a6776fefd417ebf4a"></a>
+<a class="anchor" id="a5b45a5b50afd3ad39e09b95c4f1330ec"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getCapacity </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getCapacity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3161,14 +3480,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0077ab896a00c0aa6e785fffb2b417d5"></a>
+<a class="anchor" id="ab546b026ad9dfb4b6a189df9f4f5c088"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const T* <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getCData </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getCData </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3179,14 +3498,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aa168f5bdce940de92d3f5c39e8159759"></a>
+<a class="anchor" id="ab82653ee746eb017750672e68ab57966"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const T* <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getData </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getData </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3197,14 +3516,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab3e4c324e16594a98292ff51b0b00267"></a>
+<a class="anchor" id="a0049a28371f2d7c99e76355524d686aa"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getFront </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getFront </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -3215,14 +3534,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a09ef555d16d12a3c42d31cf7eefbf5a7"></a>
+<a class="anchor" id="a7a81213ea7b8dbe06bb7d19b8b00cd0b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getFront </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getFront </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3233,14 +3552,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5e466d36e361dc572931d21896c527cd"></a>
+<a class="anchor" id="af0527b734b72a1b70565eb73a55cb1db"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getLast </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getLast </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -3251,14 +3570,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aed8592590a7a0097dc9cf28f6101799c"></a>
+<a class="anchor" id="a95355100d0742d24cca22d9f0541e595"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getLast </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getLast </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3269,14 +3588,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a6ed01f192a9c748153b095d56da2796a"></a>
+<a class="anchor" id="a66ec3113b5f283b77cc33f0e8a74924e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getLength </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getLength </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3287,14 +3606,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a649e9db31cfa007fcb42d3a72b67284c"></a>
+<a class="anchor" id="a4ef0431f31869ef81f7e33dec6c46b51"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getMaxSize </td>
+          <td class="memname">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getMaxSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3305,14 +3624,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a446670e0a8bf0b49e2c4dde3d7e68542"></a>
+<a class="anchor" id="acf451864206f81c8b321ff26406f1b00"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getSize </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::getSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -3323,7 +3642,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a408cb985f4efc28bc4a77b672ad65cf0"></a>
+<a class="anchor" id="a6ad1d5f470fc6e7e5fff7e0f747ce439"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3332,19 +3651,19 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -3366,7 +3685,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a698ce5fcbcb0c124a6411c426eeef386"></a>
+<a class="anchor" id="a455d3ffdcf305888574870fb5877c1d8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3375,13 +3694,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -3402,7 +3721,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a556f4cdfea29a0430cf37f33873a16f5"></a>
+<a class="anchor" id="af3e76b176aa06bc2024f9d5e622dbcd3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3411,19 +3730,19 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -3445,7 +3764,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2c7336f4719ec36b9fdc8277aebccc99"></a>
+<a class="anchor" id="aada8c59818b1b0570c1f4252e1a89232"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3454,7 +3773,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
@@ -3481,7 +3800,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a019fce3826f9d7d1cadbdfd133b715a3"></a>
+<a class="anchor" id="a170ca6da9abf425d5a49e92967ada82f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3490,7 +3809,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
@@ -3502,13 +3821,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -3531,22 +3850,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2507a9cb1f068ad86aa82d0b61ed9ebe"></a>
+<a class="anchor" id="a3c28a97e0ee391825e9ea938c52d2b3d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -3567,28 +3886,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aa4cc21bcc8a8d686a8a02d1ede47afd4"></a>
+<a class="anchor" id="a8495d07649a412c6a96bcdb44c1ca681"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -3619,21 +3938,21 @@ template&lt;class T&gt; </div>
 template&lt;class InputIterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -3663,9 +3982,9 @@ template&lt;class InputIterator &gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6060a89f1bd8f3b40a53e76157f6f091">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
@@ -3761,7 +4080,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a954159d735c0da5b5fc4cd5e0ec6e9cb"></a>
+<a class="anchor" id="a7be6af650d1f593a3d5f8558b9719797"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3770,7 +4089,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator+= </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -3786,7 +4105,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="adc140e485a8a83de3f3c52496035231d"></a>
+<a class="anchor" id="a0ff24efca46a367bbbfa8c7956699ebb"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3795,7 +4114,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator+= </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
         </tr>
@@ -3963,7 +4282,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aa7f74d20e9be29852138c5141e76e97d"></a>
+<a class="anchor" id="a7e34c66f6da636b29a6a354e18a9fc47"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3972,7 +4291,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
         </tr>
@@ -3988,7 +4307,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a84f17cee41ffe4e58eb371db8eb614cb"></a>
+<a class="anchor" id="acc49b0461664327ba810848d06f69819"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -3997,7 +4316,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -4113,16 +4432,16 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ace21e34dff89527e0e17355e0b6bfa24"></a>
+<a class="anchor" id="a6c519f820809ae4011fa3d9976a0405f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a1ebb9b56406afd8fd5dae7cb88d4e8fb">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -4138,16 +4457,16 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3902a5024a884655e6d759d8a9e5fdca"></a>
+<a class="anchor" id="a9cae682baa97faca6543f996a8461b3f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ac5b0fd9d01870016e685c23c456b7f13">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -4181,7 +4500,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1fc5c8410a87b1802e3b006a7177569c"></a>
+<a class="anchor" id="ac3e78e4c5091b5d8e50bfdf0eef53e67"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4190,7 +4509,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::pushBack </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -4212,7 +4531,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -4230,7 +4549,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -4248,7 +4567,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a417f6581726a0ad98b930909606d1212">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -4266,7 +4585,7 @@ template&lt;class T&gt; </div>
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a0e037d86eff7538a37db0bae2ae97db1">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -4277,7 +4596,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ac196e1a45da4c10b3cea7ac859704c66"></a>
+<a class="anchor" id="afa4db452ca6a1399363b27bf5572ee19"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4286,13 +4605,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
@@ -4329,13 +4648,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
@@ -4363,7 +4682,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3a1833c4bc94071b2884d15dc01b8bf1"></a>
+<a class="anchor" id="a491ab29b0ac9dc32763870a0570e9748"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4372,13 +4691,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
@@ -4390,13 +4709,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sPos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -4431,13 +4750,13 @@ template&lt;class InputIterator &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>tStart</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>tEnd</em>, </td>
         </tr>
         <tr>
@@ -4449,13 +4768,13 @@ template&lt;class InputIterator &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>sStart</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>sEnd</em>&#160;</td>
         </tr>
         <tr>
@@ -4479,7 +4798,7 @@ template&lt;class InputIterator &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a6babb3a40ac571290391347dcfeb1182"></a>
+<a class="anchor" id="a0b638bc7649e00d77e2b35998aff9f1a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4488,25 +4807,25 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -4529,7 +4848,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a7d78b95be2f40cb6fbbf41c2246c941c"></a>
+<a class="anchor" id="ab5630affbf487b95dbaabdbfe2883dd9"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4538,25 +4857,25 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -4579,7 +4898,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a809f6cddf662a64fb73c416e1157ec2f"></a>
+<a class="anchor" id="a997331b5cc17474d958a839ed5978e7c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4588,19 +4907,19 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -4622,7 +4941,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab762acab3ed28387534fec5e78c5d87b"></a>
+<a class="anchor" id="a155934b1e4c6f18366ae7c80a2ea4948"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4631,19 +4950,19 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
@@ -4665,7 +4984,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0a9e9a68ae0d503083faa6d3c6b71001"></a>
+<a class="anchor" id="a0b1e962947f7f65bd01bfa2b36e43130"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4674,25 +4993,25 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>tCount</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -4715,7 +5034,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0e783583a07979d7967e7d01a55e0d18"></a>
+<a class="anchor" id="a9ecdd975c5bca6f4a04f77afab25af76"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4724,25 +5043,25 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>sCount</em>&#160;</td>
         </tr>
         <tr>
@@ -4774,13 +5093,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::replace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>start</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a121c89664b8182e62334547e032e25a9">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
@@ -4808,7 +5127,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a21efaef50166a748a6a26db815cfeef5"></a>
+<a class="anchor" id="a7c876ccb7ba4245ed559df07c207bd34"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4817,7 +5136,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::reserve </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -4829,11 +5148,11 @@ template&lt;class T&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Warning</dt><dd>size value is not checked against <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a649e9db31cfa007fcb42d3a72b67284c">getMaxSize()</a> </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>size value is not checked against <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a4ef0431f31869ef81f7e33dec6c46b51">getMaxSize()</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a828b20842d0d6de3e052f51e83f8dcec"></a>
+<a class="anchor" id="afcf5ec5c3a8b24f2204b53f418301bc3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4842,7 +5161,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::resize </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em></td><td>)</td>
           <td></td>
         </tr>
@@ -4857,7 +5176,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aea55af05648a6ff2a5e93cd2cf95c591"></a>
+<a class="anchor" id="a08a8f4eb8e778db18b36d703436c6e94"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4866,13 +5185,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::resize </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -4910,7 +5229,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="adc0af8aedbfa789a79f0ae92d9a2898a"></a>
+<a class="anchor" id="a1d814a866a5088ec280f9fa991f5c240"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -4919,13 +5238,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::reverse </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -4945,14 +5264,14 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ae6b6578b24ac6d25bab6829a0ca445da"></a>
+<a class="anchor" id="afeef0a6d6a61926e7ddb3c5f84d6fd2c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a>&lt; T &gt; const &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
@@ -4960,7 +5279,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -4981,28 +5300,28 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab444c88955b7061381c05d2a77a04c18"></a>
+<a class="anchor" id="ad4ef1ea6f110297075b4ab8a57d644e6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -5024,22 +5343,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a6c0488ba233f682afc89b592e3c49657"></a>
+<a class="anchor" id="a821d8d4faee6368b4b6824c265ba9a81"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -5060,22 +5379,22 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a51fcbc02f5c2c0db76f4bc164854a1df"></a>
+<a class="anchor" id="af6c7794411c58f2a806f48d876e2315f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::rfind </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>&#160;</td>
         </tr>
         <tr>
@@ -5139,7 +5458,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0ca87fa6562bfd1a1342978d0dfbd60b"></a>
+<a class="anchor" id="a355a6ae4615470c9d85bc66f5d50d771"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -5148,7 +5467,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::startsWith </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ad05eef994fea38c5d1c5e5dda05d4806">ValueType</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -5164,7 +5483,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a8f2456c9acbacc6c2b8692324aba86af"></a>
+<a class="anchor" id="a85922010ff5f614d53b40741d1f7c698"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -5173,7 +5492,7 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::startsWith </td>
           <td>(</td>
-          <td class="paramtype">const T *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a856da4ed7172faf22930edef2b3de7eb">ConstPointer</a>&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -5189,7 +5508,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0639e5b3e9ecf3f6fc07a0c13347266b"></a>
+<a class="anchor" id="a30c61a8aa1fbbcf4aeb0d313a952dc81"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -5198,13 +5517,13 @@ template&lt;class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">BasicString</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::substr </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>pos</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em>&#160;</td>
         </tr>
         <tr>
@@ -5264,6 +5583,30 @@ template&lt;class T&gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Convert the object into a string representation </p><dl class="section return"><dt>Returns</dt><dd>the converted object </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a80dc21317d22ab231ed732c8f222e471"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8fc26180f68e827e77bce464afa03255">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">NRE::Utility::BasicString</a>&lt; T &gt;::NOT_FOUND = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The not found marker value </p>
 
 </div>
 </div>

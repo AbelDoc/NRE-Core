@@ -89,6 +89,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_rela.php"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li class="current"><a href="functions_type.php#index_a"><span>a</span></a></li>
+      <li><a href="functions_type_c.php#index_c"><span>c</span></a></li>
+      <li><a href="functions_type_d.php#index_d"><span>d</span></a></li>
+      <li><a href="functions_type_i.php#index_i"><span>i</span></a></li>
+      <li><a href="functions_type_k.php#index_k"><span>k</span></a></li>
+      <li><a href="functions_type_l.php#index_l"><span>l</span></a></li>
+      <li><a href="functions_type_m.php#index_m"><span>m</span></a></li>
+      <li><a href="functions_type_p.php#index_p"><span>p</span></a></li>
+      <li><a href="functions_type_r.php#index_r"><span>r</span></a></li>
+      <li><a href="functions_type_s.php#index_s"><span>s</span></a></li>
+      <li><a href="functions_type_t.php#index_t"><span>t</span></a></li>
+      <li><a href="functions_type_v.php#index_v"><span>v</span></a></li>
+    </ul>
+  </div>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -105,30 +121,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="contents">
-&#160;<ul>
-<li>ConstIterator
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">NRE::Utility::Array&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a557d930ae5e01b60275a3b01a3a19f86">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a9fb3a9830033245bc2160609de5ba318">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a00fbf24e911c0a9ccee4a3b0eac8e5b1">NRE::Utility::Vector&lt; T &gt;</a>
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>allocator_type
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a081f9d38f4c1e3f11a247564831e7e9d">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a13a0615e94211d1e66e1976949c27080">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#ac356511c108ff2c9e1373e4d5875ce69">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a6f8483736c3ab10b3c801351f0f7c544">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
 </li>
-<li>Iterator
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">NRE::Utility::Array&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a84fd549f39f627b1caf412fac4459597">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a3acc0d8cec711c5199f9f50b438819a2">NRE::Utility::ForwardList&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a7fcd032b11c041d13f635cfeb2f49c27">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a4f62eb0eba61b38e5f6b03c60ea6a49c">NRE::Utility::Vector&lt; T &gt;</a>
-</li>
-<li>LocalIterator
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
-</li>
-<li>ReverseIterator
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">NRE::Utility::Array&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a6ed577da05148ce11444e7aaa61e8619">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a1f5c21e6c9193fa4940d03c964590442">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php#a52eee3309a729b97a0e9fd9e76a07fae">NRE::Utility::Vector&lt; T &gt;</a>
+<li>AllocatorType
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a98742f9cf6e329c4dc8a09ac3df5e78d">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7bb20d543962da1c87eb87dd5ab2c8da">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a03464c30ebfb1db56a08da6a54b01592">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a1c2cdf70435eb56895d6ea0464aadc0f">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
 </li>
 </ul>
 </div><!-- contents -->

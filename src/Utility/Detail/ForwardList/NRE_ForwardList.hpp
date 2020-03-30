@@ -1,6 +1,6 @@
 
     /**
-     * @file Detail/NRE_ForwardList.hpp
+     * @file Detail/ForwardList/NRE_ForwardList.hpp
      * @brief Declaration of Utility's API's Container : ForwardList
      * @author Louis ABEL
      * @date 10/06/2019
@@ -43,7 +43,6 @@
                             //## Constructor ##//
                                 /**
                                  * Construct the node
-                                 * @param value the node data
                                  * @param node  the next node
                                  */
                                 NodeBase(NodeBase* node = nullptr);
@@ -79,25 +78,25 @@
                     template <class T, class Category>
                     class ForwardIterator : public IteratorTraits<ForwardIterator<T, Category>, T, Category> {
                         public :    // Traits
-                            /**< Inherited iterator traits */
+                            /** Inherited iterator traits */
                             using Traits = IteratorTraits<ForwardIterator<T, Category>, T, Category>;
-                            /**< The iterated object */
+                            /** The iterated object */
                             using ValueType         = typename Traits::ValueType;
-                            /**< The pointer on iterated object */
+                            /** The pointer on iterated object */
                             using Pointer           = typename Traits::Pointer;
-                            /**< The reference on iterated object */
+                            /** The reference on iterated object */
                             using Reference         = typename Traits::Reference;
-                            /**< The iterator difference type */
+                            /** The iterator difference type */
                             using DifferenceType    = typename Traits::DifferenceType;
-                            /**< STL compatibility */
+                            /** STL compatibility */
                             using value_type        = ValueType;
-                            /**< STL compatibility */
+                            /** STL compatibility */
                             using pointer           = Pointer;
-                            /**< STL compatibility */
+                            /** STL compatibility */
                             using reference         = Reference;
-                            /**< STL compatibility */
+                            /** STL compatibility */
                             using difference_type   = DifferenceType;
-                            /**< STL compatibility */
+                            /** STL compatibility */
                             using iterator_category = typename Traits::iterator_category;
         
                         private :   // Fields
@@ -189,55 +188,55 @@
                     static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
 
                     public :    // Traits
-                        /**< The container's allocated type */
+                        /** The container's allocated type */
                         using ValueType             = T;
-                        /**< The container's allocator */
+                        /** The container's allocator */
                         using AllocatorType         = typename Allocator::template Rebind<ForwardListInner::Node<T>>;
-                        /**< The object's size type */
+                        /** The object's size type */
                         using SizeType              = std::size_t;
-                        /**< The object's difference type */
+                        /** The object's difference type */
                         using DifferenceType        = std::ptrdiff_t;
-                        /**< The allocated type reference */
+                        /** The allocated type reference */
                         using Reference             = ValueType&;
-                        /**< The allocated type const reference */
+                        /** The allocated type const reference */
                         using ConstReference        = ValueType const&;
-                        /**< The allocated type pointer */
+                        /** The allocated type pointer */
                         using Pointer               = typename AllocatorType::Pointer;
-                        /**< The allocated type const pointer */
+                        /** The allocated type const pointer */
                         using ConstPointer          = typename AllocatorType::ConstPointer;
-                        /**< Mutable random access iterator */
+                        /** Mutable forward access iterator */
                         using Iterator              = ForwardListInner::ForwardIterator<ValueType, InOutForwardIterator>;
-                        /**< Immuable random access iterator */
+                        /** Immuable forward access iterator */
                         using ConstIterator         = ForwardListInner::ForwardIterator<ValueType, Utility::ForwardIterator>;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using value_type            = ValueType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using allocator_type        = AllocatorType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using size_type             = SizeType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using difference_type       = DifferenceType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using reference             = Reference;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_reference       = ConstReference;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using pointer               = Pointer;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_pointer         = ConstPointer;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using iterator              = Iterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_iterator        = ConstIterator;
 
                     private :   // Traits
-                        /**< Inner container */
+                        /** Inner container */
                         using NodeBase = ForwardListInner::NodeBase;
-                        /**< Inner container */
+                        /** Inner container */
                         using Node = ForwardListInner::Node<ValueType>;
                         
                     private :   // Fields
-                        NodeBase front;     /**< The front node of the list */
+                        NodeBase front;  /**< The front node of the list */
                         SizeType length; /**< The size of the list */
     
                     public :    // Methods

@@ -1,6 +1,6 @@
     
     /**
-     * @file NRE_ForwardList.hpp
+     * @file Utility/ForwardList/NRE_ForwardList.hpp
      * @brief Declaration of Utility's API's Container : ForwardList
      * @author Louis ABEL
      * @date 15/05/2019
@@ -22,7 +22,8 @@
          * @brief Utility's API
          */
         namespace Utility {
-            
+    
+            /** Hide ForwardList detail implementation and provide default allocator */
             template <class T, class Allocator = Memory::Allocator<T>>
             using ForwardList = Detail::ForwardList<T, Allocator>;
         }

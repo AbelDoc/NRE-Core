@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
-        <title>NRE-Utility: NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; Class Template Reference</title>
+        <title>NRE-Utility: NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; Class Template Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -101,13 +101,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table-members.php">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; Class Template Reference</div>  </div>
+<div class="title">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -116,252 +115,666 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___hash_table_8hpp_source.php">NRE_HashTable.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;:</div>
+Inheritance diagram for NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.png" usemap="#NRE::Utility::Detail::HashTable_3C_20Key_2C_20T_2C_20StoreHash_2C_20Hash_2C_20KeyEqual_20_3E_map" alt=""/>
-  <map id="NRE::Utility::Detail::HashTable_3C_20Key_2C_20T_2C_20StoreHash_2C_20Hash_2C_20KeyEqual_20_3E_map" name="NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;_map">
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="0,56,540,80"/>
-<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T, M &gt;" shape="rect" coords="0,0,540,24"/>
+  <img src="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.png" usemap="#NRE::Utility::Detail::HashTable_3C_20Key_2C_20T_2C_20Allocator_2C_20StoreHash_2C_20Hash_2C_20KeyEqual_20_3E_map" alt=""/>
+  <map id="NRE::Utility::Detail::HashTable_3C_20Key_2C_20T_2C_20Allocator_2C_20StoreHash_2C_20Hash_2C_20KeyEqual_20_3E_map" name="NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;_map">
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &gt;" shape="rect" coords="0,56,615,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T &gt;" shape="rect" coords="0,0,615,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ForwardIterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table forward iterator.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalForwardIterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash table local forward iterator.  <a href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a7c59b024783746d4cd777c88a6bd5274"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c59b024783746d4cd777c88a6bd5274"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; Key, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ValueType</b></td></tr>
-<tr class="separator:a7c59b024783746d4cd777c88a6bd5274"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addf51d407052beb57278f73dec86f7b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addf51d407052beb57278f73dec86f7b0"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a>, STORE_HASH &gt;::DistanceType&#160;</td><td class="memItemRight" valign="bottom"><b>DistanceType</b></td></tr>
-<tr class="separator:addf51d407052beb57278f73dec86f7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4f58d2185b517a31f7cd3f15b8dc52c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ForwardIterator</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a></td></tr>
-<tr class="separator:aa4f58d2185b517a31f7cd3f15b8dc52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21e1a7bba78650a7a682a0d4f1810a57"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ForwardIterator</a>&lt; const <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a></td></tr>
-<tr class="separator:a21e1a7bba78650a7a682a0d4f1810a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab231327983d1bd2c2d138e3bd951fe8a"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalForwardIterator</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">LocalIterator</a></td></tr>
-<tr class="separator:ab231327983d1bd2c2d138e3bd951fe8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada1d5799b9febfde69b635238211d77c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada1d5799b9febfde69b635238211d77c"></a>
-typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalForwardIterator</a>&lt; const <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ConstLocalIterator</b></td></tr>
-<tr class="separator:ada1d5799b9febfde69b635238211d77c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a566226b263dd77bb28774d5d0c865b9e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> = Key</td></tr>
+<tr class="separator:a566226b263dd77bb28774d5d0c865b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ad835917c10a6e1bbc7577ccf029a7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> = T</td></tr>
+<tr class="separator:a51ad835917c10a6e1bbc7577ccf029a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaced7daaee539f3753ec93484862e52"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> &gt;</td></tr>
+<tr class="separator:aeaced7daaee539f3753ec93484862e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8f78ce75cfed133c2fcd245d02a617"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2c8f78ce75cfed133c2fcd245d02a617">ContainerType</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH &gt;</td></tr>
+<tr class="separator:a2c8f78ce75cfed133c2fcd245d02a617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb20d543962da1c87eb87dd5ab2c8da"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7bb20d543962da1c87eb87dd5ab2c8da">AllocatorType</a> = typename Allocator::template Rebind&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2c8f78ce75cfed133c2fcd245d02a617">ContainerType</a> &gt;</td></tr>
+<tr class="separator:a7bb20d543962da1c87eb87dd5ab2c8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9703a03e308efc543ffe9ff0fb14240"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> = std::size_t</td></tr>
+<tr class="separator:ac9703a03e308efc543ffe9ff0fb14240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6203d80516a063a8386ef5a12475a07"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad6203d80516a063a8386ef5a12475a07">DifferenceType</a> = std::ptrdiff_t</td></tr>
+<tr class="separator:ad6203d80516a063a8386ef5a12475a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b1888d0556928463cd75c13722d265"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a73b1888d0556928463cd75c13722d265">DistanceType</a> = typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a73b1888d0556928463cd75c13722d265">DistanceType</a></td></tr>
+<tr class="separator:a73b1888d0556928463cd75c13722d265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa294cf06f45b64a5c3e43fabe2e12cd9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa294cf06f45b64a5c3e43fabe2e12cd9">Reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> &amp;</td></tr>
+<tr class="separator:aa294cf06f45b64a5c3e43fabe2e12cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab85a8f17a41cdbb2b03834cb051da32"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aab85a8f17a41cdbb2b03834cb051da32">ConstReference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> const &amp;</td></tr>
+<tr class="separator:aab85a8f17a41cdbb2b03834cb051da32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a478651e1b2037ac607b4f37d9bf23d3c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a478651e1b2037ac607b4f37d9bf23d3c">Pointer</a> = typename AllocatorType::Pointer</td></tr>
+<tr class="separator:a478651e1b2037ac607b4f37d9bf23d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8ef3c19ad2097e7a53122ec3814507"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2e8ef3c19ad2097e7a53122ec3814507">ConstPointer</a> = typename AllocatorType::ConstPointer</td></tr>
+<tr class="separator:a2e8ef3c19ad2097e7a53122ec3814507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e2505f74570679b1ea2767251c3d36"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php">HashTableInner::ForwardIterator</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php">InOutForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH &gt;&gt;</td></tr>
+<tr class="separator:a94e2505f74570679b1ea2767251c3d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698ac4a5ff2dc237bdd35ccb58f02861"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php">HashTableInner::ForwardIterator</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_forward_iterator.php">Utility::ForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH &gt;&gt;</td></tr>
+<tr class="separator:a698ac4a5ff2dc237bdd35ccb58f02861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4318141c2b52a622f717f3faf24dba71"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php">HashTableInner::LocalForwardIterator</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php">InOutForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH &gt;&gt;</td></tr>
+<tr class="separator:a4318141c2b52a622f717f3faf24dba71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae011975b6f24c2fcc7ef6f5fa3fbfa43"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php">HashTableInner::LocalForwardIterator</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_forward_iterator.php">Utility::ForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH &gt;&gt;</td></tr>
+<tr class="separator:ae011975b6f24c2fcc7ef6f5fa3fbfa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29c036fb2db3c66d8fcdd1598102082f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a29c036fb2db3c66d8fcdd1598102082f">value_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a></td></tr>
+<tr class="separator:a29c036fb2db3c66d8fcdd1598102082f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a0615e94211d1e66e1976949c27080"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a13a0615e94211d1e66e1976949c27080">allocator_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7bb20d543962da1c87eb87dd5ab2c8da">AllocatorType</a></td></tr>
+<tr class="separator:a13a0615e94211d1e66e1976949c27080"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ecefb07f006fc8f11499a186d0c70c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a36ecefb07f006fc8f11499a186d0c70c">size_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a></td></tr>
+<tr class="separator:a36ecefb07f006fc8f11499a186d0c70c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaee7766a631e75a1759f07f0fc26556c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaee7766a631e75a1759f07f0fc26556c">difference_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad6203d80516a063a8386ef5a12475a07">DifferenceType</a></td></tr>
+<tr class="separator:aaee7766a631e75a1759f07f0fc26556c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca2cde76036b8c728ca14b20dab8032"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#abca2cde76036b8c728ca14b20dab8032">reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa294cf06f45b64a5c3e43fabe2e12cd9">Reference</a></td></tr>
+<tr class="separator:abca2cde76036b8c728ca14b20dab8032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d583f03e5416ca8efdfa6c84aee92e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a29d583f03e5416ca8efdfa6c84aee92e">const_reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aab85a8f17a41cdbb2b03834cb051da32">ConstReference</a></td></tr>
+<tr class="separator:a29d583f03e5416ca8efdfa6c84aee92e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a751ffc9b1eec31f8608de2052127761e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a751ffc9b1eec31f8608de2052127761e">pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a478651e1b2037ac607b4f37d9bf23d3c">Pointer</a></td></tr>
+<tr class="separator:a751ffc9b1eec31f8608de2052127761e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ad53a8f7510835216958848fce0937d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2ad53a8f7510835216958848fce0937d">const_pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2e8ef3c19ad2097e7a53122ec3814507">ConstPointer</a></td></tr>
+<tr class="separator:a2ad53a8f7510835216958848fce0937d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a971ec58c015016847194ee8f57b9176d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a971ec58c015016847194ee8f57b9176d">iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a></td></tr>
+<tr class="separator:a971ec58c015016847194ee8f57b9176d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a0ad6a243e0c174ccba2076450fcb1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a41a0ad6a243e0c174ccba2076450fcb1">const_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a></td></tr>
+<tr class="separator:a41a0ad6a243e0c174ccba2076450fcb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df2f0b8e17b48761db90ee02d9d9bdc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a5df2f0b8e17b48761db90ee02d9d9bdc">local_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a></td></tr>
+<tr class="separator:a5df2f0b8e17b48761db90ee02d9d9bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a390e8c96cd715a2b21cb540ca41e2b19"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a390e8c96cd715a2b21cb540ca41e2b19">const_local_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a></td></tr>
+<tr class="separator:a390e8c96cd715a2b21cb540ca41e2b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a121255a050e66ac71ef1c8b0c40fd13a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a121255a050e66ac71ef1c8b0c40fd13a">HashTable</a> (std::size_t bucketCount, Hash const &amp;hasher, KeyEqual const &amp;equal)</td></tr>
-<tr class="separator:a121255a050e66ac71ef1c8b0c40fd13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a161946966092a975ab0347a1d2a8daae"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a161946966092a975ab0347a1d2a8daae"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a161946966092a975ab0347a1d2a8daae">HashTable</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0bf3449b4a0c9b2e2425785163fac33a">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a614a80b3a34b2797fa7a6b96a57d3ece">end</a>, std::size_t bucketCount, Hash const &amp;hasher, KeyEqual const &amp;equal)</td></tr>
-<tr class="separator:a161946966092a975ab0347a1d2a8daae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16aab801f767dd72ac9eb74e8f683b5b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a16aab801f767dd72ac9eb74e8f683b5b">HashTable</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt; list, std::size_t bucketCount, Hash const &amp;hasher, KeyEqual const &amp;equal)</td></tr>
-<tr class="separator:a16aab801f767dd72ac9eb74e8f683b5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a833c400a5c6dad5e6928bbaabc7266f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a833c400a5c6dad5e6928bbaabc7266f4">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> const &amp;table)</td></tr>
-<tr class="separator:a833c400a5c6dad5e6928bbaabc7266f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7729cfb898f1ea767e6e375d4e1de46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa7729cfb898f1ea767e6e375d4e1de46">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&amp;table)</td></tr>
-<tr class="separator:aa7729cfb898f1ea767e6e375d4e1de46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a216cfd0a61ee8cd0f61c8de5a19c78d6"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a216cfd0a61ee8cd0f61c8de5a19c78d6">get</a> (Key const &amp;k)</td></tr>
-<tr class="separator:a216cfd0a61ee8cd0f61c8de5a19c78d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e9bcf78b85cec9bdb7abcd66c0475bc"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9e9bcf78b85cec9bdb7abcd66c0475bc">get</a> (Key const &amp;k) const </td></tr>
-<tr class="separator:a9e9bcf78b85cec9bdb7abcd66c0475bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff2cc1654261bdb3f1da234aeceeabe4"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aff2cc1654261bdb3f1da234aeceeabe4">getBucketCount</a> () const </td></tr>
-<tr class="separator:aff2cc1654261bdb3f1da234aeceeabe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a65a8b0723df89a08b71e1fae567c3c"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4a65a8b0723df89a08b71e1fae567c3c">getMaxBucketCount</a> () const </td></tr>
-<tr class="separator:a4a65a8b0723df89a08b71e1fae567c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f9ca168e612b8ac9e2c63b2352f059b"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a8f9ca168e612b8ac9e2c63b2352f059b">getSize</a> () const </td></tr>
-<tr class="separator:a8f9ca168e612b8ac9e2c63b2352f059b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab1a6fc1bbfbc7992cacc29d71f627a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7ab1a6fc1bbfbc7992cacc29d71f627a">getMaxLoadFactor</a> () const </td></tr>
-<tr class="separator:a7ab1a6fc1bbfbc7992cacc29d71f627a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae221561f6acdb325c70f1103f6b4ff8c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae221561f6acdb325c70f1103f6b4ff8c">getLoadFactor</a> () const </td></tr>
-<tr class="separator:ae221561f6acdb325c70f1103f6b4ff8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26448c710262c8b4a845daa60b5238a8"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a26448c710262c8b4a845daa60b5238a8">getMaxSize</a> () const </td></tr>
-<tr class="separator:a26448c710262c8b4a845daa60b5238a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec2a6bafe414da209eba10c715c6841d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aec2a6bafe414da209eba10c715c6841d">isEmpty</a> () const </td></tr>
-<tr class="separator:aec2a6bafe414da209eba10c715c6841d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65ec5d89ce9368dcddc8c45c1b3ff7c3"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a65ec5d89ce9368dcddc8c45c1b3ff7c3">getCount</a> (Key const &amp;k) const </td></tr>
-<tr class="separator:a65ec5d89ce9368dcddc8c45c1b3ff7c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93fcf51ad736c1aa479f7dd016636999"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a93fcf51ad736c1aa479f7dd016636999">getBucket</a> (Key const &amp;k) const </td></tr>
-<tr class="separator:a93fcf51ad736c1aa479f7dd016636999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30b8e3d3e2b6eb65f756aaddd312f9c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a30b8e3d3e2b6eb65f756aaddd312f9c8">setMaxLoadFactor</a> (float factor)</td></tr>
-<tr class="separator:a30b8e3d3e2b6eb65f756aaddd312f9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf3449b4a0c9b2e2425785163fac33a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0bf3449b4a0c9b2e2425785163fac33a">begin</a> ()</td></tr>
-<tr class="separator:a0bf3449b4a0c9b2e2425785163fac33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f0723eadb9715c63e2139175110c98e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0f0723eadb9715c63e2139175110c98e">begin</a> () const </td></tr>
-<tr class="separator:a0f0723eadb9715c63e2139175110c98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50ae0542a98480efe830ff07cf56eba2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a50ae0542a98480efe830ff07cf56eba2">cbegin</a> () const </td></tr>
-<tr class="separator:a50ae0542a98480efe830ff07cf56eba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a614a80b3a34b2797fa7a6b96a57d3ece"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a614a80b3a34b2797fa7a6b96a57d3ece">end</a> ()</td></tr>
-<tr class="separator:a614a80b3a34b2797fa7a6b96a57d3ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a741daf7434e3db0e3d37edfff0fef8e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a741daf7434e3db0e3d37edfff0fef8e3">end</a> () const </td></tr>
-<tr class="separator:a741daf7434e3db0e3d37edfff0fef8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcee821d48d6a0f6e02cb7a725f022cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#afcee821d48d6a0f6e02cb7a725f022cb">cend</a> () const </td></tr>
-<tr class="separator:afcee821d48d6a0f6e02cb7a725f022cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa064790d80bdfa7c7ad005369287c315"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa064790d80bdfa7c7ad005369287c315">begin</a> (std::size_t index)</td></tr>
-<tr class="separator:aa064790d80bdfa7c7ad005369287c315"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a125d8ec1ebffcd65bc4242faaa091673"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a125d8ec1ebffcd65bc4242faaa091673">begin</a> (std::size_t index) const </td></tr>
-<tr class="separator:a125d8ec1ebffcd65bc4242faaa091673"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99e76aa8ee7daa90c6e84a9562ca344f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a99e76aa8ee7daa90c6e84a9562ca344f">cbegin</a> (std::size_t index) const </td></tr>
-<tr class="separator:a99e76aa8ee7daa90c6e84a9562ca344f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42d108b776d9085d9745fc5237457acb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a42d108b776d9085d9745fc5237457acb">end</a> (std::size_t index)</td></tr>
-<tr class="separator:a42d108b776d9085d9745fc5237457acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb5f69cb2e3e9e2693f32dea480b20d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#acb5f69cb2e3e9e2693f32dea480b20d1">end</a> (std::size_t index) const </td></tr>
-<tr class="separator:acb5f69cb2e3e9e2693f32dea480b20d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53c2e7d14a15a26c625251717b02a822"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a53c2e7d14a15a26c625251717b02a822">cend</a> (std::size_t index) const </td></tr>
-<tr class="separator:a53c2e7d14a15a26c625251717b02a822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3268988f450d143f4db9aaa21dc6744"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa3268988f450d143f4db9aaa21dc6744">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;value)</td></tr>
-<tr class="separator:aa3268988f450d143f4db9aaa21dc6744"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13ce73a056d677a2f0ab5cd59d57f99b"><td class="memTemplParams" colspan="2">template&lt;class P &gt; </td></tr>
-<tr class="memitem:a13ce73a056d677a2f0ab5cd59d57f99b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a13ce73a056d677a2f0ab5cd59d57f99b">insert</a> (P &amp;&amp;value)</td></tr>
-<tr class="separator:a13ce73a056d677a2f0ab5cd59d57f99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a526e698fe63676a6aec54738e36491f5"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
-<tr class="memitem:a526e698fe63676a6aec54738e36491f5"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a526e698fe63676a6aec54738e36491f5">insert</a> (InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0bf3449b4a0c9b2e2425785163fac33a">begin</a>, InputIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a614a80b3a34b2797fa7a6b96a57d3ece">end</a>)</td></tr>
-<tr class="separator:a526e698fe63676a6aec54738e36491f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87ff82ba86fa0920245be4b4c08ce989"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a87ff82ba86fa0920245be4b4c08ce989">insert</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt; list)</td></tr>
-<tr class="separator:a87ff82ba86fa0920245be4b4c08ce989"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76a17e6fb4982ecb6fc7f34e953529f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a76a17e6fb4982ecb6fc7f34e953529f7">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> hint, <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;value)</td></tr>
-<tr class="separator:a76a17e6fb4982ecb6fc7f34e953529f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f6d83d8761bf6383535ffb9b48134c6"><td class="memTemplParams" colspan="2">template&lt;class P &gt; </td></tr>
-<tr class="memitem:a9f6d83d8761bf6383535ffb9b48134c6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9f6d83d8761bf6383535ffb9b48134c6">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> hint, P &amp;&amp;value)</td></tr>
-<tr class="separator:a9f6d83d8761bf6383535ffb9b48134c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48c5b956e3f2b8dac2ba0619f62bbcfe"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:a48c5b956e3f2b8dac2ba0619f62bbcfe"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a48c5b956e3f2b8dac2ba0619f62bbcfe">emplace</a> (Args &amp;&amp;...args)</td></tr>
-<tr class="separator:a48c5b956e3f2b8dac2ba0619f62bbcfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad48b4004dbd1cb6bfdb2f912d104b02d"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:ad48b4004dbd1cb6bfdb2f912d104b02d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad48b4004dbd1cb6bfdb2f912d104b02d">emplaceHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> hint, Args &amp;&amp;...args)</td></tr>
-<tr class="separator:ad48b4004dbd1cb6bfdb2f912d104b02d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af985e8eb91bbad45c5d2f2a7f11d2b3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af985e8eb91bbad45c5d2f2a7f11d2b3c">clear</a> ()</td></tr>
-<tr class="separator:af985e8eb91bbad45c5d2f2a7f11d2b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef515ccfe0d364b1f52c8945f5a4ced5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aef515ccfe0d364b1f52c8945f5a4ced5">swap</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;table)</td></tr>
-<tr class="separator:aef515ccfe0d364b1f52c8945f5a4ced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e956a5766ef1f19f450b95af1278319"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9e956a5766ef1f19f450b95af1278319">reserve</a> (std::size_t count)</td></tr>
-<tr class="separator:a9e956a5766ef1f19f450b95af1278319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af77694f505c90c3792d6109a447881fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af77694f505c90c3792d6109a447881fe">rehash</a> (std::size_t count)</td></tr>
-<tr class="separator:af77694f505c90c3792d6109a447881fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3fba4f255a9d684b764fc132e691887"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab3fba4f255a9d684b764fc132e691887">equalRange</a> (Key const &amp;key)</td></tr>
-<tr class="separator:ab3fba4f255a9d684b764fc132e691887"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d8f646ced5edbeb611943b31416f59c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2d8f646ced5edbeb611943b31416f59c">equalRange</a> (Key const &amp;key) const </td></tr>
-<tr class="separator:a2d8f646ced5edbeb611943b31416f59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad91a554e03ddd7e3eba9feb478b104bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad91a554e03ddd7e3eba9feb478b104bc">find</a> (Key const &amp;k)</td></tr>
-<tr class="separator:ad91a554e03ddd7e3eba9feb478b104bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7fac3b387987d0a09c079eb68d2b7f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac7fac3b387987d0a09c079eb68d2b7f6">find</a> (Key const &amp;k) const </td></tr>
-<tr class="separator:ac7fac3b387987d0a09c079eb68d2b7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a665d7a4e43fd2603964c44afc9dbaee6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a665d7a4e43fd2603964c44afc9dbaee6">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> pos)</td></tr>
-<tr class="separator:a665d7a4e43fd2603964c44afc9dbaee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f20a26523bdd6b49121cb726395539"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a00f20a26523bdd6b49121cb726395539">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> pos)</td></tr>
-<tr class="separator:a00f20a26523bdd6b49121cb726395539"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa16e98fa2ad0e97efab854a1ab2ec9d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa16e98fa2ad0e97efab854a1ab2ec9d1">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0bf3449b4a0c9b2e2425785163fac33a">begin</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a614a80b3a34b2797fa7a6b96a57d3ece">end</a>)</td></tr>
-<tr class="separator:aa16e98fa2ad0e97efab854a1ab2ec9d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eea4655f379ce72612f054361be0c33"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a8eea4655f379ce72612f054361be0c33">erase</a> (Key const &amp;k)</td></tr>
-<tr class="separator:a8eea4655f379ce72612f054361be0c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15a58935df66db3ae497601e4cbbd387"><td class="memItemLeft" align="right" valign="top">Hash&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a15a58935df66db3ae497601e4cbbd387">getHash</a> () const </td></tr>
-<tr class="separator:a15a58935df66db3ae497601e4cbbd387"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28e22d3b142893381b9708b693d77af6"><td class="memItemLeft" align="right" valign="top">KeyEqual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a28e22d3b142893381b9708b693d77af6">getKeyEqual</a> () const </td></tr>
-<tr class="separator:a28e22d3b142893381b9708b693d77af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae180ce93001f7bdf8ced12b3fdd44746"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae180ce93001f7bdf8ced12b3fdd44746">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> const &amp;table)</td></tr>
-<tr class="separator:ae180ce93001f7bdf8ced12b3fdd44746"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30bc9016b26975cb8b041f9a700ac115"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a30bc9016b26975cb8b041f9a700ac115">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&amp;table)</td></tr>
-<tr class="separator:a30bc9016b26975cb8b041f9a700ac115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af060a2734bf76f6e69343b55fcd2744d"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af060a2734bf76f6e69343b55fcd2744d">operator[]</a> (Key const &amp;k)</td></tr>
-<tr class="separator:af060a2734bf76f6e69343b55fcd2744d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a993a3574a6d71e55cfc83eb954d4a025"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a993a3574a6d71e55cfc83eb954d4a025">operator[]</a> (Key &amp;&amp;k)</td></tr>
-<tr class="separator:a993a3574a6d71e55cfc83eb954d4a025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05925f7afd8f3ceff9b66086ce259137"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a05925f7afd8f3ceff9b66086ce259137">toString</a> () const </td></tr>
-<tr class="separator:a05925f7afd8f3ceff9b66086ce259137"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &gt;</a></td></tr>
-<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
+<tr class="memitem:a39fff67e2ee1feabb31a2dd059d55d83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a39fff67e2ee1feabb31a2dd059d55d83">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a>, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual(), Allocator const &amp;alloc=Allocator())</td></tr>
+<tr class="separator:a39fff67e2ee1feabb31a2dd059d55d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a845a8af4479c009d73b375c81eea2163"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
+<tr class="memitem:a845a8af4479c009d73b375c81eea2163"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a845a8af4479c009d73b375c81eea2163">HashTable</a> (<a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9d42d2fbe0444666e8fdf5aca0bfdb9">begin</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a3d557392013624fceb5b509838b38413">end</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a>, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual(), Allocator const &amp;alloc=Allocator())</td></tr>
+<tr class="separator:a845a8af4479c009d73b375c81eea2163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d864b360aa02657762988eec478362d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2d864b360aa02657762988eec478362d">HashTable</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> &gt; list, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> bucketCount=<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a>, Hash const &amp;hasher=Hash(), KeyEqual const &amp;equal=KeyEqual(), Allocator const &amp;alloc=Allocator())</td></tr>
+<tr class="separator:a2d864b360aa02657762988eec478362d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe122b6d14de156fa86d27533b6eadb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#abe122b6d14de156fa86d27533b6eadb4">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> const &amp;table)</td></tr>
+<tr class="separator:abe122b6d14de156fa86d27533b6eadb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa148f61ad96b4c5339d536ca8cd4eacf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa148f61ad96b4c5339d536ca8cd4eacf">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> const &amp;table, Allocator const &amp;alloc)</td></tr>
+<tr class="separator:aa148f61ad96b4c5339d536ca8cd4eacf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af249a0e44dbb6741d01caf7de7a360ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af249a0e44dbb6741d01caf7de7a360ff">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&amp;table)</td></tr>
+<tr class="separator:af249a0e44dbb6741d01caf7de7a360ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4abdcc70020876f9120e9ace24af9cb1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4abdcc70020876f9120e9ace24af9cb1">HashTable</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&amp;table, Allocator const &amp;alloc)</td></tr>
+<tr class="separator:a4abdcc70020876f9120e9ace24af9cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a549b24d27f27cb6eb5bb38b4660cab5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a549b24d27f27cb6eb5bb38b4660cab5a">get</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k)</td></tr>
+<tr class="separator:a549b24d27f27cb6eb5bb38b4660cab5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e009e271bf6fb295f5c66d9b443c77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a18e009e271bf6fb295f5c66d9b443c77">get</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k) const </td></tr>
+<tr class="separator:a18e009e271bf6fb295f5c66d9b443c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ddd8fb15c1d408b1e47271074d4db4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a85ddd8fb15c1d408b1e47271074d4db4">getBucketCount</a> () const </td></tr>
+<tr class="separator:a85ddd8fb15c1d408b1e47271074d4db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a385587b88a75f2ad70320b0e33d598a6"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a385587b88a75f2ad70320b0e33d598a6">getMaxBucketCount</a> () const </td></tr>
+<tr class="separator:a385587b88a75f2ad70320b0e33d598a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2af5ccfb6e0d5dfeec1fbcda77b7ca9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2af5ccfb6e0d5dfeec1fbcda77b7ca9b">getSize</a> () const </td></tr>
+<tr class="separator:a2af5ccfb6e0d5dfeec1fbcda77b7ca9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a079a400349830165b7eff9230dfc0079"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a079a400349830165b7eff9230dfc0079">getMaxLoadFactor</a> () const </td></tr>
+<tr class="separator:a079a400349830165b7eff9230dfc0079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f92f4972fb08b36b298db884ea5b91"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a92f92f4972fb08b36b298db884ea5b91">getLoadFactor</a> () const </td></tr>
+<tr class="separator:a92f92f4972fb08b36b298db884ea5b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6426de1d569131980a715137ace9f12"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac6426de1d569131980a715137ace9f12">getMaxSize</a> () const </td></tr>
+<tr class="separator:ac6426de1d569131980a715137ace9f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a55c5928c76c4b3e4288895c1d4ab2"><td class="memItemLeft" align="right" valign="top">Allocator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad2a55c5928c76c4b3e4288895c1d4ab2">getAllocator</a> () const </td></tr>
+<tr class="separator:ad2a55c5928c76c4b3e4288895c1d4ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ced053bbe61f2bfb97afdb73a86ab37"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a1ced053bbe61f2bfb97afdb73a86ab37">isEmpty</a> () const </td></tr>
+<tr class="separator:a1ced053bbe61f2bfb97afdb73a86ab37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace12d934653aeef20317bac556db45e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ace12d934653aeef20317bac556db45e6">getCount</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k) const </td></tr>
+<tr class="separator:ace12d934653aeef20317bac556db45e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aa533a722365696efe020f3152943f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a1aa533a722365696efe020f3152943f8">getBucket</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k) const </td></tr>
+<tr class="separator:a1aa533a722365696efe020f3152943f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b5d4bcdd8d8d1b4b76b7635a2a29323"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2b5d4bcdd8d8d1b4b76b7635a2a29323">setMaxLoadFactor</a> (float factor)</td></tr>
+<tr class="separator:a2b5d4bcdd8d8d1b4b76b7635a2a29323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9d42d2fbe0444666e8fdf5aca0bfdb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9d42d2fbe0444666e8fdf5aca0bfdb9">begin</a> ()</td></tr>
+<tr class="separator:ac9d42d2fbe0444666e8fdf5aca0bfdb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9490487a106df26b52499b756669c306"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9490487a106df26b52499b756669c306">begin</a> () const </td></tr>
+<tr class="separator:a9490487a106df26b52499b756669c306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a320a21e52384d6b8ffd8ed60f1f7a4e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a320a21e52384d6b8ffd8ed60f1f7a4e2">cbegin</a> () const </td></tr>
+<tr class="separator:a320a21e52384d6b8ffd8ed60f1f7a4e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d557392013624fceb5b509838b38413"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a3d557392013624fceb5b509838b38413">end</a> ()</td></tr>
+<tr class="separator:a3d557392013624fceb5b509838b38413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7984dd0e39b91beb8a14059acf544f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad7984dd0e39b91beb8a14059acf544f8">end</a> () const </td></tr>
+<tr class="separator:ad7984dd0e39b91beb8a14059acf544f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb9d557ff9fcf457a502e55f3a32519"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#acbb9d557ff9fcf457a502e55f3a32519">cend</a> () const </td></tr>
+<tr class="separator:acbb9d557ff9fcf457a502e55f3a32519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc621946dbaef7d043414fce27c69994"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#acc621946dbaef7d043414fce27c69994">begin</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> index)</td></tr>
+<tr class="separator:acc621946dbaef7d043414fce27c69994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b9016c7418b7c5ffe79beff24819e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a36b9016c7418b7c5ffe79beff24819e2">begin</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> index) const </td></tr>
+<tr class="separator:a36b9016c7418b7c5ffe79beff24819e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9af2c7af070eae0dfb3937b94e83735c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9af2c7af070eae0dfb3937b94e83735c">cbegin</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> index) const </td></tr>
+<tr class="separator:a9af2c7af070eae0dfb3937b94e83735c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cdad894fac94bef182ff82fa29d9e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab5cdad894fac94bef182ff82fa29d9e0">end</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> index)</td></tr>
+<tr class="separator:ab5cdad894fac94bef182ff82fa29d9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc3de5e8287ece28512e602870131b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#afbc3de5e8287ece28512e602870131b3">end</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> index) const </td></tr>
+<tr class="separator:afbc3de5e8287ece28512e602870131b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ea3b027dfd941ce73f392d7baae5312"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0ea3b027dfd941ce73f392d7baae5312">cend</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> index) const </td></tr>
+<tr class="separator:a0ea3b027dfd941ce73f392d7baae5312"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf2b39d69226fa01956fda0cf4ac7068"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaf2b39d69226fa01956fda0cf4ac7068">insert</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> const &amp;value)</td></tr>
+<tr class="separator:aaf2b39d69226fa01956fda0cf4ac7068"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82e868459e94aefd33269be5d02834db"><td class="memTemplParams" colspan="2">template&lt;class P &gt; </td></tr>
+<tr class="memitem:a82e868459e94aefd33269be5d02834db"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a82e868459e94aefd33269be5d02834db">insert</a> (P &amp;&amp;value)</td></tr>
+<tr class="separator:a82e868459e94aefd33269be5d02834db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa42ccbb5fc606d0ccae2f335e0529912"><td class="memTemplParams" colspan="2">template&lt;class InputIterator &gt; </td></tr>
+<tr class="memitem:aa42ccbb5fc606d0ccae2f335e0529912"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa42ccbb5fc606d0ccae2f335e0529912">insert</a> (<a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9d42d2fbe0444666e8fdf5aca0bfdb9">begin</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a3d557392013624fceb5b509838b38413">end</a>)</td></tr>
+<tr class="separator:aa42ccbb5fc606d0ccae2f335e0529912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13353a7cbad03c4b60f2fdcd055df5eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a13353a7cbad03c4b60f2fdcd055df5eb">insert</a> (std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> &gt; list)</td></tr>
+<tr class="separator:a13353a7cbad03c4b60f2fdcd055df5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a177f06a36235d78466aa5be97909e8fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a177f06a36235d78466aa5be97909e8fd">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> hint, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> const &amp;value)</td></tr>
+<tr class="separator:a177f06a36235d78466aa5be97909e8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1309b2b2a4581b97eee7d224f5d4fc3"><td class="memTemplParams" colspan="2">template&lt;class P &gt; </td></tr>
+<tr class="memitem:af1309b2b2a4581b97eee7d224f5d4fc3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af1309b2b2a4581b97eee7d224f5d4fc3">insertHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> hint, P &amp;&amp;value)</td></tr>
+<tr class="separator:af1309b2b2a4581b97eee7d224f5d4fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8cbf275f9663a31c8aae6efa00795f"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:aee8cbf275f9663a31c8aae6efa00795f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aee8cbf275f9663a31c8aae6efa00795f">emplace</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="separator:aee8cbf275f9663a31c8aae6efa00795f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbe1bbfa60766a78830d63d4d80eb530"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:acbe1bbfa60766a78830d63d4d80eb530"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#acbe1bbfa60766a78830d63d4d80eb530">emplaceHint</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> hint, Args &amp;&amp;...args)</td></tr>
+<tr class="separator:acbe1bbfa60766a78830d63d4d80eb530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d27551bf5e9e97c7cfd7b93271c4fe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0d27551bf5e9e97c7cfd7b93271c4fe6">clear</a> ()</td></tr>
+<tr class="separator:a0d27551bf5e9e97c7cfd7b93271c4fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad22bb0527beee24d1061e8dd35c8cc5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad22bb0527beee24d1061e8dd35c8cc5a">swap</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;table)</td></tr>
+<tr class="separator:ad22bb0527beee24d1061e8dd35c8cc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a8d2bf631d9f7c82213d5eabcf8eea9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a9a8d2bf631d9f7c82213d5eabcf8eea9">reserve</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> count)</td></tr>
+<tr class="separator:a9a8d2bf631d9f7c82213d5eabcf8eea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5acb04b00f3ded0d829d89813513e803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a5acb04b00f3ded0d829d89813513e803">rehash</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> count)</td></tr>
+<tr class="separator:a5acb04b00f3ded0d829d89813513e803"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c1ade0507738c749d36141e487bcd0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a8c1ade0507738c749d36141e487bcd0c">equalRange</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;key)</td></tr>
+<tr class="separator:a8c1ade0507738c749d36141e487bcd0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae039d19bc1d6960873e50da2b0c8865e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae039d19bc1d6960873e50da2b0c8865e">equalRange</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;key) const </td></tr>
+<tr class="separator:ae039d19bc1d6960873e50da2b0c8865e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba8b389a3c9c733c81dfac261fc85a08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aba8b389a3c9c733c81dfac261fc85a08">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k)</td></tr>
+<tr class="separator:aba8b389a3c9c733c81dfac261fc85a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e3846e4a8009fb2251dce50cb74c20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a65e3846e4a8009fb2251dce50cb74c20">find</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k) const </td></tr>
+<tr class="separator:a65e3846e4a8009fb2251dce50cb74c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a074bc1e534a6671d0fd6ee8ee54cbb9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a074bc1e534a6671d0fd6ee8ee54cbb9b">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> pos)</td></tr>
+<tr class="separator:a074bc1e534a6671d0fd6ee8ee54cbb9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dc2389a5ed46f52877faa975f51a597"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a6dc2389a5ed46f52877faa975f51a597">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> pos)</td></tr>
+<tr class="separator:a6dc2389a5ed46f52877faa975f51a597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651f81c3066dabc196a7a85dcfe66b9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a651f81c3066dabc196a7a85dcfe66b9f">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9d42d2fbe0444666e8fdf5aca0bfdb9">begin</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a3d557392013624fceb5b509838b38413">end</a>)</td></tr>
+<tr class="separator:a651f81c3066dabc196a7a85dcfe66b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49f42fac7e2266f957a59532dd1d1fcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a49f42fac7e2266f957a59532dd1d1fcd">erase</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k)</td></tr>
+<tr class="separator:a49f42fac7e2266f957a59532dd1d1fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0583041ac701f7d07b1684a1aedbfbdd"><td class="memItemLeft" align="right" valign="top">Hash&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a0583041ac701f7d07b1684a1aedbfbdd">getHash</a> () const </td></tr>
+<tr class="separator:a0583041ac701f7d07b1684a1aedbfbdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5decd4116e908f5b741bebaa82ab5cec"><td class="memItemLeft" align="right" valign="top">KeyEqual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a5decd4116e908f5b741bebaa82ab5cec">getKeyEqual</a> () const </td></tr>
+<tr class="separator:a5decd4116e908f5b741bebaa82ab5cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a844052d582de26ee522b90ce46218922"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a844052d582de26ee522b90ce46218922">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> const &amp;table)</td></tr>
+<tr class="separator:a844052d582de26ee522b90ce46218922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a776881405382a5c1022ec3cb0d9cb14b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a776881405382a5c1022ec3cb0d9cb14b">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> &amp;&amp;table)</td></tr>
+<tr class="separator:a776881405382a5c1022ec3cb0d9cb14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fc398a92cd5f90a68dfbff3c7cb9427"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2fc398a92cd5f90a68dfbff3c7cb9427">operator[]</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;k)</td></tr>
+<tr class="separator:a2fc398a92cd5f90a68dfbff3c7cb9427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54c14dd33cf3aab02ef342ba523a173a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a54c14dd33cf3aab02ef342ba523a173a">operator[]</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> &amp;&amp;k)</td></tr>
+<tr class="separator:a54c14dd33cf3aab02ef342ba523a173a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4ae4dc972054f097ba62ae7a997a39a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#af4ae4dc972054f097ba62ae7a997a39a">toString</a> () const </td></tr>
+<tr class="separator:af4ae4dc972054f097ba62ae7a997a39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &gt;</a></td></tr>
+<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
 <tr class="separator:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_static_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface&lt; T, M &gt;</a></td></tr>
-<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
-<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
-<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a8b5c83feca46fffd42008923459af247"><td class="memItemLeft" align="right" valign="top">static const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a8b5c83feca46fffd42008923459af247">DEFAULT_BUCKET_COUNT</a> = 0</td></tr>
-<tr class="separator:a8b5c83feca46fffd42008923459af247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaedab75bb034ee6bc3f3d2a66ca095c2"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a> = 0</td></tr>
+<tr class="separator:aaedab75bb034ee6bc3f3d2a66ca095c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt;<br />
-class NRE::Utility::Detail::HashTable&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</h3>
+<div class="textblock"><h3>template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt;<br />
+class NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</h3>
 
 <p>Based on TSL Robin Hash, An hashtable used in map and set, an associative container using linear probing, robin hood and shift back optimisation. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a21e1a7bba78650a7a682a0d4f1810a57"></a>
+<a class="anchor" id="a13a0615e94211d1e66e1976949c27080"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ForwardIterator</a>&lt;const <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a13a0615e94211d1e66e1976949c27080">allocator_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7bb20d543962da1c87eb87dd5ab2c8da">AllocatorType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide Iterator implementation </p>
+<p>STL compatibility </p>
 
 </div>
 </div>
-<a class="anchor" id="aa4f58d2185b517a31f7cd3f15b8dc52c"></a>
+<a class="anchor" id="a7bb20d543962da1c87eb87dd5ab2c8da"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_forward_iterator.php">ForwardIterator</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a7bb20d543962da1c87eb87dd5ab2c8da">AllocatorType</a> =  typename Allocator::template Rebind&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2c8f78ce75cfed133c2fcd245d02a617">ContainerType</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide ConstIterator implementation </p>
+<p>The container's allocator </p>
 
 </div>
 </div>
-<a class="anchor" id="ab231327983d1bd2c2d138e3bd951fe8a"></a>
+<a class="anchor" id="a41a0ad6a243e0c174ccba2076450fcb1"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">LocalForwardIterator</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">LocalIterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a41a0ad6a243e0c174ccba2076450fcb1">const_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide ConstIterator implementation </p>
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a390e8c96cd715a2b21cb540ca41e2b19"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a390e8c96cd715a2b21cb540ca41e2b19">const_local_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a2ad53a8f7510835216958848fce0937d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2ad53a8f7510835216958848fce0937d">const_pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2e8ef3c19ad2097e7a53122ec3814507">ConstPointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a29d583f03e5416ca8efdfa6c84aee92e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a29d583f03e5416ca8efdfa6c84aee92e">const_reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aab85a8f17a41cdbb2b03834cb051da32">ConstReference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a698ac4a5ff2dc237bdd35ccb58f02861"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php">HashTableInner::ForwardIterator</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_forward_iterator.php">Utility::ForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Immuable forward access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="ae011975b6f24c2fcc7ef6f5fa3fbfa43"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php">HashTableInner::LocalForwardIterator</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_forward_iterator.php">Utility::ForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Immuable local forward access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a2e8ef3c19ad2097e7a53122ec3814507"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2e8ef3c19ad2097e7a53122ec3814507">ConstPointer</a> =  typename AllocatorType::ConstPointer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type const pointer </p>
+
+</div>
+</div>
+<a class="anchor" id="aab85a8f17a41cdbb2b03834cb051da32"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aab85a8f17a41cdbb2b03834cb051da32">ConstReference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> const&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type const reference </p>
+
+</div>
+</div>
+<a class="anchor" id="a2c8f78ce75cfed133c2fcd245d02a617"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2c8f78ce75cfed133c2fcd245d02a617">ContainerType</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The container's internal allocated type </p>
+
+</div>
+</div>
+<a class="anchor" id="aaee7766a631e75a1759f07f0fc26556c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaee7766a631e75a1759f07f0fc26556c">difference_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad6203d80516a063a8386ef5a12475a07">DifferenceType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="ad6203d80516a063a8386ef5a12475a07"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ad6203d80516a063a8386ef5a12475a07">DifferenceType</a> =  std::ptrdiff_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The object's difference type </p>
+
+</div>
+</div>
+<a class="anchor" id="a73b1888d0556928463cd75c13722d265"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a73b1888d0556928463cd75c13722d265">DistanceType</a> =  typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH&gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a73b1888d0556928463cd75c13722d265">DistanceType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The table distance type </p>
+
+</div>
+</div>
+<a class="anchor" id="a94e2505f74570679b1ea2767251c3d36"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php">HashTableInner::ForwardIterator</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php">InOutForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutable forward access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a971ec58c015016847194ee8f57b9176d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a971ec58c015016847194ee8f57b9176d">iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a566226b263dd77bb28774d5d0c865b9e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> =  Key</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits Make sure the allocator is set for the container inner type The table key type </p>
+
+</div>
+</div>
+<a class="anchor" id="a5df2f0b8e17b48761db90ee02d9d9bdc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a5df2f0b8e17b48761db90ee02d9d9bdc">local_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a4318141c2b52a622f717f3faf24dba71"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php">HashTableInner::LocalForwardIterator</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, <a class="el" href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php">InOutForwardIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_bucket_entry.php">BucketEntry</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>, STORE_HASH&gt;&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutable local forward access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a51ad835917c10a6e1bbc7577ccf029a7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> =  T</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The table mapped type </p>
+
+</div>
+</div>
+<a class="anchor" id="a478651e1b2037ac607b4f37d9bf23d3c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a478651e1b2037ac607b4f37d9bf23d3c">Pointer</a> =  typename AllocatorType::Pointer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type pointer </p>
+
+</div>
+</div>
+<a class="anchor" id="a751ffc9b1eec31f8608de2052127761e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a751ffc9b1eec31f8608de2052127761e">pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a478651e1b2037ac607b4f37d9bf23d3c">Pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="aa294cf06f45b64a5c3e43fabe2e12cd9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa294cf06f45b64a5c3e43fabe2e12cd9">Reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a>&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type reference </p>
+
+</div>
+</div>
+<a class="anchor" id="abca2cde76036b8c728ca14b20dab8032"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#abca2cde76036b8c728ca14b20dab8032">reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa294cf06f45b64a5c3e43fabe2e12cd9">Reference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a36ecefb07f006fc8f11499a186d0c70c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a36ecefb07f006fc8f11499a186d0c70c">size_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="ac9703a03e308efc543ffe9ff0fb14240"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> =  std::size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The object's size type </p>
+
+</div>
+</div>
+<a class="anchor" id="a29c036fb2db3c66d8fcdd1598102082f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a29c036fb2db3c66d8fcdd1598102082f">value_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="aeaced7daaee539f3753ec93484862e52"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The container's allocated type </p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a121255a050e66ac71ef1c8b0c40fd13a"></a>
+<a class="anchor" id="a39fff67e2ee1feabb31a2dd059d55d83"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>bucketCount</em>, </td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
+          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Hash const &amp;&#160;</td>
-          <td class="paramname"><em>hasher</em>, </td>
+          <td class="paramname"><em>hasher</em> = <code>Hash()</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">KeyEqual const &amp;&#160;</td>
-          <td class="paramname"><em>equal</em>&#160;</td>
+          <td class="paramname"><em>equal</em> = <code>KeyEqual()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Allocator const &amp;&#160;</td>
+          <td class="paramname"><em>alloc</em> = <code>Allocator()</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -375,49 +788,56 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
     <tr><td class="paramname">bucketCount</td><td>the base bucket count </td></tr>
     <tr><td class="paramname">hasher</td><td>the hash function used in the table </td></tr>
     <tr><td class="paramname">equal</td><td>the equal function used in the table </td></tr>
+    <tr><td class="paramname">alloc</td><td>the hashtable's memory allocator </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a161946966092a975ab0347a1d2a8daae"></a>
+<a class="anchor" id="a845a8af4479c009d73b375c81eea2163"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class InputIterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
           <td>(</td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>bucketCount</em>, </td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
+          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Hash const &amp;&#160;</td>
-          <td class="paramname"><em>hasher</em>, </td>
+          <td class="paramname"><em>hasher</em> = <code>Hash()</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">KeyEqual const &amp;&#160;</td>
-          <td class="paramname"><em>equal</em>&#160;</td>
+          <td class="paramname"><em>equal</em> = <code>KeyEqual()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Allocator const &amp;&#160;</td>
+          <td class="paramname"><em>alloc</em> = <code>Allocator()</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -433,41 +853,48 @@ template&lt;class InputIterator &gt; </div>
     <tr><td class="paramname">bucketCount</td><td>the base bucket count </td></tr>
     <tr><td class="paramname">hasher</td><td>the hash function used in the table </td></tr>
     <tr><td class="paramname">equal</td><td>the equal function used in the table </td></tr>
+    <tr><td class="paramname">alloc</td><td>the hashtable's memory allocator </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a16aab801f767dd72ac9eb74e8f683b5b"></a>
+<a class="anchor" id="a2d864b360aa02657762988eec478362d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
           <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt;&#160;</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> &gt;&#160;</td>
           <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>bucketCount</em>, </td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
+          <td class="paramname"><em>bucketCount</em> = <code><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aaedab75bb034ee6bc3f3d2a66ca095c2">DEFAULT_BUCKET_COUNT</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Hash const &amp;&#160;</td>
-          <td class="paramname"><em>hasher</em>, </td>
+          <td class="paramname"><em>hasher</em> = <code>Hash()</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">KeyEqual const &amp;&#160;</td>
-          <td class="paramname"><em>equal</em>&#160;</td>
+          <td class="paramname"><em>equal</em> = <code>KeyEqual()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Allocator const &amp;&#160;</td>
+          <td class="paramname"><em>alloc</em> = <code>Allocator()</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -482,22 +909,23 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
     <tr><td class="paramname">bucketCount</td><td>the base bucket count </td></tr>
     <tr><td class="paramname">hasher</td><td>the hash function used in the table </td></tr>
     <tr><td class="paramname">equal</td><td>the equal function used in the table </td></tr>
+    <tr><td class="paramname">alloc</td><td>the hashtable's memory allocator </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a833c400a5c6dad5e6928bbaabc7266f4"></a>
+<a class="anchor" id="abe122b6d14de156fa86d27533b6eadb4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; const &amp;&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
           <td></td>
         </tr>
@@ -512,16 +940,51 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="aa7729cfb898f1ea767e6e375d4e1de46"></a>
+<a class="anchor" id="aa148f61ad96b4c5339d536ca8cd4eacf"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Allocator const &amp;&#160;</td>
+          <td class="paramname"><em>alloc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copy table into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>the table to copy </td></tr>
+    <tr><td class="paramname">alloc</td><td>the hashtable's memory allocator </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af249a0e44dbb6741d01caf7de7a360ff"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
           <td></td>
         </tr>
@@ -536,15 +999,50 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a0bf3449b4a0c9b2e2425785163fac33a"></a>
+<a class="anchor" id="a4abdcc70020876f9120e9ace24af9cb1"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Allocator const &amp;&#160;</td>
+          <td class="paramname"><em>alloc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Move table into this </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>the table to move </td></tr>
+    <tr><td class="paramname">alloc</td><td>the hashtable's memory allocator </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac9d42d2fbe0444666e8fdf5aca0bfdb9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -555,14 +1053,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a0f0723eadb9715c63e2139175110c98e"></a>
+<a class="anchor" id="a9490487a106df26b52499b756669c306"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -573,16 +1071,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="aa064790d80bdfa7c7ad005369287c315"></a>
+<a class="anchor" id="acc621946dbaef7d043414fce27c69994"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -598,16 +1096,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a125d8ec1ebffcd65bc4242faaa091673"></a>
+<a class="anchor" id="a36b9016c7418b7c5ffe79beff24819e2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::begin </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -623,14 +1121,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a50ae0542a98480efe830ff07cf56eba2"></a>
+<a class="anchor" id="a320a21e52384d6b8ffd8ed60f1f7a4e2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -641,16 +1139,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a99e76aa8ee7daa90c6e84a9562ca344f"></a>
+<a class="anchor" id="a9af2c7af070eae0dfb3937b94e83735c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::cbegin </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -666,14 +1164,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="afcee821d48d6a0f6e02cb7a725f022cb"></a>
+<a class="anchor" id="acbb9d557ff9fcf457a502e55f3a32519"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -684,16 +1182,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a53c2e7d14a15a26c625251717b02a822"></a>
+<a class="anchor" id="a0ea3b027dfd941ce73f392d7baae5312"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::cend </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -709,14 +1207,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="af985e8eb91bbad45c5d2f2a7f11d2b3c"></a>
+<a class="anchor" id="a0d27551bf5e9e97c7cfd7b93271c4fe6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::clear </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::clear </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -727,16 +1225,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a48c5b956e3f2b8dac2ba0619f62bbcfe"></a>
+<a class="anchor" id="aee8cbf275f9663a31c8aae6efa00795f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::emplace </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::emplace </td>
           <td>(</td>
           <td class="paramtype">Args &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
@@ -754,18 +1252,18 @@ template&lt;class... Args&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ad48b4004dbd1cb6bfdb2f912d104b02d"></a>
+<a class="anchor" id="acbe1bbfa60766a78830d63d4d80eb530"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::emplaceHint </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::emplaceHint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>
@@ -792,14 +1290,14 @@ template&lt;class... Args&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a614a80b3a34b2797fa7a6b96a57d3ece"></a>
+<a class="anchor" id="a3d557392013624fceb5b509838b38413"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -810,14 +1308,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a741daf7434e3db0e3d37edfff0fef8e3"></a>
+<a class="anchor" id="ad7984dd0e39b91beb8a14059acf544f8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -828,16 +1326,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a42d108b776d9085d9745fc5237457acb"></a>
+<a class="anchor" id="ab5cdad894fac94bef182ff82fa29d9e0"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ab231327983d1bd2c2d138e3bd951fe8a">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a4318141c2b52a622f717f3faf24dba71">LocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -853,16 +1351,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="acb5f69cb2e3e9e2693f32dea480b20d1"></a>
+<a class="anchor" id="afbc3de5e8287ece28512e602870131b3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_1_1_local_forward_iterator.php">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae011975b6f24c2fcc7ef6f5fa3fbfa43">ConstLocalIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::end </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -878,16 +1376,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="ab3fba4f255a9d684b764fc132e691887"></a>
+<a class="anchor" id="a8c1ade0507738c749d36141e487bcd0c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
           <td></td>
         </tr>
@@ -903,16 +1401,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a2d8f646ced5edbeb611943b31416f59c"></a>
+<a class="anchor" id="ae039d19bc1d6960873e50da2b0c8865e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>, <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::equalRange </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -928,16 +1426,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a665d7a4e43fd2603964c44afc9dbaee6"></a>
+<a class="anchor" id="a074bc1e534a6671d0fd6ee8ee54cbb9b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -953,16 +1451,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a00f20a26523bdd6b49121cb726395539"></a>
+<a class="anchor" id="a6dc2389a5ed46f52877faa975f51a597"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td></td>
         </tr>
@@ -978,22 +1476,22 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="aa16e98fa2ad0e97efab854a1ab2ec9d1"></a>
+<a class="anchor" id="a651f81c3066dabc196a7a85dcfe66b9f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -1014,16 +1512,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a8eea4655f379ce72612f054361be0c33"></a>
+<a class="anchor" id="a49f42fac7e2266f957a59532dd1d1fcd"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::erase </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1039,16 +1537,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="ad91a554e03ddd7e3eba9feb478b104bc"></a>
+<a class="anchor" id="aba8b389a3c9c733c81dfac261fc85a08"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1064,16 +1562,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="ac7fac3b387987d0a09c079eb68d2b7f6"></a>
+<a class="anchor" id="a65e3846e4a8009fb2251dce50cb74c20"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::find </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1089,16 +1587,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a216cfd0a61ee8cd0f61c8de5a19c78d6"></a>
+<a class="anchor" id="a549b24d27f27cb6eb5bb38b4660cab5a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::get </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::get </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1114,16 +1612,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a9e9bcf78b85cec9bdb7abcd66c0475bc"></a>
+<a class="anchor" id="a18e009e271bf6fb295f5c66d9b443c77"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::get </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a> const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::get </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1139,16 +1637,34 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a93fcf51ad736c1aa479f7dd016636999"></a>
+<a class="anchor" id="ad2a55c5928c76c4b3e4288895c1d4ab2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getBucket </td>
+          <td class="memname">Allocator <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getAllocator </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the hashtable's memory allocator </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1aa533a722365696efe020f3152943f8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getBucket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1164,14 +1680,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="aff2cc1654261bdb3f1da234aeceeabe4"></a>
+<a class="anchor" id="a85ddd8fb15c1d408b1e47271074d4db4"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getBucketCount </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getBucketCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1182,16 +1698,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a65ec5d89ce9368dcddc8c45c1b3ff7c3"></a>
+<a class="anchor" id="ace12d934653aeef20317bac556db45e6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getCount </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getCount </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1207,14 +1723,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a15a58935df66db3ae497601e4cbbd387"></a>
+<a class="anchor" id="a0583041ac701f7d07b1684a1aedbfbdd"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Hash <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getHash </td>
+          <td class="memname">Hash <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getHash </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1225,14 +1741,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a28e22d3b142893381b9708b693d77af6"></a>
+<a class="anchor" id="a5decd4116e908f5b741bebaa82ab5cec"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">KeyEqual <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getKeyEqual </td>
+          <td class="memname">KeyEqual <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getKeyEqual </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1243,14 +1759,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="ae221561f6acdb325c70f1103f6b4ff8c"></a>
+<a class="anchor" id="a92f92f4972fb08b36b298db884ea5b91"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">float <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getLoadFactor </td>
+          <td class="memname">float <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getLoadFactor </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1261,14 +1777,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a4a65a8b0723df89a08b71e1fae567c3c"></a>
+<a class="anchor" id="a385587b88a75f2ad70320b0e33d598a6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getMaxBucketCount </td>
+          <td class="memname">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getMaxBucketCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1279,14 +1795,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a7ab1a6fc1bbfbc7992cacc29d71f627a"></a>
+<a class="anchor" id="a079a400349830165b7eff9230dfc0079"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">float <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getMaxLoadFactor </td>
+          <td class="memname">float <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getMaxLoadFactor </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1297,14 +1813,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a26448c710262c8b4a845daa60b5238a8"></a>
+<a class="anchor" id="ac6426de1d569131980a715137ace9f12"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getMaxSize </td>
+          <td class="memname">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getMaxSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1315,14 +1831,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a8f9ca168e612b8ac9e2c63b2352f059b"></a>
+<a class="anchor" id="a2af5ccfb6e0d5dfeec1fbcda77b7ca9b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::getSize </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::getSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1333,16 +1849,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="aa3268988f450d143f4db9aaa21dc6744"></a>
+<a class="anchor" id="aaf2b39d69226fa01956fda0cf4ac7068"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> const &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1358,16 +1874,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a13ce73a056d677a2f0ab5cd59d57f99b"></a>
+<a class="anchor" id="a82e868459e94aefd33269be5d02834db"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class P &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">Pair</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a>, bool&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::insert </td>
           <td>(</td>
           <td class="paramtype">P &amp;&amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -1385,24 +1901,24 @@ template&lt;class P &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a526e698fe63676a6aec54738e36491f5"></a>
+<a class="anchor" id="aa42ccbb5fc606d0ccae2f335e0529912"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class InputIterator &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">InputIterator&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php">InputIterator</a>&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -1422,16 +1938,16 @@ template&lt;class InputIterator &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a87ff82ba86fa0920245be4b4c08ce989"></a>
+<a class="anchor" id="a13353a7cbad03c4b60f2fdcd055df5eb"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insert </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> &gt;&#160;</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> &gt;&#160;</td>
           <td class="paramname"><em>list</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1446,22 +1962,22 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a76a17e6fb4982ecb6fc7f34e953529f7"></a>
+<a class="anchor" id="a177f06a36235d78466aa5be97909e8fd"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php">ValueType</a> const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aeaced7daaee539f3753ec93484862e52">ValueType</a> const &amp;&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -1482,18 +1998,18 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a9f6d83d8761bf6383535ffb9b48134c6"></a>
+<a class="anchor" id="af1309b2b2a4581b97eee7d224f5d4fc3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <div class="memtemplate">
 template&lt;class P &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#aa4f58d2185b517a31f7cd3f15b8dc52c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a94e2505f74570679b1ea2767251c3d36">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::insertHint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a21e1a7bba78650a7a682a0d4f1810a57">ConstIterator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a698ac4a5ff2dc237bdd35ccb58f02861">ConstIterator</a>&#160;</td>
           <td class="paramname"><em>hint</em>, </td>
         </tr>
         <tr>
@@ -1520,14 +2036,14 @@ template&lt;class P &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aec2a6bafe414da209eba10c715c6841d"></a>
+<a class="anchor" id="a1ced053bbe61f2bfb97afdb73a86ab37"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::isEmpty </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::isEmpty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1538,16 +2054,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="ae180ce93001f7bdf8ced12b3fdd44746"></a>
+<a class="anchor" id="a844052d582de26ee522b90ce46218922"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::operator= </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt; const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; const &amp;&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1563,16 +2079,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a30bc9016b26975cb8b041f9a700ac115"></a>
+<a class="anchor" id="a776881405382a5c1022ec3cb0d9cb14b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::operator= </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1588,16 +2104,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="af060a2734bf76f6e69343b55fcd2744d"></a>
+<a class="anchor" id="a2fc398a92cd5f90a68dfbff3c7cb9427"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">Key const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> const &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1613,16 +2129,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a993a3574a6d71e55cfc83eb954d4a025"></a>
+<a class="anchor" id="a54c14dd33cf3aab02ef342ba523a173a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a51ad835917c10a6e1bbc7577ccf029a7">MappedType</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">Key &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a566226b263dd77bb28774d5d0c865b9e">KeyType</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1638,16 +2154,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="af77694f505c90c3792d6109a447881fe"></a>
+<a class="anchor" id="a5acb04b00f3ded0d829d89813513e803"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::rehash </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::rehash </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1662,16 +2178,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a9e956a5766ef1f19f450b95af1278319"></a>
+<a class="anchor" id="a9a8d2bf631d9f7c82213d5eabcf8eea9"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::reserve </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::reserve </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a>&#160;</td>
           <td class="paramname"><em>count</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1686,14 +2202,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a30b8e3d3e2b6eb65f756aaddd312f9c8"></a>
+<a class="anchor" id="a2b5d4bcdd8d8d1b4b76b7635a2a29323"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::setMaxLoadFactor </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::setMaxLoadFactor </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>factor</em></td><td>)</td>
@@ -1710,16 +2226,16 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="aef515ccfe0d364b1f52c8945f5a4ced5"></a>
+<a class="anchor" id="ad22bb0527beee24d1061e8dd35c8cc5a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::swap </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::swap </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt; &amp;&#160;</td>
           <td class="paramname"><em>table</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1734,14 +2250,14 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 
 </div>
 </div>
-<a class="anchor" id="a05925f7afd8f3ceff9b66086ce259137"></a>
+<a class="anchor" id="af4ae4dc972054f097ba62ae7a997a39a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::toString </td>
+          <td class="memname"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1753,17 +2269,17 @@ template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&l
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a8b5c83feca46fffd42008923459af247"></a>
+<a class="anchor" id="aaedab75bb034ee6bc3f3d2a66ca095c2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Key, class T, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
+template&lt;class Key, class T, class Allocator, bool StoreHash = false, class Hash = std::hash&lt;Key&gt;, class KeyEqual = std::equal_to&lt;Key&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT = 0</td>
+          <td class="memname">const <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ac9703a03e308efc543ffe9ff0fb14240">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php">NRE::Utility::Detail::HashTable</a>&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;::DEFAULT_BUCKET_COUNT = 0</td>
         </tr>
       </table>
   </td>

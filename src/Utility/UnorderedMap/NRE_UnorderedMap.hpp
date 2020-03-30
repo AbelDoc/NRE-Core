@@ -1,6 +1,6 @@
     
     /**
-     * @file NRE_UnorderedMap.hpp
+     * @file Utility/UnorderedMap/NRE_UnorderedMap.hpp
      * @brief Declaration of Utility's API's Container : UnorderedMap
      * @author Louis ABEL
      * @date 15/05/2019
@@ -22,7 +22,8 @@
          * @brief Utility's API
          */
         namespace Utility {
-            
+    
+            /** Hide UnorderedMap detail implementation and provide default allocator */
             template <class Key, class T, class Allocator = Memory::Allocator<Pair<Key, T>>, bool StoreHash = false, class Hash = std::hash<Key>, class KeyEqual = std::equal_to<Key>>
             using UnorderedMap = Detail::UnorderedMap<Key, T, Allocator, StoreHash, Hash, KeyEqual>;
         }

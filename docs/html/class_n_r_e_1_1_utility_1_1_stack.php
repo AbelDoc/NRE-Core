@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_n_r_e_1_1_utility_1_1_stack-members.php">List of all members</a>  </div>
   <div class="headertitle">
@@ -118,11 +119,22 @@ Inheritance diagram for NRE::Utility::Stack&lt; T, Container &gt;:</div>
  <div class="center">
   <img src="class_n_r_e_1_1_utility_1_1_stack.png" usemap="#NRE::Utility::Stack_3C_20T_2C_20Container_20_3E_map" alt=""/>
   <map id="NRE::Utility::Stack_3C_20T_2C_20Container_20_3E_map" name="NRE::Utility::Stack&lt; T, Container &gt;_map">
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Stack&lt; T, Container &gt; &gt;" shape="rect" coords="0,56,376,80"/>
-<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T, M &gt;" shape="rect" coords="0,0,376,24"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Stack&lt; T, Container &gt; &gt;" shape="rect" coords="0,56,391,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T &gt;" shape="rect" coords="0,0,391,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a5c743a548f840e6225b6a2d461c0aaf6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a5c743a548f840e6225b6a2d461c0aaf6">ValueType</a> = typename Container::ValueType</td></tr>
+<tr class="separator:a5c743a548f840e6225b6a2d461c0aaf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99d83ddf49d4581d6f6a773bfeb0e5d0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a99d83ddf49d4581d6f6a773bfeb0e5d0">SizeType</a> = typename Container::SizeType</td></tr>
+<tr class="separator:a99d83ddf49d4581d6f6a773bfeb0e5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e7b113a807277be45dcafc359ea816"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a95e7b113a807277be45dcafc359ea816">Reference</a> = typename Container::Reference</td></tr>
+<tr class="separator:a95e7b113a807277be45dcafc359ea816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad59f16a8f6f6d328ccbd93f1cc1efd68"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad59f16a8f6f6d328ccbd93f1cc1efd68">ConstReference</a> = typename Container::ConstReference</td></tr>
+<tr class="separator:ad59f16a8f6f6d328ccbd93f1cc1efd68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0fb9f26708174bd16ad33be23fa79b0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a0fb9f26708174bd16ad33be23fa79b0b">Stack</a> (Container &amp;&amp;container=Container())</td></tr>
@@ -135,18 +147,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a814a2b791dbd4555d658e2686e51d41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abde8678c62784d73239a488e6a16f8d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#abde8678c62784d73239a488e6a16f8d3">~Stack</a> ()=default</td></tr>
 <tr class="separator:abde8678c62784d73239a488e6a16f8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd7056182ae176012d9f55cedf427813"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#abd7056182ae176012d9f55cedf427813">getTop</a> ()</td></tr>
-<tr class="separator:abd7056182ae176012d9f55cedf427813"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a284ae53875efd2089e1e7ae3cdc32a5f"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a284ae53875efd2089e1e7ae3cdc32a5f">getTop</a> () const </td></tr>
-<tr class="separator:a284ae53875efd2089e1e7ae3cdc32a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac09daa4d46eaa13cb01727d10f4e96ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a95e7b113a807277be45dcafc359ea816">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ac09daa4d46eaa13cb01727d10f4e96ec">getTop</a> ()</td></tr>
+<tr class="separator:ac09daa4d46eaa13cb01727d10f4e96ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3877ead60e2d9238f3ba5863c54501b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad59f16a8f6f6d328ccbd93f1cc1efd68">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a3877ead60e2d9238f3ba5863c54501b3">getTop</a> () const </td></tr>
+<tr class="separator:a3877ead60e2d9238f3ba5863c54501b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2c84dfbe7f88a6c0350b400b593e251"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad2c84dfbe7f88a6c0350b400b593e251">isEmpty</a> () const </td></tr>
 <tr class="separator:ad2c84dfbe7f88a6c0350b400b593e251"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41619ddba878602b48c277facb3e2e11"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a41619ddba878602b48c277facb3e2e11">getSize</a> () const </td></tr>
-<tr class="separator:a41619ddba878602b48c277facb3e2e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf97be0bf934c70ead58c5fef7853aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a4cf97be0bf934c70ead58c5fef7853aa">push</a> (T const &amp;value)</td></tr>
-<tr class="separator:a4cf97be0bf934c70ead58c5fef7853aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc50e85f466cc273d80552bd03b1a2db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#acc50e85f466cc273d80552bd03b1a2db">push</a> (T &amp;&amp;value)</td></tr>
-<tr class="separator:acc50e85f466cc273d80552bd03b1a2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaf303382042a72c3f6d9465c7a71133"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a99d83ddf49d4581d6f6a773bfeb0e5d0">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#aaaf303382042a72c3f6d9465c7a71133">getSize</a> () const </td></tr>
+<tr class="separator:aaaf303382042a72c3f6d9465c7a71133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0168b5cd5c9d1bcb562cea379db7ef6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ac0168b5cd5c9d1bcb562cea379db7ef6">push</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad59f16a8f6f6d328ccbd93f1cc1efd68">ConstReference</a> value)</td></tr>
+<tr class="separator:ac0168b5cd5c9d1bcb562cea379db7ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22a62fc0840fce8a0d9275814b673702"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a22a62fc0840fce8a0d9275814b673702">push</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a5c743a548f840e6225b6a2d461c0aaf6">ValueType</a> &amp;&amp;value)</td></tr>
+<tr class="separator:a22a62fc0840fce8a0d9275814b673702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7056eedccf0985dfc6b83811373765ae"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
 <tr class="memitem:a7056eedccf0985dfc6b83811373765ae"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a7056eedccf0985dfc6b83811373765ae">emplace</a> (Args &amp;&amp;...args)</td></tr>
 <tr class="separator:a7056eedccf0985dfc6b83811373765ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,23 +174,79 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a39f4b130a39d707e1f26a6e1ae7911ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3cd88146c5182ab3e876440c329ab31"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ac3cd88146c5182ab3e876440c329ab31">operator!=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">Stack</a> const &amp;s) const </td></tr>
 <tr class="separator:ac3cd88146c5182ab3e876440c329ab31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9259e7119a6d5a7c50770431379098b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a9259e7119a6d5a7c50770431379098b1">toString</a> () const </td></tr>
+<tr class="memitem:a9259e7119a6d5a7c50770431379098b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a9259e7119a6d5a7c50770431379098b1">toString</a> () const </td></tr>
 <tr class="separator:a9259e7119a6d5a7c50770431379098b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; Stack&lt; T, Container &gt; &gt;</a></td></tr>
-<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
+<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
 <tr class="separator:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_static_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface&lt; T, M &gt;</a></td></tr>
-<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
-<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
-<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, class Container = Vector&lt;T&gt;&gt;<br />
 class NRE::Utility::Stack&lt; T, Container &gt;</h3>
 
 <p>A stack adapter wrapping a container class. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="ad59f16a8f6f6d328ccbd93f1cc1efd68"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad59f16a8f6f6d328ccbd93f1cc1efd68">ConstReference</a> =  typename Container::ConstReference</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The value type const reference </p>
+
+</div>
+</div>
+<a class="anchor" id="a95e7b113a807277be45dcafc359ea816"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a95e7b113a807277be45dcafc359ea816">Reference</a> =  typename Container::Reference</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The value type reference </p>
+
+</div>
+</div>
+<a class="anchor" id="a99d83ddf49d4581d6f6a773bfeb0e5d0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a99d83ddf49d4581d6f6a773bfeb0e5d0">SizeType</a> =  typename Container::SizeType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The container size type </p>
+
+</div>
+</div>
+<a class="anchor" id="a5c743a548f840e6225b6a2d461c0aaf6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a5c743a548f840e6225b6a2d461c0aaf6">ValueType</a> =  typename Container::ValueType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The container value type </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0fb9f26708174bd16ad33be23fa79b0b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -344,14 +412,14 @@ template&lt;class... Args&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a41619ddba878602b48c277facb3e2e11"></a>
+<a class="anchor" id="aaaf303382042a72c3f6d9465c7a71133"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::getSize </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a99d83ddf49d4581d6f6a773bfeb0e5d0">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::getSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -362,14 +430,14 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="abd7056182ae176012d9f55cedf427813"></a>
+<a class="anchor" id="ac09daa4d46eaa13cb01727d10f4e96ec"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::getTop </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a95e7b113a807277be45dcafc359ea816">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::getTop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -380,14 +448,14 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a284ae53875efd2089e1e7ae3cdc32a5f"></a>
+<a class="anchor" id="a3877ead60e2d9238f3ba5863c54501b3"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::getTop </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad59f16a8f6f6d328ccbd93f1cc1efd68">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::getTop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -550,7 +618,7 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a4cf97be0bf934c70ead58c5fef7853aa"></a>
+<a class="anchor" id="ac0168b5cd5c9d1bcb562cea379db7ef6"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -559,7 +627,7 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::push </td>
           <td>(</td>
-          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ad59f16a8f6f6d328ccbd93f1cc1efd68">ConstReference</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -575,7 +643,7 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="acc50e85f466cc273d80552bd03b1a2db"></a>
+<a class="anchor" id="a22a62fc0840fce8a0d9275814b673702"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -584,7 +652,7 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::push </td>
           <td>(</td>
-          <td class="paramtype">T &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a5c743a548f840e6225b6a2d461c0aaf6">ValueType</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -630,7 +698,7 @@ template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
 template&lt;class T , class Container  = Vector&lt;T&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::toString </td>
+          <td class="memname"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php">NRE::Utility::Stack</a>&lt; T, Container &gt;::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

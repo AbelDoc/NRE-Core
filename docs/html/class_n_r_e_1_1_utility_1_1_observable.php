@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="class_n_r_e_1_1_utility_1_1_observable-members.php">List of all members</a>  </div>
@@ -114,6 +115,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___observable_8hpp_source.php">NRE_Observable.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a7653496967f32e0e852c77dd18e2e48b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a7653496967f32e0e852c77dd18e2e48b">Container</a> = <a class="el" href="_vector_2_n_r_e___vector_8hpp.php#a7315c147598f6aea0b1c709bdac0470d">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;</td></tr>
+<tr class="separator:a7653496967f32e0e852c77dd18e2e48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429d9cdc5bb4b232e75a727676be02bf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">Iterator</a> = typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#aedc34798595924837f67fe06ae52dde7">Container::Iterator</a></td></tr>
+<tr class="separator:a429d9cdc5bb4b232e75a727676be02bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5ae58a1df83250687e1c594460c3a9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a> = typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#afd29351c483eaf1b8b1322463b1ae11f">Container::ConstIterator</a></td></tr>
+<tr class="separator:acd5ae58a1df83250687e1c594460c3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ef23c9392524b4f64718505a870760"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a36ef23c9392524b4f64718505a870760">SizeType</a> = typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#ab312674a156498a72bd5e4aca800b098">Container::SizeType</a></td></tr>
+<tr class="separator:a36ef23c9392524b4f64718505a870760"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a809470a00740d22093325490e0fe8bd2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a809470a00740d22093325490e0fe8bd2">Observable</a> ()</td></tr>
@@ -132,22 +144,22 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2318c3fe9ec88fe681a931110ff069a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8a1f4ed189c374fd0d65c28ab77652"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a3f8a1f4ed189c374fd0d65c28ab77652">clear</a> ()</td></tr>
 <tr class="separator:a3f8a1f4ed189c374fd0d65c28ab77652"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf7e6162bd3de804c78a8991cce55603"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#aaf7e6162bd3de804c78a8991cce55603">getCount</a> () const </td></tr>
-<tr class="separator:aaf7e6162bd3de804c78a8991cce55603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e29f2813b4d466ebceecaecd5c6a05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a36ef23c9392524b4f64718505a870760">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a34e29f2813b4d466ebceecaecd5c6a05">getCount</a> () const </td></tr>
+<tr class="separator:a34e29f2813b4d466ebceecaecd5c6a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53ec28846ac7a5bf311dfe2fc9893bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ae53ec28846ac7a5bf311dfe2fc9893bf">notifyAll</a> (void *arg=0)</td></tr>
 <tr class="separator:ae53ec28846ac7a5bf311dfe2fc9893bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e9dac8ffe51ab4d3ab84f1aba171972"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;::Iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a3e9dac8ffe51ab4d3ab84f1aba171972">begin</a> ()</td></tr>
-<tr class="separator:a3e9dac8ffe51ab4d3ab84f1aba171972"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb7c9493b98517492602bc5e60cf9499"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;::ConstIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acb7c9493b98517492602bc5e60cf9499">begin</a> () const </td></tr>
-<tr class="separator:acb7c9493b98517492602bc5e60cf9499"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41849f851c583c30937cf5ff2dd773c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;::ConstIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a41849f851c583c30937cf5ff2dd773c1">cbegin</a> () const </td></tr>
-<tr class="separator:a41849f851c583c30937cf5ff2dd773c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6b6f7fcda71c9a685432175e078f53f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;::Iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ac6b6f7fcda71c9a685432175e078f53f">end</a> ()</td></tr>
-<tr class="separator:ac6b6f7fcda71c9a685432175e078f53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a018569304149f246817e8d1b750d06d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;::ConstIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a018569304149f246817e8d1b750d06d5">end</a> () const </td></tr>
-<tr class="separator:a018569304149f246817e8d1b750d06d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af99f491c047eccba5d6b21dd9c255bc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a> * &gt;::ConstIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#af99f491c047eccba5d6b21dd9c255bc0">cend</a> () const </td></tr>
-<tr class="separator:af99f491c047eccba5d6b21dd9c255bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c9ededf87047f24fa5a7726f9612e26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a1c9ededf87047f24fa5a7726f9612e26">begin</a> ()</td></tr>
+<tr class="separator:a1c9ededf87047f24fa5a7726f9612e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71be916bfce100d609f68bfc24417eaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a71be916bfce100d609f68bfc24417eaa">begin</a> () const </td></tr>
+<tr class="separator:a71be916bfce100d609f68bfc24417eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e2e119214b1bebc0c1eeec020bddd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a42e2e119214b1bebc0c1eeec020bddd6">cbegin</a> () const </td></tr>
+<tr class="separator:a42e2e119214b1bebc0c1eeec020bddd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc048fdbf499f9ed0a3e5b00e9249891"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#afc048fdbf499f9ed0a3e5b00e9249891">end</a> ()</td></tr>
+<tr class="separator:afc048fdbf499f9ed0a3e5b00e9249891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad53839d5b31a9f34d111e195f7db2570"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ad53839d5b31a9f34d111e195f7db2570">end</a> () const </td></tr>
+<tr class="separator:ad53839d5b31a9f34d111e195f7db2570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c013d58495e7b5aa03c0547361b7fc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a9c013d58495e7b5aa03c0547361b7fc5">cend</a> () const </td></tr>
+<tr class="separator:a9c013d58495e7b5aa03c0547361b7fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2070c089e1fc97f47e9aca09999a23e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php">Observable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#af2070c089e1fc97f47e9aca09999a23e">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php">Observable</a> const &amp;o)=default</td></tr>
 <tr class="separator:af2070c089e1fc97f47e9aca09999a23e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b2eec1f2bda57f77b3a82e709965e6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php">Observable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a7b2eec1f2bda57f77b3a82e709965e6e">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php">Observable</a> &amp;&amp;o)=default</td></tr>
@@ -160,7 +172,60 @@ Protected Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Describe an observable object, coupled with observer. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="acd5ae58a1df83250687e1c594460c3a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">NRE::Utility::Observable::ConstIterator</a> =  typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#afd29351c483eaf1b8b1322463b1ae11f">Container::ConstIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The observers const iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a7653496967f32e0e852c77dd18e2e48b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a7653496967f32e0e852c77dd18e2e48b">NRE::Utility::Observable::Container</a> =  <a class="el" href="_vector_2_n_r_e___vector_8hpp.php#a7315c147598f6aea0b1c709bdac0470d">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The observers container </p>
+
+</div>
+</div>
+<a class="anchor" id="a429d9cdc5bb4b232e75a727676be02bf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">NRE::Utility::Observable::Iterator</a> =  typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#aedc34798595924837f67fe06ae52dde7">Container::Iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The observers iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a36ef23c9392524b4f64718505a870760"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a36ef23c9392524b4f64718505a870760">NRE::Utility::Observable::SizeType</a> =  typename <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#ab312674a156498a72bd5e4aca800b098">Container::SizeType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The observable size type </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a809470a00740d22093325490e0fe8bd2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -284,12 +349,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3e9dac8ffe51ab4d3ab84f1aba171972"></a>
+<a class="anchor" id="a1c9ededf87047f24fa5a7726f9612e26"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;::Iterator NRE::Utility::Observable::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">Iterator</a> NRE::Utility::Observable::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -300,12 +365,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acb7c9493b98517492602bc5e60cf9499"></a>
+<a class="anchor" id="a71be916bfce100d609f68bfc24417eaa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;::ConstIterator NRE::Utility::Observable::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a> NRE::Utility::Observable::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -316,12 +381,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a41849f851c583c30937cf5ff2dd773c1"></a>
+<a class="anchor" id="a42e2e119214b1bebc0c1eeec020bddd6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;::ConstIterator NRE::Utility::Observable::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a> NRE::Utility::Observable::cbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -332,12 +397,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af99f491c047eccba5d6b21dd9c255bc0"></a>
+<a class="anchor" id="a9c013d58495e7b5aa03c0547361b7fc5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;::ConstIterator NRE::Utility::Observable::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a> NRE::Utility::Observable::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -364,12 +429,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac6b6f7fcda71c9a685432175e078f53f"></a>
+<a class="anchor" id="afc048fdbf499f9ed0a3e5b00e9249891"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;::Iterator NRE::Utility::Observable::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">Iterator</a> NRE::Utility::Observable::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -380,12 +445,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a018569304149f246817e8d1b750d06d5"></a>
+<a class="anchor" id="ad53839d5b31a9f34d111e195f7db2570"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_vector.php">Vector</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php">Observer</a>*&gt;::ConstIterator NRE::Utility::Observable::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#acd5ae58a1df83250687e1c594460c3a9">ConstIterator</a> NRE::Utility::Observable::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -396,12 +461,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aaf7e6162bd3de804c78a8991cce55603"></a>
+<a class="anchor" id="a34e29f2813b4d466ebceecaecd5c6a05"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::size_t NRE::Utility::Observable::getCount </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a36ef23c9392524b4f64718505a870760">SizeType</a> NRE::Utility::Observable::getCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

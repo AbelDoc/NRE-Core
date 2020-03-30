@@ -119,22 +119,57 @@ Inheritance diagram for NRE::Utility::Array&lt; T, Size &gt;:</div>
  <div class="center">
   <img src="class_n_r_e_1_1_utility_1_1_array.png" usemap="#NRE::Utility::Array_3C_20T_2C_20Size_20_3E_map" alt=""/>
   <map id="NRE::Utility::Array_3C_20T_2C_20Size_20_3E_map" name="NRE::Utility::Array&lt; T, Size &gt;_map">
-<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Array&lt; T, Size &gt; &gt;" shape="rect" coords="0,56,347,80"/>
-<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T, M &gt;" shape="rect" coords="0,0,347,24"/>
+<area href="class_n_r_e_1_1_utility_1_1_stringable.php" alt="NRE::Utility::Stringable&lt; Array&lt; T, Size &gt; &gt;" shape="rect" coords="0,56,362,80"/>
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" title="Describe an object using CRTP to create static interface (static polymorphism) " alt="NRE::Utility::StaticInterface&lt; T &gt;" shape="rect" coords="0,0,362,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a7c73d4e09069f287dd826778694a320c"><td class="memItemLeft" align="right" valign="top">typedef T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">Iterator</a></td></tr>
-<tr class="separator:a7c73d4e09069f287dd826778694a320c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0527ef7754879228ba0c9caf90fc14c"><td class="memItemLeft" align="right" valign="top">typedef const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a></td></tr>
-<tr class="separator:ad0527ef7754879228ba0c9caf90fc14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a194595bf8eda8b81742a7b3ec59d2e47"><td class="memItemLeft" align="right" valign="top">typedef std::reverse_iterator&lt; T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">ReverseIterator</a></td></tr>
-<tr class="separator:a194595bf8eda8b81742a7b3ec59d2e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac00f67897b673ac22a565ffb54417fe4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac00f67897b673ac22a565ffb54417fe4"></a>
-typedef std::reverse_iterator&lt; const T * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ConstReverseIterator</b></td></tr>
-<tr class="separator:ac00f67897b673ac22a565ffb54417fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069bbb740098037643c0cb7712ef4b21"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> = T</td></tr>
+<tr class="separator:a069bbb740098037643c0cb7712ef4b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b9ba4cfe847976b5a57605dde8f889"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> = std::size_t</td></tr>
+<tr class="separator:a64b9ba4cfe847976b5a57605dde8f889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13503755383ed207497411583179745a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a13503755383ed207497411583179745a">DifferenceType</a> = std::ptrdiff_t</td></tr>
+<tr class="separator:a13503755383ed207497411583179745a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa251a0df0a73baae67d39177cfaa90f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> &amp;</td></tr>
+<tr class="separator:afa251a0df0a73baae67d39177cfaa90f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21b7b2c6b0d2cafb542c719c27f26418"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> const &amp;</td></tr>
+<tr class="separator:a21b7b2c6b0d2cafb542c719c27f26418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a473b201017e3513b1c05061cbd5223"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> *</td></tr>
+<tr class="separator:a3a473b201017e3513b1c05061cbd5223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2904cfdc42b306da7b6bbdebc948f3b0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a> = const <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> *</td></tr>
+<tr class="separator:a2904cfdc42b306da7b6bbdebc948f3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1caa63883daa72f86cd6e912fbc62994"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a></td></tr>
+<tr class="separator:a1caa63883daa72f86cd6e912fbc62994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d9c3cedc358c6fa37ead43cbbf39eec"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a></td></tr>
+<tr class="separator:a1d9c3cedc358c6fa37ead43cbbf39eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f466da2cdfc8b3c07b9abf097d93acb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a> = std::reverse_iterator&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a> &gt;</td></tr>
+<tr class="separator:a9f466da2cdfc8b3c07b9abf097d93acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77341af327bf71857307ee0bcbb4a33a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a> = std::reverse_iterator&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> &gt;</td></tr>
+<tr class="separator:a77341af327bf71857307ee0bcbb4a33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de99b6b188fe6f33a7335e7754b441e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8de99b6b188fe6f33a7335e7754b441e">value_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a></td></tr>
+<tr class="separator:a8de99b6b188fe6f33a7335e7754b441e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54963e0f1da053764235962bf9e5d000"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a54963e0f1da053764235962bf9e5d000">size_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a></td></tr>
+<tr class="separator:a54963e0f1da053764235962bf9e5d000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e9aa096d021bfb18e222f65dfea2869"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3e9aa096d021bfb18e222f65dfea2869">difference_type</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a13503755383ed207497411583179745a">DifferenceType</a></td></tr>
+<tr class="separator:a3e9aa096d021bfb18e222f65dfea2869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af84bc4ddbf660811caa74b1b1c7530f2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#af84bc4ddbf660811caa74b1b1c7530f2">reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a></td></tr>
+<tr class="separator:af84bc4ddbf660811caa74b1b1c7530f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cc7cf43685d32c4532151435f0acfa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab5cc7cf43685d32c4532151435f0acfa">const_reference</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a></td></tr>
+<tr class="separator:ab5cc7cf43685d32c4532151435f0acfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac68c74ca15842976d265ae8164c0ebb7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac68c74ca15842976d265ae8164c0ebb7">pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a></td></tr>
+<tr class="separator:ac68c74ca15842976d265ae8164c0ebb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d7ff046d692f208384113f55c54cf1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a74d7ff046d692f208384113f55c54cf1">const_pointer</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a></td></tr>
+<tr class="separator:a74d7ff046d692f208384113f55c54cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e713799b554d943d599c04e33da6643"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8e713799b554d943d599c04e33da6643">iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a></td></tr>
+<tr class="separator:a8e713799b554d943d599c04e33da6643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d8b74280204e0d3ac05fdb0e0423d90"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8d8b74280204e0d3ac05fdb0e0423d90">const_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a></td></tr>
+<tr class="separator:a8d8b74280204e0d3ac05fdb0e0423d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfa8a6dff52fd8a068da221bca705e02"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#abfa8a6dff52fd8a068da221bca705e02">reverse_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a></td></tr>
+<tr class="separator:abfa8a6dff52fd8a068da221bca705e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533fd802d70d0b1622cbc4e142f7f446"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a533fd802d70d0b1622cbc4e142f7f446">const_reverse_iterator</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a></td></tr>
+<tr class="separator:a533fd802d70d0b1622cbc4e142f7f446"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -148,82 +183,77 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a95ae132a7378240b2eeadb19f7cee568"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b21cfd0a6608aefaef606d1df918a7c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8b21cfd0a6608aefaef606d1df918a7c">~Array</a> ()=default</td></tr>
 <tr class="separator:a8b21cfd0a6608aefaef606d1df918a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49186f2e8aa4c153e291a101c6ac7c5d"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a49186f2e8aa4c153e291a101c6ac7c5d">get</a> (std::size_t index)</td></tr>
-<tr class="separator:a49186f2e8aa4c153e291a101c6ac7c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ddbfb3591f97039eaf5729b0c60f8f6"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3ddbfb3591f97039eaf5729b0c60f8f6">get</a> (std::size_t index) const </td></tr>
-<tr class="separator:a3ddbfb3591f97039eaf5729b0c60f8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaa8371bb5be3991597d4f3515e8c547"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#acaa8371bb5be3991597d4f3515e8c547">getData</a> ()</td></tr>
-<tr class="separator:acaa8371bb5be3991597d4f3515e8c547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8210c770a4defc0540a758b1af849a5b"><td class="memItemLeft" align="right" valign="top">const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8210c770a4defc0540a758b1af849a5b">getData</a> () const </td></tr>
-<tr class="separator:a8210c770a4defc0540a758b1af849a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cfaee04c82c6ee4b4f225b651b11391"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1cfaee04c82c6ee4b4f225b651b11391">getFront</a> ()</td></tr>
-<tr class="separator:a1cfaee04c82c6ee4b4f225b651b11391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0eaae8f8a565dc06edc359d4d9dc935c"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0eaae8f8a565dc06edc359d4d9dc935c">getFront</a> () const </td></tr>
-<tr class="separator:a0eaae8f8a565dc06edc359d4d9dc935c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ba2737186424d7a6330418e9a5dcfd4"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0ba2737186424d7a6330418e9a5dcfd4">getLast</a> ()</td></tr>
-<tr class="separator:a0ba2737186424d7a6330418e9a5dcfd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7f6350efd46c7f4dc7300c26afdd001"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#af7f6350efd46c7f4dc7300c26afdd001">getLast</a> () const </td></tr>
-<tr class="separator:af7f6350efd46c7f4dc7300c26afdd001"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a5690339531da481afc1a5eadf901f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a44a5690339531da481afc1a5eadf901f">get</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> index)</td></tr>
+<tr class="separator:a44a5690339531da481afc1a5eadf901f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad44c8af85f19b2bef0515cc1855eff5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#aad44c8af85f19b2bef0515cc1855eff5">get</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> index) const </td></tr>
+<tr class="separator:aad44c8af85f19b2bef0515cc1855eff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3237517819984c8ee33207ea2b8e556b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3237517819984c8ee33207ea2b8e556b">getData</a> ()</td></tr>
+<tr class="separator:a3237517819984c8ee33207ea2b8e556b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a251b1a1d6de33118b63a1b543fba93fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a251b1a1d6de33118b63a1b543fba93fa">getData</a> () const </td></tr>
+<tr class="separator:a251b1a1d6de33118b63a1b543fba93fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbf5717e20eb223fd091d424e75b266d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#abbf5717e20eb223fd091d424e75b266d">getFront</a> ()</td></tr>
+<tr class="separator:abbf5717e20eb223fd091d424e75b266d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab17c0c088722c5d658bb06d8ea839d30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab17c0c088722c5d658bb06d8ea839d30">getFront</a> () const </td></tr>
+<tr class="separator:ab17c0c088722c5d658bb06d8ea839d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9daeee05b72f1d8c624910b27cc4e436"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9daeee05b72f1d8c624910b27cc4e436">getLast</a> ()</td></tr>
+<tr class="separator:a9daeee05b72f1d8c624910b27cc4e436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb4ed7bba3fa1fe0e34360e111d098f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#abdb4ed7bba3fa1fe0e34360e111d098f">getLast</a> () const </td></tr>
+<tr class="separator:abdb4ed7bba3fa1fe0e34360e111d098f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a014e1b208f5fda5335ea4b11e8f9c9e4"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a014e1b208f5fda5335ea4b11e8f9c9e4">isEmpty</a> () const </td></tr>
 <tr class="separator:a014e1b208f5fda5335ea4b11e8f9c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3597a22d6e54ffa1b10a7d2722028273"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3597a22d6e54ffa1b10a7d2722028273">getSize</a> () const </td></tr>
-<tr class="separator:a3597a22d6e54ffa1b10a7d2722028273"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2770ed9f41c41e7063a73410b34a7b12"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2770ed9f41c41e7063a73410b34a7b12">getMaxSize</a> () const </td></tr>
-<tr class="separator:a2770ed9f41c41e7063a73410b34a7b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a370a4e484cee21247a74334eef4d2b2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a370a4e484cee21247a74334eef4d2b2d">begin</a> ()</td></tr>
+<tr class="memitem:a99955b3454bc84deb2aa69f732b98b22"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a99955b3454bc84deb2aa69f732b98b22">getSize</a> () const </td></tr>
+<tr class="separator:a99955b3454bc84deb2aa69f732b98b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a320f2444368d3c88aaa056f36f134558"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a320f2444368d3c88aaa056f36f134558">getMaxSize</a> () const </td></tr>
+<tr class="separator:a320f2444368d3c88aaa056f36f134558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a370a4e484cee21247a74334eef4d2b2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a370a4e484cee21247a74334eef4d2b2d">begin</a> ()</td></tr>
 <tr class="separator:a370a4e484cee21247a74334eef4d2b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06764fc28ee8657256b253e4e2d1426f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a06764fc28ee8657256b253e4e2d1426f">begin</a> () const </td></tr>
+<tr class="memitem:a06764fc28ee8657256b253e4e2d1426f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a06764fc28ee8657256b253e4e2d1426f">begin</a> () const </td></tr>
 <tr class="separator:a06764fc28ee8657256b253e4e2d1426f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcf509c9cddaf2564dc2794bb72e8819"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#adcf509c9cddaf2564dc2794bb72e8819">cbegin</a> () const </td></tr>
+<tr class="memitem:adcf509c9cddaf2564dc2794bb72e8819"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#adcf509c9cddaf2564dc2794bb72e8819">cbegin</a> () const </td></tr>
 <tr class="separator:adcf509c9cddaf2564dc2794bb72e8819"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e8f848bcb413ba1ed1c2285e3a88245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0e8f848bcb413ba1ed1c2285e3a88245">end</a> ()</td></tr>
+<tr class="memitem:a0e8f848bcb413ba1ed1c2285e3a88245"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0e8f848bcb413ba1ed1c2285e3a88245">end</a> ()</td></tr>
 <tr class="separator:a0e8f848bcb413ba1ed1c2285e3a88245"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3345445d1a17642d1d7ee7accb864ce1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3345445d1a17642d1d7ee7accb864ce1">end</a> () const </td></tr>
+<tr class="memitem:a3345445d1a17642d1d7ee7accb864ce1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3345445d1a17642d1d7ee7accb864ce1">end</a> () const </td></tr>
 <tr class="separator:a3345445d1a17642d1d7ee7accb864ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeed554b8f663e9cc267561cf43a630ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#aeed554b8f663e9cc267561cf43a630ad">cend</a> () const </td></tr>
+<tr class="memitem:aeed554b8f663e9cc267561cf43a630ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#aeed554b8f663e9cc267561cf43a630ad">cend</a> () const </td></tr>
 <tr class="separator:aeed554b8f663e9cc267561cf43a630ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61ee3b447d3335c18bdd833a5debc3a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a61ee3b447d3335c18bdd833a5debc3a0">rbegin</a> ()</td></tr>
+<tr class="memitem:a61ee3b447d3335c18bdd833a5debc3a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a61ee3b447d3335c18bdd833a5debc3a0">rbegin</a> ()</td></tr>
 <tr class="separator:a61ee3b447d3335c18bdd833a5debc3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b5556e668fa54a50c3f30bb29c2b431"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8b5556e668fa54a50c3f30bb29c2b431">rbegin</a> () const </td></tr>
+<tr class="memitem:a8b5556e668fa54a50c3f30bb29c2b431"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8b5556e668fa54a50c3f30bb29c2b431">rbegin</a> () const </td></tr>
 <tr class="separator:a8b5556e668fa54a50c3f30bb29c2b431"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6838cd211a43b7987d4f4ef2504d36e"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab6838cd211a43b7987d4f4ef2504d36e">crbegin</a> () const </td></tr>
+<tr class="memitem:ab6838cd211a43b7987d4f4ef2504d36e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab6838cd211a43b7987d4f4ef2504d36e">crbegin</a> () const </td></tr>
 <tr class="separator:ab6838cd211a43b7987d4f4ef2504d36e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0406aa5d43b160d9d733897906fcdb6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0406aa5d43b160d9d733897906fcdb6d">rend</a> ()</td></tr>
+<tr class="memitem:a0406aa5d43b160d9d733897906fcdb6d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a0406aa5d43b160d9d733897906fcdb6d">rend</a> ()</td></tr>
 <tr class="separator:a0406aa5d43b160d9d733897906fcdb6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00e78dfd53d0b91167e778d99ca47e4b"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a00e78dfd53d0b91167e778d99ca47e4b">rend</a> () const </td></tr>
+<tr class="memitem:a00e78dfd53d0b91167e778d99ca47e4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a00e78dfd53d0b91167e778d99ca47e4b">rend</a> () const </td></tr>
 <tr class="separator:a00e78dfd53d0b91167e778d99ca47e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace8d0009f02de8e75038ca6802542503"><td class="memItemLeft" align="right" valign="top">ConstReverseIterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ace8d0009f02de8e75038ca6802542503">crend</a> () const </td></tr>
+<tr class="memitem:ace8d0009f02de8e75038ca6802542503"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ace8d0009f02de8e75038ca6802542503">crend</a> () const </td></tr>
 <tr class="separator:ace8d0009f02de8e75038ca6802542503"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9bcdd0aca1fa3c209d78ee733550987"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac9bcdd0aca1fa3c209d78ee733550987">fill</a> (T const &amp;value)</td></tr>
-<tr class="separator:ac9bcdd0aca1fa3c209d78ee733550987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c150391274823dc07b349fbb58ea1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a24c150391274823dc07b349fbb58ea1b">fill</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> value)</td></tr>
+<tr class="separator:a24c150391274823dc07b349fbb58ea1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72ed3c0b6c1ccbf335d9ef26c0e7e074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a72ed3c0b6c1ccbf335d9ef26c0e7e074">swap</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> &amp;arr) noexcept</td></tr>
 <tr class="separator:a72ed3c0b6c1ccbf335d9ef26c0e7e074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a039cf013fe61d56bc12c554eda5d2fc6"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a039cf013fe61d56bc12c554eda5d2fc6">operator[]</a> (std::size_t index)</td></tr>
-<tr class="separator:a039cf013fe61d56bc12c554eda5d2fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e804b2d067e38705651da6a72cb32e7"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9e804b2d067e38705651da6a72cb32e7">operator[]</a> (std::size_t index) const </td></tr>
-<tr class="separator:a9e804b2d067e38705651da6a72cb32e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc6a4ea97517e06511abfc0fc9e173f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8dc6a4ea97517e06511abfc0fc9e173f">operator[]</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> index)</td></tr>
+<tr class="separator:a8dc6a4ea97517e06511abfc0fc9e173f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef8119488c41ba1d40a5f3c0b92e397e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#aef8119488c41ba1d40a5f3c0b92e397e">operator[]</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> index) const </td></tr>
+<tr class="separator:aef8119488c41ba1d40a5f3c0b92e397e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbd441f61e6a9784dc1e7c1055639738"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#adbd441f61e6a9784dc1e7c1055639738">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> const &amp;arr)=default</td></tr>
 <tr class="separator:adbd441f61e6a9784dc1e7c1055639738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98007f6d8933d8b91d9e59767887684"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ae98007f6d8933d8b91d9e59767887684">operator=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> &amp;&amp;arr)=default</td></tr>
 <tr class="separator:ae98007f6d8933d8b91d9e59767887684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3841ae70203b4f1d773a9fe65020970"><td class="memTemplParams" colspan="2">template&lt;typename U  = T, typename std::enable_if&lt;!std::is_pod&lt; U &gt;::value, int &gt;::type  = 0&gt; </td></tr>
+<tr class="memitem:ac3841ae70203b4f1d773a9fe65020970"><td class="memTemplParams" colspan="2">template&lt;class K  = T, typename Utility::UseIfNotTriviallyCopyable&lt; K &gt;  = 0&gt; </td></tr>
 <tr class="memitem:ac3841ae70203b4f1d773a9fe65020970"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac3841ae70203b4f1d773a9fe65020970">operator==</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> const &amp;arr) const </td></tr>
 <tr class="separator:ac3841ae70203b4f1d773a9fe65020970"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3841ae70203b4f1d773a9fe65020970"><td class="memTemplParams" colspan="2">template&lt;typename U  = T, typename std::enable_if&lt; std::is_pod&lt; U &gt;::value, int &gt;::type  = 0&gt; </td></tr>
+<tr class="memitem:ac3841ae70203b4f1d773a9fe65020970"><td class="memTemplParams" colspan="2">template&lt;class K  = T, typename Utility::UseIfTriviallyCopyable&lt; K &gt;  = 0&gt; </td></tr>
 <tr class="memitem:ac3841ae70203b4f1d773a9fe65020970"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac3841ae70203b4f1d773a9fe65020970">operator==</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> const &amp;arr) const </td></tr>
 <tr class="separator:ac3841ae70203b4f1d773a9fe65020970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdf188605ad6e9c864aa034bd8e8b4d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#acdf188605ad6e9c864aa034bd8e8b4d7">operator!=</a> (<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">Array</a> const &amp;arr) const </td></tr>
 <tr class="separator:acdf188605ad6e9c864aa034bd8e8b4d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8ecae20e4a7da25f9067f2c9011133f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad8ecae20e4a7da25f9067f2c9011133f">toString</a> () const </td></tr>
+<tr class="memitem:ad8ecae20e4a7da25f9067f2c9011133f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad8ecae20e4a7da25f9067f2c9011133f">toString</a> () const </td></tr>
 <tr class="separator:ad8ecae20e4a7da25f9067f2c9011133f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_stringable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php">NRE::Utility::Stringable&lt; Array&lt; T, Size &gt; &gt;</a></td></tr>
-<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
+<tr class="memitem:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_stringable.php#a858907f8126e9c210854ddb659dd17ee">toString</a> () const</td></tr>
 <tr class="separator:a858907f8126e9c210854ddb659dd17ee inherit pub_methods_class_n_r_e_1_1_utility_1_1_stringable"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_n_r_e_1_1_utility_1_1_static_interface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php">NRE::Utility::StaticInterface&lt; T, M &gt;</a></td></tr>
-<tr class="memitem:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a72fd5f7816f2a8309328186e1bf2b2f5">impl</a> ()</td></tr>
-<tr class="separator:a72fd5f7816f2a8309328186e1bf2b2f5 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memItemLeft" align="right" valign="top">T const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_static_interface.php#a1fcc521ea437ea9edceae7f0c03ab6b1">impl</a> () const </td></tr>
-<tr class="separator:a1fcc521ea437ea9edceae7f0c03ab6b1 inherit pub_methods_class_n_r_e_1_1_utility_1_1_static_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, std::size_t Size&gt;<br />
@@ -231,48 +261,333 @@ class NRE::Utility::Array&lt; T, Size &gt;</h3>
 
 <p>A fixed size array. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="ad0527ef7754879228ba0c9caf90fc14c"></a>
+<a class="anchor" id="a8d8b74280204e0d3ac05fdb0e0423d90"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef const T* <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8d8b74280204e0d3ac05fdb0e0423d90">const_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide ReverseIterator implementation </p>
+<p>STL compatibility </p>
 
 </div>
 </div>
-<a class="anchor" id="a7c73d4e09069f287dd826778694a320c"></a>
+<a class="anchor" id="a74d7ff046d692f208384113f55c54cf1"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef T* <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">Iterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a74d7ff046d692f208384113f55c54cf1">const_pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>&lt; Shortcut to hide Iterator implementation Shortcut to hide ConstIterator implementation </p>
+<p>STL compatibility </p>
 
 </div>
 </div>
-<a class="anchor" id="a194595bf8eda8b81742a7b3ec59d2e47"></a>
+<a class="anchor" id="ab5cc7cf43685d32c4532151435f0acfa"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::reverse_iterator&lt;T*&gt; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">ReverseIterator</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ab5cc7cf43685d32c4532151435f0acfa">const_reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Shortcut to hide ConstReverseIterator implementation </p>
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a533fd802d70d0b1622cbc4e142f7f446"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a533fd802d70d0b1622cbc4e142f7f446">const_reverse_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a1d9c3cedc358c6fa37ead43cbbf39eec"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Immuable random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a2904cfdc42b306da7b6bbdebc948f3b0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a> =  const <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a>*</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type const pointer </p>
+
+</div>
+</div>
+<a class="anchor" id="a21b7b2c6b0d2cafb542c719c27f26418"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> const&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type const reference </p>
+
+</div>
+</div>
+<a class="anchor" id="a77341af327bf71857307ee0bcbb4a33a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a> =  std::reverse_iterator&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Immuable reverse random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a3e9aa096d021bfb18e222f65dfea2869"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3e9aa096d021bfb18e222f65dfea2869">difference_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a13503755383ed207497411583179745a">DifferenceType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a13503755383ed207497411583179745a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a13503755383ed207497411583179745a">DifferenceType</a> =  std::ptrdiff_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The object's difference type </p>
+
+</div>
+</div>
+<a class="anchor" id="a1caa63883daa72f86cd6e912fbc62994"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutable random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a8e713799b554d943d599c04e33da6643"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8e713799b554d943d599c04e33da6643">iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a3a473b201017e3513b1c05061cbd5223"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a>*</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type pointer </p>
+
+</div>
+</div>
+<a class="anchor" id="ac68c74ca15842976d265ae8164c0ebb7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ac68c74ca15842976d265ae8164c0ebb7">pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="afa251a0df0a73baae67d39177cfaa90f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a>&amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The allocated type reference </p>
+
+</div>
+</div>
+<a class="anchor" id="af84bc4ddbf660811caa74b1b1c7530f2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#af84bc4ddbf660811caa74b1b1c7530f2">reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="abfa8a6dff52fd8a068da221bca705e02"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#abfa8a6dff52fd8a068da221bca705e02">reverse_iterator</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a9f466da2cdfc8b3c07b9abf097d93acb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a> =  std::reverse_iterator&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mutable reverse random access iterator </p>
+
+</div>
+</div>
+<a class="anchor" id="a54963e0f1da053764235962bf9e5d000"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a54963e0f1da053764235962bf9e5d000">size_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a64b9ba4cfe847976b5a57605dde8f889"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> =  std::size_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The object's size type </p>
+
+</div>
+</div>
+<a class="anchor" id="a8de99b6b188fe6f33a7335e7754b441e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a8de99b6b188fe6f33a7335e7754b441e">value_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>STL compatibility </p>
+
+</div>
+</div>
+<a class="anchor" id="a069bbb740098037643c0cb7712ef4b21"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , std::size_t Size&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a069bbb740098037643c0cb7712ef4b21">ValueType</a> =  T</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The container's allocated type </p>
 
 </div>
 </div>
@@ -425,7 +740,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -443,7 +758,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::begin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -461,7 +776,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::cbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -479,7 +794,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -497,7 +812,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::crbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::crbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -515,7 +830,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::crend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::crend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -533,7 +848,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a7c73d4e09069f287dd826778694a320c">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1caa63883daa72f86cd6e912fbc62994">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -551,7 +866,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#ad0527ef7754879228ba0c9caf90fc14c">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::end </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a1d9c3cedc358c6fa37ead43cbbf39eec">ConstIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -562,7 +877,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ac9bcdd0aca1fa3c209d78ee733550987"></a>
+<a class="anchor" id="a24c150391274823dc07b349fbb58ea1b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -571,7 +886,7 @@ template&lt;class T , std::size_t Size&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::fill </td>
           <td>(</td>
-          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a>&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -586,16 +901,16 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a49186f2e8aa4c153e291a101c6ac7c5d"></a>
+<a class="anchor" id="a44a5690339531da481afc1a5eadf901f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::get </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::get </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -611,16 +926,16 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3ddbfb3591f97039eaf5729b0c60f8f6"></a>
+<a class="anchor" id="aad44c8af85f19b2bef0515cc1855eff5"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::get </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::get </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -636,14 +951,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="acaa8371bb5be3991597d4f3515e8c547"></a>
+<a class="anchor" id="a3237517819984c8ee33207ea2b8e556b"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T* <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getData </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a3a473b201017e3513b1c05061cbd5223">Pointer</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getData </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -654,14 +969,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a8210c770a4defc0540a758b1af849a5b"></a>
+<a class="anchor" id="a251b1a1d6de33118b63a1b543fba93fa"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const T* <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getData </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a2904cfdc42b306da7b6bbdebc948f3b0">ConstPointer</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getData </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -672,14 +987,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1cfaee04c82c6ee4b4f225b651b11391"></a>
+<a class="anchor" id="abbf5717e20eb223fd091d424e75b266d"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getFront </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getFront </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -690,14 +1005,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0eaae8f8a565dc06edc359d4d9dc935c"></a>
+<a class="anchor" id="ab17c0c088722c5d658bb06d8ea839d30"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getFront </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getFront </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -708,14 +1023,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0ba2737186424d7a6330418e9a5dcfd4"></a>
+<a class="anchor" id="a9daeee05b72f1d8c624910b27cc4e436"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getLast </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getLast </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -726,14 +1041,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="af7f6350efd46c7f4dc7300c26afdd001"></a>
+<a class="anchor" id="abdb4ed7bba3fa1fe0e34360e111d098f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getLast </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getLast </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -744,14 +1059,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2770ed9f41c41e7063a73410b34a7b12"></a>
+<a class="anchor" id="a320f2444368d3c88aaa056f36f134558"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getMaxSize </td>
+          <td class="memname">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getMaxSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -762,14 +1077,14 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3597a22d6e54ffa1b10a7d2722028273"></a>
+<a class="anchor" id="a99955b3454bc84deb2aa69f732b98b22"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::size_t <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getSize </td>
+          <td class="memname">constexpr <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::getSize </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -895,7 +1210,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
 <div class="memtemplate">
-template&lt;typename U  = T, typename std::enable_if&lt;!std::is_pod&lt; U &gt;::value, int &gt;::type  = 0&gt; </div>
+template&lt;class K  = T, typename Utility::UseIfNotTriviallyCopyable&lt; K &gt;  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -930,7 +1245,7 @@ template&lt;typename U  = T, typename std::enable_if&lt;!std::is_pod&lt; U &gt;:
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
 <div class="memtemplate">
-template&lt;typename U  = T, typename std::enable_if&lt; std::is_pod&lt; U &gt;::value, int &gt;::type  = 0&gt; </div>
+template&lt;class K  = T, typename Utility::UseIfTriviallyCopyable&lt; K &gt;  = 0&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -959,16 +1274,16 @@ template&lt;typename U  = T, typename std::enable_if&lt; std::is_pod&lt; U &gt;:
 
 </div>
 </div>
-<a class="anchor" id="a039cf013fe61d56bc12c554eda5d2fc6"></a>
+<a class="anchor" id="a8dc6a4ea97517e06511abfc0fc9e173f"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#afa251a0df0a73baae67d39177cfaa90f">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -984,16 +1299,16 @@ template&lt;class T , std::size_t Size&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9e804b2d067e38705651da6a72cb32e7"></a>
+<a class="anchor" id="aef8119488c41ba1d40a5f3c0b92e397e"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T const&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a21b7b2c6b0d2cafb542c719c27f26418">ConstReference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a64b9ba4cfe847976b5a57605dde8f889">SizeType</a>&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1016,7 +1331,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1034,7 +1349,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rbegin </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1052,7 +1367,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a194595bf8eda8b81742a7b3ec59d2e47">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a9f466da2cdfc8b3c07b9abf097d93acb">ReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1070,7 +1385,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">ConstReverseIterator <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rend </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_array.php#a77341af327bf71857307ee0bcbb4a33a">ConstReverseIterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::rend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1120,7 +1435,7 @@ template&lt;class T , std::size_t Size&gt; </div>
 template&lt;class T , std::size_t Size&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php">String</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::toString </td>
+          <td class="memname"><a class="el" href="_n_r_e___string_8hpp.php#a20410cefd428aefdf41f418a1e489d66">String</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_array.php">NRE::Utility::Array</a>&lt; T, Size &gt;::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

@@ -110,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &quot;<a class="el" href="_n_r_e___observer_8hpp_source.php">../Observer/NRE_Observer.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_n_r_e___vector_8hpp_source.php">../Vector/NRE_Vector.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_vector_2_n_r_e___vector_8hpp_source.php">../Vector/NRE_Vector.hpp</a>&quot;</code><br />
 <code>#include &quot;NRE_Observable.tpp&quot;</code><br />
 </div>
 <p><a href="_n_r_e___observable_8hpp_source.php">Go to the source code of this file.</a></p>

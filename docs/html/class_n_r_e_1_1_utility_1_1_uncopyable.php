@@ -127,10 +127,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a489b7621ae8e5109bda3af891d9f0053"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a489b7621ae8e5109bda3af891d9f0053">Uncopyable</a> ()=default</td></tr>
-<tr class="separator:a489b7621ae8e5109bda3af891d9f0053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2873929128bbf993c84d0535417b018"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ae2873929128bbf993c84d0535417b018">~Uncopyable</a> ()=default</td></tr>
-<tr class="separator:ae2873929128bbf993c84d0535417b018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f3ddf0a692a66a0f46e691d1ee97f5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#a9f3ddf0a692a66a0f46e691d1ee97f5c">Uncopyable</a> () noexcept=default</td></tr>
+<tr class="separator:a9f3ddf0a692a66a0f46e691d1ee97f5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab625b406b79b118177290cc155190590"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ab625b406b79b118177290cc155190590">~Uncopyable</a> () noexcept=default</td></tr>
+<tr class="separator:ab625b406b79b118177290cc155190590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
@@ -163,7 +163,7 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Copy o into this </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">o</td><td>the object to copy the content </td></tr>
+    <tr><td class="paramname">o</td><td>the object to copy </td></tr>
   </table>
   </dd>
 </dl>
@@ -195,14 +195,14 @@ template&lt;class T&gt; </div>
 </div><div class="memdoc">
 <p>Move o into this </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">o</td><td>the object to move the content </td></tr>
+    <tr><td class="paramname">o</td><td>the object to move </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a489b7621ae8e5109bda3af891d9f0053"></a>
+<a class="anchor" id="a9f3ddf0a692a66a0f46e691d1ee97f5c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -220,7 +220,7 @@ template&lt;class T&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -228,7 +228,7 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ae2873929128bbf993c84d0535417b018"></a>
+<a class="anchor" id="ab625b406b79b118177290cc155190590"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -246,7 +246,7 @@ template&lt;class T&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

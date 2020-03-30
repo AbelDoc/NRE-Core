@@ -1,6 +1,6 @@
 
     /**
-     * @file Detail/NRE_Vector.hpp
+     * @file Detail/Vector/NRE_Vector.hpp
      * @brief Declaration of Utility's API's Container : Vector
      * @author Louis ABEL
      * @date 15/05/2019
@@ -43,53 +43,53 @@
                     static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
                     
                     public :    // Traits
-                        /**< The container's allocated type */
+                        /** The container's allocated type */
                         using ValueType             = T;
-                        /**< The container's allocator */
+                        /** The container's allocator */
                         using AllocatorType         = Allocator;
-                        /**< The object's size type */
+                        /** The object's size type */
                         using SizeType              = std::size_t;
-                        /**< The object's difference type */
+                        /** The object's difference type */
                         using DifferenceType        = std::ptrdiff_t;
-                        /**< The allocated type reference */
+                        /** The allocated type reference */
                         using Reference             = ValueType&;
-                        /**< The allocated type const reference */
+                        /** The allocated type const reference */
                         using ConstReference        = ValueType const&;
-                        /**< The allocated type pointer */
+                        /** The allocated type pointer */
                         using Pointer               = typename AllocatorType::Pointer;
-                        /**< The allocated type const pointer */
+                        /** The allocated type const pointer */
                         using ConstPointer          = typename AllocatorType::ConstPointer;
-                        /**< Mutable random access iterator */
+                        /** Mutable random access iterator */
                         using Iterator              = Pointer;
-                        /**< Immuable random access iterator */
+                        /** Immuable random access iterator */
                         using ConstIterator         = ConstPointer;
-                        /**< Mutable reverse random access iterator */
+                        /** Mutable reverse random access iterator */
                         using ReverseIterator       = std::reverse_iterator<Iterator>;
-                        /**< Immuable reverse random access iterator */
+                        /** Immuable reverse random access iterator */
                         using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using value_type            = ValueType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using allocator_type        = AllocatorType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using size_type             = SizeType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using difference_type       = DifferenceType;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using reference             = Reference;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_reference       = ConstReference;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using pointer               = Pointer;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_pointer         = ConstPointer;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using iterator              = Iterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_iterator        = ConstIterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using reverse_iterator      = ReverseIterator;
-                        /**< STL compatibility */
+                        /** STL compatibility */
                         using const_reverse_iterator= ConstReverseIterator;
         
                     private :   // Fields

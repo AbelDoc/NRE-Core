@@ -22,15 +22,15 @@
          */
         namespace Utility {
     
-            /**< Shortcut to is_trivially_copyable_v inner value */
+            /** Shortcut to is_trivially_copyable_v inner value */
             template <class T>
             constexpr bool IsTriviallyCopyableV = std::is_trivially_copyable_v<T>;
             
-            /**< Allow to enable a function if the given template parameter is trivially copyable */
+            /** Allow to enable a function if the given template parameter is trivially copyable */
             template <class T>
             using UseIfTriviallyCopyable = std::enable_if_t<IsTriviallyCopyableV<T>, int>;
     
-            /**< Allow to enable a function if the given template parameter is not trivially copyable */
+            /** Allow to enable a function if the given template parameter is not trivially copyable */
             template <class T>
             using UseIfNotTriviallyCopyable = std::enable_if_t<!IsTriviallyCopyableV<T>, int>;
         

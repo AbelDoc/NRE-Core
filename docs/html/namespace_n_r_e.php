@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="namespaces.php"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.php"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -105,13 +106,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a5942dd350bdb718c0730019ef51c673d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5942dd350bdb718c0730019ef51c673d"></a>
-typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Id</b></td></tr>
-<tr class="separator:a5942dd350bdb718c0730019ef51c673d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b6f7c663efa49f33ea330055837b6f3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_r_e.php#a0b6f7c663efa49f33ea330055837b6f3">Id</a> = uint32_t</td></tr>
+<tr class="separator:a0b6f7c663efa49f33ea330055837b6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The NearlyRealEngine's global namespace. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a0b6f7c663efa49f33ea330055837b6f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespace_n_r_e.php#a0b6f7c663efa49f33ea330055837b6f3">NRE::Id</a> = typedef uint32_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Id are currently unsigned 32 bits values, could change to longer values but will never be signed </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>

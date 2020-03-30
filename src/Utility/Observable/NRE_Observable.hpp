@@ -32,13 +32,13 @@
              */
             class Observable {
                 public:     //Traits
-                    /**< The observers container */
+                    /** The observers container */
                     using Container     = Vector<Observer*>;
-                    /**< The observers iterator */
+                    /** The observers iterator */
                     using Iterator      = typename Container::Iterator;
-                    /**< The observers const iterator */
+                    /** The observers const iterator */
                     using ConstIterator = typename Container::ConstIterator;
-                    /**< The observable size type */
+                    /** The observable size type */
                     using SizeType      = typename Container::SizeType;
                     
                 private:    //Fields

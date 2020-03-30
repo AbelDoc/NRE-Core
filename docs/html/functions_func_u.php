@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_func.php#index_a"><span>a</span></a></li>
       <li><a href="functions_func_b.php#index_b"><span>b</span></a></li>
       <li><a href="functions_func_c.php#index_c"><span>c</span></a></li>
+      <li><a href="functions_func_d.php#index_d"><span>d</span></a></li>
       <li><a href="functions_func_e.php#index_e"><span>e</span></a></li>
       <li><a href="functions_func_f.php#index_f"><span>f</span></a></li>
       <li><a href="functions_func_g.php#index_g"><span>g</span></a></li>
@@ -135,10 +136,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_uncopyable.php#ac180584842c7aa72d28d65e598552647">NRE::Utility::Uncopyable&lt; T &gt;</a>
 </li>
 <li>unique()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_forward_list.php#a95a00f5843333bc8e849403aa33eb736">NRE::Utility::ForwardList&lt; T &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#aa45af044d9b7b0db414bdaa2e82324cc">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
 </li>
 <li>UnorderedMap()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_unordered_map.php#a50fa15fc2b9f31e617c60161e1016742">NRE::Utility::UnorderedMap&lt; Key, T, StoreHash, Hash, KeyEqual &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a4307f584c01d460acc70876a20610bba">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 </li>
 <li>update()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observer.php#a2e502d0563cb72165b216e55fd80ea60">NRE::Utility::Observer</a>
