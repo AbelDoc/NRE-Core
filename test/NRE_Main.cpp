@@ -7,8 +7,6 @@
      * @copyright CC-BY-NC-SA
      */
 
-    #define NRE_USE_MEMORY_MANAGER
-    
     #include <Header/NRE_Tester.cpp>
 
     #include "Utility/Array/NRE_Array.cpp"

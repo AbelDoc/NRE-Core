@@ -413,22 +413,23 @@
 
              template <class T>
              inline BasicString<T>& BasicString<T>::erase(SizeType index, SizeType count) {
-                 if (index > length - 1) {
+                 if (index > length - count) {
                      throw std::out_of_range("Erasing after NRE::Utility::String last element.");
                  }
-                 shiftBack(index, count);
-                 length -= count;
+                 if (index == length - count) {
+                     length -= count;
+                     addNullTerminated();
+                 } else {
+                     shiftBack(index, count);
+                     length -= count;
+                 }
                  return *this;
              }
 
              template <class T>
              inline typename BasicString<T>::Iterator BasicString<T>::erase(ConstIterator pos) {
                  SizeType index = pos - ConstIterator(data);
-                 if (index > length - 1) {
-                     throw std::out_of_range("Erasing after NRE::Utility::String last element.");
-                 }
-                 shiftBack(index, 1);
-                 length--;
+                 erase(index, 1);
                  return Iterator(data + index);
              }
 
@@ -436,11 +437,7 @@
              inline typename BasicString<T>::Iterator BasicString<T>::erase(ConstIterator begin, ConstIterator end) {
                  SizeType count = std::distance(begin, end);
                  SizeType index = begin - ConstIterator(data);
-                 if (index > length - count) {
-                     throw std::out_of_range("Erasing after NRE::Utility::String last element.");
-                 }
-                 shiftBack(index, count);
-                 length -= count;
+                 erase(index, count);
                  return Iterator(data + index + count);
              }
 
