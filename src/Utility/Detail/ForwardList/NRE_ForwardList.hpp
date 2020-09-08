@@ -71,6 +71,7 @@
                                  */
                                 Node(T && value, NodeBase* node);
                     };
+                    
                     /**
                      * @class ForwardIterator
                      * @brief Internal iterator for forward list
@@ -490,14 +491,14 @@
                             /**
                              * Merge this with list, both need to be sorted, list becomes empty
                              * @param list the other list to merge with this
-                             * @param comp function which returns ​true if the first argument is less than the second
+                             * @param comp function which returns true if the first argument is less than the second
                              */
                             template <class Comparator>
                             void merge(ForwardList& list, Comparator comp);
                             /**
                              * Merge this with list, both need to be sorted, list becomes empty
                              * @param list the other list to merge with this
-                             * @param comp function which returns ​true if the first argument is less than the second
+                             * @param comp function which returns true if the first argument is less than the second
                              */
                             template <class Comparator>
                             void merge(ForwardList && list, Comparator comp);

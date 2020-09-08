@@ -10,8 +10,8 @@
      namespace NRE {
          namespace Utility {
              namespace Detail {
-                 
                  namespace ForwardListInner {
+                     
                      inline NodeBase::NodeBase(NodeBase* node) : next(node) {
                      }
     

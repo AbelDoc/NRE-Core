@@ -1,7 +1,7 @@
     
     /**
-     * @file NRE_StaticVector.hpp
-     * @brief Declaration of Utility's API's Container : StaticVector
+     * @file NRE_Stack.hpp
+     * @brief Declaration of Utility's API's Container : Stack
      * @author Louis ABEL
      * @date 24/02/2020
      * @copyright CC-BY-NC-SA
@@ -58,14 +58,14 @@
                     //## Copy Constructor ##//
                         /**
                          * Copy s into this
-                         * @param  s the stack to copy
+                         * @param s the stack to copy
                          */
                         Stack(Stack const& s) = default;
         
                     //## Move Constructor ##//
                         /**
                          * Move s into this
-                         * @param  s the stack to move
+                         * @param s the stack to move
                          */
                         Stack(Stack && s) = default;
         
