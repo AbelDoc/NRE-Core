@@ -160,6 +160,8 @@
                         using ValueType             = T;
                         /** The container's allocator */
                         using AllocatorType         = Allocator;
+                        /** The container's map allocator */
+                        using MapAllocator          = typename Allocator::Rebind<T*>::Type;
                         /** The object's size type */
                         using SizeType              = std::size_t;
                         /** The object's difference type */
@@ -180,6 +182,8 @@
                         using ReverseIterator       = std::reverse_iterator<Iterator>;
                         /** Immuable reverse random access iterator */
                         using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
+                        /** The pointer on parent map */
+                        using MapPointer            = Pointer*;
                         /** STL compatibility */
                         using value_type            = ValueType;
                         /** STL compatibility */
@@ -204,9 +208,124 @@
                         using reverse_iterator      = ReverseIterator;
                         /** STL compatibility */
                         using const_reverse_iterator= ConstReverseIterator;
+
+                    private :   // Static
+                        static constexpr SizeType BUFFER_SIZE = Iterator::BUFFER_SIZE;
                     
                     private :   // Fields
-                        Pointer* data;
+                        Pointer* map;
+                        SizeType mapSize;
+                        Iterator start;
+                        Iterator finish;
+                        
+                    public :    // Methods
+                        //## Constructor ##//
+                            /**
+                             * Construct an empty deque with a base capacity
+                             * @param alloc the deque's memory allocator
+                             */
+                            Deque(Allocator const& alloc = Allocator());
+                            /**
+                             * Construct a deque filled with count copy of value
+                             * @param count the number of copy to perform
+                             * @param value the value to fill the deque with
+                             * @param alloc the deque's memory allocator
+                             */
+                            Deque(SizeType count, ConstReference value, Allocator const& alloc = Allocator());
+                            /**
+                             * Construct a deque filled with count default value
+                             * @param count the number of default element
+                             * @param alloc the deque's memory allocator
+                             */
+                            Deque(SizeType count, Allocator const& alloc = Allocator());
+                            /**
+                             * Construct a deque filled with element between 2 iterators
+                             * @param begin the begin iterator
+                             * @param end   the end iterator, pointing after the last element
+                             * @param alloc the deque's memory allocator
+                             */
+                            template <class InputIterator>
+                            Deque(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
+                            /**
+                             * Construct a deque from an initializer list
+                             * @param init  the list to fill the deque with
+                             * @param alloc the deque's memory allocator
+                             */
+                            Deque(std::initializer_list<T> init, Allocator const& alloc = Allocator());
+    
+                        //## Copy Constructor ##//
+                            /**
+                             * Copy d into this
+                             * @param d the deque to copy
+                             */
+                            Deque(Deque const& d);
+                            /**
+                             * Copy d into this
+                             * @param d     the deque to copy
+                             * @param alloc the deque's memory allocator
+                             */
+                            Deque(Deque const& d, Allocator const& alloc);
+        
+                        //## Move Constructor ##//
+                            /**
+                             * Move d into this
+                             * @param d the deque to move
+                             */
+                            Deque(Deque && d);
+                            /**
+                             * Move d into this
+                             * @param d     the deque to move
+                             * @param alloc the deque's memory allocator
+                             */
+                            Deque(Deque && d, Allocator const& alloc);
+        
+                        //## Deconstructor ##//
+                            /**
+                             * Deque Deconstructor
+                             */
+                            ~Deque();
+                            
+                    private :   // Methods
+                        /**
+                         * Initialize the map memory layout
+                         * @param nbElements the start number of elements in the map
+                         */
+                        void initializeMap(SizeType nbElements);
+                        /**
+                         * Allocate and create nodes between 2 addresses
+                         * @param begin the begin address
+                         * @param end   the end address
+                         */
+                        void createNodes(Pointer* begin, Pointer* end);
+                        /**
+                         * Deallocate nodes between 2 address
+                         * @param begin the begin address
+                         * @param end   the end address
+                         */
+                        void destroyNodes(Pointer* begin, Pointer* end);
+                        /**
+                         * @return a new allocated node
+                         */
+                        Pointer allocateNode();
+                        /**
+                         * Deallocate a node
+                         * @param p the node's pointer
+                         */
+                        void deallocateNode(Pointer p);
+                        /**
+                         * Allocate a map layout
+                         * @param nbElements the number of nodes in the map
+                         * @return the allocated map
+                         */
+                        MapPointer allocateMap(SizeType nbElements);
+                        /**
+                         * Deallocate a map layout
+                         * @param p          the map's pointer
+                         * @param nbElements the number of nodes in the map
+                         */
+                        void deallocateMap(MapPointer p, SizeType nbElements);
+                        
+                            
                 };
             }
         }

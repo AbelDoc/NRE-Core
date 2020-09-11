@@ -109,7 +109,6 @@
                              * @param count the number of copy to perform, will be the vector capacity and length
                              * @param value the value to fill the vector with
                              * @param alloc the vector's memory allocator
-                             * @pre value don't reference a vector item
                              */
                             Vector(SizeType count, ConstReference value, Allocator const& alloc = Allocator());
                             /**
@@ -123,7 +122,6 @@
                              * @param begin the begin iterator
                              * @param end   the end iterator, pointing after the last element
                              * @param alloc the vector's memory allocator
-                             * @pre begin and end are not iterator from the vector
                              */
                             template <class InputIterator>
                             Vector(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
@@ -131,7 +129,6 @@
                              * Construct a vector from an initializer list
                              * @param init  the list to fill the vector with
                              * @param alloc the vector's memory allocator
-                             * @pre list don't contain vector reference
                              */
                             Vector(std::initializer_list<T> init, Allocator const& alloc = Allocator());
             

@@ -62,9 +62,60 @@
                     inline void DequeIterator<T, Category>::setNode(MapPointer newNode) {
                         node = newNode;
                         first = *node;
-                        last  = first + static_cast <DifferenceType> ()
+                        last  = first + static_cast <DifferenceType> (BUFFER_SIZE);
                     }
                 
+                }
+                
+                template <class T, class Allocator>
+                inline Deque::Deque(Allocator const& alloc) : Allocator(alloc), map(nullptr), mapSize(0) {
+                    initializeMap(0);
+                }
+                
+                
+                template <class T, class Allocator>
+                inline void Deque::initiliazeMap(SizeType nbElements) {
+                
+                }
+    
+                template <class T, class Allocator>
+                inline void Deque::createNodes(Pointer* begin, Pointer* end) {
+                    Pointer* currentNode = nullptr;
+                    try {
+                        for (currentNode = begin; currentNode < end; currentNode++) {
+                            *currentNode = allocateNode();
+                        }
+                    } catch (std::exception& e) {
+                        destroyNodes(begin, currentNode);
+                        throw e;
+                    }
+                }
+                
+                template <class T, class Allocator>
+                inline void Deque::destroyNodes(Pointer* begin, Pointer* end) {
+                    for (auto current = begin; current < end; current++) {
+                        deallocateNode(current);
+                    }
+                }
+                
+                template <class T, class Allocator>
+                inline typename Deque::Pointer Deque::allocateNode() {
+                    return this->allocate(BUFFER_SIZE);
+                }
+                
+                template <class T, class Allocator>
+                inline void Deque::deallocateNode(Pointer p) {
+                    this->deallocate(p, BUFFER_SIZE);
+                }
+                
+                template <class T, class Allocator>
+                inline typename Deque::MapPointer Deque::allocateMap(SizeType nbElements) {
+                    return static_cast <MapAllocator*> (this)->allocate(nbElements);
+                }
+                
+                template <class T, class Allocator>
+                inline void Deque::deallocateMap(MapPointer p, SizeType nbElements) {
+                    static_cast <MapAllocator*> (this)->deallocate(p, nbElements);
                 }
             }
         }
