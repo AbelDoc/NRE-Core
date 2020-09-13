@@ -12,26 +12,26 @@
              namespace Detail {
 
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Allocator const& alloc) :  AllocatorType(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(AllocatorType const& alloc) :  AllocatorType(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(SizeType count, ConstReference value, Allocator const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
+                 inline Vector<T, Allocator>::Vector(SizeType count, ConstReference value, AllocatorType const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
                      assign(count, value);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(SizeType count, Allocator const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(this->construct(this->allocate(count))) {
+                 inline Vector<T, Allocator>::Vector(SizeType count, AllocatorType const& alloc) : Vector(count, ValueType(), alloc) {
                  }
     
                  template <class T, class Allocator>
                  template <class InputIterator>
-                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, Allocator const& alloc) : AllocatorType(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
+                 inline Vector<T, Allocator>::Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc) : AllocatorType(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
                      assign(begin, end);
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(std::initializer_list<T> init, Allocator const& alloc) : Vector(init.begin(), init.end(), alloc) {
+                 inline Vector<T, Allocator>::Vector(std::initializer_list<T> init, AllocatorType const& alloc) : Vector(init.begin(), init.end(), alloc) {
                  }
         
                  template <class T, class Allocator>
@@ -39,7 +39,7 @@
                  }
     
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector const& vec, Allocator const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
+                 inline Vector<T, Allocator>::Vector(Vector const& vec, AllocatorType const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
                      copy(vec);
                  }
     
@@ -48,7 +48,7 @@
                  }
         
                  template <class T, class Allocator>
-                 inline Vector<T, Allocator>::Vector(Vector && vec, Allocator const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
+                 inline Vector<T, Allocator>::Vector(Vector && vec, AllocatorType const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(std::move(vec.data)) {
                      vec.length = 0;
                      vec.capacity = 0;
                      vec.data = nullptr;
@@ -128,8 +128,8 @@
                  }
         
                  template <class T, class Allocator>
-                 inline Allocator Vector<T, Allocator>::getAllocator() const {
-                     return Allocator(*this);
+                 inline typename Vector<T, Allocator>::AllocatorType Vector<T, Allocator>::getAllocator() const {
+                     return AllocatorType(*this);
                  }
     
                  template <class T, class Allocator>

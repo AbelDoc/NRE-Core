@@ -50,7 +50,7 @@
                     
                     template <class T, class Category>
                     inline typename DequeIterator<T, Category>::DifferenceType DequeIterator<T, Category>::distanceTo(Iterator const& it) const {
-                        return (node - it.node) * static_cast <DifferenceType> (BUFFER_SIZE) + ((current - first) - (it.current - it.first));
+                        return (node - it.node - 1) * static_cast <DifferenceType> (BUFFER_SIZE) + (current - first) + (it.last - it.current);
                     }
                     
                     template <class T, class Category>
@@ -68,14 +68,73 @@
                 }
                 
                 template <class T, class Allocator>
-                inline Deque::Deque(Allocator const& alloc) : Allocator(alloc), map(nullptr), mapSize(0) {
+                inline Deque::Deque(AllocatorType const& alloc) : AllocatorType(alloc), map(nullptr), mapSize(0) {
                     initializeMap(0);
                 }
                 
+                template <class T, class Allocator>
+                inline Deque::Deque(SizeType count, ConstReference value, AllocatorType const& alloc) : AllocatorType(alloc), map(nullptr), mapSize(0) {
+                    initializeMap(count);
+                    assign(count, value);
+                }
+                
+                template <class T, class Allocator>
+                inline Deque::Deque(SizeType count, AllocatorType const& alloc) : Deque(count, ValueType(), alloc) {
+                }
+                
+                template <class T, class Allocator>
+                template <class InputIterator>
+                inline Deque::Deque(InputIterator begin, InputIterator end, AllocatorType const& alloc) : AllocatorType(alloc), map(nullptr), mapSize(0) {
+                    initializeMap(std::distance(begin, end));
+                    assign(begin, end);
+                }
+                
+                template <class T, class Allocator>
+                inline Deque::Deque(std::initializer_list<T> init, Allocator const& alloc) : Deque(init.begin(), init.end(), alloc) {
+                }
+    
+                template <class T, class Allocator>
+                inline Deque::Deque(Deque const& d) : Deque(d, static_cast <AllocatorType const&> (d)) {
+                }
+    
+                template <class T, class Allocator>
+                inline Deque::Deque(Deque const& d, AllocatorType const& alloc) : AllocatorType(alloc), map(nullptr), mapSize(0) {
+                    initializeMap(d.getSize());
+                    copy(d);
+                }
+                
+                template <class T, class Allocator>
+                inline Deque::Deque(Deque && d) : Deque(std::move(d), static_cast <AllocatorType const&> (d)) {
+                }
+                
+                template <class T, class Allocator>
+                inline Deque::Deque(Deque && d, AllocatorType const& alloc) : AllocatorType(alloc), map(d.map), mapSize(d.mapSize), start(d.start), finish(d.finish) {
+                    d.map = nullptr;
+                    d.mapSize = 0;
+                }
                 
                 template <class T, class Allocator>
                 inline void Deque::initiliazeMap(SizeType nbElements) {
-                
+                    const SizeType nbNodes = nbElements / BUFFER_SIZE + 1;
+                    mapSize = std::max(INITIAL_MAP_SIZE, nbNode + 2);
+                    map = allocateMap(mapSize);
+                    
+                    Pointer* begin = map + (mapSize - nbNodes) / 2;
+                    Pointer* end   = end + nbNodes;
+                    
+                    try {
+                        createsNodes(begin, end);
+                    } catch (std::exception& e) {
+                        deallocateMap(map, mapSize);
+                        map = nullptr;
+                        mapSize = 0;
+                        throw e;
+                    }
+                    
+                    start.setNode(begin);
+                    start.current = start.first;
+                    finish.setNode(end - 1);
+                    finish.current = finish.first + nbElements % BUFFER_SIZE;
                 }
     
                 template <class T, class Allocator>

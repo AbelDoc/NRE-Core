@@ -211,6 +211,7 @@
 
                     private :   // Static
                         static constexpr SizeType BUFFER_SIZE = Iterator::BUFFER_SIZE;
+                        static constexpr SizeType INITIAL_MAP_SIZE = 8;
                     
                     private :   // Fields
                         Pointer* map;
@@ -324,6 +325,11 @@
                          * @param nbElements the number of nodes in the map
                          */
                         void deallocateMap(MapPointer p, SizeType nbElements);
+                        /**
+                         * Copy the content of d
+                         * @param d the deque to copy
+                         */
+                        void copy(Deque const& d);
                         
                             
                 };

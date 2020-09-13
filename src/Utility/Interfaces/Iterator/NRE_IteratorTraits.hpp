@@ -172,6 +172,7 @@
             template <class It, class T, class Category>
             class IteratorTraits {
             };
+            
             /**
              * @class IteratorTraits
              * @brief Describe an iterator object
@@ -323,7 +324,7 @@
                         /**
                          * Move the iterator by k
                          * @param k the distance to add
-                         * @return  the reference of himself
+                         * @return the reference of himself
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         Iterator& operator +=(DifferenceType k) {
@@ -333,7 +334,7 @@
                         /**
                          * Move the iterator by k
                          * @param k the distance to subtract
-                         * @return  the reference of himself
+                         * @return the reference of himself
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         Iterator& operator -=(DifferenceType k) {
@@ -345,7 +346,7 @@
                         /**
                          * Create an iterator resulting in the move of this by k
                          * @param k the distance to add
-                         * @return   the new iterator
+                         * @return the new iterator
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         Iterator operator +(DifferenceType k) const {
@@ -354,7 +355,7 @@
                         /**
                          * Create an iterator resulting in the move of this by k
                          * @param k the distance to subtract
-                         * @return   the new iterator
+                         * @return the new iterator
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         Iterator operator -(DifferenceType k) const {
@@ -365,7 +366,7 @@
                         /**
                          * Equality test between this and it
                          * @param it the other iterator
-                         * @return   the test result
+                         * @return the test result
                          */
                         bool operator==(Iterator const& it) const {
                             return this->impl().equal(it);
@@ -373,7 +374,7 @@
                         /**
                          * Inequality test between this and it
                          * @param it the other iterator
-                         * @return   the test result
+                         * @return the test result
                          */
                         bool operator!=(Iterator const& it) const {
                             return !this->impl().equal(it);
@@ -381,7 +382,7 @@
                         /**
                          * Inferior test between this and it
                          * @param it the vector to test with this
-                         * @return  the test's result
+                         * @return the test's result
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         bool operator <(Iterator const& it) const {
@@ -390,7 +391,7 @@
                         /**
                          * Superior test between this and it
                          * @param it the vector to test with this
-                         * @return  the test's result
+                         * @return the test's result
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         bool operator >(Iterator const& it) const {
@@ -399,7 +400,7 @@
                         /**
                          * Inferior or Equal test between this and it
                          * @param it the vector to test with this
-                         * @return  the test's result
+                         * @return the test's result
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         bool operator <=(Iterator const& it) const {
@@ -408,7 +409,7 @@
                         /**
                          * Superior or Equal test between this and it
                          * @param it the vector to test with this
-                         * @return  the test's result
+                         * @return the test's result
                          */
                         template <class K = Category, typename = UseIfRandomAccessIterator<K>>
                         bool operator >=(Iterator const& it) const {
@@ -421,7 +422,7 @@
              * Create an iterator resulting in the move of it by k
              * @param k  the distance to add
              * @param it the iterator to move
-             * @return   the new iterator
+             * @return the new iterator
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
             It<Args...> operator +(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
@@ -432,12 +433,22 @@
              * Create an iterator resulting in the move of it by k
              * @param k  the distance to subtract
              * @param it the iterator to move
-             * @return   the new iterator
+             * @return the new iterator
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
             It<Args...> operator -(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
                 return It<T, Args...>(it) -= k;
             }
-        
+    
+            /**
+             * Compute the signed distance between two iterator
+             * @param it    the first iterator
+             * @param other the other iterator
+             * @return the iterators distance
+             */
+            template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
+            typename IteratorTraits<It<Args...>, T, Category>::DifferenceType operator -(IteratorTraits<It<Args...>, T, Category> const& it, IteratorTraits<It<Args...>, T, Category> const& other) {
+                return it.distanceTo(other);
+            }
         }
     }
