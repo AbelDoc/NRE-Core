@@ -9,7 +9,7 @@
     
     #define NRE_USE_MEMORY_MANAGER
     
-    #include <unordered_map>
+    #include <vector>
     #include <iostream>
     #include <chrono>
 
@@ -18,7 +18,7 @@
     using namespace NRE::Utility;
     
     int main(int, char**) {
-        /*std::size_t sumNRE2 = 0, sumNRE = 0;
+        std::size_t sumNRE2 = 0, sumNRE = 0;
         std::size_t worstNRE2 = 0, worstNRE = 0;
         std::size_t bestNRE2 = std::numeric_limits<std::size_t>::max(), bestNRE = std::numeric_limits<std::size_t>::max();
 
@@ -99,13 +99,7 @@
 
         std::cout << "\tAverage : " << sumNRE / firstLoopSize << " ns" << std::endl;
         std::cout << "\tWorst   : " << worstNRE << " ns" << std::endl;
-        std::cout << "\tBest    : " << bestNRE  << " ns" << std::endl;*/
-        
-        Vector<int*> test(10);
-        std::cout << *test[0] << std::endl;
-        std::cout << *test[1] << std::endl;
-        std::cout << *test[2] << std::endl;
-        std::cout << *test[3] << std::endl;
+        std::cout << "\tBest    : " << bestNRE  << " ns" << std::endl;
         
         return 0;
     }
