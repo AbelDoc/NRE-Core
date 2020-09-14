@@ -17,6 +17,16 @@
     void f() {
         std::cout << "Type is an iterator" << std::endl;
     }
+
+    template <Concept::InputIterator It>
+    void f() {
+        std::cout << "Type is an input iterator" << std::endl;
+    }
+
+    template <Concept::ForwardIterator It>
+    void f() {
+        std::cout << "Type is a forward iterator" << std::endl;
+    }
     
     template <class T>
     void f() {
@@ -41,12 +51,77 @@
             return *data;
         }
     };
+    struct IntegerInputIt {
+        using DifferenceType = Utility::DifferenceType;
+        using SizeType = Utility::SizeType;
+        using ValueType = int;
+        using Pointer = int*;
+        using Reference = int&;
+    
+        Pointer data;
+    
+        IntegerInputIt& operator++() {
+            data++;
+            return *this;
+        }
+    
+        IntegerInputIt operator++(int) {
+            IntegerInputIt r = *this;
+            data++;
+            return r;
+        }
+    
+        ValueType operator*() {
+            return *data;
+        }
+        
+        bool operator==(IntegerInputIt const& it) const {
+            return data == it.data;
+        }
+        
+        bool operator!=(IntegerInputIt const& it) const {
+            return !(*this == it);
+        }
+    };
+    struct IntegerForwardIt {
+        using DifferenceType = Utility::DifferenceType;
+        using SizeType = Utility::SizeType;
+        using ValueType = int;
+        using Pointer = int*;
+        using Reference = int&;
+    
+        Pointer data;
+    
+        IntegerForwardIt& operator++() {
+            data++;
+            return *this;
+        }
+    
+        IntegerForwardIt operator++(int) {
+            IntegerForwardIt r = *this;
+            data++;
+            return r;
+        }
+    
+        Reference operator*() {
+            return *data;
+        }
+    
+        bool operator==(IntegerForwardIt const& it) const {
+            return data == it.data;
+        }
+    
+        bool operator!=(IntegerForwardIt const& it) const {
+            return !(*this == it);
+        }
+    };
     
     int main(int, char**) {
-        
         f<int*>();
         f<int>();
         f<IntegerIt>();
+        f<IntegerInputIt>();
+        f<IntegerForwardIt>();
         
         return 0;
     }

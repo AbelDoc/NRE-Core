@@ -24,6 +24,7 @@
             
             using SizeType = std::size_t;
             using DifferenceType = std::ptrdiff_t;
+            using NullPointer = decltype(nullptr);
     
             /**
              * @struct Constant
@@ -119,6 +120,34 @@
             struct RemoveCV<const volatile T> {
                 using Type = T;
             };
+    
+            /**
+             * @struct RemoveReference
+             * @brief Allow to remove any reference on a given type
+             */
+            template <class T>
+            struct RemoveReference {
+                using Type = T;
+            };
+            
+            template <class T>
+            struct RemoveReference<T&> {
+                using Type = T;
+            };
+            
+            template <class T>
+            struct RemoveReference<T&&> {
+                using Type = T;
+            };
+            
+            /**
+             * @struct RemoveCVReference
+             * @brief Allow to remove any reference and const/volatile modifier on a given type
+             */
+            template <class T>
+            struct RemoveCVReference {
+                using Type = typename RemoveCV<typename RemoveReference<T>::Type>::Type;
+            };
             
             /**
              * @struct IsPointerHelper
@@ -176,8 +205,13 @@
             struct IsArray<T[N]> : TrueType {
             };
             
-            /** Define a null pointer type from the nullptr litteral */
-            using NullPointer = decltype(nullptr);
-            
+            /**
+             * @struct CommonReference
+             * @brief Allow to find a reference that's convertible to any of the given types
+             */
+            template <class ... T>
+            struct CommonReference {
+                using Type = typename std::common_reference<T...>::type;
+            };
         }
     }
