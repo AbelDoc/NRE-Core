@@ -26,7 +26,7 @@
              * @brief Allow to check if two types are strictly the same
              */
             template <class T, class U>
-            concept SameAs = Utility::IsSameAs<T, U>::value && Utility::IsSameAs<U, T>::value;
+            concept SameAs = Utility::IsSameAsV<T, U> && Utility::IsSameAsV<U, T>;
     
             /**
              * @interface Referenceable
@@ -42,7 +42,7 @@
              * @brief Define a dereferenceable object
              */
             template <class T>
-            concept Dereferenceable = requires(T& t) {
+            concept Dereferenceable = requires(T t) {
                 { *t } -> Referenceable;
             };
     
@@ -51,35 +51,35 @@
              * @brief Define an integral type
              */
             template <class T>
-            concept Integral = std::is_integral<T>::value;
+            concept Integral = std::is_integral_v<T>;
     
             /**
              * @interface FloatingPoint
              * @brief Define a floating point type
              */
             template <class T>
-            concept FloatingPoint = std::is_floating_point<T>::value;
+            concept FloatingPoint = std::is_floating_point_v<T>;
     
             /**
              * @interface Enum
              * @brief Define an enum type
              */
             template <class T>
-            concept Enum = std::is_enum<T>::value;
+            concept Enum = std::is_enum_v<T>;
     
             /**
              * @interface Union
              * @brief Define an union type
              */
             template <class T>
-            concept Union = std::is_union<T>::value;
+            concept Union = std::is_union_v<T>;
     
             /**
              * @interface Class
              * @brief Define a class type
              */
             template <class T>
-            concept Class = std::is_class<T>::value;
+            concept Class = std::is_class_v<T>;
     
             /**
              * @interface Arithmetic
@@ -93,21 +93,21 @@
              * @brief Define a pointer type
              */
             template <class T>
-            concept Pointer = Utility::IsPointer<T>::value;
+            concept Pointer = Utility::IsPointerV<T>;
     
             /**
              * @interface MemberPointer
              * @brief Define a pointer on non-static member type
              */
             template <class T>
-            concept MemberPointer = Utility::IsMemberPointer<T>::value;
+            concept MemberPointer = Utility::IsMemberPointerV<T>;
     
             /**
              * @interface NullPointer
              * @brief Define a null pointer type
              */
             template <class T>
-            concept NullPointer = SameAs<Utility::NullPointer, typename Utility::RemoveCV<T>::Type>;
+            concept NullPointer = SameAs<Utility::NullPointer, Utility::RemoveCVT<T>>;
     
             /**
              * @interface Scalar
@@ -121,7 +121,7 @@
              * @brief Define an array type
              */
             template <class T>
-            concept Array = Utility::IsArray<T>::value;
+            concept Array = Utility::IsArrayV<T>;
     
     
             /**
@@ -146,21 +146,70 @@
             concept Destructible = std::destructible<T>;
     
             /**
+             * @interface ConvertibleTo
+             * @brief Define a type that's convertible to another
+             */
+            template <class F, class T>
+            concept ConvertibleTo = std::convertible_to<F, T>;
+    
+            template <class T>
+            concept ConvertibleToBoolean = ConvertibleTo<T, bool>;
+    
+            /**
              * @interface ConstructibleFrom
              * @brief Define a type that's constructible from a given set of arguments
              */
             template <class T, class ... Args>
             concept ConstructibleFrom = Destructible<T> && std::is_constructible_v<T, Args...>;
+            
+            /**
+             * @interface DefaultInitializable
+             * @brief Define a type that's default initiazable
+             */
+            template <class T>
+            concept DefaultInitializable = ConstructibleFrom<T> && requires {
+                T{};
+                ::new (static_cast <void*> (nullptr)) T;
+            };
     
             /**
-             * @interface ConvertibleTo
-             * @brief Define a type that's convertible to another
+             * @interface MoveConstructible
+             * @brief Define a type that's move constructible
+             */
+            template <class T>
+            concept MoveConstructible = ConstructibleFrom<T, T> && ConvertibleTo<T, T>;
+    
+            /**
+             * @interface CommonReferenceWith
+             * @brief Define two type sharing a common reference type and convertible to it
              */
             template <class T, class U>
-            concept ConvertibleTo = std::convertible_to<T, U>;
-    
+            concept CommonReferenceWith = SameAs<Utility::CommonReferenceT<T, U>, Utility::CommonReferenceT<U, T>> &&
+                                          ConvertibleTo<T, Utility::CommonReferenceT<T, U>> &&
+                                          ConvertibleTo<U, Utility::CommonReferenceT<T, U>>;
+            
+            /**
+             * @interface AssignableFrom
+             * @brief Define a type that's l-value is assignable from another type
+             */
+            template <class L, class R>
+            concept AssignableFrom = Utility::IsLValueReferenceV<L> && CommonReferenceWith<Utility::RemoveReferenceT<L> const&, Utility::RemoveReferenceT<R> const&> && requires (L l, R&& r) {
+                { l = std::forward<R>(r) } -> SameAs<L>;
+            };
+            
+            /**
+             * @interface Swappable
+             * @brief Define a type that's swappable with himself
+             */
             template <class T>
-            concept ConvertibleToBoolean = ConvertibleTo<T, bool>;
+            concept Swappable = std::swappable<T>;
+            
+            /**
+             * @interface Moveable
+             * @brief Define a type that's moveable, can ve move constructed, move assigned, and swappable
+             */
+            template <class T>
+            concept Moveable = Object<T> && MoveConstructible<T> && AssignableFrom<T&, T> && Swappable<T>;
     
             /**
              * @interface BooleanTestable
@@ -190,6 +239,37 @@
              */
             template <class T>
             concept EqualityComparable = EqualityComparableWith<T, T>;
+    
+            /**
+             * @interface TotallyOrderedWith
+             * @brief Define a type that's totally ordered with another
+             */
+            template <class T, class U>
+            concept TotallyOrderedWith = EqualityComparableWith<T, U> && requires (typename Utility::RemoveReference<T>::Type const& t,
+                                                                                   typename Utility::RemoveReference<U>::Type const& u) {
+                { t <  u } -> BooleanTestable;
+                { t >  u } -> BooleanTestable;
+                { t <= u } -> BooleanTestable;
+                { t >= u } -> BooleanTestable;
+                { u <  t } -> BooleanTestable;
+                { u >  t } -> BooleanTestable;
+                { u <= t } -> BooleanTestable;
+                { u >= t } -> BooleanTestable;
+            };
+    
+            /**
+             * @interface TotallyOrdered
+             * @brief Define a type that's totally ordered with himself
+             */
+            template <class T>
+            concept TotallyOrdered = TotallyOrderedWith<T, T>;
+    
+            /**
+             * @interface DerivedFrom
+             * @brief Allow to verify if a type is derived from another
+             */
+            template <class D, class B>
+            concept DerivedFrom = Utility::IsBaseOf<B, D>::value && ConvertibleTo<const volatile D*, const volatile B*>;
         }
         /**
          * @namespace Utility
@@ -198,79 +278,117 @@
         namespace Utility {
     
             /**
-             * @struct IteratorTraits
-             * @brief Allow an uniform access to several iterator traits
+             * @struct InputIteratorCategory
+             * @brief Define an iterator category for concept differenciation
              */
-            template <class It>
-            struct IteratorTraits {
+            struct InputIteratorCategory {
             };
     
-            template <Concept::Object T>
-            struct IteratorTraits<T*> {
-                using DifferenceType = DifferenceType;
-                using SizeType       = SizeType;
-                using ValueType      = T;
-                using Pointer        = T*;
-                using Reference      = T&;
+            /**
+             * @struct OutputIteratorCategory
+             * @brief Define an iterator category for concept differenciation
+             */
+            struct OutputIteratorCategory {
             };
     
+            /**
+             * @struct ForwardIteratorCategory
+             * @brief Define an iterator category for concept differenciation
+             */
+            struct ForwardIteratorCategory : public InputIteratorCategory {
+            };
+    
+            /**
+             * @struct BidirectionnalIteratorCategory
+             * @brief Define an iterator category for concept differenciation
+             */
+            struct BidirectionnalIteratorCategory : public ForwardIteratorCategory {
+            };
+    
+            /**
+             * @struct RandomAccessIteratorCategory
+             * @brief Define an iterator category for concept differenciation
+             */
+            struct RandomAccessIteratorCategory : public BidirectionnalIteratorCategory {
+            };
+    
+            /**
+             * @struct ContiguousIteratorCategory
+             * @brief Define an iterator category for concept differenciation
+             */
+            struct ContiguousIteratorCategory : public RandomAccessIteratorCategory {
+            };
+            
+            /**
+             * @struct IncrementableTraits
+             * @brief Allow an abstract access to incrementable traits with STL compatiblity (STL -> NRE, NRE -> STL)
+             */
             template <class T>
-            struct IteratorTraits<const T> : IteratorTraits<T> {
+            struct IncrementableTraits {
+            };
+            
+            template <Concept::Object T>
+            struct IncrementableTraits<T*> {
+                using DifferenceType = Utility::DifferenceType;
+                using difference_type = DifferenceType;
+            };
+            
+            template <class T>
+            struct IncrementableTraits<const T> : IncrementableTraits<T> {
+            };
+            
+            template <class T> requires requires {
+                typename T::DifferenceType;
+            } && (!requires {
+                typename T::difference_type;
+            })
+            struct IncrementableTraits<T> {
+                using DifferenceType = T::DifferenceType;
+                using difference_type = DifferenceType;
+            };
+    
+            template <class T> requires requires {
+                typename T::difference_type;
+            } && (!requires {
+                typename T::DifferenceType;
+            })
+            struct IncrementableTraits<T> {
+                using DifferenceType = T::difference_type;
+                using difference_type = DifferenceType;
             };
     
             template <class T> requires requires {
                 typename T::DifferenceType;
-                typename T::SizeType;
-                typename T::ValueType;
-                typename T::Pointer;
-                typename T::Reference;
+                typename T::difference_type;
+                Concept::SameAs<typename T::DifferenceType, typename T::difference_type>;
             }
-            struct IteratorTraits<T> {
+            struct IncrementableTraits<T> {
                 using DifferenceType = T::DifferenceType;
-                using SizeType       = T::SizeType;
-                using ValueType      = T::ValueType;
-                using Pointer        = T::Pointer;
-                using Reference      = T::Reference;
+                using difference_type = DifferenceType;
             };
+            
+            template <class T> requires (!requires {
+                typename T::DifferenceType;
+            } || !requires {
+                typename T::difference_type;
+            } || !requires {
+                typename T::DifferenceType;
+                typename T::difference_type;
+                Concept::SameAs<typename T::DifferenceType, typename T::difference_type>;
+            }) && requires (T const& a, T const& b) {
+                { a - b } -> Concept::Integral;
+            }
+            struct IncrementableTraits<T> {
+                using DifferenceType = MakeSignedT<decltype(std::declval<T>() - std::declval<T>())>;
+                using difference_type = DifferenceType;
+            };
+            
         }
         /**
          * @namespace Concept
          * @brief Concept's API
          */
         namespace Concept {
-            /**
-             * @interface Iterator
-             * @brief Define a base iterator concept
-             */
-            template <class It>
-            concept Iterator = Copyable<It> && Dereferenceable<It> && requires(It it) {
-                { ++it } -> SameAs<It&>;
-                typename Utility::IteratorTraits<It>::ValueType;
-                typename Utility::IteratorTraits<It>::DifferenceType;
-                typename Utility::IteratorTraits<It>::SizeType;
-                typename Utility::IteratorTraits<It>::Reference;
-                typename Utility::IteratorTraits<It>::Pointer;
-            };
-    
-            /**
-             * @interface InputIterator
-             * @brief Define an input iterator, capable of reading the pointed element, guarantee validity on single pass
-             */
-            template <class It>
-            concept InputIterator = Iterator<It> && EqualityComparable<It> && requires(It it) {
-                typename Utility::CommonReference<typename Utility::IteratorTraits<It>::Reference&&, typename Utility::IteratorTraits<It>::ValueType&>;
-                *it++;
-                typename Utility::CommonReference<decltype(*it++)&&, typename Utility::IteratorTraits<It>::ValueType&>;
-            };
-    
-            /**
-             * @interface ForwardIterator
-             * @brief Define a forward iterator, capable of multi-pass iteration, if coupled with OutputIterator it will be mutable
-             */
-            template <class It>
-            concept ForwardIterator = InputIterator<It> && ConstructibleFrom<It> && SameAs<typename Utility::IteratorTraits<It>::ValueType, typename Utility::RemoveCVReference<typename Utility::IteratorTraits<It>::Reference>::Type> && requires(It it) {
-                {  it++ } -> ConvertibleTo<It const&>;
-                { *it++ } -> SameAs<typename Utility::IteratorTraits<It>::Reference>;
-            };
+        
         }
     }
