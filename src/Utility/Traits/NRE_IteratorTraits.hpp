@@ -83,21 +83,21 @@
     
             template <class T> requires requires {
                 typename T::DifferenceType;
-            } && (!requires {
+            } && !requires {
                 typename T::difference_type;
-            })
+            }
             struct IncrementableTraits<T> {
-                using DifferenceType = T::DifferenceType;
+                using DifferenceType = typename T::DifferenceType;
                 using difference_type = DifferenceType;
             };
     
             template <class T> requires requires {
                 typename T::difference_type;
-            } && (!requires {
+            } && !requires {
                 typename T::DifferenceType;
-            })
+            }
             struct IncrementableTraits<T> {
-                using DifferenceType = T::difference_type;
+                using DifferenceType = typename T::difference_type;
                 using difference_type = DifferenceType;
             };
     
@@ -107,7 +107,7 @@
                 Concept::SameAs<typename T::DifferenceType, typename T::difference_type>;
             }
             struct IncrementableTraits<T> {
-                using DifferenceType = T::DifferenceType;
+                using DifferenceType = typename T::DifferenceType;
                 using difference_type = DifferenceType;
             };
     
@@ -125,6 +125,61 @@
             struct IncrementableTraits<T> {
                 using DifferenceType = MakeSignedT<decltype(std::declval<T>() - std::declval<T>())>;
                 using difference_type = DifferenceType;
+            };
+            
+            /**
+             * @struct IncrementableTraits
+             * @brief Allow an abstract access to indirectly readable traits with STL compatiblity (STL -> NRE, NRE -> STL)
+             */
+            template <class T>
+            struct IndirectlyReadableTraits {
+            };
+    
+            template <Concept::Object T>
+            struct IndirectlyReadableTraits<T*> {
+                using ValueType = RemoveCVT<T>;
+                using value_type = ValueType;
+            };
+    
+            template <Concept::Array T>
+            struct IndirectlyReadableTraits<T> {
+                using ValueType = RemoveCVT <RemoveExtentT<T>>;
+                using value_type = ValueType;
+            };
+    
+            template <class T>
+            struct IndirectlyReadableTraits<const T> : IndirectlyReadableTraits<T> {
+            };
+    
+            template <class T> requires requires {
+                typename T::ValueType;
+            } && !requires {
+                typename T::value_type;
+            }
+            struct IndirectlyReadableTraits<T> {
+                using ValueType = RemoveCVT<typename T::ValueType>;
+                using value_type = ValueType;
+            };
+    
+            template <class T> requires requires {
+                typename T::value_type;
+            } && !requires {
+                typename T::ValueType;
+            }
+            struct IndirectlyReadableTraits<T> {
+                using ValueType = RemoveCVT<typename T::value_type>;
+                using value_type = ValueType;
+            };
+    
+    
+            template <class T> requires requires {
+                typename T::ValueType;
+                typename T::value_type;
+                Concept::SameAs<typename T::ValueType, typename T::value_type>;
+            }
+            struct IndirectlyReadableTraits<T> {
+                using ValueType = RemoveCVT<typename T::ValueType>;
+                using value_type = ValueType;
             };
         }
     }

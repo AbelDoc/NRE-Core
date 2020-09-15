@@ -180,6 +180,29 @@
             using RemoveCVReferenceT = typename RemoveCVReference<T>::Type;
             
             /**
+             * @struct RemoveExtent
+             * @brief Allow to remove one dimension from an array type
+             */
+            template <class T>
+            struct RemoveExtent {
+                using Type = T;
+            };
+            
+            template <class T>
+            struct RemoveExtent<T[]> {
+                using Type = T;
+            };
+            
+            template <class T, SizeType N>
+            struct RemoveExtent<T[N]> {
+                using Type = T;
+            };
+            
+            /** Helper to access RemoveExtent type */
+            template <class T>
+            using RemoveExtentT = typename RemoveExtent<T>::Type;
+            
+            /**
              * @struct IsPointerHelper
              * @brief Helper to allow to check if a type is a pointer
              */
