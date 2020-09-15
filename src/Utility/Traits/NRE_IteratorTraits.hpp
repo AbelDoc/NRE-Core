@@ -65,7 +65,7 @@
     
             /**
              * @struct IncrementableTraits
-             * @brief Allow an abstract access to incrementable traits with STL compatiblity (STL -> NRE, NRE -> STL)
+             * @brief Allow an abstract access to incrementable traits with STL compatiblity (STL -> NRE)
              */
             template <class T>
             struct IncrementableTraits {
@@ -74,7 +74,6 @@
             template <Concept::Object T>
             struct IncrementableTraits<T*> {
                 using DifferenceType = Utility::DifferenceType;
-                using difference_type = DifferenceType;
             };
     
             template <class T>
@@ -88,7 +87,6 @@
             }
             struct IncrementableTraits<T> {
                 using DifferenceType = typename T::DifferenceType;
-                using difference_type = DifferenceType;
             };
     
             template <class T> requires requires {
@@ -98,7 +96,6 @@
             }
             struct IncrementableTraits<T> {
                 using DifferenceType = typename T::difference_type;
-                using difference_type = DifferenceType;
             };
     
             template <class T> requires requires {
@@ -108,7 +105,6 @@
             }
             struct IncrementableTraits<T> {
                 using DifferenceType = typename T::DifferenceType;
-                using difference_type = DifferenceType;
             };
     
             template <class T> requires (!requires {
@@ -124,12 +120,11 @@
             }
             struct IncrementableTraits<T> {
                 using DifferenceType = MakeSignedT<decltype(std::declval<T>() - std::declval<T>())>;
-                using difference_type = DifferenceType;
             };
             
             /**
              * @struct IncrementableTraits
-             * @brief Allow an abstract access to indirectly readable traits with STL compatiblity (STL -> NRE, NRE -> STL)
+             * @brief Allow an abstract access to indirectly readable traits with STL compatiblity (STL -> NRE)
              */
             template <class T>
             struct IndirectlyReadableTraits {
@@ -138,13 +133,11 @@
             template <Concept::Object T>
             struct IndirectlyReadableTraits<T*> {
                 using ValueType = RemoveCVT<T>;
-                using value_type = ValueType;
             };
     
             template <Concept::Array T>
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT <RemoveExtentT<T>>;
-                using value_type = ValueType;
             };
     
             template <class T>
@@ -158,7 +151,6 @@
             }
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::ValueType>;
-                using value_type = ValueType;
             };
     
             template <class T> requires requires {
@@ -168,7 +160,6 @@
             }
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::value_type>;
-                using value_type = ValueType;
             };
     
     
@@ -179,7 +170,6 @@
             }
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::ValueType>;
-                using value_type = ValueType;
             };
         }
     }
