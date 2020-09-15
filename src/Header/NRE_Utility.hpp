@@ -36,4 +36,9 @@
 
     #include "../Utility/Id/NRE_Id.hpp"
 
+    #include "../Utility/Traits/NRE_Traits.hpp"
+    #include "../Utility/Traits/NRE_TypeTraits.hpp"
+    #include "../Utility/Traits/NRE_IteratorTraits.hpp"
+
     #include "NRE_Exception.hpp"
+    #include "NRE_Concept.hpp"

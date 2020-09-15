@@ -9,7 +9,7 @@
     
     #include <iostream>
     
-    #include "Concept/NRE_Concept.hpp"
+    #include "Header/NRE_Utility.hpp"
 
     using namespace NRE;
     
