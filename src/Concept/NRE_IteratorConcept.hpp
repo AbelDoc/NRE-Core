@@ -134,5 +134,17 @@
                     && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::ForwardIteratorCategory>
                     && Incrementable<T>
                     && SentinelFor<T, T>;
+            
+            /**
+             * @interface BidirectionalIterator
+             * @brief Define a bidirectional iterator supporting both direction iteration
+             */
+            template <class T>
+            concept BidirectionalIterator = ForwardIterator<T>
+                    && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::BidirectionalIteratorCategory>
+                    && requires (T t) {
+                        { --t } -> SameAs<T&>;
+                        { t-- } -> SameAs<T>;
+                    };
         }
     }

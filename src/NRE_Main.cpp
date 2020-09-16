@@ -9,6 +9,7 @@
     
     #include <iostream>
     #include <forward_list>
+    #include <list>
     
     #include "Header/NRE_Utility.hpp"
 
@@ -29,8 +30,10 @@
         std::cout << "\nForward Iterator test : " << std::endl;
         std::cout << "forward_list<int>::iterator -> " << Concept::ForwardIterator<std::forward_list<int>::iterator> << std::endl;
         std::cout << "int* -> " << Concept::ForwardIterator<int*> << std::endl;
-        
-        
+    
+        std::cout << "\nBidirectional Iterator test : " << std::endl;
+        std::cout << "list<int>::iterator -> " << Concept::BidirectionalIterator<std::list<int>::iterator> << std::endl;
+        std::cout << "int* -> " << Concept::BidirectionalIterator<int*> << std::endl;
         
         return 0;
     }

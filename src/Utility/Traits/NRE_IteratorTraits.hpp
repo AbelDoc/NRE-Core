@@ -43,17 +43,17 @@
             };
     
             /**
-             * @struct BidirectionnalIteratorCategory
+             * @struct BidirectionalIteratorCategory
              * @brief Define an iterator category for concept differenciation
              */
-            struct BidirectionnalIteratorCategory : public ForwardIteratorCategory {
+            struct BidirectionalIteratorCategory : public ForwardIteratorCategory {
             };
     
             /**
              * @struct RandomAccessIteratorCategory
              * @brief Define an iterator category for concept differenciation
              */
-            struct RandomAccessIteratorCategory : public BidirectionnalIteratorCategory {
+            struct RandomAccessIteratorCategory : public BidirectionalIteratorCategory {
             };
     
             /**
@@ -88,7 +88,7 @@
     
             template <class T> requires Concept::SameAs<T, std::bidirectional_iterator_tag>
             struct IteratorCategoryAdapter<T> {
-                using Type = BidirectionnalIteratorCategory;
+                using Type = BidirectionalIteratorCategory;
             };
     
             template <class T> requires Concept::SameAs<T, std::random_access_iterator_tag>
