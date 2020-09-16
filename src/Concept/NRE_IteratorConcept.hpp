@@ -55,4 +55,27 @@
             template <Concept::IndirectlyReadable T>
             using IteratorCommonReferenceT = CommonReferenceT<IteratorReferenceT<T>, IteratorValueT<T>&>;
         }
+        namespace Concept {
+            
+            /**
+             * @interface WeaklyIncrementable
+             * @brief Define an incrementable type without equality preserving incrementation
+             */
+            template <class T>
+            concept WeaklyIncrementable = DefaultInitializable<T> && Moveable<T> && requires (T t) {
+                typename Utility::IteratorDifferenceT<T>;
+                requires SignedIntegerLike<Utility::IteratorDifferenceT<T>>;
+                { ++t } -> SameAs<T&>;
+                t++;
+            };
+            
+            /**
+             * @interface InputOrOutputIterator
+             * @brief Define a base iterator type for later input/output iterators
+             */
+            template <class T>
+            concept InputOrOutputIterator = requires (T t) {
+                { *t } -> Referenceable;
+            } && WeaklyIncrementable<T>;
+        }
     }

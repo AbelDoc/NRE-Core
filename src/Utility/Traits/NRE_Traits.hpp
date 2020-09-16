@@ -9,7 +9,7 @@
     
     #pragma once
     
-    #include <type_traits>
+    #include "../../Concept/NRE_TypeConcept.hpp"
     
     /**
     * @namespace NRE
@@ -28,6 +28,21 @@
             using DifferenceType = std::ptrdiff_t;
             /** Define a null pointer type from the nullptr litteral */
             using NullPointer = decltype(nullptr);
+
+            #pragma GCC diagnostic push
+            #pragma GCC diagnostic ignored "-Wpedantic"
+                #if __SIZEOF_INT128__
+                    /** Define the maximum signed type */
+                    using MaxDifferenceType = __int128;
+                    /** Define the maximum unsigned type */
+                    using MaxSizeType       = unsigned __int128;
+                #else
+                    /** Define the maximum signed type */
+                    using MaxDifferenceType = long long;
+                    /** Define the maximum unsigned type */
+                    using MaxSizeType       = unsigned long long;
+                #endif
+            #pragma GCC diagnostic pop
             
             /**
              * @struct Constant
@@ -201,49 +216,54 @@
             /** Helper to access RemoveExtent type */
             template <class T>
             using RemoveExtentT = typename RemoveExtent<T>::Type;
-            
-            /**
-             * @struct IsPointerHelper
-             * @brief Helper to allow to check if a type is a pointer
-             */
-            template <class T>
-            struct IsPointerHelper : FalseType {
-            };
-            
-            template <class T>
-            struct IsPointerHelper<T*> : TrueType {
-            };
+    
+    
+            namespace Detail {
+                /**
+                 * @struct IsPointer
+                 * @brief Helper to allow to check if a type is a pointer
+                 */
+                template <class T>
+                struct IsPointer : FalseType {
+                };
+    
+                template <class T>
+                struct IsPointer<T*> : TrueType {
+                };
+            }
     
             /**
              * @struct IsPointer
              * @brief Allow to check if a type is a pointer
              */
             template <class T>
-            struct IsPointer : IsPointerHelper<typename RemoveCV<T>::Type> {
+            struct IsPointer : Detail::IsPointer<typename RemoveCV<T>::Type> {
             };
     
             /** Helper to access IsPointer value */
             template <class T>
             inline constexpr bool IsPointerV = IsPointer<T>::value;
-    
-            /**
-             * @struct IsMemberPointerHelper
-             * @brief Helper to allow to check if a type is a pointer to a non-static member
-             */
-            template <class T>
-            struct IsMemberPointerHelper : FalseType {
-            };
             
-            template <class T, class U>
-            struct IsMemberPointerHelper<T U::*> : TrueType {
-            };
+            namespace Detail {
+                /**
+                 * @struct IsMemberPointer
+                 * @brief Helper to allow to check if a type is a pointer to a non-static member
+                 */
+                template <class T>
+                struct IsMemberPointer : FalseType {
+                };
+    
+                template <class T, class U>
+                struct IsMemberPointer<T U::*> : TrueType {
+                };
+            }
     
             /**
              * @struct IsMemberPointer
              * @brief Allow to check if a type is a pointer to a non-static member
              */
             template <class T>
-            struct IsMemberPointer : IsMemberPointerHelper<typename RemoveCV<T>::Type> {
+            struct IsMemberPointer : Detail::IsMemberPointer<typename RemoveCV<T>::Type> {
             };
     
             /** Helper to access IsMemberPointer value */
@@ -338,5 +358,21 @@
             /** Helper to access MakeSigned type */
             template <class T>
             using MakeSignedT = typename MakeSigned<T>::Type;
+            
+            /**
+             * @struct IsSigned
+             * @brief Allow to check if a type is signed or not
+             */
+            template <class T>
+            struct IsSigned : FalseType {
+            };
+    
+            template <Concept::Arithmetic T>
+            struct IsSigned<T> : Constant<bool, T(-1) < T(0)> {
+            };
+            
+            /** Helper to access IsSigned value */
+            template <class T>
+            inline constexpr bool IsSignedV = IsSigned<T>::value;
         }
     }

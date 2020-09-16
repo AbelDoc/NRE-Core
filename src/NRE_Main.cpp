@@ -14,6 +14,9 @@
     using namespace NRE;
     
     int main(int, char**) {
+
+        std::cout << Concept::InputOrOutputIterator<int*> << std::endl;
+        std::cout << Concept::InputOrOutputIterator<std::istream_iterator<char>> << std::endl;
         
         return 0;
     }

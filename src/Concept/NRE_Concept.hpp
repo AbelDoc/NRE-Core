@@ -47,48 +47,6 @@
             };
     
             /**
-             * @interface Integral
-             * @brief Define an integral type
-             */
-            template <class T>
-            concept Integral = std::is_integral_v<T>;
-    
-            /**
-             * @interface FloatingPoint
-             * @brief Define a floating point type
-             */
-            template <class T>
-            concept FloatingPoint = std::is_floating_point_v<T>;
-    
-            /**
-             * @interface Enum
-             * @brief Define an enum type
-             */
-            template <class T>
-            concept Enum = std::is_enum_v<T>;
-    
-            /**
-             * @interface Union
-             * @brief Define an union type
-             */
-            template <class T>
-            concept Union = std::is_union_v<T>;
-    
-            /**
-             * @interface Class
-             * @brief Define a class type
-             */
-            template <class T>
-            concept Class = std::is_class_v<T>;
-    
-            /**
-             * @interface Arithmetic
-             * @brief Define a arithmetic type
-             */
-            template <class T>
-            concept Arithmetic = Integral<T> || FloatingPoint<T>;
-    
-            /**
              * @interface Pointer
              * @brief Define a pointer type
              */
@@ -107,7 +65,7 @@
              * @brief Define a null pointer type
              */
             template <class T>
-            concept NullPointer = SameAs<Utility::NullPointer, Utility::RemoveCVT<T>>;
+            concept NullPointer = SameAs < Utility::NullPointer, Utility::RemoveCVT <T>>;
     
             /**
              * @interface Scalar
@@ -130,6 +88,15 @@
              */
             template <class T>
             concept Object = Scalar<T> || Array<T> || Union<T> || Class<T>;
+    
+            template <class T>
+            concept Signed = Utility::IsSignedV<T>;
+            
+            template <class T>
+            concept SignedInteger = Integral<T> && Signed<T>;
+            
+            template <class T>
+            concept SignedIntegerLike = SignedInteger<T> || SameAs<T, Utility::MaxDifferenceType>;
     
             /**
              * @interface Copyable

@@ -9,5 +9,6 @@
     
     #pragma once
     
+    #include "../Concept/NRE_TypeConcept.hpp"
     #include "../Concept/NRE_Concept.hpp"
     #include "../Concept/NRE_IteratorConcept.hpp"
