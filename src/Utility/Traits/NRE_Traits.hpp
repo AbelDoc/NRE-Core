@@ -99,12 +99,12 @@
              */
             template <class T>
             struct RemoveConst {
-                using type = T;
+                using Type = T;
             };
             
             template <class T>
             struct RemoveConst<const T> {
-                using type = T;
+                using Type = T;
             };
             
             /** Helper to access RemoveConst type */

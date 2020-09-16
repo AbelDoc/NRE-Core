@@ -45,6 +45,18 @@
             template <class T>
             concept IndirectlyReadable = Detail::IndirectlyReadable<Utility::RemoveCVReferenceT<T>>;
             
+            /**
+             * @interface
+             * @brief Define an iterator type T which can be indirectly writed by a type Value through operator*
+             */
+            template <class T, class Value>
+            concept IndirectlyWritable = requires (T&& t, Value&& v) {
+                *t = std::forward<Value>(v);
+                *std::forward<T>(t) = std::forward<Value>(v);
+                const_cast <const Utility::IteratorReferenceT<T>&&>(*t) = std::forward<Value>(v);
+                const_cast <const Utility::IteratorReferenceT<T>&&>(*std::forward<T>(t)) = std::forward<Value>(v);
+            };
+            
         }
         /**
          * @namespace Utility
@@ -77,5 +89,23 @@
             concept InputOrOutputIterator = requires (T t) {
                 { *t } -> Referenceable;
             } && WeaklyIncrementable<T>;
+            
+            /**
+             * @interface InputIterator
+             * @brief Define an input iterator supporting read and incrementation operation
+             */
+            template <class T>
+            concept InputIterator = InputOrOutputIterator<T> && IndirectlyReadable<T> && requires {
+                typename Utility::IteratorCategoryT<T>;
+            } && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::InputIteratorCategory>;
+            
+            /**
+             * @interface OutputIterator
+             * @brief Define an output iterator supporting write and incrementation operation
+             */
+            template <class T, class Value>
+            concept OutputIterator = InputOrOutputIterator<T> && IndirectlyWritable<T, Value> && requires (T t, Value&& v) {
+                *t++ = std::forward<Value>(v);
+            };
         }
     }

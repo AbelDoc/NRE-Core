@@ -62,6 +62,48 @@
              */
             struct ContiguousIteratorCategory : public RandomAccessIteratorCategory {
             };
+            
+            /**
+             * @struct IteratorCategoryAdapter
+             * @brief Allow to adapt STL iterator tag to NRE iterator tag
+             */
+            template <class T>
+            struct IteratorCategoryAdapter {
+            };
+            
+            template <class T> requires Concept::SameAs<T, std::input_iterator_tag>
+            struct IteratorCategoryAdapter<T> {
+                using Type = InputIteratorCategory;
+            };
+    
+            template <class T> requires Concept::SameAs<T, std::output_iterator_tag>
+            struct IteratorCategoryAdapter<T> {
+                using Type = OutputIteratorCategory;
+            };
+    
+            template <class T> requires Concept::SameAs<T, std::forward_iterator_tag>
+            struct IteratorCategoryAdapter<T> {
+                using Type = ForwardIteratorCategory;
+            };
+    
+            template <class T> requires Concept::SameAs<T, std::bidirectional_iterator_tag>
+            struct IteratorCategoryAdapter<T> {
+                using Type = BidirectionnalIteratorCategory;
+            };
+    
+            template <class T> requires Concept::SameAs<T, std::random_access_iterator_tag>
+            struct IteratorCategoryAdapter<T> {
+                using Type = RandomAccessIteratorCategory;
+            };
+    
+            template <class T> requires Concept::SameAs<T, std::contiguous_iterator_tag>
+            struct IteratorCategoryAdapter<T> {
+                using Type = ContiguousIteratorCategory;
+            };
+            
+            /** Helper to access IteratorCategoryAdapter type */
+            template <class T>
+            using IteratorCategoryAdapterT = typename IteratorCategoryAdapter<T>::Type;
     
             /**
              * @struct IncrementableTraits
@@ -137,7 +179,7 @@
     
             template <Concept::Array T>
             struct IndirectlyReadableTraits<T> {
-                using ValueType = RemoveCVT <RemoveExtentT<T>>;
+                using ValueType = RemoveCVT<RemoveExtentT<T>>;
             };
     
             template <class T>
@@ -171,6 +213,40 @@
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::ValueType>;
             };
+            
+            template <class T>
+            struct IteratorCategoryTraits {
+            };
+            
+            template <Concept::Object T>
+            struct IteratorCategoryTraits<T*> {
+                using Category = ContiguousIteratorCategory;
+            };
+            
+            template <class T>
+            struct IteratorCategoryTraits<const T> : IteratorCategoryTraits<T> {
+            };
+            
+            template <class T> requires requires {
+                typename T::Category;
+            } && (!requires {
+                typename T::iterator_category;
+            })
+            struct IteratorCategoryTraits<T> {
+                using Category = typename T::Category;
+            };
+    
+            template <class T> requires requires {
+                typename T::iterator_category;
+            } && (!requires {
+                typename T::Category;
+            })
+            struct IteratorCategoryTraits<T> {
+                using Category = IteratorCategoryAdapterT<typename T::iterator_category>;
+            };
+            
+            template <class T>
+            using IteratorCategoryT = typename IteratorCategoryTraits<RemoveCVReferenceT<T>>::Category;
 
             /** Helper to access an iterator ValueType */
             template <class T>
@@ -189,7 +265,6 @@
                 { std::ranges::iter_move(t) } -> Concept::Referenceable;
             }
             using IteratorRValueReferenceT = decltype(std::ranges::iter_move(std::declval<T&>()));
-            
             
         }
     }
