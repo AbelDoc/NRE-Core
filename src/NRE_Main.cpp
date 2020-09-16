@@ -10,6 +10,7 @@
     #include <iostream>
     #include <forward_list>
     #include <list>
+    #include <deque>
     
     #include "Header/NRE_Utility.hpp"
 
@@ -34,6 +35,10 @@
         std::cout << "\nBidirectional Iterator test : " << std::endl;
         std::cout << "list<int>::iterator -> " << Concept::BidirectionalIterator<std::list<int>::iterator> << std::endl;
         std::cout << "int* -> " << Concept::BidirectionalIterator<int*> << std::endl;
+    
+        std::cout << "\nRandom Access Iterator test : " << std::endl;
+        std::cout << "deque<int>::iterator -> " << Concept::RandomAccessIterator<std::deque<int>::iterator> << std::endl;
+        std::cout << "int* -> " << Concept::RandomAccessIterator<int*> << std::endl;
         
         return 0;
     }

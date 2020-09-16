@@ -106,6 +106,16 @@
              */
             template <class S, class T>
             concept SentinelFor = SemiRegular<S> && InputOrOutputIterator<T> && EqualityComparableWith<S, T>;
+            
+            /**
+             * @interface SizedSentinelFor
+             * @brief Define a type modeling a sentinel relationship between S and T and which can be subtracted to compute distance between them in constant time
+             */
+            template <class S, class T>
+            concept SizedSentinelFor = SentinelFor<S, T> && !Utility::DISABLE_SIZED_SENTINEL_FOR<Utility::RemoveCVT<S>, Utility::RemoveCVT<T>> && requires (T const& t, S const& s) {
+                { s - t } -> SameAs<Utility::IteratorDifferenceT<T>>;
+                { t - s } -> SameAs<Utility::IteratorDifferenceT<T>>;
+            };
     
             /**
              * @interface InputIterator
@@ -145,6 +155,24 @@
                     && requires (T t) {
                         { --t } -> SameAs<T&>;
                         { t-- } -> SameAs<T>;
+                    };
+            
+            /**
+             * @interface RandomAccessIterator
+             * @brief Define a random access iterator supporting constant time distant iteration
+             */
+            template <class T>
+            concept RandomAccessIterator = BidirectionalIterator<T>
+                    && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::RandomAccessIteratorCategory>
+                    && TotallyOrdered<T>
+                    && SizedSentinelFor<T, T>
+                    && requires (T i, const T j, const Utility::IteratorDifferenceT<T> n) {
+                        { i += n } -> SameAs<T&>;
+                        { j +  n } -> SameAs<T>;
+                        { n +  j } -> SameAs<T>;
+                        { i -= n } -> SameAs<T&>;
+                        { j -  n } -> SameAs<T>;
+                        {  j[n]  } -> SameAs<Utility::IteratorReferenceT<T>>;
                     };
         }
     }

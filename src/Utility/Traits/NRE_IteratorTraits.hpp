@@ -151,9 +151,9 @@
     
             template <class T> requires (!requires {
                 typename T::DifferenceType;
-            } || !requires {
+            } && !requires {
                 typename T::difference_type;
-            } || !requires {
+            } && !requires {
                 typename T::DifferenceType;
                 typename T::difference_type;
                 Concept::SameAs<typename T::DifferenceType, typename T::difference_type>;
@@ -265,6 +265,10 @@
                 { std::ranges::iter_move(t) } -> Concept::Referenceable;
             }
             using IteratorRValueReferenceT = decltype(std::ranges::iter_move(std::declval<T&>()));
+            
+            /** Allow to prevent iterators and sentinels that can be subtracted to satisfy the concept */
+            template <class S, class T>
+            inline constexpr bool DISABLE_SIZED_SENTINEL_FOR = false || std::disable_sized_sentinel_for<S, T>;
             
         }
     }
