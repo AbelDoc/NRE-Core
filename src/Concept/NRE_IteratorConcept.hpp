@@ -82,6 +82,15 @@
             };
             
             /**
+             * @interface Incrementable
+             * @brief Define an incrementable type with equality perserving incrementation
+             */
+            template <class T>
+            concept Incrementable = Regular<T> && WeaklyIncrementable<T> && requires (T t) {
+                { t++ } -> SameAs<T>;
+            };
+            
+            /**
              * @interface InputOrOutputIterator
              * @brief Define a base iterator type for later input/output iterators
              */
@@ -89,7 +98,15 @@
             concept InputOrOutputIterator = requires (T t) {
                 { *t } -> Referenceable;
             } && WeaklyIncrementable<T>;
-            
+    
+
+            /**
+             * @interface SentinelFor
+             * @brief Define a type modeling a relationship between an input/output iterator and a semiregular type whose values denote a range
+             */
+            template <class S, class T>
+            concept SentinelFor = SemiRegular<S> && InputOrOutputIterator<T> && EqualityComparableWith<S, T>;
+    
             /**
              * @interface InputIterator
              * @brief Define an input iterator supporting read and incrementation operation
@@ -107,5 +124,15 @@
             concept OutputIterator = InputOrOutputIterator<T> && IndirectlyWritable<T, Value> && requires (T t, Value&& v) {
                 *t++ = std::forward<Value>(v);
             };
+            
+            /**
+             * @interface ForwardIterator
+             * @brief Define a forward iterator supporting multi pass iteration
+             */
+            template <class T>
+            concept ForwardIterator = InputIterator<T>
+                    && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::ForwardIteratorCategory>
+                    && Incrementable<T>
+                    && SentinelFor<T, T>;
         }
     }

@@ -237,5 +237,19 @@
              */
             template <class D, class B>
             concept DerivedFrom = Utility::IsBaseOf<B, D>::value && ConvertibleTo<const volatile D*, const volatile B*>;
+            
+            /**
+             * @interface SemiRegular
+             * @brief Define a type that's both copyable and default constructible
+             */
+            template <class T>
+            concept SemiRegular = Copyable<T> && DefaultInitializable<T>;
+            
+            /**
+             * @interface Regular
+             * @brief Define a type that's copyable, default constructible and equality comparable
+             */
+            template <class T>
+            concept Regular = SemiRegular<T> && EqualityComparable<T>;
         }
     }
