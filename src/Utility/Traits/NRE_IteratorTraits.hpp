@@ -231,6 +231,8 @@
                 typename T::Category;
             } && (!requires {
                 typename T::iterator_category;
+            } && !requires {
+                typename T::iterator_concept;
             })
             struct IteratorCategoryTraits<T> {
                 using Category = typename T::Category;
@@ -240,9 +242,40 @@
                 typename T::iterator_category;
             } && (!requires {
                 typename T::Category;
+            } && !requires {
+                typename T::iterator_concept;
             })
             struct IteratorCategoryTraits<T> {
                 using Category = IteratorCategoryAdapterT<typename T::iterator_category>;
+            };
+            
+            template <class T> requires requires {
+                typename T::iterator_concept;
+            } && (!requires {
+                typename T::Category;
+            })
+            struct IteratorCategoryTraits<T> {
+                using Category = IteratorCategoryAdapterT<typename T::iterator_concept>;
+            };
+            
+            template <class T> requires requires {
+                typename T::Category;
+                typename T::iterator_category;
+                Concept::SameAs<typename T::Category, IteratorCategoryAdapterT<typename T::iterator_category>>;
+            } && (!requires {
+                typename T::iterator_concept;
+            })
+            struct IteratorCategoryTraits<T> {
+                using Category = typename T::Category;
+            };
+            
+            template <class T> requires requires {
+                typename T::Category;
+                typename T::iterator_concept;
+                Concept::SameAs<typename T::Category, IteratorCategoryAdapterT<typename T::iterator_concept>>;
+            }
+            struct IteratorCategoryTraits<T> {
+                using Category = typename T::Category;
             };
             
             template <class T>

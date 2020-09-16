@@ -11,6 +11,7 @@
     #include <forward_list>
     #include <list>
     #include <deque>
+    #include <vector>
     
     #include "Header/NRE_Utility.hpp"
 
@@ -39,6 +40,10 @@
         std::cout << "\nRandom Access Iterator test : " << std::endl;
         std::cout << "deque<int>::iterator -> " << Concept::RandomAccessIterator<std::deque<int>::iterator> << std::endl;
         std::cout << "int* -> " << Concept::RandomAccessIterator<int*> << std::endl;
+    
+        std::cout << "\nContiguous Iterator test : " << std::endl;
+        std::cout << "vector<int>::iterator -> " << Concept::ContiguousIterator<std::vector<int>::iterator> << std::endl;
+        std::cout << "int* -> " << Concept::ContiguousIterator<int*> << std::endl;
         
         return 0;
     }

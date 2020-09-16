@@ -174,5 +174,18 @@
                         { j -  n } -> SameAs<T>;
                         {  j[n]  } -> SameAs<Utility::IteratorReferenceT<T>>;
                     };
+            
+            /**
+             * @interface ContiguousIterator
+             * @brief Define a contiguous iterator, a refined version of random access iterator with contiguous storage constraints
+             */
+            template <class T>
+            concept ContiguousIterator = RandomAccessIterator<T>
+                    && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::ContiguousIteratorCategory>
+                    && Utility::IsLValueReferenceV<Utility::IteratorReferenceT<T>>
+                    && SameAs<Utility::IteratorValueT<T>, Utility::RemoveCVReferenceT<Utility::IteratorReferenceT<T>>>
+                    && requires (T const& t) {
+                        { std::to_address(t) } -> SameAs<Utility::AddPointerT<Utility::IteratorReferenceT<T>>>;
+                    };
         }
     }
