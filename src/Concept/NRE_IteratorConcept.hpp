@@ -122,7 +122,7 @@
              * @brief Define an input iterator supporting read and incrementation operation
              */
             template <class T>
-            concept InputIterator = InputOrOutputIterator<T> && IndirectlyReadable<T> && requires {
+            concept InputIterator = InputOrOutputIterator<T> && IndirectlyReadable<T> && EqualityComparable<T> && requires {
                 typename Utility::IteratorCategoryT<T>;
             } && DerivedFrom<Utility::IteratorCategoryT<T>, Utility::InputIteratorCategory>;
             

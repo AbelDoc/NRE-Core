@@ -42,3 +42,5 @@
 
     #include "NRE_Exception.hpp"
     #include "NRE_Concept.hpp"
+    
+    #include "../Utility/Algorithm/NRE_Algorithm.hpp"

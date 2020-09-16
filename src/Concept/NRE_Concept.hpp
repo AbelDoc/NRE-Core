@@ -89,15 +89,55 @@
             template <class T>
             concept Object = Scalar<T> || Array<T> || Union<T> || Class<T>;
     
+            /**
+             * @interface Signed
+             * @brief Define a signed type
+             */
             template <class T>
             concept Signed = Utility::IsSignedV<T>;
             
+            /**
+             * @interface SignedInteger
+             * @brief Define a signed integer type
+             */
             template <class T>
             concept SignedInteger = Integral<T> && Signed<T>;
             
+            /**
+             * @interface SignedIntegerLike
+             * @brief Define a signed integer type or a type behaving like one
+             */
             template <class T>
             concept SignedIntegerLike = SignedInteger<T> || SameAs<T, Utility::MaxDifferenceType>;
-    
+            
+            /**
+             * @interface Trivial
+             * @brief Define a trivial type (either scalar or trivially copyable)
+             */
+            template <class T>
+            concept Trivial = std::is_trivial_v<T>;
+            
+            /**
+             * @interface TriviallyCopyable
+             * @brief Define a trivally copyable type
+             */
+            template <class T>
+            concept TriviallyCopyable = std::is_trivially_copyable_v<T>;
+            
+            /**
+             * @interface Volatile
+             * @brief Define a volatile type
+             */
+            template <class T>
+            concept Volatile = Utility::IsVolatileV<T>;
+            
+            /**
+             * @interface NonVolatileTriviallyCopyable
+             * @brief Define a non-volatile type which can be trivially copied
+             */
+            template <class T>
+            concept NonVolatileTriviallyCopyable = TriviallyCopyable<T> && !Volatile<T>;
+            
             /**
              * @interface Copyable
              * @brief Define a copyable type
@@ -119,6 +159,10 @@
             template <class F, class T>
             concept ConvertibleTo = std::convertible_to<F, T>;
     
+            /**
+             * @interface ConvertibleToBoolean
+             * @brief Define a type convertible to a boolean
+             */
             template <class T>
             concept ConvertibleToBoolean = ConvertibleTo<T, bool>;
     
@@ -163,6 +207,13 @@
             concept AssignableFrom = Utility::IsLValueReferenceV<L> && CommonReferenceWith<Utility::RemoveReferenceT<L> const&, Utility::RemoveReferenceT<R> const&> && requires (L l, R&& r) {
                 { l = std::forward<R>(r) } -> SameAs<L>;
             };
+            
+            /**
+             * @interface Assignable
+             * @brief Define a type that's assignable from another type
+             */
+            template <class L, class R>
+            concept Assignable = std::is_assignable_v<L, R>;
             
             /**
              * @interface Swappable

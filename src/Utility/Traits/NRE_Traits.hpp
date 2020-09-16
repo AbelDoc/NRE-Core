@@ -374,5 +374,21 @@
             /** Helper to access IsSigned value */
             template <class T>
             inline constexpr bool IsSignedV = IsSigned<T>::value;
+            
+            /**
+             * @struct IsVolatile
+             * @brief ALlow to check if a type is volatile or not
+             */
+            template <class T>
+            struct IsVolatile : FalseType {
+            };
+            
+            template <class T>
+            struct IsVolatile<volatile T> : TrueType {
+            };
+            
+            /** Helper to access IsVolatile value */
+            template <class T>
+            inline constexpr bool IsVolatileV = IsVolatile<T>::value;
         }
     }
