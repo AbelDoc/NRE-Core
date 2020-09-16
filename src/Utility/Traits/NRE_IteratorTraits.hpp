@@ -82,18 +82,18 @@
     
             template <class T> requires requires {
                 typename T::DifferenceType;
-            } && !requires {
+            } && (!requires {
                 typename T::difference_type;
-            }
+            })
             struct IncrementableTraits<T> {
                 using DifferenceType = typename T::DifferenceType;
             };
     
             template <class T> requires requires {
                 typename T::difference_type;
-            } && !requires {
+            } && (!requires {
                 typename T::DifferenceType;
-            }
+            })
             struct IncrementableTraits<T> {
                 using DifferenceType = typename T::difference_type;
             };
@@ -123,7 +123,7 @@
             };
             
             /**
-             * @struct IncrementableTraits
+             * @struct IndirectlyReadableTraits
              * @brief Allow an abstract access to indirectly readable traits with STL compatiblity (STL -> NRE)
              */
             template <class T>
@@ -146,18 +146,18 @@
     
             template <class T> requires requires {
                 typename T::ValueType;
-            } && !requires {
+            } && (!requires {
                 typename T::value_type;
-            }
+            })
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::ValueType>;
             };
     
             template <class T> requires requires {
                 typename T::value_type;
-            } && !requires {
+            } && (!requires {
                 typename T::ValueType;
-            }
+            })
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::value_type>;
             };
@@ -171,5 +171,25 @@
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::ValueType>;
             };
+
+            /** Helper to access an iterator ValueType */
+            template <class T>
+            using IteratorValueT = typename IndirectlyReadableTraits<RemoveCVReferenceT<T>>::ValueType;
+            
+            /** Helper to access an iterator DifferenceType */
+            template <class T>
+            using IteratorDifferenceT = typename IncrementableTraits<RemoveCVReferenceT<T>>::DifferenceType;
+            
+            /** Compute the reference type of a given type */
+            template <Concept::Dereferenceable T>
+            using IteratorReferenceT = decltype(*std::declval<T&>());
+            
+            /** Compute the r-value reference type of a given type */
+            template <class T> requires requires (T& t) {
+                { std::ranges::iter_move(t) } -> Concept::Referenceable;
+            }
+            using IteratorRValueReferenceT = decltype(std::ranges::iter_move(std::declval<T&>()));
+            
+            
         }
     }
