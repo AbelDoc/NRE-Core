@@ -1,7 +1,7 @@
     
     /**
      * @file NRE_Concept.hpp
-     * @brief Declaration of Utility's API's Concept
+     * @brief Declaration of Core's API's Concept
      * @author Louis ABEL
      * @date 13/09/2020
      * @copyright CC-BY-NC-SA
@@ -9,7 +9,7 @@
     
     #pragma once
     
-    #include "../Utility/Traits/NRE_Traits.hpp"
+    #include "../Core/Traits/NRE_Traits.hpp"
     
     /**
     * @namespace NRE
@@ -26,7 +26,7 @@
              * @brief Allow to check if two types are strictly the same
              */
             template <class T, class U>
-            concept SameAs = Utility::IsSameAsV<T, U> && Utility::IsSameAsV<U, T>;
+            concept SameAs = Core::IsSameAsV<T, U> && Core::IsSameAsV<U, T>;
     
             /**
              * @interface Referenceable
@@ -34,7 +34,7 @@
              */
             template <class T>
             concept Referenceable = requires {
-                typename Utility::WithReference<T>;
+                typename Core::WithReference<T>;
             };
     
             /**
@@ -51,21 +51,21 @@
              * @brief Define a pointer type
              */
             template <class T>
-            concept Pointer = Utility::IsPointerV<T>;
+            concept Pointer = Core::IsPointerV<T>;
     
             /**
              * @interface MemberPointer
              * @brief Define a pointer on non-static member type
              */
             template <class T>
-            concept MemberPointer = Utility::IsMemberPointerV<T>;
+            concept MemberPointer = Core::IsMemberPointerV<T>;
     
             /**
              * @interface NullPointer
              * @brief Define a null pointer type
              */
             template <class T>
-            concept NullPointer = SameAs < Utility::NullPointer, Utility::RemoveCVT <T>>;
+            concept NullPointer = SameAs < Core::NullPointer, Core::RemoveCVT <T>>;
     
             /**
              * @interface Scalar
@@ -79,7 +79,7 @@
              * @brief Define an array type
              */
             template <class T>
-            concept Array = Utility::IsArrayV<T>;
+            concept Array = Core::IsArrayV<T>;
     
     
             /**
@@ -94,7 +94,7 @@
              * @brief Define a signed type
              */
             template <class T>
-            concept Signed = Utility::IsSignedV<T>;
+            concept Signed = Core::IsSignedV<T>;
             
             /**
              * @interface SignedInteger
@@ -108,7 +108,7 @@
              * @brief Define a signed integer type or a type behaving like one
              */
             template <class T>
-            concept SignedIntegerLike = SignedInteger<T> || SameAs<T, Utility::MaxDifferenceType>;
+            concept SignedIntegerLike = SignedInteger<T> || SameAs<T, Core::MaxDifferenceType>;
             
             /**
              * @interface Trivial
@@ -129,7 +129,7 @@
              * @brief Define a volatile type
              */
             template <class T>
-            concept Volatile = Utility::IsVolatileV<T>;
+            concept Volatile = Core::IsVolatileV<T>;
             
             /**
              * @interface NonVolatileTriviallyCopyable
@@ -195,16 +195,16 @@
              * @brief Define two type sharing a common reference type and convertible to it
              */
             template <class T, class U>
-            concept CommonReferenceWith = SameAs<Utility::CommonReferenceT<T, U>, Utility::CommonReferenceT<U, T>> &&
-                                          ConvertibleTo<T, Utility::CommonReferenceT<T, U>> &&
-                                          ConvertibleTo<U, Utility::CommonReferenceT<T, U>>;
+            concept CommonReferenceWith = SameAs<Core::CommonReferenceT<T, U>, Core::CommonReferenceT<U, T>> &&
+                                          ConvertibleTo<T, Core::CommonReferenceT<T, U>> &&
+                                          ConvertibleTo<U, Core::CommonReferenceT<T, U>>;
             
             /**
              * @interface AssignableFrom
              * @brief Define a type that's l-value is assignable from another type
              */
             template <class L, class R>
-            concept AssignableFrom = Utility::IsLValueReferenceV<L> && CommonReferenceWith<Utility::RemoveReferenceT<L> const&, Utility::RemoveReferenceT<R> const&> && requires (L l, R&& r) {
+            concept AssignableFrom = Core::IsLValueReferenceV<L> && CommonReferenceWith<Core::RemoveReferenceT<L> const&, Core::RemoveReferenceT<R> const&> && requires (L l, R&& r) {
                 { l = std::forward<R>(r) } -> SameAs<L>;
             };
             
@@ -243,8 +243,8 @@
              * @brief Define a type that's equality comparable with another
              */
             template <class T, class U>
-            concept EqualityComparableWith = requires(typename Utility::RemoveReference<T>::Type const& t,
-                                                      typename Utility::RemoveReference<U>::Type const& u) {
+            concept EqualityComparableWith = requires(typename Core::RemoveReference<T>::Type const& t,
+                                                      typename Core::RemoveReference<U>::Type const& u) {
                 { t == u } -> BooleanTestable;
                 { t != u } -> BooleanTestable;
                 { u == t } -> BooleanTestable;
@@ -263,8 +263,8 @@
              * @brief Define a type that's totally ordered with another
              */
             template <class T, class U>
-            concept TotallyOrderedWith = EqualityComparableWith<T, U> && requires (typename Utility::RemoveReference<T>::Type const& t,
-                                                                                   typename Utility::RemoveReference<U>::Type const& u) {
+            concept TotallyOrderedWith = EqualityComparableWith<T, U> && requires (typename Core::RemoveReference<T>::Type const& t,
+                                                                                   typename Core::RemoveReference<U>::Type const& u) {
                 { t <  u } -> BooleanTestable;
                 { t >  u } -> BooleanTestable;
                 { t <= u } -> BooleanTestable;
@@ -287,7 +287,7 @@
              * @brief Allow to verify if a type is derived from another
              */
             template <class D, class B>
-            concept DerivedFrom = Utility::IsBaseOf<B, D>::value && ConvertibleTo<const volatile D*, const volatile B*>;
+            concept DerivedFrom = Core::IsBaseOf<B, D>::value && ConvertibleTo<const volatile D*, const volatile B*>;
             
             /**
              * @interface SemiRegular

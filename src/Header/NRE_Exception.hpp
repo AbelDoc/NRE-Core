@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_Exception.hpp
-     * @brief Declaration of Utility's API's Exception Header
+     * @brief Declaration of Exception's API's Header
      * @author Louis ABEL
      * @date 19/08/2019
      * @copyright CC-BY-NC-SA

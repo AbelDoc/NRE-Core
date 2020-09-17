@@ -1,7 +1,7 @@
 
     /**
      * @file NRE_Main.cpp
-     * @brief Test of Utility's API
+     * @brief Test of Core's API
      * @author Louis ABEL
      * @date 13/05/2019
      * @copyright CC-BY-NC-SA
@@ -13,7 +13,7 @@
     #include <deque>
     #include <vector>
     
-    #include "Header/NRE_Utility.hpp"
+    #include "Header/NRE_Core.hpp"
 
     using namespace NRE;
     

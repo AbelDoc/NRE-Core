@@ -1,7 +1,7 @@
     
     /**
      * @file NRE_TypeConcept.hpp
-     * @brief Declaration of Utility's API's Concept
+     * @brief Declaration of Core's API's Concept
      * @author Louis ABEL
      * @date 15/09/2020
      * @copyright CC-BY-NC-SA
