@@ -143,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a79c3cd6422ece562ac98e452eae5c543">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#af67d7b3aa5d82609e162f63c2ae66366">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#a3f42b5feb12211e0b420379adbb41120">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a77704782bef390fd71dd185643d63de6">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a77704782bef390fd71dd185643d63de6">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>insert()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a3c28a97e0ee391825e9ea938c52d2b3d">NRE::Utility::BasicString&lt; T &gt;</a>
@@ -203,7 +203,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>Iterator
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#aedc34798595924837f67fe06ae52dde7">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#a429d9cdc5bb4b232e75a727676be02bf">NRE::Utility::Observable</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a36cc954f680b720cc0867e1357237d11">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
@@ -220,7 +220,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php#aeaf699af51b55a47e8ba6553b037c3b3">NRE::Utility::InOutForwardIterator</a>
 , <a class="el" href="struct_n_r_e_1_1_utility_1_1_in_out_random_access_iterator.php#ab3927ba8d395b06cc7829287039f368c">NRE::Utility::InOutRandomAccessIterator</a>
 , <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php#a5307b80d356d7be9821b997e4cd7a40a">NRE::Utility::InputIterator</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a616c7cbcb2833d40d3e3961bdd18919e">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a616c7cbcb2833d40d3e3961bdd18919e">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="struct_n_r_e_1_1_utility_1_1_output_iterator.php#adc113975f152379fcd09ba82a78e4173">NRE::Utility::OutputIterator</a>
 , <a class="el" href="struct_n_r_e_1_1_utility_1_1_random_access_iterator.php#ae9387441f1ea7ec06ade49001a6a7038">NRE::Utility::RandomAccessIterator</a>
 </li>

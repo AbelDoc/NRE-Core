@@ -119,13 +119,13 @@ Inheritance diagram for NRE::Utility::Detail::ForwardListInner::ForwardIterator&
  <div class="center">
   <img src="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.png" usemap="#NRE::Utility::Detail::ForwardListInner::ForwardIterator_3C_20T_2C_20Category_20_3E_map" alt=""/>
   <map id="NRE::Utility::Detail::ForwardListInner::ForwardIterator_3C_20T_2C_20Category_20_3E_map" name="NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;_map">
-<area href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" alt="NRE::Utility::IteratorTraits&lt; ForwardIterator&lt; T, Category &gt;, T, Category &gt;" shape="rect" coords="0,0,431,24"/>
+<area href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" alt="NRE::Utility::IteratorBase&lt; ForwardIterator&lt; T, Category &gt;, T, Category &gt;" shape="rect" coords="0,0,431,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a8ded24eb3c9d9bc29b950f7a2f026789"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a8ded24eb3c9d9bc29b950f7a2f026789">Traits</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorTraits</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php">ForwardIterator</a>&lt; T, Category &gt;, T, Category &gt;</td></tr>
+<tr class="memitem:a8ded24eb3c9d9bc29b950f7a2f026789"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a8ded24eb3c9d9bc29b950f7a2f026789">Traits</a> = <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorBase</a>&lt; <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php">ForwardIterator</a>&lt; T, Category &gt;, T, Category &gt;</td></tr>
 <tr class="separator:a8ded24eb3c9d9bc29b950f7a2f026789"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57a8c0ce2d71e964d460def04051c777"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a57a8c0ce2d71e964d460def04051c777">ValueType</a> = typename Traits::ValueType</td></tr>
 <tr class="separator:a57a8c0ce2d71e964d460def04051c777"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -291,7 +291,7 @@ template&lt;class T , class Category &gt; </div>
 template&lt;class T , class Category &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php">NRE::Utility::Detail::ForwardListInner::ForwardIterator</a>&lt; T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a8ded24eb3c9d9bc29b950f7a2f026789">Traits</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorTraits</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php">ForwardIterator</a>&lt;T, Category&gt;, T, Category&gt;</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php">NRE::Utility::Detail::ForwardListInner::ForwardIterator</a>&lt; T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#a8ded24eb3c9d9bc29b950f7a2f026789">Traits</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorBase</a>&lt;<a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php">ForwardIterator</a>&lt;T, Category&gt;, T, Category&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">

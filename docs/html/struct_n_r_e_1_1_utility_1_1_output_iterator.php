@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorTraits</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_output_iterator.php" title="Used in IteratorTraits to detect OutputIterator category. ">OutputIterator</a> category.  
+<p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorBase</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_output_iterator.php" title="Used in IteratorBase to detect OutputIterator category. ">OutputIterator</a> category.
  <a href="struct_n_r_e_1_1_utility_1_1_output_iterator.php#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___iterator_traits_8hpp_source.php">NRE_IteratorTraits.hpp</a>&gt;</code></p>
@@ -118,9 +118,9 @@ Inheritance diagram for NRE::Utility::OutputIterator:</div>
  <div class="center">
   <img src="struct_n_r_e_1_1_utility_1_1_output_iterator.png" usemap="#NRE::Utility::OutputIterator_map" alt=""/>
   <map id="NRE::Utility::OutputIterator_map" name="NRE::Utility::OutputIterator_map">
-<area href="struct_n_r_e_1_1_utility_1_1_in_out_bidirectional_iterator.php" title="Used in IteratorTraits to detect BidirectionalIterator category allowing Output operation. " alt="NRE::Utility::InOutBidirectionalIterator" shape="rect" coords="0,56,236,80"/>
-<area href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php" title="Used in IteratorTraits to detect ForwardIterator category allowing Output operation. " alt="NRE::Utility::InOutForwardIterator" shape="rect" coords="246,56,482,80"/>
-<area href="struct_n_r_e_1_1_utility_1_1_in_out_random_access_iterator.php" title="Used in IteratorTraits to detect RandomAccessIterator category allowing Output operation. " alt="NRE::Utility::InOutRandomAccessIterator" shape="rect" coords="492,56,728,80"/>
+<area href="struct_n_r_e_1_1_utility_1_1_in_out_bidirectional_iterator.php" title="Used in IteratorBase to detect BidirectionalIterator category allowing Output operation. " alt="NRE::Utility::InOutBidirectionalIterator" shape="rect" coords="0,56,236,80"/>
+<area href="struct_n_r_e_1_1_utility_1_1_in_out_forward_iterator.php" title="Used in IteratorBase to detect ForwardIterator category allowing Output operation. " alt="NRE::Utility::InOutForwardIterator" shape="rect" coords="246,56,482,80"/>
+<area href="struct_n_r_e_1_1_utility_1_1_in_out_random_access_iterator.php" title="Used in IteratorBase to detect RandomAccessIterator category allowing Output operation. " alt="NRE::Utility::InOutRandomAccessIterator" shape="rect" coords="492,56,728,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -130,7 +130,7 @@ Public Types</h2></td></tr>
 <tr class="separator:adc113975f152379fcd09ba82a78e4173"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorTraits</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_output_iterator.php" title="Used in IteratorTraits to detect OutputIterator category. ">OutputIterator</a> category. </p>
+<div class="textblock"><p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorBase</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_output_iterator.php" title="Used in IteratorBase to detect OutputIterator category. ">OutputIterator</a> category. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="adc113975f152379fcd09ba82a78e4173"></a>
 <div class="memitem">

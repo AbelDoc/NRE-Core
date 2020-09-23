@@ -105,7 +105,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Detect if the given template paramter is an <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php" title="Used in IteratorTraits to detect InputIterator category. ">InputIterator</a>.  
+<p>Detect if the given template paramter is an <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php" title="Used in IteratorBase to detect InputIterator category. ">InputIterator</a>.
  <a href="struct_n_r_e_1_1_utility_1_1_is_input_iterator.php#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___iterator_traits_8hpp_source.php">NRE_IteratorTraits.hpp</a>&gt;</code></p>
@@ -121,7 +121,7 @@ Inheritance diagram for NRE::Utility::IsInputIterator&lt; It &gt;:</div>
 <div class="textblock"><h3>template&lt;class It&gt;<br />
 class NRE::Utility::IsInputIterator&lt; It &gt;</h3>
 
-<p>Detect if the given template paramter is an <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php" title="Used in IteratorTraits to detect InputIterator category. ">InputIterator</a>. </p>
+<p>Detect if the given template paramter is an <a class="el" href="struct_n_r_e_1_1_utility_1_1_input_iterator.php" title="Used in IteratorBase to detect InputIterator category. ">InputIterator</a>. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/mnt/c/Users/abell/Documents/GitHub/NRE-Utility/src/Utility/Interfaces/Iterator/<a class="el" href="_n_r_e___iterator_traits_8hpp_source.php">NRE_IteratorTraits.hpp</a></li>
 </ul>

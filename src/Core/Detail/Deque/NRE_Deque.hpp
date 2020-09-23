@@ -13,7 +13,7 @@
     #include <utility>
     #include <cstring>
     #include <cmath>
-    #include "../../Interfaces/Iterator/NRE_IteratorTraits.hpp"
+    #include "../../Interfaces/Iterator/NRE_IteratorBase.hpp"
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
     #include "../../Traits/NRE_TypeTraits.hpp"
     
@@ -47,10 +47,10 @@
                      * @brief Internal iterator for deque
                      */
                     template <class T, class Category>
-                    class DequeIterator : public IteratorTraits<DequeIterator<T, Category>, T, Category> {
+                    class DequeIterator : public IteratorBase<DequeIterator<T, Category>, T, Category> {
                         public :    // Traits
                             /** Inherited iterator traits */
-                            using Traits = IteratorTraits<DequeIterator<T, Category>, T, Category>;
+                            using Traits = IteratorBase<DequeIterator<T, Category>, T, Category>;
                             /** The iterated object */
                             using ValueType         = typename Traits::ValueType;
                             /** The pointer on iterated object */

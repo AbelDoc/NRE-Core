@@ -170,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list_inner_1_1_forward_iterator.php#aa726f79f714220a29231586f9dbbde48">NRE::Utility::Detail::ForwardListInner::ForwardIterator&lt; T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_forward_iterator.php#a5315f9dec5de449954919e12ec89b861">NRE::Utility::Detail::HashTableInner::ForwardIterator&lt; T, Category, Bucket &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table_inner_1_1_local_forward_iterator.php#a245980557bc3105393f16a1f33904338">NRE::Utility::Detail::HashTableInner::LocalForwardIterator&lt; T, Category, Bucket &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#afcbccad2752950750f002f3ab8666d6c">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#afcbccad2752950750f002f3ab8666d6c">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>equalRange()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#ae039d19bc1d6960873e50da2b0c8865e">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>

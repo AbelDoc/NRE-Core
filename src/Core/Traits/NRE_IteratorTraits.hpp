@@ -327,5 +327,16 @@
             template <class S, class T>
             inline constexpr bool DISABLE_SIZED_SENTINEL_FOR = false || std::disable_sized_sentinel_for<S, T>;
             
+            /**
+             * @class IteratorTraits
+             * @brief Allow uniform access to all iterator traits
+             */
+            template <class T>
+            struct IteratorTraits {
+                using DifferenceType = IteratorDifferenceT<T>;
+                using ValueType = IteratorValueT<T>;
+                using Reference = IteratorReferenceT<T>;
+                using Category = IteratorCategoryT<T>;
+            };
         }
     }

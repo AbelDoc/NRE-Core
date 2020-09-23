@@ -13,7 +13,7 @@
     #include <utility>
     #include <cstring>
     #include <cmath>
-    #include "../../Interfaces/Iterator/NRE_IteratorTraits.hpp"
+    #include "../../Interfaces/Iterator/NRE_IteratorBase.hpp"
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
     #include "../../Traits/NRE_TypeTraits.hpp"
 
@@ -77,10 +77,10 @@
                      * @brief Internal iterator for forward list
                      */
                     template <class T, class Category>
-                    class ForwardIterator : public IteratorTraits<ForwardIterator<T, Category>, T, Category> {
+                    class ForwardIterator : public IteratorBase<ForwardIterator<T, Category>, T, Category> {
                         public :    // Traits
                             /** Inherited iterator traits */
-                            using Traits = IteratorTraits<ForwardIterator<T, Category>, T, Category>;
+                            using Traits = IteratorBase<ForwardIterator<T, Category>, T, Category>;
                             /** The iterated object */
                             using ValueType         = typename Traits::ValueType;
                             /** The pointer on iterated object */

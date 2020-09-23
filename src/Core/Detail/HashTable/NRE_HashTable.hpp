@@ -14,7 +14,7 @@
     #include "../../String/NRE_String.hpp"
     #include "../../Pair/NRE_Pair.hpp"
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
-    #include "../../Interfaces/Iterator/NRE_IteratorTraits.hpp"
+    #include "../../Interfaces/Iterator/NRE_IteratorBase.hpp"
     #include "../../Traits/NRE_TypeTraits.hpp"
     #include "../Vector/NRE_Vector.hpp"
 
@@ -220,10 +220,10 @@
                      * @brief Hash table forward iterator
                      */
                     template <class T, class Category, class Bucket>
-                    class ForwardIterator : public IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category> {
+                    class ForwardIterator : public IteratorBase<ForwardIterator<T, Category, Bucket>, T, Category> {
                         public :    // Traits
                             /** Inherited iterator traits */
-                            using Traits = IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category>;
+                            using Traits = IteratorBase<ForwardIterator<T, Category, Bucket>, T, Category>;
                             /** The iterated object */
                             using ValueType         = typename Traits::ValueType;
                             /** The pointer on iterated object */
@@ -325,10 +325,10 @@
                      * @brief Hash table local forward iterator
                      */
                     template <class T, class Category, class Bucket>
-                    class LocalForwardIterator : public IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category> {
+                    class LocalForwardIterator : public IteratorBase<ForwardIterator<T, Category, Bucket>, T, Category> {
                         public :    // Traits
                             /** Inherited iterator traits */
-                            using Traits = IteratorTraits<ForwardIterator<T, Category, Bucket>, T, Category>;
+                            using Traits = IteratorBase<ForwardIterator<T, Category, Bucket>, T, Category>;
                             /** The iterated object */
                             using ValueType         = typename Traits::ValueType;
                             /** The pointer on iterated object */

@@ -148,9 +148,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </td></tr>
 <tr><td valign="top"><a class="el" href="struct_n_r_e_1_1_utility_1_1_is_output_iterator.php">IsOutputIterator</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
 <tr><td valign="top"><a class="el" href="struct_n_r_e_1_1_utility_1_1_is_random_access_iterator.php">IsRandomAccessIterator</a> (NRE::Utility)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php">Vector</a> (NRE::Utility::Detail)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorTraits</a> (NRE::Utility)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_h"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;h&#160;&#160;</div></td></tr></table>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorBase</a> (NRE::Utility)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_h"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;h&#160;&#160;</div></td></tr></table>
 </td></tr>
-<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php">IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php">IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a> (NRE::Utility)&#160;&#160;&#160;</td></tr>
 <tr><td></td><td valign="top"><a class="el" href="classhash.php">hash</a>&#160;&#160;&#160;</td></tr>
 <tr><td></td><td></td></tr>
 </table>

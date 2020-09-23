@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorTraits</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_bidirectional_iterator.php" title="Used in IteratorTraits to detect BidirectionalIterator category. ">BidirectionalIterator</a> category allowing Output operation.  
+<p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorBase</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_bidirectional_iterator.php" title="Used in IteratorBase to detect BidirectionalIterator category. ">BidirectionalIterator</a> category allowing Output operation.
  <a href="struct_n_r_e_1_1_utility_1_1_in_out_bidirectional_iterator.php#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_n_r_e___iterator_traits_8hpp_source.php">NRE_IteratorTraits.hpp</a>&gt;</code></p>
@@ -118,10 +118,10 @@ Inheritance diagram for NRE::Utility::InOutBidirectionalIterator:</div>
  <div class="center">
   <img src="struct_n_r_e_1_1_utility_1_1_in_out_bidirectional_iterator.png" usemap="#NRE::Utility::InOutBidirectionalIterator_map" alt=""/>
   <map id="NRE::Utility::InOutBidirectionalIterator_map" name="NRE::Utility::InOutBidirectionalIterator_map">
-<area href="struct_n_r_e_1_1_utility_1_1_bidirectional_iterator.php" title="Used in IteratorTraits to detect BidirectionalIterator category. " alt="NRE::Utility::BidirectionalIterator" shape="rect" coords="0,112,219,136"/>
-<area href="struct_n_r_e_1_1_utility_1_1_output_iterator.php" title="Used in IteratorTraits to detect OutputIterator category. " alt="NRE::Utility::OutputIterator" shape="rect" coords="229,112,448,136"/>
-<area href="struct_n_r_e_1_1_utility_1_1_forward_iterator.php" title="Used in IteratorTraits to detect ForwardIterator category. " alt="NRE::Utility::ForwardIterator" shape="rect" coords="0,56,219,80"/>
-<area href="struct_n_r_e_1_1_utility_1_1_input_iterator.php" title="Used in IteratorTraits to detect InputIterator category. " alt="NRE::Utility::InputIterator" shape="rect" coords="0,0,219,24"/>
+<area href="struct_n_r_e_1_1_utility_1_1_bidirectional_iterator.php" title="Used in IteratorBase to detect BidirectionalIterator category. " alt="NRE::Utility::BidirectionalIterator" shape="rect" coords="0,112,219,136"/>
+<area href="struct_n_r_e_1_1_utility_1_1_output_iterator.php" title="Used in IteratorBase to detect OutputIterator category. " alt="NRE::Utility::OutputIterator" shape="rect" coords="229,112,448,136"/>
+<area href="struct_n_r_e_1_1_utility_1_1_forward_iterator.php" title="Used in IteratorBase to detect ForwardIterator category. " alt="NRE::Utility::ForwardIterator" shape="rect" coords="0,56,219,80"/>
+<area href="struct_n_r_e_1_1_utility_1_1_input_iterator.php" title="Used in IteratorBase to detect InputIterator category. " alt="NRE::Utility::InputIterator" shape="rect" coords="0,0,219,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -143,7 +143,7 @@ Public Types</h2></td></tr>
 <tr class="separator:adc113975f152379fcd09ba82a78e4173 inherit pub_types_struct_n_r_e_1_1_utility_1_1_output_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorTraits</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_bidirectional_iterator.php" title="Used in IteratorTraits to detect BidirectionalIterator category. ">BidirectionalIterator</a> category allowing Output operation. </p>
+<div class="textblock"><p>Used in <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php" title="Describe an iterator object. ">IteratorBase</a> to detect <a class="el" href="struct_n_r_e_1_1_utility_1_1_bidirectional_iterator.php" title="Used in IteratorBase to detect BidirectionalIterator category. ">BidirectionalIterator</a> category allowing Output operation. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a6a8d8dd9e171a2b00a8d31d80ac7ea24"></a>
 <div class="memitem">

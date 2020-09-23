@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
-        <title>NRE-Utility: NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt; Class Template Reference</title>
+        <title>NRE-Utility: NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt; Class Template Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespace_n_r_e.php">NRE</a></li><li class="navelem"><b>Utility</b></li><li class="navelem"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php">IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_n_r_e.php">NRE</a></li><li class="navelem"><b>Utility</b></li><li class="navelem"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php">IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -105,16 +105,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4-members.php">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt; Class Template Reference</div>  </div>
+<div class="title">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;:</div>
+Inheritance diagram for NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.png" usemap="#NRE::Utility::IteratorTraits_3C_20It_3C_20Args..._20_3E_2C_20T_2C_20Category_20_3E_map" alt=""/>
-  <map id="NRE::Utility::IteratorTraits_3C_20It_3C_20Args..._20_3E_2C_20T_2C_20Category_20_3E_map" name="NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;_map">
-<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" alt="NRE::Utility::StaticInterface&lt; IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt; &gt;" shape="rect" coords="0,0,425,24"/>
+  <map id="NRE::Utility::IteratorTraits_3C_20It_3C_20Args..._20_3E_2C_20T_2C_20Category_20_3E_map" name="NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;_map">
+<area href="class_n_r_e_1_1_utility_1_1_static_interface.php" alt="NRE::Utility::StaticInterface&lt; IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt; &gt;" shape="rect" coords="0,0,425,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -212,7 +212,7 @@ Public Member Functions</h2></td></tr>
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ae14ab9a6fd5ca93051b2cb004a86016e">difference_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ae14ab9a6fd5ca93051b2cb004a86016e">difference_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -227,7 +227,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a> =  std::ptrdiff_t</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a> =  std::ptrdiff_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -242,7 +242,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> =  It&lt;Args...&gt;</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> =  It&lt;Args...&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -257,7 +257,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a616c7cbcb2833d40d3e3961bdd18919e">iterator_category</a> =  std::conditional_t&lt;std::is_pointer_v&lt;T&gt;, std::random_access_iterator_tag, typename Category::iterator_category&gt;</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a616c7cbcb2833d40d3e3961bdd18919e">iterator_category</a> =  std::conditional_t&lt;std::is_pointer_v&lt;T&gt;, std::random_access_iterator_tag, typename Category::iterator_category&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -272,7 +272,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">Pointer</a> =  std::conditional_t&lt;IsOutputIteratorV&lt;Category&gt;, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a>*, const <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a>*&gt;</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">Pointer</a> =  std::conditional_t&lt;IsOutputIteratorV&lt;Category&gt;, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a>*, const <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a>*&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -287,7 +287,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac5fed734bb18a765a42300e9df123ada">pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">Pointer</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac5fed734bb18a765a42300e9df123ada">pointer</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">Pointer</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -302,7 +302,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> =  std::conditional_t&lt;IsOutputIteratorV&lt;Category&gt;, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a>&amp;, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a> const&amp;&gt;</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> =  std::conditional_t&lt;IsOutputIteratorV&lt;Category&gt;, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a>&amp;, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a> const&amp;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -317,7 +317,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a808f9cd48084bc1603a85ad48a7a7236">reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a808f9cd48084bc1603a85ad48a7a7236">reference</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -332,7 +332,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a514afaebd5ebefb537558c76b2e9a4de">value_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a></td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a514afaebd5ebefb537558c76b2e9a4de">value_type</a> =  <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -347,7 +347,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
 template&lt;template&lt; class... &gt; class It, class T , class Category , class... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a> =  T</td>
+          <td class="memname">using <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::<a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a631b61a5a6c5428c030e2ee53680672c">ValueType</a> =  T</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -368,7 +368,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::advance </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::advance </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>
@@ -402,7 +402,7 @@ template&lt;class K  = Category, typename  = UseIfBidirectionalIterator&lt;K&gt;
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::decrement </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::decrement </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -428,7 +428,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::dereference </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::dereference </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -456,7 +456,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::distanceTo </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::distanceTo </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -489,7 +489,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::equal </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::equal </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -522,7 +522,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::increment </td>
+          <td class="memname">void <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::increment </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -548,7 +548,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator!= </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator!= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -581,7 +581,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator* </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator* </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -609,7 +609,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator+ </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator+ </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a>&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -642,7 +642,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator++ </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator++ </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -668,7 +668,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator++ </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator++ </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -697,7 +697,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator+= </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator+= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a>&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -732,7 +732,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator- </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator- </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a>&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -767,7 +767,7 @@ template&lt;class K  = Category, typename  = UseIfBidirectionalIterator&lt;K&gt;
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-- </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-- </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -795,7 +795,7 @@ template&lt;class K  = Category, typename  = UseIfBidirectionalIterator&lt;K&gt;
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-- </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-- </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -824,7 +824,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-= </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a>&amp; <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a>&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -857,7 +857,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">Pointer</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-&gt; </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">Pointer</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator-&gt; </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -885,7 +885,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&lt; </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&lt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -920,7 +920,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&lt;= </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&lt;= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -953,7 +953,7 @@ template&lt;template&lt; class... &gt; class It, class T , class Category , clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator== </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator== </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -988,7 +988,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&gt; </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&gt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -1023,7 +1023,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&gt;= </td>
+          <td class="memname">bool <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator&gt;= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a80c6f9a2479727528c4fd0e2c63bd87b">Iterator</a> const &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
@@ -1058,7 +1058,7 @@ template&lt;class K  = Category, typename  = UseIfRandomAccessIterator&lt;K&gt;&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorTraits</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f751860a94ddc303784f5d9f2e81569">Reference</a> <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">NRE::Utility::IteratorBase</a>&lt; It&lt; Args... &gt;, T, Category &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9eb6cb5f8b139377cb59f390cdd19204">DifferenceType</a>&#160;</td>
           <td class="paramname"><em>n</em></td><td>)</td>

@@ -63,6 +63,10 @@
             template <class T>
             using PointerDifferenceT = typename PointerDifferenceTraits<T>::DifferenceType;
     
+            /**
+             * @class PointerValueTraits
+             * @brief Allow uniform access to a pointer's value type
+             */
             template <class T>
             struct PointerValueTraits {
             };
@@ -104,6 +108,7 @@
                 using ValueType = T::ValueType;
             };
     
+            /** Helper to access PointerValueTraits type */
             template <class T>
             using PointerValueT = typename PointerValueTraits<T>::ValueType;
         

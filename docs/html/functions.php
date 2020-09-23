@@ -137,7 +137,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_observable.php#ac57384199059d8393992578bbc6b9b34">NRE::Utility::Observable</a>
 </li>
 <li>advance()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a6c4bdfbe2f20d2fa4b551fc1429a3616">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a6c4bdfbe2f20d2fa4b551fc1429a3616">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>allocator_type
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a081f9d38f4c1e3f11a247564831e7e9d">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>

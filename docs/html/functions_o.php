@@ -145,7 +145,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#abcdf906e8f5ab3a97eefc94cef204d88">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a38f75fa2d88f57df9a752808c0343e16">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a72fad357a18fe48e6b8a34fa5702e042">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f894f371f4134f6d1f0f1c241fe6e64">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a5f894f371f4134f6d1f0f1c241fe6e64">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a2fac4903c4b01a343834008e80abb8c5">NRE::Utility::Pair&lt; T, K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#ac3cd88146c5182ab3e876440c329ab31">NRE::Utility::Stack&lt; T, Container &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a244cc18bc667549731cd2e095cf51202">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
@@ -154,33 +154,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classstd_1_1hash_3_01_n_r_e_1_1_utility_1_1_string_01_4.php#a3b62fd2a790b87848fb3606132cf7663">std::hash&lt; NRE::Utility::String &gt;</a>
 </li>
 <li>operator*()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac62c9e772174e3841532d682e4bbc568">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac62c9e772174e3841532d682e4bbc568">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator+()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a76ab1d155709da6fc5899a04e21112f6">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a76ab1d155709da6fc5899a04e21112f6">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator++()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a8354684924f0f2ac6ead214a737880af">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a8354684924f0f2ac6ead214a737880af">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator+=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab4db6b5abd9d325e1a343e257b8799a2">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a24c42e69ece105ea175b32a6a1ddc42b">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a24c42e69ece105ea175b32a6a1ddc42b">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator-()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a67374d67073569d90fa8ab19219df8af">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a67374d67073569d90fa8ab19219df8af">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator--()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#acdce086fbf55172cf9d5531c391f27d4">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#acdce086fbf55172cf9d5531c391f27d4">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator-=()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a29c65157a7f06d1434dd509571df4db5">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a29c65157a7f06d1434dd509571df4db5">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator-&gt;()
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a43b37c613bfbd57853d4825b15fcdd6c">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a43b37c613bfbd57853d4825b15fcdd6c">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>operator&lt;()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#ab06ee127d12a726f58c955365592fe3f">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#af62b854ca7fe9ca6f4e799997f0f4b24">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#af62b854ca7fe9ca6f4e799997f0f4b24">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a262597f8ced59f41bc0f0982f76c5579">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator&lt;&lt;()
@@ -189,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>operator&lt;=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a7d68e5ffd1eac743a66f364e1e064536">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#af966202da0631b190fe8f7b57756aeb1">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#af966202da0631b190fe8f7b57756aeb1">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a2b46341a5868a01876b6c0a355130811">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator=()
@@ -217,19 +217,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_forward_list.php#a61c427ca03e0cd4e5cbdad7b0179ddc3">NRE::Utility::Detail::ForwardList&lt; T, Allocator &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a9fc2c00267284b4957aeb0005b6300a1">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a0bb6bac0fb6bf6094ef30743b5a3b5eb">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9089b79f999e51b2817f994e59525050">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9089b79f999e51b2817f994e59525050">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#af46c65eaf55e6a87a163fcd977247268">NRE::Utility::Pair&lt; T, K &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_stack.php#a39f4b130a39d707e1f26a6e1ae7911ea">NRE::Utility::Stack&lt; T, Container &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a522adbfcb3a52831fecedbd5a4864e46">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 <li>operator&gt;()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#aa55fab1b4557936778147ed3450c0427">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9f133f1ec0eaffe1681fb0f49a925813">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a9f133f1ec0eaffe1681fb0f49a925813">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#accb3c33f2b67c6eda3275b777300123d">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator&gt;=()
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_basic_string.php#a8e216345ab62dd5997b65c21b333339f">NRE::Utility::BasicString&lt; T &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac65e2f9bd43e6a65974315e1e24832ca">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac65e2f9bd43e6a65974315e1e24832ca">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_pair.php#a78b90e8f19d12b49a9effc89e349e125">NRE::Utility::Pair&lt; T, K &gt;</a>
 </li>
 <li>operator[]()
@@ -238,7 +238,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_hash_table.php#a2fc398a92cd5f90a68dfbff3c7cb9427">NRE::Utility::Detail::HashTable&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_unordered_map.php#a5cf40e3ce6dbb298432448424daf7538">NRE::Utility::Detail::UnorderedMap&lt; Key, T, Allocator, StoreHash, Hash, KeyEqual &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a6336c5fb6c7e89d27ca76c8f22a75c02">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a1e4fd3771e7955bb221bbd5c853cfe76">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a1e4fd3771e7955bb221bbd5c853cfe76">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#a4976e7e12b9e04218b2e0b4ed2cb7235">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 </ul>

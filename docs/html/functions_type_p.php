@@ -169,10 +169,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>Pointer
 : <a class="el" href="class_n_r_e_1_1_utility_1_1_detail_1_1_vector.php#a031e5dcbd857faad81733cad07637ffe">NRE::Utility::Detail::Vector&lt; T, Allocator &gt;</a>
-, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+, <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#a4dcab47463b6dc136ec7ac6fb19e6c79">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 </li>
 <li>pointer
-: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac5fed734bb18a765a42300e9df123ada">NRE::Utility::IteratorTraits&lt; It&lt; Args... &gt;, T, Category &gt;</a>
+: <a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits_3_01_it_3_01_args_8_8_8_01_4_00_01_t_00_01_category_01_4.php#ac5fed734bb18a765a42300e9df123ada">NRE::Utility::IteratorBase&lt; It&lt; Args... &gt;, T, Category &gt;</a>
 , <a class="el" href="class_n_r_e_1_1_utility_1_1_static_vector.php#afbd4bf4ff944c98565f38d094aa38d24">NRE::Utility::StaticVector&lt; T, Size &gt;</a>
 </li>
 <li>Pointer

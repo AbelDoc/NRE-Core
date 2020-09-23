@@ -8,7 +8,7 @@
      */
     
     #include <iostream>
-    #include <memory>
+    #include <vector>
     
     #include "Header/NRE_Core.hpp"
 
@@ -16,7 +16,7 @@
     
     int main(int, char**) {
         
-        std::cout << Concept::SameAs<int, Memory::PointerValueT<int*>> << std::endl;
+        std::cout << Concept::SameAs<int, Memory::PointerValueT<std::vector<int>>> << std::endl;
         
         return 0;
     }

@@ -166,19 +166,19 @@
             using UseIfRandomAccessIterator  = std::enable_if_t<IsRandomAccessIteratorV<It>>;
     
             /**
-             * @class IteratorTraits
+             * @class IteratorBase²
              * @brief Describe an iterator object
              */
             template <class It, class T, class Category>
-            class IteratorTraits {
+            class IteratorBase {
             };
             
             /**
-             * @class IteratorTraits
+             * @class IteratorBase
              * @brief Describe an iterator object
              */
             template <template <class ...> class It, class T, class Category, class ... Args>
-            class IteratorTraits<It<Args...>, T, Category> : public StaticInterface<IteratorTraits<It<Args...>, T, Category>>, public Category {
+            class IteratorBase<It<Args...>, T, Category> : public StaticInterface<IteratorBase<It<Args...>, T, Category>>, public Category {
                 static_assert(IsIteratorV<Category>);  /**< You must at least be an input iterator or output iterator */
                 
                 public :    // Traits
@@ -425,7 +425,7 @@
              * @return the new iterator
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
-            It<Args...> operator +(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
+            It<Args...> operator +(std::ptrdiff_t k, IteratorBase<It<Args...>, T, Category> const& it) {
                 return It<T, Args...>(it) += k;
             }
     
@@ -436,7 +436,7 @@
              * @return the new iterator
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
-            It<Args...> operator -(std::ptrdiff_t k, IteratorTraits<It<Args...>, T, Category> const& it) {
+            It<Args...> operator -(std::ptrdiff_t k, IteratorBase<It<Args...>, T, Category> const& it) {
                 return It<T, Args...>(it) -= k;
             }
     
@@ -447,7 +447,7 @@
              * @return the iterators distance
              */
             template <template <class ...> class It, class T, class Category, class ... Args, class K = Category, typename = UseIfRandomAccessIterator<K>>
-            typename IteratorTraits<It<Args...>, T, Category>::DifferenceType operator -(IteratorTraits<It<Args...>, T, Category> const& it, IteratorTraits<It<Args...>, T, Category> const& other) {
+            typename IteratorBase<It<Args...>, T, Category>::DifferenceType operator -(IteratorBase<It<Args...>, T, Category> const& it, IteratorBase<It<Args...>, T, Category> const& other) {
                 return it.distanceTo(other);
             }
         }

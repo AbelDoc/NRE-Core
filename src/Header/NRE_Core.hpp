@@ -12,7 +12,7 @@
     #include "../Core/Interfaces/NRE_StaticInterface.hpp"
     #include "../Core/Interfaces/Uncopyable/NRE_Uncopyable.hpp"
     #include "../Core/Interfaces/Stringable/NRE_Stringable.hpp"
-    #include "../Core/Interfaces/Iterator/NRE_IteratorTraits.hpp"
+    #include "../Core/Interfaces/Iterator/NRE_IteratorBase.hpp"
 
     #include "../Core/Array/NRE_Array.hpp"
     #include "../Core/StaticVector/NRE_StaticVector.hpp"

@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="../../js/jquery-2.1.1.min.js"></script>
-        <title>NRE-Utility: NRE::Utility::IteratorTraits&lt; It, T, Category &gt; Class Template Reference</title>
+        <title>NRE-Utility: NRE::Utility::IteratorBase&lt; It, T, Category &gt; Class Template Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -96,12 +96,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespace_n_r_e.php">NRE</a></li><li class="navelem"><b>Utility</b></li><li class="navelem"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorTraits</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespace_n_r_e.php">NRE</a></li><li class="navelem"><b>Utility</b></li><li class="navelem"><a class="el" href="class_n_r_e_1_1_utility_1_1_iterator_traits.php">IteratorBase</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">NRE::Utility::IteratorTraits&lt; It, T, Category &gt; Class Template Reference</div>  </div>
+<div class="title">NRE::Utility::IteratorBase&lt; It, T, Category &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -111,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><code>#include &lt;<a class="el" href="_n_r_e___iterator_traits_8hpp_source.php">NRE_IteratorTraits.hpp</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class It, class T, class Category&gt;<br />
-class NRE::Utility::IteratorTraits&lt; It, T, Category &gt;</h3>
+class NRE::Utility::IteratorBase&lt; It, T, Category &gt;</h3>
 
 <p>Describe an iterator object. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
