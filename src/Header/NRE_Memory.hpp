@@ -10,3 +10,4 @@
     #pragma once
     
     #include "../Memory/Allocator/NRE_Allocator.hpp"
+    #include "../Memory/Traits/NRE_MemoryTraits.hpp"

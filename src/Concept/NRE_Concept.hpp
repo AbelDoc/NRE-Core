@@ -9,7 +9,7 @@
     
     #pragma once
     
-    #include "../Core/Traits/NRE_Traits.hpp"
+    #include "../Core/Traits/NRE_TypeTraits.hpp"
     
     /**
     * @namespace NRE

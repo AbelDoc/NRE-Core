@@ -36,11 +36,12 @@
 
     #include "../Core/Id/NRE_Id.hpp"
 
-    #include "../Core/Traits/NRE_Traits.hpp"
+    #include "../Core/Traits/NRE_TypeTraits.hpp"
     #include "../Core/Traits/NRE_TypeTraits.hpp"
     #include "../Core/Traits/NRE_IteratorTraits.hpp"
 
     #include "NRE_Exception.hpp"
     #include "NRE_Concept.hpp"
+    #include "NRE_Memory.hpp"
     
     #include "../Core/Algorithm/NRE_Algorithm.hpp"
