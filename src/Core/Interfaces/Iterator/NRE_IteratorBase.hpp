@@ -1,7 +1,7 @@
     
     /**
-     * @file NRE_IteratorTraits.hpp
-     * @brief Declaration of Core's API's Interface : IteratorTraits
+     * @file NRE_IteratorBase.hpp
+     * @brief Declaration of Core's API's Interface : IteratorBase
      * @author Louis ABEL
      * @date 20/10/2019
      * @copyright CC-BY-NC-SA

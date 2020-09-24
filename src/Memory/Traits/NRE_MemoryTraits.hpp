@@ -111,6 +111,40 @@
             /** Helper to access PointerValueTraits type */
             template <class T>
             using PointerValueT = typename PointerValueTraits<T>::ValueType;
+            
+            /**
+             * @class PointerTraits
+             * @brief Allow uniform access to pointer's traits and utilities functions for pointers
+             */
+            template <class T>
+            struct PointerTraits {
+                using DifferenceType = PointerDifferenceT<T>;
+                using ValueType = PointerValueT<T>;
+    
+                /** The rebinded pointer type */
+                template <class K>
+                using Rebind = typename T::Rebind<K>;
+            };
+            
+            template <template <class, class...> class M, class T, class ... Args>
+            struct PointerTraits<M<T, Args...>> {
+                using DifferenceType = PointerDifferenceT<M<T, Args...>>;
+                using ValueType = PointerValueT<M<T, Args...>>;
+    
+                /** The rebinded pointer type */
+                template <class K>
+                using Rebind = M<K, Args...>;
+            };
+            
+            template <Concept::Object T>
+            struct PointerTraits<T*> {
+                using DifferenceType = PointerDifferenceT<T*>;
+                using ValueType = PointerValueT<T*>;
+    
+                /** The rebinded pointer type */
+                template <class K>
+                using Rebind = K*;
+            };
         
         }
     }

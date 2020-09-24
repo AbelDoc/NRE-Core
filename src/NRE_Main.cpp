@@ -16,7 +16,8 @@
     
     int main(int, char**) {
         
-        std::cout << Concept::SameAs<int, Memory::PointerValueT<std::vector<int>>> << std::endl;
+        std::cout << Concept::SameAs<Core::DifferenceType, typename Memory::PointerTraits<int*>::DifferenceType> << std::endl;
+        std::cout << Concept::SameAs<int, typename Memory::PointerTraits<int*>::ValueType> << std::endl;
         
         return 0;
     }

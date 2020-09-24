@@ -329,7 +329,7 @@
             
             /**
              * @class IteratorTraits
-             * @brief Allow uniform access to all iterator traits
+             * @brief Allow uniform access to iterator's traits
              */
             template <class T>
             struct IteratorTraits {
