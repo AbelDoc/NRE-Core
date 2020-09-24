@@ -372,6 +372,19 @@
             using MakeSignedT = typename MakeSigned<T>::Type;
             
             /**
+             * @struct MakeUnsigned
+             * @brief Provide an unsigned type from the given type
+             */
+            template <class T>
+            struct MakeUnsigned {
+                using Type = std::make_unsigned_t<T>;
+            };
+            
+            /** Helper to access MakeUnsigned type */
+            template <class T>
+            using MakeUnsignedT = typename MakeUnsigned<T>::Type;
+            
+            /**
              * @struct IsSigned
              * @brief Allow to check if a type is signed or not
              */

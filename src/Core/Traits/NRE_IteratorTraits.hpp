@@ -328,7 +328,7 @@
             inline constexpr bool DISABLE_SIZED_SENTINEL_FOR = false || std::disable_sized_sentinel_for<S, T>;
             
             /**
-             * @class IteratorTraits
+             * @struct IteratorTraits
              * @brief Allow uniform access to iterator's traits
              */
             template <class T>
