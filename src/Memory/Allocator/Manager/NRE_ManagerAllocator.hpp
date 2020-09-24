@@ -11,7 +11,7 @@
 
     #include <cassert>
     #include <memory>
-    #include "../NRE_AllocatorTraits.hpp"
+    #include "../NRE_AllocatorBase.hpp"
     #include "../../Manager/NRE_MemoryManager.hpp"
 
     /**

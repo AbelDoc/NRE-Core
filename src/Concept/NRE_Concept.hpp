@@ -302,5 +302,6 @@
              */
             template <class T>
             concept Regular = SemiRegular<T> && EqualityComparable<T>;
+            
         }
     }

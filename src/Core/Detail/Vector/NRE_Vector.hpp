@@ -17,7 +17,7 @@
      #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
      #include "../../Traits/NRE_TypeTraits.hpp"
 
-     #include <Memory/Allocator/NRE_AllocatorTraits.hpp>
+     #include <Memory/Allocator/NRE_AllocatorBase.hpp>
     
 
      /**
