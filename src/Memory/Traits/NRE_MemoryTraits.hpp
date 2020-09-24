@@ -296,7 +296,7 @@
             
             /** Helper to access AllocatorConstPointerTraits type */
             template <class T>
-            using AllocatorConstPointerT = typename AllocatorConstPointerTraits<T>;
+            using AllocatorConstPointerT = typename AllocatorConstPointerTraits<T>::ConstPointer;
             
             template <class T>
             struct AllocatorDifferenceTraits {
@@ -379,7 +379,7 @@
                 using SizeType = typename T::SizeType;
             };
             
-            template <class T> requires {
+            template <class T> requires requires {
                 typename AllocatorDifferenceT<T>;
             } && (!requires {
                 typename T::SizeType;

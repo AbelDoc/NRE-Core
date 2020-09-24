@@ -29,10 +29,10 @@
              * @brief Default allocator using global new and delete
              */
             template <class T>
-            class DefaultAllocator : public AllocatorTraits<DefaultAllocator<T>> {
+            class DefaultAllocator : public AllocatorBase<DefaultAllocator<T>> {
                 public:     // Traits
                     /** Inherited allocator traits */
-                    using Traits = AllocatorTraits<DefaultAllocator<T>>;
+                    using Traits = AllocatorBase<DefaultAllocator<T>>;
                     /** The allocated type */
                     using ValueType     = typename Traits::ValueType;
                     /** The pointer on allocated type */

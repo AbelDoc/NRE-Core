@@ -684,7 +684,7 @@ template&lt;class T, class Allocator&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits Make sure the allocator is set for the container inner type The container's allocated type </p>
+<p>Check if the given AllocatorType inherit from NRE::Memory::AllocatorBase Make sure the allocator is set for the container inner type The container's allocated type </p>
 
 </div>
 </div>

@@ -1,7 +1,7 @@
     
     /**
-     * @file NRE_AllocatorTraits.hpp
-     * @brief Declaration of Memory's API's Interface : AllocatorTraits
+     * @file NRE_AllocatorBase.hpp
+     * @brief Declaration of Memory's API's Interface : AllocatorBase
      * @author Louis ABEL
      * @date 14/03/2020
      * @copyright CC-BY-NC-SA
@@ -26,18 +26,18 @@
         namespace Memory {
     
             /**
-             * @class AllocatorTraits
+             * @class AllocatorBase
              * @brief Describe an allocator object
              */
             template <class Alloc>
-            class AllocatorTraits {
+            class AllocatorBase {
             };
             /**
-             * @class AllocatorTraits
+             * @class AllocatorBase
              * @brief Describe an allocator object
              */
             template <template <class, class ...> class Alloc, class T, class ... AllocArgs>
-            class AllocatorTraits<Alloc<T, AllocArgs...>> : public Core::StaticInterface<AllocatorTraits<Alloc<T, AllocArgs...>>> {
+            class AllocatorBase<Alloc<T, AllocArgs...>> : public Core::StaticInterface<AllocatorBase<Alloc<T, AllocArgs...>>> {
                 public:     // Traits
                     /** The allocator type */
                     using AllocatorType = Alloc<T, AllocArgs...>;
@@ -139,7 +139,7 @@
              * @brief Check if the given template is an allocator class
              */
             template <class T>
-            struct IsAllocator : std::is_base_of<AllocatorTraits<T>, T> {
+            struct IsAllocator : std::is_base_of<AllocatorBase<T>, T> {
             };
     
             /** Shortcut to check if a template is an allocator */

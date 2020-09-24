@@ -30,10 +30,10 @@
              * @brief A variant of DirectAlloctor but store every call in MemoryManager
              */
             template <class T>
-            class ManagerAllocator : public AllocatorTraits<ManagerAllocator<T>> {
+            class ManagerAllocator : public AllocatorBase<ManagerAllocator<T>> {
                 public:     // Traits
                     /** Inherited allocator traits */
-                    using Traits = AllocatorTraits<ManagerAllocator<T>>;
+                    using Traits = AllocatorBase<ManagerAllocator<T>>;
                     /** The allocated type */
                     using ValueType     = typename Traits::ValueType;
                     /** The pointer on allocated type */

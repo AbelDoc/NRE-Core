@@ -29,10 +29,10 @@
              * @brief Allocate memory using malloc and free directly
              */
             template <class T>
-            class DirectAllocator : public AllocatorTraits<DirectAllocator<T>> {
+            class DirectAllocator : public AllocatorBase<DirectAllocator<T>> {
                 public:     // Traits
                     /** Inherited allocator traits */
-                    using Traits = AllocatorTraits<DirectAllocator<T>>;
+                    using Traits = AllocatorBase<DirectAllocator<T>>;
                     /** The allocated type */
                     using ValueType     = typename Traits::ValueType;
                     /** The pointer on allocated type */

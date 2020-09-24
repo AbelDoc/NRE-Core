@@ -536,7 +536,7 @@ template&lt;class Key , class T , class Allocator , bool StoreHash = false, clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits Make sure the allocator is set for the container inner type The table key type </p>
+<p>Check if the given AllocatorType inherit from NRE::Memory::AllocatorBase Make sure the allocator is set for the container inner type The table key type </p>
 
 </div>
 </div>
