@@ -8,20 +8,21 @@
      */
     
     #include <iostream>
-    #include <vector>
     
     #include "Header/NRE_Core.hpp"
 
     using namespace NRE;
     
     int main(int, char**) {
+        std::allocator<char> aChar;
+        std::allocator<int> aInt;
+        std::allocator<long long int> aLongLongInt;
+        std::allocator<long double> aLongDouble;
         
-        std::cout << Concept::SameAs<Core::DifferenceType, typename Memory::PointerTraits<int*>::DifferenceType> << std::endl;
-        std::cout << Concept::SameAs<int, typename Memory::PointerTraits<int*>::ValueType> << std::endl;
-        
-        std::allocator<int> alloc;
-        auto mem = Memory::AllocatorTraits<std::allocator<int>>::allocate(alloc, 10);
-        Memory::AllocatorTraits<std::allocator<int>>::deallocate(alloc, mem, 10);
+        std::cout << Memory::AllocatorTraits<decltype(aChar)>::getMaxSize(aChar) << std::endl;
+        std::cout << Memory::AllocatorTraits<decltype(aInt)>::getMaxSize(aInt) << std::endl;
+        std::cout << Memory::AllocatorTraits<decltype(aLongLongInt)>::getMaxSize(aLongLongInt) << std::endl;
+        std::cout << Memory::AllocatorTraits<decltype(aLongDouble)>::getMaxSize(aLongDouble) << std::endl;
         
         return 0;
     }

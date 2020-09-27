@@ -119,10 +119,17 @@
             
             /**
              * @interface TriviallyCopyable
-             * @brief Define a trivally copyable type
+             * @brief Define a trivially copyable type
              */
             template <class T>
             concept TriviallyCopyable = std::is_trivially_copyable_v<T>;
+            
+            /**
+             * @interface TriviallyDestructible
+             * @brief Define a trivially destructible type
+             */
+            template <class T>
+            concept TriviallyDestructible = std::is_trivially_destructible_v<T>;
             
             /**
              * @interface Volatile
@@ -167,11 +174,18 @@
             concept ConvertibleToBoolean = ConvertibleTo<T, bool>;
     
             /**
-             * @interface ConstructibleFrom
+             * @interface Constructible
              * @brief Define a type that's constructible from a given set of arguments
              */
             template <class T, class ... Args>
-            concept ConstructibleFrom = Destructible<T> && std::is_constructible_v<T, Args...>;
+            concept Constructible = std::is_constructible_v<T, Args...>;
+            
+            /**
+             * @interface ConstructibleFrom
+             * @brief Define a type that's destructible and constructible from a given set of arguments
+             */
+            template <class T, class ... Args>
+            concept ConstructibleFrom = Destructible<T> && Constructible<T, Args...>;
             
             /**
              * @interface DefaultInitializable

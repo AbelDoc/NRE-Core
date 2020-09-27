@@ -23,29 +23,6 @@
         namespace Core {
             
             /**
-             * Query a value's address even if the value type overload address operator
-             * @param t the value to obtain the adress
-             * @return the computed address
-             */
-            template <Concept::Object T>
-            [[nodiscard]] constexpr T* addressOf(T& t) noexcept {
-                return reinterpret_cast <T*> (const_cast <char&> (reinterpret_cast <const volatile char&> (t)));
-            }
-            
-            template <class T> requires (!Concept::Object<T>)
-            [[nodiscard]] constexpr T* addressOf(T& t) noexcept {
-                return &t;
-            }
-    
-            /**
-             * Inhibit addressOf so user can't get address of const r-value
-             * @param t the value to obtain the adress
-             * @return the computed address
-             */
-            template <class T>
-            [[nodiscard]] const T* addressOf(T && t) = delete;
-            
-            /**
              * @struct InputIteratorCategory
              * @brief Define an iterator category for concept differenciation
              */
@@ -338,5 +315,98 @@
                 using Reference = IteratorReferenceT<T>;
                 using Category = IteratorCategoryT<T>;
             };
+    
+            /**
+             * Return an iterator to the beginning of the given container
+             * @param t the object to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T& t) {
+                { t.begin() };
+            }
+            constexpr auto begin(T& t) -> decltype(t.begin()) {
+                return t.begin();
+            }
+    
+            /**
+             * Return a const iterator to the beginning of the given container
+             * @param t the object to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { t.begin() };
+            }
+            constexpr auto begin(T const& t) -> decltype(t.begin()) {
+                return t.begin();
+            }
+    
+            /**
+             * Return an iterator to the beginning of an array
+             * @param t the array to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T, SizeType N>
+            constexpr T* begin(T (&array)[N] ) noexcept {
+                return &array[0];
+            }
+    
+            /**
+             * Return a const iterator to the beginning of the given container or array
+             * @param t the object to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { begin(t) };
+            }
+            constexpr auto cbegin(T const& t) noexcept(noexcept(begin(t))) -> decltype(begin(t)) {
+                return begin(t);
+            }
+    
+            /**
+             * Return an iterator to the end of the given container
+             * @param t the object to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T& t) {
+                { t.end() };
+            }
+            constexpr auto end(T& t) -> decltype(t.end()) {
+                return t.end();
+            }
+    
+            /**
+             * Return a const iterator to the end of the given container
+             * @param t the object to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { t.end() };
+            }
+            constexpr auto end(T const& t) -> decltype(t.end()) {
+                return t.end();
+            }
+    
+    
+            /**
+             * Return an iterator to the end of an array
+             * @param t the array to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T, SizeType N>
+            constexpr T* end(T (&array)[N]) noexcept {
+                return &array[0] + N;
+            }
+    
+            /**
+             * Return a const iterator to the end of the given container or array
+             * @param t the object to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { t.end() };
+            }
+            constexpr auto cend(T const& t) noexcept(noexcept(end(t))) -> decltype(end(t)) {
+                return end(t);
+            }
         }
     }

@@ -9,7 +9,7 @@
     
     #pragma once
 
-    #include "../../Concept/NRE_Concept.hpp"
+    #include "../../Concept/NRE_IteratorConcept.hpp"
     
     /**
     * @namespace NRE
@@ -21,6 +21,55 @@
          * @brief Memory's API
          */
         namespace Memory {
+            
+            /**
+             * Construct an object at a given address with given arguments
+             * @param p    the memory address to construct the object
+             * @param args the arguments to forward to the object's constructor
+             * @return     the address of the constructed object
+             */
+            template <class T, class ... Args> requires Concept::Constructible<T, Args...>
+            constexpr T* constructAt(T* p, Args && ... args) {
+                return ::new (const_cast <void*> (static_cast <const volatile void*> (p))) T(std::forward<Args>(args)...);
+            }
+            
+            /**
+             * Destroy an object
+             * @param p the object's address
+             */
+            template <class T>
+            constexpr void destroyAt(T* p) {
+                p->~T();
+            }
+    
+            /**
+             * Destroy a range of trivially destructible objets, no operation needed
+             */
+            template <Concept::ForwardIterator It> requires Concept::TriviallyDestructible<Core::IteratorValueT<It>>
+            constexpr void destroy(It, It) {
+            }
+    
+            /**
+             * Destroy a range of non-trivially destructible objets
+             * @param begin the range begin
+             * @param end   the range end
+             */
+            template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>>)
+            constexpr void destroy(It begin, It end) {
+                for ( ; begin != end; ++begin) {
+                    destroyAt(&(*begin));
+                }
+            }
+            
+            /**
+             * Destroy an array
+             * @param p the array's address
+             */
+            template <Concept::Array T>
+            constexpr void destroyAt(T* p) {
+                destroy(Core::begin(*p), Core::end(*p));
+            }
+            
             /**
              * @struct PointerDifferenceTraits
              * @brief Allow uniform access to a pointer's difference type trait
@@ -541,39 +590,161 @@
          * @brief Memory's API
          */
         namespace Memory {
-            
-            /**
-             * @struct AllocatorHintAllocationHepler
-             * @brief Allow to verify if an allocator can use the hint allocation
-             */
-            template <Concept::Allocator T>
-            struct AllocatorHintAllocationHelper {
+            namespace Detail {
                 /**
-                 * Allocate n bytes of uninitialized memory with the given allocator, call to simple allocate as hint allocation is not supported
-                 * @param a the used allocator
-                 * @param n the number of bytes to allocate
-                 * @return a pointer returned by a.allocate(n, hint)
+                 * @struct AllocatorConstructHelper
+                 * @brief Allow to verifiy if an allocator can use member construct function
                  */
-                [[nodiscard]] static constexpr AllocatorPointerT<T> allocate(T& a, AllocatorSizeT<T> n, AllocatorConstVoidPointerT<T>) {
-                    return a.allocate(n);
+                template <Concept::Allocator T, class ... Args>
+                struct AllocatorConstructHelper {
+                    /**
+                     * Construct an object to a given address with given arguments (without the allocator, as no construct support)
+                     * @param p    the memory address to construct the object
+                     * @param args the arguments to forward to the object's constructor
+                     */
+                    static constexpr void construct(T&, AllocatorPointerT<T> p, Args && ... args) {
+                        constructAt(p, std::forward<Args>(args)...);
+                    }
+                };
+                
+                template <Concept::Allocator T, class ... Args> requires requires (T& a, AllocatorPointerT<T> p, Args && ... args) {
+                    { a.construct(p, std::forward<Args>(args)...) } -> Concept::SameAs<void>;
                 }
-            };
+                struct AllocatorConstructHelper<T, Args...> {
+                    /**
+                     * Construct an object to a given address with given arguments from an allocator
+                     * @param a    the used allocator
+                     * @param p    the memory address to construct the object
+                     * @param args the arguments to forward to the object's constructor
+                     */
+                    static constexpr void construct(T& a, AllocatorPointerT<T> p, Args && ... args) {
+                        a.construct(p, std::forward<Args>(args)...);
+                    }
+                };
+                
+                /**
+                 * @struct AllocatorDestroyHelper
+                 * @brief Allow to verify if an allocator can use member destroy function
+                 */
+                template <Concept::Allocator T>
+                struct AllocatorDestroyHelper {
+                    /**
+                     * Destroy an object at a given address
+                     * @param p the objet's address
+                     */
+                    static constexpr void destroy(T&, AllocatorPointerT<T> p) {
+                        destroyAt(p);
+                    }
+                };
+                template <Concept::Allocator T> requires requires (T& a, AllocatorPointerT<T> p) {
+                    { a.destroy(p) } -> Concept::SameAs<void>;
+                }
+                struct AllocatorDestroyHelper<T> {
+                    /**
+                     * Destroy an object at a given address with an allocator
+                     * @param a the used allocator
+                     * @param p the objet's address
+                     */
+                    static constexpr void destroy(T& a, AllocatorPointerT<T> p) {
+                        a.destroy(p);
+                    }
+                };
+                
+                /**
+                 * @struct AllocatorHintAllocationHepler
+                 * @brief Allow to verify if an allocator can use the hint allocation
+                 */
+                template <Concept::Allocator T>
+                struct AllocatorHintAllocationHelper {
+                    /**
+                     * Allocate n bytes of uninitialized memory with the given allocator, call to simple allocate as hint allocation is not supported
+                     * @param a the used allocator
+                     * @param n the number of bytes to allocate
+                     * @return a pointer returned by a.allocate(n, hint)
+                     */
+                    [[nodiscard]] static constexpr AllocatorPointerT<T> allocate(T& a, AllocatorSizeT<T> n, AllocatorConstVoidPointerT<T>) {
+                        return a.allocate(n);
+                    }
+                };
     
-            template <Concept::Allocator T> requires requires (T t, AllocatorSizeT<T> n, AllocatorConstVoidPointerT<T> hint) {
-                { t.allocate(n, hint) } -> Concept::SameAs<AllocatorPointerT<T>>;
-            }
-            struct AllocatorHintAllocationHelper<T> {
-                /**
-                 * Allocate n bytes of uninitialized memory with the given allocator using the hint address
-                 * @param a    the used allocator
-                 * @param n    the number of bytes to allocate
-                 * @param hint an address which can be used by the allocator to allocate nearby
-                 * @return a pointer returned by a.allocate(n, hint)
-                 */
-                [[nodiscard]] static constexpr AllocatorPointerT<T> allocate(T& a, AllocatorSizeT<T> n, AllocatorConstVoidPointerT<T> hint) {
-                    return a.allocate(n, hint);
+                template <Concept::Allocator T> requires requires (T& a, AllocatorSizeT<T> n, AllocatorConstVoidPointerT<T> hint) {
+                    { a.allocate(n, hint) } -> Concept::SameAs<AllocatorPointerT<T>>;
                 }
-            };
+                struct AllocatorHintAllocationHelper<T> {
+                    /**
+                     * Allocate n bytes of uninitialized memory with the given allocator using the hint address
+                     * @param a    the used allocator
+                     * @param n    the number of bytes to allocate
+                     * @param hint an address which can be used by the allocator to allocate nearby
+                     * @return a pointer returned by a.allocate(n, hint)
+                     */
+                    [[nodiscard]] static constexpr AllocatorPointerT<T> allocate(T& a, AllocatorSizeT<T> n, AllocatorConstVoidPointerT<T> hint) {
+                        return a.allocate(n, hint);
+                    }
+                };
+                
+                /**
+                 * @struct AllocatorMaxSizeHelper
+                 * @brief Allow to verify if an allocatorcan use the member max size function
+                 */
+                template <Concept::Allocator T>
+                struct AllocatorMaxSizeHelper {
+                    /**
+                     * @return the max allocation size for a given type
+                     */
+                    static constexpr Core::SizeType getMaxSize(T&) {
+                        return std::numeric_limits<Core::SizeType>::max() / sizeof(AllocatorValueT<T>);
+                    }
+                };
+                
+                template <Concept::Allocator T> requires requires (T& a) {
+                    { a.getMaxSize() } -> Concept::SameAs<Core::SizeType>;
+                } && (!requires (T& a) {
+                    { a.max_size() } -> Concept::SameAs<Core::SizeType>;
+                })
+                struct AllocatorMaxSizeHelper<T> {
+                    /**
+                     * Return the max allocation size from an allocator
+                     * @param a the used allocator
+                     * @return the max allocation size for a given type
+                     */
+                    static constexpr Core::SizeType getMaxSize(T& a) {
+                        return a.getMaxSize();
+                    }
+                };
+    
+                template <Concept::Allocator T> requires requires (T& a) {
+                    { a.max_size() } -> Concept::SameAs<Core::SizeType>;
+                } && (!requires (T& a) {
+                    { a.getMaxSize() } -> Concept::SameAs<Core::SizeType>;
+                })
+                struct AllocatorMaxSizeHelper<T> {
+                    /**
+                     * Return the max allocation size from an allocator
+                     * @param a the used allocator
+                     * @return the max allocation size for a given type
+                     */
+                    static constexpr Core::SizeType getMaxSize(T& a) {
+                        return a.max_size();
+                    }
+                };
+    
+                template <Concept::Allocator T> requires requires (T& a) {
+                    { a.max_size() } -> Concept::SameAs<Core::SizeType>;
+                    { a.getMaxSize() } -> Concept::SameAs<Core::SizeType>;
+                }
+                struct AllocatorMaxSizeHelper<T> {
+                    /**
+                     * Return the max allocation size from an allocator
+                     * @param a the used allocator
+                     * @return the max allocation size for a given type
+                     */
+                    static constexpr Core::SizeType getMaxSize(T& a) {
+                        return a.getMaxSize();
+                    }
+                };
+            }
+            
             
             /**
              * @struct AllocatorTraits
@@ -613,7 +784,7 @@
                  * @return a pointer returned by a.allocate(n, hint)
                  */
                 [[nodiscard]] static constexpr Pointer allocate(AllocatorType& a, SizeType n, ConstVoidPointer hint) {
-                    return AllocatorHintAllocationHelper<AllocatorType>::allocate(a, n, hint);
+                    return Detail::AllocatorHintAllocationHelper<AllocatorType>::allocate(a, n, hint);
                 }
                 /**
                  * Deallocate n bytes from a given address alocated with the given allocator
@@ -623,6 +794,24 @@
                  */
                 static constexpr void deallocate(AllocatorType& a, Pointer p, SizeType n) {
                     a.deallocate(p, n);
+                }
+                /**
+                 * Construct an object to a given address with given arguments from an allocator
+                 * @param a    the used allocator
+                 * @param p    the memory address to construct the object
+                 * @param args the arguments to forward to the object's constructor
+                 */
+                template <class ... Args>
+                static constexpr void construct(AllocatorType& a, Pointer p, Args && ... args) {
+                    Detail::AllocatorConstructHelper<AllocatorType, Args...>::construct(a, p, std::forward<Args>(args)...);
+                }
+                /**
+                 * Return the max allocation size from an allocator
+                 * @param a the used allocator
+                 * @return the max allocation size for a given type
+                 */
+                static constexpr Core::SizeType getMaxSize(AllocatorType& a) {
+                    return Detail::AllocatorMaxSizeHelper<AllocatorType>::getMaxSize(a);
                 }
             };
             
@@ -660,7 +849,7 @@
                  * @return a pointer returned by a.allocate(n, hint)
                  */
                 [[nodiscard]] static constexpr Pointer allocate(AllocatorType& a, SizeType n, ConstVoidPointer hint) {
-                    return AllocatorHintAllocationHelper<AllocatorType>::allocate(a, n, hint);
+                    return Detail::AllocatorHintAllocationHelper<AllocatorType>::allocate(a, n, hint);
                 }
                 /**
                  * Deallocate n bytes from a given address alocated with the given allocator
@@ -670,6 +859,24 @@
                  */
                 static constexpr void deallocate(AllocatorType& a, Pointer p, SizeType n) {
                     a.deallocate(p, n);
+                }
+                /**
+                 * Construct an object to a given address with given arguments from an allocator
+                 * @param a    the allocator to use
+                 * @param p    the memory address to construct the object
+                 * @param args the arguments to forward to the object's constructor
+                 */
+                template <class ... CtrArgs>
+                static constexpr void construct(AllocatorType& a, Pointer p, CtrArgs && ... args) {
+                    Detail::AllocatorConstructHelper<AllocatorType, CtrArgs...>::construct(a, p, std::forward<CtrArgs>(args)...);
+                }
+                /**
+                 * Return the max allocation size from an allocator
+                 * @param a the used allocator
+                 * @return the max allocation size for a given type
+                 */
+                static constexpr Core::SizeType getMaxSize(AllocatorType& a) {
+                    return Detail::AllocatorMaxSizeHelper<AllocatorType>::getMaxSize(a);
                 }
             };
         }
