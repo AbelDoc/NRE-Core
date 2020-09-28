@@ -591,6 +591,22 @@
          */
         namespace Memory {
             namespace Detail {
+                template <class T, class K>
+                struct AllocatorRebindHelper {
+                };
+                
+                template <Concept::Allocator T, class K> requires requires {
+                    typename T::Rebind<K>;
+                }
+                struct AllocatorRebindHelper<T, K> {
+                    using Rebind = typename T::Rebind<K>;
+                };
+                
+                template <template <class, class ...> class M, class T, class ... Args, class K> requires Concept::Allocator<M<T, Args...>>
+                struct AllocatorRebindHelper<M<T, Args...>, K> {
+                    using Rebind = M<K, Args...>;
+                };
+                
                 /**
                  * @struct AllocatorConstructHelper
                  * @brief Allow to verifiy if an allocator can use member construct function
@@ -762,7 +778,7 @@
                 using SizeType = AllocatorSizeT<T>;
                 
                 template <class K>
-                using Rebind = typename T::Rebind<K>;
+                using Rebind = typename Detail::AllocatorRebindHelper<T, K>::Rebind<K>;
                 
                 template <class K>
                 using RebindTraits = AllocatorTraits<Rebind<K>>;
@@ -827,7 +843,7 @@
                 using SizeType = AllocatorSizeT<M<T, Args...>>;
     
                 template <class K>
-                using Rebind = M<K, Args...>;
+                using Rebind = typename Detail::AllocatorRebindHelper<M<T, Args...>, K>::Rebind<K>;
     
                 template <class K>
                 using RebindTraits = AllocatorTraits<Rebind<K>>;
