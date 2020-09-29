@@ -29,9 +29,7 @@
             return v != 0;
         });
         
-        std::cout << p[0] << std::endl;
-        std::cout << p[1] << std::endl;
-        std::cout << p[2] << std::endl;
+        delete[] p;
         
         return 0;
     }

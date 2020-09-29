@@ -27,11 +27,11 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
                                                                                                                           (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
-            OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
+            constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
                     *first = *begin;
                 }
@@ -43,11 +43,11 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
-            OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
+            constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *first = *begin;
                     ++first;
@@ -61,21 +61,79 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::TriviallyCopyable<IteratorValueT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<OutputIt>> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
-            OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
+            constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
                 IteratorDifferenceT<InputIt> n = end - begin;
-                std::memcpy(memFirst, memBegin, n * sizeof(IteratorValueT<InputIt>));
+                std::memmove(memFirst, memBegin, n * sizeof(IteratorValueT<InputIt>));
                 return first + n;
             }
+
+            /**
+             * Copy a range of data [begin, end) into a given destination but start from the end, no optimisation
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param first the destination start
+             * @return an iterator pointing to the last copied element
+             */
+            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
+                                                                                                                (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
+                while (begin != end) {
+                    *(--first) = *(--begin);
+                }
+                return first;
+            }
+        
+            /**
+             * Copy a range of data [begin, end) into a given destination but start from the end, optimized for random access iterator
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param first the destination start
+             * @return an iterator pointing to the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
+                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
+                for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
+                    *(--first) = *(--begin);
+                }
+                return first;
+            }
+        
+            /**
+             * Copy a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterator and trivially copyable types
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param first the destination start
+             * @return an iterator pointing to the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::TriviallyCopyable<IteratorValueT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<OutputIt>> &&
+                                                                                                                          Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
+                                                                                                                          Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
+            constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
+                IteratorValueT<OutputIt>* memFirst = addressOf(*first);
+                IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
+                IteratorDifferenceT<InputIt> n = end - begin;
+                std::memmove(first - n, memBegin, n * sizeof(IteratorValueT<InputIt>));
+                return first - n;
+            }
             
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt, Concept::UnaryPredicate<IteratorValueT<InputIt>> Predicate>
-            OutputIt copyIf(InputIt begin, InputIt end, OutputIt first, Predicate p) {
+            /**
+             * Copy data in a given range [begin, end) if they satisfies a given unary predicate
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param first the destination start
+             * @param p     the used predicate
+             * @return an iterator pointing after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt, Concept::UnaryPredicate<IteratorValueT<InputIt>> Pred>
+            constexpr OutputIt copyIf(InputIt begin, InputIt end, OutputIt first, Pred p) {
                 for (; begin != end; ++begin) {
                     if (p(*begin)) {
                         *first = *begin;
@@ -85,6 +143,35 @@
                 return first;
             }
             
+            /**
+             * Copy N data in the range [begin, begin + N) into a given destination, no optimisation
+             * @param begin the source range start
+             * @param n     the number of data to copy
+             * @param first the destination start
+             * @return an interator pointing after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            constexpr OutputIt copyN(InputIt begin, Size n, OutputIt first) {
+                for (; n > 0; --n) {
+                    *first = *begin;
+                    ++first;
+                    ++begin;
+                }
+                return first;
+            }
+
+            /**
+             * Copy N data in the range [begin, begin + N) into a given destination, random access iterator optimisation
+             * @param begin the source range start
+             * @param n     the number of data to copy
+             * @param first the destination start
+             * @return an interator pointing after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            constexpr OutputIt copyN(InputIt begin, Size n, OutputIt first) {
+                return copy(begin, begin + n, first);
+            }
+
             /**
              * Copy a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception
              * @param begin the source range start
