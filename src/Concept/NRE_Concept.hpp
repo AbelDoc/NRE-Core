@@ -317,5 +317,28 @@
             template <class T>
             concept Regular = SemiRegular<T> && EqualityComparable<T>;
             
+            /**
+             * @interface Predicate
+             * @param Define a n-arity predicate, taking n parameters and return a boolean testable value
+             */
+            template <class P, class ... Args>
+            concept Predicate = requires (P const& p, Args && ... args) {
+                { p(std::forward<Args>(args)...) } -> BooleanTestable;
+            };
+            
+            /**
+             * @interface UnaryPredicate
+             * @brief Define an unary predicate, taking one parameter and return a boolean testable value
+             */
+            template <class P, class T>
+            concept UnaryPredicate = Predicate<P, T>;
+            
+            /**
+             * @interface BinaryPredicate
+             * @brief Define a binary predicate, taking two parameters and return a boolean testable value
+             */
+            template <class P, class T, class K>
+            concept BinaryPredicate = Predicate<P, T, K>;
+            
         }
     }

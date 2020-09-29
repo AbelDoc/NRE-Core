@@ -12,17 +12,26 @@
     #include "Header/NRE_Core.hpp"
 
     using namespace NRE;
+    using namespace NRE::Core;
+    using namespace NRE::Memory;
+    using namespace NRE::Concept;
     
     int main(int, char**) {
-        std::allocator<char> aChar;
-        std::allocator<int> aInt;
-        std::allocator<long long int> aLongLongInt;
-        std::allocator<long double> aLongDouble;
+        std::vector<int> vec;
+        vec.emplace_back(0);
+        vec.emplace_back(1);
+        vec.emplace_back(2);
+        vec.emplace_back(3);
         
-        std::cout << Memory::AllocatorTraits<decltype(aChar)>::getMaxSize(aChar) << std::endl;
-        std::cout << Memory::AllocatorTraits<decltype(aInt)>::getMaxSize(aInt) << std::endl;
-        std::cout << Memory::AllocatorTraits<decltype(aLongLongInt)>::getMaxSize(aLongLongInt) << std::endl;
-        std::cout << Memory::AllocatorTraits<decltype(aLongDouble)>::getMaxSize(aLongDouble) << std::endl;
+        int* p = new int[3];
+        
+        copyIf(vec.begin(), vec.end(), p, [](int v) {
+            return v != 0;
+        });
+        
+        std::cout << p[0] << std::endl;
+        std::cout << p[1] << std::endl;
+        std::cout << p[2] << std::endl;
         
         return 0;
     }

@@ -21,6 +21,29 @@
          * @brief Core's API
          */
         namespace Core {
+        
+            /**
+             * Query a value's address even if the value type overload address operator
+             * @param t the value to obtain the adress
+             * @return the computed address
+             */
+            template <Concept::Object T>
+            [[nodiscard]] constexpr T* addressOf(T& t) noexcept {
+                return reinterpret_cast <T*> (const_cast <char&> (reinterpret_cast <const volatile char&> (t)));
+            }
+    
+            template <class T> requires (!Concept::Object<T>)
+            [[nodiscard]] constexpr T* addressOf(T& t) noexcept {
+                return &t;
+            }
+    
+            /**
+             * Inhibit addressOf so user can't get address of const r-value
+             * @param t the value to obtain the adress
+             * @return the computed address
+             */
+            template <class T>
+            [[nodiscard]] const T* addressOf(T && t) = delete;
             
             /**
              * @struct InputIteratorCategory
@@ -347,7 +370,7 @@
              */
             template <class T, SizeType N>
             constexpr T* begin(T (&array)[N] ) noexcept {
-                return &array[0];
+                return addressOf(array[0]);
             }
     
             /**
@@ -394,7 +417,7 @@
              */
             template <class T, SizeType N>
             constexpr T* end(T (&array)[N]) noexcept {
-                return &array[0] + N;
+                return addressOf(array[0]) + N;
             }
     
             /**

@@ -57,7 +57,7 @@
             template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>>)
             constexpr void destroy(It begin, It end) {
                 for ( ; begin != end; ++begin) {
-                    destroyAt(&(*begin));
+                    destroyAt(addressOf(*begin));
                 }
             }
             
