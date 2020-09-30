@@ -209,7 +209,7 @@
             }
             
             /**
-             * Copy N data in the range [begin, begin + N) into a given destination, no optimization
+             * Copy N data starting at begin into a given destination, no optimization
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
@@ -226,7 +226,7 @@
             }
 
             /**
-             * Copy N data in the range [begin, begin + N) into a given destination, optimized for random access iterator
+             * Copy N data starting at begin into a given destination, optimized for random access iterator
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
@@ -373,7 +373,42 @@
             }
 
             /**
-             * Move a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception
+             * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception
+             * @param begin the source range start
+             * @param n     the number of data to copy
+             * @param first the destination start
+             * @return an iterator pointer after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
+                ForwardIt current = first;
+                try {
+                    for (; n > 0; --n) {
+                        Memory::constructAt(addressOf(*current), *begin);
+                        ++begin;
+                        ++current;
+                    }
+                    return current;
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+
+            /**
+             * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception, optimized for random access iterator
+             * @param begin the source range start
+             * @param n     the number of data to copy
+             * @param first the destination start
+             * @return an iterator pointer after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
+                return uninitializedCopy(begin, begin + n, first);
+            }
+
+            /**
+             * Move a range of data [begin, end) into an uninitialized memory destination, destroy moved data in case of exception
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -394,7 +429,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, trivially types optimization
+             * Move a range of data [begin, end) into an uninitialized memory destination, destroy moved data in case of exception, trivially types optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -403,6 +438,41 @@
             template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedMove(InputIt begin, InputIt end, ForwardIt first) {
                 return move(begin, end, first);
+            }
+
+            /**
+             * Move N data starting at begin into an uninitialized memory destination, destroy moved data in case of exception
+             * @param begin the source range start
+             * @param n     the number of data to moved
+             * @param first the destination start
+             * @return an iterator pointer after the last moved element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
+                ForwardIt current = first;
+                try {
+                    for (; n > 0; --n) {
+                        Memory::constructAt(addressOf(*current), std::move(*begin));
+                        ++begin;
+                        ++current;
+                    }
+                    return current;
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+        
+            /**
+             * Move N data starting at begin into an uninitialized memory destination, destroy moved data in case of exception, optimized for random access iterator
+             * @param begin the source range start
+             * @param n     the number of data to moved
+             * @param first the destination start
+             * @return an iterator pointer after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
+                return uninitializedMove(begin, begin + n, first);
             }
         }
     }
