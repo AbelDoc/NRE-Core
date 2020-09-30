@@ -18,7 +18,5 @@
     
     int main(int, char**) {
         
-        std::cout << SameAs<int&, AddRValueReferenceT<int&>> << std::endl;
-        
         return 0;
     }

@@ -23,13 +23,53 @@
         namespace Core {
     
             /**
+             * Fill a range of data [begin, end) with a given value, no optimisation
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param value the value to fill the range with
+             */
+            template <Concept::ForwardIterator It> requires (!Concept::MemFillable<IteratorValueT<It>> && !Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>)
+            constexpr void fill(It begin, It end, IteratorValueT<It>& value) {
+                for (; begin != end; ++begin) {
+                    *begin = value;
+                }
+            }
+        
+            /**
+             * Fill a range of data [begin, end) with a given value, random access iterator optimisation
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param value the value to fill the range with
+             */
+            template <Concept::ForwardIterator It> requires (!Concept::MemFillable<IteratorValueT<It>>) && Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>
+            constexpr void fill(It begin, It end, IteratorValueT<It>& value) {
+                for (IteratorDifferenceT<It> n = end - begin; n > 0; --n) {
+                    *begin = value;
+                    ++begin;
+                }
+            }
+
+            /**
+             * Fill a range of data [begin, end) with a given value, optimized for contiguous iterator and bytes-like type
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param value the value to fill the range with
+             */
+            template <Concept::ForwardIterator It> requires Concept::MemFillable<IteratorValueT<It>> && Concept::SameAs<IteratorCategoryT<It>, ContiguousIteratorCategory>
+            constexpr void fill(It begin, It end, IteratorValueT<It>& value) {
+                IteratorValueT<It>* memBegin = addressOf(*begin);
+                IteratorDifferenceT<It> n = end - begin;
+                std::memset(memBegin, value, n);
+            }
+    
+            /**
              * Copy a range of data [begin, end) into a given destination, no optimisation
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
                                                                                                                           (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
             constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
@@ -45,8 +85,8 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
-                                                                                                                           Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
+                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
             constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *first = *begin;
@@ -63,7 +103,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::TriviallyCopyable<IteratorValueT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<OutputIt>> &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<OutputIt>> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
             constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
@@ -81,7 +121,7 @@
              * @param first the destination start
              * @return an iterator pointing to the last copied element
              */
-            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
+            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
                                                                                                                 (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
             constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
                 while (begin != end) {
@@ -97,7 +137,7 @@
              * @param first the destination start
              * @return an iterator pointing to the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<OutputIt>>) &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
                                                                                                                             Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
             constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -113,7 +153,7 @@
              * @param first the destination start
              * @return an iterator pointing to the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::TriviallyCopyable<IteratorValueT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<OutputIt>> &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<OutputIt>> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
             constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
@@ -179,7 +219,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyMoveable<IteratorValueT<InputIt>> || !Concept::TriviallyMoveable<IteratorValueT<OutputIt>>) &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
                                                                                                                           (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
             constexpr OutputIt move(InputIt begin, InputIt end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
@@ -195,7 +235,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyMoveable<IteratorValueT<InputIt>> || !Concept::TriviallyMoveable<IteratorValueT<OutputIt>>) &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
                                                                                                                             Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
             constexpr OutputIt move(InputIt begin, InputIt end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -213,7 +253,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::TriviallyMoveable<IteratorValueT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<OutputIt>> &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<OutputIt>> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
             constexpr OutputIt move(InputIt begin, InputIt end, OutputIt first) {
@@ -231,8 +271,8 @@
              * @param first the destination start
              * @return an iterator pointing to the last moved element
              */
-            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::TriviallyMoveable<IteratorValueT<InputIt>> || !Concept::TriviallyMoveable<IteratorValueT<OutputIt>>) &&
-                                                                                                      (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
+                                                                                                                (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
             constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
                 while (begin != end) {
                     *(--first) = std::move(*(--begin));
@@ -247,7 +287,7 @@
              * @param first the destination start
              * @return an iterator pointing to the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::TriviallyMoveable<IteratorValueT<InputIt>> || !Concept::TriviallyMoveable<IteratorValueT<OutputIt>>) &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
                                                                                                                             Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
             constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -263,7 +303,7 @@
              * @param first the destination start
              * @return an iterator pointing to the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::TriviallyCopyable<IteratorValueT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<OutputIt>> &&
+            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<OutputIt>> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
                                                                                                                           Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
             constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
@@ -281,7 +321,7 @@
              * @param first the destination start
              * @return an iterator pointer after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires (!Concept::TriviallyCopyable<IteratorValueT<InputIt>> || !Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
+            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedCopy(InputIt begin, InputIt end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -302,7 +342,7 @@
              * @param first the destination start
              * @return an iterator pointer after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::TriviallyCopyable<IteratorValueT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
+            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopy(InputIt begin, InputIt end, ForwardIt first) {
                 return copy(begin, end, first);
             }
@@ -314,7 +354,7 @@
              * @param first the destination start
              * @return an iterator pointer after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires (!Concept::TriviallyMoveable<IteratorValueT<InputIt>> || !Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>)
+            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedMove(InputIt begin, InputIt end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -335,7 +375,7 @@
              * @param first the destination start
              * @return an iterator pointer after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::TriviallyMoveable<IteratorValueT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>
+            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedMove(InputIt begin, InputIt end, ForwardIt first) {
                 return move(begin, end, first);
             }

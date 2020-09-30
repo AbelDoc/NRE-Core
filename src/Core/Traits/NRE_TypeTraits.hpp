@@ -413,6 +413,10 @@
             template <class T>
             inline constexpr bool IsVolatileV = IsVolatile<T>::value;
             
+            /**
+             * @struct AddRValueReference
+             * @brief Allow to transform a type to it's r-value reference
+             */
             template <class T>
             struct AddRValueReference {
                 using Type = T;
@@ -423,7 +427,26 @@
                 using Type = T&&;
             };
             
+            /** Helper to access AddRValueReference type */
             template <class T>
             using AddRValueReferenceT = typename AddRValueReference<T>::Type;
+        
+            /**
+             * @struct AddLValueReference
+             * @brief Allow to transform a type to it's l-value reference
+             */
+            template <class T>
+            struct AddLValueReference {
+                using Type = T;
+            };
+        
+            template <Concept::Referenceable T>
+            struct AddLValueReference<T> {
+                using Type = T&;
+            };
+        
+            /** Helper to access AddLValueReference type */
+            template <class T>
+            using AddLValueReferenceT = typename AddLValueReference<T>::Type;
         }
     }

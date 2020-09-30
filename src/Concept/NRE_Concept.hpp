@@ -133,6 +133,34 @@
              */
             template <class T>
             concept NonVolatileTriviallyCopyable = TriviallyCopyable<T> && !Volatile<T>;
+    
+            /**
+             * @interface NonVolatileTriviallyMoveable
+             * @brief Define a non-volatile type which can be trivially moved
+             */
+            template <class T>
+            concept NonVolatileTriviallyMoveable = TriviallyMoveable<T> && !Volatile<T>;
+            
+            /**
+             * @interface MemCopyable
+             * @brief Define a memory copyable object
+             */
+            template <class T>
+            concept MemCopyable = NonVolatileTriviallyCopyable<T>;
+    
+            /**
+             * @interface MemMoveable
+             * @brief Define a memory moveable object
+             */
+            template <class T>
+            concept MemMoveable = NonVolatileTriviallyMoveable<T>;
+    
+            /**
+             * @interface MemFillable
+             * @brief Define a memory fillable object
+             */
+            template <class T>
+            concept MemFillable = MemCopyable<T> && sizeof(T) == 1;
             
             /**
              * @interface Copyable
