@@ -17,19 +17,8 @@
     using namespace NRE::Concept;
     
     int main(int, char**) {
-        std::vector<int> vec;
-        vec.emplace_back(0);
-        vec.emplace_back(1);
-        vec.emplace_back(2);
-        vec.emplace_back(3);
         
-        int* p = new int[3];
-        
-        copyIf(vec.begin(), vec.end(), p, [](int v) {
-            return v != 0;
-        });
-        
-        delete[] p;
+        std::cout << SameAs<int&, AddRValueReferenceT<int&>> << std::endl;
         
         return 0;
     }

@@ -17,6 +17,16 @@
     */
     namespace NRE {
         /**
+         * @namespace Core
+         * @brief Core's API
+         */
+        namespace Core {
+    
+            /** Allow to add a reference to a type for metaprogramming/concept use */
+            template <class T>
+            using WithReference = T&;
+        }
+        /**
          * @namespace Concept
          * @brief Concept's API
          */
@@ -63,5 +73,23 @@
              */
             template <class T>
             concept Arithmetic = Integral<T> || FloatingPoint<T>;
+    
+            /**
+             * @interface Referenceable
+             * @brief Define a referenceable object
+             */
+            template <class T>
+            concept Referenceable = requires {
+                typename Core::WithReference<T>;
+            };
+    
+            /**
+             * @interface Dereferenceable
+             * @brief Define a dereferenceable object
+             */
+            template <class T>
+            concept Dereferenceable = requires(T t) {
+                { *t } -> Referenceable;
+            };
         }
     }

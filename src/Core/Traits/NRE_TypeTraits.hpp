@@ -21,6 +21,7 @@
          * @brief Core's API
          */
         namespace Core {
+            
     
             /** Shortcut to is_trivially_copyable_v inner value */
             template <class T>
@@ -100,10 +101,6 @@
             /** Helper to access IsSameAs value */
             template <class T, class U>
             inline constexpr bool IsSameAsV = IsSameAs<T, U>::value;
-    
-            /** Allow to add a reference to a type for metaprogramming/concept use */
-            template <class T>
-            using WithReference = T&;
             
             /**
              * @struct RemoveConst
@@ -415,5 +412,18 @@
             /** Helper to access IsVolatile value */
             template <class T>
             inline constexpr bool IsVolatileV = IsVolatile<T>::value;
+            
+            template <class T>
+            struct AddRValueReference {
+                using Type = T;
+            };
+            
+            template <Concept::Referenceable T>
+            struct AddRValueReference<T> {
+                using Type = T&&;
+            };
+            
+            template <class T>
+            using AddRValueReferenceT = typename AddRValueReference<T>::Type;
         }
     }

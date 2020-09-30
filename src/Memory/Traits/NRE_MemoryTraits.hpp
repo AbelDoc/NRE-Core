@@ -43,21 +43,54 @@
             }
     
             /**
-             * Destroy a range of trivially destructible objets, no operation needed
+             * Destroy a range of trivially destructible objects, no operation needed
              */
             template <Concept::ForwardIterator It> requires Concept::TriviallyDestructible<Core::IteratorValueT<It>>
             constexpr void destroy(It, It) {
             }
     
             /**
-             * Destroy a range of non-trivially destructible objets
+             * Destroy a range of non-trivially destructible objects
              * @param begin the range begin
              * @param end   the range end
              */
-            template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>>)
+            template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>> && !Concept::DerivedFrom<Core::IteratorCategoryT<It>, Core::RandomAccessIteratorCategory>)
             constexpr void destroy(It begin, It end) {
                 for ( ; begin != end; ++begin) {
                     destroyAt(addressOf(*begin));
+                }
+            }
+
+            /**
+             * Destroy a range of non-trivially destructible objects, optimized for random access iterator
+             * @param begin the range begin
+             * @param end   the range end
+             */
+            template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>> && Concept::DerivedFrom<Core::IteratorCategoryT<It>, Core::RandomAccessIteratorCategory>)
+            constexpr void destroy(It begin, It end) {
+                for (Core::IteratorDifferenceT<It> n = end - begin; n > 0; --n) {
+                    destroyAt(addressOf(*begin));
+                    ++begin;
+                }
+            }
+
+            /**
+             * Destroy N trivially destructible objects, no operation needed
+             */
+            template <Concept::ForwardIterator It, Concept::Integral Size> requires Concept::TriviallyDestructible<Core::IteratorValueT<It>>
+            constexpr void destroyN(It, Size) {
+            }
+        
+            /**
+             * Destroy N non-trivially destructible objects
+             * @param begin the range begin
+             * @param n     the number of object to destroy
+             */
+            template <Concept::ForwardIterator It, Concept::Integral Size> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>>)
+            constexpr void destroyN(It begin, Size n) {
+                for ( ; n > 0; --n) {
+                    destroyAt(addressOf(*begin));
+                    ++begin;
                 }
             }
             

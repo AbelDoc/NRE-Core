@@ -29,24 +29,6 @@
             concept SameAs = Core::IsSameAsV<T, U> && Core::IsSameAsV<U, T>;
     
             /**
-             * @interface Referenceable
-             * @brief Define a referenceable object
-             */
-            template <class T>
-            concept Referenceable = requires {
-                typename Core::WithReference<T>;
-            };
-    
-            /**
-             * @interface Dereferenceable
-             * @brief Define a dereferenceable object
-             */
-            template <class T>
-            concept Dereferenceable = requires(T t) {
-                { *t } -> Referenceable;
-            };
-    
-            /**
              * @interface Pointer
              * @brief Define a pointer type
              */
@@ -121,8 +103,15 @@
              * @interface TriviallyCopyable
              * @brief Define a trivially copyable type
              */
+            template <class T, class ... Args>
+            concept TriviallyCopyable = std::is_trivially_copyable_v<T, Args...>;
+            
+            /**
+             * @interface TriviallyMoveable
+             * @brief Define a trivially moveable type
+             */
             template <class T>
-            concept TriviallyCopyable = std::is_trivially_copyable_v<T>;
+            concept TriviallyMoveable = TriviallyCopyable<T, Core::AddRValueReference<T>>;
             
             /**
              * @interface TriviallyDestructible
