@@ -23,7 +23,7 @@
         namespace Core {
     
             /**
-             * Fill a range of data [begin, end) with a given value, no optimisation
+             * Fill a range of data [begin, end) with a given value, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param value the value to fill the range with
@@ -36,7 +36,7 @@
             }
         
             /**
-             * Fill a range of data [begin, end) with a given value, random access iterator optimisation
+             * Fill a range of data [begin, end) with a given value, random access iterator optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param value the value to fill the range with
@@ -61,9 +61,34 @@
                 IteratorDifferenceT<It> n = end - begin;
                 std::memset(memBegin, value, n);
             }
+
+            /**
+             * Fill N data starting at begin with a given value, no optimization
+             * @param begin the source range start
+             * @param n     the number of object to fill
+             * @param value the value to fill the range with
+             */
+            template <Concept::ForwardIterator It, Concept::Integral Size> requires (!Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>)
+            constexpr void fillN(It begin, Size n, IteratorValueT<It>& value) {
+                for ( ; n > 0; --n) {
+                    *begin = value;
+                    ++begin;
+                }
+            }
+        
+            /**
+             * Fill N data starting at begin with a given value, optimized for random access iterator
+             * @param begin the source range start
+             * @param n     the number of object to fill
+             * @param value the value to fill the range with
+             */
+            template <Concept::ForwardIterator It, Concept::Integral Size> requires Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>
+            constexpr void fillN(It begin, Size n, IteratorValueT<It>& value) {
+                return fill(begin, begin + n, value);
+            }
     
             /**
-             * Copy a range of data [begin, end) into a given destination, no optimisation
+             * Copy a range of data [begin, end) into a given destination, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -115,7 +140,7 @@
             }
 
             /**
-             * Copy a range of data [begin, end) into a given destination but start from the end, no optimisation
+             * Copy a range of data [begin, end) into a given destination but start from the end, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -184,7 +209,7 @@
             }
             
             /**
-             * Copy N data in the range [begin, begin + N) into a given destination, no optimisation
+             * Copy N data in the range [begin, begin + N) into a given destination, no optimization
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
@@ -201,7 +226,7 @@
             }
 
             /**
-             * Copy N data in the range [begin, begin + N) into a given destination, random access iterator optimisation
+             * Copy N data in the range [begin, begin + N) into a given destination, optimized for random access iterator
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
@@ -213,7 +238,7 @@
             }
 
             /**
-             * Move a range of data [begin, end) into a given destination, no optimisation
+             * Move a range of data [begin, end) into a given destination, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -265,7 +290,7 @@
             }
 
             /**
-             * Move a range of data [begin, end) into a given destination but start from the end, no optimisation
+             * Move a range of data [begin, end) into a given destination but start from the end, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -336,7 +361,7 @@
             }
 
             /**
-             * Copy a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, trivially types optimisation
+             * Copy a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, trivially types optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -369,7 +394,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, trivially types optimisation
+             * Move a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, trivially types optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
