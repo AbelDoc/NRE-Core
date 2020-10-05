@@ -17,6 +17,8 @@
     using namespace NRE::Concept;
     
     int main(int, char**) {
+        std::vector<int> vec(10, 1);
+        Core::fill(vec.begin(), vec.end(), 0);
         
         return 0;
     }

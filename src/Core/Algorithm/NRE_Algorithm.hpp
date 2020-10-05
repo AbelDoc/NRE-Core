@@ -23,42 +23,42 @@
         namespace Core {
     
             /**
-             * Fill a range of data [begin, end) with a given value, no optimization
-             * @param begin the source range start
-             * @param end   the source range end
-             * @param value the value to fill the range with
+             * Fill a range of data starting at begin, ending to a given sentinel with a given value, no optimization
+             * @param begin    the range start
+             * @param sentinel the range end
+             * @param value    the value to fill the range with
              */
-            template <Concept::ForwardIterator It> requires (!Concept::MemFillable<IteratorValueT<It>> && !Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>)
-            constexpr void fill(It begin, It end, IteratorValueT<It>& value) {
-                for (; begin != end; ++begin) {
+            template <Concept::ForwardIterator It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<S, It>)
+            constexpr void fill(It begin, S sentinel, IteratorValueT<It> const& value) {
+                for (; begin != sentinel; ++begin) {
                     *begin = value;
                 }
             }
         
             /**
-             * Fill a range of data [begin, end) with a given value, random access iterator optimization
-             * @param begin the source range start
-             * @param end   the source range end
-             * @param value the value to fill the range with
+             * Fill a range of data starting at begin, ending to a given sentinel with a given value, sized sentinel optimization
+             * @param begin    the range start
+             * @param sentinel the range end
+             * @param value    the value to fill the range with
              */
-            template <Concept::ForwardIterator It> requires (!Concept::MemFillable<IteratorValueT<It>>) && Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>
-            constexpr void fill(It begin, It end, IteratorValueT<It>& value) {
-                for (IteratorDifferenceT<It> n = end - begin; n > 0; --n) {
+            template <Concept::ForwardIterator It, Concept::SizedSentinelFor<It> S> requires (!Concept::MemFillable<IteratorValueT<It>> || !Concept::SameAs<IteratorCategoryT<It>, ContiguousIteratorCategory>)
+            constexpr void fill(It begin, S sentinel, IteratorValueT<It> const& value) {
+                for (IteratorDifferenceT<It> n = sentinel - begin; n > 0; --n) {
                     *begin = value;
                     ++begin;
                 }
             }
 
             /**
-             * Fill a range of data [begin, end) with a given value, optimized for contiguous iterator and bytes-like type
-             * @param begin the source range start
-             * @param end   the source range end
-             * @param value the value to fill the range with
+             * Fill a range of data starting at begin, ending to a given sentinel with a given value, optimized for contiguous iterator and bytes-like type
+             * @param begin    the range start
+             * @param sentinel the range end
+             * @param value    the value to fill the range with
              */
-            template <Concept::ForwardIterator It> requires Concept::MemFillable<IteratorValueT<It>> && Concept::SameAs<IteratorCategoryT<It>, ContiguousIteratorCategory>
-            constexpr void fill(It begin, It end, IteratorValueT<It>& value) {
+            template <Concept::ForwardIterator It, Concept::SizedSentinelFor<It> S> requires Concept::MemFillable<IteratorValueT<It>> && Concept::SameAs<IteratorCategoryT<It>, ContiguousIteratorCategory>
+            constexpr void fill(It begin, S sentinel, IteratorValueT<It> const& value) {
                 IteratorValueT<It>* memBegin = addressOf(*begin);
-                IteratorDifferenceT<It> n = end - begin;
+                IteratorDifferenceT<It> n = sentinel - begin;
                 std::memset(memBegin, value, n);
             }
 
@@ -69,7 +69,7 @@
              * @param value the value to fill the range with
              */
             template <Concept::ForwardIterator It, Concept::Integral Size> requires (!Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>)
-            constexpr void fillN(It begin, Size n, IteratorValueT<It>& value) {
+            constexpr void fillN(It begin, Size n, IteratorValueT<It> const& value) {
                 for ( ; n > 0; --n) {
                     *begin = value;
                     ++begin;
@@ -83,7 +83,7 @@
              * @param value the value to fill the range with
              */
             template <Concept::ForwardIterator It, Concept::Integral Size> requires Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>
-            constexpr void fillN(It begin, Size n, IteratorValueT<It>& value) {
+            constexpr void fillN(It begin, Size n, IteratorValueT<It> const& value) {
                 return fill(begin, begin + n, value);
             }
     
