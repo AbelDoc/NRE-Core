@@ -296,51 +296,51 @@
              * Move a range of data [begin, end) into a given destination but start from the end, no optimization
              * @param begin the source range start
              * @param end   the source range end
-             * @param first the destination start
+             * @param last  the destination end
              * @return an iterator pointing to the last moved element
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
-            constexpr OutputIt moveBackward(InputIt begin, S end, OutputIt first) {
+            constexpr OutputIt moveBackward(InputIt begin, S end, OutputIt last) {
                 while (begin != end) {
-                    *(--first) = std::move(*(--begin));
+                    *(--last) = std::move(*(--begin));
                 }
-                return first;
+                return last;
             }
         
             /**
              * Move a range of data [begin, end) into a given destination but start from the end, optimized for sized sentinel
              * @param begin the source range start
              * @param end   the source range end
-             * @param first the destination start
+             * @param last  the destination end
              * @return an iterator pointing to the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
                 (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
                  !Concept::ContiguousIterator<InputIt>          || !Concept::ContiguousIterator<OutputIt>)
-            constexpr OutputIt moveBackward(InputIt begin, S end, OutputIt first) {
+            constexpr OutputIt moveBackward(InputIt begin, S end, OutputIt last) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
-                    *(--first) = std::move(*(--begin));
+                    *(--last) = std::move(*(--begin));
                 }
-                return first;
+                return last;
             }
         
             /**
              * Copy a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterator and trivially copyable types
              * @param begin the source range start
              * @param end   the source range end
-             * @param first the destination start
+             * @param last  the destination end
              * @return an iterator pointing to the last moved element
              */
             template <Concept::ContiguousIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
                 Concept::MemMoveable<IteratorValueT<InputIt>> &&
                 Concept::MemMoveable<IteratorValueT<OutputIt>> &&
                 Concept::ContiguousIterator<OutputIt>
-            constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
-                IteratorValueT<OutputIt>* memFirst = addressOf(*first);
+            constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt last) {
+                IteratorValueT<OutputIt>* memEnd = addressOf(*last);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
                 IteratorDifferenceT<InputIt> n = end - begin;
-                std::memmove(first - n, memBegin, n * sizeof(IteratorValueT<InputIt>));
-                return first - n;
+                std::memmove(memEnd - n, memBegin, n * sizeof(IteratorValueT<InputIt>));
+                return last - n;
             }
 
             /**
@@ -478,5 +478,7 @@
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
                 return uninitializedMove(begin, begin + n, first);
             }
+            
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S,
         }
     }
