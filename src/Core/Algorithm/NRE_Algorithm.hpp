@@ -23,48 +23,48 @@
         namespace Core {
     
             /**
-             * Fill a range of data starting at begin, ending to a given sentinel with a given value, no optimization
-             * @param begin    the range start
-             * @param sentinel the range end
-             * @param value    the value to fill the range with
+             * Fill a range of data [begin, end) with a given value, no optimization
+             * @param begin the range start
+             * @param end   the range end
+             * @param value the value to fill the range with
              */
             template <Concept::ForwardIterator It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<S, It>)
-            constexpr void fill(It begin, S sentinel, IteratorValueT<It> const& value) {
-                for (; begin != sentinel; ++begin) {
+            constexpr void fill(It begin, S end, IteratorValueT<It> const& value) {
+                for (; begin != end; ++begin) {
                     *begin = value;
                 }
             }
         
             /**
-             * Fill a range of data starting at begin, ending to a given sentinel with a given value, sized sentinel optimization
-             * @param begin    the range start
-             * @param sentinel the range end
-             * @param value    the value to fill the range with
+             * Fill a range of data [begin, end) with a given value, sized sentinel optimization
+             * @param begin the range start
+             * @param end   the range end
+             * @param value the value to fill the range with
              */
-            template <Concept::ForwardIterator It, Concept::SizedSentinelFor<It> S> requires (!Concept::MemFillable<IteratorValueT<It>> || !Concept::SameAs<IteratorCategoryT<It>, ContiguousIteratorCategory>)
-            constexpr void fill(It begin, S sentinel, IteratorValueT<It> const& value) {
-                for (IteratorDifferenceT<It> n = sentinel - begin; n > 0; --n) {
+            template <Concept::ForwardIterator It, Concept::SizedSentinelFor<It> S> requires (!Concept::MemFillable<IteratorValueT<It>> || !Concept::ContiguousIterator<It>)
+            constexpr void fill(It begin, S end, IteratorValueT<It> const& value) {
+                for (IteratorDifferenceT<It> n = end - begin; n > 0; --n) {
                     *begin = value;
                     ++begin;
                 }
             }
 
             /**
-             * Fill a range of data starting at begin, ending to a given sentinel with a given value, optimized for contiguous iterator and bytes-like type
-             * @param begin    the range start
-             * @param sentinel the range end
-             * @param value    the value to fill the range with
+             * Fill a range of data [begin, end), optimized for contiguous iterator and bytes-like type
+             * @param begin the range start
+             * @param end   the range end
+             * @param value the value to fill the range with
              */
-            template <Concept::ForwardIterator It, Concept::SizedSentinelFor<It> S> requires Concept::MemFillable<IteratorValueT<It>> && Concept::SameAs<IteratorCategoryT<It>, ContiguousIteratorCategory>
-            constexpr void fill(It begin, S sentinel, IteratorValueT<It> const& value) {
+            template <Concept::ContiguousIterator It, Concept::SizedSentinelFor<It> S> requires Concept::MemFillable<IteratorValueT<It>>
+            constexpr void fill(It begin, S end, IteratorValueT<It> const& value) {
                 IteratorValueT<It>* memBegin = addressOf(*begin);
-                IteratorDifferenceT<It> n = sentinel - begin;
+                IteratorDifferenceT<It> n = end - begin;
                 std::memset(memBegin, value, n);
             }
 
             /**
              * Fill N data starting at begin with a given value, no optimization
-             * @param begin the source range start
+             * @param begin the range start
              * @param n     the number of object to fill
              * @param value the value to fill the range with
              */
@@ -78,11 +78,11 @@
         
             /**
              * Fill N data starting at begin with a given value, optimized for random access iterator
-             * @param begin the source range start
+             * @param begin the range start
              * @param n     the number of object to fill
              * @param value the value to fill the range with
              */
-            template <Concept::ForwardIterator It, Concept::Integral Size> requires Concept::DerivedFrom<IteratorCategoryT<It>, RandomAccessIteratorCategory>
+            template <Concept::RandomAccessIterator It, Concept::Integral Size>
             constexpr void fillN(It begin, Size n, IteratorValueT<It> const& value) {
                 return fill(begin, begin + n, value);
             }
@@ -94,9 +94,8 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
-                                                                                                                          (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
-            constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
+            constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
                     *first = *begin;
                 }
@@ -104,15 +103,16 @@
             }
 
             /**
-             * Copy a range of data [begin, end) into a given destination, optimized for random access iterator
+             * Copy a range of data [begin, end) into a given destination, optimized for sized sentinel
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
-                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
-            constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>          || !Concept::ContiguousIterator<OutputIt>)
+            constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *first = *begin;
                     ++first;
@@ -128,10 +128,11 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<OutputIt>> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
-            constexpr OutputIt copy(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                Concept::MemCopyable<IteratorValueT<InputIt>> &&
+                Concept::MemCopyable<IteratorValueT<OutputIt>> &&
+                Concept::ContiguousIterator<OutputIt>
+            constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
                 IteratorDifferenceT<InputIt> n = end - begin;
@@ -143,62 +144,63 @@
              * Copy a range of data [begin, end) into a given destination but start from the end, no optimization
              * @param begin the source range start
              * @param end   the source range end
-             * @param first the destination start
+             * @param last  the destination end
              * @return an iterator pointing to the last copied element
              */
-            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
-                                                                                                                (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
-            constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::BidirectionalIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
+            constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
                 while (begin != end) {
-                    *(--first) = *(--begin);
+                    *(--last) = *(--end);
                 }
-                return first;
+                return last;
             }
         
             /**
-             * Copy a range of data [begin, end) into a given destination but start from the end, optimized for random access iterator
+             * Copy a range of data [begin, end) into a given destination but start from the end, optimized for sized sentinel
              * @param begin the source range start
              * @param end   the source range end
-             * @param first the destination start
+             * @param last  the destination end
              * @return an iterator pointing to the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>>) &&
-                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
-            constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>          || !Concept::ContiguousIterator<OutputIt>)
+            constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
-                    *(--first) = *(--begin);
+                    *(--last) = *(--end);
                 }
-                return first;
+                return last;
             }
         
             /**
              * Copy a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterator and trivially copyable types
              * @param begin the source range start
              * @param end   the source range end
-             * @param first the destination start
+             * @param last  the destination end
              * @return an iterator pointing to the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<OutputIt>> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
-            constexpr OutputIt copyBackward(InputIt begin, InputIt end, OutputIt first) {
-                IteratorValueT<OutputIt>* memFirst = addressOf(*first);
-                IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
+            template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                Concept::MemCopyable<IteratorValueT<InputIt>> &&
+                Concept::MemCopyable<IteratorValueT<OutputIt>> &&
+                Concept::ContiguousIterator<OutputIt>
+            constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
+                IteratorValueT<OutputIt>* memLast = addressOf(*last);
+                IteratorValueT<InputIt>*  memEnd = addressOf(*end);
                 IteratorDifferenceT<InputIt> n = end - begin;
-                std::memmove(first - n, memBegin, n * sizeof(IteratorValueT<InputIt>));
-                return first - n;
+                std::memmove(memLast - n, memEnd - n, n * sizeof(IteratorValueT<InputIt>));
+                return last - n;
             }
             
             /**
-             * Copy data in a given range [begin, end) if they satisfies a given unary predicate
+             * Copy a range of data [begin, end), if they satisfies a given unary predicate, into a given destination
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
              * @param p     the used predicate
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt, Concept::UnaryPredicate<IteratorValueT<InputIt>> Pred>
-            constexpr OutputIt copyIf(InputIt begin, InputIt end, OutputIt first, Pred p) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt, Concept::UnaryPredicate<IteratorValueT<InputIt>> Pred>
+            constexpr OutputIt copyIf(InputIt begin, S end, OutputIt first, Pred p) {
                 for (; begin != end; ++begin) {
                     if (p(*begin)) {
                         *first = *begin;
@@ -232,7 +234,7 @@
              * @param first the destination start
              * @return an interator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt>
             constexpr OutputIt copyN(InputIt begin, Size n, OutputIt first) {
                 return copy(begin, begin + n, first);
             }
@@ -244,9 +246,8 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
-                                                                                                                          (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
-            constexpr OutputIt move(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
+            constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
                     *first = std::move(*begin);
                 }
@@ -254,15 +255,16 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination, optimized for random access iterator
+             * Move a range of data [begin, end) into a given destination, optimized for sized sentinel
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
-                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
-            constexpr OutputIt move(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>          || !Concept::ContiguousIterator<OutputIt>)
+            constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *first = std::move(*begin);
                     ++first;
@@ -272,16 +274,17 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination, optimized for contiguous iterator and trivially copyable types
+             * Move a range of data [begin, end) into a given destination, optimized for contiguous iterator and trivially moveable types
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<OutputIt>> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
-            constexpr OutputIt move(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                Concept::MemMoveable<IteratorValueT<InputIt>> &&
+                Concept::MemMoveable<IteratorValueT<OutputIt>> &&
+                Concept::ContiguousIterator<OutputIt>
+            constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
                 IteratorDifferenceT<InputIt> n = end - begin;
@@ -296,9 +299,8 @@
              * @param first the destination start
              * @return an iterator pointing to the last moved element
              */
-            template <Concept::BidirectionalIterator InputIt, Concept::BidirectionalIterator OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
-                                                                                                                (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
-            constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::BidirectionalIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
+            constexpr OutputIt moveBackward(InputIt begin, S end, OutputIt first) {
                 while (begin != end) {
                     *(--first) = std::move(*(--begin));
                 }
@@ -306,15 +308,16 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination but start from the end, optimized for random access iterator
+             * Move a range of data [begin, end) into a given destination but start from the end, optimized for sized sentinel
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
              * @return an iterator pointing to the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>>) &&
-                                                                                                                            Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
-            constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
+            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>          || !Concept::ContiguousIterator<OutputIt>)
+            constexpr OutputIt moveBackward(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *(--first) = std::move(*(--begin));
                 }
@@ -328,9 +331,10 @@
              * @param first the destination start
              * @return an iterator pointing to the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<OutputIt>> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<InputIt>,  ContiguousIteratorCategory> &&
-                                                                                                                          Concept::SameAs<IteratorCategoryT<OutputIt>, ContiguousIteratorCategory>
+            template <Concept::ContiguousIterator InputIt, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires
+                Concept::MemMoveable<IteratorValueT<InputIt>> &&
+                Concept::MemMoveable<IteratorValueT<OutputIt>> &&
+                Concept::ContiguousIterator<OutputIt>
             constexpr OutputIt moveBackward(InputIt begin, InputIt end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
@@ -346,8 +350,8 @@
              * @param first the destination start
              * @return an iterator pointer after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedCopy(InputIt begin, InputIt end, ForwardIt first) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires (!Concept::MemCopyable<IteratorValueT<InputIt>> || !Concept::MemCopyable<IteratorValueT<ForwardIt>>)
+            ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
                     for (; begin != end; ++begin, ++current) {
@@ -367,8 +371,8 @@
              * @param first the destination start
              * @return an iterator pointer after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedCopy(InputIt begin, InputIt end, ForwardIt first) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::MemCopyable<IteratorValueT<InputIt>> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
+            ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
                 return copy(begin, end, first);
             }
 
@@ -402,7 +406,7 @@
              * @param first the destination start
              * @return an iterator pointer after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt>
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
                 return uninitializedCopy(begin, begin + n, first);
             }
@@ -414,8 +418,8 @@
              * @param first the destination start
              * @return an iterator pointer after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedMove(InputIt begin, InputIt end, ForwardIt first) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires (!Concept::MemMoveable<IteratorValueT<InputIt>> || !Concept::MemMoveable<IteratorValueT<ForwardIt>>)
+            ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
                     for (; begin != end; ++begin, ++current) {
@@ -435,8 +439,8 @@
              * @param first the destination start
              * @return an iterator pointer after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::ForwardIterator ForwardIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedMove(InputIt begin, InputIt end, ForwardIt first) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::MemMoveable<IteratorValueT<InputIt>> && Concept::MemMoveable<IteratorValueT<ForwardIt>>
+            ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
                 return move(begin, end, first);
             }
 
@@ -470,7 +474,7 @@
              * @param first the destination start
              * @return an iterator pointer after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>
+            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt>
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
                 return uninitializedMove(begin, begin + n, first);
             }

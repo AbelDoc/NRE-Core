@@ -27,14 +27,9 @@
              * @param t the value to obtain the adress
              * @return the computed address
              */
-            template <Concept::Object T>
+            template <class T>
             [[nodiscard]] constexpr T* addressOf(T& t) noexcept {
-                return reinterpret_cast <T*> (const_cast <char&> (reinterpret_cast <const volatile char&> (t)));
-            }
-    
-            template <class T> requires (!Concept::Object<T>)
-            [[nodiscard]] constexpr T* addressOf(T& t) noexcept {
-                return &t;
+                return std::addressof(t);
             }
     
             /**
