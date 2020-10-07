@@ -8,8 +8,8 @@
      */
     
     #pragma once
-    
-    #include "../../Concept/NRE_TypeConcept.hpp"
+
+    #include <type_traits>
     
     /**
     * @namespace NRE
@@ -20,6 +20,78 @@
          * @namespace Core
          * @brief Core's API
          */
+        namespace Core {
+        
+            /** Allow to add a reference to a type for metaprogramming/concept use */
+            template <class T>
+            using WithReference = T&;
+        }
+        /**
+         * @namespace Concept
+         * @brief Concept's API
+         */
+        namespace Concept {
+        
+            /**
+             * @interface Integral
+             * @brief Define an integral type
+             */
+            template <class T>
+            concept Integral = std::is_integral_v<T>;
+        
+            /**
+             * @interface FloatingPoint
+             * @brief Define a floating point type
+             */
+            template <class T>
+            concept FloatingPoint = std::is_floating_point_v<T>;
+        
+            /**
+             * @interface Enum
+             * @brief Define an enum type
+             */
+            template <class T>
+            concept Enum = std::is_enum_v<T>;
+        
+            /**
+             * @interface Union
+             * @brief Define an union type
+             */
+            template <class T>
+            concept Union = std::is_union_v<T>;
+        
+            /**
+             * @interface Class
+             * @brief Define a class type
+             */
+            template <class T>
+            concept Class = std::is_class_v<T>;
+        
+            /**
+             * @interface Arithmetic
+             * @brief Define a arithmetic type
+             */
+            template <class T>
+            concept Arithmetic = Integral<T> || FloatingPoint<T>;
+        
+            /**
+             * @interface Referenceable
+             * @brief Define a referenceable object
+             */
+            template <class T>
+            concept Referenceable = requires {
+                typename Core::WithReference<T>;
+            };
+        
+            /**
+             * @interface Dereferenceable
+             * @brief Define a dereferenceable object
+             */
+            template <class T>
+            concept Dereferenceable = requires(T t) {
+                { *t } -> Referenceable;
+            };
+        }
         namespace Core {
             
     

@@ -188,4 +188,179 @@
                         { std::to_address(t) } -> SameAs<Core::AddPointerT<Core::IteratorReferenceT<T>>>;
                     };
         }
+        namespace Core {
+            /**
+             * Return an iterator to the beginning of the given container
+             * @param t the object to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T& t) {
+                { t.begin() };
+            }
+            constexpr Concept::InputOrOutputIterator auto begin(T& t) -> decltype(t.begin()) {
+                return t.begin();
+            }
+    
+            /**
+             * Return a const iterator to the beginning of the given container
+             * @param t the object to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { t.begin() };
+            }
+            constexpr Concept::InputOrOutputIterator auto begin(T const& t) -> decltype(t.begin()) {
+                return t.begin();
+            }
+    
+            /**
+             * Return an iterator to the beginning of an array
+             * @param t the array to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T, SizeType N>
+            constexpr T* begin(T (&array)[N] ) noexcept {
+                return addressOf(array[0]);
+            }
+    
+            /**
+             * Return a const iterator to the beginning of the given container or array
+             * @param t the object to query a begin iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { begin(t) };
+            }
+            constexpr Concept::InputOrOutputIterator auto cbegin(T const& t) noexcept(noexcept(begin(t))) -> decltype(begin(t)) {
+                return begin(t);
+            }
+        }
+        namespace Core {
+            
+            /** Helper to access T's iterator type */
+            template <class T>
+            using IteratorT = decltype(begin(std::declval<T&>()));
+            
+            /**
+             * Return an iterator to the end of the given container
+             * @param t the object to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T& t) {
+                { t.end() };
+            }
+            constexpr Concept::SentinelFor<IteratorT<T>> auto end(T& t) -> decltype(t.end()) {
+                return t.end();
+            }
+
+            /**
+             * Return a const iterator to the end of the given container
+             * @param t the object to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { t.end() };
+            }
+            constexpr Concept::SentinelFor<IteratorT<T>> auto end(T const& t) -> decltype(t.end()) {
+            return t.end();
+            }
+        
+        
+            /**
+             * Return an iterator to the end of an array
+             * @param t the array to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T, SizeType N>
+            constexpr T* end(T (&array)[N]) noexcept {
+                return addressOf(array[0]) + N;
+            }
+        
+            /**
+             * Return a const iterator to the end of the given container or array
+             * @param t the object to query an end iterator
+             * @return the corresponding iterator
+             */
+            template <class T> requires requires (T const& t) {
+                { t.end() };
+            }
+            constexpr Concept::SentinelFor<IteratorT<T>> auto cend(T const& t) noexcept(noexcept(end(t))) -> decltype(end(t)) {
+                return end(t);
+            }
+
+            /** Helper to access T's sentinel type */
+            template <class T>
+            using SentinelT = decltype(end(std::declval<T&>()));
+            
+            /** Helper to access T's iterator's difference type */
+            template <class T>
+            using RangeDifferenceT = IteratorDifferenceT<IteratorT<T>>;
+            
+            /** Helper to access T's iterator's value type */
+            template <class T>
+            using RangeValueT = IteratorValueT<IteratorT<T>>;
+            
+            /** Helper to access T's iterator's reference type */
+            template <class T>
+            using RangeReferenceT = IteratorReferenceT<IteratorT<T>>;
+            
+            /** Helper to access T's iterator's r-value reference type */
+            template <class T>
+            using RangeRValueReferenceT = IteratorRValueReferenceT<IteratorT<T>>;
+        }
+        namespace Concept {
+    
+            /**
+             * @interface Range
+             * @brief Define a base range with an input or output begin iterator and an end sentinel
+             */
+            template <class T>
+            concept Range = requires (T& t) {
+                Core::begin(t);
+                Core::end(t);
+            };
+    
+            /**
+             * @interface OutputRange
+             * @brief Define an output range with an output begin iterator and an end sentinel
+             */
+            template <class R, class T>
+            concept OutputRange = Range<R> && OutputIterator<Core::IteratorT<R>, T>;
+    
+            /**
+             * @interface InputRange
+             * @brief Define an input range with an input begin iterator and an end sentinel
+             */
+            template <class T>
+            concept InputRange = Range<T> && InputIterator<Core::IteratorT<T>>;
+    
+            /**
+             * @interface ForwardRange
+             * @brief Define a forward range with a forward begin iterator and an end sentinel
+             */
+            template <class T>
+            concept ForwardRange = InputRange<T> && ForwardIterator<Core::IteratorT<T>>;
+    
+            /**
+             * @interface BidirectionalRange
+             * @brief Define a bidirectional range with a bidirectional begin iterator and an end sentinel
+             */
+            template <class T>
+            concept BidirectionalRange = ForwardRange<T> && BidirectionalIterator<Core::IteratorT<T>>;
+    
+            /**
+             * @interface RandomAccessRange
+             * @brief Define a random access range with a random access begin iterator and an end sentinel
+             */
+            template <class T>
+            concept RandomAccessRange = BidirectionalRange<T> && RandomAccessIterator<Core::IteratorT<T>>;
+    
+            /**
+             * @interface ContiguousRange
+             * @brief Define a contiguous range with a random access begin iterator and an end sentinel
+             */
+            template <class T>
+            concept ContiguousRange = RandomAccessRange<T> && ContiguousIterator<Core::IteratorT<T>>;
+            
+        }
     }
