@@ -17,6 +17,13 @@
     using namespace NRE::Concept;
     
     int main(int, char**) {
+        Vector<unsigned char> vec(SizeType(10), 1);
+        
+        std::cout << vec << std::endl;
+        
+        Core::fill(vec.begin(), vec.end(), 2);
+
+        std::cout << vec << std::endl;
         
         return 0;
     }

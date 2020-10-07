@@ -448,5 +448,53 @@
             /** Helper to access AddLValueReference type */
             template <class T>
             using AddLValueReferenceT = typename AddLValueReference<T>::Type;
+            
+            /**
+             * @struct AddConst
+             * @brief Allow to add a const qualifier to a type
+             */
+            template <class T>
+            struct AddConst {
+                using Type = const T;
+            };
+            
+            /** Helper to access AddConst type */
+            template <class T>
+            using AddConstT = typename AddConst<T>::Type;
+        
+            /**
+             * @struct AddVolatile
+             * @brief Allow to add a volatile qualifier to a type
+             */
+            template <class T>
+            struct AddVolatile {
+                using Type = volatile T;
+            };
+        
+            /** Helper to access AddVolatile type */
+            template <class T>
+            using AddVolatileT = typename AddVolatile<T>::Type;
+        
+            /**
+             * @struct AddCV
+             * @brief Allow to add a cv qualifier to a type
+             */
+            template <class T>
+            struct AddCV {
+                using Type = const volatile T;
+            };
+        
+            /** Helper to access AddCV type */
+            template <class T>
+            using AddCVT = typename AddCV<T>::Type;
+        
+            template<class Lambda, int = (Lambda{}(), 0)>
+            constexpr bool IsConstexpr(Lambda) {
+                return true;
+            }
+            
+            constexpr bool IsConstexpr(...) {
+                return false;
+            }
         }
     }

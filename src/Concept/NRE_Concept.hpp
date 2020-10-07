@@ -100,18 +100,25 @@
             concept Trivial = std::is_trivial_v<T>;
             
             /**
+             * @interface TriviallyConstructible
+             * @brief Define a type trivially constructible from a set of others
+             */
+            template <class T, class ... Args>
+            concept TriviallyConstructible = std::is_trivially_constructible_v<T, Args...>;
+            
+            /**
              * @interface TriviallyCopyable
              * @brief Define a trivially copyable type
              */
-            template <class T, class ... Args>
-            concept TriviallyCopyable = std::is_trivially_copyable_v<T, Args...>;
+            template <class T>
+            concept TriviallyCopyable = TriviallyConstructible<T, Core::AddLValueReferenceT<Core::AddConstT<T>>>;
             
             /**
              * @interface TriviallyMoveable
              * @brief Define a trivially moveable type
              */
             template <class T>
-            concept TriviallyMoveable = TriviallyCopyable<T, Core::AddRValueReference<T>>;
+            concept TriviallyMoveable = TriviallyConstructible<T, Core::AddRValueReference<T>>;
             
             /**
              * @interface TriviallyDestructible
