@@ -419,7 +419,7 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
@@ -440,7 +440,7 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
@@ -451,7 +451,7 @@
              * Copy a range of data into an uninitialized memory destination, destroy copied data in case of exception
              * @param range the source range
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputRange R, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, RangeReferenceT<R>>
             ForwardIt uninitializedCopy(R && range, ForwardIt first) {
@@ -463,7 +463,7 @@
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
@@ -486,7 +486,7 @@
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
@@ -498,7 +498,7 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last moved element
+             * @return an iterator pointing after the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::MemMoveable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
@@ -519,7 +519,7 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointer after the last moved element
+             * @return an iterator pointing after the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::MemMoveable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
@@ -530,7 +530,7 @@
              * Move a range of data into an uninitialized memory destination, destroy moved data in case of exception
              * @param range the source range
              * @param first the destination start
-             * @return an iterator pointer after the last moved element
+             * @return an iterator pointing after the last moved element
              */
             template <Concept::InputRange R, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, RangeRValueReferenceT<R>>
             ForwardIt uninitializedMove(R && range, ForwardIt first) {
@@ -542,7 +542,7 @@
              * @param begin the source range start
              * @param n     the number of data to moved
              * @param first the destination start
-             * @return an iterator pointer after the last moved element
+             * @return an iterator pointing after the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
@@ -565,7 +565,7 @@
              * @param begin the source range start
              * @param n     the number of data to moved
              * @param first the destination start
-             * @return an iterator pointer after the last copied element
+             * @return an iterator pointing after the last copied element
              */
             template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>>
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
@@ -577,6 +577,7 @@
              * @param first the destination start
              * @param last  the destination end
              * @param value the value to fill the range with
+             * @return an iterator pointing after the last filled element
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
@@ -597,6 +598,7 @@
              * @param first the destination start
              * @param last  the destination end
              * @param value the value to fill the range with
+             * @return an iterator pointing after the last filled element
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
@@ -607,10 +609,45 @@
              * Fill an uninitiliazed range of memory with a given value
              * @param range the destination
              * @param value the value to fill the range with
+             * @return an iterator pointing after the last filled element
              */
             template <class T, Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, T const&>
             BorrowedIteratorT<R> uninitializedFill(R && range, T const& value) {
                 return uninitializedFill(begin(range), end(range), value);
+            }
+            
+            /**
+             * Fill N uninitialized data starting at first with a given value, no optimization
+             * @param first the destination start
+             * @param n     the number of data to fill
+             * @param value the value to fill the datas with
+             * @return an iterator pointing after the last filled element
+             */
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
+            ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
+                ForwardIt current = first;
+                try {
+                    for (; n > 0; --n) {
+                        Memory::constructAt(addressOf(*current), value);
+                        ++current;
+                    }
+                    return current;
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+
+            /**
+             * Fill N uninitialized data starting at first with a given value, optimized for trivially copyable types
+             * @param first the destination start
+             * @param n     the number of data to fill
+             * @param value the value to fill the datas with
+             * @return an iterator pointing after the last filled element
+             */
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
+            ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
+                return fillN(first, n , value);
             }
             
         }
