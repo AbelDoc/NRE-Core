@@ -380,7 +380,7 @@
             
             /** Helper to access a range's borrowed iterator type */
             template <Concept::Range R>
-            using BorrowedIteratorT = ConditionalT<Concept::BorrowedRange<R>>, IteratorT<R>, Dangling>;
+            using BorrowedIteratorT = ConditionalT<Concept::BorrowedRange<R>, IteratorT<R>, Dangling>;
             
         }
     }

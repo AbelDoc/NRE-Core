@@ -29,10 +29,11 @@
              * @param value the value to fill the range with
              */
             template <class T, Concept::OutputIterator<T const&> It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<S, It>)
-            constexpr void fill(It begin, S end, T const& value) {
+            constexpr It fill(It begin, S end, T const& value) {
                 for (; begin != end; ++begin) {
                     *begin = value;
                 }
+                return begin;
             }
         
             /**
@@ -42,24 +43,36 @@
              * @param value the value to fill the range with
              */
             template <class T, Concept::OutputIterator<T const&> It, Concept::SizedSentinelFor<It> S> requires (!Concept::MemFillable<IteratorValueT<It>> || !Concept::ContiguousIterator<It>)
-            constexpr void fill(It begin, S end, T const& value) {
+            constexpr It fill(It begin, S end, T const& value) {
                 for (IteratorDifferenceT<It> n = end - begin; n > 0; --n) {
                     *begin = value;
                     ++begin;
                 }
+                return begin;
             }
 
             /**
-             * Fill a range of data [begin, end), optimized for contiguous iterator and bytes-like type
+             * Fill a range of data [begin, end) with a given value, optimized for contiguous iterator and bytes-like type
              * @param begin the range start
              * @param end   the range end
              * @param value the value to fill the range with
              */
             template <class T, Concept::OutputIterator<T const&> It, Concept::SizedSentinelFor<It> S> requires Concept::MemFillable<IteratorValueT<It>> && Concept::ContiguousIterator<It>
-            constexpr void fill(It begin, S end, T const& value) {
+            constexpr It fill(It begin, S end, T const& value) {
                 IteratorValueT<It>* memBegin = addressOf(*begin);
                 IteratorDifferenceT<It> n = end - begin;
                 std::memset(memBegin, value, n);
+                return begin + n;
+            }
+            
+            /**
+             * Fill a range of data with a given value
+             * @param range the range to fill
+             * @param value the value to fill the range with
+             */
+            template <class T, Concept::OutputRange<T const&> R>
+            constexpr BorrowedIteratorT<R> fill(R && range, T const& value) {
+                return fill(begin(range), end(range), value);
             }
 
             /**

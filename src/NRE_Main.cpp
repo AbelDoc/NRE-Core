@@ -21,7 +21,7 @@
         
         std::cout << vec << std::endl;
         
-        Core::fill(vec.begin(), vec.end(), 2);
+        Core::fill(vec, 2);
 
         std::cout << vec << std::endl;
         
