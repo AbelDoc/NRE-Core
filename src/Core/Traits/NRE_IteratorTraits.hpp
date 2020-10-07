@@ -322,6 +322,10 @@
             template <class S, class T>
             inline constexpr bool DISABLE_SIZED_SENTINEL_FOR = false || std::disable_sized_sentinel_for<S, T>;
             
+            /** Allow the use of borrowed iterator on object passed by value */
+            template <class T>
+            inline constexpr bool ENABLE_BORROWED_RANGE = false || std::ranges::enable_borrowed_range<T>;
+            
             /**
              * @struct IteratorTraits
              * @brief Allow uniform access to iterator's traits

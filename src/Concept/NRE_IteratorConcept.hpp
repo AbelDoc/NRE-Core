@@ -237,9 +237,9 @@
         }
         namespace Core {
             
-            /** Helper to access T's iterator type */
-            template <class T>
-            using IteratorT = decltype(begin(std::declval<T&>()));
+            /** Helper to access a type's iterator type */
+            template <class R>
+            using IteratorT = decltype(begin(std::declval<R&>()));
             
             /**
              * Return an iterator to the end of the given container
@@ -288,25 +288,25 @@
                 return end(t);
             }
 
-            /** Helper to access T's sentinel type */
-            template <class T>
-            using SentinelT = decltype(end(std::declval<T&>()));
+            /** Helper to access a type's sentinel type */
+            template <class R>
+            using SentinelT = decltype(end(std::declval<R&>()));
             
-            /** Helper to access T's iterator's difference type */
-            template <class T>
-            using RangeDifferenceT = IteratorDifferenceT<IteratorT<T>>;
+            /** Helper to access a range's iterator's difference type */
+            template <class R>
+            using RangeDifferenceT = IteratorDifferenceT<IteratorT<R>>;
             
-            /** Helper to access T's iterator's value type */
-            template <class T>
-            using RangeValueT = IteratorValueT<IteratorT<T>>;
+            /** Helper to access a range's iterator's value type */
+            template <class R>
+            using RangeValueT = IteratorValueT<IteratorT<R>>;
             
-            /** Helper to access T's iterator's reference type */
-            template <class T>
-            using RangeReferenceT = IteratorReferenceT<IteratorT<T>>;
+            /** Helper to access a range's iterator's reference type */
+            template <class R>
+            using RangeReferenceT = IteratorReferenceT<IteratorT<R>>;
             
-            /** Helper to access T's iterator's r-value reference type */
-            template <class T>
-            using RangeRValueReferenceT = IteratorRValueReferenceT<IteratorT<T>>;
+            /** Helper to access a range's iterator's r-value reference type */
+            template <class R>
+            using RangeRValueReferenceT = IteratorRValueReferenceT<IteratorT<R>>;
         }
         namespace Concept {
     
@@ -319,6 +319,13 @@
                 Core::begin(t);
                 Core::end(t);
             };
+            
+            /**
+             * @interface BorrowedRange
+             * @brief Define a range which support borrowed iterator (taked on object'sreference or enabled of object passed by value)
+             */
+            template <class T>
+            concept BorrowedRange = Range<T> && (Core::IsLValueReferenceV<T> || Core::ENABLE_BORROWED_RANGE<Core::RemoveCVReferenceT<T>>);
     
             /**
              * @interface OutputRange
@@ -331,36 +338,49 @@
              * @interface InputRange
              * @brief Define an input range with an input begin iterator and an end sentinel
              */
-            template <class T>
-            concept InputRange = Range<T> && InputIterator<Core::IteratorT<T>>;
+            template <class R>
+            concept InputRange = Range<R> && InputIterator<Core::IteratorT<R>>;
     
             /**
              * @interface ForwardRange
              * @brief Define a forward range with a forward begin iterator and an end sentinel
              */
-            template <class T>
-            concept ForwardRange = InputRange<T> && ForwardIterator<Core::IteratorT<T>>;
+            template <class R>
+            concept ForwardRange = InputRange<R> && ForwardIterator<Core::IteratorT<R>>;
     
             /**
              * @interface BidirectionalRange
              * @brief Define a bidirectional range with a bidirectional begin iterator and an end sentinel
              */
-            template <class T>
-            concept BidirectionalRange = ForwardRange<T> && BidirectionalIterator<Core::IteratorT<T>>;
+            template <class R>
+            concept BidirectionalRange = ForwardRange<R> && BidirectionalIterator<Core::IteratorT<R>>;
     
             /**
              * @interface RandomAccessRange
              * @brief Define a random access range with a random access begin iterator and an end sentinel
              */
-            template <class T>
-            concept RandomAccessRange = BidirectionalRange<T> && RandomAccessIterator<Core::IteratorT<T>>;
+            template <class R>
+            concept RandomAccessRange = BidirectionalRange<R> && RandomAccessIterator<Core::IteratorT<R>>;
     
             /**
              * @interface ContiguousRange
              * @brief Define a contiguous range with a random access begin iterator and an end sentinel
              */
-            template <class T>
-            concept ContiguousRange = RandomAccessRange<T> && ContiguousIterator<Core::IteratorT<T>>;
+            template <class R>
+            concept ContiguousRange = RandomAccessRange<R> && ContiguousIterator<Core::IteratorT<R>>;
+            
+        }
+        namespace Core {
+            
+            /**
+             * @struct Dangling
+             * @brief Placeholder used to avoid returning dangling iterators by some algorithms
+             */
+            struct Dangling;
+            
+            /** Helper to access a range's borrowed iterator type */
+            template <Concept::Range R>
+            using BorrowedIteratorT = ConditionalT<Concept::BorrowedRange<R>>, IteratorT<R>, Dangling>;
             
         }
     }

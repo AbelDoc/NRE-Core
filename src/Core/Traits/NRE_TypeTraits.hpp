@@ -135,9 +135,7 @@
              */
             template <class T, T v>
             struct Constant {
-                /** The internal constant value */
                 static constexpr T value = v;
-                /** The internal constant type */
                 using ValueType = T;
                 /**
                  * @return the internal value
@@ -560,6 +558,9 @@
             template <class T>
             using AddCVT = typename AddCV<T>::Type;
         
+            /**
+             * @return if an expression can be constexpr-evaluated
+             */
             template<class Lambda, int = (Lambda{}(), 0)>
             constexpr bool IsConstexpr(Lambda) {
                 return true;
@@ -568,5 +569,23 @@
             constexpr bool IsConstexpr(...) {
                 return false;
             }
+            
+            /**
+             * @struct Conditional
+             * @brief Define an internal equal to T if C is true, to F if C is false
+             */
+            template <bool C, class T, class F>
+            struct Conditional {
+                using Type = T;
+            };
+            
+            template <class T, class F>
+            struct Conditional<false, T, F> {
+                using Type = F;
+            };
+            
+            /** Helper to access Conditional type */
+            template <bool C, class T, class F>
+            using ConditionalT = typename Conditional<C, T, F>::Type;
         }
     }
