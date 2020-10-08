@@ -123,8 +123,9 @@
              * @return an iterator pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt> requires
-                (!Concept::MemCopyable<IteratorValueT<InputIt>> ||
-                 !Concept::ContiguousIterator<InputIt>          ||
+                (!Concept::MemCopyable<IteratorValueT<InputIt>>  ||
+                 !Concept::MemCopyable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
             constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -144,7 +145,8 @@
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> &&
-                Concept::MemCopyable<IteratorValueT<InputIt>>
+                Concept::MemCopyable<IteratorValueT<InputIt>> &&
+                Concept::MemCopyable<IteratorValueT<OutputIt>>
             constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
@@ -188,8 +190,9 @@
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> &&
-                (!Concept::MemCopyable<IteratorValueT<InputIt>> ||
-                 !Concept::ContiguousIterator<InputIt>          ||
+                (!Concept::MemCopyable<IteratorValueT<InputIt>>  ||
+                 !Concept::MemCopyable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
             constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -207,7 +210,8 @@
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> &&
-                Concept::MemCopyable<IteratorValueT<InputIt>>
+                Concept::MemCopyable<IteratorValueT<InputIt>> &&
+                Concept::MemCopyable<IteratorValueT<OutputIt>>
             constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
                 IteratorValueT<OutputIt>* memLast = addressOf(*last);
                 IteratorValueT<InputIt>*  memEnd = addressOf(*end);
@@ -310,8 +314,9 @@
              * @return an iterator pointing after the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorRValueReferenceT<InputIt>> OutputIt> requires
-                (!Concept::MemMoveable<IteratorValueT<InputIt>> ||
-                 !Concept::ContiguousIterator<InputIt>          ||
+                (!Concept::MemMoveable<IteratorValueT<InputIt>>  ||
+                 !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
             constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -331,7 +336,8 @@
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> &&
-                Concept::MemMoveable<IteratorValueT<InputIt>>
+                Concept::MemMoveable<IteratorValueT<InputIt>> &&
+                Concept::MemMoveable<IteratorValueT<OutputIt>>
             constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
@@ -375,8 +381,9 @@
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> &&
-                (!Concept::MemMoveable<IteratorValueT<InputIt>> ||
-                 !Concept::ContiguousIterator<InputIt>          ||
+                (!Concept::MemMoveable<IteratorValueT<InputIt>>  ||
+                 !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
+                 !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
             constexpr OutputIt moveBackward(S begin, InputIt end, OutputIt last) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
@@ -394,7 +401,8 @@
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> &&
-                Concept::MemMoveable<IteratorValueT<InputIt>>
+                Concept::MemMoveable<IteratorValueT<InputIt>> &&
+                Concept::MemMoveable<IteratorValueT<OutputIt>>
             constexpr OutputIt moveBackward(S begin, InputIt end, OutputIt last) {
                 IteratorValueT<OutputIt>* memLast = addressOf(*last);
                 IteratorValueT<InputIt>*  memEnd = addressOf(*end);
@@ -421,7 +429,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -442,7 +450,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
                 return copy(begin, end, first);
             }
@@ -465,7 +473,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -488,9 +496,9 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>  && Concept::MemCopyable<IteratorValueT<ForwardIt>>
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>  && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
-                return uninitializedCopy(begin, begin + n, first);
+                return copyN(begin, n, first);
             }
 
             /**
@@ -500,7 +508,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::MemMoveable<IteratorValueT<ForwardIt>>)
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -521,7 +529,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::MemMoveable<IteratorValueT<ForwardIt>>
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
                 return move(begin, end, first);
             }
@@ -544,7 +552,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last moved element
              */
-            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::TriviallyMoveable<IteratorValueT<InputIt>>)
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -567,9 +575,9 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>>
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<InputIt>>
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
-                return uninitializedMove(begin, begin + n, first);
+                return moveN(begin, n, first);
             }
             
             /**
@@ -623,7 +631,7 @@
              * @param value the value to fill the datas with
              * @return an iterator pointing after the last filled element
              */
-            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>)
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
                 ForwardIt current = first;
                 try {
@@ -645,7 +653,7 @@
              * @param value the value to fill the datas with
              * @return an iterator pointing after the last filled element
              */
-            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
                 return fillN(first, n, value);
             }
@@ -670,11 +678,9 @@
 
             /**
              * Initialize a range of data [first, last) with default constructed value, optimized for trivially constructible types
-             * @param first the destination start
-             * @param last  the destination end
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>
-            void uninitializedDefaultConstruct(ForwardIt first, S last) {
+            void uninitializedDefaultConstruct(ForwardIt, S) {
             }
             
             /**
@@ -691,7 +697,7 @@
              * @param first the destination start
              * @param n     the number of data to initialize
              */
-            template <Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::DerivedFrom<IteratorCategoryT<ForwardIt>, RandomAccessIteratorCategory>)
+            template <Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>)
             void uninitializedDefaultConstructN(ForwardIt first, Size n) {
                 ForwardIt current = first;
                 try {
@@ -707,20 +713,18 @@
         
             /**
              * Initialize N data with default constructed value
-             * @param first the destination start
-             * @param n     the number of data to initialize
              */
-            template <Concept::RandomAccessIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>>
-            void uninitializedDefaultConstructN(ForwardIt first, Size n) {
-                uninitializedDefaultConstruct(first, first + n);
+            template <Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>
+            void uninitializedDefaultConstructN(ForwardIt, Size) {
             }
         
             /**
              * Initialize a range of data [first, last) with value constructed value, no optimization
              * @param first the destination start
              * @param last  the destination end
+             * @return an iterator pointing after the last constructed element
              */
-            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>)
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedValueConstruct(ForwardIt first, S last) {
                 ForwardIt current = first;
                 try {
@@ -738,19 +742,53 @@
              * Initialize a range of data [first, last) with default constructed value, optimized for trivially constructible types
              * @param first the destination start
              * @param last  the destination end
+             * @return an iterator pointing after the last constructed element
              */
-            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
-            void uninitializedValueConstruct(ForwardIt first, S last) {
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
+            ForwardIt uninitializedValueConstruct(ForwardIt first, S last) {
                 return fill(first, last, IteratorValueT<ForwardIt>());
             }
         
             /**
              * Initialize a range of data with default constructed value
              * @param range the destination range
+             * @return an iterator pointing after the last constructed element
              */
             template <Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, RangeValueT<R>>
-            void uninitializedValueConstruct(R && range) {
-                uninitializedValueConstruct(begin(range), end(range));
+            BorrowedIteratorT<R> uninitializedValueConstruct(R && range) {
+                return uninitializedValueConstruct(begin(range), end(range));
+            }
+            
+            /**
+             * Initialize N data with default constructed value
+             * @param first the destination start
+             * @param n     the number of element to initialize
+             * @return an iterator pointing after the last constructed element
+             */
+            template<Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
+            ForwardIt uninitializedValueConstructN(ForwardIt first, Size n) {
+                ForwardIt current = first;
+                try {
+                    for (; n > 0; --n) {
+                        Memory::constructAt(addressOf(*current));
+                        ++current;
+                    }
+                    return current;
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+
+            /**
+             * Initialize N data with default constructed value
+             * @param first the destination start
+             * @param n     the number of element to initialize
+             * @return an iterator pointing after the last constructed element
+             */
+            template<Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
+            ForwardIt uninitializedValueConstructN(ForwardIt first, Size n) {
+                return fillN(first, n, IteratorValueT<ForwardIt>());
             }
             
         }
