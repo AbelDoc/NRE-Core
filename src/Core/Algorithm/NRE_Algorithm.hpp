@@ -465,7 +465,7 @@
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
                 ForwardIt current = first;
                 try {
@@ -482,13 +482,13 @@
             }
 
             /**
-             * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception, optimized for random access iterator
+             * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception, optimized for trivially copyable
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>
+            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>  && Concept::MemCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
                 return uninitializedCopy(begin, begin + n, first);
             }
@@ -579,7 +579,7 @@
              * @param value the value to fill the range with
              * @return an iterator pointing after the last filled element
              */
-            template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
                 ForwardIt current = first;
                 try {
@@ -600,14 +600,14 @@
              * @param value the value to fill the range with
              * @return an iterator pointing after the last filled element
              */
-            template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
                 return fill(first, last, value);
             }
 
             /**
              * Fill an uninitiliazed range of memory with a given value
-             * @param range the destination
+             * @param range the destination range
              * @param value the value to fill the range with
              * @return an iterator pointing after the last filled element
              */
@@ -623,7 +623,7 @@
              * @param value the value to fill the datas with
              * @return an iterator pointing after the last filled element
              */
-            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::MemCopyable<IteratorValueT<ForwardIt>>)
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>)
             ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
                 ForwardIt current = first;
                 try {
@@ -645,9 +645,112 @@
              * @param value the value to fill the datas with
              * @return an iterator pointing after the last filled element
              */
-            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::MemCopyable<IteratorValueT<ForwardIt>>
+            template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
-                return fillN(first, n , value);
+                return fillN(first, n, value);
+            }
+            
+            /**
+             * Initialize a range of data [first, last) with default constructed value, no optimization
+             * @param first the destination start
+             * @param last  the destination end
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>)
+            void uninitializedDefaultConstruct(ForwardIt first, S last) {
+                ForwardIt current = first;
+                try {
+                    for (; current != last; ++current) {
+                        Memory::constructAtNoValue(addressOf(*current));
+                    }
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+
+            /**
+             * Initialize a range of data [first, last) with default constructed value, optimized for trivially constructible types
+             * @param first the destination start
+             * @param last  the destination end
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>
+            void uninitializedDefaultConstruct(ForwardIt first, S last) {
+            }
+            
+            /**
+             * Initialize a range of data with default constructed value
+             * @param range the destination range
+             */
+            template <Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, RangeValueT<R>>
+            void uninitializedDefaultConstruct(R && range) {
+                uninitializedDefaultConstrct(begin(range), end(range));
+            }
+
+            /**
+             * Initialize N data with default constructed value
+             * @param first the destination start
+             * @param n     the number of data to initialize
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::DerivedFrom<IteratorCategoryT<ForwardIt>, RandomAccessIteratorCategory>)
+            void uninitializedDefaultConstructN(ForwardIt first, Size n) {
+                ForwardIt current = first;
+                try {
+                    for (; n > 0; --n) {
+                        Memory::constructAtNoValue(addressOf(*current));
+                        ++current;
+                    }
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+        
+            /**
+             * Initialize N data with default constructed value
+             * @param first the destination start
+             * @param n     the number of data to initialize
+             */
+            template <Concept::RandomAccessIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>>
+            void uninitializedDefaultConstructN(ForwardIt first, Size n) {
+                uninitializedDefaultConstruct(first, first + n);
+            }
+        
+            /**
+             * Initialize a range of data [first, last) with value constructed value, no optimization
+             * @param first the destination start
+             * @param last  the destination end
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>)
+            ForwardIt uninitializedValueConstruct(ForwardIt first, S last) {
+                ForwardIt current = first;
+                try {
+                    for (; current != last; ++current) {
+                        Memory::constructAt(addressOf(*current));
+                    }
+                    return current;
+                } catch (std::exception& e) {
+                    Memory::destroy(first, current);
+                    throw e;
+                }
+            }
+        
+            /**
+             * Initialize a range of data [first, last) with default constructed value, optimized for trivially constructible types
+             * @param first the destination start
+             * @param last  the destination end
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
+            void uninitializedValueConstruct(ForwardIt first, S last) {
+                return fill(first, last, IteratorValueT<ForwardIt>());
+            }
+        
+            /**
+             * Initialize a range of data with default constructed value
+             * @param range the destination range
+             */
+            template <Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, RangeValueT<R>>
+            void uninitializedValueConstruct(R && range) {
+                uninitializedValueConstruct(begin(range), end(range));
             }
             
         }

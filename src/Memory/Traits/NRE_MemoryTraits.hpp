@@ -34,6 +34,16 @@
             }
             
             /**
+             * Construct an object at a given address
+             * @param p the memory address to construct the object
+             * @return the address of the constructed object
+             */
+            template <class T> requires Concept::DefaultInitializable<T>
+            constexpr T* constructAtNoValue(T* p) {
+                return ::new (const_cast <void*> (static_cast <const volatile void*> (p))) T;
+            }
+            
+            /**
              * Destroy an object
              * @param p the object's address
              */

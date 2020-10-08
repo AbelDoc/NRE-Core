@@ -150,24 +150,31 @@
             
             /**
              * @interface MemCopyable
-             * @brief Define a memory copyable object
+             * @brief Define a memory copyable type
              */
             template <class T>
             concept MemCopyable = NonVolatileTriviallyCopyable<T>;
     
             /**
              * @interface MemMoveable
-             * @brief Define a memory moveable object
+             * @brief Define a memory moveable type
              */
             template <class T>
             concept MemMoveable = NonVolatileTriviallyMoveable<T>;
     
             /**
              * @interface MemFillable
-             * @brief Define a memory fillable object
+             * @brief Define a memory fillable type
              */
             template <class T>
             concept MemFillable = MemCopyable<T> && sizeof(T) == 1;
+            
+            /**
+             * @interface TriviallyAssignable
+             * @brief Define a trivially assignable type
+             */
+            template <class T>
+            concept TriviallyAssignable = std::is_trivially_assignable_v<T>;
             
             /**
              * @interface Copyable
