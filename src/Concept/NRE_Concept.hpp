@@ -234,6 +234,16 @@
              */
             template <class T>
             concept MoveConstructible = ConstructibleFrom<T, T> && ConvertibleTo<T, T>;
+            
+            /**
+             * @interface CopyConstructible
+             * @brief Define a type that's copy constructible
+             */
+            template <class T>
+            concept CopyConstructible = MoveConstructible<T> &&
+                ConstructibleFrom<T, T&>       && ConvertibleTo<T&, T>       &&
+                ConstructibleFrom<T, T const&> && ConvertibleTo<T const&, T> &&
+                ConstructibleFrom<T, const T>  && ConvertibleTo<const T, T>;
     
             /**
              * @interface CommonReferenceWith
@@ -370,6 +380,22 @@
              */
             template <class P, class T, class K>
             concept BinaryPredicate = Predicate<P, T, K>;
+            
+            /**
+             * @interface Invocable
+             * @brief Define an invocable object which can be called with a given set of arguments
+             */
+            template <class F, class ... Args>
+            concept Invocable = requires (F && f, Args && ... args) {
+                std::invoke(std::forward<F>(f), std::forward<Args>(args)...);
+            };
+            
+            /**
+             * @interface RegularInvocable
+             * @brief Define an invocable object with an equality-preserving and non-modifying semantic constraint
+             */
+            template <class F, class ... Args>
+            concept RegularInvocable = Invocable<F, Args...>;
             
         }
     }

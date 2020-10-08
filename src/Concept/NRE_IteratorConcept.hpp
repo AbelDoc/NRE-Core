@@ -368,6 +368,32 @@
              */
             template <class R>
             concept ContiguousRange = RandomAccessRange<R> && ContiguousIterator<Core::IteratorT<R>>;
+    
+            /**
+             * @interface IndirectlyUnaryInvocable
+             * @brief Define an invocable on indirectly readable object
+             */
+            template <class F, class It>
+            concept IndirectlyUnaryInvocable = IndirectlyReadable<It> &&
+                CopyConstructible<F> &&
+                Invocable<F&, Core::IteratorValueT<It>> &&
+                Invocable<F&, Core::IteratorReferenceT<It>> &&
+                Invocable<F&, Core::IteratorCommonReferenceT<It>> &&
+                CommonReferenceWith<Core::InvokeResultT<F&, Core::IteratorValueT<It>&>,
+                                    Core::InvokeResultT<F&, Core::IteratorReferenceT<It>>>;
+    
+            /**
+             * @interface IndirectlyRegularUnaryInvocable
+             * @brief Define a regular invocable on indirectly readable object
+             */
+            template <class F, class It>
+            concept IndirectlyRegularUnaryInvocable = IndirectlyReadable<It> &&
+                CopyConstructible<F> &&
+                RegularInvocable<F&, Core::IteratorValueT<It>> &&
+                RegularInvocable<F&, Core::IteratorReferenceT<It>> &&
+                RegularInvocable<F&, Core::IteratorCommonReferenceT<It>> &&
+                CommonReferenceWith<Core::InvokeResultT<F&, Core::IteratorValueT<It>&>,
+                                    Core::InvokeResultT<F&, Core::IteratorReferenceT<It>>>;
             
         }
         namespace Core {
@@ -381,6 +407,25 @@
             /** Helper to access a range's borrowed iterator type */
             template <Concept::Range R>
             using BorrowedIteratorT = ConditionalT<Concept::BorrowedRange<R>, IteratorT<R>, Dangling>;
+            
+            /** Helper to access InvokeResultT type for a set of iterators */
+            template <class F, class ... Iters> requires (Concept::IndirectlyReadable<Iters> && ...) && Concept::Invocable<F, IteratorReferenceT<Iters>...>
+            using IndirectInvokeResultT = InvokeResultT<F, IteratorReferenceT<Iters>...>;
+            
+            /**
+             * @struct Projected
+             * @brief Define a new indirectly readable iterator from a base one and a projection to apply
+             */
+            template <Concept::IndirectlyReadable It, Concept::IndirectlyRegularUnaryInvocable<It> Proj>
+            struct Projected {
+                using ValueType = RemoveCVReferenceT<IndirectInvokeResultT<Proj&, It>>;
+                IndirectInvokeResultT<Proj&, It> operator*() const;
+            };
+            
+            template <Concept::WeaklyIncrementable It, class Proj>
+            struct IncrementableTraits<Projected<It, Proj>> {
+                using DifferenceType  = IteratorDifferenceT<It>;
+            };
             
         }
     }

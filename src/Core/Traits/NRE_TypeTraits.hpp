@@ -587,5 +587,17 @@
             /** Helper to access Conditional type */
             template <bool C, class T, class F>
             using ConditionalT = typename Conditional<C, T, F>::Type;
+            
+            /**
+             * @struct InvokeResult
+             * @brief Allow to deduce the return type for an invocable
+             */
+            template <class F, class ... Args>
+            struct InvokeResult {
+                using Type = std::invoke_result_t<F, Args...>;
+            };
+            
+            template <class F, class ... Args>
+            using InvokeResultT = typename InvokeResult<F, Args...>::Type;
         }
     }
