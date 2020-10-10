@@ -599,5 +599,21 @@
             
             template <class F, class ... Args>
             using InvokeResultT = typename InvokeResult<F, Args...>::Type;
+            
+            /**
+             * @struct Identity
+             * @brief Projection functor returning it's argument unchanged
+             */
+            struct Identity {
+                /**
+                 * The identity functor operator
+                 * @param t the object to project
+                 * @return the projected object, unchanged
+                 */
+                template <class T>
+                constexpr T&& operator()(T && t) const noexcept {
+                    return std::forward<T>(t);
+                }
+            };
         }
     }

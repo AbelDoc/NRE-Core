@@ -428,4 +428,36 @@
             };
             
         }
+        namespace Concept {
+            /**
+             * @interface Predicate
+             * @brief Define a n-arity predicate, taking n parameters and return a boolean testable value
+             */
+            template <class P, class ... Args>
+            concept Predicate = RegularInvocable<P, Args...> && BooleanTestable<Core::InvokeResultT<P, Args...>>;
+    
+            /**
+             * @interface IndirectUnaryPredicate
+             * @brief Define an unary predicate callable on dereferenced iterator
+             */
+            template <class F, class I>
+            concept IndirectUnaryPredicate = IndirectlyReadable<I> && CopyConstructible<F> &&
+                Predicate<F&, Core::IteratorValueT<I>&> &&
+                Predicate<F&, Core::IteratorReferenceT<I>> &&
+                Predicate<F&, Core::IteratorCommonReferenceT<I>>;
+    
+            /**
+             * @interface IndirectUnaryPredicate
+             * @brief Define a binary predicate callable on dereferenced iterators
+             */
+            template <class F, class I1, class I2>
+            concept IndirectBinaryPredicate = IndirectlyReadable<I1> && IndirectlyReadable<I2> && CopyConstructible<F> &&
+                Predicate<F&, Core::IteratorValueT<I1>&, Core::IteratorValueT<I2>&> &&
+                Predicate<F&, Core::IteratorValueT<I1>&, Core::IteratorReferenceT<I2>> &&
+                Predicate<F&, Core::IteratorReferenceT<I1>, Core::IteratorValueT<I2>&> &&
+                Predicate<F&, Core::IteratorReferenceT<I1>, Core::IteratorReferenceT<I2>> &&
+                Predicate<F&, Core::IteratorCommonReferenceT<I1>, Core::IteratorCommonReferenceT<I2>>;
+            
+            
+        }
     }

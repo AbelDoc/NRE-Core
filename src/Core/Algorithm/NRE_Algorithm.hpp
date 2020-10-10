@@ -163,7 +163,7 @@
              */
             template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt>
             constexpr OutputIt copy(R && range, OutputIt first) {
-                return copy(begin(range), end(range), first);
+                return copy(begin(range), end(range), std::move(first));
             }
 
             /**
@@ -228,7 +228,7 @@
              */
             template <Concept::BidirectionalRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt> requires Concept::IndirectlyWritable<OutputIt, RangeReferenceT<R>>
             constexpr OutputIt copyBackward(R && range, OutputIt last) {
-                return copyBackward(begin(range), end(range), last);
+                return copyBackward(begin(range), end(range), std::move(last));
             }
             
             /**
@@ -237,12 +237,13 @@
              * @param end   the source range end
              * @param first the destination start
              * @param p     the used predicate
+             * @param proj  the projection used when sending element to the predicate
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt, Concept::UnaryPredicate<IteratorReferenceT<InputIt>> Pred>
-            constexpr OutputIt copyIf(InputIt begin, S end, OutputIt first, Pred p) {
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<InputIt, Proj>> Pred>
+            constexpr OutputIt copyIf(InputIt begin, S end, OutputIt first, Pred p, Proj proj = {}) {
                 for (; begin != end; ++begin) {
-                    if (p(*begin)) {
+                    if (std::invoke(p, std::invoke(proj, *begin))) {
                         *first = *begin;
                         ++first;
                     }
@@ -257,9 +258,9 @@
              * @param p     the used predicate
              * @return an iterator pointing after the last copied element
              */
-            template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt, Concept::UnaryPredicate<RangeReferenceT<R>> Pred>
-            constexpr OutputIt copyIf(R && range, OutputIt first, Pred p) {
-                return copyIf(begin(range), end(range), first, p);
+            template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            constexpr OutputIt copyIf(R && range, OutputIt first, Pred p, Proj proj) {
+                return copyIf(begin(range), end(range), std::move(first), std::move(p), std::move(proj));
             }
             
             /**
@@ -288,7 +289,7 @@
              */
             template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt>
             constexpr OutputIt copyN(InputIt begin, Size n, OutputIt first) {
-                return copy(begin, begin + n, first);
+                return copy(std::move(begin), begin + n, std::move(first));
             }
 
             /**
@@ -354,7 +355,7 @@
              */
             template <Concept::InputRange R, Concept::OutputIterator<RangeRValueReferenceT<R>> OutputIt>
             constexpr OutputIt move(R && range, OutputIt first) {
-                return move(begin(range), end(range), first);
+                return move(begin(range), end(range), std::move(first));
             }
 
             /**
@@ -419,7 +420,7 @@
              */
             template <Concept::BidirectionalRange R, Concept::BidirectionalIterator OutputIt> requires Concept::IndirectlyWritable<OutputIt, RangeRValueReferenceT<R>>
             constexpr OutputIt moveBackward(R && range, OutputIt last) {
-                return moveBackward(begin(range), end(range), last);
+                return moveBackward(begin(range), end(range), std::move(last));
             }
 
             /**
@@ -452,7 +453,7 @@
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
-                return copy(begin, end, first);
+                return copy(std::move(begin), std::move(end), std::move(first));
             }
 
             /**
@@ -463,7 +464,7 @@
              */
             template <Concept::InputRange R, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, RangeReferenceT<R>>
             ForwardIt uninitializedCopy(R && range, ForwardIt first) {
-                return uninitializedCopy(begin(range), end(range), first);
+                return uninitializedCopy(begin(range), end(range), std::move(first));
             }
 
             /**
@@ -498,7 +499,7 @@
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>  && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
-                return copyN(begin, n, first);
+                return copyN(std::move(begin), n, std::move(first));
             }
 
             /**
@@ -531,7 +532,7 @@
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
-                return move(begin, end, first);
+                return move(std::move(begin), std::move(end), std::move(first));
             }
 
             /**
@@ -542,7 +543,7 @@
              */
             template <Concept::InputRange R, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, RangeRValueReferenceT<R>>
             ForwardIt uninitializedMove(R && range, ForwardIt first) {
-                return uninitializedMove(begin(range), end(range), first);
+                return uninitializedMove(begin(range), end(range), std::move(first));
             }
 
             /**
@@ -577,7 +578,7 @@
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<InputIt>>
             ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
-                return moveN(begin, n, first);
+                return moveN(std::move(begin), n, std::move(first));
             }
             
             /**
@@ -610,7 +611,7 @@
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
-                return fill(first, last, value);
+                return fill(std::move(first), std::move(last), value);
             }
 
             /**
@@ -655,7 +656,7 @@
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
-                return fillN(first, n, value);
+                return fillN(std::move(first), n, std::move(value));
             }
             
             /**
@@ -746,7 +747,7 @@
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedValueConstruct(ForwardIt first, S last) {
-                return fill(first, last, IteratorValueT<ForwardIt>());
+                return fill(std::move(first), std::move(last), IteratorValueT<ForwardIt>());
             }
         
             /**
@@ -788,7 +789,7 @@
              */
             template<Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedValueConstructN(ForwardIt first, Size n) {
-                return fillN(first, n, IteratorValueT<ForwardIt>());
+                return fillN(std::move(first), n, IteratorValueT<ForwardIt>());
             }
             
         }
