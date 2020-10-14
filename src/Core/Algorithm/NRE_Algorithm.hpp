@@ -797,12 +797,14 @@
              * @param first the destination start
              * @param last  the destination end
              * @param g     the data generator
+             * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>> && (!Concept::SizedSentinelFor<S, ForwardIt>)
-            constexpr void generate(ForwardIt first, S last, Gen g) {
+            constexpr ForwardIt generate(ForwardIt first, S last, Gen g) {
                 for ( ; first != last; ++first) {
                     *first = std::move(g());
                 }
+                return first;
             }
 
             /**
@@ -810,23 +812,41 @@
              * @param first the destination start
              * @param last  the destination end
              * @param g     the data generator
+             * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SizedSentinelFor<ForwardIt> S, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>>
-            constexpr void generate(ForwardIt first, S last, Gen g) {
+            constexpr ForwardIt generate(ForwardIt first, S last, Gen g) {
                 for (auto n = last - first; n > 0; --n) {
-                    *first = std::move(g());
+                    *first = std::move(std::invoke(g));
                     ++first;
                 }
+                return first;
             }
             
             /**
              * Fill a range of data with generated data from a given generator
              * @param range the destination range
              * @param g     the data generator
+             * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardRange R, Concept::Generator Gen>  requires Concept::IndirectlyWritable<Core::IteratorT<R>, Core::InvokeResultT<Gen>>
-            constexpr void generate(R && range, Gen g) {
-                generate(Core::begin(range), Core::end(range), std::move(g));
+            constexpr IteratorT<R> generate(R && range, Gen g) {
+                return generate(Core::begin(range), Core::end(range), std::move(g));
+            }
+            
+            /**
+             * Fill N data with generated data from a given generator
+             * @param first the destination start
+             * @param g     the data generator
+             * @return an iterator pointing after the last generated element
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::Integral Size, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>>
+            constexpr ForwardIt generateN(ForwardIt first, Size n, Gen g) {
+                for (; n > 0; --n) {
+                    *first = std::move(std::invoke(g));
+                    ++first;
+                }
+                return first;
             }
             
         }

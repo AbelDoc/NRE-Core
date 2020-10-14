@@ -22,6 +22,8 @@
         std::cout << vec << std::endl;
         
         Core::fill(vec, 2);
+
+        std::ranges::generate
         
         std::cout << vec << std::endl;
         
