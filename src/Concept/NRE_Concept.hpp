@@ -374,5 +374,12 @@
             template <class F, class ... Args>
             concept RegularInvocable = Invocable<F, Args...>;
             
+            /**
+             * @interface Generator
+             * @brief Define a generator object which can be invoked to generate object
+             */
+            template <class F>
+            concept Generator = CopyConstructible<F> && Invocable<F&>;
+            
         }
     }

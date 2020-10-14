@@ -22,7 +22,7 @@
         std::cout << vec << std::endl;
         
         Core::fill(vec, 2);
-
+        
         std::cout << vec << std::endl;
         
         return 0;

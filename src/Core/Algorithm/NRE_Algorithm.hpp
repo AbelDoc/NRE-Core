@@ -37,7 +37,7 @@
             }
         
             /**
-             * Fill a range of data [begin, end) with a given value, sized sentinel optimization
+             * Fill a range of data [begin, end) with a given value, optimized for sized sentinels
              * @param begin the range start
              * @param end   the range end
              * @param value the value to fill the range with
@@ -52,7 +52,7 @@
             }
 
             /**
-             * Fill a range of data [begin, end) with a given value, optimized for contiguous iterator and bytes-like type
+             * Fill a range of data [begin, end) with a given value, optimized for contiguous iterators and bytes-like types
              * @param begin the range start
              * @param end   the range end
              * @param value the value to fill the range with
@@ -90,7 +90,7 @@
             }
         
             /**
-             * Fill N data starting at begin with a given value, optimized for random access iterator
+             * Fill N data starting at begin with a given value, optimized for random access iterators
              * @param begin the range start
              * @param n     the number of object to fill
              * @param value the value to fill the range with
@@ -116,7 +116,7 @@
             }
 
             /**
-             * Copy a range of data [begin, end) into a given destination, optimized for sized sentinel
+             * Copy a range of data [begin, end) into a given destination, optimized for sized sentinels
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -137,7 +137,7 @@
             }
 
             /**
-             * Copy a range of data [begin, end) into a given destination, optimized for contiguous iterator and trivially copyable types
+             * Copy a range of data [begin, end) into a given destination, optimized for contiguous iterators and trivially copyable types
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -202,7 +202,7 @@
             }
         
             /**
-             * Copy a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterator and trivially copyable types
+             * Copy a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterators and trivially copyable types
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
@@ -281,7 +281,7 @@
             }
 
             /**
-             * Copy N data starting at begin into a given destination, optimized for random access iterator
+             * Copy N data starting at begin into a given destination, optimized for random access iterators
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
@@ -308,7 +308,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination, optimized for sized sentinel
+             * Move a range of data [begin, end) into a given destination, optimized for sized sentinels
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -329,7 +329,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination, optimized for contiguous iterator and trivially moveable types
+             * Move a range of data [begin, end) into a given destination, optimized for contiguous iterators and trivially moveable types
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -374,7 +374,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination but start from the end, optimized for sized sentinel
+             * Move a range of data [begin, end) into a given destination but start from the end, optimized for sized sentinels
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
@@ -394,7 +394,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterator and trivially copyable types
+             * Move a range of data [begin, end) into a given destination but start from the end, optimized for contiguous iterators and trivially copyable types
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
@@ -445,7 +445,7 @@
             }
 
             /**
-             * Copy a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, trivially types optimization
+             * Copy a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception, optimized for trivially copyable types
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -491,7 +491,7 @@
             }
 
             /**
-             * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception, optimized for trivially copyable
+             * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception, optimized for trivially copyable types
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
@@ -524,7 +524,7 @@
             }
         
             /**
-             * Move a range of data [begin, end) into an uninitialized memory destination, destroy moved data in case of exception, trivially types optimization
+             * Move a range of data [begin, end) into an uninitialized memory destination, destroy moved data in case of exception, optimized for trivially moveable types
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
@@ -570,7 +570,7 @@
             }
         
             /**
-             * Move N data starting at begin into an uninitialized memory destination, destroy moved data in case of exception, optimized for random access iterator
+             * Move N data starting at begin into an uninitialized memory destination, destroy moved data in case of exception, optimized for random access iterators
              * @param begin the source range start
              * @param n     the number of data to moved
              * @param first the destination start
@@ -790,6 +790,43 @@
             template<Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
             ForwardIt uninitializedValueConstructN(ForwardIt first, Size n) {
                 return fillN(std::move(first), n, IteratorValueT<ForwardIt>());
+            }
+            
+            /**
+             * Fill a range of data [first, last) with generated data from a given generator, no optimization
+             * @param first the destination start
+             * @param last  the destination end
+             * @param g     the data generator
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>> && (!Concept::SizedSentinelFor<S, ForwardIt>)
+            constexpr void generate(ForwardIt first, S last, Gen g) {
+                for ( ; first != last; ++first) {
+                    *first = std::move(g());
+                }
+            }
+
+            /**
+             * Fill a range of data [first, last) with generated data from a given generator, optimized for sized sentinels
+             * @param first the destination start
+             * @param last  the destination end
+             * @param g     the data generator
+             */
+            template <Concept::ForwardIterator ForwardIt, Concept::SizedSentinelFor<ForwardIt> S, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>>
+            constexpr void generate(ForwardIt first, S last, Gen g) {
+                for (auto n = last - first; n > 0; --n) {
+                    *first = std::move(g());
+                    ++first;
+                }
+            }
+            
+            /**
+             * Fill a range of data with generated data from a given generator
+             * @param range the destination range
+             * @param g     the data generator
+             */
+            template <Concept::ForwardRange R, Concept::Generator Gen>  requires Concept::IndirectlyWritable<Core::IteratorT<R>, Core::InvokeResultT<Gen>>
+            constexpr void generate(R && range, Gen g) {
+                generate(Core::begin(range), Core::end(range), std::move(g));
             }
             
         }
