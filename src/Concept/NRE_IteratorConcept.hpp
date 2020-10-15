@@ -566,7 +566,7 @@
             }
 
             /**
-             * Increment an iterator n times or a given bound, depend on the first that happen, optimized for sized sentinel
+             * Increment an iterator n times or a given bound, whichever is first, optimized for sized sentinel
              * @param it    the iterator to increment
              * @param n     the number of incrementation
              * @param bound the incrementation bound
@@ -583,6 +583,53 @@
                     advance(it, n);
                     return 0;
                 }
+            }
+            
+            /**
+             * Compute the successor of an iterator
+             * @param it the iterator to query the successor
+             * @return the successor
+             */
+            template <Concept::InputOrOutputIterator It>
+            constexpr It next(It it) {
+                return ++it;
+            }
+        
+            /**
+             * Compute the nth successor of an iterator
+             * @param it the iterator to query the successor
+             * @param n  the number of incrementation
+             * @return the nth successor
+             */
+            template <Concept::InputOrOutputIterator It>
+            constexpr It next(It it, IteratorDifferenceT<It> n) {
+                advance(it, n);
+                return it;
+            }
+
+            /**
+             * Compute the first successor equivalent to bound of an iterator
+             * @param it    the iterator to query the successor
+             * @param bound the incrementation bound
+             * @return the first successor equivalent to bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SentinelFor<It> S>
+            constexpr It next(It it, S bound) {
+                advance(it, bound);
+                return it;
+            }
+        
+            /**
+             * Compute the nth successor or the first successor equivalent to bound, whichever is first, of an iterator
+             * @param it    the iterator to query the successor
+             * @param n     the number of incrementation
+             * @param bound the incrementation bound
+             * @return the nth successor or the first successor equivalent to bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SentinelFor<It> S>
+            constexpr It next(It it, IteratorDifferenceT<It> n, S bound) {
+                advance(it, n, bound);
+                return it;
             }
         }
     }
