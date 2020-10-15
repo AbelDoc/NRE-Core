@@ -631,5 +631,40 @@
                 advance(it, n, bound);
                 return it;
             }
+
+            /**
+             * Compute the predecessor of an iterator
+             * @param it the iterator to query the predecessor
+             * @return the predecessor
+             */
+            template <Concept::BidirectionalIterator It>
+            constexpr It prev(It it) {
+                return --it;
+            }
+
+            /**
+             * Compute the nth predecessor of an iterator
+             * @param it the iterator to query the predecessor
+             * @param n  the number of decrementation
+             * @return the nth predecessor
+             */
+            template <Concept::BidirectionalIterator It>
+            constexpr It prev(It it, IteratorDifferenceT<It> n) {
+                advance(it, n);
+                return it;
+            }
+
+            /**
+             * Compute the nth predecessor or the first predecessor equivalent to bound, whichever is first, of an iterator
+             * @param it    the iterator to query the predecessor
+             * @param n     the number of decrementation
+             * @param bound the decrementation bound
+             * @return the nth predecessor or the first predecessor equivalent to bound
+             */
+            template <Concept::BidirectionalIterator It, Concept::SentinelFor<It> S>
+            constexpr It prev(It it, IteratorDifferenceT<It> n, S bound) {
+                advance(it, n, bound);
+                return it;
+            }
         }
     }
