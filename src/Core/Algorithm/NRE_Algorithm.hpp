@@ -830,7 +830,7 @@
              * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardRange R, Concept::Generator Gen>  requires Concept::IndirectlyWritable<Core::IteratorT<R>, Core::InvokeResultT<Gen>>
-            constexpr IteratorT<R> generate(R && range, Gen g) {
+            constexpr BorrowedIteratorT<R> generate(R && range, Gen g) {
                 return generate(Core::begin(range), Core::end(range), std::move(g));
             }
             

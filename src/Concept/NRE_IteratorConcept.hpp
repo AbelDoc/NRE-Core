@@ -458,6 +458,131 @@
                 Predicate<F&, Core::IteratorReferenceT<I1>, Core::IteratorReferenceT<I2>> &&
                 Predicate<F&, Core::IteratorCommonReferenceT<I1>, Core::IteratorCommonReferenceT<I2>>;
             
+        }
+        namespace Core {
+    
+    
+            /**
+             * Increment an iterator n times, no optimization
+             * @param it the iterator to increment
+             * @param n  the number of incrementation
+             */
+            template <Concept::InputOrOutputIterator It> requires (!Concept::BidirectionalIterator<It>)
+            constexpr void advance(It& it, IteratorDifferenceT<It> n) {
+                for (; n > 0; --n) {
+                    ++it;
+                }
+            }
+    
+            /**
+             * Increment an iterator n times, allow negatif n
+             * @param it the iterator to increment
+             * @param n  the number of incrementation
+             */
+            template <Concept::BidirectionalIterator It> requires (!Concept::RandomAccessIterator<It>)
+            constexpr void advance(It& it, IteratorDifferenceT<It> n) {
+                for (; n > 0; --n) {
+                    ++it;
+                }
+                for (; n < 0; ++n) {
+                    --it;
+                }
+            }
+    
+            /**
+             * Increment an iterator n times, optimized for random access iterator
+             * @param it the iterator to increment
+             * @param n  the number of incrementation
+             */
+            template <Concept::RandomAccessIterator It>
+            constexpr void advance(It& it, IteratorDifferenceT<It> n) {
+                it += n;
+            }
+    
+            /**
+             * Increment an iterator to a given bound, no optimization
+             * @param it    the iterator to increment
+             * @param bound the incrementation bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SentinelFor<It> S> requires (!Concept::AssignableFrom<It&, S> && !Concept::SizedSentinelFor<S, It>)
+            constexpr void advance(It& it, S bound) {
+                while (it != bound) {
+                    ++it;
+                }
+            }
+
+            /**
+             * Increment an iterator to a given bound, optimized for assignable sentinel
+             * @param it    the iterator to increment
+             * @param bound the incrementation bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SentinelFor<It> S> requires Concept::AssignableFrom<It&, S>
+            constexpr void advance(It& it, S bound) {
+                it = std::move(bound);
+            }
+
+            /**
+             * Increment an iterator to a given bound, optimized for sized sentinel
+             * @param it    the iterator to increment
+             * @param bound the incrementation bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SizedSentinelFor<It> S> requires (!Concept::AssignableFrom<It&, S>)
+            constexpr void advance(It& it, S bound) {
+                advance(it, bound - it);
+            }
             
+            /**
+             * Increment an iterator n times or a given bound, depend on the first that happen, no optimization
+             * @param it    the iterator to increment
+             * @param n     the number of incrementation
+             * @param bound the incrementation bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SentinelFor<It> S> requires (!Concept::BidirectionalIterator<It> && !Concept::SizedSentinelFor<S, It>)
+            constexpr IteratorDifferenceT<It> advance(It& it, IteratorDifferenceT<It> n, S bound) {
+                while (n > 0 && it != bound) {
+                    --n;
+                    ++it;
+                }
+                return n;
+            }
+        
+            /**
+             * Increment an iterator n times or a given bound, depend on the first that happen, allow negatif n and bound to be before it
+             * @param it    the iterator to increment
+             * @param n     the number of incrementation
+             * @param bound the incrementation bound
+             */
+            template <Concept::BidirectionalIterator It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<S, It>)
+            constexpr IteratorDifferenceT<It> advance(It& it, IteratorDifferenceT<It> n, S bound) {
+                while (n > 0 && it != bound) {
+                    --n;
+                    ++it;
+                }
+                while (n < 0 && it != bound) {
+                    ++n;
+                    --it;
+                }
+                return n;
+            }
+
+            /**
+             * Increment an iterator n times or a given bound, depend on the first that happen, optimized for sized sentinel
+             * @param it    the iterator to increment
+             * @param n     the number of incrementation
+             * @param bound the incrementation bound
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SizedSentinelFor<It> S>
+            constexpr IteratorDifferenceT<It> advance(It& it, IteratorDifferenceT<It> n, S bound) {
+                const auto diff = bound - it;
+                const auto absDiff = diff < 0 ? -diff : diff;
+                const auto absN = n < 0 ? -n : n;
+                if (absN >= absDiff) {
+                    advance(it, bound);
+                    return n - diff;
+                } else {
+                    advance(it, n);
+                    return 0;
+                }
+            }
         }
     }

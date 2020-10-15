@@ -23,9 +23,13 @@
         
         Core::fill(vec, 2);
 
-        std::ranges::generate
-        
         std::cout << vec << std::endl;
+
+        vec[9] = 99;
+        
+        auto it = vec.begin();
+        Core::advance(it, 15, vec.end() - 1);
+        std::cout << static_cast <int> (*it) << std::endl;
         
         return 0;
     }
