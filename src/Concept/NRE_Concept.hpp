@@ -118,7 +118,7 @@
              * @brief Define a trivially moveable type
              */
             template <class T>
-            concept TriviallyMoveable = TriviallyConstructible<T, Core::AddRValueReference<T>>;
+            concept TriviallyMoveable = TriviallyConstructible<T, Core::AddRValueReferenceT<T>>;
             
             /**
              * @interface TriviallyDestructible

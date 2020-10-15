@@ -31,5 +31,9 @@
         Core::advance(it, 15, vec.end() - 1);
         std::cout << static_cast <int> (*it) << std::endl;
         
+        Core::shiftLeft(vec, 1);
+    
+        std::cout << vec << std::endl;
+        
         return 0;
     }
