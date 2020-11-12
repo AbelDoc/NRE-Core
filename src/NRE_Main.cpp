@@ -34,6 +34,10 @@
         Core::shiftLeft(vec, 1);
     
         std::cout << vec << std::endl;
+    
+        Core::shiftRight(vec, 1);
+        
+        std::cout << vec << std::endl;
         
         return 0;
     }

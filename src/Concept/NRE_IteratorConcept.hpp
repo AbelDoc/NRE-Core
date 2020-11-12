@@ -461,7 +461,6 @@
         }
         namespace Core {
     
-    
             /**
              * Increment an iterator n times, no optimization
              * @param it the iterator to increment
@@ -666,5 +665,6 @@
                 advance(it, n, bound);
                 return it;
             }
+            
         }
     }

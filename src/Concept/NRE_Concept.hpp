@@ -276,6 +276,13 @@
              */
             template <class T>
             concept Swappable = std::swappable<T>;
+    
+            /**
+             * @interface SwappableWith
+             * @brief Define a type that's swappable with another
+             */
+            template <class T, class K>
+            concept SwappableWith = std::swappable_with<T, K>;
             
             /**
              * @interface Moveable

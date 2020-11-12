@@ -856,7 +856,7 @@
              * @param n     the shift amount
              * @return an iterator pointing after the last element shifted, last if n == 0, first if n >= distance(first, last)
              */
-            template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<ForwardIt>>
+            template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>>
             constexpr ForwardIt shiftLeft(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
                 if (n == 0) {
                     return last;
@@ -875,9 +875,66 @@
              * @param n     the shift amount
              * @return an iterator pointing after the last element shifted, end(range) if n == 0, begin(range) if n >= distance(begin(range), end(range))
              */
-            template <Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, IteratorReferenceT<IteratorT<R>>>
+            template <Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, IteratorRValueReferenceT<IteratorT<R>>>
             constexpr BorrowedIteratorT<R> shiftLeft(R && range, IteratorDifferenceT<IteratorT<R>> n) {
                 return shiftLeft(begin(range), end(range), n);
+            }
+            
+            /**
+             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect
+             * @param first the range start to shift
+             * @param last  the range end to shift
+             * @param n     the shift amount
+             * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(first, last)
+             */
+            template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>>
+            constexpr ForwardIt shiftRight(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
+                if (n == 0) {
+                    return first;
+                }
+                
+                auto result = next(first, n, last);
+                if (result == last) {
+                    return last;
+                }
+                
+                auto destinationHead = first;
+                auto destinationTail = result;
+                while (destinationHead != result) {
+                    if (destinationTail == last) {
+                        std::move(std::move(first), std::move(destinationHead), std::move(result));
+                        return result;
+                    }
+                    ++destinationHead;
+                    ++destinationTail;
+                }
+                for (;;) {  // Ended when [first, result) and [destinationHead, destinationTail) are disjoint,
+                            // no for end condition in order to have direct return when last moving,
+                            // avoiding extra instructions after
+                    auto cursor = first;
+                    while (cursor != result) {
+                        if (destinationTail == last) {
+                            destinationHead = std::move(cursor, result, std::move(destinationHead));
+                            std::move(std::move(first), std::move(cursor), std::move(destinationHead));
+                            return result;
+                        }
+                        std::iter_swap(cursor, destinationHead);
+                        ++destinationHead;
+                        ++destinationTail;
+                        ++cursor;
+                    }
+                }
+            }
+
+            /**
+             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect
+             * @param range the range to shift
+             * @param n     the shift amount
+             * @return an iterator pointing after the last element shifted, last if begin(range) == 0, end(range) if n >= distance(begin(range), end(range))
+             */
+            template <Concept::ForwardRange R> requires Concept::IndirectlyWritable<IteratorT<R>, IteratorRValueReferenceT<IteratorT<R>>>
+            constexpr BorrowedIteratorT<R> shiftRight(R && range, IteratorDifferenceT<IteratorT<R>> n) {
+                return shiftRight(begin(range), end(range), n);
             }
             
         }
