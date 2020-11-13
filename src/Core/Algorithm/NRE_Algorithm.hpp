@@ -49,6 +49,36 @@
                         return {std::move(in), std::move(out)};
                     }
                 };
+                /**
+                 * @struct InInOutResult
+                 * @brief Define a function result returning two inputs and one output values (usually iterators and/or sentinel)
+                 */
+                template <class It1, class It2, class Out>
+                struct InInOutResult {
+                    [[no_unique_address]] It1 in1;
+                    [[no_unique_address]] It2 in2;
+                    [[no_unique_address]] Out out;
+    
+                    /**
+                     * @return the copy-converted Detail::InInOutResult
+                     */
+                    template <class It21, class It22, class Out2> requires Concept::ConvertibleTo<It1 const&, It21> &&
+                                                                           Concept::ConvertibleTo<It2 const&, It22> &&
+                                                                           Concept::ConvertibleTo<Out const&, Out2>
+                    constexpr operator InInOutResult<It21, It22, Out2>() const & {
+                        return {in1, in2, out};
+                    }
+    
+                    /**
+                     * @return the move-converted Detail::InInOutResult
+                     */
+                    template <class It21, class It22, class Out2> requires Concept::ConvertibleTo<It1, It21> &&
+                                                                           Concept::ConvertibleTo<It2, It22> &&
+                                                                           Concept::ConvertibleTo<Out, Out2>
+                    constexpr operator InInOutResult<It21, It22, Out2>() {
+                        return {std::move(in1), std::move(in2), std::move(out)};
+                    }
+                };
             }
     
             /**
@@ -650,10 +680,6 @@
                 return moveN(std::move(begin), n, std::move(first));
             }
 
-            /** Helper for unitializedFill-function result type */
-            template <class It, class Out>
-            using UninitializedFillResult = Detail::InOutResult<It, Out>;
-            
             /**
              * Fill an uninitiliazed range of memory [first, last) with a given value, no optimization
              * @param first the destination start
@@ -1029,6 +1055,15 @@
             constexpr BorrowedIteratorT<R> shiftRight(R && range, IteratorDifferenceT<IteratorT<R>> n) {
                 return shiftRight(begin(range), end(range), n);
             }
+
+
+            /** Helper for unary transform-function result type */
+            template<class It, class Out>
+            using UnaryTransformResult = Detail::InOutResult<It, Out>;
+
+            /** Helper for binary transform-function result type */
+            template<class It1, class It2, class Out>
+            using BinaryTransformResult = Detail::InInOutResult<It1, It2, Out>;
             
         }
     }
