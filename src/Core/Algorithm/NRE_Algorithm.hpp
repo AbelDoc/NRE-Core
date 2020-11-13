@@ -21,6 +21,35 @@
          * @brief Core's API
          */
         namespace Core {
+            namespace Detail {
+                /**
+                 * @struct InOutResult
+                 * @brief Define a function result returning an input and output values (usually iterators and/or sentinel)
+                 */
+                template <class It, class Out>
+                struct InOutResult {
+                    [[no_unique_address]] It in;
+                    [[no_unique_address]] Out out;
+        
+                    /**
+                     * @return the copy-converted Detail::InOutResult
+                     */
+                    template <class It2, class Out2> requires Concept::ConvertibleTo<It const&, It2> &&
+                                                              Concept::ConvertibleTo<Out const&, Out2>
+                    constexpr operator InOutResult<It2, Out2>() const & {
+                        return {in, out};
+                    }
+                    
+                    /**
+                     * @return the move-converted Detail::InOutResult
+                     */
+                    template <class It2, class Out2>  requires Concept::ConvertibleTo<It, It2> &&
+                                                               Concept::ConvertibleTo<Out, Out2>
+                    constexpr operator InOutResult<It2, Out2>() {
+                        return {std::move(in), std::move(out)};
+                    }
+                };
+            }
     
             /**
              * Fill a range of data [begin, end) with a given value, no optimization
@@ -99,20 +128,24 @@
             constexpr void fillN(It begin, Size n, T const& value) {
                 return fill(begin, begin + n, value);
             }
-    
+
+            /** Helper for copy-function result type */
+            template <class It, class Out>
+            using CopyResult = Detail::InOutResult<It, Out>;
+            
             /**
              * Copy a range of data [begin, end) into a given destination, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorValueT<InputIt>> OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
-            constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
+            constexpr CopyResult<InputIt, OutputIt> copy(InputIt begin, S end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
                     *first = *begin;
                 }
-                return first;
+                return {begin, first};
             }
 
             /**
@@ -120,20 +153,20 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt> requires
                 (!Concept::MemCopyable<IteratorValueT<InputIt>>  ||
                  !Concept::MemCopyable<IteratorValueT<OutputIt>> ||
                  !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
-            constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
+            constexpr CopyResult<InputIt, OutputIt> copy(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *first = *begin;
                     ++first;
                     ++begin;
                 }
-                return first;
+                return {begin, first};
             }
 
             /**
@@ -141,44 +174,48 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> &&
                 Concept::MemCopyable<IteratorValueT<InputIt>> &&
                 Concept::MemCopyable<IteratorValueT<OutputIt>>
-            constexpr OutputIt copy(InputIt begin, S end, OutputIt first) {
+            constexpr CopyResult<InputIt, OutputIt> copy(InputIt begin, S end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
                 IteratorDifferenceT<InputIt> n = end - begin;
                 std::memmove(memFirst, memBegin, n * sizeof(IteratorValueT<InputIt>));
-                return first + n;
+                return {begin + n, first + n};
             }
             
             /**
              * Copy a range of data into a given destination
              * @param range the source range
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt>
-            constexpr OutputIt copy(R && range, OutputIt first) {
+            constexpr CopyResult<BorrowedIteratorT<R>, OutputIt> copy(R && range, OutputIt first) {
                 return copy(begin(range), end(range), std::move(first));
             }
+
+            /** Helper for copyBackward-function result type */
+            template <class It, class Out>
+            using CopyBackwardResult = Detail::InOutResult<It, Out>;
 
             /**
              * Copy a range of data [begin, end) into a given destination but start from the end, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
-             * @return an iterator pointing to the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> && (!Concept::SizedSentinelFor<S, InputIt>)
-            constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
+            constexpr CopyBackwardResult<InputIt, OutputIt> copyBackward(S begin, InputIt end, OutputIt last) {
                 while (begin != end) {
                     *(--last) = *(--end);
                 }
-                return last;
+                return {end, last};
             }
         
             /**
@@ -186,7 +223,7 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
-             * @return an iterator pointing to the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> &&
@@ -194,11 +231,11 @@
                  !Concept::MemCopyable<IteratorValueT<OutputIt>> ||
                  !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
-            constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
+            constexpr CopyBackwardResult<InputIt, OutputIt> copyBackward(S begin, InputIt end, OutputIt last) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *(--last) = *(--end);
                 }
-                return last;
+                return {end, last};
             }
         
             /**
@@ -206,30 +243,34 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
-             * @return an iterator pointing to the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorReferenceT<InputIt>> &&
                 Concept::MemCopyable<IteratorValueT<InputIt>> &&
                 Concept::MemCopyable<IteratorValueT<OutputIt>>
-            constexpr OutputIt copyBackward(S begin, InputIt end, OutputIt last) {
+            constexpr CopyBackwardResult<InputIt, OutputIt> copyBackward(S begin, InputIt end, OutputIt last) {
                 IteratorValueT<OutputIt>* memLast = addressOf(*last);
                 IteratorValueT<InputIt>*  memEnd = addressOf(*end);
                 IteratorDifferenceT<InputIt> n = end - begin;
                 std::memmove(memLast - n, memEnd - n, n * sizeof(IteratorValueT<InputIt>));
-                return last - n;
+                return {end - n, last - n};
             }
 
             /**
              * Copy a range of data into a given destination but start from the end
              * @param range the source range
              * @param last  the destination end
-             * @return an iterator pointing to the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::BidirectionalRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt> requires Concept::IndirectlyWritable<OutputIt, RangeReferenceT<R>>
-            constexpr OutputIt copyBackward(R && range, OutputIt last) {
+            constexpr CopyBackwardResult<BorrowedIteratorT<R>, OutputIt> copyBackward(R && range, OutputIt last) {
                 return copyBackward(begin(range), end(range), std::move(last));
             }
+
+            /** Helper for copyIf-function result type */
+            template <class It, class Out>
+            using CopyIfResult = Detail::InOutResult<It, Out>;
             
             /**
              * Copy a range of data [begin, end), if they satisfies a given unary predicate, into a given destination
@@ -238,17 +279,17 @@
              * @param first the destination start
              * @param p     the used predicate
              * @param proj  the projection used when sending element to the predicate
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<InputIt, Proj>> Pred>
-            constexpr OutputIt copyIf(InputIt begin, S end, OutputIt first, Pred p, Proj proj = {}) {
+            constexpr CopyIfResult<InputIt, OutputIt> copyIf(InputIt begin, S end, OutputIt first, Pred p, Proj proj = {}) {
                 for (; begin != end; ++begin) {
                     if (std::invoke(p, std::invoke(proj, *begin))) {
                         *first = *begin;
                         ++first;
                     }
                 }
-                return first;
+                return {begin, first};
             }
             
             /**
@@ -256,28 +297,32 @@
              * @param range the source range
              * @param first the destination start
              * @param p     the used predicate
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
-            constexpr OutputIt copyIf(R && range, OutputIt first, Pred p, Proj proj) {
+            constexpr CopyIfResult<BorrowedIteratorT<R>, OutputIt> copyIf(R && range, OutputIt first, Pred p, Proj proj) {
                 return copyIf(begin(range), end(range), std::move(first), std::move(p), std::move(proj));
             }
+
+            /** Helper for copyN-function result type */
+            template <class It, class Out>
+            using CopyNResult = Detail::InOutResult<It, Out>;
             
             /**
              * Copy N data starting at begin into a given destination, no optimization
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
-             * @return an interator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt> requires (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
-            constexpr OutputIt copyN(InputIt begin, Size n, OutputIt first) {
+            constexpr CopyNResult<InputIt, OutputIt> copyN(InputIt begin, Size n, OutputIt first) {
                 for (; n > 0; --n) {
                     *first = *begin;
                     ++first;
                     ++begin;
                 }
-                return first;
+                return {begin, first};
             }
 
             /**
@@ -285,26 +330,30 @@
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
-             * @return an interator pointing after the last copied element
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
             template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt>
-            constexpr OutputIt copyN(InputIt begin, Size n, OutputIt first) {
+            constexpr CopyNResult<InputIt, OutputIt> copyN(InputIt begin, Size n, OutputIt first) {
                 return copy(std::move(begin), begin + n, std::move(first));
             }
+
+            /** Helper for move-function result type */
+            template <class It, class Out>
+            using MoveResult = Detail::InOutResult<It, Out>;
 
             /**
              * Move a range of data [begin, end) into a given destination, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing after the last element accessed and one pointing after the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorRValueReferenceT<InputIt>> OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
-            constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
+            constexpr MoveResult<InputIt, OutputIt> move(InputIt begin, S end, OutputIt first) {
                 for (; begin != end; ++begin, ++first) {
                     *first = std::move(*begin);
                 }
-                return first;
+                return {begin, first};
             }
         
             /**
@@ -312,20 +361,20 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing after the last element accessed and one pointing after the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::OutputIterator<IteratorRValueReferenceT<InputIt>> OutputIt> requires
                 (!Concept::MemMoveable<IteratorValueT<InputIt>>  ||
                  !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
                  !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
-            constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
+            constexpr MoveResult<InputIt, OutputIt> move(InputIt begin, S end, OutputIt first) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *first = std::move(*begin);
                     ++first;
                     ++begin;
                 }
-                return first;
+                return {begin, first};
             }
         
             /**
@@ -333,44 +382,48 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing after the last element accessed and one pointing after the last moved element
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> &&
                 Concept::MemMoveable<IteratorValueT<InputIt>> &&
                 Concept::MemMoveable<IteratorValueT<OutputIt>>
-            constexpr OutputIt move(InputIt begin, S end, OutputIt first) {
+            constexpr MoveResult<InputIt, OutputIt> move(InputIt begin, S end, OutputIt first) {
                 IteratorValueT<OutputIt>* memFirst = addressOf(*first);
                 IteratorValueT<InputIt>*  memBegin = addressOf(*begin);
                 IteratorDifferenceT<InputIt> n = end - begin;
                 std::memmove(memFirst, memBegin, n * sizeof(IteratorValueT<InputIt>));
-                return first + n;
+                return {begin + n, first + n};
             }
         
             /**
              * Move a range of data into a given destination
              * @param range the source range
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing after the last element accessed and one pointing after the last moved element
              */
             template <Concept::InputRange R, Concept::OutputIterator<RangeRValueReferenceT<R>> OutputIt>
-            constexpr OutputIt move(R && range, OutputIt first) {
+            constexpr MoveResult<BorrowedIteratorT<R>, OutputIt> move(R && range, OutputIt first) {
                 return move(begin(range), end(range), std::move(first));
             }
+
+            /** Helper for moveBackward-function result type */
+            template <class It, class Out>
+            using MoveBackwardResult = Detail::InOutResult<It, Out>;
 
             /**
              * Move a range of data [begin, end) into a given destination but start from the end, no optimization
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
-             * @return an iterator pointing to the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> && (!Concept::SizedSentinelFor<S, InputIt>)
-            constexpr OutputIt moveBackward(S begin, InputIt end, OutputIt last) {
+            constexpr MoveBackwardResult<InputIt, OutputIt> moveBackward(S begin, InputIt end, OutputIt last) {
                 while (begin != end) {
                     *(--last) = std::move(*(--end));
                 }
-                return last;
+                return {end, last};
             }
         
             /**
@@ -378,7 +431,7 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
-             * @return an iterator pointing to the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::BidirectionalIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::BidirectionalIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> &&
@@ -386,11 +439,11 @@
                  !Concept::MemMoveable<IteratorValueT<OutputIt>> ||
                  !Concept::ContiguousIterator<InputIt>           ||
                  !Concept::ContiguousIterator<OutputIt>)
-            constexpr OutputIt moveBackward(S begin, InputIt end, OutputIt last) {
+            constexpr MoveBackwardResult<InputIt, OutputIt> moveBackward(S begin, InputIt end, OutputIt last) {
                 for (IteratorDifferenceT<InputIt> n = end - begin; n > 0; --n) {
                     *(--last) = std::move(*(--end));
                 }
-                return last;
+                return {end, last};
             }
         
             /**
@@ -398,46 +451,50 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param last  the destination end
-             * @return an iterator pointing to the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::ContiguousIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::ContiguousIterator OutputIt> requires
                 Concept::IndirectlyWritable<OutputIt, IteratorRValueReferenceT<InputIt>> &&
                 Concept::MemMoveable<IteratorValueT<InputIt>> &&
                 Concept::MemMoveable<IteratorValueT<OutputIt>>
-            constexpr OutputIt moveBackward(S begin, InputIt end, OutputIt last) {
+            constexpr MoveBackwardResult<InputIt, OutputIt> moveBackward(S begin, InputIt end, OutputIt last) {
                 IteratorValueT<OutputIt>* memLast = addressOf(*last);
                 IteratorValueT<InputIt>*  memEnd = addressOf(*end);
                 IteratorDifferenceT<InputIt> n = end - begin;
                 std::memmove(memLast - n, memEnd - n, n * sizeof(IteratorValueT<InputIt>));
-                return last - n;
+                return {end - n, last - n};
             }
 
             /**
              * Move a range of data into a given destination but start from the end
              * @param range the source range
              * @param last  the destination end
-             * @return an iterator pointing to the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::BidirectionalRange R, Concept::BidirectionalIterator OutputIt> requires Concept::IndirectlyWritable<OutputIt, RangeRValueReferenceT<R>>
-            constexpr OutputIt moveBackward(R && range, OutputIt last) {
+            constexpr MoveBackwardResult<BorrowedIteratorT<R>, OutputIt> moveBackward(R && range, OutputIt last) {
                 return moveBackward(begin(range), end(range), std::move(last));
             }
+
+            /** Helper for unitializedCopy-function result type */
+            template <class It, class Out>
+            using UninitializedCopyResult = Detail::InOutResult<It, Out>;
 
             /**
              * Copy a range of data [begin, end) into an uninitialized memory destination, destroy copied data in case of exception
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
+            UninitializedCopyResult<InputIt, ForwardIt> uninitializedCopy(InputIt begin, S end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
                     for (; begin != end; ++begin, ++current) {
                         Memory::constructAt(addressOf(*current), *begin);
                     }
-                    return current;
+                    return {begin, current};
                 } catch (std::exception& e) {
                     Memory::destroy(first, current);
                     throw e;
@@ -449,10 +506,10 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedCopy(InputIt begin, S end, ForwardIt first) {
+            UninitializedCopyResult<InputIt, ForwardIt> uninitializedCopy(InputIt begin, S end, ForwardIt first) {
                 return copy(std::move(begin), std::move(end), std::move(first));
             }
 
@@ -460,22 +517,26 @@
              * Copy a range of data into an uninitialized memory destination, destroy copied data in case of exception
              * @param range the source range
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::InputRange R, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, RangeReferenceT<R>>
-            ForwardIt uninitializedCopy(R && range, ForwardIt first) {
+            UninitializedCopyResult<BorrowedIteratorT<R>, ForwardIt> uninitializedCopy(R && range, ForwardIt first) {
                 return uninitializedCopy(begin(range), end(range), std::move(first));
             }
+
+            /** Helper for unitializedCopyN-function result type */
+            template <class It, class Out>
+            using UninitializedCopyNResult = Detail::InOutResult<It, Out>;
 
             /**
              * Copy N data starting at begin into an uninitialized memory destination, destroy copied data in case of exception
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
+            UninitializedCopyNResult<InputIt, ForwardIt> uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
                 ForwardIt current = first;
                 try {
                     for (; n > 0; --n) {
@@ -483,7 +544,7 @@
                         ++begin;
                         ++current;
                     }
-                    return current;
+                    return {begin, current};
                 } catch (std::exception& e) {
                     Memory::destroy(first, current);
                     throw e;
@@ -495,28 +556,32 @@
              * @param begin the source range start
              * @param n     the number of data to copy
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last copied element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorReferenceT<InputIt>>  && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
+            UninitializedCopyNResult<InputIt, ForwardIt> uninitializedCopyN(InputIt begin, Size n, ForwardIt first) {
                 return copyN(std::move(begin), n, std::move(first));
             }
+
+            /** Helper for unitializedMove-function result type */
+            template <class It, class Out>
+            using UninitializedMoveResult = Detail::InOutResult<It, Out>;
 
             /**
              * Move a range of data [begin, end) into an uninitialized memory destination, destroy moved data in case of exception
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
+            UninitializedMoveResult<InputIt, ForwardIt> uninitializedMove(InputIt begin, S end, ForwardIt first) {
                 ForwardIt current = first;
                 try {
                     for (; begin != end; ++begin, ++current) {
                         Memory::constructAt(addressOf(*current), std::move(*begin));
                     }
-                    return current;
+                    return {begin, current};
                 } catch (std::exception& e) {
                     Memory::destroy(first, current);
                     throw e;
@@ -528,10 +593,10 @@
              * @param begin the source range start
              * @param end   the source range end
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedMove(InputIt begin, S end, ForwardIt first) {
+            UninitializedMoveResult<InputIt, ForwardIt> uninitializedMove(InputIt begin, S end, ForwardIt first) {
                 return move(std::move(begin), std::move(end), std::move(first));
             }
 
@@ -539,22 +604,26 @@
              * Move a range of data into an uninitialized memory destination, destroy moved data in case of exception
              * @param range the source range
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::InputRange R, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, RangeRValueReferenceT<R>>
-            ForwardIt uninitializedMove(R && range, ForwardIt first) {
+            UninitializedMoveResult<BorrowedIteratorT<R>, ForwardIt> uninitializedMove(R && range, ForwardIt first) {
                 return uninitializedMove(begin(range), end(range), std::move(first));
             }
+
+            /** Helper for unitializedMove-function result type */
+            template <class It, class Out>
+            using UninitializedMoveNResult = Detail::InOutResult<It, Out>;
 
             /**
              * Move N data starting at begin into an uninitialized memory destination, destroy moved data in case of exception
              * @param begin the source range start
              * @param n     the number of data to moved
              * @param first the destination start
-             * @return an iterator pointing after the last moved element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && (!Concept::TriviallyMoveable<IteratorValueT<InputIt>>)
-            ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
+            UninitializedMoveNResult<InputIt, ForwardIt> uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
                 ForwardIt current = first;
                 try {
                     for (; n > 0; --n) {
@@ -562,7 +631,7 @@
                         ++begin;
                         ++current;
                     }
-                    return current;
+                    return {begin, current};
                 } catch (std::exception& e) {
                     Memory::destroy(first, current);
                     throw e;
@@ -574,12 +643,16 @@
              * @param begin the source range start
              * @param n     the number of data to moved
              * @param first the destination start
-             * @return an iterator pointing after the last copied element
+             * @return an iterator pointing to the last element accessed and one pointing to the last moved element
              */
             template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<InputIt>> && Concept::TriviallyMoveable<IteratorValueT<InputIt>>
-            ForwardIt uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
+            UninitializedMoveNResult<InputIt, ForwardIt> uninitializedMoveN(InputIt begin, Size n, ForwardIt first) {
                 return moveN(std::move(begin), n, std::move(first));
             }
+
+            /** Helper for unitializedFill-function result type */
+            template <class It, class Out>
+            using UninitializedFillResult = Detail::InOutResult<It, Out>;
             
             /**
              * Fill an uninitiliazed range of memory [first, last) with a given value, no optimization
@@ -866,7 +939,7 @@
                 if (middle == last) {
                     return first;
                 }
-                return move(std::move(middle), std::move(last), std::move(first));
+                return move(std::move(middle), std::move(last), std::move(first)).out;
             }
 
             /**
@@ -881,13 +954,13 @@
             }
             
             /**
-             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect
+             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect, no optimization
              * @param first the range start to shift
              * @param last  the range end to shift
              * @param n     the shift amount
              * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(first, last)
              */
-            template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>>
+            template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>> && (!Concept::BidirectionalIterator<ForwardIt>)
             constexpr ForwardIt shiftRight(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
                 if (n == 0) {
                     return first;
@@ -902,7 +975,7 @@
                 auto destinationTail = result;
                 while (destinationHead != result) {
                     if (destinationTail == last) {
-                        std::move(std::move(first), std::move(destinationHead), std::move(result));
+                        move(std::move(first), std::move(destinationHead), std::move(result));
                         return result;
                     }
                     ++destinationHead;
@@ -914,8 +987,8 @@
                     auto cursor = first;
                     while (cursor != result) {
                         if (destinationTail == last) {
-                            destinationHead = std::move(cursor, result, std::move(destinationHead));
-                            std::move(std::move(first), std::move(cursor), std::move(destinationHead));
+                            destinationHead = move(cursor, result, std::move(destinationHead));
+                            move(std::move(first), std::move(cursor), std::move(destinationHead));
                             return result;
                         }
                         std::iter_swap(cursor, destinationHead);
@@ -924,6 +997,26 @@
                         ++cursor;
                     }
                 }
+            }
+
+            /**
+             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect, optimized for bidirectional iterator
+             * @param first the range start to shift
+             * @param last  the range end to shift
+             * @param n     the shift amount
+             * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(first, last)
+             */
+            template <Concept::BidirectionalIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>>
+            constexpr ForwardIt shiftRight(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
+                if (n == 0) {
+                    return first;
+                }
+                
+                auto mid = next(last, -n, first);
+                if (mid == first) {
+                    return last;
+                }
+                return moveBackward(std::move(first), std::move(mid), std::move(last)).out;
             }
 
             /**
