@@ -681,36 +681,36 @@
             }
 
             /**
-             * Fill an uninitiliazed range of memory [first, last) with a given value, no optimization
-             * @param first the destination start
-             * @param last  the destination end
+             * Fill an uninitiliazed range of memory [begin, end) with a given value, no optimization
+             * @param begin the destination start
+             * @param end   the destination end
              * @param value the value to fill the range with
              * @return an iterator pointing after the last filled element
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
-                ForwardIt current = first;
+            ForwardIt uninitializedFill(ForwardIt begin, S end, T const& value) {
+                ForwardIt current = begin;
                 try {
-                    for (; current != last; ++current) {
+                    for (; current != end; ++current) {
                         Memory::constructAt(addressOf(*current), value);
                     }
                     return current;
                 } catch (std::exception& e) {
-                    Memory::destroy(first, current);
+                    Memory::destroy(begin, current);
                     throw e;
                 }
             }
 
             /**
-             * Fill an uninitiliazed range of memory [first, last) with a given value, optimized for trivially copyable types
-             * @param first the destination start
-             * @param last  the destination end
+             * Fill an uninitiliazed range of memory [begin, end) with a given value, optimized for trivially copyable types
+             * @param begin the destination start
+             * @param end   the destination end
              * @param value the value to fill the range with
              * @return an iterator pointing after the last filled element
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, T const&> && Concept::TriviallyAssignable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedFill(ForwardIt first, S last, T const& value) {
-                return fill(std::move(first), std::move(last), value);
+            ForwardIt uninitializedFill(ForwardIt begin, S end, T const& value) {
+                return fill(std::move(begin), std::move(end), value);
             }
 
             /**
@@ -725,15 +725,15 @@
             }
             
             /**
-             * Fill N uninitialized data starting at first with a given value, no optimization
-             * @param first the destination start
+             * Fill N uninitialized data starting at begin with a given value, no optimization
+             * @param begin the destination start
              * @param n     the number of data to fill
              * @param value the value to fill the datas with
              * @return an iterator pointing after the last filled element
              */
             template <class T, Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, T const&> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedFillN(ForwardIt first, Size n, T const& value) {
-                ForwardIt current = first;
+            ForwardIt uninitializedFillN(ForwardIt begin, Size n, T const& value) {
+                ForwardIt current = begin;
                 try {
                     for (; n > 0; --n) {
                         Memory::constructAt(addressOf(*current), value);
@@ -741,14 +741,14 @@
                     }
                     return current;
                 } catch (std::exception& e) {
-                    Memory::destroy(first, current);
+                    Memory::destroy(begin, current);
                     throw e;
                 }
             }
 
             /**
-             * Fill N uninitialized data starting at first with a given value, optimized for trivially copyable types
-             * @param first the destination start
+             * Fill N uninitialized data starting at begin with a given value, optimized for trivially copyable types
+             * @param begin the destination start
              * @param n     the number of data to fill
              * @param value the value to fill the datas with
              * @return an iterator pointing after the last filled element
@@ -759,25 +759,25 @@
             }
             
             /**
-             * Initialize a range of data [first, last) with default constructed value, no optimization
-             * @param first the destination start
-             * @param last  the destination end
+             * Initialize a range of data [begin, end) with default constructed value, no optimization
+             * @param begin the destination start
+             * @param end   the destination end
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>)
-            void uninitializedDefaultConstruct(ForwardIt first, S last) {
-                ForwardIt current = first;
+            void uninitializedDefaultConstruct(ForwardIt begin, S end) {
+                ForwardIt current = begin;
                 try {
-                    for (; current != last; ++current) {
+                    for (; current != end; ++current) {
                         Memory::constructAtNoValue(addressOf(*current));
                     }
                 } catch (std::exception& e) {
-                    Memory::destroy(first, current);
+                    Memory::destroy(begin, current);
                     throw e;
                 }
             }
 
             /**
-             * Initialize a range of data [first, last) with default constructed value, optimized for trivially constructible types
+             * Initialize a range of data [begin, end) with default constructed value, optimized for trivially constructible types
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>
             void uninitializedDefaultConstruct(ForwardIt, S) {
@@ -794,19 +794,19 @@
 
             /**
              * Initialize N data with default constructed value
-             * @param first the destination start
+             * @param begin the destination start
              * @param n     the number of data to initialize
              */
             template <Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyConstructible<IteratorValueT<ForwardIt>>)
-            void uninitializedDefaultConstructN(ForwardIt first, Size n) {
-                ForwardIt current = first;
+            void uninitializedDefaultConstructN(ForwardIt begin, Size n) {
+                ForwardIt current = begin;
                 try {
                     for (; n > 0; --n) {
                         Memory::constructAtNoValue(addressOf(*current));
                         ++current;
                     }
                 } catch (std::exception& e) {
-                    Memory::destroy(first, current);
+                    Memory::destroy(begin, current);
                     throw e;
                 }
             }
@@ -819,34 +819,34 @@
             }
         
             /**
-             * Initialize a range of data [first, last) with value constructed value, no optimization
-             * @param first the destination start
-             * @param last  the destination end
+             * Initialize a range of data [begin, end) with value constructed value, no optimization
+             * @param begin the destination start
+             * @param end   the destination end
              * @return an iterator pointing after the last constructed element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedValueConstruct(ForwardIt first, S last) {
-                ForwardIt current = first;
+            ForwardIt uninitializedValueConstruct(ForwardIt begin, S end) {
+                ForwardIt current = begin;
                 try {
-                    for (; current != last; ++current) {
+                    for (; current != end; ++current) {
                         Memory::constructAt(addressOf(*current));
                     }
                     return current;
                 } catch (std::exception& e) {
-                    Memory::destroy(first, current);
+                    Memory::destroy(begin, current);
                     throw e;
                 }
             }
         
             /**
-             * Initialize a range of data [first, last) with default constructed value, optimized for trivially constructible types
-             * @param first the destination start
-             * @param last  the destination end
+             * Initialize a range of data [begin, end) with default constructed value, optimized for trivially constructible types
+             * @param begin the destination start
+             * @param end   the destination end
              * @return an iterator pointing after the last constructed element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedValueConstruct(ForwardIt first, S last) {
-                return fill(std::move(first), std::move(last), IteratorValueT<ForwardIt>());
+            ForwardIt uninitializedValueConstruct(ForwardIt begin, S end) {
+                return fill(std::move(begin), std::move(end), IteratorValueT<ForwardIt>());
             }
         
             /**
@@ -861,13 +861,13 @@
             
             /**
              * Initialize N data with default constructed value
-             * @param first the destination start
+             * @param begin the destination start
              * @param n     the number of element to initialize
              * @return an iterator pointing after the last constructed element
              */
             template<Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && (!Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>)
-            ForwardIt uninitializedValueConstructN(ForwardIt first, Size n) {
-                ForwardIt current = first;
+            ForwardIt uninitializedValueConstructN(ForwardIt begin, Size n) {
+                ForwardIt current = begin;
                 try {
                     for (; n > 0; --n) {
                         Memory::constructAt(addressOf(*current));
@@ -875,51 +875,51 @@
                     }
                     return current;
                 } catch (std::exception& e) {
-                    Memory::destroy(first, current);
+                    Memory::destroy(begin, current);
                     throw e;
                 }
             }
 
             /**
              * Initialize N data with default constructed value
-             * @param first the destination start
+             * @param begin the destination start
              * @param n     the number of element to initialize
              * @return an iterator pointing after the last constructed element
              */
             template<Concept::ForwardIterator ForwardIt, Concept::Integral Size> requires Concept::IndirectlyWritable<ForwardIt, IteratorValueT<ForwardIt>> && Concept::TriviallyCopyable<IteratorValueT<ForwardIt>>
-            ForwardIt uninitializedValueConstructN(ForwardIt first, Size n) {
-                return fillN(std::move(first), n, IteratorValueT<ForwardIt>());
+            ForwardIt uninitializedValueConstructN(ForwardIt begin, Size n) {
+                return fillN(std::move(begin), n, IteratorValueT<ForwardIt>());
             }
             
             /**
-             * Fill a range of data [first, last) with generated data from a given generator, no optimization
-             * @param first the destination start
-             * @param last  the destination end
+             * Fill a range of data [begin, end) with generated data from a given generator, no optimization
+             * @param begin the destination start
+             * @param end   the destination end
              * @param g     the data generator
              * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SentinelFor<ForwardIt> S, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>> && (!Concept::SizedSentinelFor<S, ForwardIt>)
-            constexpr ForwardIt generate(ForwardIt first, S last, Gen g) {
-                for ( ; first != last; ++first) {
-                    *first = std::move(g());
+            constexpr ForwardIt generate(ForwardIt begin, S end, Gen g) {
+                for ( ; begin != end; ++begin) {
+                    *begin = std::move(g());
                 }
-                return first;
+                return begin;
             }
 
             /**
-             * Fill a range of data [first, last) with generated data from a given generator, optimized for sized sentinels
-             * @param first the destination start
-             * @param last  the destination end
+             * Fill a range of data [begin, end) with generated data from a given generator, optimized for sized sentinels
+             * @param begin the destination start
+             * @param end   the destination end
              * @param g     the data generator
              * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::SizedSentinelFor<ForwardIt> S, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>>
-            constexpr ForwardIt generate(ForwardIt first, S last, Gen g) {
-                for (auto n = last - first; n > 0; --n) {
-                    *first = std::move(std::invoke(g));
-                    ++first;
+            constexpr ForwardIt generate(ForwardIt begin, S end, Gen g) {
+                for (auto n = end - begin; n > 0; --n) {
+                    *begin = std::move(std::invoke(g));
+                    ++begin;
                 }
-                return first;
+                return begin;
             }
             
             /**
@@ -935,37 +935,37 @@
             
             /**
              * Fill N data with generated data from a given generator
-             * @param first the destination start
+             * @param begin the destination start
              * @param g     the data generator
              * @return an iterator pointing after the last generated element
              */
             template <Concept::ForwardIterator ForwardIt, Concept::Integral Size, Concept::Generator Gen> requires Concept::IndirectlyWritable<ForwardIt, Core::InvokeResultT<Gen>>
-            constexpr ForwardIt generateN(ForwardIt first, Size n, Gen g) {
+            constexpr ForwardIt generateN(ForwardIt begin, Size n, Gen g) {
                 for (; n > 0; --n) {
-                    *first = std::move(std::invoke(g));
-                    ++first;
+                    *begin = std::move(std::invoke(g));
+                    ++begin;
                 }
-                return first;
+                return begin;
             }
             
             /**
-             * Shift the given range by n if distance(first, last) > n > 0, otherwise no effect
-             * @param first the range start to shift
-             * @param last  the range end to shift
+             * Shift the given range by n if distance(begin, end) > n > 0, otherwise no effect
+             * @param begin the range start to shift
+             * @param end   the range end to shift
              * @param n     the shift amount
-             * @return an iterator pointing after the last element shifted, last if n == 0, first if n >= distance(first, last)
+             * @return an iterator pointing after the last element shifted, last if n == 0, first if n >= distance(begin, end)
              */
             template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>>
-            constexpr ForwardIt shiftLeft(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
+            constexpr ForwardIt shiftLeft(ForwardIt begin, ForwardIt end, IteratorDifferenceT<ForwardIt> n) {
                 if (n == 0) {
-                    return last;
+                    return end;
                 }
                 
-                auto middle = next(first, n, last);
-                if (middle == last) {
-                    return first;
+                auto middle = next(begin, n, end);
+                if (middle == end) {
+                    return begin;
                 }
-                return move(std::move(middle), std::move(last), std::move(first)).out;
+                return move(std::move(middle), std::move(end), std::move(begin)).out;
             }
 
             /**
@@ -980,41 +980,41 @@
             }
             
             /**
-             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect, no optimization
-             * @param first the range start to shift
-             * @param last  the range end to shift
+             * Shift the given range by n if distance(begin, end) > n > 0, otherwhise no effect, no optimization
+             * @param begin the range start to shift
+             * @param end   the range end to shift
              * @param n     the shift amount
-             * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(first, last)
+             * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(begin, end)
              */
             template <Concept::ForwardIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>> && (!Concept::BidirectionalIterator<ForwardIt>)
-            constexpr ForwardIt shiftRight(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
+            constexpr ForwardIt shiftRight(ForwardIt begin, ForwardIt end, IteratorDifferenceT<ForwardIt> n) {
                 if (n == 0) {
-                    return first;
+                    return begin;
                 }
                 
-                auto result = next(first, n, last);
-                if (result == last) {
-                    return last;
+                auto result = next(begin, n, end);
+                if (result == end) {
+                    return end;
                 }
                 
-                auto destinationHead = first;
+                auto destinationHead = begin;
                 auto destinationTail = result;
                 while (destinationHead != result) {
-                    if (destinationTail == last) {
-                        move(std::move(first), std::move(destinationHead), std::move(result));
+                    if (destinationTail == end) {
+                        move(std::move(begin), std::move(destinationHead), std::move(result));
                         return result;
                     }
                     ++destinationHead;
                     ++destinationTail;
                 }
-                for (;;) {  // Ended when [first, result) and [destinationHead, destinationTail) are disjoint,
+                for (;;) {  // Ended when [begin, result) and [destinationHead, destinationTail) are disjoint,
                             // no for end condition in order to have direct return when last moving,
                             // avoiding extra instructions after
-                    auto cursor = first;
+                    auto cursor = begin;
                     while (cursor != result) {
-                        if (destinationTail == last) {
+                        if (destinationTail == end) {
                             destinationHead = move(cursor, result, std::move(destinationHead));
-                            move(std::move(first), std::move(cursor), std::move(destinationHead));
+                            move(std::move(begin), std::move(cursor), std::move(destinationHead));
                             return result;
                         }
                         std::iter_swap(cursor, destinationHead);
@@ -1026,27 +1026,27 @@
             }
 
             /**
-             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect, optimized for bidirectional iterator
-             * @param first the range start to shift
-             * @param last  the range end to shift
+             * Shift the given range by n if distance(begin, end) > n > 0, otherwhise no effect, optimized for bidirectional iterator
+             * @param begin the range start to shift
+             * @param end   the range end to shift
              * @param n     the shift amount
-             * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(first, last)
+             * @return an iterator pointing after the last element shifted, last if first == 0, end if n >= distance(begin, end)
              */
             template <Concept::BidirectionalIterator ForwardIt> requires Concept::IndirectlyWritable<ForwardIt, IteratorRValueReferenceT<ForwardIt>>
-            constexpr ForwardIt shiftRight(ForwardIt first, ForwardIt last, IteratorDifferenceT<ForwardIt> n) {
+            constexpr ForwardIt shiftRight(ForwardIt begin, ForwardIt end, IteratorDifferenceT<ForwardIt> n) {
                 if (n == 0) {
-                    return first;
+                    return begin;
                 }
                 
-                auto mid = next(last, -n, first);
-                if (mid == first) {
-                    return last;
+                auto mid = next(end, -n, begin);
+                if (mid == begin) {
+                    return end;
                 }
-                return moveBackward(std::move(first), std::move(mid), std::move(last)).out;
+                return moveBackward(std::move(begin), std::move(mid), std::move(end)).out;
             }
 
             /**
-             * Shift the given range by n if distance(first, last) > n > 0, otherwhise no effect
+             * Shift the given range by n if distance(begin(range), end(range)) > n > 0, otherwhise no effect
              * @param range the range to shift
              * @param n     the shift amount
              * @return an iterator pointing after the last element shifted, last if begin(range) == 0, end(range) if n >= distance(begin(range), end(range))
@@ -1065,5 +1065,127 @@
             template<class It1, class It2, class Out>
             using BinaryTransformResult = Detail::InInOutResult<It1, It2, Out>;
             
+            /**
+             * Apply a given transformation and a projection to a given range and store the result into another range, no optimization
+             * @param begin the source start
+             * @param end   the source end
+             * @param first the destination start
+             * @param op    the transformation to apply
+             * @param proj  the projection to apply
+             * @return an iterator pointing to the last element accessed and one pointing to the last transformed element
+             */
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity,
+                      Concept::IndirectlyRegularUnaryInvocable<Projected<InputIt, Proj>> UnaryOp,
+                      Concept::OutputIterator<IndirectInvokeResultT<UnaryOp, Projected<InputIt, Proj>>> OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
+            constexpr UnaryTransformResult<InputIt, OutputIt> transform(InputIt begin, S end, OutputIt first, UnaryOp op, Proj proj = {}) {
+                for ( ; begin != end; ++begin, ++first) {
+                    *first = std::invoke(op, std::invoke(proj, *begin));
+                }
+                return {begin, first};
+            }
+
+            /**
+             * Apply a given transformation and a projection to a given range and store the result into another range, optimized for sized sentinels
+             * @param begin the source start
+             * @param end   the source end
+             * @param first the destination start
+             * @param op    the transformation to apply
+             * @param proj  the projection to apply
+             * @return an iterator pointing to the last element accessed and one pointing to the last transformed element
+             */
+            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity,
+                      Concept::IndirectlyRegularUnaryInvocable<Projected<InputIt, Proj>> UnaryOp,
+                      Concept::OutputIterator<IndirectInvokeResultT<UnaryOp, Projected<InputIt, Proj>>> OutputIt>
+            constexpr UnaryTransformResult<InputIt, OutputIt> transform(InputIt begin, S end, OutputIt first, UnaryOp op, Proj proj = {}) {
+                for (auto n = end - begin; n > 0; --n) {
+                    *first = std::invoke(op, std::invoke(proj, *begin));
+                    ++first;
+                    ++begin;
+                }
+                return {begin, first};
+            }
+
+            /**
+             * Apply a given transformation and a projection to a given range and store the result into another range
+             * @param range the source range
+             * @param first the destination start
+             * @param op    the transformation to apply
+             * @param proj  the projection to apply
+             * @return an iterator pointing to the last element accessed and one pointing to the last transformed element
+             */
+            template <Concept::InputRange R, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity,
+                      Concept::IndirectlyRegularUnaryInvocable<Projected<IteratorT<R>, Proj>> UnaryOp,
+                      Concept::OutputIterator<IndirectInvokeResultT<UnaryOp, Projected<IteratorT<R>, Proj>>> OutputIt>
+            constexpr UnaryTransformResult<BorrowedIteratorT<R>, OutputIt> transform(R && range, OutputIt first, UnaryOp op, Proj proj = {}) {
+                return transform(begin(range), end(range), std::move(first), std::move(op), std::move(proj));
+            }
+
+            /**
+             * Apply a given transformation and a projection to two given range and store the result into another range, no optimization
+             * @param begin1 the first source start
+             * @param end1   the first source end
+             * @param begin2 the second source start
+             * @param end2   the second source end
+             * @param first  the destination start
+             * @param op     the transformation to apply
+             * @param proj1  the projection to apply on the first range
+             * @param proj2  the projection to apply on the second range
+             * @return an iterator pointing to the last element accessed in the first range, one pointing to the last element accessed in the second range and one pointing to the last transformed element
+             */
+            template <Concept::InputIterator InputIt1, Concept::SentinelFor<InputIt1> S1, Concept::InputIterator InputIt2, Concept::SentinelFor<InputIt2> S2,
+                      Concept::IndirectlyRegularUnaryInvocable<InputIt1> Proj1 = Identity, Concept::IndirectlyRegularUnaryInvocable<InputIt2> Proj2 = Identity,
+                      Concept::IndirectlyRegularBinaryInvocable<Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>> BinaryOp,
+                      Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>>> OutputIt> requires (!Concept::SizedSentinelFor<S1, InputIt1> || !Concept::SizedSentinelFor<S2, InputIt2>)
+            constexpr BinaryTransformResult<InputIt1, InputIt2, OutputIt> transform(InputIt1 begin1, S1 end1, InputIt2 begin2, S2 end2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
+                for ( ; begin1 != end1 && begin2 != end2; ++begin1, ++begin2, ++first) {
+                    *first = std::invoke(op, std::invoke(proj1, *begin1), std::invoke(proj2, *begin2));
+                }
+                return {begin1, begin2, first};
+            }
+
+            /**
+             * Apply a given transformation and a projection to two given range and store the result into another range, optimized for sized sentinels
+             * @param begin1 the first source start
+             * @param end1   the first source end
+             * @param begin2 the second source start
+             * @param end2   the second source end
+             * @param first  the destination start
+             * @param op     the transformation to apply
+             * @param proj1  the projection to apply on the first range
+             * @param proj2  the projection to apply on the second range
+             * @return an iterator pointing to the last element accessed in the first range, one pointing to the last element accessed in the second range and one pointing to the last transformed element
+             */
+            template <Concept::InputIterator InputIt1, Concept::SizedSentinelFor<InputIt1> S1, Concept::InputIterator InputIt2, Concept::SizedSentinelFor<InputIt2> S2,
+                      Concept::IndirectlyRegularUnaryInvocable<InputIt1> Proj1 = Identity, Concept::IndirectlyRegularUnaryInvocable<InputIt2> Proj2 = Identity,
+                      Concept::IndirectlyRegularBinaryInvocable<Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>> BinaryOp,
+                      Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>>> OutputIt>
+            constexpr BinaryTransformResult<InputIt1, InputIt2, OutputIt> transform(InputIt1 begin1, S1 end1, InputIt2 begin2, S2 end2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
+                for (auto n = std::min(end1 - begin1, end2 - begin2); n > 0; --n) {
+                    *first = std::invoke(op, std::invoke(proj1, *begin1), std::invoke(proj2, *begin2));
+                    ++begin1;
+                    ++begin2;
+                    ++first;
+                }
+                return {begin1, begin2, first};
+            }
+
+            /**
+             * Apply a given transformation and a projection to two given range and store the result into another range
+             * @param range1 the first source range
+             * @param range2 the second source range
+             * @param first  the destination start
+             * @param op     the transformation to apply
+             * @param proj1  the projection to apply on the first range
+             * @param proj2  the projection to apply on the second range
+             * @return an iterator pointing to the last element accessed in the first range, one pointing to the last element accessed in the second range and one pointing to the last transformed element
+             */
+            template <Concept::InputRange R1, Concept::InputRange R2,
+                      Concept::IndirectlyRegularUnaryInvocable<IteratorT<R1>> Proj1 = Identity, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R2>> Proj2 = Identity,
+                      Concept::IndirectlyRegularBinaryInvocable<Projected<IteratorT<R1>, Proj1>, Projected<IteratorT<R2>, Proj2>> BinaryOp,
+                      Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<IteratorT<R1>, Proj1>, Projected<IteratorT<R2>, Proj2>>> OutputIt>
+            constexpr BinaryTransformResult<BorrowedIteratorT<R1>, BorrowedIteratorT<R2>, OutputIt> transform(R1 && range1, R2 && range2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
+                return transform(begin(range1), end(range1), begin(range2), end(range2), std::move(first), std::move(op), std::move(proj1), std::move(proj2));
+            }
+    
         }
     }

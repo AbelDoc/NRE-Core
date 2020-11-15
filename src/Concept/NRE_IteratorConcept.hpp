@@ -394,6 +394,32 @@
                 RegularInvocable<F&, Core::IteratorCommonReferenceT<It>> &&
                 CommonReferenceWith<Core::InvokeResultT<F&, Core::IteratorValueT<It>&>,
                                     Core::InvokeResultT<F&, Core::IteratorReferenceT<It>>>;
+    
+            /**
+             * @interface IndirectlyBinaryInvocable
+             * @brief Define an invocable on two indirectly readable objects
+             */
+            template <class F, class It1, class It2>
+            concept IndirectlyBinaryInvocable = IndirectlyReadable<It1> && IndirectlyReadable<It2> &&
+                CopyConstructible<F> &&
+                Invocable<F&, Core::IteratorValueT<It1>,           Core::IteratorValueT<It2>>           &&
+                Invocable<F&, Core::IteratorReferenceT<It1>,       Core::IteratorReferenceT<It2>>       &&
+                Invocable<F&, Core::IteratorCommonReferenceT<It1>, Core::IteratorCommonReferenceT<It2>> &&
+                CommonReferenceWith<Core::InvokeResultT<F&, Core::IteratorValueT<It1>&,    Core::IteratorValueT<It2>&>,
+                                    Core::InvokeResultT<F&, Core::IteratorReferenceT<It1>, Core::IteratorReferenceT<It2>>>;
+    
+            /**
+             * @interface IndirectlyRegularBinaryInvocable
+             * @brief Define a regular invocable on two indirectly readable objects
+             */
+            template <class F, class It1, class It2>
+            concept IndirectlyRegularBinaryInvocable = IndirectlyReadable<It1> && IndirectlyReadable<It2> &&
+                CopyConstructible<F> &&
+                RegularInvocable<F&, Core::IteratorValueT<It1>,           Core::IteratorValueT<It2>>           &&
+                RegularInvocable<F&, Core::IteratorReferenceT<It1>,       Core::IteratorReferenceT<It2>>       &&
+                RegularInvocable<F&, Core::IteratorCommonReferenceT<It1>, Core::IteratorCommonReferenceT<It2>> &&
+                CommonReferenceWith<Core::InvokeResultT<F&, Core::IteratorValueT<It1>&,    Core::IteratorValueT<It2>&>,
+                Core::InvokeResultT<F&, Core::IteratorReferenceT<It1>, Core::IteratorReferenceT<It2>>>;
             
         }
         namespace Core {

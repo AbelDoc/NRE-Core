@@ -39,5 +39,17 @@
         
         std::cout << vec << std::endl;
         
+        Core::transform(vec, vec.begin(), [&](unsigned char c) {
+            return static_cast <unsigned char> (c * 10);
+        });
+    
+        std::cout << vec << std::endl;
+    
+        Core::transform(vec, vec, vec.begin(), [&](unsigned char c1, unsigned char c2) {
+            return static_cast <unsigned char> (c1 + c2);
+        });
+    
+        std::cout << vec << std::endl;
+        
         return 0;
     }
