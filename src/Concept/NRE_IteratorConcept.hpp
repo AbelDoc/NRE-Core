@@ -452,6 +452,9 @@
             struct IncrementableTraits<Projected<It, Proj>> {
                 using DifferenceType  = IteratorDifferenceT<It>;
             };
+    
+            template <Concept::IndirectlyReadable It, Concept::IndirectlyRegularUnaryInvocable<It> Proj>
+            using ProjectedT = typename Projected<It, Proj>::ValueType;
             
         }
         namespace Concept {

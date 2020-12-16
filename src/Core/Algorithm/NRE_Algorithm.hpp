@@ -80,6 +80,17 @@
                     }
                 };
             }
+            
+            /**
+             * @struct EqualTo
+             * @brief Functor used to compare 2 values
+             */
+            struct EqualTo {
+                template <class T, class K> requires Concept::EqualityComparableWith<T, K>
+                constexpr bool operator()(T && t, K && k) const noexcept(noexcept(std::declval<T>() == std::declval<K>())) {
+                    return std::forward<T>(t) == std::forward<K>(k);
+                }
+            };
     
             /**
              * Fill a range of data [begin, end) with a given value, no optimization
@@ -1185,6 +1196,36 @@
                       Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<IteratorT<R1>, Proj1>, Projected<IteratorT<R2>, Proj2>>> OutputIt>
             constexpr BinaryTransformResult<BorrowedIteratorT<R1>, BorrowedIteratorT<R2>, OutputIt> transform(R1 && range1, R2 && range2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
                 return transform(begin(range1), end(range1), begin(range2), end(range2), std::move(first), std::move(op), std::move(proj1), std::move(proj2));
+            }
+            
+            /**
+             * Search for the first value matching the one given in parameter in a given range
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param value the value to find
+             * @param proj  the projection to apply on the source range
+             * @return an iterator pointing on the first matching value
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S, Concept::IndirectlyRegularUnaryInvocable<It> Proj = Identity>
+                requires Concept::EqualityComparableWith<ProjectedT<It, Proj>, const IteratorValueT<It>&>
+            constexpr It find(It begin, S end, IteratorValueT<It> const& value, Proj proj = {}) {
+                while (begin != end && std::invoke(proj, *begin) != value) {
+                    ++begin;
+                }
+                return begin;
+            }
+
+            /**
+             * Search for the first value matching the one given in parameter in a given range
+             * @param range the source range
+             * @param value the value to find
+             * @param proj  the projection to apply on the source range
+             * @return an iterator pointing on the first matching value
+             */
+            template <Concept::InputRange R, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity>
+                requires Concept::EqualityComparableWith<ProjectedT<IteratorT<R>, Proj>, const IteratorValueT<IteratorT<R>>&>
+            constexpr BorrowedIteratorT<R> find(R && range, IteratorValueT<IteratorT<R>> const& value, Proj proj = {}) {
+                return find(begin(range), end(range), value, std::move(proj));
             }
     
         }
