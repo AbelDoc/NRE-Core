@@ -1083,7 +1083,7 @@
                             move(std::move(begin), std::move(cursor), std::move(destinationHead));
                             return result;
                         }
-                        std::iter_swap(cursor, destinationHead);
+                        std::ranges::iter_swap(cursor, destinationHead);
                         ++destinationHead;
                         ++destinationTail;
                         ++cursor;

@@ -453,11 +453,51 @@
                 using DifferenceType  = IteratorDifferenceT<It>;
             };
     
+            /** Helper to access Projected value type */
             template <Concept::IndirectlyReadable It, Concept::IndirectlyRegularUnaryInvocable<It> Proj>
             using ProjectedT = typename Projected<It, Proj>::ValueType;
             
         }
         namespace Concept {
+            
+            /**
+             * @interface IndirectlyMoveable
+             * @brief Define an output iterator writable from an input iterator r-values
+             */
+            template <class In, class Out>
+            concept IndirectlyMoveable = IndirectlyReadable<In> && IndirectlyWritable<Out, Core::IteratorRValueReferenceT<In>>;
+    
+            /**
+             * @interface IndirectlyMoveableStorable
+             * @brief Define an output iterator writable from an input iterator r-values or values
+             */
+            template <class In, class Out>
+            concept IndirectlyMoveableStorable = IndirectlyMoveable<In, Out> &&
+                IndirectlyWritable<Out, Core::IteratorValueT<In>> &&
+                Moveable<Core::IteratorValueT<In>> &&
+                ConstructibleFrom<Core::IteratorValueT<In>, Core::IteratorRValueReferenceT<In>> &&
+                AssignableFrom<Core::IteratorValueT<In>&, Core::IteratorRValueReferenceT<In>>;
+            
+            /**
+             * @interface IndirectlySwappable
+             * @brief Define swappable iterator values
+             */
+            template <class It1, class It2 = It1>
+            concept IndirectlySwappable = IndirectlyReadable<It1> && IndirectlyReadable<It2> &&
+                requires (const It1 it1, const It2 it2) {
+                    std::ranges::iter_swap(it1, it1);
+                    std::ranges::iter_swap(it2, it2);
+                    std::ranges::iter_swap(it1, it2);
+                    std::ranges::iter_swap(it2, it1);
+                };
+            
+            /**
+             * @interface Permutable
+             * @brief Define a permutable iterator, allowing assignment to itself and multiple read
+             */
+            template <class It>
+            concept Permutable = ForwardIterator<It> && IndirectlyMoveableStorable<It, It> && IndirectlySwappable<It>;
+            
             /**
              * @interface Predicate
              * @brief Define a n-arity predicate, taking n parameters and return a boolean testable value
