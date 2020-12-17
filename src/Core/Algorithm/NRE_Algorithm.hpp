@@ -93,6 +93,61 @@
             };
     
             /**
+             * @struct NotEqualTo
+             * @brief Functor used to compare 2 values
+             */
+            struct NotEqualTo {
+                template <class T, class K> requires Concept::EqualityComparableWith<T, K>
+                constexpr bool operator()(T && t, K && k) const noexcept(noexcept(std::declval<T>() != std::declval<K>())) {
+                    return std::forward<T>(t) != std::forward<K>(k);
+                }
+            };
+    
+            /**
+             * @struct Less
+             * @brief Functor used to compare 2 values
+             */
+            struct Less {
+                template <class T, class K> requires Concept::TotallyOrderedWith<T, K>
+                constexpr bool operator()(T && t, K && k) const noexcept(noexcept(std::declval<T>() < std::declval<K>())) {
+                    return std::forward<T>(t) < std::forward<K>(k);
+                }
+            };
+    
+            /**
+             * @struct LessEqual
+             * @brief Functor used to compare 2 values
+             */
+            struct LessEqual {
+                template <class T, class K> requires Concept::TotallyOrderedWith<T, K>
+                constexpr bool operator()(T && t, K && k) const noexcept(noexcept(std::declval<T>() <= std::declval<K>())) {
+                    return std::forward<T>(t) <= std::forward<K>(k);
+                }
+            };
+    
+            /**
+             * @struct Greater
+             * @brief Functor used to compare 2 values
+             */
+            struct Greater {
+                template <class T, class K> requires Concept::TotallyOrderedWith<T, K>
+                constexpr bool operator()(T && t, K && k) const noexcept(noexcept(std::declval<T>() > std::declval<K>())) {
+                    return std::forward<T>(t) > std::forward<K>(k);
+                }
+            };
+    
+            /**
+             * @struct GreaterEqual
+             * @brief Functor used to compare 2 values
+             */
+            struct GreaterEqual {
+                template <class T, class K> requires Concept::TotallyOrderedWith<T, K>
+                constexpr bool operator()(T && t, K && k) const noexcept(noexcept(std::declval<T>() >= std::declval<K>())) {
+                    return std::forward<T>(t) >= std::forward<K>(k);
+                }
+            };
+    
+            /**
              * Fill a range of data [begin, end) with a given value, no optimization
              * @param begin the range start
              * @param end   the range end
