@@ -420,6 +420,13 @@
                 RegularInvocable<F&, Core::IteratorCommonReferenceT<It1>, Core::IteratorCommonReferenceT<It2>> &&
                 CommonReferenceWith<Core::InvokeResultT<F&, Core::IteratorValueT<It1>&,    Core::IteratorValueT<It2>&>,
                 Core::InvokeResultT<F&, Core::IteratorReferenceT<It1>, Core::IteratorReferenceT<It2>>>;
+    
+            /**
+             * @interface IndirectUnaryProjection
+             * @brief Define an unary projection
+             */
+            template <class F, class It>
+            concept IndirectUnaryProjection = IndirectlyRegularUnaryInvocable<F, It>;
             
         }
         namespace Core {

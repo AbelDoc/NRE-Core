@@ -79,6 +79,33 @@
                         return {std::move(in1), std::move(in2), std::move(out)};
                     }
                 };
+                /**
+                 * @struct InFunResult
+                 * @brief Define a function result returning an input iterator and a function
+                 */
+                template <class It, class F>
+                struct InFunResult {
+                    [[no_unique_address]] It in;
+                    [[no_unique_address]] F fun;
+        
+                    /**
+                     * @return the copy-converted Detail::InFunResult
+                     */
+                    template <class It2, class F2> requires Concept::ConvertibleTo<It const&, It2> &&
+                                                            Concept::ConvertibleTo<F const&, F2>
+                    constexpr operator InOutResult<It2, F2>() const & {
+                        return {in, fun};
+                    }
+        
+                    /**
+                     * @return the move-converted Detail::InFunResult
+                     */
+                    template <class It2, class F2>  requires Concept::ConvertibleTo<It, It2> &&
+                                                             Concept::ConvertibleTo<F, F2>
+                    constexpr operator InOutResult<It2, F2>() {
+                        return {std::move(in), std::move(fun)};
+                    }
+                };
             }
             
             /**
@@ -377,7 +404,7 @@
              * @param proj  the projection used when sending element to the predicate
              * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<InputIt, Proj>> Pred>
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt, Concept::IndirectUnaryProjection<InputIt> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<InputIt, Proj>> Pred>
             constexpr CopyIfResult<InputIt, OutputIt> copyIf(InputIt begin, S end, OutputIt first, Pred p, Proj proj = {}) {
                 for (; begin != end; ++begin) {
                     if (std::invoke(p, std::invoke(proj, *begin))) {
@@ -395,7 +422,7 @@
              * @param p     the used predicate
              * @return an iterator pointing after the last element accessed and one pointing after the last copied element
              */
-            template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            template <Concept::InputRange R, Concept::OutputIterator<RangeReferenceT<R>> OutputIt, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
             constexpr CopyIfResult<BorrowedIteratorT<R>, OutputIt> copyIf(R && range, OutputIt first, Pred p, Proj proj) {
                 return copyIf(begin(range), end(range), std::move(first), std::move(p), std::move(proj));
             }
@@ -1140,7 +1167,7 @@
              * @param proj  the projection to apply
              * @return an iterator pointing to the last element accessed and one pointing to the last transformed element
              */
-            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity,
+            template <Concept::InputIterator InputIt, Concept::SentinelFor<InputIt> S, Concept::IndirectUnaryProjection<InputIt> Proj = Identity,
                       Concept::IndirectlyRegularUnaryInvocable<Projected<InputIt, Proj>> UnaryOp,
                       Concept::OutputIterator<IndirectInvokeResultT<UnaryOp, Projected<InputIt, Proj>>> OutputIt> requires (!Concept::SizedSentinelFor<S, InputIt>)
             constexpr UnaryTransformResult<InputIt, OutputIt> transform(InputIt begin, S end, OutputIt first, UnaryOp op, Proj proj = {}) {
@@ -1159,7 +1186,7 @@
              * @param proj  the projection to apply
              * @return an iterator pointing to the last element accessed and one pointing to the last transformed element
              */
-            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::IndirectlyRegularUnaryInvocable<InputIt> Proj = Identity,
+            template <Concept::InputIterator InputIt, Concept::SizedSentinelFor<InputIt> S, Concept::IndirectUnaryProjection<InputIt> Proj = Identity,
                       Concept::IndirectlyRegularUnaryInvocable<Projected<InputIt, Proj>> UnaryOp,
                       Concept::OutputIterator<IndirectInvokeResultT<UnaryOp, Projected<InputIt, Proj>>> OutputIt>
             constexpr UnaryTransformResult<InputIt, OutputIt> transform(InputIt begin, S end, OutputIt first, UnaryOp op, Proj proj = {}) {
@@ -1179,7 +1206,7 @@
              * @param proj  the projection to apply
              * @return an iterator pointing to the last element accessed and one pointing to the last transformed element
              */
-            template <Concept::InputRange R, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity,
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
                       Concept::IndirectlyRegularUnaryInvocable<Projected<IteratorT<R>, Proj>> UnaryOp,
                       Concept::OutputIterator<IndirectInvokeResultT<UnaryOp, Projected<IteratorT<R>, Proj>>> OutputIt>
             constexpr UnaryTransformResult<BorrowedIteratorT<R>, OutputIt> transform(R && range, OutputIt first, UnaryOp op, Proj proj = {}) {
@@ -1199,7 +1226,7 @@
              * @return an iterator pointing to the last element accessed in the first range, one pointing to the last element accessed in the second range and one pointing to the last transformed element
              */
             template <Concept::InputIterator InputIt1, Concept::SentinelFor<InputIt1> S1, Concept::InputIterator InputIt2, Concept::SentinelFor<InputIt2> S2,
-                      Concept::IndirectlyRegularUnaryInvocable<InputIt1> Proj1 = Identity, Concept::IndirectlyRegularUnaryInvocable<InputIt2> Proj2 = Identity,
+                      Concept::IndirectUnaryProjection<InputIt1> Proj1 = Identity, Concept::IndirectUnaryProjection<InputIt2> Proj2 = Identity,
                       Concept::IndirectlyRegularBinaryInvocable<Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>> BinaryOp,
                       Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>>> OutputIt> requires (!Concept::SizedSentinelFor<S1, InputIt1> || !Concept::SizedSentinelFor<S2, InputIt2>)
             constexpr BinaryTransformResult<InputIt1, InputIt2, OutputIt> transform(InputIt1 begin1, S1 end1, InputIt2 begin2, S2 end2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
@@ -1222,7 +1249,7 @@
              * @return an iterator pointing to the last element accessed in the first range, one pointing to the last element accessed in the second range and one pointing to the last transformed element
              */
             template <Concept::InputIterator InputIt1, Concept::SizedSentinelFor<InputIt1> S1, Concept::InputIterator InputIt2, Concept::SizedSentinelFor<InputIt2> S2,
-                      Concept::IndirectlyRegularUnaryInvocable<InputIt1> Proj1 = Identity, Concept::IndirectlyRegularUnaryInvocable<InputIt2> Proj2 = Identity,
+                      Concept::IndirectUnaryProjection<InputIt1> Proj1 = Identity, Concept::IndirectUnaryProjection<InputIt2> Proj2 = Identity,
                       Concept::IndirectlyRegularBinaryInvocable<Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>> BinaryOp,
                       Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<InputIt1, Proj1>, Projected<InputIt2, Proj2>>> OutputIt>
             constexpr BinaryTransformResult<InputIt1, InputIt2, OutputIt> transform(InputIt1 begin1, S1 end1, InputIt2 begin2, S2 end2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
@@ -1246,7 +1273,7 @@
              * @return an iterator pointing to the last element accessed in the first range, one pointing to the last element accessed in the second range and one pointing to the last transformed element
              */
             template <Concept::InputRange R1, Concept::InputRange R2,
-                      Concept::IndirectlyRegularUnaryInvocable<IteratorT<R1>> Proj1 = Identity, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R2>> Proj2 = Identity,
+                      Concept::IndirectUnaryProjection<IteratorT<R1>> Proj1 = Identity, Concept::IndirectUnaryProjection<IteratorT<R2>> Proj2 = Identity,
                       Concept::IndirectlyRegularBinaryInvocable<Projected<IteratorT<R1>, Proj1>, Projected<IteratorT<R2>, Proj2>> BinaryOp,
                       Concept::OutputIterator<IndirectInvokeResultT<BinaryOp, Projected<IteratorT<R1>, Proj1>, Projected<IteratorT<R2>, Proj2>>> OutputIt>
             constexpr BinaryTransformResult<BorrowedIteratorT<R1>, BorrowedIteratorT<R2>, OutputIt> transform(R1 && range1, R2 && range2, OutputIt first, BinaryOp op, Proj1 proj1 = {}, Proj2 proj2 = {}) {
@@ -1261,9 +1288,10 @@
              * @param proj  the projection to apply on the source range
              * @return an iterator pointing on the first matching value
              */
-            template <Concept::InputIterator It, Concept::SentinelFor<It> S, Concept::IndirectlyRegularUnaryInvocable<It> Proj = Identity>
-                requires Concept::EqualityComparableWith<ProjectedT<It, Proj>, const IteratorValueT<It>&>
-            constexpr It find(It begin, S end, IteratorValueT<It> const& value, Proj proj = {}) {
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      class T, Concept::IndirectUnaryProjection<It> Proj = Identity>
+                requires Concept::EqualityComparableWith<ProjectedT<It, Proj>, T const&>
+            constexpr It find(It begin, S end, T const& value, Proj proj = {}) {
                 while (begin != end && std::invoke(proj, *begin) != value) {
                     ++begin;
                 }
@@ -1277,9 +1305,9 @@
              * @param proj  the projection to apply on the source range
              * @return an iterator pointing on the first matching value
              */
-            template <Concept::InputRange R, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity>
-                requires Concept::EqualityComparableWith<ProjectedT<IteratorT<R>, Proj>, const IteratorValueT<IteratorT<R>>&>
-            constexpr BorrowedIteratorT<R> find(R && range, IteratorValueT<IteratorT<R>> const& value, Proj proj = {}) {
+            template <Concept::InputRange R, class T, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity>
+                requires Concept::EqualityComparableWith<ProjectedT<IteratorT<R>, Proj>, T const&>
+            constexpr BorrowedIteratorT<R> find(R && range, T const& value, Proj proj = {}) {
                 return find(begin(range), end(range), value, std::move(proj));
             }
 
@@ -1291,7 +1319,9 @@
              * @param proj  the projection to apply on the source range
              * @return an iterator pointing on the first matching value
              */
-            template <Concept::InputIterator It, Concept::SentinelFor<It> S, Concept::IndirectlyRegularUnaryInvocable<It> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
             constexpr It findIf(It begin, S end, Pred pred, Proj proj = {}) {
                 while (begin != end && !std::invoke(pred, std::invoke(proj, *begin))) {
                     ++begin;
@@ -1306,10 +1336,189 @@
              * @param proj  the projection to apply on the source range
              * @return an iterator pointing on the first matching value
              */
-            template <Concept::InputRange R, Concept::IndirectlyRegularUnaryInvocable<IteratorT<R>> Proj = Identity, Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                                             Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
             constexpr BorrowedIteratorT<R> findIf(R && range, Pred pred, Proj proj = {}) {
                 return findIf(begin(range), end(range), std::move(pred), std::move(proj));
             }
-    
+
+            /**
+             * Search for the first value not matching the given predicate in a given range
+             * @param begin the source range start
+             * @param end   the source range end
+             * @param pred  the predicate used for the search
+             * @param proj  the projection to apply on the source range
+             * @return an iterator pointing on the first not matching value
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+            constexpr It findIfNot(It begin, S end, Pred pred, Proj proj = {}) {
+                while (begin != end && std::invoke(pred, std::invoke(proj, *begin))) {
+                    ++begin;
+                }
+                return begin;
+            }
+        
+            /**
+             * Search for the first value matching the given predicate in a given range
+             * @param range the source range
+             * @param pred  the predicate used for the search
+             * @param proj  the projection to apply on the source range
+             * @return an iterator pointing on the first matching value
+             */
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                                             Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            constexpr BorrowedIteratorT<R> findIfNot(R && range, Pred pred, Proj proj = {}) {
+                return findIfNot(begin(range), end(range), std::move(pred), std::move(proj));
+            }
+
+            /** Helper for for-each-function result type */
+            template<class It, class F>
+            using ForEachResult = Detail::InFunResult<It, F>;
+            
+            /**
+             * Apply a function on a given projected range
+             * @param begin the range start
+             * @param end   the range end
+             * @param f     the function to apply
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectlyUnaryInvocable<Projected<It, Proj>> F> requires (!Concept::SizedSentinelFor<S, It>)
+            constexpr ForEachResult<It, F> forEach(It begin, S end, F f, Proj proj = {}) {
+                while (begin != end) {
+                    std::invoke(f, std::invoke(proj, *begin));
+                    ++begin;
+                }
+                return {std::move(begin), std::move(f)};
+            }
+
+            /**
+             * Apply a function on a given projected range
+             * @param begin the range start
+             * @param end   the range end
+             * @param f     the function to apply
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputIterator It, Concept::SizedSentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectlyUnaryInvocable<Projected<It, Proj>> F>
+            constexpr ForEachResult<It, F> forEach(It begin, S end, F f, Proj proj = {}) {
+                for (auto n = end - begin; n > 0; --n) {
+                    std::invoke(f, std::invoke(proj, *begin));
+                    ++begin;
+                }
+                return {std::move(begin), std::move(f)};
+            }
+
+            /**
+             * Apply a function on a given projected range
+             * @param range the range
+             * @param f     the function to apply
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                                             Concept::IndirectlyUnaryInvocable<Projected<IteratorT<R>, Proj>> F>
+            constexpr ForEachResult<It, F> forEach(R && range, F f, Proj proj = {}) {
+                return forEach(begin(range), end(range), std::move(f), std::move(proj));
+            }
+
+            /**
+             * Apply a function on a given projected range
+             * @param begin the range start
+             * @param n     the number of step
+             * @param f     the function to apply
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputIterator It, Concept::IndirectUnaryProjection<It> Proj = Identity,
+                                                 Concept::IndirectlyUnaryInvocable<Projected<It, Proj>> F>
+            constexpr ForEachResult<It, F> forEachN(It begin, IteratorDifferenceT<It> n, F f, Proj proj = {}) {
+                for ( ; n > 0; --n) {
+                    std::invoke(f, std::invoke(proj, *begin));
+                    ++begin;
+                }
+                return {std::move(begin), std::move(f)};
+            }
+            
+            /**
+             * Check if all element of a given projected range return true for a given predicate
+             * @param begin the range start
+             * @param end   the range end
+             * @param pred  the predicate to check
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+            constexpr bool allOf(It begin, S end, Pred pred, Proj proj = {}) {
+                return findIfNot(begin, end, std::move(f), std::move(proj)) == last;
+            }
+
+            /**
+             * Check if all element of a given projected range return true for a given predicate
+             * @param range the range
+             * @param pred  the predicate to check
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                                             Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            constexpr bool allOf(R && range, Pred pred, Proj proj = {}) {
+                return allOf(begin(range), end(range), std::move(pred), std::move(proj));
+            }
+
+            /**
+             * Check if any element of a given projected range return true for a given predicate
+             * @param begin the range start
+             * @param end   the range end
+             * @param pred  the predicate to check
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+            constexpr bool anyOf(It begin, S end, Pred pred, Proj proj = {}) {
+                return findIf(begin, end, std::move(f), std::move(proj)) != last;
+            }
+        
+            /**
+             * Check if any element of a given projected range return true for a given predicate
+             * @param range the range
+             * @param pred  the predicate to check
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                                             Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            constexpr bool anyOf(R && range, Pred pred, Proj proj = {}) {
+                return anyOf(begin(range), end(range), std::move(pred), std::move(proj));
+            }
+
+            /**
+             * Check if no element of a given projected range return true for a given predicate
+             * @param begin the range start
+             * @param end   the range end
+             * @param pred  the predicate to check
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+            constexpr bool noneOf(It begin, S end, Pred pred, Proj proj = {}) {
+                return findIf(begin, end, std::move(f), std::move(proj)) == last;
+            }
+        
+            /**
+             * Check if no element of a given projected range return true for a given predicate
+             * @param range the range
+             * @param pred  the predicate to check
+             * @param proj  the projection to apply
+             */
+            template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                                             Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+            constexpr bool noneOf(R && range, Pred pred, Proj proj = {}) {
+                return noneOf(begin(range), end(range), std::move(pred), std::move(proj));
+            }
+            
         }
     }
