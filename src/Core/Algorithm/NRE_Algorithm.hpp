@@ -1361,11 +1361,11 @@
             }
         
             /**
-             * Search for the first value matching the given predicate in a given range
+             * Search for the first value not matching the given predicate in a given range
              * @param range the source range
              * @param pred  the predicate used for the search
              * @param proj  the projection to apply on the source range
-             * @return an iterator pointing on the first matching value
+             * @return an iterator pointing on the first not matching value
              */
             template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
                                              Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
@@ -1383,6 +1383,7 @@
              * @param end   the range end
              * @param f     the function to apply
              * @param proj  the projection to apply
+             * @return an iterator pointing after the last used value, and the for-each function
              */
             template <Concept::InputIterator It, Concept::SentinelFor<It> S,
                       Concept::IndirectUnaryProjection<It> Proj = Identity,
@@ -1401,6 +1402,7 @@
              * @param end   the range end
              * @param f     the function to apply
              * @param proj  the projection to apply
+             * @return an iterator pointing after the last used value, and the for-each function
              */
             template <Concept::InputIterator It, Concept::SizedSentinelFor<It> S,
                       Concept::IndirectUnaryProjection<It> Proj = Identity,
@@ -1418,10 +1420,11 @@
              * @param range the range
              * @param f     the function to apply
              * @param proj  the projection to apply
+             * @return an iterator pointing after the last used value, and the for-each function
              */
             template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
                                              Concept::IndirectlyUnaryInvocable<Projected<IteratorT<R>, Proj>> F>
-            constexpr ForEachResult<It, F> forEach(R && range, F f, Proj proj = {}) {
+            constexpr ForEachResult<BorrowedIteratorT<R>, F> forEach(R && range, F f, Proj proj = {}) {
                 return forEach(begin(range), end(range), std::move(f), std::move(proj));
             }
 
@@ -1431,6 +1434,7 @@
              * @param n     the number of step
              * @param f     the function to apply
              * @param proj  the projection to apply
+             * @return an iterator pointing after the last used value, and the for-each function
              */
             template <Concept::InputIterator It, Concept::IndirectUnaryProjection<It> Proj = Identity,
                                                  Concept::IndirectlyUnaryInvocable<Projected<It, Proj>> F>
@@ -1448,12 +1452,13 @@
              * @param end   the range end
              * @param pred  the predicate to check
              * @param proj  the projection to apply
+             * @return if all element return true for the given predicate
              */
             template <Concept::InputIterator It, Concept::SentinelFor<It> S,
                       Concept::IndirectUnaryProjection<It> Proj = Identity,
                       Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
             constexpr bool allOf(It begin, S end, Pred pred, Proj proj = {}) {
-                return findIfNot(begin, end, std::move(f), std::move(proj)) == last;
+                return findIfNot(begin, end, std::move(pred), std::move(proj)) == end;
             }
 
             /**
@@ -1461,6 +1466,7 @@
              * @param range the range
              * @param pred  the predicate to check
              * @param proj  the projection to apply
+             * @return if all element return true for the given predicate
              */
             template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
                                              Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
@@ -1474,12 +1480,13 @@
              * @param end   the range end
              * @param pred  the predicate to check
              * @param proj  the projection to apply
+             * @return if any element return true for the given predicate
              */
             template <Concept::InputIterator It, Concept::SentinelFor<It> S,
                       Concept::IndirectUnaryProjection<It> Proj = Identity,
                       Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
             constexpr bool anyOf(It begin, S end, Pred pred, Proj proj = {}) {
-                return findIf(begin, end, std::move(f), std::move(proj)) != last;
+                return findIf(begin, end, std::move(pred), std::move(proj)) != end;
             }
         
             /**
@@ -1487,6 +1494,7 @@
              * @param range the range
              * @param pred  the predicate to check
              * @param proj  the projection to apply
+             * @return if any element return true for the given predicate
              */
             template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
                                              Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
@@ -1500,12 +1508,13 @@
              * @param end   the range end
              * @param pred  the predicate to check
              * @param proj  the projection to apply
+             * @return if no element return true for the given predicate
              */
             template <Concept::InputIterator It, Concept::SentinelFor<It> S,
                       Concept::IndirectUnaryProjection<It> Proj = Identity,
                       Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
             constexpr bool noneOf(It begin, S end, Pred pred, Proj proj = {}) {
-                return findIf(begin, end, std::move(f), std::move(proj)) == last;
+                return findIf(begin, end, std::move(pred), std::move(proj)) == end;
             }
         
             /**
@@ -1513,11 +1522,269 @@
              * @param range the range
              * @param pred  the predicate to check
              * @param proj  the projection to apply
+             * @return if no element return true for the given predicate
              */
             template <Concept::InputRange R, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
                                              Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
             constexpr bool noneOf(R && range, Pred pred, Proj proj = {}) {
                 return noneOf(begin(range), end(range), std::move(pred), std::move(proj));
+            }
+            
+            /**
+             * Remove same values from a given projected range by moving them to the end, so no memory management involved
+             * @param begin the range start
+             * @param end   the range end
+             * @param value the value to remove
+             * @param proj  the projection to apply
+             * @return an iterator pointing after the last moved element, the new end
+             */
+            template <Concept::Permutable It, Concept::SentinelFor<It> S,
+                      class T, Concept::IndirectUnaryProjection<It> Proj = Identity>
+                requires (Concept::EqualityComparableWith<ProjectedT<It, Proj>, T const&> &&
+                          !Concept::SizedSentinelFor<S, It>)
+            constexpr It remove(It begin, S end, T const& value, Proj proj = {}) {
+                begin = find(std::move(begin), end, value, proj);
+                if (begin != end) {
+                    for (It it{next(begin)}; it != end; ++it) {
+                        if (value != std::invoke(proj, *it)) {
+                            *begin = std::ranges::iter_move(it);
+                            ++begin;
+                        }
+                    }
+                }
+                return begin;
+            }
+
+            /**
+             * Remove same values from a given projected range by moving them to the end, so no memory management involved
+             * @param begin the range start
+             * @param end   the range end
+             * @param value the value to remove
+             * @param proj  the projection to apply
+             * @return an iterator pointing after the last moved element, the new end
+             */
+            template <Concept::Permutable It, Concept::SizedSentinelFor<It> S,
+                    class T, Concept::IndirectUnaryProjection<It> Proj = Identity>
+                requires Concept::EqualityComparableWith<ProjectedT<It, Proj>, T const&>
+            constexpr It remove(It begin, S end, T const& value, Proj proj = {}) {
+                begin = find(std::move(begin), end, value, proj);
+                if (begin != end) {
+                    It it{next(begin)};
+                    for (auto n = end - it; n > 0; --n) {
+                        if (value != std::invoke(proj, *it)) {
+                            *begin = std::ranges::iter_move(it);
+                            ++begin;
+                        }
+                        ++it;
+                    }
+                }
+                return begin;
+            }
+
+            /**
+             * Remove same values from a given projected range by moving them to the end, so no memory management involved
+             * @param range the range
+             * @param value the value to remove
+             * @param proj  the projection to apply
+             * @return an iterator pointing after the last moved element, the new end
+             */
+            template <Concept::ForwardRange R, class T, Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity>
+                requires Concept::EqualityComparableWith<ProjectedT<IteratorT<R>, Proj>, T const&> &&
+                         Concept::Permutable<IteratorT<R>>
+            constexpr BorrowedIteratorT<R> remove(R && range, T const& value, Proj proj = {}) {
+                return remove(begin(range), end(range), value, std::move(proj));
+            }
+
+            /**
+             * Remove values matching a given predicate from a given projected range by moving them to the end, so no memory management involved
+             * @param begin the range start
+             * @param end   the range end
+             * @param pred  the predicate to match
+             * @param proj  the projection to apply
+             * @return an iterator pointing after the last moved element, the new end
+             */
+            template <Concept::Permutable It, Concept::SentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+                requires (!Concept::SizedSentinelFor<S, It>)
+            constexpr It removeIf(It begin, S end, Pred pred, Proj proj = {}) {
+                begin = findIf(std::move(begin), end, pred, proj);
+                if (begin != end) {
+                    for (It it{next(begin)}; it != end; ++it) {
+                        if (std::invoke(pred, std::invoke(proj, *it))) {
+                            *begin = std::ranges::iter_move(it);
+                            ++begin;
+                        }
+                    }
+                }
+                return begin;
+            }
+
+            /**
+             * Remove values matching a given predicate from a given projected range by moving them to the end, so no memory management involved
+             * @param begin the range start
+             * @param end   the range end
+             * @param pred  the predicate to match
+             * @param proj  the projection to apply
+             * @return an iterator pointing after the last moved element, the new end
+             */
+            template <Concept::Permutable It, Concept::SizedSentinelFor<It> S,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+            constexpr It removeIf(It begin, S end, Pred pred, Proj proj = {}) {
+                begin = findIf(std::move(begin), end, pred, proj);
+                if (begin != end) {
+                    It it{next(begin)};
+                    for (auto n = end - it; n > 0; --n) {
+                        if (std::invoke(pred, std::invoke(proj, *it))) {
+                            *begin = std::ranges::iter_move(it);
+                            ++begin;
+                        }
+                        ++it;
+                    }
+                }
+                return begin;
+            }
+
+            /**
+             * Remove values matching a given predicate from a given projected range by moving them to the end, so no memory management involved
+             * @param range the range
+             * @param pred  the predicate to match
+             * @param proj  the projection to apply
+             * @return an iterator pointing after the last moved element, the new end
+             */
+            template <Concept::ForwardRange R,
+                      Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+                requires Concept::Permutable<IteratorT<R>>
+            constexpr BorrowedIteratorT<R> removeIf(R && range, Pred pred, Proj proj = {}) {
+                return removeIf(begin(range), end(range), std::move(pred), std::move(proj));
+            }
+            
+            /**
+             * Replace every matching values in a given projected range
+             * @param begin    the range start
+             * @param end      the range end
+             * @param oldValue the value to remove
+             * @param newValue the value to replace by
+             * @param proj     the projection to apply
+             * @return an iterator pointing after the last element, equal to end
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S, class T1, class T2,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity>
+                requires (Concept::IndirectlyWritable<It, T2 const&> &&
+                          Concept::EqualityComparableWith<ProjectedT<It, Proj>, T1 const&> &&
+                          !Concept::SizedSentinelFor<S, It>)
+            constexpr It replace(It begin, S end, T1 const& oldValue, T2 const& newValue, Proj proj = {}) {
+                while (begin != end) {
+                    if (oldValue == std::invoke(proj, *begin)) {
+                        *begin = newValue;
+                    }
+                    ++begin;
+                }
+                return begin;
+            }
+
+            /**
+             * Replace every matching values in a given projected range
+             * @param begin    the range start
+             * @param end      the range end
+             * @param oldValue the value to remove
+             * @param newValue the value to replace by
+             * @param proj     the projection to apply
+             * @return an iterator pointing after the last element, equal to end
+             */
+            template <Concept::InputIterator It, Concept::SizedSentinelFor<It> S, class T1, class T2,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity>
+                requires Concept::IndirectlyWritable<It, T2 const&> &&
+                         Concept::EqualityComparableWith<ProjectedT<It, Proj>, T1 const&>
+            constexpr It replace(It begin, S end, T1 const& oldValue, T2 const& newValue, Proj proj = {}) {
+                for (auto n = end - begin; n > 0; --n) {
+                    if (oldValue == std::invoke(proj, *begin)) {
+                        *begin = newValue;
+                    }
+                    ++begin;
+                }
+                return begin;
+            }
+
+            /**
+             * Replace every matching values in a given projected range
+             * @param range    the range
+             * @param oldValue the value to remove
+             * @param newValue the value to replace by
+             * @param proj     the projection to apply
+             * @return an iterator pointing after the last element, equal to end
+             */
+            template <Concept::InputRange R, class T1, class T2,
+                      Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity>
+                requires Concept::IndirectlyWritable<IteratorT<R>, T2 const&> &&
+                         Concept::EqualityComparableWith<ProjectedT<IteratorT<R>, Proj>, T1 const&>
+            constexpr BorrowedIteratorT<R> replace(R && range, T1 const& oldValue, T2 const& newValue, Proj proj = {}) {
+                return replace(begin(range), end(range), oldValue, newValue, std::move(proj));
+            }
+            
+            /**
+             * Replace every values matching a given predicate from a given projected range
+             * @param begin    the range start
+             * @param end      the range end
+             * @param pred     the predicate to match
+             * @param newValue the value to replace by
+             * @param proj     the projected to apply
+             * @return an iterator pointing after the last element, equal to end
+             */
+            template <Concept::InputIterator It, Concept::SentinelFor<It> S, class T,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+                requires (Concept::IndirectlyWritable<It, T const&> &&
+                          !Concept::SizedSentinelFor<S, It>)
+            constexpr It replaceIf(It begin, S end, Pred pred, T const& newValue, Proj proj = {}) {
+                while (begin != end) {
+                    if (std::invoke(pred, std::invoke(proj, *begin))) {
+                        *begin = newValue;
+                    }
+                    ++begin;
+                }
+                return begin;
+            }
+
+            /**
+             * Replace every values matching a given predicate from a given projected range
+             * @param begin    the range start
+             * @param end      the range end
+             * @param pred     the predicate to match
+             * @param newValue the value to replace by
+             * @param proj     the projected to apply
+             * @return an iterator pointing after the last element, equal to end
+             */
+            template <Concept::InputIterator It, Concept::SizedSentinelFor<It> S, class T,
+                      Concept::IndirectUnaryProjection<It> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<It, Proj>> Pred>
+                requires Concept::IndirectlyWritable<It, T const&>
+            constexpr It replaceIf(It begin, S end, Pred pred, T const& newValue, Proj proj = {}) {
+                for (auto n = end - begin; n > 0; --n) {
+                    if (std::invoke(pred, std::invoke(proj, *begin))) {
+                        *begin = newValue;
+                    }
+                    ++begin;
+                }
+                return begin;
+            }
+
+            /**
+             * Replace every values matching a given predicate from a given projected range
+             * @param range    the range
+             * @param pred     the predicate to match
+             * @param newValue the value to replace by
+             * @param proj     the projected to apply
+             * @return an iterator pointing after the last element, equal to end
+             */
+            template <Concept::InputRange R, class T,
+                      Concept::IndirectUnaryProjection<IteratorT<R>> Proj = Identity,
+                      Concept::IndirectUnaryPredicate<Projected<IteratorT<R>, Proj>> Pred>
+                requires Concept::IndirectlyWritable<IteratorT<R>, T const&>
+            constexpr BorrowedIteratorT<R> replaceIf(R && range, Pred pred, T const& newValue, Proj proj = {}) {
+                return replaceIf(begin(range), end(range), std::move(pred), newValue, std::move(proj));
             }
             
         }

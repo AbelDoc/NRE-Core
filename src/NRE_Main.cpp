@@ -51,7 +51,7 @@
     
         std::cout << vec << std::endl;
         
-        std::cout << Core::find(vec, 188) << std::endl;
+        std::cout << static_cast <int> (*Core::find(vec, 188)) << std::endl;
         
         return 0;
     }
