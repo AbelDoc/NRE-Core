@@ -349,7 +349,7 @@
              * @brief Allow to verify if a type is derived from another
              */
             template <class D, class B>
-            concept DerivedFrom = Core::IsBaseOf<B, D>::value && ConvertibleTo<const volatile D*, const volatile B*>;
+            concept DerivedFrom = Core::IsBaseOfV<B, D> && ConvertibleTo<const volatile D*, const volatile B*>;
             
             /**
              * @interface SemiRegular
