@@ -11,7 +11,8 @@
 
     #include <cassert>
     #include <memory>
-    #include "../NRE_AllocatorBase.hpp"
+
+    #include "../Traits/NRE_MemoryTraits.hpp"
     
     /**
      * @namespace NRE
@@ -29,18 +30,11 @@
              * @brief Allocate memory using malloc and free directly
              */
             template <class T>
-            class DirectAllocator : public AllocatorBase<DirectAllocator<T>> {
+            class DirectAllocator : public AllocatorTraits<DirectAllocator<T>> {
                 public:     // Traits
-                    /** Inherited allocator traits */
-                    using Traits = AllocatorBase<DirectAllocator<T>>;
-                    /** The allocated type */
-                    using ValueType     = typename Traits::ValueType;
-                    /** The pointer on allocated type */
-                    using Pointer       = typename Traits::Pointer;
-                    /** The pointer on constant allocated type */
-                    using ConstPointer  = typename Traits::ConstPointer;
-                    /** The allocator size type */
-                    using SizeType      = typename Traits::SizeType;
+                    using ValueType = T;
+                    using SizeType  = std::size_t;
+                    using Pointer   = ValueType*;
     
                 public:     // Methods
                     //## Constructor ##//

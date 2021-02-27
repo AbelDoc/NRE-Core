@@ -8,8 +8,8 @@
      */
     
     #include <iostream>
-    
-    #include "Header/NRE_Core.hpp"
+
+    #include "Core/Vector/NRE_Vector.hpp"
 
     using namespace NRE;
     using namespace NRE::Core;

@@ -13,11 +13,9 @@
      #include <utility>
      #include <cstring>
 
-     #include "../../String/NRE_String.hpp"
      #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
-     #include "../../Traits/NRE_TypeTraits.hpp"
 
-     #include <Memory/Allocator/NRE_AllocatorBase.hpp>
+     #include "../../../Memory/Traits/NRE_MemoryTraits.hpp"
     
 
      /**
@@ -37,59 +35,35 @@
                  * @class Vector
                  * @brief A dynamic array, guarantee to be in contiguous memory
                  */
-                template <class T, class Allocator>
-                class Vector : public Stringable<Vector<T, Allocator>>, public Allocator {
-                    static_assert(Memory::IsAllocatorV<Allocator>);                     /**< Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits */
-                    static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
+                template <class T, Concept::Allocator Alloc>
+                class Vector : public Stringable<Vector<T, Alloc>>, public Alloc {
+                    static_assert(Concept::SameAs<T, typename Alloc::ValueType>);    /**< Make sure the allocator is set for the container inner type */
                     
                     public :    // Traits
-                        /** The container's allocated type */
-                        using ValueType             = T;
-                        /** The container's allocator */
-                        using AllocatorType         = Allocator;
-                        /** The object's size type */
-                        using SizeType              = std::size_t;
-                        /** The object's difference type */
-                        using DifferenceType        = std::ptrdiff_t;
-                        /** The allocated type reference */
+                        using AllocatorType         = Alloc;
+                        using AllocatorTraits       = Memory::AllocatorTraits<AllocatorType>;
+                        using ValueType             = typename AllocatorTraits::ValueType;
+                        using SizeType              = typename AllocatorTraits::SizeType;
+                        using DifferenceType        = typename AllocatorTraits::DifferenceType;
                         using Reference             = ValueType&;
-                        /** The allocated type const reference */
                         using ConstReference        = ValueType const&;
-                        /** The allocated type pointer */
-                        using Pointer               = typename AllocatorType::Pointer;
-                        /** The allocated type const pointer */
-                        using ConstPointer          = typename AllocatorType::ConstPointer;
-                        /** Mutable random access iterator */
+                        using Pointer               = typename AllocatorTraits::Pointer;
+                        using ConstPointer          = typename AllocatorTraits::ConstPointer;
                         using Iterator              = Pointer;
-                        /** Immuable random access iterator */
                         using ConstIterator         = ConstPointer;
-                        /** Mutable reverse random access iterator */
                         using ReverseIterator       = std::reverse_iterator<Iterator>;
-                        /** Immuable reverse random access iterator */
                         using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
-                        /** STL compatibility */
                         using value_type            = ValueType;
-                        /** STL compatibility */
                         using allocator_type        = AllocatorType;
-                        /** STL compatibility */
                         using size_type             = SizeType;
-                        /** STL compatibility */
                         using difference_type       = DifferenceType;
-                        /** STL compatibility */
                         using reference             = Reference;
-                        /** STL compatibility */
                         using const_reference       = ConstReference;
-                        /** STL compatibility */
                         using pointer               = Pointer;
-                        /** STL compatibility */
                         using const_pointer         = ConstPointer;
-                        /** STL compatibility */
                         using iterator              = Iterator;
-                        /** STL compatibility */
                         using const_iterator        = ConstIterator;
-                        /** STL compatibility */
                         using reverse_iterator      = ReverseIterator;
-                        /** STL compatibility */
                         using const_reverse_iterator= ConstReverseIterator;
         
                     private :   // Fields
@@ -103,20 +77,20 @@
                              * Construct an empty vector with a base capacity
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Allocator const& alloc = Allocator());
+                            Vector(AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector filled with count copy of value
                              * @param count the number of copy to perform, will be the vector capacity and length
                              * @param value the value to fill the vector with
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(SizeType count, ConstReference value, Allocator const& alloc = Allocator());
+                            Vector(SizeType count, ConstReference value, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector filled with count default value
                              * @param count the number of default element, will be the vector capacity and length
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(SizeType count, Allocator const& alloc = Allocator());
+                            Vector(SizeType count, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector filled with element between 2 iterators
                              * @param begin the begin iterator
@@ -124,13 +98,13 @@
                              * @param alloc the vector's memory allocator
                              */
                             template <class InputIterator>
-                            Vector(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
+                            Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector from an initializer list
                              * @param init  the list to fill the vector with
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(std::initializer_list<T> init, Allocator const& alloc = Allocator());
+                            Vector(std::initializer_list<T> init, AllocatorType const& alloc = AllocatorType());
             
                         //## Copy Constructor ##//
                             /**
@@ -143,7 +117,7 @@
                              * @param vec   the vector to copy
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector const& vec, Allocator const& alloc);
+                            Vector(Vector const& vec, AllocatorType const& alloc);
             
                         //## Move Constructor ##//
                             /**
@@ -156,7 +130,7 @@
                              * @param vec   the vector to move
                              * @param alloc the vector's memory allocator
                              */
-                            Vector(Vector && vec, Allocator const& alloc);
+                            Vector(Vector && vec, AllocatorType const& alloc);
             
                         //## Deconstructor ##//
                             /**
@@ -220,7 +194,7 @@
                             /**
                              * @return the vector's memory allocator
                              */
-                            Allocator getAllocator() const;
+                            AllocatorType getAllocator() const;
                             /**
                              * @return if the vector is empty
                              */

@@ -11,7 +11,8 @@
 
     #include <cassert>
     #include <memory>
-    #include "../NRE_AllocatorBase.hpp"
+    
+    #include "../Traits/NRE_MemoryTraits.hpp"
     
     /**
      * @namespace NRE
@@ -29,18 +30,11 @@
              * @brief Default allocator using global new and delete
              */
             template <class T>
-            class DefaultAllocator : public AllocatorBase<DefaultAllocator<T>> {
+            class DefaultAllocator {
                 public:     // Traits
-                    /** Inherited allocator traits */
-                    using Traits = AllocatorBase<DefaultAllocator<T>>;
-                    /** The allocated type */
-                    using ValueType     = typename Traits::ValueType;
-                    /** The pointer on allocated type */
-                    using Pointer       = typename Traits::Pointer;
-                    /** The pointer on constant allocated type */
-                    using ConstPointer  = typename Traits::ConstPointer;
-                    /** The allocator size type */
-                    using SizeType      = typename Traits::SizeType;
+                    using ValueType = T;
+                    using SizeType  = std::size_t;
+                    using Pointer   = ValueType*;
                     
                 public:     // Methods
                     //## Constructor ##//
@@ -61,7 +55,7 @@
                         /**
                          * Allocate n * sizeof(T) bytes
                          * @param n the number of object
-                         * @return  a pointer on the first allocated bytes
+                         * @return a pointer on the first allocated bytes
                          */
                         [[nodiscard]] Pointer allocate(SizeType n = 1);
                         /**

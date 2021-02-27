@@ -11,7 +11,8 @@
 
     #include <cassert>
     #include <memory>
-    #include "../NRE_AllocatorBase.hpp"
+
+    #include "../Traits/NRE_MemoryTraits.hpp"
     #include "../../Manager/NRE_MemoryManager.hpp"
 
     /**
@@ -30,18 +31,11 @@
              * @brief A variant of DirectAlloctor but store every call in MemoryManager
              */
             template <class T>
-            class ManagerAllocator : public AllocatorBase<ManagerAllocator<T>> {
+            class ManagerAllocator : public AllocatorTraits<ManagerAllocator<T>> {
                 public:     // Traits
-                    /** Inherited allocator traits */
-                    using Traits = AllocatorBase<ManagerAllocator<T>>;
-                    /** The allocated type */
-                    using ValueType     = typename Traits::ValueType;
-                    /** The pointer on allocated type */
-                    using Pointer       = typename Traits::Pointer;
-                    /** The pointer on constant allocated type */
-                    using ConstPointer  = typename Traits::ConstPointer;
-                    /** The allocator size type */
-                    using SizeType      = typename Traits::SizeType;
+                    using ValueType = T;
+                    using SizeType  = std::size_t;
+                    using Pointer   = ValueType*;
     
                 public: // Methods
                     //## Constructor ##//
