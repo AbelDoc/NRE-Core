@@ -25,8 +25,8 @@
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 template <class InputIterator>
-                 inline Vector<T, Alloc>::Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc) : AllocatorType(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
+                 template <Concept::InputIterator InputIt>
+                 inline Vector<T, Alloc>::Vector(InputIt begin, InputIt end, AllocatorType const& alloc) : AllocatorType(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
                      assign(begin, end);
                  }
     

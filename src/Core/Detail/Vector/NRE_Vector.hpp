@@ -7,18 +7,18 @@
      * @copyright CC-BY-NC-SA
      */
 
-     #pragma once
+    #pragma once
 
-     #include <stdexcept>
-     #include <utility>
-     #include <cstring>
+    #include <stdexcept>
+    #include <utility>
+    #include <cstring>
 
-     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
-
-     #include "../../../Memory/Traits/NRE_MemoryTraits.hpp"
+    #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
+    #include "../../Algorithm/NRE_Algorithm.hpp"
+    #include "../../../Memory/Traits/NRE_MemoryTraits.hpp"
     
 
-     /**
+    /**
      * @namespace NRE
      * @brief The NearlyRealEngine's global namespace
      */
@@ -28,7 +28,6 @@
          * @brief Core's API
          */
         namespace Core {
-            
             namespace Detail {
     
                 /**
@@ -97,8 +96,8 @@
                              * @param end   the end iterator, pointing after the last element
                              * @param alloc the vector's memory allocator
                              */
-                            template <class InputIterator>
-                            Vector(InputIterator begin, InputIterator end, AllocatorType const& alloc = AllocatorType());
+                            template <Concept::InputIterator InputIt>
+                            Vector(InputIt begin, InputIt end, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector from an initializer list
                              * @param init  the list to fill the vector with

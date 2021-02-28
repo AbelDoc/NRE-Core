@@ -34,7 +34,7 @@
             class ManagerAllocator : public AllocatorTraits<ManagerAllocator<T>> {
                 public:     // Traits
                     using ValueType = T;
-                    using SizeType  = std::size_t;
+                    using SizeType  = Core::SizeType;
                     using Pointer   = ValueType*;
     
                 public: // Methods
@@ -70,21 +70,6 @@
                          * @param n the number of object allocated
                          */
                         void deallocate(Pointer p, SizeType n);
-                        /**
-                         * Construct a K-type object in the given pointer with given arguments
-                         * @param p    the pointer to construct the object
-                         * @param args the construction arguments
-                         * @return     the input pointer
-                         */
-                        template <class K, class ... Args>
-                        K* construct(K* p, Args && ... args);
-                        /**
-                         * Destroy an given to the given pointer
-                         * @param p the object address
-                         * @return  the input pointer
-                         */
-                        template <class K>
-                        K* destroy(K* p);
             };
             
             #ifdef NRE_USE_MEMORY_MANAGER

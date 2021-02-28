@@ -30,19 +30,5 @@
                 ::operator delete(p, n);
             }
             
-            template <class T>
-            template <class K, class ... Args>
-            inline K* DefaultAllocator<T>::construct(K* p, Args && ... args) {
-                assert(p != nullptr);
-                return static_cast <K*> (::new(static_cast <void*> (p)) K(std::forward<Args>(args)...));
-            }
-            
-            template <class T>
-            template <class K>
-            inline K* DefaultAllocator<T>::destroy(K* p) {
-                p->~K();
-                return p;
-            }
-            
         }
     }

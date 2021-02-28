@@ -536,7 +536,6 @@
             
         }
         namespace Core {
-    
             /**
              * Increment an iterator n times, no optimization
              * @param it the iterator to increment
@@ -742,5 +741,287 @@
                 return it;
             }
             
+            /** Clamp an iterator category to a given limit */
+            template <class Category, class Limit>
+            using ClampedIteratorCategory = ConditionalT<Concept::DerivedFrom<Category, Limit>, Limit, Category>;
+            
+            /**
+             * @class ReverseIterator
+             * @brief Creates iterators which reverse the behavior of others
+             */
+            template <Concept::BidirectionalIterator It>
+            class ReverseIterator {
+                public :    // Traits
+                    using Base           = It;
+                    using BaseTraits     = IteratorTraits<Base>;
+                    using DifferenceType = typename BaseTraits::DifferenceType;
+                    using ValueType      = typename BaseTraits::ValueType;
+                    using Pointer        = typename BaseTraits::Pointer;
+                    using Reference      = typename BaseTraits::Reference;
+                    using Category       = ClampedIteratorCategory<typename BaseTraits::Category, RandomAccessIteratorCategory>;
+                    
+                private :   // Fields
+                    Base base;    /**< The base iterator to reverse */
+                    
+                public :    // Methods
+                    //## Constructor ##//
+                        /**
+                         * No default constructor
+                         */
+                        ReverseIterator() = delete;
+                        /**
+                         * Construct from the iterator to reverse
+                         * @param it the iterator to reverse
+                         */
+                        ReverseIterator(Base const& it) : base(it) {
+                        }
+                        
+                    //## Copy Constructor ##//
+                        /**
+                         * Copy it into this
+                         * @param it the reverse iterator to copy
+                         */
+                        ReverseIterator(ReverseIterator const& it) = default;
+    
+                    //## Move Constructor ##//
+                        /**
+                         * Move it into this
+                         * @param it the reverse iterator to move
+                         */
+                        ReverseIterator(ReverseIterator && it) = default;
+    
+                    //## Destructor ##//
+                        /**
+                         * ReverseIterator Destructor
+                         */
+                        ~ReverseIterator() = default;
+    
+                    //## Getter ##//
+                        /**
+                         * @return the reverse iterator base
+                         */
+                        Base const& getBase() const {
+                            return base;
+                        }
+    
+                    //## Access Operator ##//
+                        /**
+                         * Dereference operator, allow access to the data
+                         * @return the iterator data
+                         */
+                        constexpr Reference operator*() const {
+                            Base it = base;
+                            return *--it;
+                        }
+                        /**
+                         * Arrow dereference operator, allow access to the data, pointer specialization
+                         * @return the iterator data pointer
+                         */
+                        constexpr Pointer operator->() const requires IsPointerV<Base> {
+                            Base it = base;
+                            --it;
+                            return it;
+                        }
+                        /**
+                         * Arrow dereference operator, allow access to the data, object specialization
+                         * @return the iterator data pointer
+                         */
+                        constexpr Pointer operator->() const requires requires (Base const& it) {
+                            it.operator->();
+                        } {
+                            Base it = base;
+                            --it;
+                            return it.operator->();
+                        }
+    
+                    //## Increment Operator ##//
+                        /**
+                         * Pre increment operator, access the previous element
+                         * @return the reference of himself
+                         */
+                        ReverseIterator& operator++() {
+                            --base;
+                            return *this;
+                        }
+                        /**
+                         * Post increment operator, access the previous element
+                         * @return the iterator on the current element
+                         */
+                        ReverseIterator operator++(int) {
+                            ReverseIterator it(*this);
+                            --base;
+                            return it;
+                        }
+        
+                    //## Decrement Operator ##//
+                        /**
+                         * Pre decrement operator, access the next element
+                         * @return the reference of himself
+                         */
+                        ReverseIterator& operator--() {
+                            ++base;
+                            return *this;
+                        }
+                        /**
+                         * Post decrement operator, access the next element
+                         * @return the iterator on the current element
+                         */
+                        ReverseIterator operator--(int) {
+                            ReverseIterator it(*this);
+                            ++base;
+                            return it;
+                        }
+    
+                    //## Shortcut Operator ##//
+                        /**
+                         * Move the iterator by n
+                         * @param n the distance to subtract
+                         * @return the reference of himself
+                         */
+                        ReverseIterator& operator+=(DifferenceType n) requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            base -= n;
+                            return *this;
+                        }
+                        /**
+                         * Move the iterator by n
+                         * @param n the distance to add
+                         * @return the reference of himself
+                         */
+                        ReverseIterator& operator-=(DifferenceType n) requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            base += n;
+                            return *this;
+                        }
+        
+                    //## Arithmetic Operator ##//
+                        /**
+                         * Create a reverse iterator resulting in the move of this by n
+                         * @param n the distance to subtract
+                         * @return the new iterator
+                         */
+                        ReverseIterator operator+(DifferenceType n) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return ReverseIterator(*this) += n;
+                        }
+                        /**
+                         * Create a reverse iterator resulting in the move of this by n
+                         * @param n the distance to add
+                         * @return the new iterator
+                         */
+                        ReverseIterator operator-(DifferenceType n) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return ReverseIterator(*this) -= n;
+                        }
+                        /**
+                         * Compute the signed distance between this and it
+                         * @param it the other iterator
+                         * @return the computed distance
+                         */
+                        template <Concept::BidirectionalIterator It2>
+                        DifferenceType operator-(ReverseIterator<It2> const& it) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return it.base - base;
+                        }
+    
+                    //## Access Operator ##//
+                        /**
+                         * Return a reference on an iterated element
+                         * @param n the number of move from the current position
+                         * @return    the new element reference
+                         */
+                        Reference operator[](DifferenceType n) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            ReverseIterator it(*this);
+                            it += n;
+                            return *it;
+                        }
+    
+                    //## Assignment Operator ##//
+                        /**
+                         * Copy it into this
+                         * @param it the reverse iterator to copy into this
+                         * @return the reference of himself
+                         */
+                        ReverseIterator& operator=(ReverseIterator const& it) = default;
+                        /**
+                         * Move it into this
+                         * @param it the reverse iterator to move into this
+                         * @return the reference of himself
+                         */
+                        ReverseIterator& operator=(ReverseIterator && it) = default;
+    
+                    //## Comparison Operator ##//
+                        /**
+                         * Equality test between this and it
+                         * @param it the other reverse iterator
+                         * @return the test result
+                         */
+                        template <Concept::BidirectionalIterator It2>
+                        bool operator==(ReverseIterator<It2> const& it) const {
+                            return base == it.base;
+                        }
+                        /**
+                         * Inequality test between this and it
+                         * @param it the other reverse iterator
+                         * @return the test result
+                         */
+                        template <Concept::BidirectionalIterator It2>
+                        bool operator!=(ReverseIterator<It2> const& it) const {
+                            return base != it.base;
+                        }
+                        /**
+                         * Inferior test between this and it
+                         * @param it the other reverse iterator
+                         * @return the test's result
+                         */
+                        template <Concept::RandomAccessIterator It2>
+                        bool operator <(ReverseIterator<It2> const& it) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return base > it.base;
+                        }
+                        /**
+                         * Superior test between this and it
+                         * @param it the other reverse iterator
+                         * @return the test's result
+                         */
+                        template <Concept::RandomAccessIterator It2>
+                        bool operator >(ReverseIterator<It2> const& it) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return base < it.base;
+                        }
+                        /**
+                         * Inferior or Equal test between this and it
+                         * @param it the other reverse iterator
+                         * @return the test's result
+                         */
+                        template <Concept::RandomAccessIterator It2>
+                        bool operator <=(ReverseIterator<It2> const& it) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return base >= it.base;
+                        }
+                        /**
+                         * Superior or Equal test between this and it
+                         * @param it the other reverse iterator
+                         * @return the test's result
+                         */
+                        template <Concept::RandomAccessIterator It2>
+                        bool operator >=(ReverseIterator<It2> const& it) const requires Concept::SameAs<Category, RandomAccessIteratorCategory> {
+                            return base <= it.base;
+                        }
+            };
+
+            /**
+             * Create a reverse iterator resulting in the move of it by n
+             * @param n  the distance to subtract
+             * @param it the iterator to move
+             * @return the new iterator
+             */
+            template <Concept::RandomAccessIterator It>
+            ReverseIterator<It> operator+(typename ReverseIterator<It>::DifferenceType n, ReverseIterator<It> const& it) {
+                return it + n;
+            }
+        
+            /**
+             * Create a reverse iterator resulting in the move of it by n
+             * @param n  the distance to add
+             * @param it the iterator to move
+             * @return the new iterator
+             */
+            template <Concept::RandomAccessIterator It>
+            ReverseIterator<It> operator-(typename ReverseIterator<It>::DifferenceType n, ReverseIterator<It> const& it) {
+                return it - n;
+            }
         }
     }

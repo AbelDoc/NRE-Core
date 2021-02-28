@@ -232,7 +232,11 @@
             struct IndirectlyReadableTraits<T> {
                 using ValueType = RemoveCVT<typename T::ValueType>;
             };
-            
+    
+            /**
+             * @struct IteratorCategoryTraits
+             * @brief Allow an abstract access to iterator category traits with STL compatiblity (STL -> NRE)
+             */
             template <class T>
             struct IteratorCategoryTraits {
             };
@@ -296,7 +300,83 @@
             struct IteratorCategoryTraits<T> {
                 using Category = typename T::Category;
             };
-            
+    
+            /**
+             * @struct IteratorPointerTraits
+             * @brief Allow an abstract access to iterator pointer traits with STL compatiblity (STL -> NRE)
+             */
+            template <class T>
+            struct IteratorPointerTraits {
+            };
+    
+            template <Concept::Object T>
+            struct IteratorPointerTraits<T*> {
+                using Pointer = T*;
+            };
+    
+            template <class T>
+            struct IteratorPointerTraits<const T> {
+                using Pointer = const typename IteratorPointerTraits<T>::Pointer;
+            };
+    
+            template <class T> requires requires {
+                typename T::Pointer;
+            } && (!requires {
+                typename T::pointer;
+            })
+            struct IteratorPointerTraits<T> {
+                using Pointer = typename T::Pointer;
+            };
+    
+            template <class T> requires requires {
+                typename T::pointer;
+            } && (!requires {
+                typename T::Pointer;
+            })
+            struct IteratorPointerTraits<T> {
+                using Pointer = typename T::pointer;
+            };
+    
+            template <class T> requires requires {
+                typename T::Pointer;
+                typename T::pointer;
+                Concept::SameAs<typename T::Pointer, typename T::pointer>;
+            }
+            struct IteratorPointerTraits<T> {
+                using Pointer = typename T::Pointer;
+            };
+    
+            template <class T> requires (!requires {
+                typename T::Pointer;
+            } && !requires {
+                typename T::pointer;
+            } && !requires {
+                typename T::Pointer;
+                typename T::pointer;
+                Concept::SameAs<typename T::Pointer, typename T::pointer>;
+            }) && requires (T& a) {
+                a.operator->();
+            }
+            struct IteratorPointerTraits<T> {
+                using Pointer = decltype(std::declval<T&>().operator->());
+            };
+    
+            template <class T> requires (!requires {
+                typename T::Pointer;
+            } && !requires {
+                typename T::pointer;
+            } && !requires {
+                typename T::Pointer;
+                typename T::pointer;
+                Concept::SameAs<typename T::Pointer, typename T::pointer>;
+            } && !requires (T& a) {
+                a.operator->();
+            })
+            struct IteratorPointerTraits<T> {
+                using Pointer = void;
+            };
+    
+            /** Helper to access an iterator Category */
             template <class T>
             using IteratorCategoryT = typename IteratorCategoryTraits<RemoveCVReferenceT<T>>::Category;
 
@@ -307,6 +387,10 @@
             /** Helper to access an iterator DifferenceType */
             template <class T>
             using IteratorDifferenceT = typename IncrementableTraits<RemoveCVReferenceT<T>>::DifferenceType;
+    
+            /** Helper to access an iterator Pointer */
+            template <class T>
+            using IteratorPointerT = typename IteratorPointerTraits<RemoveVolatileT<RemoveReferenceT<T>>>::Pointer;
             
             /** Compute the reference type of a given type */
             template <Concept::Dereferenceable T>
@@ -334,6 +418,7 @@
             struct IteratorTraits {
                 using DifferenceType = IteratorDifferenceT<T>;
                 using ValueType = IteratorValueT<T>;
+                using Pointer = IteratorPointerT<T>;
                 using Reference = IteratorReferenceT<T>;
                 using Category = IteratorCategoryT<T>;
             };
