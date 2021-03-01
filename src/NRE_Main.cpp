@@ -8,7 +8,7 @@
      */
     
     #include <iostream>
-    #include <vector>
+    #include <forward_list>
 
     #include "Header/NRE_Core.hpp"
 
@@ -21,10 +21,10 @@
         int a[5] = {1, 2, 3, 4, 5};
         int* p = a;
         std::cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " " << a[4] << std::endl;
-        Core::fill(p, next(p, 3), 10);
+        fill(p, next(p, 3), 10);
         std::cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " " << a[4] << std::endl;
-        std::cout << std::is_trivial_v<Core::ReverseIterator<int*>> << std::endl;
-        std::reverse_iterator
+        ReverseIterator<int*> rp(p + 5);
+        std::cout << *(0 + rp) << std::endl;
         
 //        Vector<unsigned char> vec(SizeType(10), 1);
 //

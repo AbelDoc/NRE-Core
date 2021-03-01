@@ -811,14 +811,21 @@
              */
             template <Concept::Allocator T>
             struct AllocatorTraits {
-                using AllocatorType = T;
-                using ValueType = AllocatorValueT<T>;
-                using Pointer = AllocatorPointerT<T>;
-                using ConstPointer = AllocatorConstPointerT<T>;
-                using VoidPointer = AllocatorVoidPointerT<T>;
-                using ConstVoidPointer = AllocatorConstVoidPointerT<T>;
-                using DifferenceType = AllocatorDifferenceT<T>;
-                using SizeType = AllocatorSizeT<T>;
+                using AllocatorType         = T;
+                using ValueType             = AllocatorValueT<T>;
+                using Pointer               = AllocatorPointerT<T>;
+                using ConstPointer          = AllocatorConstPointerT<T>;
+                using VoidPointer           = AllocatorVoidPointerT<T>;
+                using ConstVoidPointer      = AllocatorConstVoidPointerT<T>;
+                using DifferenceType        = AllocatorDifferenceT<T>;
+                using SizeType              = AllocatorSizeT<T>;
+                using value_type            = ValueType;
+                using pointer               = Pointer;
+                using const_pointer         = ConstPointer;
+                using void_pointer          = VoidPointer;
+                using const_void_pointer    = ConstVoidPointer;
+                using difference_type       = DifferenceType;
+                using size_type             = SizeType;
                 
                 template <class K>
                 using Rebind = typename Detail::AllocatorRebindHelper<T, K>::Rebind<K>;
@@ -876,14 +883,21 @@
             
             template <template <class, class ...> class M, class T, class ... Args> requires Concept::Allocator<M<T, Args...>>
             struct AllocatorTraits <M<T, Args...>> {
-                using AllocatorType = M<T, Args...>;
-                using ValueType = AllocatorValueT<M<T, Args...>>;
-                using Pointer = AllocatorPointerT<M<T, Args...>>;
-                using ConstPointer = AllocatorConstPointerT<M<T, Args...>>;
-                using DifferenceType = AllocatorDifferenceT<M<T, Args...>>;
-                using VoidPointer = AllocatorVoidPointerT<M<T, Args...>>;
-                using ConstVoidPointer = AllocatorConstVoidPointerT<M<T, Args...>>;
-                using SizeType = AllocatorSizeT<M<T, Args...>>;
+                using AllocatorType         = M<T, Args...>;
+                using ValueType             = AllocatorValueT<M<T, Args...>>;
+                using Pointer               = AllocatorPointerT<M<T, Args...>>;
+                using ConstPointer          = AllocatorConstPointerT<M<T, Args...>>;
+                using DifferenceType        = AllocatorDifferenceT<M<T, Args...>>;
+                using VoidPointer           = AllocatorVoidPointerT<M<T, Args...>>;
+                using ConstVoidPointer      = AllocatorConstVoidPointerT<M<T, Args...>>;
+                using SizeType              = AllocatorSizeT<M<T, Args...>>;
+                using value_type            = ValueType;
+                using pointer               = Pointer;
+                using const_pointer         = ConstPointer;
+                using void_pointer          = VoidPointer;
+                using const_void_pointer    = ConstVoidPointer;
+                using difference_type       = DifferenceType;
+                using size_type             = SizeType;
     
                 template <class K>
                 using Rebind = typename Detail::AllocatorRebindHelper<M<T, Args...>, K>::Rebind<K>;

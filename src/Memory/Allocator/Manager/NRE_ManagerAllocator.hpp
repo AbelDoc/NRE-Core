@@ -31,11 +31,14 @@
              * @brief A variant of DirectAlloctor but store every call in MemoryManager
              */
             template <class T>
-            class ManagerAllocator : public AllocatorTraits<ManagerAllocator<T>> {
+            class ManagerAllocator {
                 public:     // Traits
                     using ValueType = T;
                     using SizeType  = Core::SizeType;
                     using Pointer   = ValueType*;
+                    using value_type    = ValueType;
+                    using size_type     = SizeType;
+                    using pointer       = Pointer;
     
                 public: // Methods
                     //## Constructor ##//

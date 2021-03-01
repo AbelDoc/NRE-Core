@@ -32,9 +32,12 @@
             template <class T>
             class DefaultAllocator {
                 public:     // Traits
-                    using ValueType = T;
-                    using SizeType  = Core::SizeType;
-                    using Pointer   = ValueType*;
+                    using ValueType     = T;
+                    using SizeType      = Core::SizeType;
+                    using Pointer       = ValueType*;
+                    using value_type    = ValueType;
+                    using size_type     = SizeType;
+                    using pointer       = Pointer;
                     
                 public:     // Methods
                     //## Constructor ##//

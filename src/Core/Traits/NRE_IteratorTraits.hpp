@@ -45,6 +45,8 @@
              * @brief Define an iterator category for concept differenciation
              */
             struct InputIteratorCategory {
+                using iterator_category = std::input_iterator_tag;
+                using iterator_concept = iterator_category;
             };
     
             /**
@@ -52,6 +54,8 @@
              * @brief Define an iterator category for concept differenciation
              */
             struct OutputIteratorCategory {
+                using iterator_category = std::output_iterator_tag;
+                using iterator_concept = iterator_category;
             };
     
             /**
@@ -59,6 +63,8 @@
              * @brief Define an iterator category for concept differenciation
              */
             struct ForwardIteratorCategory : public InputIteratorCategory {
+                using iterator_category = std::forward_iterator_tag;
+                using iterator_concept = iterator_category;
             };
     
             /**
@@ -66,6 +72,8 @@
              * @brief Define an iterator category for concept differenciation
              */
             struct BidirectionalIteratorCategory : public ForwardIteratorCategory {
+                using iterator_category = std::bidirectional_iterator_tag;
+                using iterator_concept = iterator_category;
             };
     
             /**
@@ -73,6 +81,8 @@
              * @brief Define an iterator category for concept differenciation
              */
             struct RandomAccessIteratorCategory : public BidirectionalIteratorCategory {
+                using iterator_category = std::random_access_iterator_tag;
+                using iterator_concept = iterator_category;
             };
     
             /**
@@ -80,6 +90,8 @@
              * @brief Define an iterator category for concept differenciation
              */
             struct ContiguousIteratorCategory : public RandomAccessIteratorCategory {
+                using iterator_category = std::contiguous_iterator_tag;
+                using iterator_concept = iterator_category;
             };
             
             /**
@@ -421,6 +433,254 @@
                 using Pointer = IteratorPointerT<T>;
                 using Reference = IteratorReferenceT<T>;
                 using Category = IteratorCategoryT<T>;
+            };
+            
+            /**
+             * @class Iterator
+             * @brief Define a base for user iterators, giving useful typedef and operators using CRTP
+             */
+            template <class It, class Cat, class T, class Diff = DifferenceType, class Ptr = T*, class Ref = T&>
+                requires Concept::DerivedFrom<Cat, InputIteratorCategory> ||
+                         Concept::DerivedFrom<Cat, OutputIteratorCategory>
+            class Iterator : public StaticInterface<Iterator<It, Cat, T, Diff, Ptr, Ref>> {
+                public :    // Traits
+                    using Derived           = It;
+                    using DifferenceType    = Diff;
+                    using ValueType         = T;
+                    using Pointer           = Ptr;
+                    using Reference         = Ref;
+                    using Category          = Cat;
+                    using difference_type   = DifferenceType;
+                    using value_type        = ValueType;
+                    using pointer           = Pointer;
+                    using reference         = Reference;
+                    using iterator_category = Category::iterator_category;
+                    using iterator_concept  = Category::iterator_concept;
+                    
+                public :    // Methods
+                    //## Methods ##//
+                        /**
+                         * @return a reference on the iterated data
+                         */
+                        Reference dereference() const {
+                            return this->impl().dereference();
+                        }
+                        /**
+                         * Increment the iterator position by one
+                         */
+                        void increment() {
+                            this->impl().increment();
+                        }
+                        /**
+                         * Decrement the iterator position by one
+                         */
+                        void decrement() requires Concept::DerivedFrom<Category, BidirectionalIteratorCategory> {
+                            this->impl().decrement();
+                        }
+                        /**
+                         * Move the iterator by a given number (can be negative)
+                         * @param n the distance to move
+                         */
+                        void advance(DifferenceType n) requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            this->impl().advance(n);
+                        }
+                        /**
+                         * Tell the distance between the given iterator
+                         * @param it the other iterator
+                         * @return   the distance between it and this
+                         */
+                        DifferenceType distanceTo(Iterator const& it) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return this->impl().distanceTo(it);
+                        }
+                        /**
+                         * Test if the given iterator point to the same position
+                         * @param it the other iterator
+                         * @return   the test's result
+                         */
+                        bool equal(Iterator const& it) const {
+                            return this->impl().equal(it);
+                        }
+            
+                    //## Access Operator ##//
+                        /**
+                         * Dereference operator, allow access to the data
+                         * @return the iterator data
+                         */
+                        Reference operator*() const {
+                            return dereference();
+                        }
+                        /**
+                         * Arrow dereference operator, allow access to the data
+                         * @return the iterator data pointer
+                         */
+                        Pointer operator->() {
+                            return &dereference();
+                        }
+            
+                    //## Increment Operator ##//
+                        /**
+                         * Pre increment operator, access the next element
+                         * @return the reference of himself
+                         */
+                        Derived& operator++() {
+                            increment();
+                            return this->impl();
+                        }
+                        /**
+                         * Post increment operator, access the next element
+                         * @return the iterator on the current element
+                         */
+                        Derived operator++(int) {
+                            Derived tmp(this->impl());
+                            ++*this;
+                            return tmp;
+                        }
+            
+                    //## Decrement Operator ##//
+                        /**
+                         * Pre decrement operator, access the previous element
+                         * @return the reference of himself
+                         */
+                        Derived& operator--() requires Concept::DerivedFrom<Category, BidirectionalIteratorCategory> {
+                            decrement();
+                            return this->impl();
+                        }
+                        /**
+                         * Post decrement operator, access the previous element
+                         * @return the iterator on the current element
+                         */
+                        Derived operator--(int) requires Concept::DerivedFrom<Category, BidirectionalIteratorCategory> {
+                            Derived tmp(this->impl());
+                            --*this;
+                            return tmp;
+                        }
+            
+                    //## Shortcut Operator ##//
+                        /**
+                         * Move the iterator by n
+                         * @param n the distance to add
+                         * @return the reference of himself
+                         */
+                        Derived& operator +=(DifferenceType n) requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            advance(n);
+                            return this->impl();
+                        }
+                        /**
+                         * Move the iterator by n
+                         * @param n the distance to subtract
+                         * @return the reference of himself
+                         */
+                        Derived& operator -=(DifferenceType n) requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            advance(-n);
+                            return this->impl();
+                        }
+            
+                    //## Arithmetic Operator ##//
+                        /**
+                         * Create an iterator resulting in the move of this by n
+                         * @param n the distance to add
+                         * @return the new iterator
+                         */
+                        Derived operator +(DifferenceType n) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return Derived(this->impl()) += n;
+                        }
+                        /**
+                         * Create an iterator resulting in the move of this by n
+                         * @param n the distance to subtract
+                         * @return the new iterator
+                         */
+                        Derived operator -(DifferenceType n) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return Derived(this->impl()) -= n;
+                        }
+                        /**
+                         * Compute the signed distance between this and it
+                         * @param it the other iterator
+                         * @return the iterators distance
+                         */
+                        DifferenceType operator -(Derived const& it) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return it.distanceTo(this->impl());
+                        }
+                        /**
+                         * Create an iterator resulting in the move of it by n
+                         * @param n  the distance to add
+                         * @param it the iterator to move
+                         * @return the new iterator
+                         */
+                        friend Derived operator +(Diff n, Derived const& it) requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return Derived(it) += n;
+                        }
+                        /**
+                         * Create an iterator resulting in the move of it by n
+                         * @param n  the distance to subtract
+                         * @param it the iterator to move
+                         * @return the new iterator
+                         */
+                        friend Derived operator -(Diff n, Derived const& it) requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return Derived(it) -= n;
+                        }
+        
+                    //## Access Operator ##//
+                        /**
+                         * Return a reference on an iterated element
+                         * @warning No range check performed
+                         * @param n the number of move from the current position
+                         * @return the new element reference
+                         */
+                        Reference operator [](DifferenceType n) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            Derived it(*this);
+                            it += n;
+                            return *it;
+                        }
+            
+                    //## Comparison Operator ##//
+                        /**
+                         * Equality test between this and it
+                         * @param it the other iterator
+                         * @return the test result
+                         */
+                        bool operator==(Derived const& it) const {
+                            return this->impl().equal(it);
+                        }
+                        /**
+                         * Inequality test between this and it
+                         * @param it the other iterator
+                         * @return the test result
+                         */
+                        bool operator!=(Derived const& it) const {
+                            return !this->impl().equal(it);
+                        }
+                        /**
+                         * Inferior test between this and it
+                         * @param it the vector to test with this
+                         * @return the test's result
+                         */
+                        bool operator <(Derived const& it) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return it.distanceTo(this->impl()) < 0;
+                        }
+                        /**
+                         * Superior test between this and it
+                         * @param it the vector to test with this
+                         * @return the test's result
+                         */
+                        bool operator >(Derived const& it) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return it.distanceTo(this->impl()) > 0;
+                        }
+                        /**
+                         * Inferior or Equal test between this and it
+                         * @param it the vector to test with this
+                         * @return the test's result
+                         */
+                        bool operator <=(Derived const& it) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return it.distanceTo(this->impl()) <= 0;
+                        }
+                        /**
+                         * Superior or Equal test between this and it
+                         * @param it the vector to test with this
+                         * @return the test's result
+                         */
+                        bool operator >=(Derived const& it) const requires Concept::DerivedFrom<Category, RandomAccessIteratorCategory> {
+                            return it.distanceTo(this->impl()) >= 0;
+                        }
             };
             
         }

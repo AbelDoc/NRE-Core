@@ -30,11 +30,14 @@
              * @brief Allocate memory using malloc and free directly
              */
             template <class T>
-            class DirectAllocator : public AllocatorTraits<DirectAllocator<T>> {
+            class DirectAllocator {
                 public:     // Traits
                     using ValueType = T;
                     using SizeType  = Core::SizeType;
                     using Pointer   = ValueType*;
+                    using value_type    = ValueType;
+                    using size_type     = SizeType;
+                    using pointer       = Pointer;
     
                 public:     // Methods
                     //## Constructor ##//
