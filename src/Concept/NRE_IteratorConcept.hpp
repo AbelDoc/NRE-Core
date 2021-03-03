@@ -741,6 +741,43 @@
                 return it;
             }
             
+            /**
+             * Compute the distance between 2 iterators, no optimization
+             * @param begin the first iterator
+             * @param end   the second iterator
+             * @return the iterators distance
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<It, S>)
+            constexpr IteratorDifferenceT<It> distance(It begin, S end) {
+                IteratorDifferenceT<It> n = 0;
+                while (begin != end) {
+                    ++begin;
+                    ++n;
+                }
+                return n;
+            }
+
+            /**
+             * Compute the distance between 2 iterators, optimized for sized sentinel
+             * @param begin the first iterator
+             * @param end   the second iterator
+             * @return the iterators distance, can be negative
+             */
+            template <Concept::InputOrOutputIterator It, Concept::SizedSentinelFor<It> S>
+            constexpr IteratorDifferenceT<It> distance(It begin, S end) {
+                return end - begin;
+            }
+            
+            /**
+             * Compute the distance between the begin and the end of a range, e.g it's size
+             * @param range the range
+             * @return the range size
+             */
+            template <Concept::Range R>
+            constexpr RangeDifferenceT<R> distance(R && range) {
+                return distance(begin(range), end(range));
+            }
+            
             /** Clamp an iterator category to a given limit */
             template <class Category, class Limit>
             using ClampedIteratorCategory = ConditionalT<Concept::DerivedFrom<Category, Limit>, Limit, Category>;

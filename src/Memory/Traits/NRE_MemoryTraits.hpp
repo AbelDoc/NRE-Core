@@ -55,8 +55,8 @@
             /**
              * Destroy a range of trivially destructible objects, no operation needed
              */
-            template <Concept::ForwardIterator It> requires Concept::TriviallyDestructible<Core::IteratorValueT<It>>
-            constexpr void destroy(It, It) {
+            template <Concept::ForwardIterator It, Concept::SentinelFor<It> S> requires Concept::TriviallyDestructible<Core::IteratorValueT<It>>
+            constexpr void destroy(It, S) {
             }
     
             /**
@@ -64,8 +64,8 @@
              * @param begin the range begin
              * @param end   the range end
              */
-            template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>> && !Concept::DerivedFrom<Core::IteratorCategoryT<It>, Core::RandomAccessIteratorCategory>)
-            constexpr void destroy(It begin, It end) {
+            template <Concept::ForwardIterator It, Concept::SentinelFor<It> S> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>> && !Concept::SizedSentinelFor<It, S>)
+            constexpr void destroy(It begin, S end) {
                 for ( ; begin != end; ++begin) {
                     destroyAt(addressOf(*begin));
                 }
@@ -76,12 +76,17 @@
              * @param begin the range begin
              * @param end   the range end
              */
-            template <Concept::ForwardIterator It> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>> && Concept::DerivedFrom<Core::IteratorCategoryT<It>, Core::RandomAccessIteratorCategory>)
-            constexpr void destroy(It begin, It end) {
-                for (Core::IteratorDifferenceT<It> n = end - begin; n > 0; --n) {
+            template <Concept::ForwardIterator It, Concept::SizedSentinelFor<It> S> requires (!Concept::TriviallyDestructible<Core::IteratorValueT<It>>)
+            constexpr void destroy(It begin, S end) {
+                for (auto n = end - begin; n > 0; --n) {
                     destroyAt(addressOf(*begin));
                     ++begin;
                 }
+            }
+            
+            template <Concept::ForwardRange R>
+            constexpr void destroy(R && range) {
+                destroy(Core::begin(range), Core::end(range));
             }
 
             /**
@@ -872,6 +877,14 @@
                     Detail::AllocatorConstructHelper<AllocatorType, Args...>::construct(a, p, std::forward<Args>(args)...);
                 }
                 /**
+                 * Destroy an object to a given address from an allocator
+                 * @param a the used allocator
+                 * @param p the memory address to construct the object
+                 */
+                static constexpr void destroy(AllocatorType& a, Pointer p) {
+                    Detail::AllocatorDestroyHelper<AllocatorType>::destroy(a, p);
+                }
+                /**
                  * Return the max allocation size from an allocator
                  * @param a the used allocator
                  * @return the max allocation size for a given type
@@ -942,6 +955,14 @@
                 template <class ... CtrArgs>
                 static constexpr void construct(AllocatorType& a, Pointer p, CtrArgs && ... args) {
                     Detail::AllocatorConstructHelper<AllocatorType, CtrArgs...>::construct(a, p, std::forward<CtrArgs>(args)...);
+                }
+                /**
+                 * Destroy an object to a given address from an allocator
+                 * @param a the used allocator
+                 * @param p the memory address to construct the object
+                 */
+                static constexpr void destroy(AllocatorType& a, Pointer p) {
+                    Detail::AllocatorDestroyHelper<AllocatorType>::destroy(a, p);
                 }
                 /**
                  * Return the max allocation size from an allocator

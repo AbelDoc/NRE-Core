@@ -154,6 +154,13 @@
              */
             template <class T>
             concept MemCopyable = NonVolatileTriviallyCopyable<T>;
+            
+            /**
+             * @interface MemComparable
+             * @brief Define a memory comparable type
+             */
+            template <class T>
+            concept MemComparable = MemCopyable<T>;
     
             /**
              * @interface MemMoveable

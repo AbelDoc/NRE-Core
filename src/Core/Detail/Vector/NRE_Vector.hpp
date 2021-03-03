@@ -50,8 +50,8 @@
                         using ConstPointer          = typename AllocatorTraits::ConstPointer;
                         using Iterator              = Pointer;
                         using ConstIterator         = ConstPointer;
-                        using ReverseIterator       = std::reverse_iterator<Iterator>;
-                        using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
+                        using ReverseIterator       = Core::ReverseIterator<Iterator>;
+                        using ConstReverseIterator  = Core::ReverseIterator<ConstIterator>;
                         using value_type            = ValueType;
                         using allocator_type        = AllocatorType;
                         using size_type             = SizeType;
@@ -96,8 +96,15 @@
                              * @param end   the end iterator, pointing after the last element
                              * @param alloc the vector's memory allocator
                              */
-                            template <Concept::InputIterator InputIt>
-                            Vector(InputIt begin, InputIt end, AllocatorType const& alloc = AllocatorType());
+                            template <Concept::InputIterator It, Concept::SentinelFor<It> S>
+                            Vector(It begin, S end, AllocatorType const& alloc = AllocatorType());
+                            /**
+                             * Construct a vector filled with element from a given range
+                             * @param range the input range
+                             * @param alloc the vector's memory allocator
+                             */
+                            template <Concept::InputRange R>
+                            Vector(R && range, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a vector from an initializer list
                              * @param init  the list to fill the vector with
@@ -141,13 +148,13 @@
                             /**
                              * Access a particular element with bound checking
                              * @param  index the element index
-                             * @return       the corresponding element
+                             * @return the corresponding element
                              */
                             Reference get(SizeType index);
                             /**
                              * Access a particular element with bound checking
                              * @param  index the element index
-                             * @return       the corresponding element
+                             * @return the corresponding element
                              */
                             ConstReference get(SizeType index) const;
                             /**
@@ -258,13 +265,53 @@
                              */
                             void assign(SizeType count, ConstReference value);
                             /**
-                             * Assign the vector with element between 2 iterators
-                             * @param  begin the begin iterator
-                             * @param  end   the end iterator, pointing after the last element
+                             * Assign the vector with element between 2 iterators, no optimization
+                             * @param begin the begin iterator
+                             * @param end   the end iterator, pointing after the last element
                              * @pre begin and end are not iterator from the vector
                              */
-                            template <class InputIterator>
-                            void assign(InputIterator begin, InputIterator end);
+                            template <Concept::InputIterator It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<It, S>)
+                            void assign(It begin, S end) {
+                                clear();
+                                SizeType size = Core::distance(begin, end);
+                                if (capacity < size) {
+                                    reserveWithGrowFactor(size);
+                                }
+                                SizeType current = 0;
+                                for ( ; begin != end; begin++) {
+                                    AllocatorTraits::construct(*this, &data[current], *begin);
+                                    ++current;
+                                }
+                                length = current;
+                            }
+                            /**
+                             * Assign the vector with element between 2 iterators, optimized for sized sentinel
+                             * @param begin the begin iterator
+                             * @param end   the end iterator, pointing after the last element
+                             * @pre begin and end are not iterator from the vector
+                             */
+                            template <Concept::InputIterator It, Concept::SizedSentinelFor<It> S>
+                            void assign(It begin, S end) {
+                                clear();
+                                SizeType size = Core::distance(begin, end);
+                                if (capacity < size) {
+                                    reserveWithGrowFactor(size);
+                                }
+                                SizeType current = 0;
+                                for (auto n = end - begin; n > 0; --n) {
+                                    AllocatorTraits::construct(*this, &data[current], *begin);
+                                    ++current;
+                                    ++begin;
+                                }
+                                length = current;
+                            }
+                            /**
+                             * Assign the vector with element from a range
+                             * @param range the input range
+                             * @pre range is not part of the vector
+                             */
+                            template <Concept::InputRange R>
+                            void assign(R && range);
                             /**
                              * Set the vector capacity to a minimum of size, reallocating memory if needed
                              * @param size the new capacity
@@ -274,20 +321,7 @@
                             /**
                              * Clear all object in the vector, not actually releasing memory
                              */
-                            template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                            void clear() noexcept {
-                                for (SizeType i = 0; i < length; i++) {
-                                    this->destroy(&data[i]);
-                                }
-                                length = 0;
-                            }
-                            /**
-                             * Clear all object in the vector, not actually releasing memory
-                             */
-                            template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                            void clear() noexcept {
-                                length = 0;
-                            }
+                            void clear() noexcept;
                             /**
                              * Insert a copy of value at the specified position
                              * @param  start the position to insert the value
@@ -306,35 +340,85 @@
                              */
                             Iterator insert(ConstIterator start, SizeType count, ConstReference value);
                             /**
-                             * Insert a copy of element between begin and end at the specified position
-                             * @param  start the position to insert values
-                             * @param  begin the begin iterator
-                             * @param  end   the end iterator, pointing after the last element
-                             * @return       the iterator on the first inserted value
+                             * Insert a copy of element between begin and end at the specified position, no optimization
+                             * @param start the position to insert values
+                             * @param begin the begin iterator
+                             * @param end   the end iterator, pointing after the last element
+                             * @return the iterator on the first inserted value
                              * @pre begin and end are not iterator from the vector
                              */
-                            template <class InputIterator>
-                            Iterator insert(ConstIterator start, InputIterator begin, InputIterator end);
+                            template <Concept::InputIterator It, Concept::SentinelFor<It> S> requires (!Concept::SizedSentinelFor<It, S>)
+                            Iterator insert(ConstIterator start, It begin, S end) {
+                                SizeType count = Core::distance(begin, end);
+                                SizeType index = Core::distance(ConstIterator(data), start);
+                                if (capacity < length + count) {
+                                    reserveWithGrowFactor(length + count);
+                                }
+                                if (index < length) {
+                                    Core::shiftRight(data + index, data + length + count, count);
+                                }
+                                for ( ; begin != end; ++begin) {
+                                    AllocatorTraits::construct(*this, &data[index], *begin);
+                                    ++index;
+                                }
+                                length += count;
+                                return Iterator(data + index);
+                            }
+                            /**
+                             * Insert a copy of element between begin and end at the specified position, optimized for sized sentinel
+                             * @param start the position to insert values
+                             * @param begin the begin iterator
+                             * @param end   the end iterator, pointing after the last element
+                             * @return the iterator on the first inserted value
+                             * @pre begin and end are not iterator from the vector
+                             */
+                            template <Concept::InputIterator It, Concept::SizedSentinelFor<It> S>
+                            Iterator insert(ConstIterator start, It begin, S end) {
+                                SizeType count = Core::distance(begin, end);
+                                SizeType index = Core::distance(ConstIterator(data), start);
+                                if (capacity < length + count) {
+                                    reserveWithGrowFactor(length + count);
+                                }
+                                if (index < length) {
+                                    Core::shiftRight(data + index, data + length + count, count);
+                                }
+                                for (auto n = end - begin; n > 0; --n) {
+                                    AllocatorTraits::construct(*this, &data[index], *begin);
+                                    ++index;
+                                    ++begin;
+                                }
+                                length += count;
+                                return Iterator(data + index);
+                            }
+                            /**
+                             * Insert a copy of element in the given range at the specified position
+                             * @param start the position to insert values
+                             * @param range the input range
+                             * @return the iterator on the first inserted value
+                             * @pre range is not part of the vector
+                             */
+                            template <Concept::InputRange R>
+                            Iterator insert(ConstIterator start, R && range);
                             /**
                              * Insert a list of value at the specified position
-                             * @param  start the position to insert values
-                             * @param  list  the list to fill the vector with
-                             * @return       the iterator on the first inserted value
+                             * @param start the position to insert values
+                             * @param list  the list to fill the vector with
+                             * @return the iterator on the first inserted value
                              * @pre list don't contain vector reference
                              */
                             Iterator insert(ConstIterator start, std::initializer_list<T> list);
                             /**
                              * Emplace an element at the specified position
-                             * @param  start the position to insert the value
-                             * @param  args  the value construction arguments
-                             * @return       the iterator on the inserted value
+                             * @param start the position to insert the value
+                             * @param args  the value construction arguments
+                             * @return the iterator on the inserted value
                              */
                             template <class ... Args>
                             Iterator emplace(ConstIterator start, Args && ... args);
                             /**
                              * Erase an element in the vector
-                             * @param  pos  the position to erase
-                             * @return       an iterator on the next valid element
+                             * @param pos the position to erase
+                             * @return an iterator on the next valid element
                              */
                             Iterator erase(ConstIterator pos);
                             /**
@@ -343,7 +427,8 @@
                              * @param  end   the end position for erasing
                              * @return       an iterator on the next valid element
                              */
-                            Iterator erase(ConstIterator begin, ConstIterator end);
+                            template <Concept::SentinelFor<ConstIterator> S>
+                            Iterator erase(ConstIterator begin, S end);
                             /**
                              * Insert a copy of value at the end of the vector
                              * @param value the value to insert
@@ -364,18 +449,7 @@
                             /**
                              * Pop the last element in the vector
                              */
-                            template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                            void popBack() {
-                                this->destroy(end() - 1);
-                                length--;
-                            }
-                            /**
-                             * Pop the last element in the vector
-                             */
-                            template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                            void popBack() {
-                                length--;
-                            }
+                            void popBack();
                             /**
                              * Resize the container up the given size, insert value if needed
                              * @param count the new capacity
@@ -431,8 +505,10 @@
                              * @param vec the other vector
                              * @return    the test result
                              */
-                            template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                            bool operator ==(Vector const& vec) const {
+                            bool operator ==(Vector const& vec) const requires (!Concept::MemComparable<ValueType>) {
+                                if (length != vec.length) {
+                                    return false;
+                                }
                                 bool equal = true;
                                 SizeType current = 0;
                                 while (equal && current < length) {
@@ -446,8 +522,7 @@
                              * @param vec the other vector
                              * @return    the test result
                              */
-                            template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                            bool operator ==(Vector const& vec) const {
+                            bool operator ==(Vector const& vec) const requires (Concept::MemComparable<ValueType>) {
                                 if (length != vec.length) {
                                     return false;
                                 }
@@ -476,97 +551,12 @@
                          * Rellocate the data to the given size
                          * @param newSize the new capacity
                          */
-                        template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                        void reallocate(SizeType newSize) {
-                            SizeType tmp = capacity;
-                            capacity = newSize;
-                            Pointer newData = this->allocate(capacity);
-                
-                            for (SizeType current = 0; current < length; current++) {
-                                this->construct(&newData[current], std::move(data[current]));
-                            }
-                            this->deallocate(data, tmp);
-                            data = newData;
-                        }
-                        /**
-                         * Rellocate the data to the given size
-                         * @param newSize the new capacity
-                         */
-                        template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                        void reallocate(SizeType newSize) {
-                            SizeType tmp = capacity;
-                            capacity = newSize;
-                            Pointer newData = this->allocate(capacity);
-                
-                            std::memmove(newData, data, length * sizeof(T));
-                            this->deallocate(data, tmp);
-                            data = newData;
-                        }
+                        void reallocate(SizeType newSize);
                         /**
                          * Reallocate the vector with the neareast grow factor value
                          * @param size the new minimum capacity
                          */
                         void reserveWithGrowFactor(SizeType size);
-                        /**
-                         * Shift all element in the vector, don't do reallocation
-                         * @param start the start position for shifting
-                         * @param count the number of shift to do
-                         */
-                        template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                        void shift(SizeType start, SizeType count) {
-                            for (SizeType index = length + count - 1; index != start + count - 1; index--) {
-                                this->construct(&data[index], std::move(data[index - count]));
-                            }
-                        }
-                        /**
-                         * Shift all element in the vector, don't do reallocation
-                         * @param start the start position for shifting
-                         * @param count the number of shift to do
-                         */
-                        template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                        void shift(SizeType start, SizeType count) {
-                            std::memmove(data + start + count, data + start, (length - start) * sizeof(T));
-                        }
-                        /**
-                         * Shift back all element in the vector, don't call deconstructor
-                         * @param start the start position for shifting
-                         * @param count the number of shift to do
-                         */
-                        template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                        void shiftBack(SizeType start, SizeType count) {
-                            for (SizeType index = start; index < start + count; index++) {
-                                this->construct(&data[index], std::move(data[index + count]));
-                            }
-                        }
-                        /**
-                         * Shift back all element in the vector, don't call deconstructor
-                         * @param start the start position for shifting
-                         * @param count the number of shift to do
-                         */
-                        template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                        void shiftBack(SizeType start, SizeType count) {
-                            std::memmove(data + start, data + start + count, (length - start) * sizeof(T));
-                        }
-                        /**
-                         * Copy the vector content
-                         * @param vec the vector to copy
-                         */
-                        template <class K = T, typename Core::UseIfNotTriviallyCopyable<K> = 0>
-                        void copy(Vector const& vec) {
-                            SizeType current = 0;
-                            for (ConstReference it : vec) {
-                                this->construct(&data[current], it);
-                                current++;
-                            }
-                        }
-                        /**
-                         * Copy the vector content
-                         * @param vec the vector to copy
-                         */
-                        template <class K = T, typename Core::UseIfTriviallyCopyable<K> = 0>
-                        void copy(Vector const& vec) {
-                            std::memcpy(data, vec.data, vec.length * sizeof(T));
-                        }
         
                     private :    // Static
                         static constexpr float GROW_FACTOR = 2;                 /**< The container's reallocation growth factor */

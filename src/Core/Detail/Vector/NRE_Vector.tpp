@@ -12,11 +12,11 @@
              namespace Detail {
 
                  template <class T, Concept::Allocator Alloc>
-                 inline Vector<T, Alloc>::Vector(AllocatorType const& alloc) :  AllocatorType(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(this->allocate(capacity)) {
+                 inline Vector<T, Alloc>::Vector(AllocatorType const& alloc) : AllocatorType(alloc), length(0), capacity(BASE_ALLOCATION_SIZE), data(AllocatorTraits::allocate(*this, capacity)) {
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 inline Vector<T, Alloc>::Vector(SizeType count, ConstReference value, AllocatorType const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(this->allocate(capacity)) {
+                 inline Vector<T, Alloc>::Vector(SizeType count, ConstReference value, AllocatorType const& alloc) : AllocatorType(alloc), length(count), capacity(count), data(AllocatorTraits::allocate(*this, capacity)) {
                      assign(count, value);
                  }
     
@@ -25,13 +25,18 @@
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 template <Concept::InputIterator InputIt>
-                 inline Vector<T, Alloc>::Vector(InputIt begin, InputIt end, AllocatorType const& alloc) : AllocatorType(alloc), length(std::distance(begin, end)), capacity(length), data(this->allocate(length)) {
-                     assign(begin, end);
+                 template <Concept::InputIterator It, Concept::SentinelFor<It> S>
+                 inline Vector<T, Alloc>::Vector(It begin, S end, AllocatorType const& alloc) : AllocatorType(alloc), length(Core::distance(begin, end)), capacity(length), data(AllocatorTraits::allocate(*this, length)) {
+                    Core::uninitializedCopy(begin, end, this->begin());
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 inline Vector<T, Alloc>::Vector(std::initializer_list<T> init, AllocatorType const& alloc) : Vector(init.begin(), init.end(), alloc) {
+                 template <Concept::InputRange R>
+                 inline Vector<T, Alloc>::Vector(R && range, AllocatorType const& alloc) : Vector(Core::begin(range), Core::end(range), alloc) {
+                 }
+    
+                 template <class T, Concept::Allocator Alloc>
+                 inline Vector<T, Alloc>::Vector(std::initializer_list<T> init, AllocatorType const& alloc) : Vector(Core::begin(init), Core::end(init), alloc) {
                  }
         
                  template <class T, Concept::Allocator Alloc>
@@ -39,8 +44,8 @@
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 inline Vector<T, Alloc>::Vector(Vector const& vec, AllocatorType const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(this->allocate(vec.capacity)) {
-                     copy(vec);
+                 inline Vector<T, Alloc>::Vector(Vector const& vec, AllocatorType const& alloc) : AllocatorType(alloc), length(vec.length), capacity(vec.capacity), data(AllocatorTraits::allocate(*this, vec.capacity)) {
+                     Core::uninitializedCopy(begin, end, this->begin());
                  }
     
                  template <class T, Concept::Allocator Alloc>
@@ -57,7 +62,7 @@
                  template <class T, Concept::Allocator Alloc>
                  inline Vector<T, Alloc>::~Vector() {
                      clear();
-                     this->deallocate(data, capacity);
+                     AllocatorTraits::deallocate(*this, data, capacity);
                      data = nullptr;
                  }
     
@@ -204,25 +209,15 @@
                          reserveWithGrowFactor(count);
                      }
                      for (SizeType i = 0; i < count; i++) {
-                         this->construct(&data[i], value);
+                         AllocatorTraits::construct(*this, &data[i], value);
                      }
                      length = count;
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 template <class InputIterator>
-                 inline void Vector<T, Alloc>::assign(InputIterator begin, InputIterator end) {
-                     clear();
-                     SizeType size = std::distance(begin, end);
-                     if (capacity < size) {
-                         reserveWithGrowFactor(size);
-                     }
-                     SizeType current = 0;
-                     for ( ; begin != end; begin++) {
-                         this->construct(&data[current], *begin);
-                         current++;
-                     }
-                     length = current;
+                 template <Concept::InputRange R>
+                 inline void Vector<T, Alloc>::assign(R && range) {
+                     assign(Core::begin(range), Core::end(range));
                  }
     
                  template <class T, Concept::Allocator Alloc>
@@ -230,6 +225,12 @@
                      if (capacity < size) {
                          reallocate(size);
                      }
+                 }
+                 
+                 template <class T, Concept::Allocator Alloc>
+                 inline void Vector<T, Alloc>::clear() noexcept {
+                     Memory::destroy(*this);
+                     length = 0;
                  }
     
                  template <class T, Concept::Allocator Alloc>
@@ -239,82 +240,68 @@
     
                  template <class T, Concept::Allocator Alloc>
                  inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::insert(ConstIterator start, SizeType count, ConstReference value) {
-                     SizeType index = start - ConstIterator(data);
+                     SizeType index = Core::distance(ConstIterator(data), start);
                      if (capacity < length + count) {
                          reserveWithGrowFactor(length + count);
                      }
                      if (index < length) {
-                         shift(index, count);
+                         Core::shiftRight(data + index, data + length + count, count);
                      }
-                     for (SizeType it = index; it != index + count; it++) {
-                         this->construct(&data[it], value);
+                     for (SizeType it = index; it != index + count; ++it) {
+                         AllocatorTraits::construct(*this, &data[it], value);
                      }
                      length += count;
                      return Iterator(data + index);
                  }
-    
+                 
                  template <class T, Concept::Allocator Alloc>
-                 template <class InputIterator>
-                 inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::insert(ConstIterator start, InputIterator begin, InputIterator end) {
-                     SizeType count = std::distance(begin, end);
-                     SizeType index = start - ConstIterator(data);
-                     if (capacity < length + count) {
-                         reserveWithGrowFactor(length + count);
-                     }
-                     if (index < length) {
-                         shift(index, count);
-                     }
-                     for ( ; begin != end; begin++) {
-                         this->construct(&data[index], *begin);
-                         index++;
-                     }
-                     length += count;
-                     return Iterator(data + index);
+                 template <Concept::InputRange R>
+                 inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::insert(ConstIterator start, R && range) {
+                     return insert(start, Core::begin(range), Core::end(range));
                  }
     
                  template <class T, Concept::Allocator Alloc>
                  inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::insert(ConstIterator start, std::initializer_list<T> list) {
-                     return insert(start, list.begin(), list.end());
+                     return insert(start, Core::begin(list), Core::end(list));
                  }
     
                  template <class T, Concept::Allocator Alloc>
                  template <class ... Args>
                  inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::emplace(ConstIterator start, Args && ... args) {
-                     SizeType index = start - ConstIterator(data);
+                     SizeType index = Core::distance(ConstIterator(data), start);
                      if (capacity < length + 1) {
                          reallocate();
                      }
                      if (index < length) {
-                         shift(index, 1);
+                         Core::shiftRight(data + index, data + length + 1, 1);
                      }
-                     this->construct(&data[index], std::forward<Args>(args)...);
-                     length++;
+                     AllocatorTraits::construct(*this, &data[index], std::forward<Args>(args)...);
+                     ++length;
                      return Iterator(data + index);
                  }
     
                  template <class T, Concept::Allocator Alloc>
                  inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::erase(ConstIterator pos) {
-                     SizeType index = pos - ConstIterator(data);
+                     SizeType index = Core::distance(ConstIterator(data), pos);
                      if (index > length - 1) {
                          throw std::out_of_range("Erasing after NRE::Core::Vector last element.");
                      }
-                     this->destroy(pos);
-                     shiftBack(index, 1);
-                     length--;
+                     AllocatorTraits::destroy(*this, Core::addressOf(data[index]));
+                     Core::shiftLeft(data + index, data + length + 1, 1);
+                     --length;
                      return Iterator(data + index);
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::erase(ConstIterator begin, ConstIterator end) {
-                     SizeType count = std::distance(begin, end);
-                     SizeType index = begin - ConstIterator(data);
+                 template <Concept::SentinelFor<ConstIterator> S>
+                 inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::erase(ConstIterator begin, S end) {
+                     SizeType count = Core::distance(begin, end);
+                     SizeType index = Core::distance(ConstIterator(data), begin);
                      if (index > length - count) {
                          throw std::out_of_range("Erasing after NRE::Core::Vector last element.");
                      }
-                     for (auto it = begin; it != end; it++) {
-                         this->destroy(it);
-                     }
-                     shiftBack(index, count);
+                     Memory::destroy(data + index, data + index + count);
+                     Core::shiftLeft(data + index, data + length + count, count);
                      length -= count;
                      return Iterator(data + index + count);
                  }
@@ -335,10 +322,15 @@
                      if (capacity < length + 1) {
                          reallocate();
                      }
-                     this->construct(&data[length], std::forward<Args>(args)...);
+                     AllocatorTraits::construct(*this, &data[length], std::forward<Args>(args)...);
                      length++;
                  }
     
+                 template <class T, Concept::Allocator Alloc>
+                 inline void Vector<T, Alloc>::popBack() {
+                     AllocatorTraits ::destroy(*this, Core::prev(end()));
+                     --length;
+                 }
     
                  template <class T, Concept::Allocator Alloc>
                  inline void Vector<T, Alloc>::resize(SizeType count) {
@@ -349,8 +341,8 @@
                  inline void Vector<T, Alloc>::resize(SizeType count, ConstReference value) {
                      if (count != length) {
                          if (count < length) {
-                             for (SizeType index = count; index != length; index++) {
-                                 this->destroy(&data[index]);
+                             for (SizeType index = count; index != length; ++index) {
+                                 AllocatorTraits::destroy(*this, &data[index]);
                              }
                              length = count;
                          } else {
@@ -358,7 +350,7 @@
                                  reallocate(count);
                              }
                              for (SizeType index = length; index < count; index++) {
-                                 this->construct(&data[index], value);
+                                 AllocatorTraits::construct(*this, &data[index], value);
                              }
                              length = count;
                          }
@@ -393,7 +385,7 @@
                  inline Vector<T, Alloc>& Vector<T, Alloc>::operator =(Vector const& vec) {
                      if (this != &vec) {
                          AllocatorType::operator=(static_cast <AllocatorType const&> (vec));
-                         assign(vec.begin(), vec.end());
+                         assign(vec);
                      }
                      return *this;
                  }
@@ -421,7 +413,7 @@
                          String res;
                          res << '[' << data[0];
                          res.reserve((res.getSize() + 2) * length);
-                         for (SizeType index = 1; index < length; index++) {
+                         for (SizeType index = 1; index < length; ++index) {
                              res << ',' << ' ' << data[index];
                          }
                          res << ']';
@@ -434,11 +426,21 @@
                      reallocate((capacity < BASE_ALLOCATION_SIZE) ? (BASE_ALLOCATION_SIZE)
                                                                   : (static_cast <SizeType> (static_cast <float> (capacity) * GROW_FACTOR)));
                  }
+                 
+                 template <class T, Concept::Allocator Alloc>
+                 inline void Vector<T, Alloc>::reallocate(SizeType newSize) {
+                     SizeType tmp = capacity;
+                     capacity = newSize;
+                     Pointer newData = AllocatorTraits::allocate(*this, capacity);
+                     Core::uninitializedMoveN(data, length, newData);
+                     AllocatorTraits::deallocate(*this, data, tmp);
+                     data = newData;
+                 }
     
                  template <class T, Concept::Allocator Alloc>
                  inline void Vector<T, Alloc>::reserveWithGrowFactor(SizeType size) {
                      SizeType newSize = (capacity < BASE_ALLOCATION_SIZE) ? (BASE_ALLOCATION_SIZE)
-                                                                             : (static_cast <SizeType> (static_cast <float> (capacity) * GROW_FACTOR));
+                                                                          : (static_cast <SizeType> (static_cast <float> (capacity) * GROW_FACTOR));
                      while (newSize < size) {
                          newSize = static_cast <SizeType> (static_cast <float> (newSize) * GROW_FACTOR);
                      }

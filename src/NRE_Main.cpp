@@ -18,14 +18,29 @@
     using namespace NRE::Concept;
     
     int main(int, char**) {
-        int a[5] = {1, 2, 3, 4, 5};
-        int* p = a;
-        std::cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " " << a[4] << std::endl;
+        Vector<int> r;
+        auto l = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+        r.assign(l.begin(), l.end());
+        Vector<int> v(r);
+        int* p = v.begin();
+        std::cout << v << std::endl;
         fill(p, next(p, 3), 10);
-        std::cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " " << a[4] << std::endl;
-        ReverseIterator<int*> rp(p + 5);
-        std::cout << *(0 + rp) << std::endl;
-        
+        std::cout << v << std::endl;
+        auto pos = v.begin();
+        Core::advance(pos, 3);
+        v.insert(pos, 5, 55);
+        std::cout << v << std::endl;
+        pos = v.begin();
+        Core::advance(pos, 3);
+        v.erase(pos);
+        std::cout << v << std::endl;
+        v.erase(v.begin(), v.begin() + 2);
+        std::cout << v << std::endl;
+
+
+//        Vector<int> a(std::move(v));
+//        std::cout << a << std::endl;
+//        std::vector<int> a;
 //        Vector<unsigned char> vec(SizeType(10), 1);
 //
 //        std::cout << vec << std::endl;

@@ -599,6 +599,39 @@
                 return moveBackward(begin(range), end(range), std::move(last));
             }
 
+            /** Helper for moveN-function result type */
+            template <class It, class Out>
+            using MoveNResult = Detail::InOutResult<It, Out>;
+        
+            /**
+             * Move N data starting at begin into a given destination, no optimization
+             * @param begin the source range start
+             * @param n     the number of data to copy
+             * @param first the destination start
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
+             */
+            template <Concept::InputIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt> requires (!Concept::DerivedFrom<IteratorCategoryT<InputIt>, RandomAccessIteratorCategory>)
+            constexpr MoveNResult<InputIt, OutputIt> moveN(InputIt begin, Size n, OutputIt first) {
+                for (; n > 0; --n) {
+                    *first = std::move(*begin);
+                    ++first;
+                    ++begin;
+                }
+                return {begin, first};
+            }
+        
+            /**
+             * Move N data starting at begin into a given destination, optimized for random access iterators
+             * @param begin the source range start
+             * @param n     the number of data to copy
+             * @param first the destination start
+             * @return an iterator pointing after the last element accessed and one pointing after the last copied element
+             */
+            template <Concept::RandomAccessIterator InputIt, Concept::Integral Size, Concept::OutputIterator<IteratorReferenceT<InputIt>> OutputIt>
+            constexpr MoveNResult<InputIt, OutputIt> moveN(InputIt begin, Size n, OutputIt first) {
+                return move(std::move(begin), begin + n, std::move(first));
+            }
+
             /** Helper for unitializedCopy-function result type */
             template <class It, class Out>
             using UninitializedCopyResult = Detail::InOutResult<It, Out>;
