@@ -13,9 +13,10 @@
     #include <utility>
     #include <cstring>
     #include <cmath>
-    #include "../../Interfaces/Iterator/NRE_IteratorBase.hpp"
+
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
-    #include "../../Traits/NRE_TypeTraits.hpp"
+    #include "../../../Memory/Traits/NRE_MemoryTraits.hpp"
+    #include "../../Algorithm/NRE_Algorithm.hpp"
     
     /**
     * @namespace NRE
@@ -31,49 +32,40 @@
             namespace Detail {
                 namespace DequeInner {
                 
-                    const std::size_t DEQUE_BUFFER_SIZE = 512;
+                    const SizeType DEQUE_BUFFER_SIZE = 512;
                     
                     /**
-                     * Compute the deque buffer size from it's element type size
-                     * @param typeSize the element type size in bytes
                      * @return the deque buffer size
                      */
-                    constexpr [[nodiscard]] std::size_t getDequeBufferSize(std::size_t typeSize) {
-                        return (typeSize < DEQUE_BUFFER_SIZE ? static_cast <std::size_t> (DEQUE_BUFFER_SIZE / typeSize) : static_cast <std::size_t> (1));
+                    template <class T>
+                    constexpr [[nodiscard]] SizeType getDequeBufferSize() {
+                        return (sizeof(T) < DEQUE_BUFFER_SIZE ? static_cast <SizeType> (DEQUE_BUFFER_SIZE / sizeof(T))
+                                                              : static_cast <SizeType> (1));
                     }
         
                     /**
                      * @class DequeIterator
                      * @brief Internal iterator for deque
                      */
-                    template <class T, class Category>
-                    class DequeIterator : public IteratorBase<DequeIterator<T, Category>, T, Category> {
+                    template <class T>
+                    class DequeIterator : public Iterator<DequeIterator<T>, RandomAccessIteratorCategory, T> {
                         public :    // Traits
-                            /** Inherited iterator traits */
-                            using Traits = IteratorBase<DequeIterator<T, Category>, T, Category>;
-                            /** The iterated object */
-                            using ValueType         = typename Traits::ValueType;
-                            /** The pointer on iterated object */
-                            using Pointer           = typename Traits::Pointer;
-                            /** The reference on iterated object */
-                            using Reference         = typename Traits::Reference;
-                            /** The iterator difference type */
-                            using DifferenceType    = typename Traits::DifferenceType;
-                            /** The pointer on parent map */
+                            using Base              = Iterator<DequeIterator<It>, RandomAccessIteratorCategory, T>;
+                            using DifferenceType    = typename Base::DifferenceType;
+                            using ValueType         = typename Base::ValueType;
+                            using Pointer           = typename Base::Pointer;
+                            using Reference         = typename Base::Reference;
+                            using Category          = typename Base::Category;
                             using MapPointer        = Pointer*;
-                            /** STL compatibility */
-                            using value_type        = ValueType;
-                            /** STL compatibility */
-                            using pointer           = Pointer;
-                            /** STL compatibility */
-                            using reference         = Reference;
-                            /** STL compatibility */
-                            using difference_type   = DifferenceType;
-                            /** STL compatibility */
-                            using iterator_category = typename Traits::iterator_category;
+                            using difference_type   = typename Base::difference_type;
+                            using value_type        = typename Base::value_type;
+                            using pointer           = typename Base::pointer;
+                            using reference         = typename Base::reference;
+                            using iterator_category = typename Base::iterator_category;
+                            using iterator_concept  = typename Base::iterator_concept;
                             
                         private :   // Static
-                            static constexpr SizeType BUFFER_SIZE = getDequeBufferSize(sizeof(ValueType));
+                            static constexpr SizeType BUFFER_SIZE = getDequeBufferSize<ValueType>();
                         
                         private:    // Fields
                             Pointer current;    /**< The current pointed element */
@@ -143,6 +135,20 @@
                                  * @param newNode the new node to iterate over
                                  */
                                 void setNode(MapPointer newNode);
+    
+                        //## Assignment Operator ##//
+                            /**
+                             * Copy it into this
+                             * @param it the deque iterator to copy into this
+                             * @return the reference of himself
+                             */
+                            DequeIterator& operator=(DequeIterator const& it) = default;
+                            /**
+                             * Move it into this
+                             * @param it the deque iterator to move into this
+                             * @return the reference of himself
+                             */
+                            DequeIterator& operator=(DequeIterator && it) = default;
                     };
                 }
     
@@ -150,63 +156,38 @@
                  * @class Deque
                  * @brief A double ended queue implemented with a dynamic array of fixed size array
                  */
-                template <class T, class Allocator>
-                class Deque : public Stringable<Deque<T, Allocator>>, public Allocator {
-                    static_assert(Memory::IsAllocatorV<Allocator>);                     /**< Check if the given AllocatorType inherit from NRE::Memory::AllocatorTraits */
-                    static_assert(std::is_same_v<T, typename Allocator::ValueType>);    /**< Make sure the allocator is set for the container inner type */
+                template <class T, Concept::Allocator Alloc>
+                class Deque : public Stringable<Deque<T, Alloc>>, public Alloc {
+                    static_assert(std::is_same_v<T, typename Alloc::ValueType>);    /**< Make sure the allocator is set for the container inner type */
 
                     public :    // Traits
-                        /** The container's allocated type */
-                        using ValueType             = T;
-                        /** The container's allocator */
-                        using AllocatorType         = Allocator;
-                        /** The container's map allocator */
-                        using MapAllocator          = typename Allocator::Rebind<T*>::Type;
-                        /** The object's size type */
-                        using SizeType              = std::size_t;
-                        /** The object's difference type */
-                        using DifferenceType        = std::ptrdiff_t;
-                        /** The allocated type reference */
+                        using AllocatorType         = Alloc;
+                        using AllocatorTraits       = Memory::AllocatorTraits<AllocatorType>;
+                        using ValueType             = typename AllocatorTraits::ValueType;
+                        using SizeType              = typename AllocatorTraits::SizeType;
+                        using DifferenceType        = typename AllocatorTraits::DifferenceType;
+                        using MapAllocator          = typename AllocatorTraits::Rebind<T*>;
+                        using MapAllocatorTraits    = typename AllocatorTraits::RebindTraits<T*>;
                         using Reference             = ValueType&;
-                        /** The allocated type const reference */
                         using ConstReference        = ValueType const&;
-                        /** The allocated type pointer */
-                        using Pointer               = typename AllocatorType::Pointer;
-                        /** The allocated type const pointer */
-                        using ConstPointer          = typename AllocatorType::ConstPointer;
-                        /** Mutable random access iterator */
-                        using Iterator              = DequeInner::DequeIterator<ValueType, InOutRandomAccessIterator>;
-                        /** Immuable random access iterator */
-                        using ConstIterator         = DequeInner::DequeIterator<ValueType, RandomAccessIterator>;
-                        /** Mutable reverse random access iterator */
-                        using ReverseIterator       = std::reverse_iterator<Iterator>;
-                        /** Immuable reverse random access iterator */
-                        using ConstReverseIterator  = std::reverse_iterator<ConstIterator>;
-                        /** The pointer on parent map */
+                        using Pointer               = typename AllocatorTraits::Pointer;
+                        using ConstPointer          = typename AllocatorTraits::ConstPointer;
+                        using Iterator              = DequeInner::DequeIterator<ValueType>;
+                        using ConstIterator         = DequeInner::DequeIterator<const ValueType>;
+                        using ReverseIterator       = Core::ReverseIterator<Iterator>;
+                        using ConstReverseIterator  = Core::ReverseIterator<ConstIterator>;
                         using MapPointer            = Pointer*;
-                        /** STL compatibility */
                         using value_type            = ValueType;
-                        /** STL compatibility */
                         using allocator_type        = AllocatorType;
-                        /** STL compatibility */
                         using size_type             = SizeType;
-                        /** STL compatibility */
                         using difference_type       = DifferenceType;
-                        /** STL compatibility */
                         using reference             = Reference;
-                        /** STL compatibility */
                         using const_reference       = ConstReference;
-                        /** STL compatibility */
                         using pointer               = Pointer;
-                        /** STL compatibility */
                         using const_pointer         = ConstPointer;
-                        /** STL compatibility */
                         using iterator              = Iterator;
-                        /** STL compatibility */
                         using const_iterator        = ConstIterator;
-                        /** STL compatibility */
                         using reverse_iterator      = ReverseIterator;
-                        /** STL compatibility */
                         using const_reverse_iterator= ConstReverseIterator;
 
                     private :   // Static
@@ -225,34 +206,41 @@
                              * Construct an empty deque with a base capacity
                              * @param alloc the deque's memory allocator
                              */
-                            Deque(Allocator const& alloc = Allocator());
+                            Deque(AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a deque filled with count copy of value
                              * @param count the number of copy to perform
                              * @param value the value to fill the deque with
                              * @param alloc the deque's memory allocator
                              */
-                            Deque(SizeType count, ConstReference value, Allocator const& alloc = Allocator());
+                            Deque(SizeType count, ConstReference value, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a deque filled with count default value
                              * @param count the number of default element
                              * @param alloc the deque's memory allocator
                              */
-                            Deque(SizeType count, Allocator const& alloc = Allocator());
+                            Deque(SizeType count, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a deque filled with element between 2 iterators
                              * @param begin the begin iterator
                              * @param end   the end iterator, pointing after the last element
                              * @param alloc the deque's memory allocator
                              */
-                            template <class InputIterator>
-                            Deque(InputIterator begin, InputIterator end, Allocator const& alloc = Allocator());
+                            template <Concept::InputIterator It, Concept::SentinelFor<It> S>
+                            Deque(It begin, S end, AllocatorType const& alloc = AllocatorType());
+                            /**
+                             * Construct a deque filled with element from a given range
+                             * @param range the input range
+                             * @param alloc the deque's memory allocator
+                             */
+                            template <Concept::InputRange R>
+                            Deque(R && range, AllocatorType const& alloc = AllocatorType());
                             /**
                              * Construct a deque from an initializer list
                              * @param init  the list to fill the deque with
                              * @param alloc the deque's memory allocator
                              */
-                            Deque(std::initializer_list<T> init, Allocator const& alloc = Allocator());
+                            Deque(std::initializer_list<T> init, AllocatorType const& alloc = AllocatorType());
     
                         //## Copy Constructor ##//
                             /**
@@ -265,7 +253,7 @@
                              * @param d     the deque to copy
                              * @param alloc the deque's memory allocator
                              */
-                            Deque(Deque const& d, Allocator const& alloc);
+                            Deque(Deque const& d, AllocatorType const& alloc);
         
                         //## Move Constructor ##//
                             /**
@@ -278,7 +266,7 @@
                              * @param d     the deque to move
                              * @param alloc the deque's memory allocator
                              */
-                            Deque(Deque && d, Allocator const& alloc);
+                            Deque(Deque && d, AllocatorType const& alloc);
         
                         //## Deconstructor ##//
                             /**
@@ -325,14 +313,11 @@
                          * @param nbElements the number of nodes in the map
                          */
                         void deallocateMap(MapPointer p, SizeType nbElements);
-                        /**
-                         * Copy the content of d
-                         * @param d the deque to copy
-                         */
-                        void copy(Deque const& d);
                         
                             
                 };
             }
         }
     }
+
+    #include "NRE_Deque.tpp"

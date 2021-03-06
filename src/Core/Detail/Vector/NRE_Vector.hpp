@@ -14,8 +14,8 @@
     #include <cstring>
 
     #include "../../Interfaces/Stringable/NRE_Stringable.hpp"
-    #include "../../Algorithm/NRE_Algorithm.hpp"
     #include "../../../Memory/Traits/NRE_MemoryTraits.hpp"
+    #include "../../Algorithm/NRE_Algorithm.hpp"
     
 
     /**

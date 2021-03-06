@@ -37,7 +37,7 @@ set(COMPILE_LIST
         src/Header/NRE_Core.hpp
         src/Core/Array/NRE_Array.hpp
         src/Core/ForwardList/NRE_ForwardList.hpp
-        src/Core/DetaiL/HashTable/NRE_HashTable.hpp
+        src/Core/Detail/HashTable/NRE_HashTable.hpp
         src/Core/Id/NRE_Id.hpp
         src/Core/Observable/NRE_Observable.hpp
         src/Core/Observer/NRE_Observer.hpp

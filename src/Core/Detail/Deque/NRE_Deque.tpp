@@ -12,13 +12,13 @@
             namespace Detail {
                 namespace DequeInner {
     
-                    template <class T, class Category>
-                    inline typename DequeIterator<T, Category>::Reference DequeIterator<T, Category>::dereference() const {
+                    template <class T>
+                    inline typename DequeIterator<T>::Reference DequeIterator<T>::dereference() const {
                         return *current;
                     }
                     
-                    template <class T, class Category>
-                    inline void DequeIterator<T, Category>::increment() {
+                    template <class T>
+                    inline void DequeIterator<T>::increment() {
                         current++;
                         if (current == last) {
                             setNode(node + 1);
@@ -26,8 +26,8 @@
                         }
                     }
                     
-                    template <class T, class Category>
-                    inline void DequeIterator<T, Category>::decrement() {
+                    template <class T>
+                    inline void DequeIterator<T>::decrement() {
                         if (current == first) {
                             setNode(node - 1);
                             current = last;
@@ -35,8 +35,8 @@
                         current--;
                     }
                     
-                    template <class T, class Category>
-                    inline void DequeIterator<T, Category>::advance(DifferenceType n) {
+                    template <class T>
+                    inline void DequeIterator<T>::advance(DifferenceType n) {
                         DifferenceType offset = n + (current - first);
                         if (offset >= 0 && offset < BUFFER_SIZE) {
                             current += n;
@@ -48,18 +48,18 @@
                         }
                     }
                     
-                    template <class T, class Category>
-                    inline typename DequeIterator<T, Category>::DifferenceType DequeIterator<T, Category>::distanceTo(Iterator const& it) const {
+                    template <class T>
+                    inline typename DequeIterator<T>::DifferenceType DequeIterator<T>::distanceTo(Iterator const& it) const {
                         return (node - it.node - 1) * static_cast <DifferenceType> (BUFFER_SIZE) + (current - first) + (it.last - it.current);
                     }
                     
-                    template <class T, class Category>
-                    inline bool DequeIterator<T, Category>::equal(Iterator const& it) const {
+                    template <class T>
+                    inline bool DequeIterator<T>::equal(Iterator const& it) const {
                         return current == it.current;
                     }
                     
-                    template <class T, class Category>
-                    inline void DequeIterator<T, Category>::setNode(MapPointer newNode) {
+                    template <class T>
+                    inline void DequeIterator<T>::setNode(MapPointer newNode) {
                         node = newNode;
                         first = *node;
                         last  = first + static_cast <DifferenceType> (BUFFER_SIZE);
@@ -86,7 +86,7 @@
                 template <class InputIterator>
                 inline Deque::Deque(InputIterator begin, InputIterator end, AllocatorType const& alloc) : AllocatorType(alloc), map(nullptr), mapSize(0) {
                     initializeMap(std::distance(begin, end));
-                    assign(begin, end);
+//                    assign(begin, end);
                 }
                 
                 template <class T, class Allocator>
@@ -100,7 +100,7 @@
                 template <class T, class Allocator>
                 inline Deque::Deque(Deque const& d, AllocatorType const& alloc) : AllocatorType(alloc), map(nullptr), mapSize(0) {
                     initializeMap(d.getSize());
-                    copy(d);
+//                    copy(d);
                 }
                 
                 template <class T, class Allocator>
@@ -159,22 +159,22 @@
                 
                 template <class T, class Allocator>
                 inline typename Deque::Pointer Deque::allocateNode() {
-                    return this->allocate(BUFFER_SIZE);
+                    return AllocatorTraits::allocate(*this, BUFFER_SIZE);
                 }
                 
                 template <class T, class Allocator>
                 inline void Deque::deallocateNode(Pointer p) {
-                    this->deallocate(p, BUFFER_SIZE);
+                    AllocatorTraits::deallocate(*this, p, BUFFER_SIZE);
                 }
                 
                 template <class T, class Allocator>
                 inline typename Deque::MapPointer Deque::allocateMap(SizeType nbElements) {
-                    return static_cast <MapAllocator*> (this)->allocate(nbElements);
+                    return MapAllocatorTraits::allocate(*static_cast <MapAllocator*> (this), nbElements);
                 }
                 
                 template <class T, class Allocator>
                 inline void Deque::deallocateMap(MapPointer p, SizeType nbElements) {
-                    static_cast <MapAllocator*> (this)->deallocate(p, nbElements);
+                    MapAllocatorTraits::deallocate(*static_cast <MapAllocator*> (this), p, nbElements);
                 }
             }
         }

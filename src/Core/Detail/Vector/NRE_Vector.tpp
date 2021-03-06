@@ -293,7 +293,7 @@
                  }
     
                  template <class T, Concept::Allocator Alloc>
-                 template <Concept::SentinelFor<ConstIterator> S>
+                 template <Concept::SentinelFor<typename Vector<T, Alloc>::ConstIterator> S>
                  inline typename Vector<T, Alloc>::Iterator Vector<T, Alloc>::erase(ConstIterator begin, S end) {
                      SizeType count = Core::distance(begin, end);
                      SizeType index = Core::distance(ConstIterator(data), begin);
